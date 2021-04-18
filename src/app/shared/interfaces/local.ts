@@ -7,7 +7,6 @@ export interface Local {
     commune: string;
     address: string;
     rut: string;
-    check_digit: string;
     type: string;
     pets: boolean;
     phone: number;

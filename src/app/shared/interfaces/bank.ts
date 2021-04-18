@@ -3,5 +3,5 @@ export interface Bank {
     account_number: number;
     account_type: string;
     bank: string;
-    holder_account_rut: number; 
+    holder_account_rut: string; 
 }

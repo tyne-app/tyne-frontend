@@ -7,8 +7,7 @@ export interface Reservation {
     email:string;
     first_name:string;
     last_name:string;
-    local_rut: number;
-    local_check_digit:string;
+    local_rut: string;
     payment: string;
     preference: boolean;
     social_reason:  string;
