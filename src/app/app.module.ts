@@ -9,12 +9,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule  } from "./core/core.module";
 import { SharedModule } from './shared/shared.module';
 import { MaterialModule } from './shared/material/material.module';
+import { HomeModule } from './pages/home/home.module';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     
@@ -23,7 +24,8 @@ import { MaterialModule } from './shared/material/material.module';
     BrowserAnimationsModule,
     CoreModule,
     SharedModule,
-    MaterialModule
+    MaterialModule,
+    HomeModule
     
   ],
   providers: [],
