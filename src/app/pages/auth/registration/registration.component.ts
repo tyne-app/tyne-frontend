@@ -39,13 +39,13 @@ export class RegistrationComponent implements OnInit {
 
   // Getters de cada campo del form.
 
-  get name() { return this.form.get('email') }
+  get name() { return this.form.get('name') } //Bug fix. antes estaba el getter referenciado a email.
 
   get lastName() { return this.form.get('lastName') }
 
   get birthDate() { return this.form.get('birthDate') }
 
-  get email() { return this.form.get('email') }
+  get email() { return this.form.get('email') } 
 
   get phoneNumber() { return this.form.get('phoneNumber') }
 

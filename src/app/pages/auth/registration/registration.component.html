@@ -4,9 +4,9 @@
   </div>
 
   <div mat-dialog-actions>
-    <!-- First row -->
-    <div class="row">
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+        <!-- First row -->
         <div class="row justify-content-start">
           <!-- Name input -->
           <div class="col-lg-4 col-md-6 d-flex justify-content-center">
@@ -19,7 +19,11 @@
                 placeholder="Nombre"
                 autocomplete="off"
               >
+              <mat-error *ngIf="name.invalid && name.dirty">
+                Debes ingresar tu nombre!
+              </mat-error>
             </mat-form-field>
+
           </div>
           <!-- Lastname input -->
           <div class="col-lg-4 col-md-6 d-flex justify-content-center">
@@ -31,10 +35,13 @@
                 placeholder="Apellido"
                 autocomplete="off"
               >
+              <mat-error *ngIf="lastName.invalid && lastName.dirty">
+                Debes ingresar tu apellido!
+              </mat-error>
             </mat-form-field>
           </div>
           <!-- Birthdate input -->
-          <div class="col-lg-4 col-md-6 d-flex justify-content-center">
+          <div class="col-lg-4 col-md-12 d-flex justify-content-center">
             <mat-form-field appearance="outline">
               <input 
                 matInput
@@ -44,7 +51,15 @@
                 autocomplete="off"
               >
             </mat-form-field>
+            <mat-error *ngIf="birthDate.invalid && birthDate.dirty">
+              Debes ingresar tu apellido!
+            </mat-error>
           </div>
+
+        </div>
+
+        <!-- Second Row -->
+        <div class="row">
           <!-- Email input -->
           <div class="col-lg-4 col-md-6 d-flex justify-content-center">
             <mat-form-field appearance="outline">
@@ -55,6 +70,9 @@
                 placeholder="Email"
                 autocomplete="off"
               >
+              <mat-error *ngIf="email.invalid && email.dirty">
+                Debes ingresar una direccion de correo!
+              </mat-error>
             </mat-form-field>
           </div>
           <!-- Cellphone input -->
@@ -67,6 +85,9 @@
                 placeholder="Celular"
                 autocomplete="off"
               >
+              <mat-error *ngIf="phoneNumber.invalid && phoneNumber.dirty">
+                Debes ingresar tu numero de telefono!
+              </mat-error>
             </mat-form-field>
           </div>
           <!-- Password input -->
@@ -79,12 +100,14 @@
                 placeholder="Contraseña"
                 autocomplete="off"
               >
+              <mat-error *ngIf="password.invalid && password.dirty">
+                Debes crear tu contraseña
+              </mat-error>
             </mat-form-field>
           </div>
-
         </div>
 
-        <!-- Second row -->
+        <!-- Third row -->
         <div class="row justify-content-between" >
           <!-- Confirm Password input -->
           <div class="col-lg-4 col-md-6 d-flex justify-content-between">
@@ -96,6 +119,9 @@
                 placeholder="Repite tu contraseña"
                 autocomplete="off"
               >
+              <mat-error *ngIf="passwordConfirm.invalid && passwordConfirm.dirty">
+                La contraseña no coincide!
+              </mat-error>
             </mat-form-field>
           </div>
           <!-- Button -->
@@ -112,7 +138,7 @@
         </div>
       
       </form>
-    </div>
+
 
   </div>
 
