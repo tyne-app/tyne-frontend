@@ -11,7 +11,8 @@
           <!-- Name input -->
           <div class="col-lg-4 col-md-6 d-flex justify-content-center">
             <mat-form-field appearance="outline">
-              <input 
+              <input
+                required 
                 matInput
                 formControlName="name"
                 type="text"
@@ -58,7 +59,7 @@
           </div>
           <!-- Cellphone input -->
           <div class="col-lg-4 col-md-6 d-flex justify-content-center">
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" hintLabel="+xx xxxxxxxxx">
               <input 
                 matInput
                 formControlName="phoneNumber"
@@ -86,7 +87,7 @@
         <!-- Second row -->
         <div class="row justify-content-between" >
           <!-- Confirm Password input -->
-          <div class="col-lg-4 col-md-6 d-flex justify-content-center">
+          <div class="col-lg-4 col-md-6 d-flex justify-content-between">
             <mat-form-field appearance="outline">
               <input 
                 matInput
@@ -97,7 +98,7 @@
               >
             </mat-form-field>
           </div>
-          <!-- Boton -->
+          <!-- Button -->
           <div class="col-lg-4 col-md-6 d-flex justify-content-center align-self-start">
             <button
               class="register-button"
@@ -109,7 +110,6 @@
             </button>
           </div>
         </div>
-
       
       </form>
     </div>
