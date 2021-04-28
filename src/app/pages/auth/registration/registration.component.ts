@@ -18,7 +18,7 @@ export class RegistrationComponent implements OnInit {
 
   form!: FormGroup;
 
-  loading = false;
+  loading = false; //Una vez que se haga submit, loading pasa a  ser verdadero y el boton se deshabilita.
   
 
   constructor(private fb: FormBuilder, public matDialogRef: MatDialogRef<RegistrationComponent>,
@@ -29,7 +29,7 @@ export class RegistrationComponent implements OnInit {
     this.form = this.fb.group({
       name: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
-      birthDate: ['DD/MM/AAAA', [Validators.required]],
+      birthDate: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       phoneNumber: ['', [Validators.required]],
       password:  ['', [Validators.required, Validators.minLength(6)]],
