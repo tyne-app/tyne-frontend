@@ -1,0 +1,125 @@
+<div class="container">
+  <div class="row">
+    <h1 class="register-title" mat-dialog-title>Registro</h1>
+  </div>
+
+  <div mat-dialog-actions>
+    <!-- First row -->
+    <div class="row">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="row justify-content-start">
+          <!-- Name input -->
+          <div class="col-lg-4 col-md-6 d-flex justify-content-center">
+            <mat-form-field appearance="outline">
+              <input 
+                matInput
+                formControlName="name"
+                type="text"
+                placeholder="Nombre"
+                autocomplete="off"
+              >
+            </mat-form-field>
+          </div>
+          <!-- Lastname input -->
+          <div class="col-lg-4 col-md-6 d-flex justify-content-center">
+            <mat-form-field appearance="outline">
+              <input 
+                matInput
+                formControlName="lastName"
+                type="text"
+                placeholder="Apellido"
+                autocomplete="off"
+              >
+            </mat-form-field>
+          </div>
+          <!-- Birthdate input -->
+          <div class="col-lg-4 col-md-6 d-flex justify-content-center">
+            <mat-form-field appearance="outline">
+              <input 
+                matInput
+                formControlName="birthDate"
+                type="date"
+                placeholder="Fecha de Nacimiento"
+                autocomplete="off"
+              >
+            </mat-form-field>
+          </div>
+          <!-- Email input -->
+          <div class="col-lg-4 col-md-6 d-flex justify-content-center">
+            <mat-form-field appearance="outline">
+              <input 
+                matInput
+                formControlName="email"
+                type="email"
+                placeholder="Email"
+                autocomplete="off"
+              >
+            </mat-form-field>
+          </div>
+          <!-- Cellphone input -->
+          <div class="col-lg-4 col-md-6 d-flex justify-content-center">
+            <mat-form-field appearance="outline">
+              <input 
+                matInput
+                formControlName="phoneNumber"
+                type="text"
+                placeholder="Celular"
+                autocomplete="off"
+              >
+            </mat-form-field>
+          </div>
+          <!-- Password input -->
+          <div class="col-lg-4 col-md-6 d-flex justify-content-center">
+            <mat-form-field appearance="outline">
+              <input 
+                matInput
+                formControlName="password"
+                type="password"
+                placeholder="Contraseña"
+                autocomplete="off"
+              >
+            </mat-form-field>
+          </div>
+
+        </div>
+
+        <!-- Second row -->
+        <div class="row justify-content-between" >
+          <!-- Confirm Password input -->
+          <div class="col-lg-4 col-md-6 d-flex justify-content-center">
+            <mat-form-field appearance="outline">
+              <input 
+                matInput
+                formControlName="passwordConfirm"
+                type="password"
+                placeholder="Repite tu contraseña"
+                autocomplete="off"
+              >
+            </mat-form-field>
+          </div>
+          <!-- Boton -->
+          <div class="col-lg-4 col-md-6 d-flex justify-content-center align-self-start">
+            <button
+              class="register-button"
+              mat-raised-button
+              type="submit"
+              [disabled]="form.invalid || !passwordDoesMatch || loading"
+            >
+            ¡Listo!
+            </button>
+          </div>
+        </div>
+
+      
+      </form>
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+</div>

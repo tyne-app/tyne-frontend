@@ -1,0 +1,38 @@
+mat-form-field {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+input {    
+    height: 1.6em;              
+    div.mat-form-field-infix {
+      padding: .3em 0;
+      input.mat-input-element {
+        vertical-align: top;
+      }
+    }
+}
+
+.register-button {
+  width: 45%;
+  color: white;
+  border-radius: 15px;
+  font-size: 18px;
+  font-weight: normal;
+  background-color: #E10000;
+}
+
+.register-title {
+  font-size: 25px;
+  color: #3C0000;
+}
+
+// ::ng-deep -> Deprecated en versiones superiores de angular https://angular.io/guide/component-styles#deprecated-deep--and-ng-deep
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: #3C0000;
+}
+
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+  color: #3C0000;
+}
