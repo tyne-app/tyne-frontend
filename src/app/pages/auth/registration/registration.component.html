@@ -92,7 +92,7 @@
           </div>
           <!-- Password input -->
           <div class="col-lg-4 col-md-6 d-flex justify-content-center">
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" hintLabel="Debe tener al menos 6 caracteres">
               <input 
                 matInput
                 formControlName="password"
@@ -110,8 +110,8 @@
         <!-- Third row -->
         <div class="row justify-content-between" >
           <!-- Confirm Password input -->
-          <div class="col-lg-4 col-md-6 d-flex justify-content-between">
-            <mat-form-field appearance="outline">
+          <div class="col-lg-4 col-md-6 d-flex">
+            <mat-form-field appearance="outline" [color]="passwordDoesMatch ? 'primary' : 'warn'">
               <input 
                 matInput
                 formControlName="passwordConfirm"
@@ -125,7 +125,7 @@
             </mat-form-field>
           </div>
           <!-- Button -->
-          <div class="col-lg-4 col-md-6 d-flex justify-content-center align-self-start">
+          <div class="col-lg-4 col-md-6 d-flex justify-content-center align-self-center">
             <button
               class="register-button"
               mat-raised-button
