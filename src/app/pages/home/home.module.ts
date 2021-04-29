@@ -16,8 +16,6 @@ import { MaterialModule } from 'src/app/shared/material/material.module';
     HomeRoutingModule,
     MaterialModule
   ],
-  exports: [
-    HomeComponent
-  ]
+  exports: []
 })
 export class HomeModule { }

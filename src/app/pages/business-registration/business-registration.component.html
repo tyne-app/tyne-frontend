@@ -1,0 +1,396 @@
+<div class="container">
+
+
+    <img class="mb-5 mt-5" src="../../../assets/logo2 1.png" alt="Logo tyne app">
+
+    <mat-card class="mt-5 pl-5">
+
+        <div class="row pl-5">
+            <div class="col">
+                <h1>Registro para Locales</h1>
+            </div>
+        </div>
+
+        <div class="row pl-5">
+            <div class="col">
+                <h3>Registra tu local y preparate para obtener mayores resultados y brindar más y nuevas experiencias a tus comensales. </h3>
+            </div>
+        </div>
+
+
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+            <!-- Sobre el representante legal -->
+            <div class="row pl-5">
+                <div class="col">
+                    <h2>Sobre el representante legal:</h2>
+                </div>
+            </div>
+
+            <div class="row pl-5">
+                <div class="col">
+                    <mat-form-field appearance="outline">
+                        <input
+                          matInput
+                          formControlName="name"
+                          placeholder="Nombre"
+                          type="text"
+                        >
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="outline">
+                        <input
+                          matInput
+                          formControlName="lastName"
+                          placeholder="Apellido"
+                          type="text"
+                        >
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="outline">
+                        <input
+                          matInput
+                          formControlName="rut"
+                          placeholder="Rut"
+                          type="text"
+                        >
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="row pl-5 mb-4">
+                <div class="col">
+                    <mat-form-field appearance="outline">
+                        <input
+                          matInput
+                          formControlName="email"
+                          placeholder="Email"
+                          type="text"
+                        >
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="outline">
+                        <input
+                          matInput
+                          formControlName="emailConfirm"
+                          placeholder="Confirme su email"
+                          type="text"
+                        >
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="outline">
+                        <input
+                          matInput
+                          formControlName="contactNumber"
+                          placeholder="Telefono de contacto"
+                          type="text"
+                        >
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <!-- Sobre el local -->
+            <div class="row pl-5">
+                <div class="col">
+                    <h2>Sobre el local:</h2>
+                </div>
+            </div>
+
+            <div class="row pl-5">
+                <div class="col">
+                    <mat-form-field appearance="outline">
+                        <input
+                          matInput
+                          formControlName="socialReason"
+                          placeholder="Razon Social"
+                          type="text"
+                        >
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="outline">
+                        <input
+                          matInput
+                          formControlName="localTurn"
+                          placeholder="Giro de Local"
+                          type="text"
+                        >
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="outline">
+                        <input
+                          matInput
+                          formControlName="rutLocal"
+                          placeholder="Rut local"
+                          type="text"
+                        >
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="row pl-5">
+                <div class="col">
+                    <mat-form-field appearance="outline">
+                        <input
+                          matInput
+                          formControlName="address"
+                          placeholder="Direccion"
+                          type="text"
+                        >
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="outline">
+                        <input
+                          matInput
+                          formControlName="commune"
+                          placeholder="Comuna"
+                          type="text"
+                        >
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="outline">
+                        <input
+                          matInput
+                          formControlName="region"
+                          placeholder="Region"
+                          type="text"
+                        >
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="row pl-5 mb-3">
+                <div class="col">
+                    <mat-checkbox formControlName="havePet">
+                        <p>¿Tienes Mascota?</p>
+                    </mat-checkbox>
+                </div>
+            </div>
+
+            <!-- Datos bancarios -->
+            <div class="row pl-5">
+                <div class="col">
+                    <h2>Datos bancarios:</h2>
+                </div>
+            </div>
+
+            <div class="row pl-5">
+                <div class="col">
+                    <mat-form-field appearance="outline">
+                        <input
+                          matInput
+                          formControlName="rutAccountOwner"
+                          placeholder="Rut titular de la cuenta"
+                          type="text"
+                        >
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="outline">
+                        <input
+                          matInput
+                          formControlName="nameAccountOwner"
+                          placeholder="Nombre titular de la cuenta"
+                          type="text"
+                        >
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="outline">
+                        <input
+                          matInput
+                          formControlName="accountNumber"
+                          placeholder="Numero de cuenta"
+                          type="text"
+                        >
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="row mb-4 pl-5 justify-content-start">
+                <div class="col-lg-4 col-md-6">
+                    <mat-form-field appearance="outline">
+                        <mat-select formControlName="bank" placeholder="Banco">
+                            <mat-option value="banco">Banco</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <mat-form-field appearance="outline">
+                        <mat-select formControlName="accountType" placeholder="Tipo de cuenta">
+                            <mat-option value="cuenta">Cuenta</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <!-- Horario funcionamiento -->
+            <div class="row pl-5">
+                <div class="col">
+                    <h2>Horario funcionamiento:</h2>
+                </div>
+            </div>
+
+            <!-- Grid anidada. Row principal se divide en 3 columnas, y cada una de ellas teiene 2 rows dentro(row titulo, row contenido). -->
+            <div class="row pl-5 mb-5">
+
+                <div class="col-lg-4 col-md-6 col-sm-8">
+
+                    <div class="row">
+                        <div class="col-12 col-lg-4 col-md-6">
+                            <h3>Apertura</h3>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-sm-5">
+                            <mat-form-field appearance="outline">
+                                <input 
+                                  formControlName="hourOpening"
+                                  class="day-schedule"
+                                  matInput
+                                  placeholder="hh"
+                                  type="text"
+                                >
+                            </mat-form-field>
+                        </div>
+                        <div class="col-sm-1">
+                            <h4>:</h4>
+                        </div>
+                        <div class="col-sm-5">
+                            <mat-form-field  appearance="outline">
+                                <input
+                                formControlName="minutesOpening" 
+                                  class="day-schedule"
+                                  matInput
+                                  placeholder="mm"
+                                  type="text"
+                                >
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-8">
+
+                    <div class="row">
+                        <div class="col-12 col-lg-4 col-md-6">
+                            <h3>Cierre</h3>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <mat-form-field  appearance="outline">
+                                <input
+                                  formControlName="hourClosure"
+                                  class="day-schedule"
+                                  matInput
+                                  placeholder="hh"
+                                  type="text"
+                                >
+                            </mat-form-field>
+                        </div>
+                        <div class="col-sm-1">
+                            <h4>:</h4>
+                        </div>
+                        <div class="col-sm-5">
+                            <mat-form-field  appearance="outline">
+                                <input
+                                  formControlName="minutesClosure"
+                                  class="day-schedule"
+                                  matInput
+                                  placeholder="mm"
+                                  type="text"
+                                >
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-8">
+
+                    <div class="row">
+                        <div class="col-12 col-lg-4 col-md-6">
+                            <h3>Dias de funcionamiento</h3>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <mat-checkbox formControlName="days">L</mat-checkbox>
+                        </div>
+                        <div class="col-sm-2">
+                            <mat-checkbox>M</mat-checkbox>
+                        </div>
+                        <div class="col-sm-2">
+                            <mat-checkbox>M</mat-checkbox>
+                        </div>
+                        <div class="col-sm-2">
+                            <mat-checkbox>J</mat-checkbox>
+                        </div>
+                        <div class="col-sm-2">
+                            <mat-checkbox>V</mat-checkbox>
+                        </div>
+                        <div class="col-sm-1">
+                            <mat-checkbox>S</mat-checkbox>
+                        </div>
+                        <div class="col-sm-1">
+                            <mat-checkbox>D</mat-checkbox>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+            <!-- Contraseña y submit. -->
+            <div class="row pl-5">
+                <div class="col">
+                    <mat-form-field appearance="outline">
+                        <input
+                          matInput
+                          formControlName="name"
+                          placeholder="Contraseña"
+                          type="text"
+                        >
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="outline">
+                        <input
+                          matInput
+                          formControlName="name"
+                          placeholder="Repite tu contraseña"
+                          type="text"
+                        >
+                    </mat-form-field>
+                </div>
+                <div class="col pl-5 pt-2">
+                    <button
+                     type="submit"
+                     class="register-button"
+                     mat-raised-button>
+                        ¡Listo!
+                    </button>
+                </div>
+            </div>
+       </form>
+
+
+
+
+    </mat-card>
+
+
+</div>

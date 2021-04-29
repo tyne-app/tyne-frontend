@@ -11,8 +11,9 @@ import { SharedModule } from './shared/shared.module';
 import { MaterialModule } from './shared/material/material.module';
 import { HomeModule } from './pages/home/home.module';
 import { AuthModule } from './pages/auth/auth.module';
-import { RegistrationComponent } from './pages/auth/registration/registration.component';
+import { BusinessRegistrationModule } from './pages/business-registration/business-registration.module';
 
+import { RegistrationComponent } from './pages/auth/registration/registration.component';
 
 
 
@@ -28,7 +29,8 @@ import { RegistrationComponent } from './pages/auth/registration/registration.co
     SharedModule,
     MaterialModule,
     HomeModule,
-    AuthModule
+    AuthModule,
+    BusinessRegistrationModule
   ],
   entryComponents: [RegistrationComponent],
   providers: [],
