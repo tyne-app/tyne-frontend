@@ -40,7 +40,9 @@ export class BusinessRegistrationComponent implements OnInit {
       minutesOpening: ['', [Validators.required]],
       hourClosure: ['', [Validators.required]],
       minutesClosure: ['', [Validators.required]],
-      days: ['', [Validators.required]]
+      days: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      passwordConfirm: ['', [Validators.required, Validators.minLength(6)]],
 
     });
   }
