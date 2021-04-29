@@ -1,10 +1,19 @@
-.day-schedule {
-    width: 100%;
+mat-card {
+    background-color: #fffdfa;
 }
 
 mat-form-field {
     width: 95%;
     margin-bottom: 16px;
+
+}
+
+.day-schedule {
+    width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #3C0000;
 }
 
 .register-button {
@@ -22,4 +31,8 @@ mat-form-field {
   
 ::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
     color: #3C0000;
+}
+
+::ng-deep .mat-form-field-outline {
+    background-color: white;
 }
