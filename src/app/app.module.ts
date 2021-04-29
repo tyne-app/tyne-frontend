@@ -11,6 +11,7 @@ import { SharedModule } from './shared/shared.module';
 import { MaterialModule } from './shared/material/material.module';
 import { HomeModule } from './pages/home/home.module';
 import { AuthModule } from './pages/auth/auth.module';
+import { RegistrationComponent } from './pages/auth/registration/registration.component';
 
 
 
@@ -29,6 +30,7 @@ import { AuthModule } from './pages/auth/auth.module';
     HomeModule,
     AuthModule
   ],
+  entryComponents: [RegistrationComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
