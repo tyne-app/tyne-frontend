@@ -3,20 +3,30 @@ import { CommonModule } from '@angular/common';
 
 //Angular Material Components
 import {MatCheckboxModule} from '@angular/material/checkbox';
-import { MatIconModule } from '@angular/material';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+
 
 const materialComponents = [
   MatCheckboxModule,
-  MatIconModule
+  MatIconModule,
+  MatDialogModule,
+  MatButtonModule,
+  MatCardModule,
+  MatFormFieldModule,
+  MatInputModule
 ]
 
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule
+    CommonModule,
+    ...materialComponents
   ],
   exports: [
-    materialComponents
+    ...materialComponents
   ]
 })
 export class MaterialModule { }

@@ -10,6 +10,8 @@ import { CoreModule  } from "./core/core.module";
 import { SharedModule } from './shared/shared.module';
 import { MaterialModule } from './shared/material/material.module';
 import { HomeModule } from './pages/home/home.module';
+import { AuthModule } from './pages/auth/auth.module';
+
 
 
 
@@ -18,15 +20,14 @@ import { HomeModule } from './pages/home/home.module';
     AppComponent,
   ],
   imports: [
-    
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     CoreModule,
     SharedModule,
     MaterialModule,
-    HomeModule
-    
+    HomeModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
