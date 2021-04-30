@@ -8,7 +8,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 
-
 const materialComponents = [
   MatCheckboxModule,
   MatIconModule,
@@ -16,7 +15,8 @@ const materialComponents = [
   MatButtonModule,
   MatCardModule,
   MatFormFieldModule,
-  MatInputModule
+  MatInputModule,
+  MatButtonModule
 ]
 
 @NgModule({
