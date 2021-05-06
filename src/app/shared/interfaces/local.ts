@@ -11,6 +11,4 @@ export interface Local {
     pets: boolean;
     phone: number;
     social_reason: string;
-    latitude?: number;
-    longitude?: number;
 }

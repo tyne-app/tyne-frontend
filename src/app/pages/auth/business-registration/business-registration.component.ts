@@ -110,7 +110,7 @@ export class BusinessRegistrationComponent implements OnInit {
       social_reason: this.form.get('socialReason').value
     };
 
-    // console.log(local);
+    console.log(local);
     console.log('loggin test');
   }
 
