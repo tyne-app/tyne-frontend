@@ -37,6 +37,9 @@
                           placeholder="Nombre"
                           type="text"
                         >
+                        <mat-error *ngIf="form.get('name').invalid && form.get('name').dirty">
+                            Debes ingresar tu nombre!
+                        </mat-error>
                     </mat-form-field>
                 </div>
                 <div class="col">
@@ -47,6 +50,9 @@
                           placeholder="Apellido"
                           type="text"
                         >
+                        <mat-error *ngIf="form.get('lastName').invalid && form.get('lastName').dirty">
+                            Debes ingresar tu Apellido!
+                        </mat-error>
                     </mat-form-field>
                 </div>
                 <div class="col">
@@ -57,6 +63,9 @@
                           placeholder="Rut"
                           type="text"
                         >
+                        <mat-error *ngIf="form.get('rut').invalid && form.get('rut').dirty">
+                            Debes ingresar tu rut!
+                        </mat-error>
                     </mat-form-field>
                 </div>
             </div>
@@ -70,6 +79,9 @@
                           placeholder="Email"
                           type="text"
                         >
+                        <mat-error *ngIf="form.get('email').invalid && form.get('email').dirty">
+                            Debes ingresar tu mail!
+                        </mat-error>
                     </mat-form-field>
                 </div>
                 <div class="col">
@@ -90,6 +102,9 @@
                           placeholder="Telefono de contacto"
                           type="text"
                         >
+                        <mat-error *ngIf="form.get('contactNumber').invalid && form.get('contactNumber').dirty">
+                            Debes ingresar un teléfono de contacto!
+                        </mat-error>
                     </mat-form-field>
                 </div>
             </div>
@@ -110,6 +125,9 @@
                           placeholder="Razon Social"
                           type="text"
                         >
+                        <mat-error *ngIf="form.get('socialReason').invalid && form.get('socialReason').dirty">
+                            Debes ingresar una razón social!
+                        </mat-error>
                     </mat-form-field>
                 </div>
                 <div class="col">
@@ -120,6 +138,9 @@
                           placeholder="Giro de Local"
                           type="text"
                         >
+                        <mat-error *ngIf="form.get('localTurn').invalid && form.get('localTurn').dirty">
+                            Debes ingresar un giro de local!
+                        </mat-error>
                     </mat-form-field>
                 </div>
                 <div class="col">
@@ -130,6 +151,9 @@
                           placeholder="Rut local"
                           type="text"
                         >
+                        <mat-error *ngIf="form.get('rutLocal').invalid && form.get('rutLocal').dirty">
+                            Debes ingresar un rut de local!
+                        </mat-error>
                     </mat-form-field>
                 </div>
             </div>
@@ -143,6 +167,9 @@
                           placeholder="Direccion"
                           type="text"
                         >
+                        <mat-error *ngIf="form.get('address').invalid && form.get('address').dirty">
+                            Debes ingresar una dirección!
+                        </mat-error>
                     </mat-form-field>
                 </div>
                 <div class="col">
@@ -153,6 +180,9 @@
                           placeholder="Comuna"
                           type="text"
                         >
+                        <mat-error *ngIf="form.get('commune').invalid && form.get('commune').dirty">
+                            Debes ingresar una comuna!
+                        </mat-error>
                     </mat-form-field>
                 </div>
                 <div class="col">
@@ -163,6 +193,9 @@
                           placeholder="Region"
                           type="text"
                         >
+                        <mat-error *ngIf="form.get('region').invalid && form.get('region').dirty">
+                            Debes ingresar una región!
+                        </mat-error>
                     </mat-form-field>
                 </div>
             </div>
@@ -191,6 +224,9 @@
                           placeholder="Rut titular de la cuenta"
                           type="text"
                         >
+                        <mat-error *ngIf="form.get('rutAccountOwner').invalid && form.get('rutAccountOwner').dirty">
+                            Debes ingresar el rut del titular de cuenta!
+                        </mat-error>
                     </mat-form-field>
                 </div>
                 <div class="col">
@@ -201,6 +237,9 @@
                           placeholder="Nombre titular de la cuenta"
                           type="text"
                         >
+                        <mat-error *ngIf="form.get('nameAccountOwner').invalid && form.get('nameAccountOwner').dirty">
+                            Debes ingresar el nombre del titular de cuenta!
+                        </mat-error>
                     </mat-form-field>
                 </div>
                 <div class="col">
@@ -211,6 +250,9 @@
                           placeholder="Numero de cuenta"
                           type="text"
                         >
+                        <mat-error *ngIf="form.get('accountNumber').invalid && form.get('accountNumber').dirty">
+                            Debes ingresar el número de cuenta!
+                        </mat-error>
                     </mat-form-field>
                 </div>
             </div>
@@ -221,6 +263,9 @@
                         <mat-select formControlName="bank" placeholder="Banco">
                             <mat-option value="banco">Banco</mat-option>
                         </mat-select>
+                        <mat-error *ngIf="form.get('bank').invalid && form.get('bank').dirty">
+                            Debes escoger un banco!
+                        </mat-error>
                     </mat-form-field>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -228,6 +273,9 @@
                         <mat-select formControlName="accountType" placeholder="Tipo de cuenta">
                             <mat-option value="cuenta">Cuenta</mat-option>
                         </mat-select>
+                        <mat-error *ngIf="form.get('accountType').invalid && form.get('accountType').dirty">
+                            Debes escoger un tipo de cuenta!
+                        </mat-error>
                     </mat-form-field>
                 </div>
             </div>
@@ -364,9 +412,13 @@
                           matInput
                           formControlName="name"
                           placeholder="Contraseña"
-                          type="text"
+                          type="password"
                         >
+                        <mat-error *ngIf="form.get('password').invalid && form.get('password').dirty">
+                            Debes ingresar una contraseña!
+                        </mat-error>
                     </mat-form-field>
+
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <mat-form-field appearance="outline">
@@ -375,12 +427,13 @@
                           matInput
                           formControlName="name"
                           placeholder="Repite tu contraseña"
-                          type="text"
+                          type="password"
                         >
                     </mat-form-field>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12 pl-5 pt-2">
                     <button
+                     style="width:80%;"
                      type="submit"
                      class="register-button"
                      mat-raised-button>
