@@ -1,67 +1,42 @@
+<mat-card class="mat-card">
 
-<div class="row pt-5 justify-content-center">
-    <mat-card>
-        <div class="row mb-4">
-    
-            <div class="col d-flex justify-content-center">
-                <mat-card-header>
-                    <mat-card-title>
-                        Ahorra tiempo a la hora de salir a comer y paga por adelantado restaurantes, cafeterías y resto-bares.
-                    </mat-card-title>
-                </mat-card-header>
-            </div>
+    <div class="container" style="text-align: center;">
+        <h2 class="h2">
+            Ahorra tiempo a la hora de salir a comer y paga por adelantado restaurantes, cafeterías y resto-bares.
+        </h2>
+    </div>
 
-        </div>
-            
-        <mat-card-content>
-            
-            <form [formGroup]="form">
-                <div class="row pl-3 pr-3 mb-3">
-                    
-                    <div class="col-lg-3 col-md-6 col-sm-6 d-flex justify-content-center">
-                        <mat-form-field appearance="outline">
-                            <input
-                              matInput
-                              formControlName="name"
-                              placeholder="Nombre de Local"
-                              type="text"
-                            >
-                        </mat-form-field>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 d-flex justify-content-center">
-                        <mat-form-field appearance="outline">
-                            <input
-                              matInput
-                              formControlName="name"
-                              placeholder="Ingresa fecha de reserva"
-                              type="text"
-                            >
-                        </mat-form-field>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 d-flex justify-content-center">
-                        <mat-form-field appearance="outline">
-                            <input
-                              matInput
-                              formControlName="name"
-                              placeholder="Ingresa comuna"
-                              type="text"
-                            >
-                        </mat-form-field>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 d-flex justify-content-center align-self-start">
-                        <button
-                          mat-raised-button
-                          type="submit"
-                        >
-                        Buscar
-                        </button>
-                    </div>
-    
+    <mat-card-content>
+        <form [formGroup]="form">
+
+            <div class="row">
+
+                <div class="col-lg-3 col-md-6  d-flex justify-content-center">
+                    <mat-form-field appearance="outline">
+                        <input matInput formControlName="name" placeholder="Nombre de Local" type="text">
+                    </mat-form-field>
                 </div>
-            </form>
-    
-        </mat-card-content>
-            
-    </mat-card>
-</div>
 
+                  
+                <div class="col-lg-3 col-md-6  d-flex justify-content-center">
+                    <mat-form-field appearance="outline">
+                        <input matInput formControlName="name" placeholder="Ingresa fecha de reserva" type="text">
+                    </mat-form-field>
+                </div>
+                <div class="col-lg-3 col-md-6  d-flex justify-content-center">
+                    <mat-form-field appearance="outline">
+                        <input matInput formControlName="name" placeholder="Ingresa comuna" type="text">
+                    </mat-form-field>
+                </div>
+                <div class="col-lg-3 col-md-6  d-flex justify-content-center align-self-start">
+                    <button mat-raised-button type="submit">
+                        Buscar
+                    </button>
+                </div>
+
+            </div>
+        </form>
+
+    </mat-card-content>
+
+</mat-card>
