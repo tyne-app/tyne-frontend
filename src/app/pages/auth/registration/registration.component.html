@@ -51,10 +51,11 @@
                 placeholder="Fecha de Nacimiento"
                 autocomplete="off"
               >
+              <mat-error *ngIf="birthDate.invalid && birthDate.dirty">
+                Debes ingresar tu fecha de nacimiento!
+              </mat-error>
             </mat-form-field>
-            <mat-error *ngIf="birthDate.invalid && birthDate.dirty">
-              Debes ingresar tu apellido!
-            </mat-error>
+
           </div>
 
         </div>
