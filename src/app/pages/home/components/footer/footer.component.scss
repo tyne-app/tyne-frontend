@@ -20,11 +20,15 @@
 }
 .btn{
     color: #FFFDFA;
+    text-decoration: none;
+    font-size: large;
 }
 
 .btn-primary{
     background: #E10000;
     border-radius: 5px;
-    height: 100%;
+    width: 45%;
     color: #FFFDFA;
+    font-size: large;
+    font-weight: lighter;
 }
