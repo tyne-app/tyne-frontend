@@ -12,5 +12,6 @@ RUN npm ci && npm run build
 
 FROM nginx:alpine
 EXPOSE $PORT
+COPY ./nginx.config /etc/nginx/nginx.template
 COPY --from=tyne-app-build /app/dist/Frontend /usr/share/nginx/html
 
