@@ -1,0 +1,21 @@
+image: docker:latest
+services:
+  - docker:dind
+
+variables:
+  DOCKER_DRIVER: overlay
+
+stages:
+  - build
+  
+docker-build:
+  stage: build
+  script:
+  - echo $HEROKU_API_KEY
+  - docker build -f Dockerfile --iidfile imageid.txt -t registry.heroku.com/tyne-app .
+  - docker login -u _ -p $HEROKU_API_KEY registry.heroku.com
+  - docker push registry.heroku.com/tyne-app
+  - apk add --no-cache curl
+  - echo "Docker Image ID is $(cat imageid.txt)"
+  - |-
+    curl -X PATCH https://api.heroku.com/apps/tyne-app/formation --header "Content-Type: application/json" --header "Accept: application/vnd.heroku+json; version=3.docker-releases" --header "Authorization: Bearer $HEROKU_API_KEY" --data '{ "updates": [ { "type": "web", "docker_image": "'$(cat imageid.txt)'" } ] }'
