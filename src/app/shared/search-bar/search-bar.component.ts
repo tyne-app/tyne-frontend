@@ -21,9 +21,9 @@ export class SearchBarComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.fb.group({
-      name: ['', [Validators.minLength(3)]],
-      date_reservation: ['', []],
-      commune: ['', []],
+      name: ['', [Validators.minLength(3), Validators.required]],
+      dateReservation: ['', [Validators.required]],
+      commune: ['', [Validators.required]],
     });
   }
 

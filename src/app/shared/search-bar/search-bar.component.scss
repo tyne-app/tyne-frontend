@@ -1,9 +1,9 @@
-mat-card {
-    width: 100%;
-    border-radius: 15px;
+.mat-card {
+    border-radius: 10px;
     background-color: #FFFDFA;
     opacity: 0.8;
     box-shadow: 0px 3px 12px grey !important;
+    margin-bottom: 10%;
 }
 
 mat-card-title {
@@ -33,6 +33,11 @@ button {
     border-radius: 10px;
     font-size: larger;
     font-weight: bold;
+}
+
+h2 {
+    color: #3C0000;
+    font-weight: 500;
 }
 
 
