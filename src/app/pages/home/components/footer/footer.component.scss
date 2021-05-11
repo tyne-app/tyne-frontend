@@ -1,0 +1,34 @@
+.footer{
+    position: absolute;
+    width:100%;
+    height: 164px;
+    left: 0px;
+    top: 1309px;
+}
+
+.link{
+    position: absolute;
+    
+    left: 60px;
+    top: 50px;
+
+    font-family: Museo Sans;
+    font-style: normal;
+    font-weight: 250;
+    font-size: 18px;
+    line-height: 24px;
+}
+.btn{
+    color: #FFFDFA;
+    text-decoration: none;
+    font-size: large;
+}
+
+.btn-primary{
+    background: #E10000;
+    border-radius: 5px;
+    width: 45%;
+    color: #FFFDFA;
+    font-size: large;
+    font-weight: lighter;
+}

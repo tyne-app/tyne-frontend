@@ -11,13 +11,13 @@ import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 
+import { MatButtonModule, MatCardModule, MatCheckboxModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule } from '@angular/material';
 
 const materialComponents = [
-  MatCheckboxModule,
-  MatIconModule,
-  MatDialogModule,
   MatButtonModule,
   MatCardModule,
+  MatCheckboxModule,
+  MatDialogModule,
   MatFormFieldModule,
   MatInputModule,
   MatSelectModule
