@@ -1,0 +1,38 @@
+mat-card {
+    background-color: #fffdfa;
+}
+
+mat-form-field {
+    width: 95%;
+    margin-bottom: 16px;
+
+}
+
+.day-schedule {
+    width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #3C0000;
+}
+
+.register-button {
+    width: 45%;
+    color: white;
+    border-radius: 15px;
+    font-size: 18px;
+    font-weight: normal;
+    background-color: #E10000;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: #3C0000;
+}
+  
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    color: #3C0000;
+}
+
+::ng-deep .mat-form-field-outline {
+    background-color: white;
+}

@@ -9,10 +9,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [SearchBarComponent],
   imports: [
-    CommonModule,
-    MaterialModule,
-    ReactiveFormsModule
+    CommonModule
   ],
-  exports: [SearchBarComponent]
+  exports: [
+    ReactiveFormsModule
+  ]
 })
 export class SharedModule { }

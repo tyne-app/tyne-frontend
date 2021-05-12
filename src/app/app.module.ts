@@ -3,6 +3,7 @@ import { AppComponent } from './app.component';
 
 /**MODULES */
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -12,6 +13,7 @@ import { MaterialModule } from './shared/material/material.module';
 import { HomeModule } from './pages/home/home.module';
 import { AuthModule } from './pages/auth/auth.module';
 
+import { RegistrationComponent } from './pages/auth/registration/registration.component';
 
 
 
@@ -27,8 +29,10 @@ import { AuthModule } from './pages/auth/auth.module';
     SharedModule,
     MaterialModule,
     HomeModule,
-    AuthModule
+    AuthModule,
+    HttpClientModule
   ],
+  entryComponents: [RegistrationComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

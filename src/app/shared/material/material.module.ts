@@ -2,8 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 //Angular Material Components
-
-import { MatButtonModule, MatCardModule, MatCheckboxModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatCheckboxModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule, MatSelectModule } from '@angular/material';
 
 const materialComponents = [
   MatButtonModule,
@@ -11,16 +10,15 @@ const materialComponents = [
   MatCheckboxModule,
   MatDialogModule,
   MatFormFieldModule,
-  MatIconModule,
   MatInputModule,
+  MatSelectModule,
+  MatIconModule
 ]
 
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule,
-    ...materialComponents
-  ],
+    CommonModule,],
   exports: [
     ...materialComponents
   ]

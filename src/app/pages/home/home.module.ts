@@ -19,8 +19,6 @@ import { SharedModule } from 'src/app/shared/shared.module';
     SharedModule,
     MaterialModule
   ],
-  exports: [
-    HomeComponent
-  ]
+  exports: []
 })
 export class HomeModule { }
