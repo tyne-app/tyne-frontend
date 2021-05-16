@@ -20,7 +20,10 @@ export class HeaderComponent implements OnInit {
   constructor(public dialog: MatDialog) { }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(RegistrationComponent);
+    const dialogRef = this.dialog.open(RegistrationComponent, {
+      maxWidth: '100%',
+      width: '75%'
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('Closed')

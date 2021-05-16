@@ -2,7 +2,7 @@ export interface Local {
     days: number[];
     ending_hour: string;
     opening_hour: string;
-    images: string[];
+    images?: string[];
     region: string;
     commune: string;
     address: string;
@@ -11,6 +11,4 @@ export interface Local {
     pets: boolean;
     phone: number;
     social_reason: string;
-    latitude: number;
-    longitude: number;
 }
