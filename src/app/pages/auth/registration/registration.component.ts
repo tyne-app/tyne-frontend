@@ -7,6 +7,7 @@ import {
 
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ClientService } from 'src/app/services/client/client.service';
+import { emailRegex } from 'src/app/shared/constants/email';
 import { Client } from 'src/app/shared/interfaces/client';
 
 

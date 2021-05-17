@@ -6,6 +6,7 @@ import {
   FormGroup,
   Validators
 } from '@angular/forms';
+import { emailRegex } from 'src/app/shared/constants/email';
 import { Local } from 'src/app/shared/interfaces/local';
 
 @Component({
@@ -34,8 +35,8 @@ export class BusinessRegistrationComponent implements OnInit {
       name: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
       rut: ['', [Validators.required]],
-      email: ['', [Validators.email, Validators.required]],
-      emailConfirm: ['', [Validators.required]],
+      email: ['', [Validators.email, Validators.required, Validators.pattern(emailRegex)]],
+      emailConfirm: ['', [Validators.required, Validators.pattern(emailRegex)]],
       contactNumber: ['', [Validators.required]],
       socialReason: ['', [Validators.required]],
       localTurn: ['', [Validators.required]],

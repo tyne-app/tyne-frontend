@@ -79,7 +79,7 @@
                           placeholder="Email"
                           type="text"
                         >
-                        <mat-error *ngIf="form.get('email').invalid && form.get('email').dirty">
+                        <mat-error *ngIf="form.get('email').invalid && form.get('email').dirty && form.get('email').hasError('pattern')">
                             Debes ingresar tu mail!
                         </mat-error>
                     </mat-form-field>
