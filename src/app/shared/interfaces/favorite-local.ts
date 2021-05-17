@@ -1,7 +1,6 @@
-export interface FavoriteLocal {
-    address: string;
-    commune:string;
-    region:string;
-    image:string;
-    social_reason:string;
+export interface favourite {
+    id:number;
+    is_favourite: boolean;
+    client_id:number;
+    branch_id:number;
 }

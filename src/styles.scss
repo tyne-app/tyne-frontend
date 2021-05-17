@@ -1,5 +1,54 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'bootstrap/dist/css/bootstrap-grid.min.css';
 
+
 html, body { height: 100%; }
-body { margin: 0; font-family: 'Museo sans', sans-serif; }
+
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+// @import '~@angular/material/theming';
+// @include mat-core();
+
+
+// $mat-red-palette: (
+//     50 : #fbe0e0,
+//     100 : #f6b3b3,
+//     200 : #f08080,
+//     300 : #ea4d4d,
+//     400 : #e62626,
+//     500 : #ffffff,
+//     600 : #dd0000,
+//     700 : #d90000,
+//     800 : #d50000,
+//     900 : #cd0000,
+//     A100 : #fff5f5,
+//     A200 : #ffc2c2,
+//     A400 : #ff8f8f,
+//     A700 : #ff7575,
+//     contrast: (
+//         50 : #000000,
+//         100 : #000000,
+//         200 : #000000,
+//         300 : #ffffff,
+//         400 : #ffffff,
+//         500 : #e10000,
+//         600 : #ffffff,
+//         700 : #ffffff,
+//         800 : #ffffff,
+//         900 : #ffffff,
+//         A100 : #000000,
+//         A200 : #000000,
+//         A400 : #000000,
+//         A700 : #000000,
+//     )
+// );
+
+
+// $app-primary: mat-palette($mat-red-palette,500,500);
+// $app-accent:  mat-palette($mat-red-palette);
+// $app-warn:    mat-palette($mat-red-palette);
+// $app-theme:   mat-light-theme($app-primary, $app-accent, $app-warn);
+
+// @include angular-material-theme($app-theme);  
+

@@ -3,6 +3,7 @@ import { AppComponent } from './app.component';
 
 /**MODULES */
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -23,11 +24,12 @@ import { AuthModule } from './pages/auth/auth.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    MaterialModule,
     CoreModule,
     SharedModule,
-    MaterialModule,
     HomeModule,
-    AuthModule
+    AuthModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

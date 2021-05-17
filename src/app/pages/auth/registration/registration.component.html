@@ -1,6 +1,8 @@
 <div class="container">
   <div class="row">
-    <h1 class="register-title" mat-dialog-title>Registro</h1>
+    <div class="col">
+      <h1 class="register-title" mat-dialog-title>Registro</h1>
+    </div>
   </div>
 
   <div mat-dialog-actions>
@@ -12,7 +14,6 @@
           <div class="col-lg-4 col-md-6 d-flex justify-content-center">
             <mat-form-field appearance="outline">
               <input
-                required 
                 matInput
                 formControlName="name"
                 type="text"
@@ -50,10 +51,11 @@
                 placeholder="Fecha de Nacimiento"
                 autocomplete="off"
               >
+              <mat-error *ngIf="birthDate.invalid && birthDate.dirty">
+                Debes ingresar tu fecha de nacimiento!
+              </mat-error>
             </mat-form-field>
-            <mat-error *ngIf="birthDate.invalid && birthDate.dirty">
-              Debes ingresar tu apellido!
-            </mat-error>
+
           </div>
 
         </div>
@@ -70,7 +72,7 @@
                 placeholder="Email"
                 autocomplete="off"
               >
-              <mat-error *ngIf="email.invalid && email.dirty">
+              <mat-error *ngIf="email.invalid && email.dirty && email.hasError('pattern')">
                 Debes ingresar una direccion de correo!
               </mat-error>
             </mat-form-field>

@@ -3,6 +3,10 @@ mat-form-field {
   margin-bottom: 16px;
 }
 
+.mat-dialog-actions {
+  display: contents;
+}
+
 input {    
     height: 1.6em;              
     div.mat-form-field-infix {

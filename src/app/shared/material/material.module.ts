@@ -1,28 +1,52 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+/**MODULES ANGULAR */
+import { 
+  MatButtonModule, 
+  MatCardModule, 
+  MatCheckboxModule, 
+  MatDialogModule, 
+  MatDividerModule, 
+  MatFormFieldModule, 
+  MatIconModule, 
+  MatInputModule, 
+  MatListModule, 
+  MatMenuModule, 
+  MatPaginatorModule,
+  MatRadioModule,
+  MatSidenavModule,
+  MatSnackBarModule,
+  MatStepperModule, 
+  MatTableModule, 
+  MatToolbarModule} from '@angular/material';
+import { CdkTableModule } from '@angular/cdk/table';
 
-//Angular Material Components
 
-import { MatButtonModule, MatCardModule, MatCheckboxModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule } from '@angular/material';
-
-const materialComponents = [
-  MatButtonModule,
-  MatCardModule,
-  MatCheckboxModule,
-  MatDialogModule,
-  MatFormFieldModule,
-  MatIconModule,
+const MaterialComponents = [
+  MatStepperModule,
   MatInputModule,
+  MatButtonModule,
+  MatFormFieldModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatIconModule,
+  MatDividerModule,
+  MatRadioModule,
+  MatCheckboxModule,
+  CdkTableModule,
+  MatDialogModule,
+  MatSidenavModule,
+  MatToolbarModule,
+  MatIconModule,
+  MatMenuModule,
+  MatCardModule,
+  MatSnackBarModule,
+  MatListModule,
 ]
 
+
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule,
-    ...materialComponents
-  ],
-  exports: [
-    ...materialComponents
-  ]
+  imports: [MaterialComponents],
+  exports: [MaterialComponents, MatFormFieldModule]
 })
+
 export class MaterialModule { }
