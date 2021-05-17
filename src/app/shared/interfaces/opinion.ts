@@ -1,8 +1,10 @@
 export interface Opinion {
-    first_name: string;
-    last_name:string;
-    score:number;
-    commentary: string;
-    address: string;
-    timestamp: Date
+    id:number;
+    description: string;
+    qualification: number;
+    creation_date: Date;
+    client_id:number;
+    branch_id:number;
+    reservation_id:number;
+
 }

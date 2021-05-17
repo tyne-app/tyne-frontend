@@ -1,5 +1,9 @@
 export interface LegalRepresentative {
-    first_name:string;
+    id:number;
+    name:string;
     last_name:string;
-    rut:number,
+    identifier:string;
+    email:string;
+    phone:string; 
+    type_legal_representative_id: number;
 }

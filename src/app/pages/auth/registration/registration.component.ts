@@ -31,7 +31,7 @@ export class RegistrationComponent implements OnInit {
       name: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
       birthDate: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.pattern(emailRegex)]],
       phoneNumber: ['', [Validators.required]],
       password:  ['', [Validators.required, Validators.minLength(6)]],
       passwordConfirm: ['', []]
@@ -61,13 +61,13 @@ export class RegistrationComponent implements OnInit {
     this.loading = true
 
     // Objeto cliente.
-    const clientRegister: Client = {
-      first_name: this.name.value,
-      last_name: this.lastName.value,
-      birthday: this.birthDate.value,
-      email: this.email.value,
-      password: this.password.value
-    }
+    // const clientRegister: Client = {
+    //   name: this.name.value,
+    //   last_name: this.lastName.value,
+    //   birth_date: this.birthDate.value, 
+    //   email: this.email.value,
+    //   password: this.password.value
+    // }
 
     // const response = await this.clientService.register(clientRegister);
 
