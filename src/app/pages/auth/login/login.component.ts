@@ -7,7 +7,6 @@ import {
 } from '@angular/forms';
 
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { LocalAccount } from 'src/app/shared/interfaces/account';
 
 @Component({
   selector: 'app-login',
@@ -18,8 +17,7 @@ export class LoginComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor(private fb: FormBuilder, public matDialogRef: MatDialogRef<LoginComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: LocalAccount) { }
+  constructor(private fb: FormBuilder, public matDialogRef: MatDialogRef<LoginComponent>) { }
 
   ngOnInit() {
     this.form = this.fb.group({
