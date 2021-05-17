@@ -1,0 +1,58 @@
+<!-- The login have to sides, or to halves. This was made with cssgrid, for better manipulation of the halves. -->
+<div class="grid-container">
+    <div class="left-half">
+
+      <h1>Iniciar Sesión</h1>
+
+      <form [formGroup]="form">
+
+        <mat-form-field appearance="outline">
+          <input
+            matInput
+            type="text"
+            formControlName="email"
+            placeholder="Email"
+          >
+          <mat-error *ngIf="this.form.controls['email'].errors?.required">
+            Debes ingresar tu Email!
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <input
+            matInput
+            type="password"
+            formControlName="password"
+            placeholder="Contraseña"
+          >
+          <mat-error *ngIf="this.form.controls['password'].errors?.required">
+            Debes ingresar tu Contraseña!
+          </mat-error>
+        </mat-form-field>
+        <div class="anchor-layout">
+          <a href="#">¿Olvidaste tu contraseña?</a>
+        </div>
+
+        <button
+          class="register-button"
+          mat-raised-button
+          type="submit"
+          [disabled]="form.invalid"
+        >
+          ¡Listo!
+        </button>
+
+      </form>
+
+    </div>
+
+    <div class="right-half">
+      <div class="photo" style="background-image: url('../../../../assets/login-bienvenido-de-vuelta.svg');"></div>
+      <div class="photo" style="background-image: url('../../../../assets/login-comida-icon.svg');"></div>
+    </div>
+</div>
+
+
+
+
+
