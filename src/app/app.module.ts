@@ -13,7 +13,6 @@ import { MaterialModule } from './shared/material/material.module';
 import { HomeModule } from './pages/home/home.module';
 import { AuthModule } from './pages/auth/auth.module';
 
-import { RegistrationComponent } from './pages/auth/registration/registration.component';
 
 
 
@@ -25,14 +24,13 @@ import { RegistrationComponent } from './pages/auth/registration/registration.co
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    MaterialModule,
     CoreModule,
     SharedModule,
-    MaterialModule,
     HomeModule,
     AuthModule,
     HttpClientModule
   ],
-  entryComponents: [RegistrationComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

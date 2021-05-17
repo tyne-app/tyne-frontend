@@ -1,16 +1,9 @@
-export interface Reservation {
-    address: string;
-    commune:string;
-    region:string;
-    bill:number;
-    clients: number;
-    email:string;
-    first_name:string;
-    last_name:string;
-    local_rut: string;
-    payment: string;
-    preference: boolean;
-    social_reason:  string;
-    state: number;
-    timestamp:Date;
+export interface Reservation {   
+    id:number;
+    reservation_date:Date;
+    state:string; 
+    preference:string;
+    client_id:number;
+    branch_id:number;
+
 }

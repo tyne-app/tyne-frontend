@@ -6,6 +6,8 @@ import {
   FormGroup,
   Validators
 } from '@angular/forms';
+import { RutValidator } from 'ng2-rut';
+import { emailRegex } from 'src/app/shared/constants/email';
 import { Local } from 'src/app/shared/interfaces/local';
 
 @Component({
@@ -27,15 +29,16 @@ export class BusinessRegistrationComponent implements OnInit {
     {value: 6, name: 'D'},
   ];
 
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private fb: FormBuilder) { }
 
   ngOnInit() {
     this.form = this.fb.group({
       name: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
       rut: ['', [Validators.required]],
-      email: ['', [Validators.email, Validators.required]],
-      emailConfirm: ['', [Validators.required]],
+      email: ['', [Validators.email, Validators.required, Validators.pattern(emailRegex)]],
+      emailConfirm: ['', [Validators.required, Validators.pattern(emailRegex)]],
       contactNumber: ['', [Validators.required]],
       socialReason: ['', [Validators.required]],
       localTurn: ['', [Validators.required]],
@@ -96,21 +99,21 @@ export class BusinessRegistrationComponent implements OnInit {
   async onSubmit() {
 
     // Local object.
-    const local: Local = {
-      days: this.form.get('days').value,
-      ending_hour: this.closure,
-      opening_hour: this.opening,
-      region: this.form.get('region').value,
-      commune: this.form.get('commune').value,
-      address: this.form.get('address').value,
-      rut: this.form.get('rut').value,
-      type: this.form.get('accountType').value,
-      pets: this.form.get('havePet').value,
-      phone: this.form.get('contactNumber').value,
-      social_reason: this.form.get('socialReason').value
-    };
+    // const local: Local = {
+    //   days: this.form.get('days').value,
+    //   ending_hour: this.closure,
+    //   opening_hour: this.opening,
+    //   region: this.form.get('region').value,
+    //   commune: this.form.get('commune').value,
+    //   address: this.form.get('address').value,
+    //   rut: this.form.get('rut').value,
+    //   type: this.form.get('accountType').value,
+    //   pets: this.form.get('havePet').value,
+    //   phone: this.form.get('contactNumber').value,
+    //   social_reason: this.form.get('socialReason').value
+    // };
 
-    console.log(local);
+    // console.log(local);
     console.log('loggin test');
   }
 
