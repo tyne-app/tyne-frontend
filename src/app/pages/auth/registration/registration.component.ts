@@ -6,6 +6,8 @@ import {
 } from '@angular/forms';
 
 import { MatDialogRef } from '@angular/material/dialog';
+import {MatSnackBar} from '@angular/material/snack-bar';
+
 import { ClientService } from 'src/app/services/client/client.service';
 import { emailRegex } from 'src/app/shared/constants/email';
 import { Client } from 'src/app/shared/interfaces/client';
@@ -23,8 +25,10 @@ export class RegistrationComponent implements OnInit {
   loading = false; //Una vez que se haga submit, loading pasa a  ser verdadero y el boton se deshabilita.
   
   // Injeccion de servicios, dialog, formbuilder y servicio cliente.
-  constructor(private fb: FormBuilder, public matDialogRef: MatDialogRef<RegistrationComponent>,
-              private clientService: ClientService) { }
+  constructor(private fb: FormBuilder,
+              public matDialogRef: MatDialogRef<RegistrationComponent>,
+              private clientService: ClientService,
+              private _snackbar:MatSnackBar) { }
 
   // Creación de formgroup.
   ngOnInit() {
@@ -71,12 +75,15 @@ export class RegistrationComponent implements OnInit {
     // }
 
     // const response = await this.clientService.register(clientRegister);
-
+    
     console.log('loggin test')
   }
 
   // Cierra el modal (Dialog)
   closeClick(): void {
+    this._snackbar.open("Ha ingresado satisfactoriamente", 'ok', {
+      duration: 3000
+    });  
     this.matDialogRef.close();
   }
   

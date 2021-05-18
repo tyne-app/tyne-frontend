@@ -7,6 +7,8 @@ import {
   Validators
 } from '@angular/forms';
 
+import {MatSnackBar} from '@angular/material/snack-bar';
+
 import { emailRegex } from 'src/app/shared/constants/email';
 import { Local } from 'src/app/shared/interfaces/local';
 
@@ -30,7 +32,8 @@ export class BusinessRegistrationComponent implements OnInit {
   ];
 
   constructor(
-    private fb: FormBuilder) { }
+    private fb: FormBuilder,
+    private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -114,7 +117,11 @@ export class BusinessRegistrationComponent implements OnInit {
     // };
 
     // console.log(local);
-    console.log('loggin test');
+
+    //**HAY QUE SETEAR EL DISEÑO  */
+    this.snackBar.open("Ha ingresado satisfactoriamente", 'ok', {
+      duration: 3000
+    });
   }
 
 }
