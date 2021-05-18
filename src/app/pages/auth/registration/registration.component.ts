@@ -25,8 +25,10 @@ export class RegistrationComponent implements OnInit {
   loading = false; //Una vez que se haga submit, loading pasa a  ser verdadero y el boton se deshabilita.
   
   // Injeccion de servicios, dialog, formbuilder y servicio cliente.
-  constructor(private fb: FormBuilder, public matDialogRef: MatDialogRef<RegistrationComponent>,
-              private clientService: ClientService) { }
+  constructor(private fb: FormBuilder,
+              public matDialogRef: MatDialogRef<RegistrationComponent>,
+              private clientService: ClientService,
+              private _snackbar:MatSnackBar) { }
 
   // Creación de formgroup.
   ngOnInit() {
@@ -79,6 +81,9 @@ export class RegistrationComponent implements OnInit {
 
   // Cierra el modal (Dialog)
   closeClick(): void {
+    this._snackbar.open("Ha ingresado satisfactoriamente", 'ok', {
+      duration: 3000
+    });  
     this.matDialogRef.close();
   }
   
