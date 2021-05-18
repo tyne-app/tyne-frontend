@@ -6,6 +6,8 @@ import {
 } from '@angular/forms';
 
 import { MatDialogRef } from '@angular/material/dialog';
+import {MatSnackBar} from '@angular/material/snack-bar';
+
 import { ClientService } from 'src/app/services/client/client.service';
 import { emailRegex } from 'src/app/shared/constants/email';
 import { Client } from 'src/app/shared/interfaces/client';
@@ -71,7 +73,7 @@ export class RegistrationComponent implements OnInit {
     // }
 
     // const response = await this.clientService.register(clientRegister);
-
+    
     console.log('loggin test')
   }
 

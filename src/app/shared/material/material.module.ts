@@ -16,6 +16,7 @@ import {
   MatSidenavModule,
   MatSnackBarModule,
   MatStepperModule, 
+  MatSelectModule,
   MatTableModule, 
   MatToolbarModule} from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table';
@@ -41,6 +42,7 @@ const MaterialComponents = [
   MatCardModule,
   MatSnackBarModule,
   MatListModule,
+  MatSelectModule
 ]
 
 
