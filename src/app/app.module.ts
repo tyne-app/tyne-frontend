@@ -1,6 +1,9 @@
 /**COMPONENTS */
 import { AppComponent } from './app.component';
 
+import { RegistrationComponent } from './pages/auth/registration/registration.component';
+import { LoginComponent } from './pages/auth/login/login.component';
+
 /**MODULES */
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
@@ -31,6 +34,7 @@ import { AuthModule } from './pages/auth/auth.module';
     AuthModule,
     HttpClientModule
   ],
+  entryComponents: [RegistrationComponent, LoginComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
