@@ -6,7 +6,7 @@ import {
   FormGroup,
   Validators
 } from '@angular/forms';
-import { RutValidator } from 'ng2-rut';
+
 import { emailRegex } from 'src/app/shared/constants/email';
 import { Local } from 'src/app/shared/interfaces/local';
 
