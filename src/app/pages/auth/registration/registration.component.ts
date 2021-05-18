@@ -1,11 +1,11 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
   Validators
 } from '@angular/forms';
 
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
 import { ClientService } from 'src/app/services/client/client.service';
 import { emailRegex } from 'src/app/shared/constants/email';
 import { Client } from 'src/app/shared/interfaces/client';
@@ -24,7 +24,7 @@ export class RegistrationComponent implements OnInit {
   
   // Injeccion de servicios, dialog, formbuilder y servicio cliente.
   constructor(private fb: FormBuilder, public matDialogRef: MatDialogRef<RegistrationComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: Client, private clientService: ClientService) { }
+              private clientService: ClientService) { }
 
   // Creación de formgroup.
   ngOnInit() {
