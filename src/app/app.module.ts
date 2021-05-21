@@ -15,6 +15,8 @@ import { SharedModule } from './shared/shared.module';
 import { MaterialModule } from './shared/material/material.module';
 import { HomeModule } from './pages/home/home.module';
 import { AuthModule } from './pages/auth/auth.module';
+import { BusinessProfileComponent } from './pages/business-profile/business-profile.component';
+import { BusinessProfileModule } from './pages/business-profile/business-profile.module';
 
 
 
@@ -32,6 +34,7 @@ import { AuthModule } from './pages/auth/auth.module';
     SharedModule,
     HomeModule,
     AuthModule,
+    BusinessProfileModule,
     HttpClientModule
   ],
   entryComponents: [RegistrationComponent, LoginComponent],

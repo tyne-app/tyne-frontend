@@ -15,13 +15,17 @@ import { BodyComponent } from './components/body/body.component';
     HomeComponent, 
     HeaderComponent, 
     FooterComponent, 
-    BodyComponent],
+    BodyComponent
+  ],
   imports: [
     CommonModule,
     HomeRoutingModule,
     SharedModule,
     MaterialModule
   ],
-  exports: []
+  exports: [
+    HeaderComponent,
+    FooterComponent
+  ]
 })
 export class HomeModule { }
