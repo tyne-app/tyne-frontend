@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { environment } from 'src/environments/environment';
+import { Component, Input, OnInit } from '@angular/core';
 
 import * as mapboxgl from 'mapbox-gl';
+import { TyneMapStyle } from '../../constants/map';
 
 
 @Component({
@@ -11,13 +11,18 @@ import * as mapboxgl from 'mapbox-gl';
 })
 export class MapComponent implements OnInit {
 
+  //**Default Values */
+  @Input() Long?: number = -70.66129503199164;
+  @Input() Lat?: number  = -33.468330883364935;
+
   constructor() { }
 
   ngOnInit() {
-    (mapboxgl as any).accessToken = environment.mapboxToken;
-    var map = new mapboxgl.Map({
-      container: 'mapa',
-      style: 'mapbox://styles/mapbox/streets-v11'
+    var tyneMap = new mapboxgl.Map({
+      container: 'TyneMap',
+      style: TyneMapStyle,
+      center: [this.Long, this.Lat],
+      zoom: 18
     });
   }
 

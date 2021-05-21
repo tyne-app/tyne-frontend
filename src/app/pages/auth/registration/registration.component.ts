@@ -8,7 +8,7 @@ import {
 import { MatDialogRef } from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
-import { ClientService } from 'src/app/services/client/client.service';
+import { ClientService } from 'src/app/core/services/client.service';
 import { emailRegex } from 'src/app/shared/constants/email';
 import { Client } from 'src/app/shared/interfaces/client';
 
