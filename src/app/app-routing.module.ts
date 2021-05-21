@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { BusinessProfileComponent } from './pages/business-profile/business-profile.component';
 
 const routes: Routes = [
   {
@@ -10,6 +11,9 @@ const routes: Routes = [
     path: 'business',
     loadChildren: ()=> import("./pages/auth/business-registration/business-registration.module").then( m => m.BusinessRegistrationModule),
   },
+  {
+    path: 'local-profile', component: BusinessProfileComponent
+  }
 ];
  
 @NgModule({
