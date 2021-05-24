@@ -9,7 +9,9 @@ import { InfoCardComponent } from './components/info-card/info-card.component';
 import { SimilarComponent } from './components/similars-component/similar/similar.component';
 import { SimilarsComponent } from './components/similars-component/similars/similars.component';
 import { MaterialModule } from 'src/app/shared/material/material.module';
-
+import { SwiperModule } from 'swiper/angular';
+import { CarouselComponent } from './components/carousel/carousel.component';
+import { DetailsComponent } from './components/details/details.component';
 
 
 @NgModule({
@@ -19,13 +21,16 @@ import { MaterialModule } from 'src/app/shared/material/material.module';
     OpinionComponent,
     InfoCardComponent,
     SimilarComponent,
-    SimilarsComponent
+    SimilarsComponent,
+    CarouselComponent,
+    DetailsComponent
   ],
   imports: [
     CommonModule,
     HomeModule,
     SharedModule,
     MaterialModule,
+    SwiperModule
   ]
 })
 export class BusinessProfileModule { }
