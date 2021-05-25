@@ -12,9 +12,9 @@ import { BodyComponent } from './components/body/body.component';
 
 @NgModule({
   declarations: [
-    HomeComponent, 
-    HeaderComponent, 
-    FooterComponent, 
+    HomeComponent,
+    HeaderComponent,
+    FooterComponent,
     BodyComponent
   ],
   imports: [

@@ -21,7 +21,7 @@ export class BusinessRegistrationComponent implements OnInit {
 
   form: FormGroup;
 
-  days:  Array<any> = [
+  days: Array<any> = [
     {value: 0, name: 'L'},
     {value: 1, name: 'M'},
     {value: 2, name: 'M'},
@@ -67,21 +67,21 @@ export class BusinessRegistrationComponent implements OnInit {
   }
 
 
-  /* 
+  /*
     Argument(e) -> Event from checkbox.
     If the checkbox is checked, we push that value to an array as FormArray.
     And if the user unselect the checkbox we remove the value from the FormArray
   */
   onDaysCheckboxChange(e) {
-    const daysArray: FormArray = this.form.get('days') as FormArray; //pass it as a reference.
+    const daysArray: FormArray = this.form.get('days') as FormArray; // pass it as a reference.
 
     if (e.checked) {
       daysArray.push(new FormControl(e.source.value));
     } else {
-      let i: number = 0;
+      let i = 0;
 
       daysArray.controls.forEach((item: FormControl) => {
-        if (item.value == e.source.value) {
+        if (item.value === e.source.value) {
           daysArray.removeAt(i);
           return;
         }
@@ -118,8 +118,8 @@ export class BusinessRegistrationComponent implements OnInit {
 
     // console.log(local);
 
-    //**HAY QUE SETEAR EL DISEÑO  */
-    this.snackBar.open("Ha ingresado satisfactoriamente", 'ok', {
+    // **HAY QUE SETEAR EL DISEÑO  */
+    this.snackBar.open('Ha ingresado satisfactoriamente', 'ok', {
       duration: 3000
     });
   }

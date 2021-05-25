@@ -12,11 +12,11 @@ export class OpinionComponent implements OnInit {
   constructor(
     private matIconRegistry: MatIconRegistry,
     private domSanitizer: DomSanitizer) {
-    //Must add domsanitizer.
+    // Must add domsanitizer.
     this.matIconRegistry.addSvgIcon(
       'pan',
       this.domSanitizer.bypassSecurityTrustResourceUrl('../../../../../../assets/pan_icon.svg')
-    )
+    );
   }
 
   ngOnInit() {

@@ -1,23 +1,25 @@
 import { NgModule } from '@angular/core';
-/**MODULES ANGULAR */
-import { 
-  MatButtonModule, 
-  MatCardModule, 
-  MatCheckboxModule, 
-  MatDialogModule, 
-  MatDividerModule, 
-  MatFormFieldModule, 
-  MatIconModule, 
-  MatInputModule, 
-  MatListModule, 
-  MatMenuModule, 
+/**
+ * MODULES ANGULAR
+ */
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatDialogModule,
+  MatDividerModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatMenuModule,
   MatPaginatorModule,
   MatRadioModule,
   MatSidenavModule,
   MatSnackBarModule,
-  MatStepperModule, 
+  MatStepperModule,
   MatSelectModule,
-  MatTableModule, 
+  MatTableModule,
   MatToolbarModule} from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table';
 
@@ -43,7 +45,7 @@ const MaterialComponents = [
   MatSnackBarModule,
   MatListModule,
   MatSelectModule
-]
+];
 
 
 @NgModule({

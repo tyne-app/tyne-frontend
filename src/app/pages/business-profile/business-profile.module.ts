@@ -17,7 +17,7 @@ import { DetailsComponent } from './components/details/details.component';
 @NgModule({
   declarations: [
     BusinessProfileComponent,
-    OpinionsComponent, 
+    OpinionsComponent,
     OpinionComponent,
     InfoCardComponent,
     SimilarComponent,

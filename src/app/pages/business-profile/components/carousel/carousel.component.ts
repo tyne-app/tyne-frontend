@@ -4,7 +4,7 @@ import SwiperCore, {
   Pagination,
   Mousewheel,
   Keyboard,
-} from "swiper/core";
+} from 'swiper/core';
 
 SwiperCore.use([Navigation, Pagination, Mousewheel, Keyboard]);
 

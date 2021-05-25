@@ -6,11 +6,11 @@ import { BusinessProfileComponent } from './pages/business-profile/business-prof
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: ()=> import("./pages/home/home.module").then( m => m.HomeModule),
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomeModule),
   },
   {
     path: 'business',
-    loadChildren: ()=> import("./pages/auth/business-registration/business-registration.module").then( m => m.BusinessRegistrationModule),
+    loadChildren: () => import('./pages/auth/business-registration/business-registration.module').then( m => m.BusinessRegistrationModule),
   },
   {
     path: 'mapa',
@@ -24,7 +24,7 @@ const routes: Routes = [
     path: 'local-profile', component: BusinessProfileComponent
   }
 ];
- 
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
