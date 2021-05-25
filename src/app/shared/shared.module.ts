@@ -1,8 +1,12 @@
-/** COMPONENTS*/
+/**
+ * COMPONENTS
+ */
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { MapComponent } from './components/map/map.component';
 
-/**MODULES */
+/**
+ * MODULES
+ */
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from './material/material.module';

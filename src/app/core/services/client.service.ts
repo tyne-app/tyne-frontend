@@ -15,7 +15,7 @@ export class ClientService {
 
       this.http.post('https://ms-user-gestor.herokuapp.com/createUser', client)
                .subscribe( async resp => {
-                console.log(resp)
+                console.log(resp);
               });
 
     });

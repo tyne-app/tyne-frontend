@@ -10,7 +10,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
-    LoginComponent, 
+    LoginComponent,
     RegistrationComponent],
   imports: [
     MaterialModule,
@@ -19,4 +19,4 @@ import { SharedModule } from 'src/app/shared/shared.module';
   ]
 })
 export class AuthModule { }
- 
+

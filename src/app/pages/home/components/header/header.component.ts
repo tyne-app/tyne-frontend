@@ -4,13 +4,11 @@ import { LoginComponent } from 'src/app/pages/auth/login/login.component';
 
 import { RegistrationComponent } from 'src/app/pages/auth/registration/registration.component';
 
-
-/*
-  Se implementa el modal (dialog de angular material) para la creación de la vista registro, esta se encuentra en (../../../auth/registration).
-  Para ver implementacion de este -> https://v8.material.angular.io/components/dialog/overview
-  Falta. Implementación de logica de registro.
-*/
-
+/**
+ * Se implementa el modal (dialog de angular material) para la creación de la vista registro, esta se encuentra en (../../../auth/registration).
+ * Para ver implementacion de este -> https://v8.material.angular.io/components/dialog/overview
+ * Falta. Implementación de logica de registro.
+ */
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -27,7 +25,7 @@ export class HeaderComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('Closed')
+      console.log('Closed');
     });
   }
 
@@ -39,7 +37,7 @@ export class HeaderComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('Closed')
+      console.log('Closed');
     });
   }
 

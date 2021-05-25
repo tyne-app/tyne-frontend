@@ -11,14 +11,14 @@ import { TyneMapStyle } from '../../constants/map';
 })
 export class MapComponent implements OnInit {
 
-  //**Default Values */
-  @Input() Long?: number = -70.66129503199164;
-  @Input() Lat?: number  = -33.468330883364935;
+  // **Default Values */
+  @Input() Long = -70.66129503199164;
+  @Input() Lat  = -33.468330883364935;
 
   constructor() { }
 
   ngOnInit() {
-    var tyneMap = new mapboxgl.Map({
+    const tyneMap = new mapboxgl.Map({
       container: 'TyneMap',
       style: TyneMapStyle,
       center: [this.Long, this.Lat],

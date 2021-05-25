@@ -20,8 +20,8 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
 
   constructor(
-    private _snackbar:MatSnackBar, 
-    private fb: FormBuilder, 
+    private _SNACKBAR: MatSnackBar,
+    private fb: FormBuilder,
     public matDialogRef: MatDialogRef<LoginComponent>) { }
 
   ngOnInit() {
@@ -33,8 +33,8 @@ export class LoginComponent implements OnInit {
 
   closeClick(): void {
     this.matDialogRef.close();
-    //**HAY QUE SETEAR EL DISEÑO  */
-    this._snackbar.open("Ha ingresado satisfactoriamente", 'ok', {
+    // **HAY QUE SETEAR EL DISEÑO  */
+    this._SNACKBAR.open('Ha ingresado satisfactoriamente', 'ok', {
       duration: 3000
     });
   }
