@@ -23,7 +23,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   exports: [
     SearchBarComponent,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MapComponent 
   ]
 })
 export class SharedModule { }
