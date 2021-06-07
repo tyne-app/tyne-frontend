@@ -20,6 +20,7 @@ import { MaterialModule } from './shared/material/material.module';
 import { HomeModule } from './pages/home/home.module';
 import { AuthModule } from './pages/auth/auth.module';
 import { BusinessProfileModule } from './pages/business-profile/business-profile.module';
+import { ClientProfileModule } from './pages/client-profile/client-profile.module';
 
 
 
@@ -38,7 +39,8 @@ import { BusinessProfileModule } from './pages/business-profile/business-profile
     HomeModule,
     AuthModule,
     BusinessProfileModule,
-    HttpClientModule
+    HttpClientModule,
+    ClientProfileModule
   ],
   entryComponents: [RegistrationComponent, LoginComponent],
   providers: [],
