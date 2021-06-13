@@ -27,7 +27,7 @@ import { ClientProfileModule } from './pages/client-profile/client-profile.modul
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
