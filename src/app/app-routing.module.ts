@@ -19,15 +19,15 @@ const routes: Routes = [
   },
   {
     path: 'privacy',
-    component: PrivacyComponent
+    loadChildren: () => import('./pages/privacy/privacy.module').then( m => m.PrivacyModule),
+  },
+  {
+    path: 'local-profile', component: BusinessProfileComponent
   },
   {
     path: '**',
     redirectTo: 'home'
   },
-  {
-    path: 'local-profile', component: BusinessProfileComponent
-  }
 ];
 
 @NgModule({
