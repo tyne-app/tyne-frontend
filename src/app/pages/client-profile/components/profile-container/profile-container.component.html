@@ -2,14 +2,91 @@
 <div class="container">
     <mat-card>
         <div class="row">
-            <div class="col">
-                Perfil Datos
+            <div class="col-lg-4 mb-3">
+
+                <div class="row">
+                    <div class="col m-2 d-flex justify-content-start">
+                        <h1 >Perfil</h1>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+
+                    <div class="col ml-2">
+                        <h4>Nombre</h4>
+                        <h4><b>{{this.username}}</b></h4>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col ml-2">
+                        <h4>Fecha de nacimiento</h4>
+                        <h4><b>{{this.birthday}}</b></h4>
+                    </div>
+                </div>
+
+                <div class="row ">
+                    <div class="col ml-2">
+                        <h4>Email</h4>
+                        <h4><b>{{this.email}}</b></h4>
+                    </div>
+                </div>
+
+                <div class="row ">
+                    <div class="col ml-2">
+                        <h4>Celular</h4>
+                        <h4><b>{{this.phonenumber}}</b></h4>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <button  mat-stroked-button>Agregar Tarjeta</button>
+                    </div>
+                </div>
+                
             </div>
-            <div class="col">
+            <div class="col-lg-4">
                 <app-profile-image></app-profile-image>
+                
             </div>
-            <div class="col">
-                Editar Contraseña
+            <mat-divider class="col-lg-1" [vertical]="true"></mat-divider>
+            <div class="col-lg-3 mb-3 ">
+                <div class="row">
+                    <div class="col m-2 d-flex justify-content-start">
+                        <h1 >Editar Contraseña </h1>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col md-2">
+                        <form class="m-3" [formGroup]="this.recoverPasswordForm" (ngSubmit)="OnSubmit()">
+
+                            <mat-form-field >
+                              <mat-label> Contraseña Actual </mat-label>
+                              <input matInput formControlName="currentPassword" placeholder="" value="">
+                            </mat-form-field>
+
+                            <mat-form-field >
+                                <mat-label>Contraseña Nueva</mat-label>
+                                <input matInput formControlName="newPassword" placeholder="" value="">
+                            </mat-form-field>
+
+                            <mat-form-field >
+                                <mat-label>Repetir Contraseña</mat-label>
+                                <input matInput formControlName="confirmPassword" placeholder="" value="">
+                            </mat-form-field>
+                          
+                            <div class="row mt-5">
+                                <div class="col">
+                                    <button  mat-stroked-button>Guardar</button>
+                                </div>
+                            </div>
+
+                          </form>
+                    </div>
+                </div>
             </div>
         </div>
     </mat-card>
