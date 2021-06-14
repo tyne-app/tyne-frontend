@@ -1,0 +1,12 @@
+mat-expansion-panel {
+    background-color: #fffdfa;
+    margin-top: 1.2em;
+}
+
+.divider {
+    margin-bottom: 1.2em;
+}
+
+::ng-deep .mat-expansion-panel-body {
+    background-color: white;
+}

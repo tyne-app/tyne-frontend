@@ -21,6 +21,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/refund-policy/refund-policy.module').then( m => m.RefundPolicyModule),
   },
   {
+    path: 'frequent',
+    loadChildren: () => import('./pages/frequent-questions/frequent-questions.module').then( m => m.FrequentQuestionsModule),
+  },
+  {
     path: 'local-profile', component: BusinessProfileComponent
   },
   {

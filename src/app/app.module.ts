@@ -22,6 +22,7 @@ import { AuthModule } from './pages/auth/auth.module';
 import { BusinessProfileComponent } from './pages/business-profile/business-profile.component';
 import { BusinessProfileModule } from './pages/business-profile/business-profile.module';
 import { RefundPolicyComponent } from './pages/refund-policy/refund-policy.component';
+import { FrequentQuestionsComponent } from './pages/frequent-questions/frequent-questions.component';
 
 
 
