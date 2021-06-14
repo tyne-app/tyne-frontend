@@ -17,12 +17,16 @@ const routes: Routes = [
     component: MapComponent
   },
   {
-    path: '**',
-    redirectTo: 'home'
+    path: 'refund',
+    loadChildren: () => import('./pages/refund-policy/refund-policy.module').then( m => m.RefundPolicyModule),
   },
   {
     path: 'local-profile', component: BusinessProfileComponent
-  }
+  },
+  {
+    path: '**',
+    redirectTo: 'home'
+  },
 ];
 
 @NgModule({
