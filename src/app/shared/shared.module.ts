@@ -3,6 +3,7 @@
  */
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { MapComponent } from './components/map/map.component';
+import { SharedFooterComponent } from './components/shared-footer/shared-footer.component';
 
 /**
  * MODULES
@@ -12,10 +13,8 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from './material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 
-
-
 @NgModule({
-  declarations: [SearchBarComponent, MapComponent],
+  declarations: [SearchBarComponent, MapComponent, SharedFooterComponent],
   imports: [
     CommonModule,
     MaterialModule,
@@ -23,7 +22,10 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   exports: [
     SearchBarComponent,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MapComponent,
+    SharedFooterComponent
   ]
 })
+
 export class SharedModule { }
