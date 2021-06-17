@@ -27,9 +27,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/privacy/privacy.module').then( m => m.PrivacyModule),
   },
   {
-    path: 'local-profile', component: BusinessProfileComponent
-  },
-  {
     path: '**',
     redirectTo: 'home'
   },

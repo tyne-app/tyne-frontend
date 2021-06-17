@@ -20,7 +20,6 @@ import { MaterialModule } from './shared/material/material.module';
 import { HomeModule } from './pages/home/home.module';
 import { AuthModule } from './pages/auth/auth.module';
 import { BusinessProfileModule } from './pages/business-profile/business-profile.module';
-import { PrivacyComponent } from './pages/privacy/privacy.component';
 import { PrivacyModule } from './pages/privacy/privacy.module';
 import { ClientProfileModule } from './pages/client-profile/client-profile.module';
 
