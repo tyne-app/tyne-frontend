@@ -12,9 +12,9 @@ import {
 })
 export class SearchBarComponent implements OnInit {
 
-  form! : FormGroup;
+  form!: FormGroup;
 
-  type: 'name' | 'date_reservation' | 'commune'
+  type: 'name' | 'date_reservation' | 'commune';
   valid = false;
 
   constructor(private fb: FormBuilder) { }

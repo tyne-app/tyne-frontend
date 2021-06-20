@@ -12,16 +12,20 @@ import { BodyComponent } from './components/body/body.component';
 
 @NgModule({
   declarations: [
-    HomeComponent, 
-    HeaderComponent, 
-    FooterComponent, 
-    BodyComponent],
+    HomeComponent,
+    HeaderComponent,
+    FooterComponent,
+    BodyComponent
+  ],
   imports: [
     CommonModule,
     HomeRoutingModule,
     SharedModule,
     MaterialModule
   ],
-  exports: []
+  exports: [
+    HeaderComponent,
+    FooterComponent
+  ]
 })
 export class HomeModule { }

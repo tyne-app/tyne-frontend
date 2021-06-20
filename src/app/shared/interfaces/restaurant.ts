@@ -1,8 +1,8 @@
-export  interface Restaurant{
- id:number;
+export  interface Restaurant {
+ id: number;
  identifier: string;
- name:string;
+ name: string;
  address: string;
- legal_representative_id:number;
+ legal_representative_id: number;
  state_id: number;
 }
