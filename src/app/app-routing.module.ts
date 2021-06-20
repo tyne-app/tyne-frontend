@@ -7,23 +7,23 @@ import { PrivacyComponent } from './pages/privacy/privacy.component';
 /** Se deben añadir los guards correspondientes en cada caso */
 const routes: Routes = [
   {
-    path: 'home',
+    path: 'inicio',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomeModule),
   },
   {
-    path: 'local-profile',
+    path: 'perfil-local',
     loadChildren: () => import('./pages/business-profile/business-profile.module').then( m=>m.BusinessProfileModule),
   },
   {
-    path: 'business',
+    path: 'registro-negocio',
     loadChildren: () => import('./pages/auth/business-registration/business-registration.module').then( m => m.BusinessRegistrationModule),
   },
   {
-    path: 'profile',
+    path: 'perfil-cliente',
     loadChildren: () => import('./pages/client-profile/client-profile.module').then(m=>m.ClientProfileModule)
   },
   {
-    path: 'privacy',
+    path: 'privacidad',
     loadChildren: () => import('./pages/privacy/privacy.module').then( m => m.PrivacyModule),
   },
   {
