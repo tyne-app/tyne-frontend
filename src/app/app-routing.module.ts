@@ -23,12 +23,19 @@ const routes: Routes = [
     loadChildren: () => import('./pages/client-profile/client-profile.module').then(m=>m.ClientProfileModule)
   },
   {
-    path: 'privacidad',
-    loadChildren: () => import('./pages/privacy/privacy.module').then( m => m.PrivacyModule),
+    path: 'refund',
+    loadChildren: () => import('./pages/refund-policy/refund-policy.module').then( m => m.RefundPolicyModule),
+  },
+  {
+    path: 'frequent',
+    loadChildren: () => import('./pages/frequent-questions/frequent-questions.module').then( m => m.FrequentQuestionsModule),
+  },
+  {
+    path: 'local-profile', component: BusinessProfileComponent
   },
   {
     path: '**',
-    redirectTo: 'inicio'
+    redirectTo: 'home'
   },
 ];
 
