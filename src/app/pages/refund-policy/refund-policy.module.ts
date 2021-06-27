@@ -5,6 +5,7 @@ import { RefundPolicyRoutingModule } from './refund-policy-routing.module';
 import { RefundPolicyComponent } from './refund-policy.component';
 import { HomeModule } from '../home/home.module';
 import { MaterialModule } from 'src/app/shared/material/material.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { MaterialModule } from 'src/app/shared/material/material.module';
     CommonModule,
     RefundPolicyRoutingModule,
     HomeModule,
-    MaterialModule
+    MaterialModule,
+    SharedModule
   ]
 })
 export class RefundPolicyModule { }

@@ -5,6 +5,7 @@ import { FrequentQuestionsRoutingModule } from './frequent-questions-routing.mod
 import { FrequentQuestionsComponent } from './frequent-questions.component';
 import { MaterialModule } from 'src/app/shared/material/material.module';
 import { HomeModule } from '../home/home.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { HomeModule } from '../home/home.module';
     CommonModule,
     FrequentQuestionsRoutingModule,
     MaterialModule,
-    HomeModule
+    HomeModule,
+    SharedModule
   ]
 })
 export class FrequentQuestionsModule { }
