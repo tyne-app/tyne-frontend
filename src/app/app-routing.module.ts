@@ -1,8 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MapComponent } from './shared/components/map/map.component';
-import { BusinessProfileComponent } from './pages/business-profile/business-profile.component';
-import { PrivacyComponent } from './pages/privacy/privacy.component';
 
 /** Se deben añadir los guards correspondientes en cada caso */
 const routes: Routes = [
@@ -31,11 +28,8 @@ const routes: Routes = [
     loadChildren: () => import('./pages/frequent-questions/frequent-questions.module').then( m => m.FrequentQuestionsModule),
   },
   {
-    path: 'local-profile', component: BusinessProfileComponent
-  },
-  {
     path: '**',
-    redirectTo: 'home'
+    redirectTo: 'inicio'
   },
 ];
 
