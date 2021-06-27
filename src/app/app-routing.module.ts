@@ -20,11 +20,11 @@ const routes: Routes = [
     loadChildren: () => import('./pages/client-profile/client-profile.module').then(m=>m.ClientProfileModule)
   },
   {
-    path: 'refund',
+    path: 'reembolso',
     loadChildren: () => import('./pages/refund-policy/refund-policy.module').then( m => m.RefundPolicyModule),
   },
   {
-    path: 'frequent',
+    path: 'preguntas-frecuentes',
     loadChildren: () => import('./pages/frequent-questions/frequent-questions.module').then( m => m.FrequentQuestionsModule),
   },
   {
