@@ -76,7 +76,9 @@
                             <mat-form-field >
                                 <mat-label>Repetir Contraseña</mat-label>
                                 <input matInput formControlName="confirmPassword" placeholder="" value="">
+                                <mat-error *ngIf="this.recoverPasswordForm.controls.confirmPassword.errors?.MatchPassword">Contraseñas no conciden </mat-error>
                             </mat-form-field>
+
                           
                             <div class="row mt-5">
                                 <div class="col">
