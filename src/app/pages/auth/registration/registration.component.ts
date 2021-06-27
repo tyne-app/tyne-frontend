@@ -7,6 +7,7 @@ import {
 
 import { MatDialogRef } from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 import { ClientService } from 'src/app/core/services/client.service';
 import { emailRegex } from 'src/app/shared/constants/email';
@@ -27,6 +28,7 @@ export class RegistrationComponent implements OnInit {
   // Injeccion de servicios, dialog, formbuilder y servicio cliente.
   constructor(private fb: FormBuilder,
               public matDialogRef: MatDialogRef<RegistrationComponent>,
+              private router:Router, 
               private clientService: ClientService,
               private _SNACKBAR: MatSnackBar) { }
 
@@ -58,7 +60,7 @@ export class RegistrationComponent implements OnInit {
   get password() { return this.form.get('password'); }
 
   get passwordConfirm() { return this.form.get('passwordConfirm'); }
-
+  
   get passwordDoesMatch() { return this.password.value === this.passwordConfirm.value; }
 
   // Implementacion de logica del submit
@@ -75,13 +77,15 @@ export class RegistrationComponent implements OnInit {
     // }
 
     // const response = await this.clientService.register(clientRegister);
+    this.router.navigateByUrl('/inicio');
+    this.closeClick();
 
     console.log('loggin test');
   }
 
   // Cierra el modal (Dialog)
   closeClick(): void {
-    this._SNACKBAR.open('Ha ingresado satisfactoriamente', 'ok', {
+    this._SNACKBAR.open('Se Ha registrado satisfactoriamente', 'ok', {
       duration: 3000
     });
     this.matDialogRef.close();

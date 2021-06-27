@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 import { emailRegex } from 'src/app/shared/constants/email';
 import { Local } from 'src/app/shared/interfaces/local';
@@ -33,7 +34,8 @@ export class BusinessRegistrationComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private snackBar: MatSnackBar) { }
+    private snackBar: MatSnackBar,
+    private router: Router) { }
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -119,9 +121,10 @@ export class BusinessRegistrationComponent implements OnInit {
     // console.log(local);
 
     // **HAY QUE SETEAR EL DISEÑO  */
-    this.snackBar.open('Ha ingresado satisfactoriamente', 'ok', {
+    this.snackBar.open('Ha registrado satisfactoriamente el local', 'ok', {
       duration: 3000
     });
+    this.router.navigateByUrl('/inicio');
   }
 
 }

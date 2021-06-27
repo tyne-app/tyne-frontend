@@ -4,7 +4,7 @@
 
       <h1>Iniciar Sesión</h1>
 
-      <form [formGroup]="form">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
         <mat-form-field appearance="outline">
           <input

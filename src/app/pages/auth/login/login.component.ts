@@ -9,6 +9,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 
 import { MatDialogRef } from '@angular/material/dialog';
 import { emailRegex } from 'src/app/shared/constants/email';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -21,6 +22,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private _SNACKBAR: MatSnackBar,
+    private router:Router, 
     private fb: FormBuilder,
     public matDialogRef: MatDialogRef<LoginComponent>) { }
 
@@ -31,12 +33,17 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  onSubmit(): void{
+    this.closeClick();
+  } 
+
   closeClick(): void {
     this.matDialogRef.close();
     // **HAY QUE SETEAR EL DISEÑO  */
     this._SNACKBAR.open('Ha ingresado satisfactoriamente', 'ok', {
       duration: 3000
     });
+    this.router.navigateByUrl('/perfil-cliente');
   }
 
 }
