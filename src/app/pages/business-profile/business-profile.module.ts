@@ -12,6 +12,7 @@ import { MaterialModule } from 'src/app/shared/material/material.module';
 import { SwiperModule } from 'swiper/angular';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { DetailsComponent } from './components/details/details.component';
+import { BusinnesProfileRoutingModule } from './businnes-profile-routing.module';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { DetailsComponent } from './components/details/details.component';
     DetailsComponent
   ],
   imports: [
+    BusinnesProfileRoutingModule,
     CommonModule,
     HomeModule,
     SharedModule,

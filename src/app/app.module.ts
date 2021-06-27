@@ -19,7 +19,6 @@ import { SharedModule } from './shared/shared.module';
 import { MaterialModule } from './shared/material/material.module';
 import { HomeModule } from './pages/home/home.module';
 import { AuthModule } from './pages/auth/auth.module';
-import { BusinessProfileComponent } from './pages/business-profile/business-profile.component';
 import { BusinessProfileModule } from './pages/business-profile/business-profile.module';
 import { RefundPolicyComponent } from './pages/refund-policy/refund-policy.component';
 import { FrequentQuestionsComponent } from './pages/frequent-questions/frequent-questions.component';
@@ -29,7 +28,7 @@ import { FrequentQuestionsComponent } from './pages/frequent-questions/frequent-
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +40,9 @@ import { FrequentQuestionsComponent } from './pages/frequent-questions/frequent-
     HomeModule,
     AuthModule,
     BusinessProfileModule,
-    HttpClientModule
+    PrivacyModule,
+    HttpClientModule,
+    ClientProfileModule
   ],
   entryComponents: [RegistrationComponent, LoginComponent],
   providers: [],
