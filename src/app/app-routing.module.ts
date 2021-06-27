@@ -28,6 +28,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/frequent-questions/frequent-questions.module').then( m => m.FrequentQuestionsModule),
   },
   {
+    path: 'privacidad',
+    loadChildren: () => import('./pages/privacy/privacy.module').then( m=> m.PrivacyModule)
+  },
+  {
     path: '**',
     redirectTo: 'inicio'
   },
