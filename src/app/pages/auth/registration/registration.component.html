@@ -43,19 +43,17 @@
           </div>
           <!-- Birthdate input -->
           <div class="col-lg-4 col-md-12 d-flex justify-content-center">
+
             <mat-form-field appearance="outline">
-              <input 
-                matInput
-                formControlName="birthDate"
-                type="date"
-                placeholder="Fecha de Nacimiento"
-                autocomplete="off"
-              >
+              <input matInput formControlName="birthDate"placeholder="Fecha de Nacimiento"
+              autocomplete="off" [matDatepicker]="picker">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
               <mat-error *ngIf="birthDate.invalid && birthDate.dirty">
                 Debes ingresar tu fecha de nacimiento!
               </mat-error>
             </mat-form-field>
-
+            
           </div>
 
         </div>

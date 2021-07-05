@@ -25,6 +25,10 @@ import { PrivacyModule } from './pages/privacy/privacy.module';
 import { RefundPolicyModule } from './pages/refund-policy/refund-policy.module';
 import { FrequentQuestionsModule } from './pages/frequent-questions/frequent-questions.module';
 
+import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS, MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
+import { DateAdapter, MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material/core';
+
+
 
 @NgModule({
   declarations: [
@@ -47,7 +51,19 @@ import { FrequentQuestionsModule } from './pages/frequent-questions/frequent-que
     FrequentQuestionsModule
   ],
   entryComponents: [RegistrationComponent, LoginComponent],
-  providers: [],
+  providers: [
+    {
+      provide: MAT_DATE_LOCALE, useValue: 'es'
+    },
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS ]
+    },
+    {
+      provide:  MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

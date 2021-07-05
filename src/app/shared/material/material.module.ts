@@ -21,9 +21,12 @@ import {
   MatSelectModule,
   MatTableModule,
   MatToolbarModule,
-  MatExpansionModule
+  MatExpansionModule,
+  MatNativeDateModule,
+  MatDatepickerModule
 } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table';
+
 
 
 const MaterialComponents = [
@@ -46,8 +49,10 @@ const MaterialComponents = [
   MatCardModule,
   MatSnackBarModule,
   MatListModule,
-  MatSelectModule,
-  MatExpansionModule
+  MatSelectModule, 
+  MatExpansionModule,
+  MatNativeDateModule,
+  MatDatepickerModule
 ];
 
 

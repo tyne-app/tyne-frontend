@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
+ 
 /** Se deben añadir los guards correspondientes en cada caso */
 const routes: Routes = [
   {
