@@ -6,6 +6,7 @@ export const environment = {
   ms_backbone_clients: 'https://backbone-clients.herokuapp.com/',
   ms_backbone_reservation: 'https://backbone-reservation.herokuapp.com/',
   ms_backbone_locals:  '',
-  ms_backbone_menu: 'https://backbone-menu.herokuapp.com/'
+  ms_backbone_menu: 'https://backbone-menu.herokuapp.com/',
+  API_BASE_CLIENTS:  'https://api-clients-tyne.herokuapp.com/'
 };
 

@@ -10,6 +10,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import { MatDialogRef } from '@angular/material/dialog';
 import { emailRegex } from 'src/app/shared/constants/email';
 import { Router } from '@angular/router';
+import { ClientService } from 'src/app/core/services/client.service';
 
 @Component({
   selector: 'app-login',
@@ -20,11 +21,20 @@ export class LoginComponent implements OnInit {
 
   form: FormGroup;
 
+  get email() {
+    return this.form.get('email');
+  }
+
+  get password(){
+    return this.form.get('password');
+  }
+ 
   constructor(
     private _SNACKBAR: MatSnackBar,
     private router:Router, 
     private fb: FormBuilder,
-    public matDialogRef: MatDialogRef<LoginComponent>) { }
+    public matDialogRef: MatDialogRef<LoginComponent>,
+    private clientservice:ClientService) { }
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -34,7 +44,10 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void{
-    this.closeClick();
+    this.clientservice.login(this.email.value, this.password.value).subscribe(res=> {
+      console.log( JSON.stringify(res));
+      //this.closeClick();
+    })
   } 
 
   closeClick(): void {
