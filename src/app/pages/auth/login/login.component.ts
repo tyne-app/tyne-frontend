@@ -43,9 +43,9 @@ export class LoginComponent implements OnInit {
 
   onSubmit(): void {
     if(!this.formLogin.invalid){
-      this.clientservice.login(this.email.value, this.password.value).subscribe(res=> {
-        console.log( JSON.stringify(res));
-        //this.closeClick();
+      this.clientservice.login(this.email.value, this.password.value).subscribe(token => {
+        localStorage.setItem("access_token", token);
+        this.closeClick();
       })
     }
   } 

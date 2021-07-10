@@ -3,7 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { Client } from 'src/app/shared/interfaces/client';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { Token } from 'src/app/shared/interfaces/token';
+import { map } from 'rxjs/operators';
+
+
+import { DataResponse, Token } from 'src/app/shared/interfaces/token';
 
 @Injectable({
   providedIn: 'root'
@@ -26,9 +29,13 @@ export class ClientService {
     });
 
   }
-
-  login(email:string, password:string): Observable<any>{
-    return this.http.post<any>(`${this.endpoint}v1/login/`, {email, password});
+  
+  //**Return Jwtoken */
+  login(email:string, password:string): Observable<string>{
+    return this.http.post<DataResponse>(`${this.endpoint}v1/login/`, {email, password})
+    .pipe( map( res => {
+        return  res.data
+      })
+    )
   }
-
 }
