@@ -32,7 +32,7 @@ export class ClientService {
   
   //**Return Jwtoken */
   login(email:string, password:string): Observable<string>{
-    return this.http.post<DataResponse>(`${this.endpoint}v1/login/`, {email, password})
+    return this.http.post<DataResponse>(`${this.endpoint}/login/`, {email, password})
     .pipe( map( res => {
         return  res.data
       })
