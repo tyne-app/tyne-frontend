@@ -17,3 +17,9 @@ export interface Claims {
     state_id:  number;
     rol:       string;
 }
+
+
+export interface DataResponse {
+    data:  string;
+    error: string;
+}

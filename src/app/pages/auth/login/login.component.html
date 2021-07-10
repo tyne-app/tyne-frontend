@@ -4,7 +4,7 @@
 
       <h1>Iniciar Sesión</h1>
 
-      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <form [formGroup]="formLogin" (ngSubmit)="onSubmit()">
 
         <mat-form-field appearance="outline">
           <input
@@ -13,10 +13,10 @@
             formControlName="email"
             placeholder="Email"
           >
-          <mat-error *ngIf="this.form.controls['email'].errors?.required">
+          <mat-error *ngIf="this.email.errors?.required">
             Debes ingresar tu Email!
           </mat-error>
-        </mat-form-field>
+        </mat-form-field> 
 
         <mat-form-field appearance="outline">
           <input
@@ -25,11 +25,12 @@
             formControlName="password"
             placeholder="Contraseña"
           >
-          <mat-error *ngIf="this.form.controls['password'].errors?.required">
+          <mat-error *ngIf="this.password.errors?.required">
             Debes ingresar tu Contraseña!
           </mat-error>
         </mat-form-field>
         <div class="anchor-layout">
+          <!-- Añadir enrutamiento olvidar contraseña -->
           <a href="#">¿Olvidaste tu contraseña?</a>
         </div>
 
@@ -37,7 +38,7 @@
           class="register-button"
           mat-raised-button
           type="submit"
-          [disabled]="form.invalid"
+          [disabled]="formLogin.invalid"
         >
           ¡Listo!
         </button>
