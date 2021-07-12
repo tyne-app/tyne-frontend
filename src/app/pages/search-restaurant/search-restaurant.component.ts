@@ -7,11 +7,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchRestaurantComponent implements OnInit {
 
-  public counter = [1,2,3,4,5,6,7,8,9];
+  public restaurants = [{
+    isFavorite: true
+  },
+  {
+    isFavorite: false
+  },
+  {
+    isFavorite: false
+  },
+  {
+    isFavorite: false
+  },
+  {
+    isFavorite: false
+  },
+  {
+    isFavorite: false
+  }];
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  public onFavoriteIconClick(index: number) {
+    this.restaurants[index].isFavorite = !this.restaurants[index].isFavorite;
   }
 
 }
