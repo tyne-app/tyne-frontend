@@ -1,0 +1,48 @@
+<div class="container">
+
+    <!--Logo Tyne-->
+    <img class="mb-5 mt-5" src="../../../assets/logo2 1.png" alt="Logo tyne app">
+
+    <!--The search bar-->
+    <app-search-bar></app-search-bar>
+
+    <!--Content-->
+
+    <h1>Resultados:</h1>
+
+    <div class="content">
+
+        <div class="row">
+            <div class="col-md-4" *ngFor="let x of counter" style="padding-bottom: 30px;">
+                <mat-card class="mat-elevation-z4">
+                    <mat-card-header>
+                        <mat-card-title class="nombre-local">
+                            Nombre Restaurante
+                        </mat-card-title>
+                    </mat-card-header>
+                    <img mat-card-image src="../../../assets/foto_juanymedio 1.png">
+                    <mat-card-content>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                            Ab suscipit, reiciendis hic quia sunt laborum ducimus qui eum magnam consequuntur? 
+                            Ipsa beatae ad pariatur dolorum iure quasi, consequatur unde labore.
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                            Ab suscipit, reiciendis hic quia sunt laborum ducimus qui eum magnam consequuntur? 
+                            Ipsa beatae ad pariatur dolorum iure quasi, consequatur unde labore.
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        </p>
+                    </mat-card-content>
+                    <!-- <mat-card-actions>
+                        <button mat-button>LIKE</button>
+                        <button mat-button>SHARE</button>
+                    </mat-card-actions> -->
+                </mat-card>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!--Footer-->
+<app-shared-footer></app-shared-footer>

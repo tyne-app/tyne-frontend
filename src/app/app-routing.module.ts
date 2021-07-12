@@ -32,6 +32,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/privacy/privacy.module').then( m=> m.PrivacyModule)
   },
   {
+    path: 'buscar-locales',
+    loadChildren: () => import('./pages/search-restaurant/search-restaurant.module').then( m=> m.SearchRestaurantModule)
+  },
+  {
     path: '**',
     redirectTo: 'inicio'
   },
