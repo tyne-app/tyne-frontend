@@ -1,0 +1,58 @@
+<!--Título resultados y ordenar resultados-->
+<div class="row">
+    <div class="col-lg-9 col-md-8 col-sm-6 col-6 div-resultados">
+        <h1>Resultados:</h1>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 col-6 div-ordenar-locales">
+        <mat-select placeholder="Ordenar Por:">
+            <mat-option value="Mejor Valorados">Mejor Valorados</mat-option>
+            <mat-option value="Recomendados">Recomendados</mat-option>
+            <mat-option value="A - Z">A - Z</mat-option>
+            <mat-option value="Mayor Precio">Mayor Precio</mat-option>
+            <mat-option value="Menor Precio">Menor Precio</mat-option>
+        </mat-select>
+    </div>
+</div>
+
+<!--Contenido de la búsqueda-->
+<div class="content">
+  <div class="row">
+      <div class="contenido-locales col-12 col-sm-12 col-md-6 col-lg-4" *ngFor="let x of restaurants; let i = index">
+          <mat-card class="mat-elevation-z4">
+
+              <!--Nombre Local y fav icon-->
+              <div class="row">
+                  <div class="col-10 col-sm-10">
+                      <p class="nombre-local">
+                          Nombre Restaurante
+                      </p>
+                  </div>
+                  <div class="col-2 col-sm-2">
+                      <mat-icon class="icon-favorite" (click)="onFavoriteIconClick(i)">
+                          {{x.isFavorite ? 'favorite' : 'favorite_border'}}
+                      </mat-icon>
+                  </div>
+              </div>
+
+              <!--Imagen local-->
+              <img mat-card-image src="../../../assets/foto_juanymedio 1.png">
+
+              <!--Descripción del local-->
+              <mat-card-content>
+                  <p class="valoracion-local">
+                      $ $ $ $ $
+                  </p>
+                  <p class="descripcion-local">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                      Ab suscipit, reiciendis hic quia sunt laborum ducimus qui eum magnam consequuntur? 
+                      Ipsa beatae ad pariatur dolorum iure quasi, consequatur unde labore.
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                      Ab suscipit, reiciendis hic quia sunt laborum ducimus qui eum magnam consequuntur? 
+                      Ipsa beatae ad pariatur dolorum iure quasi, consequatur unde labore.
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                  </p>
+              </mat-card-content>
+          </mat-card>
+      </div>
+  </div>
+</div>
