@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { LoginComponent } from 'src/app/pages/auth/login/login.component';
 import { RegistrationComponent } from 'src/app/pages/auth/registration/registration.component';
@@ -10,9 +10,12 @@ import { RegistrationComponent } from 'src/app/pages/auth/registration/registrat
 })
 export class SharedHeaderComponent implements OnInit {
   
+  @Input()
+  public isWhiteLogo: boolean = true;
+
   constructor(public dialog: MatDialog) { }
 
-  openRegistrationDialog(): void {
+  public openRegistrationDialog(): void {
     const dialogRef = this.dialog.open(RegistrationComponent, {
       maxWidth: '100%',
       width: '75%'
@@ -23,8 +26,7 @@ export class SharedHeaderComponent implements OnInit {
     });
   }
 
-
-  openLoginDialog(): void {
+  public openLoginDialog(): void {
     const dialogRef = this.dialog.open(LoginComponent, {
       maxWidth: '100%',
       width: '75%',
@@ -35,10 +37,10 @@ export class SharedHeaderComponent implements OnInit {
     });
   }
 
-
-
   ngOnInit() {
   }
 
-
+  public getLogo() {
+    return this.isWhiteLogo ? "/assets/logo-home.png" : "/assets/logo2 1.png";
+  }
 }
