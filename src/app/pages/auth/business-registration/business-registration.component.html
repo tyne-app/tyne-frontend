@@ -1,7 +1,8 @@
+<!--Header-->
+<app-shared-header [isWhiteLogo]="false"></app-shared-header>
+
+<!--Content-->
 <div class="container">
-
-
-    <img class="mb-5 mt-5" src="../../../assets/logo2 1.png" alt="Logo tyne app">
 
     <mat-card class="mt-5 pl-5">
 
@@ -13,11 +14,10 @@
 
         <div class="row pl-5">
             <div class="col">
-                <h3>Registra tu local y preparate para obtener mayores resultados y brindar más y nuevas experiencias a tus comensales. </h3>
+                <h3>Registra tu local y preparate para obtener mayores resultados y brindar más y nuevas experiencias a
+                    tus comensales. </h3>
             </div>
         </div>
-
-
 
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
@@ -31,12 +31,7 @@
             <div class="row pl-5">
                 <div class="col">
                     <mat-form-field appearance="outline">
-                        <input
-                          matInput
-                          formControlName="name"
-                          placeholder="Nombre"
-                          type="text"
-                        >
+                        <input matInput formControlName="name" placeholder="Nombre" type="text">
                         <mat-error *ngIf="form.get('name').invalid && form.get('name').dirty">
                             Debes ingresar tu nombre!
                         </mat-error>
@@ -44,12 +39,7 @@
                 </div>
                 <div class="col">
                     <mat-form-field appearance="outline">
-                        <input
-                          matInput
-                          formControlName="lastName"
-                          placeholder="Apellido"
-                          type="text"
-                        >
+                        <input matInput formControlName="lastName" placeholder="Apellido" type="text">
                         <mat-error *ngIf="form.get('lastName').invalid && form.get('lastName').dirty">
                             Debes ingresar tu Apellido!
                         </mat-error>
@@ -57,12 +47,7 @@
                 </div>
                 <div class="col">
                     <mat-form-field appearance="outline">
-                        <input
-                          matInput
-                          formControlName="rut"
-                          placeholder="Rut"
-                          type="text"
-                        >
+                        <input matInput formControlName="rut" placeholder="Rut" type="text">
                         <mat-error *ngIf="form.get('rut').invalid && form.get('rut').dirty ">
                             Debes ingresar tu rut!
                         </mat-error>
@@ -73,35 +58,21 @@
             <div class="row pl-5 mb-4">
                 <div class="col">
                     <mat-form-field appearance="outline">
-                        <input
-                          matInput
-                          formControlName="email"
-                          placeholder="Email"
-                          type="text"
-                        >
-                        <mat-error *ngIf="form.get('email').invalid && form.get('email').dirty && form.get('email').hasError('pattern')">
+                        <input matInput formControlName="email" placeholder="Email" type="text">
+                        <mat-error
+                            *ngIf="form.get('email').invalid && form.get('email').dirty && form.get('email').hasError('pattern')">
                             Debes ingresar tu mail!
                         </mat-error>
                     </mat-form-field>
                 </div>
                 <div class="col">
                     <mat-form-field appearance="outline">
-                        <input
-                          matInput
-                          formControlName="emailConfirm"
-                          placeholder="Confirme su email"
-                          type="text"
-                        >
+                        <input matInput formControlName="emailConfirm" placeholder="Confirme su email" type="text">
                     </mat-form-field>
                 </div>
                 <div class="col">
                     <mat-form-field appearance="outline">
-                        <input
-                          matInput
-                          formControlName="contactNumber"
-                          placeholder="Telefono de contacto"
-                          type="text"
-                        >
+                        <input matInput formControlName="contactNumber" placeholder="Telefono de contacto" type="text">
                         <mat-error *ngIf="form.get('contactNumber').invalid && form.get('contactNumber').dirty">
                             Debes ingresar un teléfono de contacto!
                         </mat-error>
@@ -119,12 +90,7 @@
             <div class="row pl-5">
                 <div class="col">
                     <mat-form-field appearance="outline">
-                        <input
-                          matInput
-                          formControlName="socialReason"
-                          placeholder="Razon Social"
-                          type="text"
-                        >
+                        <input matInput formControlName="socialReason" placeholder="Razon Social" type="text">
                         <mat-error *ngIf="form.get('socialReason').invalid && form.get('socialReason').dirty">
                             Debes ingresar una razón social!
                         </mat-error>
@@ -132,12 +98,7 @@
                 </div>
                 <div class="col">
                     <mat-form-field appearance="outline">
-                        <input
-                          matInput
-                          formControlName="localTurn"
-                          placeholder="Giro de Local"
-                          type="text"
-                        >
+                        <input matInput formControlName="localTurn" placeholder="Giro de Local" type="text">
                         <mat-error *ngIf="form.get('localTurn').invalid && form.get('localTurn').dirty">
                             Debes ingresar un giro de local!
                         </mat-error>
@@ -145,12 +106,7 @@
                 </div>
                 <div class="col">
                     <mat-form-field appearance="outline">
-                        <input
-                          matInput
-                          formControlName="rutLocal"
-                          placeholder="Rut local"
-                          type="text"
-                        >
+                        <input matInput formControlName="rutLocal" placeholder="Rut local" type="text">
                         <mat-error *ngIf="form.get('rutLocal').invalid && form.get('rutLocal').dirty">
                             Debes ingresar un rut de local!
                         </mat-error>
@@ -161,12 +117,7 @@
             <div class="row pl-5">
                 <div class="col">
                     <mat-form-field appearance="outline">
-                        <input
-                          matInput
-                          formControlName="address"
-                          placeholder="Direccion"
-                          type="text"
-                        >
+                        <input matInput formControlName="address" placeholder="Direccion" type="text">
                         <mat-error *ngIf="form.get('address').invalid && form.get('address').dirty">
                             Debes ingresar una dirección!
                         </mat-error>
@@ -174,12 +125,7 @@
                 </div>
                 <div class="col">
                     <mat-form-field appearance="outline">
-                        <input
-                          matInput
-                          formControlName="commune"
-                          placeholder="Comuna"
-                          type="text"
-                        >
+                        <input matInput formControlName="commune" placeholder="Comuna" type="text">
                         <mat-error *ngIf="form.get('commune').invalid && form.get('commune').dirty">
                             Debes ingresar una comuna!
                         </mat-error>
@@ -187,12 +133,7 @@
                 </div>
                 <div class="col">
                     <mat-form-field appearance="outline">
-                        <input
-                          matInput
-                          formControlName="region"
-                          placeholder="Region"
-                          type="text"
-                        >
+                        <input matInput formControlName="region" placeholder="Region" type="text">
                         <mat-error *ngIf="form.get('region').invalid && form.get('region').dirty">
                             Debes ingresar una región!
                         </mat-error>
@@ -218,12 +159,8 @@
             <div class="row pl-5">
                 <div class="col">
                     <mat-form-field appearance="outline">
-                        <input
-                          matInput
-                          formControlName="rutAccountOwner"
-                          placeholder="Rut titular de la cuenta"
-                          type="text"
-                        >
+                        <input matInput formControlName="rutAccountOwner" placeholder="Rut titular de la cuenta"
+                            type="text">
                         <mat-error *ngIf="form.get('rutAccountOwner').invalid && form.get('rutAccountOwner').dirty">
                             Debes ingresar el rut del titular de cuenta!
                         </mat-error>
@@ -231,12 +168,8 @@
                 </div>
                 <div class="col">
                     <mat-form-field appearance="outline">
-                        <input
-                          matInput
-                          formControlName="nameAccountOwner"
-                          placeholder="Nombre titular de la cuenta"
-                          type="text"
-                        >
+                        <input matInput formControlName="nameAccountOwner" placeholder="Nombre titular de la cuenta"
+                            type="text">
                         <mat-error *ngIf="form.get('nameAccountOwner').invalid && form.get('nameAccountOwner').dirty">
                             Debes ingresar el nombre del titular de cuenta!
                         </mat-error>
@@ -244,12 +177,7 @@
                 </div>
                 <div class="col">
                     <mat-form-field appearance="outline">
-                        <input
-                          matInput
-                          formControlName="accountNumber"
-                          placeholder="Numero de cuenta"
-                          type="text"
-                        >
+                        <input matInput formControlName="accountNumber" placeholder="Numero de cuenta" type="text">
                         <mat-error *ngIf="form.get('accountNumber').invalid && form.get('accountNumber').dirty">
                             Debes ingresar el número de cuenta!
                         </mat-error>
@@ -302,27 +230,17 @@
 
                         <div class="col-sm-5">
                             <mat-form-field appearance="outline">
-                                <input 
-                                  formControlName="hourOpening"
-                                  class="day-schedule"
-                                  matInput
-                                  placeholder="hh"
-                                  type="text"
-                                >
+                                <input formControlName="hourOpening" class="day-schedule" matInput placeholder="hh"
+                                    type="text">
                             </mat-form-field>
                         </div>
                         <div class="col-sm-1">
                             <h4>:</h4>
                         </div>
                         <div class="col-sm-5">
-                            <mat-form-field  appearance="outline">
-                                <input
-                                formControlName="minutesOpening" 
-                                  class="day-schedule"
-                                  matInput
-                                  placeholder="mm"
-                                  type="text"
-                                >
+                            <mat-form-field appearance="outline">
+                                <input formControlName="minutesOpening" class="day-schedule" matInput placeholder="mm"
+                                    type="text">
                             </mat-form-field>
                         </div>
                     </div>
@@ -339,28 +257,18 @@
 
                     <div class="row">
                         <div class="col-sm-5">
-                            <mat-form-field  appearance="outline">
-                                <input
-                                  formControlName="hourClosure"
-                                  class="day-schedule"
-                                  matInput
-                                  placeholder="hh"
-                                  type="text"
-                                >
+                            <mat-form-field appearance="outline">
+                                <input formControlName="hourClosure" class="day-schedule" matInput placeholder="hh"
+                                    type="text">
                             </mat-form-field>
                         </div>
                         <div class="col-sm-1">
                             <h4>:</h4>
                         </div>
                         <div class="col-sm-5">
-                            <mat-form-field  appearance="outline">
-                                <input
-                                  formControlName="minutesClosure"
-                                  class="day-schedule"
-                                  matInput
-                                  placeholder="mm"
-                                  type="text"
-                                >
+                            <mat-form-field appearance="outline">
+                                <input formControlName="minutesClosure" class="day-schedule" matInput placeholder="mm"
+                                    type="text">
                             </mat-form-field>
                         </div>
                     </div>
@@ -377,14 +285,15 @@
 
                     <div class="row">
                         <div *ngFor="let day of days; let i=index" class="col-sm-2">
-                            <mat-checkbox [value]="day.value" (change)="onDaysCheckboxChange($event)">{{day.name}}</mat-checkbox>
+                            <mat-checkbox [value]="day.value" (change)="onDaysCheckboxChange($event)">{{day.name}}
+                            </mat-checkbox>
                         </div>
                     </div>
                     <mat-error *ngIf="form.controls['days'].errors?.required">
                         Debes escoger al menos 1 día
                     </mat-error>
                 </div>
-                
+
             </div>
 
             <!-- Contraseña y submit. -->
@@ -392,13 +301,8 @@
 
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <mat-form-field appearance="outline">
-                        <input
-                          formControlName="password"
-                          matInput
-                          formControlName="name"
-                          placeholder="Contraseña"
-                          type="password"
-                        >
+                        <input formControlName="password" matInput formControlName="name" placeholder="Contraseña"
+                            type="password">
                         <mat-error *ngIf="this.form.controls['password'].errors?.required">
                             Debes ingresar una contraseña!
                         </mat-error>
@@ -407,32 +311,22 @@
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <mat-form-field appearance="outline">
-                        <input
-                          formControlName="passwordConfirm"
-                          matInput
-                          formControlName="name"
-                          placeholder="Repite tu contraseña"
-                          type="password"
-                        >
+                        <input formControlName="passwordConfirm" matInput formControlName="name"
+                            placeholder="Repite tu contraseña" type="password">
                     </mat-form-field>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12 pl-5 pt-2">
-                    <button
-                     style="width:80%;"
-                     type="submit"
-                     class="register-button"
-                     mat-raised-button>
+                    <button style="width:80%;" type="submit" class="register-button" mat-raised-button>
                         ¡Listo!
                     </button>
                 </div>
-                
+
             </div>
-       </form>
-
-
-
+        </form>
 
     </mat-card>
 
 </div>
+
+<!--Footer-->
 <app-shared-footer></app-shared-footer>
