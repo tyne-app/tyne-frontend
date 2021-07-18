@@ -13,21 +13,34 @@
 
                 <div class="col-lg-3 col-md-6  d-flex justify-content-center">
                     <mat-form-field appearance="outline">
-                        <input matInput formControlName="name" placeholder="Nombre de Local" type="text">
+                        <mat-label>Nombre del Local</mat-label>
+                        <input matInput formControlName="name" type="text">
                     </mat-form-field>
                 </div>
 
-                  
                 <div class="col-lg-3 col-md-6  d-flex justify-content-center">
                     <mat-form-field appearance="outline">
-                        <input matInput formControlName="dateReservation" placeholder="Ingresa fecha de reserva" type="text">
-                    </mat-form-field>
+                        <mat-label>Ingresa fecha de reserva</mat-label>
+                        <input matInput formControlName="dateReservation"
+                        autocomplete="off" [matDatepicker]="picker">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                        <!-- <mat-error *ngIf="birthDate.invalid && birthDate.dirty">
+                          Debes ingresar tu fecha de nacimiento!
+                        </mat-error> -->
+                      </mat-form-field>
                 </div>
+
                 <div class="col-lg-3 col-md-6  d-flex justify-content-center">
                     <mat-form-field appearance="outline">
-                        <input matInput formControlName="commune" placeholder="Ingresa comuna" type="text">
+                        <mat-label>Ingresa comuna</mat-label>
+                        <!-- <input matInput formControlName="commune" type="text"> -->
+                        <mat-select formControlName="commune">
+                            <mat-option value="1">Providencia</mat-option>
+                        </mat-select>
                     </mat-form-field>
                 </div>
+
                 <div class="col-lg-3 col-md-6  d-flex justify-content-center align-self-start">
                     <button mat-raised-button type="submit" routerLink="/buscar-locales">
                         Buscar

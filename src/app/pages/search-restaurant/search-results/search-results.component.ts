@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material';
 import { RestaurantService } from 'src/app/core/services/restaurant.service';
 import { SearchResultsModel } from './search-results.model';
 
@@ -12,7 +13,8 @@ export class SearchResultsComponent implements OnInit {
   public restaurants: SearchResultsModel[] = [];
 
   constructor(
-    private restaurantService: RestaurantService
+    private restaurantService: RestaurantService,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit() {
@@ -25,5 +27,10 @@ export class SearchResultsComponent implements OnInit {
 
   public getRestaurants(value: string = "3") {
     this.restaurants = this.restaurantService.getRestaurantsByFilterMock(value);
+
+    this.snackBar.open('No existen resultados para la búsqueda', 'Aceptar', {
+      duration: 3000,
+      panelClass: ['error-snackbar']
+    });
   }
 }

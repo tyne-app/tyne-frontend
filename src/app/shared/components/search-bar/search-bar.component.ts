@@ -26,5 +26,4 @@ export class SearchBarComponent implements OnInit {
       commune: ['', [Validators.required]],
     });
   }
-
 }
