@@ -22,7 +22,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .div-resultados {
-    padding-left: 25px;
+    padding-left: 55px;
 }
 
 .div-ordenar-locales {
@@ -42,11 +42,14 @@ h1, h2, h3, h4, h5, h6 {
 
 .valoracion-local {
     color: #3C0000;
-    font-size: 25px;
+    font-size: 17px;
+    font-weight: bold;
 }
 
 .descripcion-local {
     color: #3C0000;
+    font-family: "Museo Sans";
+    font-size: 18px;
 }
 
 .icon-favorite {
