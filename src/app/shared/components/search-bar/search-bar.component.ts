@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormGroup,
-  Validators
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
 
 @Component({
   selector: 'app-search-bar',
@@ -17,7 +14,10 @@ export class SearchBarComponent implements OnInit {
   type: 'name' | 'date_reservation' | 'commune';
   valid = false;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private fb: FormBuilder,
+    private route: Router
+  ) { }
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -25,5 +25,16 @@ export class SearchBarComponent implements OnInit {
       dateReservation: ['', [Validators.required]],
       commune: ['', [Validators.required]],
     });
+  }
+
+  public search() {
+
+    if (this.form.invalid) return;
+
+    this.route.navigate(["buscar-locales"], {queryParams: {
+      name: this.form.get("name").value,
+      dateReservation: this.form.get("dateReservation").value,
+      country: this.form.get("commune").value,
+    }});
   }
 }
