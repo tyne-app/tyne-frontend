@@ -23,13 +23,18 @@ export class SearchBarComponent implements OnInit {
     this.getQueryParams();
   }
 
-  public search() {
+  public searchRestaurants() {
     if (!this.isReadyToSearch()) return;
+
+    const date = new Date(this.form.get("dateReservation").value);
+    const dd = String(date.getDate()).padStart(2, '0');
+    const mm = String(date.getMonth() + 1).padStart(2, '0');
+    const yyyy = date.getFullYear();
 
     this.route.navigate(["buscar-locales"], {
       queryParams: {
         name: this.form.get("name").value,
-        dateReservation: this.form.get("dateReservation").value,
+        dateReservation: `${yyyy}/${mm}/${dd}`,
         state: this.form.get("state").value,
       }
     });
@@ -90,7 +95,6 @@ export class SearchBarComponent implements OnInit {
       }
     }
 
-    console.log("null");
     return null;
   }
 
