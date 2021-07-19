@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -15,7 +16,8 @@ export class SearchBarComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private route: Router,
-    private router: ActivatedRoute
+    private router: ActivatedRoute,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit() {
@@ -25,16 +27,20 @@ export class SearchBarComponent implements OnInit {
 
   public searchRestaurants() {
     if (!this.isReadyToSearch()) return;
+    let dateReservationParam = null;
 
-    const date = new Date(this.form.get("dateReservation").value);
-    const dd = String(date.getDate()).padStart(2, '0');
-    const mm = String(date.getMonth() + 1).padStart(2, '0');
-    const yyyy = date.getFullYear();
+    if (this.form.get("dateReservation").value) {
+      const date = new Date(this.form.get("dateReservation").value);
+      const dd = String(date.getDate()).padStart(2, '0');
+      const mm = String(date.getMonth() + 1).padStart(2, '0');
+      const yyyy = date.getFullYear();
+      dateReservationParam = `${yyyy}/${mm}/${dd}`;
+    }
 
     this.route.navigate(["buscar-locales"], {
       queryParams: {
         name: this.form.get("name").value,
-        dateReservation: `${yyyy}/${mm}/${dd}`,
+        dateReservation: dateReservationParam,
         state: this.form.get("state").value,
       }
     });
@@ -42,13 +48,16 @@ export class SearchBarComponent implements OnInit {
 
   public isReadyToSearch(): boolean {
 
-    if (this.form.get("name").invalid && this.form.get("dateReservation").invalid && this.form.get("state").invalid) {
+    if (!this.form.get("name").value && !this.form.get("dateReservation").value && !this.form.get("state").value) {
+
+      this.form.get("name").setErrors({'required': true});
+      this.form.get("dateReservation").setErrors({'required': true});
+      this.form.get("state").setErrors({'required': true});
+
       return false;
     } else if (this.form.get("name").hasError("minlength") || this.form.get("dateReservation").hasError("invalidDate")) {
       return false;
     }
-
-    this.resetErrors();
 
     return true;
   }
@@ -67,12 +76,12 @@ export class SearchBarComponent implements OnInit {
     return this.form.get("state").hasError("required") ? "Debe seleccionar una comuna" :
       this.form.get("state").hasError("min") ? "Debe seleccionar una comuna" : null;
   }
-
+  
   private initForm() {
     this.form = this.fb.group({
-      name: ['', [Validators.minLength(3), Validators.required]],
-      dateReservation: ['', [Validators.required, this.dateValidator]],
-      state: ['', [Validators.required, Validators.min(1)]],
+      name: ['', [Validators.minLength(3)]],
+      dateReservation: ['', [this.dateValidator]],
+      state: [''],
     });
   }
 
@@ -96,11 +105,5 @@ export class SearchBarComponent implements OnInit {
     }
 
     return null;
-  }
-
-  private resetErrors() {
-    this.form.get("name").setErrors(null);
-    this.form.get("dateReservation").setErrors(null);
-    this.form.get("state").setErrors(null);
   }
 }
