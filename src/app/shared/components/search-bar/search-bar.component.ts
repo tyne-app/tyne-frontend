@@ -59,14 +59,15 @@ export class SearchBarComponent implements OnInit {
   }
 
   public stateErrorMessage() {
-    return this.form.get("state").hasError("required") ? "Debe seleccionar una comuna" : null;
+    return this.form.get("state").hasError("required") ? "Debe seleccionar una comuna" :
+      this.form.get("state").hasError("min") ? "Debe seleccionar una comuna" : null;
   }
 
   private initForm() {
     this.form = this.fb.group({
       name: ['', [Validators.minLength(3), Validators.required]],
       dateReservation: ['', [Validators.required, this.dateValidator]],
-      state: ['', [Validators.required]],
+      state: ['', [Validators.required, Validators.min(1)]],
     });
   }
 
