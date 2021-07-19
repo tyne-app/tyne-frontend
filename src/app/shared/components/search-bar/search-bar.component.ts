@@ -48,7 +48,7 @@ export class SearchBarComponent implements OnInit {
 
   public isReadyToSearch(): boolean {
 
-    if (!this.form.get("name").value && !this.form.get("dateReservation").value && !this.form.get("state").value) {
+    if (!this.form.get("name").value && !this.form.get("dateReservation").value && (!this.form.get("state").value || this.form.get("state").value === "0")) {
 
       this.form.get("name").setErrors({'required': true});
       this.form.get("dateReservation").setErrors({'required': true});
