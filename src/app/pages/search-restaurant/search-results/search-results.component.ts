@@ -28,7 +28,7 @@ export class SearchResultsComponent implements OnInit {
   public getRestaurants(value: string = "3") {
     this.restaurants = this.restaurantService.getRestaurantsByFilterMock(value);
 
-    this.snackBar.open('No existen resultados para la búsqueda', 'Aceptar', {
+    this.snackBar.open('Just Testing purposes: No existen resultados para la búsqueda', 'Aceptar', {
       duration: 3000,
       panelClass: ['error-snackbar']
     });
