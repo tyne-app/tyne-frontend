@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MaterialModule } from 'src/app/shared/material/material.module';
-import { LoginComponent } from '../auth/login/login.component';
-import { RegistrationComponent } from '../auth/registration/registration.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { LoginComponent } from 'src/app/login/pages/login.component';
+import { RegistrationComponent } from 'src/app/client-registration/pages/registration.component';
 
 @NgModule({
   declarations: [

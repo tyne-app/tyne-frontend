@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { LoginComponent } from 'src/app/pages/auth/login/login.component';
-import { RegistrationComponent } from 'src/app/pages/auth/registration/registration.component';
+import { RegistrationComponent } from 'src/app/client-registration/pages/registration.component';
+import { LoginComponent } from 'src/app/login/pages/login.component';
 
 @Component({
   selector: 'app-shared-header',
