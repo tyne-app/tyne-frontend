@@ -8,7 +8,6 @@ import { CoreModule  } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { MaterialModule } from './shared/material/material.module';
 import { HomeModule } from './home/modules/home.module';
-import { AuthModule } from './pages/auth/auth.module';
 import { BusinessProfileModule } from './business-profile/modules/business-profile.module';
 import { ClientProfileModule } from './client-profile/modules/client-profile.module';
 import { PrivacyModule } from './privacy/modules/privacy.module';
@@ -18,6 +17,8 @@ import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS, MAT_MOMENT_DATE_FOR
 import { DateAdapter, MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material/core';
 import { LoginComponent } from './login/pages/login.component';
 import { RegistrationComponent } from './client-registration/pages/registration.component';
+import { LoginModule } from './login/modules/login.module';
+import { ClientRegistrationModule } from './client-registration/modules/client-registration.module';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { RegistrationComponent } from './client-registration/pages/registration.
     CoreModule,
     SharedModule,
     HomeModule,
-    AuthModule,
+    LoginModule,
+    ClientRegistrationModule,
     BusinessProfileModule,
     PrivacyModule,
     HttpClientModule,
