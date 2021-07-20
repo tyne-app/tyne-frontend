@@ -33,7 +33,7 @@ const routes: Routes = [
   },
   {
     path: 'buscar-locales',
-    loadChildren: () => import('./pages/search-restaurant/search-restaurant.module').then( m=> m.SearchRestaurantModule)
+    loadChildren: () => import('./search-restaurant/modules/search-restaurant.module').then( m=> m.SearchRestaurantModule)
   },
   {
     path: '**',

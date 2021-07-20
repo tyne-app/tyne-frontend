@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { SearchRestaurantComponent } from './search-restaurant.component';
 import { MaterialModule } from 'src/app/shared/material/material.module';
-import { SearchRestaurantRoutingModule } from './search-restautant-routing.module';
-import { SearchResultsComponent } from './search-results/search-results.component';
+import { SearchRestaurantRoutingModule } from '../routes/search-restautant-routing.module';
+import { SearchResultsComponent } from '../components/search-results/search-results.component';
+import { SearchRestaurantComponent } from '../pages/search-restaurant.component';
 
 @NgModule({
   declarations: [
