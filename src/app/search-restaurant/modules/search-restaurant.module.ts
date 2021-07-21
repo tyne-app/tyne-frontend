@@ -5,6 +5,7 @@ import { MaterialModule } from 'src/app/shared/material/material.module';
 import { SearchRestaurantRoutingModule } from '../routes/search-restautant-routing.module';
 import { SearchResultsComponent } from '../components/search-results/search-results.component';
 import { SearchRestaurantComponent } from '../pages/search-restaurant.component';
+import { HomeModule } from 'src/app/home/modules/home.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { SearchRestaurantComponent } from '../pages/search-restaurant.component'
       CommonModule,
       SharedModule,
       MaterialModule,
-      SearchRestaurantRoutingModule
+      SearchRestaurantRoutingModule,
+      HomeModule
   ]
 })
 export class SearchRestaurantModule { }

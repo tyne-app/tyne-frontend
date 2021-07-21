@@ -4,14 +4,18 @@ import { BusinessRegistrationRoutingModule } from '../routes/business-registrati
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MaterialModule } from '../../shared/material/material.module';
 import { BusinessRegistrationComponent } from '../pages/business-registration.component';
+import { HomeModule } from 'src/app/home/modules/home.module';
 
 @NgModule({
-  declarations: [BusinessRegistrationComponent],
+  declarations: [
+    BusinessRegistrationComponent
+  ],
   imports: [
     CommonModule,
     BusinessRegistrationRoutingModule,
     SharedModule,
-    MaterialModule
+    MaterialModule,
+    HomeModule
   ]
 })
 export class BusinessRegistrationModule { }

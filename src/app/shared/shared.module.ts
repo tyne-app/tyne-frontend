@@ -15,7 +15,7 @@ import { FooterComponent } from '../home/components/footer/footer.component';
     MapComponent, 
     HeaderComponent, 
     HeaderLoginComponent,
-    FooterComponent
+    // FooterComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +29,7 @@ import { FooterComponent } from '../home/components/footer/footer.component';
     MapComponent,
     HeaderComponent,
     HeaderLoginComponent,
-    FooterComponent
+    // FooterComponent
   ]
 })
 

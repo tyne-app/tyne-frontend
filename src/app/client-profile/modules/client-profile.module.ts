@@ -8,16 +8,23 @@ import { HeaderClientProfileComponent } from '../components/header-client-profil
 import { ProfileContainerComponent } from '../components/profile-container/profile-container.component';
 import { ProfileImageComponent } from '../components/profile-image/profile-image.component';
 import { ClientProfileComponent } from '../pages/client-profile.component';
+import { HomeModule } from 'src/app/home/modules/home.module';
 
 @NgModule({
-  declarations: [ClientProfileComponent, HeaderClientProfileComponent, ProfileContainerComponent, ProfileImageComponent],
+  declarations: [
+    ClientProfileComponent, 
+    HeaderClientProfileComponent, 
+    ProfileContainerComponent, 
+    ProfileImageComponent
+  ],
   imports: [
     CommonModule,
     ClientProfileRoutingModule ,
     SharedModule,
     MaterialModule, 
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HomeModule
   ]
 })
 export class ClientProfileModule { }
