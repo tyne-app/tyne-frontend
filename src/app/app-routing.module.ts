@@ -5,35 +5,35 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: 'inicio',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomeModule),
+    loadChildren: () => import('./home/modules/home.module').then( m => m.HomeModule),
   },
   {
     path: 'perfil-local',
-    loadChildren: () => import('./pages/business-profile/business-profile.module').then( m=>m.BusinessProfileModule),
+    loadChildren: () => import('./business-profile/modules/business-profile.module').then( m=>m.BusinessProfileModule),
   },
   {
     path: 'registro-negocio',
-    loadChildren: () => import('./pages/auth/business-registration/business-registration.module').then( m => m.BusinessRegistrationModule),
+    loadChildren: () => import('./business-registration/modules/business-registration.module').then( m => m.BusinessRegistrationModule),
   },
   {
     path: 'perfil-cliente',
-    loadChildren: () => import('./pages/client-profile/client-profile.module').then(m=>m.ClientProfileModule)
+    loadChildren: () => import('./client-profile/modules/client-profile.module').then(m=>m.ClientProfileModule)
   },
   {
     path: 'reembolso',
-    loadChildren: () => import('./pages/refund-policy/refund-policy.module').then( m => m.RefundPolicyModule),
+    loadChildren: () => import('./refund-policy/modules/refund-policy.module').then( m => m.RefundPolicyModule),
   },
   {
     path: 'preguntas-frecuentes',
-    loadChildren: () => import('./pages/frequent-questions/frequent-questions.module').then( m => m.FrequentQuestionsModule),
+    loadChildren: () => import('./frecuent-questions/modules/frequent-questions.module').then( m => m.FrequentQuestionsModule),
   },
   {
     path: 'privacidad',
-    loadChildren: () => import('./pages/privacy/privacy.module').then( m=> m.PrivacyModule)
+    loadChildren: () => import('./privacy/modules/privacy.module').then( m=> m.PrivacyModule)
   },
   {
     path: 'buscar-locales',
-    loadChildren: () => import('./pages/search-restaurant/search-restaurant.module').then( m=> m.SearchRestaurantModule)
+    loadChildren: () => import('./search-restaurant/modules/search-restaurant.module').then( m=> m.SearchRestaurantModule)
   },
   {
     path: '**',
