@@ -6,11 +6,17 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { HomeComponent } from '../pages/home.component';
 import { BodyComponent } from '../components/body/body.component';
 import { FooterComponent } from '../components/footer/footer.component';
+import { HeaderComponent } from '../components/header/header.component';
+import { HeaderLoginComponent } from '../components/header-login/header-login.component';
+import { SearchBarComponent } from '../components/search-bar/search-bar.component';
 
 @NgModule({
   declarations: [
     BodyComponent,
     FooterComponent,
+    HeaderComponent,
+    HeaderLoginComponent,
+    SearchBarComponent,
     HomeComponent,
   ],
   imports: [
@@ -20,7 +26,10 @@ import { FooterComponent } from '../components/footer/footer.component';
     MaterialModule
   ],
   exports: [
-    FooterComponent
+    FooterComponent,
+    HeaderComponent,
+    HeaderLoginComponent,
+    SearchBarComponent
   ]
 })
 export class HomeModule { }
