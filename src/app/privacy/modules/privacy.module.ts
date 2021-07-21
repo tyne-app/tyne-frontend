@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeModule } from '../../home/modules/home.module';
-import { MaterialModule } from 'src/app/shared/material/material.module';
+import { MaterialModule } from 'src/app/shared/modules/material.module';
 import { PrivacyRoutingModule } from './privacy-routing.module';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { SharedModule } from 'src/app/shared/modules/shared.module';
 import { PrivacyComponent } from '../pages/privacy.component';
 
 @NgModule({

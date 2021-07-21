@@ -1,11 +1,9 @@
-import { SearchBarComponent } from '../home/components/search-bar/search-bar.component';
-import { MapComponent } from './components/map/map.component';
-import { HeaderLoginComponent } from '../home/components/header-login/header-login.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from './material/material.module';
+import { MaterialModule } from './material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import  {RouterModule } from '@angular/router';
+import { MapComponent } from '../components/map/components/map.component';
 
 @NgModule({
   declarations: [
@@ -22,5 +20,4 @@ import  {RouterModule } from '@angular/router';
     MapComponent
   ]
 })
-
 export class SharedModule { }

@@ -1,8 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-
 import * as mapboxgl from 'mapbox-gl';
-import { TyneMapStyle } from '../../constants/map';
-
+import { TyneMapStyle } from '../models/map';
 
 @Component({
   selector: 'app-map',

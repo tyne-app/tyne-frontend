@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RefundPolicyRoutingModule } from '../routes/refund-policy-routing.module';
 import { RefundPolicyComponent } from '../pages/refund-policy.component';
 import { HomeModule } from '../../home/modules/home.module';
-import { MaterialModule } from 'src/app/shared/material/material.module';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { MaterialModule } from 'src/app/shared/modules/material.module';
+import { SharedModule } from 'src/app/shared/modules/shared.module';
 
 @NgModule({
   declarations: [RefundPolicyComponent],

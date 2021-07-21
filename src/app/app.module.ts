@@ -4,9 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CoreModule  } from './core/core.module';
-import { SharedModule } from './shared/shared.module';
-import { MaterialModule } from './shared/material/material.module';
+import { SharedModule } from './shared/modules/shared.module';
+import { MaterialModule } from './shared/modules/material.module';
 import { HomeModule } from './home/modules/home.module';
 import { BusinessProfileModule } from './business-profile/modules/business-profile.module';
 import { ClientProfileModule } from './client-profile/modules/client-profile.module';
@@ -29,7 +28,6 @@ import { ClientRegistrationModule } from './client-registration/modules/client-r
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    CoreModule,
     SharedModule,
     HomeModule,
     LoginModule,

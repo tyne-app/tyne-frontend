@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeModule } from '../../home/modules/home.module';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { SharedModule } from 'src/app/shared/modules/shared.module';
 import { InfoCardComponent } from '../components/info-card/info-card.component';
-import { MaterialModule } from 'src/app/shared/material/material.module';
+import { MaterialModule } from 'src/app/shared/modules/material.module';
 import { SwiperModule } from 'swiper/angular';
 import { CarouselComponent } from '../components/carousel/carousel.component';
 import { DetailsComponent } from '../components/details/details.component';

@@ -1,7 +1,4 @@
 import { NgModule } from '@angular/core';
-/**
- * MODULES ANGULAR
- */
 import {
   MatButtonModule,
   MatCardModule,
@@ -26,8 +23,6 @@ import {
   MatDatepickerModule
 } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table';
-
-
 
 const MaterialComponents = [
   MatStepperModule,
@@ -55,10 +50,8 @@ const MaterialComponents = [
   MatDatepickerModule
 ];
 
-
 @NgModule({
   imports: [MaterialComponents],
   exports: [MaterialComponents, MatFormFieldModule]
 })
-
 export class MaterialModule { }
