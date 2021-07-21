@@ -16,7 +16,7 @@ import { FrequentQuestionsModule } from './frecuent-questions/modules/frequent-q
 import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS, MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material/core';
 import { LoginComponent } from './login/pages/login.component';
-import { RegistrationComponent } from './client-registration/pages/registration.component';
+import { ClientRegistrationComponent } from './client-registration/pages/client.registration.component';
 import { LoginModule } from './login/modules/login.module';
 import { ClientRegistrationModule } from './client-registration/modules/client-registration.module';
 
@@ -41,7 +41,7 @@ import { ClientRegistrationModule } from './client-registration/modules/client-r
     RefundPolicyModule,
     FrequentQuestionsModule
   ],
-  entryComponents: [RegistrationComponent, LoginComponent],
+  entryComponents: [ClientRegistrationComponent, LoginComponent],
   providers: [
     {
       provide: MAT_DATE_LOCALE, useValue: 'es'

@@ -1,14 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { RegistrationComponent } from 'src/app/client-registration/pages/registration.component';
+import { ClientRegistrationComponent } from 'src/app/client-registration/pages/client.registration.component';
 import { LoginComponent } from 'src/app/login/pages/login.component';
 
 @Component({
-  selector: 'app-shared-header',
-  templateUrl: './shared-header.component.html',
-  styleUrls: ['./shared-header.component.scss']
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss']
 })
-export class SharedHeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit {
   
   @Input()
   public isWhiteLogo: boolean = true;
@@ -16,7 +16,7 @@ export class SharedHeaderComponent implements OnInit {
   constructor(public dialog: MatDialog) { }
 
   public openRegistrationDialog(): void {
-    const dialogRef = this.dialog.open(RegistrationComponent, {
+    const dialogRef = this.dialog.open(ClientRegistrationComponent, {
       maxWidth: '100%',
       width: '75%'
     });

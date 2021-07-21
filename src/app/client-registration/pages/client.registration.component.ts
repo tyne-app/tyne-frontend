@@ -1,25 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormGroup,
-  Validators
-} from '@angular/forms';
-
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-
 import { ClientService } from 'src/app/core/services/client.service';
 import { emailRegex } from 'src/app/shared/constants/email';
-import { Client } from 'src/app/shared/interfaces/client';
-
 
 @Component({
-  selector: 'app-registration',
-  templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.scss']
+  selector: 'app-client-registration',
+  templateUrl: './client.registration.component.html',
+  styleUrls: ['./client.registration.component.scss']
 })
-export class RegistrationComponent implements OnInit {
+export class ClientRegistrationComponent implements OnInit {
 
   form!: FormGroup;
 
@@ -27,7 +19,7 @@ export class RegistrationComponent implements OnInit {
 
   // Injeccion de servicios, dialog, formbuilder y servicio cliente.
   constructor(private fb: FormBuilder,
-              public matDialogRef: MatDialogRef<RegistrationComponent>,
+              public matDialogRef: MatDialogRef<ClientRegistrationComponent>,
               private router:Router, 
               private clientService: ClientService,
               private _SNACKBAR: MatSnackBar) { }
