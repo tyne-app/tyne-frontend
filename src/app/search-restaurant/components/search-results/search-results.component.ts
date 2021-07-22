@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import { RestaurantService } from 'src/app/core/services/restaurant.service';
-import { SearchResultsModel } from './search-results.model';
+import { SearchResultsModel } from '../../models/search-results.model';
 
 @Component({
   selector: 'app-search-results',
