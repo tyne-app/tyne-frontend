@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
+import { RestaurantService } from 'src/app/services/restaurant.service';
 
 @Component({
   selector: 'app-search-bar',
@@ -17,7 +18,8 @@ export class SearchBarComponent implements OnInit {
     private fb: FormBuilder,
     private route: Router,
     private router: ActivatedRoute,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private restaurantService: RestaurantService
   ) { }
 
   ngOnInit() {
@@ -36,6 +38,9 @@ export class SearchBarComponent implements OnInit {
       const yyyy = date.getFullYear();
       dateReservationParam = `${yyyy}/${mm}/${dd}`;
     }
+
+    const restaurants = this.restaurantService.getRestaurantsByFilterMock("3");
+    this.restaurantService.restaurantsDataSource.next(restaurants);
 
     this.route.navigate(["buscar-locales"], {
       queryParams: {
