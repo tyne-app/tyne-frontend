@@ -4,7 +4,7 @@ import { FormBuilder ,FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialogRef } from '@angular/material/dialog';
 import { emailRegex } from 'src/app/shared/constants/email';
-import { ClientService } from 'src/app/core/services/client.service';
+import { ClientService } from 'src/app/services/client.service';
 
 @Component({
   selector: 'app-login',

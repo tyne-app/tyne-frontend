@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { ClientService } from 'src/app/core/services/client.service';
+import { ClientService } from 'src/app/services/client.service';
 import { emailRegex } from 'src/app/shared/constants/email';
 
 @Component({
