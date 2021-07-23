@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
-import { SearchResultsModel } from 'src/app/search-restaurant/components/search-results/search-results.model';
+import { BehaviorSubject } from 'rxjs';
+import { SearchResultsModel } from 'src/app/search-restaurant/models/search-results.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RestaurantService {
+
+  public restaurantsDataSource = new BehaviorSubject<SearchResultsModel[]>(null);
+  public currentRestaurant = this.restaurantsDataSource.asObservable();
 
   constructor() { }
 
@@ -25,6 +29,8 @@ export class RestaurantService {
       new SearchResultsModel(true, "Juan y Medio", 5, 101, 5890, 16590, description),
       new SearchResultsModel(false, "La Piscola", 5, 120, 12990, 28990, description),
     ];
+
+    // const results: SearchResultsModel[] = [];
 
     switch (orderBy) {
       case "1":

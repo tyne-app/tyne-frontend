@@ -1,16 +1,26 @@
 <!--Título resultados y ordenar resultados-->
-<div class="row">
+<div class="row" *ngIf="!isRestaurantsEmpty()">
     <div class="col-lg-9 col-md-8 col-sm-6 col-6 div-resultados">
         <h1>Resultados:</h1>
     </div>
     <div class="col-lg-3 col-md-4 col-sm-6 col-6 div-ordenar-locales">
-        <mat-select placeholder="Ordenar Por:" (selectionChange)="getRestaurants($event.value)">
+        <mat-select placeholder="Ordenar Por:" (selectionChange)="orderRestaurants($event.value)">
             <mat-option value="1">Mejor Valorados</mat-option>
             <mat-option value="2">Recomendados</mat-option>
             <mat-option value="3">A - Z</mat-option>
             <mat-option value="4">Mayor Precio</mat-option>
             <mat-option value="5">Menor Precio</mat-option>
         </mat-select>
+    </div>
+</div>
+
+<!--Mensaje en caso de no haber resultados-->
+<div class="row" *ngIf="isRestaurantsEmpty()">
+    <div class="col-lg-9 col-md-8 col-sm-6 col-6 div-resultados">
+        <h1>Resultados:</h1>
+    </div>
+    <div class="col-lg-9 col-md-8 col-sm-6 col-6 div-resultados">
+        <h4>No hay resultados para los parámetros ingresados</h4>
     </div>
 </div>
 

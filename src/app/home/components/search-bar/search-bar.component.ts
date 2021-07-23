@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
+import { RestaurantService } from 'src/app/services/restaurant.service';
 
 @Component({
   selector: 'app-search-bar',
@@ -17,7 +18,8 @@ export class SearchBarComponent implements OnInit {
     private fb: FormBuilder,
     private route: Router,
     private router: ActivatedRoute,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private restaurantService: RestaurantService
   ) { }
 
   ngOnInit() {
@@ -37,13 +39,20 @@ export class SearchBarComponent implements OnInit {
       dateReservationParam = `${yyyy}/${mm}/${dd}`;
     }
 
-    this.route.navigate(["buscar-locales"], {
-      queryParams: {
-        name: this.form.get("name").value,
-        dateReservation: dateReservationParam,
-        state: this.form.get("state").value,
-      }
-    });
+    const restaurants = this.restaurantService.getRestaurantsByFilterMock("3");
+    this.restaurantService.restaurantsDataSource.next(restaurants);
+
+    if (restaurants && restaurants.length > 0) {
+      this.route.navigate(["buscar-locales"], {
+        queryParams: {
+          name: this.form.get("name").value,
+          dateReservation: dateReservationParam,
+          state: this.form.get("state").value,
+        }
+      });
+    } else {
+      this.showNotResults();
+    }
   }
 
   public isReadyToSearch(): boolean {
@@ -105,5 +114,12 @@ export class SearchBarComponent implements OnInit {
     }
 
     return null;
+  }
+
+  private showNotResults() {
+    this.snackBar.open('No existen resultados para la búsqueda', 'Aceptar', {
+      duration: 3000,
+      panelClass: ['error-snackbar']
+    });
   }
 }
