@@ -42,13 +42,17 @@ export class SearchBarComponent implements OnInit {
     const restaurants = this.restaurantService.getRestaurantsByFilterMock("3");
     this.restaurantService.restaurantsDataSource.next(restaurants);
 
-    this.route.navigate(["buscar-locales"], {
-      queryParams: {
-        name: this.form.get("name").value,
-        dateReservation: dateReservationParam,
-        state: this.form.get("state").value,
-      }
-    });
+    if (restaurants && restaurants.length > 0) {
+      this.route.navigate(["buscar-locales"], {
+        queryParams: {
+          name: this.form.get("name").value,
+          dateReservation: dateReservationParam,
+          state: this.form.get("state").value,
+        }
+      });
+    } else {
+      this.showNotResults();
+    }
   }
 
   public isReadyToSearch(): boolean {
@@ -110,5 +114,12 @@ export class SearchBarComponent implements OnInit {
     }
 
     return null;
+  }
+
+  private showNotResults() {
+    this.snackBar.open('No existen resultados para la búsqueda', 'Aceptar', {
+      duration: 3000,
+      panelClass: ['error-snackbar']
+    });
   }
 }
