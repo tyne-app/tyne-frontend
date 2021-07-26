@@ -8,7 +8,7 @@ import { BodyComponent } from '../components/body/body.component';
 import { FooterComponent } from '../components/footer/footer.component';
 import { HeaderComponent } from '../components/header/header.component';
 import { HeaderLoginComponent } from '../components/header-login/header-login.component';
-import { SearchBarComponent } from '../components/search-bar/search-bar.component';
+import { SearchBarComponent } from '../../shared/components/search-bar/search-bar.component';
 
 @NgModule({
   declarations: [

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RestaurantService } from 'src/app/services/restaurant.service';
+import { RestaurantService } from 'src/app/shared/services/restaurant.service';
 
 @Component({
   selector: 'app-search-bar',
