@@ -8,14 +8,14 @@
 
         <div class="row pl-5">
             <div class="col">
-                <h1>Registro para Locales</h1>
+                <h3 class="titulo-3">Registro para Locales</h3>
             </div>
         </div>
 
         <div class="row pl-5">
             <div class="col">
-                <h3>Registra tu local y preparate para obtener mayores resultados y brindar más y nuevas experiencias a
-                    tus comensales. </h3>
+                <p class="parrafo">Registra tu local y preparate para obtener mayores resultados y brindar más y nuevas
+                    experiencias a tus comensales.</p>
             </div>
         </div>
 
@@ -24,30 +24,33 @@
             <!-- Sobre el representante legal -->
             <div class="row pl-5">
                 <div class="col">
-                    <h2>Sobre el representante legal:</h2>
+                    <h4 class="titulo-4">Sobre el representante legal:</h4>
                 </div>
             </div>
 
             <div class="row pl-5">
                 <div class="col">
+                    <label class="label-input-name">Nombre *</label>
                     <mat-form-field appearance="outline">
-                        <input matInput formControlName="name" placeholder="Nombre" type="text">
+                        <input matInput formControlName="name" type="text">
                         <mat-error *ngIf="form.get('name').invalid && form.get('name').dirty">
                             Debes ingresar tu nombre!
                         </mat-error>
                     </mat-form-field>
                 </div>
                 <div class="col">
+                    <label class="label-input-name">Apellidos *</label>
                     <mat-form-field appearance="outline">
-                        <input matInput formControlName="lastName" placeholder="Apellido" type="text">
+                        <input matInput formControlName="lastName" type="text">
                         <mat-error *ngIf="form.get('lastName').invalid && form.get('lastName').dirty">
                             Debes ingresar tu Apellido!
                         </mat-error>
                     </mat-form-field>
                 </div>
                 <div class="col">
+                    <label class="label-input-name">Rut *</label>
                     <mat-form-field appearance="outline">
-                        <input matInput formControlName="rut" placeholder="Rut" type="text">
+                        <input matInput formControlName="rut" type="text">
                         <mat-error *ngIf="form.get('rut').invalid && form.get('rut').dirty ">
                             Debes ingresar tu rut!
                         </mat-error>
@@ -57,8 +60,9 @@
 
             <div class="row pl-5 mb-4">
                 <div class="col">
+                    <label class="label-input-name">Email *</label>
                     <mat-form-field appearance="outline">
-                        <input matInput formControlName="email" placeholder="Email" type="text">
+                        <input matInput formControlName="email" type="text">
                         <mat-error
                             *ngIf="form.get('email').invalid && form.get('email').dirty && form.get('email').hasError('pattern')">
                             Debes ingresar tu mail!
@@ -66,13 +70,15 @@
                     </mat-form-field>
                 </div>
                 <div class="col">
+                    <label class="label-input-name">Confirme su email *</label>
                     <mat-form-field appearance="outline">
-                        <input matInput formControlName="emailConfirm" placeholder="Confirme su email" type="text">
+                        <input matInput formControlName="emailConfirm" type="text">
                     </mat-form-field>
                 </div>
                 <div class="col">
+                    <label class="label-input-name">Teléfono de contacto *</label>
                     <mat-form-field appearance="outline">
-                        <input matInput formControlName="contactNumber" placeholder="Telefono de contacto" type="text">
+                        <input matInput formControlName="contactNumber" type="text" placeholder="+XX X XXXX XXXX">
                         <mat-error *ngIf="form.get('contactNumber').invalid && form.get('contactNumber').dirty">
                             Debes ingresar un teléfono de contacto!
                         </mat-error>
@@ -83,30 +89,33 @@
             <!-- Sobre el local -->
             <div class="row pl-5">
                 <div class="col">
-                    <h2>Sobre el local:</h2>
+                    <h4 class="titulo-4">Sobre el local:</h4>
                 </div>
             </div>
 
             <div class="row pl-5">
                 <div class="col">
+                    <label class="label-input-name">Razón social *</label>
                     <mat-form-field appearance="outline">
-                        <input matInput formControlName="socialReason" placeholder="Razon Social" type="text">
+                        <input matInput formControlName="socialReason" type="text">
                         <mat-error *ngIf="form.get('socialReason').invalid && form.get('socialReason').dirty">
                             Debes ingresar una razón social!
                         </mat-error>
                     </mat-form-field>
                 </div>
                 <div class="col">
+                    <label class="label-input-name">Giro del local *</label>
                     <mat-form-field appearance="outline">
-                        <input matInput formControlName="localTurn" placeholder="Giro de Local" type="text">
+                        <input matInput formControlName="localTurn" type="text">
                         <mat-error *ngIf="form.get('localTurn').invalid && form.get('localTurn').dirty">
                             Debes ingresar un giro de local!
                         </mat-error>
                     </mat-form-field>
                 </div>
                 <div class="col">
+                    <label class="label-input-name">Rut Local *</label>
                     <mat-form-field appearance="outline">
-                        <input matInput formControlName="rutLocal" placeholder="Rut local" type="text">
+                        <input matInput formControlName="rutLocal" type="text">
                         <mat-error *ngIf="form.get('rutLocal').invalid && form.get('rutLocal').dirty">
                             Debes ingresar un rut de local!
                         </mat-error>
@@ -115,69 +124,90 @@
             </div>
 
             <div class="row pl-5">
+
+                <!--Datos de la calle-->
                 <div class="col">
+                    <label class="label-input-name">Calle *</label>
                     <mat-form-field appearance="outline">
-                        <input matInput formControlName="address" placeholder="Direccion" type="text">
-                        <mat-error *ngIf="form.get('address').invalid && form.get('address').dirty">
-                            Debes ingresar una dirección!
-                        </mat-error>
+                        <input matInput formControlName="address" type="text">
                     </mat-form-field>
                 </div>
+
+                <!--Datos del número de dirección-->
                 <div class="col">
+                    <label class="label-input-name">Número *</label>
                     <mat-form-field appearance="outline">
-                        <input matInput formControlName="commune" placeholder="Comuna" type="text">
-                        <mat-error *ngIf="form.get('commune').invalid && form.get('commune').dirty">
-                            Debes ingresar una comuna!
-                        </mat-error>
+                        <input matInput formControlName="number" type="text">
                     </mat-form-field>
                 </div>
+
+                <!--Datos de la región-->
                 <div class="col">
+                    <label class="label-input-name">Ingrese región *</label>
                     <mat-form-field appearance="outline">
-                        <input matInput formControlName="region" placeholder="Region" type="text">
-                        <mat-error *ngIf="form.get('region').invalid && form.get('region').dirty">
-                            Debes ingresar una región!
-                        </mat-error>
+                        <mat-select formControlName="city" (selectionChange)="getStates()">
+                            <mat-option value="0">Seleccionar...</mat-option>
+                            <mat-option [value]="x.id" *ngFor="let x of cities">{{x.name}}</mat-option>
+                        </mat-select>
                     </mat-form-field>
                 </div>
+
             </div>
 
-            <div class="row pl-5 mb-3">
-                <div class="col">
-                    <mat-checkbox formControlName="havePet">
-                        <p>¿Tienes Mascota?</p>
-                    </mat-checkbox>
+            <div class="row pl-5">
+
+                <!--Datos de la comuna-->
+                <div class="col-4">
+                    <label class="label-input-name">Ingrese comuna *</label>
+                    <mat-form-field appearance="outline">
+                        <mat-select formControlName="state">
+                            <mat-option value="0">Seleccionar...</mat-option>
+                            <mat-option [value]="x.id" *ngFor="let x of states">{{x.name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-4">
+                    <label class="label-input-name">¿Tienes Mascota? *</label>
+                    <mat-form-field appearance="outline">
+                        <mat-select formControlName="state">
+                            <mat-option value="0">No</mat-option>
+                            <mat-option value="1">Si</mat-option>
+                        </mat-select>
+                    </mat-form-field>
                 </div>
             </div>
 
             <!-- Datos bancarios -->
             <div class="row pl-5">
                 <div class="col">
-                    <h2>Datos bancarios:</h2>
+                    <h4 class="titulo-4">Datos bancarios:</h4>
                 </div>
             </div>
 
             <div class="row pl-5">
                 <div class="col">
+                    <label class="label-input-name">Rut titular de la cuenta *</label>
                     <mat-form-field appearance="outline">
-                        <input matInput formControlName="rutAccountOwner" placeholder="Rut titular de la cuenta"
-                            type="text">
+                        <input matInput formControlName="rutAccountOwner" type="text">
                         <mat-error *ngIf="form.get('rutAccountOwner').invalid && form.get('rutAccountOwner').dirty">
                             Debes ingresar el rut del titular de cuenta!
                         </mat-error>
                     </mat-form-field>
                 </div>
                 <div class="col">
+                    <label class="label-input-name">Nombre titular de la cuenta *</label>
                     <mat-form-field appearance="outline">
-                        <input matInput formControlName="nameAccountOwner" placeholder="Nombre titular de la cuenta"
-                            type="text">
+                        <input matInput formControlName="nameAccountOwner" type="text">
                         <mat-error *ngIf="form.get('nameAccountOwner').invalid && form.get('nameAccountOwner').dirty">
                             Debes ingresar el nombre del titular de cuenta!
                         </mat-error>
                     </mat-form-field>
                 </div>
                 <div class="col">
+                    <label class="label-input-name">Numero de cuenta *</label>
                     <mat-form-field appearance="outline">
-                        <input matInput formControlName="accountNumber" placeholder="Numero de cuenta" type="text">
+                        <input matInput formControlName="accountNumber" type="text">
                         <mat-error *ngIf="form.get('accountNumber').invalid && form.get('accountNumber').dirty">
                             Debes ingresar el número de cuenta!
                         </mat-error>
@@ -187,8 +217,9 @@
 
             <div class="row mb-4 pl-5 justify-content-start">
                 <div class="col-lg-4 col-md-6">
+                    <label class="label-input-name">Banco *</label>
                     <mat-form-field appearance="outline">
-                        <mat-select formControlName="bank" placeholder="Banco">
+                        <mat-select formControlName="bank">
                             <mat-option value="banco">Banco</mat-option>
                         </mat-select>
                         <mat-error *ngIf="form.get('bank').invalid && form.get('bank').dirty">
@@ -197,8 +228,9 @@
                     </mat-form-field>
                 </div>
                 <div class="col-lg-4 col-md-6">
+                    <label class="label-input-name">Tipo de cuenta *</label>
                     <mat-form-field appearance="outline">
-                        <mat-select formControlName="accountType" placeholder="Tipo de cuenta">
+                        <mat-select formControlName="accountType">
                             <mat-option value="cuenta">Cuenta</mat-option>
                         </mat-select>
                         <mat-error *ngIf="form.get('accountType').invalid && form.get('accountType').dirty">
@@ -211,7 +243,7 @@
             <!-- Horario funcionamiento -->
             <div class="row pl-5">
                 <div class="col">
-                    <h2>Horario funcionamiento:</h2>
+                    <h4 class="titulo-4">Horario funcionamiento:</h4>
                 </div>
             </div>
 
@@ -222,7 +254,7 @@
 
                     <div class="row">
                         <div class="col-12 col-lg-4 col-md-6">
-                            <h3>Apertura</h3>
+                            <label class="label-input-name">Apertura *</label>
                         </div>
                     </div>
 
@@ -251,7 +283,7 @@
 
                     <div class="row">
                         <div class="col-12 col-lg-4 col-md-6">
-                            <h3>Cierre</h3>
+                            <label class="label-input-name">Cierre *</label>
                         </div>
                     </div>
 
@@ -278,8 +310,8 @@
                 <div class="col-lg-4 col-md-6 col-sm-8">
 
                     <div class="row">
-                        <div class="col-12 col-lg-4 col-md-6">
-                            <h3>Dias de funcionamiento</h3>
+                        <div class="col">
+                            <label class="label-input-name">Días de funcionamiento *</label>
                         </div>
                     </div>
 
@@ -300,9 +332,9 @@
             <div class="row pl-5 mb-5">
 
                 <div class="col-lg-4 col-md-6 col-sm-12">
+                    <label class="label-input-name">Contraseña *</label>
                     <mat-form-field appearance="outline">
-                        <input formControlName="password" matInput formControlName="name" placeholder="Contraseña"
-                            type="password">
+                        <input formControlName="password" matInput formControlName="name" type="password">
                         <mat-error *ngIf="this.form.controls['password'].errors?.required">
                             Debes ingresar una contraseña!
                         </mat-error>
@@ -310,18 +342,25 @@
 
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12">
+                    <label class="label-input-name">Repite tu contraseña *</label>
                     <mat-form-field appearance="outline">
-                        <input formControlName="passwordConfirm" matInput formControlName="name"
-                            placeholder="Repite tu contraseña" type="password">
+                        <input formControlName="passwordConfirm" matInput formControlName="name" type="password">
                     </mat-form-field>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12 pl-5 pt-2">
-                    <button style="width:80%;" type="submit" class="register-button" mat-raised-button>
+                    <button type="submit" class="register-button" mat-raised-button>
                         ¡Listo!
                     </button>
                 </div>
 
             </div>
+
+            <div class="row pl-5">
+                <div class="col">
+                    <p class="mensaje-campo-obligatorio">* Campos obligatorios</p>
+                </div>
+            </div>
+
         </form>
 
     </mat-card>

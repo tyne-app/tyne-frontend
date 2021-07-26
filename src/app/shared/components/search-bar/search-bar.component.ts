@@ -32,7 +32,7 @@ export class SearchBarComponent implements OnInit {
     this.getQueryParams();
   }
 
-  searchRestaurants() {
+  public searchRestaurants() {
     if (!this.isReadyToSearch()) return;
     let dateReservationParam = null;
 
