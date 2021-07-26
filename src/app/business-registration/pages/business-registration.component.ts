@@ -53,8 +53,8 @@ export class BusinessRegistrationComponent implements OnInit {
       localTurn: ['', [Validators.required]],
       rutLocal: ['', [Validators.required]],
       address: ['', [Validators.required]],
-      city: ['', [Validators.required]],
-      state: ['', [Validators.required]],
+      city: ['0', [Validators.required]],
+      state: ['0', [Validators.required]],
       havePet: [false, []],
       rutAccountOwner: ['', [Validators.required]],
       nameAccountOwner: ['', [Validators.required]],
@@ -81,6 +81,7 @@ export class BusinessRegistrationComponent implements OnInit {
     const idCity = this.form.get("city").value;
     this.territorialsService.getStates(idCity).subscribe(states => {
       this.states = states;
+      this.form.get("state").setValue("0");
     });
   }
 
