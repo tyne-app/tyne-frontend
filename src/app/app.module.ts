@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/modules/shared.module';
 import { MaterialModule } from './shared/modules/material.module';
 import { HomeModule } from './home/modules/home.module';
-import { BusinessProfileModule } from './business-profile/modules/business-profile.module';
 import { ClientProfileModule } from './client-profile/modules/client-profile.module';
 import { PrivacyModule } from './privacy/modules/privacy.module';
 import { RefundPolicyModule } from './refund-policy/modules/refund-policy.module';
@@ -18,6 +17,7 @@ import { LoginComponent } from './login/pages/login.component';
 import { ClientRegistrationComponent } from './client-registration/pages/client.registration.component';
 import { LoginModule } from './login/modules/login.module';
 import { ClientRegistrationModule } from './client-registration/modules/client-registration.module';
+import { BusinessDetailsModule } from './business-details/modules/business-details.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +32,7 @@ import { ClientRegistrationModule } from './client-registration/modules/client-r
     HomeModule,
     LoginModule,
     ClientRegistrationModule,
-    BusinessProfileModule,
+    BusinessDetailsModule,
     PrivacyModule,
     HttpClientModule,
     ClientProfileModule,
