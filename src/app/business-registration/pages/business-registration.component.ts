@@ -3,8 +3,10 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { emailRegex } from 'src/app/shared/constants/email';
+import { Bank } from 'src/app/shared/interfaces/bank';
 import { City } from 'src/app/shared/interfaces/city';
 import { State } from 'src/app/shared/interfaces/state';
+import { BankService } from 'src/app/shared/services/bank.service';
 import { TerritorialsService } from 'src/app/shared/services/territorials.service';
 
 @Component({
@@ -16,29 +18,32 @@ export class BusinessRegistrationComponent implements OnInit {
 
   public cities: City[] = [];
   public states: State[] = [];
+  public banks: Bank[] = [];
 
   form: FormGroup;
 
   days: Array<any> = [
-    { value: 0, name: 'L' },
-    { value: 1, name: 'M' },
-    { value: 2, name: 'M' },
-    { value: 3, name: 'J' },
-    { value: 4, name: 'V' },
-    { value: 5, name: 'S' },
-    { value: 6, name: 'D' },
+    { value: 0, name: 'Lunes' },
+    { value: 1, name: 'Martes' },
+    { value: 2, name: 'Miércoles' },
+    { value: 3, name: 'Jueves' },
+    { value: 4, name: 'Viernes' },
+    { value: 5, name: 'Sábado' },
+    { value: 6, name: 'Domingo' },
   ];
 
   constructor(
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
     private router: Router,
-    private territorialsService: TerritorialsService
+    private territorialsService: TerritorialsService,
+    private banksService: BankService
     ) { }
 
   ngOnInit() {
     this.initForm();
     this.getCities();
+    this.getBanks();
   }
 
   public initForm() {
@@ -59,7 +64,7 @@ export class BusinessRegistrationComponent implements OnInit {
       rutAccountOwner: ['', [Validators.required]],
       nameAccountOwner: ['', [Validators.required]],
       accountNumber: ['', [Validators.required]],
-      bank: ['', [Validators.required]],
+      bank: ['0', [Validators.required]],
       accountType: ['', [Validators.required]],
       hourOpening: ['', [Validators.required]],
       minutesOpening: ['', [Validators.required]],
@@ -82,6 +87,12 @@ export class BusinessRegistrationComponent implements OnInit {
     this.territorialsService.getStates(idCity).subscribe(states => {
       this.states = states;
       this.form.get("state").setValue("0");
+    });
+  }
+
+  public getBanks() {
+    this.banksService.getBanks().subscribe(banks => {
+      this.banks = banks;
     });
   }
 

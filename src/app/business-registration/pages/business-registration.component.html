@@ -32,7 +32,7 @@
                 <div class="col">
                     <label class="label-input-name">Nombre *</label>
                     <mat-form-field appearance="outline">
-                        <input matInput formControlName="name" type="text">
+                        <input matInput formControlName="name" type="text" >
                         <mat-error *ngIf="form.get('name').invalid && form.get('name').dirty">
                             Debes ingresar tu nombre!
                         </mat-error>
@@ -220,11 +220,9 @@
                     <label class="label-input-name">Banco *</label>
                     <mat-form-field appearance="outline">
                         <mat-select formControlName="bank">
-                            <mat-option value="banco">Banco</mat-option>
+                            <mat-option value="0">Seleccionar...</mat-option>
+                            <mat-option [value]="x.id" *ngFor="let x of banks">{{x.name}}</mat-option>
                         </mat-select>
-                        <mat-error *ngIf="form.get('bank').invalid && form.get('bank').dirty">
-                            Debes escoger un banco!
-                        </mat-error>
                     </mat-form-field>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -308,22 +306,28 @@
                 </div>
 
                 <div class="col-lg-4 col-md-6 col-sm-8">
-
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="col">
                             <label class="label-input-name">Días de funcionamiento *</label>
                         </div>
-                    </div>
-
+                    </div> -->
                     <div class="row">
-                        <div *ngFor="let day of days; let i=index" class="col-sm-2">
+                        <!-- <div *ngFor="let day of days; let i=index" class="col-sm-2">
                             <mat-checkbox [value]="day.value" (change)="onDaysCheckboxChange($event)">{{day.name}}
                             </mat-checkbox>
+                        </div> -->
+                        <div class="col">
+                            <label class="label-input-name">Días de funcionamiento *</label>
+                            <mat-form-field appearance="outline">
+                                <mat-select multiple>
+                                    <mat-option *ngFor="let x of days" [value]="x">{{x.name}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <!-- <mat-error *ngIf="form.controls['days'].errors?.required">
+                                Debes escoger al menos 1 día
+                            </mat-error> -->
                         </div>
                     </div>
-                    <mat-error *ngIf="form.controls['days'].errors?.required">
-                        Debes escoger al menos 1 día
-                    </mat-error>
                 </div>
 
             </div>
