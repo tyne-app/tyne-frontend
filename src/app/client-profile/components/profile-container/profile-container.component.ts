@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { PasswordValidation } from 'src/app/shared/Validations/PasswordValidation';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { PasswordValidation } from 'src/app/shared/validations/password-validation';
 
 @Component({
   selector: 'app-profile-container',
