@@ -8,8 +8,8 @@ const routes: Routes = [
     loadChildren: () => import('./home/modules/home.module').then( m => m.HomeModule),
   },
   {
-    path: 'perfil-local',
-    loadChildren: () => import('./business-profile/modules/business-profile.module').then( m=>m.BusinessProfileModule),
+    path: 'detalle-local',
+    loadChildren: () => import('./business-details/modules/business-details.module').then( m=>m.BusinessDetailsModule),
   },
   {
     path: 'registro-negocio',
