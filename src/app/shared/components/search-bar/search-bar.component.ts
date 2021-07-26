@@ -3,6 +3,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RestaurantService } from 'src/app/shared/services/restaurant.service';
+import { State } from '../../interfaces/state';
+import { TerritorialsService } from '../../services/territorials.service';
 
 @Component({
   selector: 'app-search-bar',
@@ -13,21 +15,24 @@ export class SearchBarComponent implements OnInit {
 
   public form!: FormGroup;
   public minDate = new Date();
+  public states: State[] = [];
 
   constructor(
     private fb: FormBuilder,
     private route: Router,
     private router: ActivatedRoute,
     private snackBar: MatSnackBar,
-    private restaurantService: RestaurantService
+    private restaurantService: RestaurantService,
+    private territorialsService: TerritorialsService
   ) { }
 
   ngOnInit() {
     this.initForm();
+    this.getStates();
     this.getQueryParams();
   }
 
-  public searchRestaurants() {
+  searchRestaurants() {
     if (!this.isReadyToSearch()) return;
     let dateReservationParam = null;
 
@@ -55,13 +60,19 @@ export class SearchBarComponent implements OnInit {
     }
   }
 
+  public getStates() {
+    this.territorialsService.getStates(13).subscribe(states => {
+      this.states = states;
+    });
+  }
+
   public isReadyToSearch(): boolean {
 
     if (!this.form.get("name").value && !this.form.get("dateReservation").value && (!this.form.get("state").value || this.form.get("state").value === "0")) {
 
-      this.form.get("name").setErrors({'required': true});
-      this.form.get("dateReservation").setErrors({'required': true});
-      this.form.get("state").setErrors({'required': true});
+      this.form.get("name").setErrors({ 'required': true });
+      this.form.get("dateReservation").setErrors({ 'required': true });
+      this.form.get("state").setErrors({ 'required': true });
 
       return false;
     } else if (this.form.get("name").hasError("minlength") || this.form.get("dateReservation").hasError("invalidDate")) {
@@ -85,7 +96,7 @@ export class SearchBarComponent implements OnInit {
     return this.form.get("state").hasError("required") ? "Debe seleccionar una comuna" :
       this.form.get("state").hasError("min") ? "Debe seleccionar una comuna" : null;
   }
-  
+
   private initForm() {
     this.form = this.fb.group({
       name: ['', [Validators.minLength(3)]],
@@ -98,7 +109,7 @@ export class SearchBarComponent implements OnInit {
     this.router.queryParams.subscribe(x => {
       this.form.get("name").setValue(x.name);
       this.form.get("dateReservation").setValue(x.dateReservation ? new Date(x.dateReservation) : null);
-      this.form.get("state").setValue(x.state);
+      this.form.get("state").setValue(x.state != null ? Number(x.state) : 0);
     })
   }
 

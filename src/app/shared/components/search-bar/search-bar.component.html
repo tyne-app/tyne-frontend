@@ -24,7 +24,8 @@
                 <div class="col-lg-3 col-md-6  d-flex justify-content-center">
                     <mat-form-field appearance="outline">
                         <mat-label>Ingresa fecha de reserva</mat-label>
-                        <input matInput formControlName="dateReservation" autocomplete="off" [matDatepicker]="picker" [min]="minDate">
+                        <input matInput formControlName="dateReservation" autocomplete="off" [matDatepicker]="picker"
+                            [min]="minDate">
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
                         <mat-error>
@@ -38,7 +39,7 @@
                         <mat-label>Ingresa comuna</mat-label>
                         <mat-select formControlName="state">
                             <mat-option value="0">Seleccionar...</mat-option>
-                            <mat-option value="1">Providencia</mat-option>
+                            <mat-option [value]="x.id" *ngFor="let x of states">{{x.name}}</mat-option>
                         </mat-select>
                         <mat-error>
                             {{stateErrorMessage()}}
@@ -54,7 +55,7 @@
 
             </div>
         </form>
-        
+
     </mat-card-content>
 
 </mat-card>

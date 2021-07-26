@@ -18,6 +18,7 @@ import { ClientRegistrationComponent } from './client-registration/pages/client.
 import { LoginModule } from './login/modules/login.module';
 import { ClientRegistrationModule } from './client-registration/modules/client-registration.module';
 import { BusinessDetailsModule } from './business-details/modules/business-details.module';
+import { RestClientService } from './shared/services/rest-client.service';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { BusinessDetailsModule } from './business-details/modules/business-detai
   ],
   entryComponents: [ClientRegistrationComponent, LoginComponent],
   providers: [
+    RestClientService,
     {
       provide: MAT_DATE_LOCALE, useValue: 'es'
     },
