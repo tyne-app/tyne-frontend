@@ -1,17 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormArray,
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators
-} from '@angular/forms';
-
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-
 import { emailRegex } from 'src/app/shared/constants/email';
-import { Local } from 'src/app/shared/interfaces/local';
+import { Bank } from 'src/app/shared/interfaces/bank';
+import { City } from 'src/app/shared/interfaces/city';
+import { State } from 'src/app/shared/interfaces/state';
+import { BankService } from 'src/app/shared/services/bank.service';
+import { TerritorialsService } from 'src/app/shared/services/territorials.service';
 
 @Component({
   selector: 'app-business-registration',
@@ -20,24 +16,37 @@ import { Local } from 'src/app/shared/interfaces/local';
 })
 export class BusinessRegistrationComponent implements OnInit {
 
+  public cities: City[] = [];
+  public states: State[] = [];
+  public banks: Bank[] = [];
+
   form: FormGroup;
 
   days: Array<any> = [
-    {value: 0, name: 'L'},
-    {value: 1, name: 'M'},
-    {value: 2, name: 'M'},
-    {value: 3, name: 'J'},
-    {value: 4, name: 'V'},
-    {value: 5, name: 'S'},
-    {value: 6, name: 'D'},
+    { value: 0, name: 'Lunes' },
+    { value: 1, name: 'Martes' },
+    { value: 2, name: 'Miércoles' },
+    { value: 3, name: 'Jueves' },
+    { value: 4, name: 'Viernes' },
+    { value: 5, name: 'Sábado' },
+    { value: 6, name: 'Domingo' },
   ];
 
   constructor(
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
-    private router: Router) { }
+    private router: Router,
+    private territorialsService: TerritorialsService,
+    private banksService: BankService
+    ) { }
 
   ngOnInit() {
+    this.initForm();
+    this.getCities();
+    this.getBanks();
+  }
+
+  public initForm() {
     this.form = this.fb.group({
       name: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
@@ -49,13 +58,13 @@ export class BusinessRegistrationComponent implements OnInit {
       localTurn: ['', [Validators.required]],
       rutLocal: ['', [Validators.required]],
       address: ['', [Validators.required]],
-      commune: ['', [Validators.required]],
-      region: ['', [Validators.required]],
+      city: ['0', [Validators.required]],
+      state: ['0', [Validators.required]],
       havePet: [false, []],
       rutAccountOwner: ['', [Validators.required]],
       nameAccountOwner: ['', [Validators.required]],
       accountNumber: ['', [Validators.required]],
-      bank: ['', [Validators.required]],
+      bank: ['0', [Validators.required]],
       accountType: ['', [Validators.required]],
       hourOpening: ['', [Validators.required]],
       minutesOpening: ['', [Validators.required]],
@@ -64,10 +73,28 @@ export class BusinessRegistrationComponent implements OnInit {
       days: this.fb.array([], [Validators.required]),
       password: ['', [Validators.required, Validators.minLength(6)]],
       passwordConfirm: ['', [Validators.required, Validators.minLength(6)]],
-
     });
   }
 
+  public getCities() {
+    this.territorialsService.getCities(1).subscribe(cities => {
+      this.cities = cities;
+    });
+  }
+
+  public getStates() {
+    const idCity = this.form.get("city").value;
+    this.territorialsService.getStates(idCity).subscribe(states => {
+      this.states = states;
+      this.form.get("state").setValue("0");
+    });
+  }
+
+  public getBanks() {
+    this.banksService.getBanks().subscribe(banks => {
+      this.banks = banks;
+    });
+  }
 
   /*
     Argument(e) -> Event from checkbox.
@@ -99,7 +126,6 @@ export class BusinessRegistrationComponent implements OnInit {
   get closure() {
     return this.form.get('hourClosure').value.concat(this.form.get('minutesClosure').value);
   }
-
 
   async onSubmit() {
 

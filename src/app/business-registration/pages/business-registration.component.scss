@@ -5,25 +5,31 @@ mat-card {
 mat-form-field {
     width: 95%;
     margin-bottom: 16px;
-
 }
 
 .day-schedule {
     width: 100%;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    color: #3C0000;
-}
-
 .register-button {
-    width: 45%;
     color: white;
     border-radius: 15px;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: normal;
     background-color: #E10000;
+    width: 161.93px;
+    height: 43px;
+    margin-top: 20px;
 }
+
+// ::ng-deep .mat-form-field-outline-start {
+//     border-radius: 10px 0 0 10px !important;
+//     min-width: 10px !important;
+// }
+
+// ::ng-deep .mat-form-field-outline-end {
+//     border-radius: 0 10px 10px 0 !important;
+// }
 
 ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
     color: #3C0000;
@@ -35,4 +41,12 @@ h1, h2, h3, h4, h5, h6 {
 
 ::ng-deep .mat-form-field-outline {
     background-color: white;
+}
+
+.mensaje-campo-obligatorio {
+    color: #3C0000;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
 }
