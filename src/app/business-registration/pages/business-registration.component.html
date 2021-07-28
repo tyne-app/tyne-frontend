@@ -30,29 +30,31 @@
 
             <div class="row pl-5">
                 <div class="col">
+                    <!--Nombre del representante-->
                     <label class="label-input-name">Nombre *</label>
                     <mat-form-field appearance="outline">
-                        <input matInput formControlName="name" type="text" >
-                        <mat-error *ngIf="form.get('name').invalid && form.get('name').dirty">
-                            Debes ingresar tu nombre!
+                        <input matInput formControlName="name" type="text">
+                        <mat-error>
+                            {{getNameError()}}
                         </mat-error>
                     </mat-form-field>
                 </div>
                 <div class="col">
+                    <!--Apellidos del representante-->
                     <label class="label-input-name">Apellidos *</label>
                     <mat-form-field appearance="outline">
                         <input matInput formControlName="lastName" type="text">
-                        <mat-error *ngIf="form.get('lastName').invalid && form.get('lastName').dirty">
-                            Debes ingresar tu Apellido!
+                        <mat-error>
+                            {{getLastNameError()}}
                         </mat-error>
                     </mat-form-field>
                 </div>
                 <div class="col">
                     <label class="label-input-name">Rut *</label>
                     <mat-form-field appearance="outline">
-                        <input matInput formControlName="rut" type="text">
-                        <mat-error *ngIf="form.get('rut').invalid && form.get('rut').dirty ">
-                            Debes ingresar tu rut!
+                        <input matInput formControlName="rut" type="text" maxlength="12" [ngModel]="rut | rut" (ngModelChange)="rut=$event">
+                        <mat-error>
+                            {{getRutError()}}
                         </mat-error>
                     </mat-form-field>
                 </div>

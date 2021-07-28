@@ -7,7 +7,7 @@ import { MapComponent } from '../components/map/components/map.component';
 
 @NgModule({
   declarations: [
-    MapComponent
+    MapComponent,
   ],
   imports: [
     CommonModule,

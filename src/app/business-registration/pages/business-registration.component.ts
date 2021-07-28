@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { Ng9RutService, RutValidator } from 'ng9-rut';
 import { emailRegex } from 'src/app/shared/constants/email';
 import { Bank } from 'src/app/shared/interfaces/bank';
 import { City } from 'src/app/shared/interfaces/city';
@@ -19,6 +20,7 @@ export class BusinessRegistrationComponent implements OnInit {
   public cities: City[] = [];
   public states: State[] = [];
   public banks: Bank[] = [];
+  public rut: string = null;
 
   form: FormGroup;
 
@@ -34,13 +36,15 @@ export class BusinessRegistrationComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private rutValidator: RutValidator,
     private snackBar: MatSnackBar,
     private router: Router,
     private territorialsService: TerritorialsService,
-    private banksService: BankService
-    ) { }
+    private banksService: BankService,
+    private a: Ng9RutService
+  ) { }
 
-  ngOnInit() {
+  public ngOnInit() {
     this.initForm();
     this.getCities();
     this.getBanks();
@@ -48,9 +52,9 @@ export class BusinessRegistrationComponent implements OnInit {
 
   public initForm() {
     this.form = this.fb.group({
-      name: ['', [Validators.required]],
-      lastName: ['', [Validators.required]],
-      rut: ['', [Validators.required]],
+      name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
+      lastName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
+      rut: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(12), this.rutValidator]],
       email: ['', [Validators.email, Validators.required, Validators.pattern(emailRegex)]],
       emailConfirm: ['', [Validators.required, Validators.pattern(emailRegex)]],
       contactNumber: ['', [Validators.required]],
@@ -96,38 +100,7 @@ export class BusinessRegistrationComponent implements OnInit {
     });
   }
 
-  /*
-    Argument(e) -> Event from checkbox.
-    If the checkbox is checked, we push that value to an array as FormArray.
-    And if the user unselect the checkbox we remove the value from the FormArray
-  */
-  onDaysCheckboxChange(e) {
-    const daysArray: FormArray = this.form.get('days') as FormArray; // pass it as a reference.
-
-    if (e.checked) {
-      daysArray.push(new FormControl(e.source.value));
-    } else {
-      let i = 0;
-
-      daysArray.controls.forEach((item: FormControl) => {
-        if (item.value === e.source.value) {
-          daysArray.removeAt(i);
-          return;
-        }
-        i++;
-      });
-    }
-  }
-
-  get opening() {
-    return this.form.get('hourOpening').value.concat(this.form.get('minutesOpening').value);
-  }
-
-  get closure() {
-    return this.form.get('hourClosure').value.concat(this.form.get('minutesClosure').value);
-  }
-
-  async onSubmit() {
+  public onSubmit() {
 
     // Local object.
     // const local: Local = {
@@ -153,4 +126,25 @@ export class BusinessRegistrationComponent implements OnInit {
     this.router.navigateByUrl('/inicio');
   }
 
+  public getNameError() {
+    const name = this.form.get("name");
+    return name.hasError("required") ? "Debe ingresar un nombre" :
+      name.hasError("minlength") ? "Debe tener mínimo 2 caracteres" : 
+      name.hasError("maxlength") ? "Debe tener máximo 30 caracteres" : null
+  }
+
+  public getLastNameError() {
+    const lastName = this.form.get("lastName");
+    return lastName.hasError("required") ? "Debe ingresar un apellido" :
+      lastName.hasError("minlength") ? "Debe tener mínimo 2 caracteres" : 
+      lastName.hasError("maxlength") ? "Debe tener máximo 30 caracteres" : null
+  }
+
+  public getRutError() {
+    const rut = this.form.get("rut");
+    return rut.hasError("required") ? "Debe ingresar un rut" :
+      rut.hasError("minlength") ? "Debe ingresar un rut válido" : 
+      rut.hasError("maxlength") ? "Debe ingresar un rut válido" : 
+      rut.hasError("invalidRut") ? "Debe ingresar un rut válido" : null
+  }
 }
