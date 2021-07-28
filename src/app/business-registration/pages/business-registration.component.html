@@ -52,7 +52,8 @@
                 <div class="col">
                     <label class="label-input-name">Rut *</label>
                     <mat-form-field appearance="outline">
-                        <input matInput formControlName="rut" type="text" maxlength="12" [ngModel]="rut | rut" (ngModelChange)="rut=$event">
+                        <input matInput formControlName="rut" type="text" maxlength="9" formatRut>
+                            <!-- [ngModel]="rutRepresentanteLegal | rut" (ngModelChange)="rutRepresentanteLegal=$event"> -->
                         <mat-error>
                             {{getRutError()}}
                         </mat-error>
@@ -65,9 +66,8 @@
                     <label class="label-input-name">Email *</label>
                     <mat-form-field appearance="outline">
                         <input matInput formControlName="email" type="text">
-                        <mat-error
-                            *ngIf="form.get('email').invalid && form.get('email').dirty && form.get('email').hasError('pattern')">
-                            Debes ingresar tu mail!
+                        <mat-error>
+                          {{getEmailError()}}
                         </mat-error>
                     </mat-form-field>
                 </div>
@@ -75,6 +75,9 @@
                     <label class="label-input-name">Confirme su email *</label>
                     <mat-form-field appearance="outline">
                         <input matInput formControlName="emailConfirm" type="text">
+                        <mat-error>
+                            {{getEmailConfirmError()}}
+                          </mat-error>
                     </mat-form-field>
                 </div>
                 <div class="col">

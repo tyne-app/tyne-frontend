@@ -9,6 +9,7 @@ import { City } from 'src/app/shared/interfaces/city';
 import { State } from 'src/app/shared/interfaces/state';
 import { BankService } from 'src/app/shared/services/bank.service';
 import { TerritorialsService } from 'src/app/shared/services/territorials.service';
+import { EmailValidator } from 'src/app/shared/validations/email-validator';
 
 @Component({
   selector: 'app-business-registration',
@@ -20,9 +21,8 @@ export class BusinessRegistrationComponent implements OnInit {
   public cities: City[] = [];
   public states: State[] = [];
   public banks: Bank[] = [];
-  public rut: string = null;
-
-  form: FormGroup;
+  public rutRepresentanteLegal: string = null;
+  public form: FormGroup;
 
   days: Array<any> = [
     { value: 0, name: 'Lunes' },
@@ -40,8 +40,7 @@ export class BusinessRegistrationComponent implements OnInit {
     private snackBar: MatSnackBar,
     private router: Router,
     private territorialsService: TerritorialsService,
-    private banksService: BankService,
-    private a: Ng9RutService
+    private banksService: BankService
   ) { }
 
   public ngOnInit() {
@@ -54,14 +53,15 @@ export class BusinessRegistrationComponent implements OnInit {
     this.form = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
       lastName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
-      rut: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(12), this.rutValidator]],
+      rut: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(9), this.rutValidator]],
       email: ['', [Validators.email, Validators.required, Validators.pattern(emailRegex)]],
-      emailConfirm: ['', [Validators.required, Validators.pattern(emailRegex)]],
+      emailConfirm: ['', [Validators.required, Validators.pattern(emailRegex), EmailValidator('email')]],
       contactNumber: ['', [Validators.required]],
       socialReason: ['', [Validators.required]],
       localTurn: ['', [Validators.required]],
       rutLocal: ['', [Validators.required]],
       address: ['', [Validators.required]],
+      number: ['', [Validators.required]],
       city: ['0', [Validators.required]],
       state: ['0', [Validators.required]],
       havePet: [false, []],
@@ -129,22 +129,38 @@ export class BusinessRegistrationComponent implements OnInit {
   public getNameError() {
     const name = this.form.get("name");
     return name.hasError("required") ? "Debe ingresar un nombre" :
-      name.hasError("minlength") ? "Debe tener mínimo 2 caracteres" : 
-      name.hasError("maxlength") ? "Debe tener máximo 30 caracteres" : null
+      name.hasError("minlength") ? "Debe tener mínimo 2 caracteres" :
+        name.hasError("maxlength") ? "Debe tener máximo 30 caracteres" : null
   }
 
   public getLastNameError() {
     const lastName = this.form.get("lastName");
     return lastName.hasError("required") ? "Debe ingresar un apellido" :
-      lastName.hasError("minlength") ? "Debe tener mínimo 2 caracteres" : 
-      lastName.hasError("maxlength") ? "Debe tener máximo 30 caracteres" : null
+      lastName.hasError("minlength") ? "Debe tener mínimo 2 caracteres" :
+        lastName.hasError("maxlength") ? "Debe tener máximo 30 caracteres" : null
   }
 
   public getRutError() {
     const rut = this.form.get("rut");
+    console.log(rut.errors);
     return rut.hasError("required") ? "Debe ingresar un rut" :
-      rut.hasError("minlength") ? "Debe ingresar un rut válido" : 
-      rut.hasError("maxlength") ? "Debe ingresar un rut válido" : 
-      rut.hasError("invalidRut") ? "Debe ingresar un rut válido" : null
+      rut.hasError("minlength") ? "Debe ingresar un rut válido" :
+        rut.hasError("maxlength") ? "Debe ingresar un rut válido" :
+          rut.hasError("invalidRut") ? "Debe ingresar un rut válido" : null
+  }
+
+  public getEmailError() {
+    const email = this.form.get("email");
+    return email.hasError("required") ? "Debe ingresar un email" :
+      email.hasError("email") ? "Debe ingresar un email válido" :
+        email.hasError("pattern") ? "Debe ingresar un email válido" : null
+  }
+
+  public getEmailConfirmError() {
+    const emailConfirm = this.form.get("emailConfirm");
+    return emailConfirm.hasError("required") ? "Debe ingresar un email" :
+      emailConfirm.hasError("notMatch") ? "El email no coincide" :
+        emailConfirm.hasError("email") ? "Debe ingresar un email válido" :
+          emailConfirm.hasError("pattern") ? "Debe ingresar un email válido" : null
   }
 }
