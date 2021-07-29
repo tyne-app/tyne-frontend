@@ -2,14 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { Ng9RutService, RutValidator } from 'ng9-rut';
+import { RutValidator } from 'ng9-rut';
 import { emailRegex } from 'src/app/shared/constants/email';
+import { passwordRegex } from 'src/app/shared/constants/password';
 import { Bank } from 'src/app/shared/interfaces/bank';
 import { City } from 'src/app/shared/interfaces/city';
 import { State } from 'src/app/shared/interfaces/state';
 import { BankService } from 'src/app/shared/services/bank.service';
 import { TerritorialsService } from 'src/app/shared/services/territorials.service';
 import { EmailValidator } from 'src/app/shared/validations/email-validator';
+import { PasswordValidator } from 'src/app/shared/validations/password-validator';
 
 @Component({
   selector: 'app-business-registration',
@@ -56,27 +58,27 @@ export class BusinessRegistrationComponent implements OnInit {
       rut: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(9), this.rutValidator]],
       email: ['', [Validators.email, Validators.required, Validators.pattern(emailRegex)]],
       emailConfirm: ['', [Validators.required, Validators.pattern(emailRegex), EmailValidator('email')]],
-      contactNumber: ['', [Validators.required]],
-      socialReason: ['', [Validators.required]],
-      localTurn: ['', [Validators.required]],
-      rutLocal: ['', [Validators.required]],
-      address: ['', [Validators.required]],
-      number: ['', [Validators.required]],
-      city: ['0', [Validators.required]],
-      state: ['0', [Validators.required]],
-      havePet: [false, []],
-      rutAccountOwner: ['', [Validators.required]],
-      nameAccountOwner: ['', [Validators.required]],
-      accountNumber: ['', [Validators.required]],
-      bank: ['0', [Validators.required]],
-      accountType: ['', [Validators.required]],
-      hourOpening: ['', [Validators.required]],
-      minutesOpening: ['', [Validators.required]],
-      hourClosure: ['', [Validators.required]],
-      minutesClosure: ['', [Validators.required]],
-      days: this.fb.array([], [Validators.required]),
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      passwordConfirm: ['', [Validators.required, Validators.minLength(6)]],
+      contactNumber: ['', [Validators.required, Validators.minLength(17)]],
+      nameCompany: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
+      businessLine: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
+      rutLocal: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(9), this.rutValidator]],
+      address: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
+      number: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(20)]],
+      city: ['0', [Validators.required, Validators.min(1)]],
+      state: ['0', [Validators.required, Validators.min(1)]],
+      havePet: ["0"],
+      rutAccountOwner: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(9), this.rutValidator]],
+      nameAccountOwner: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
+      accountNumber: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(30)]],
+      bank: ['0', [Validators.required, Validators.min(1)]],
+      accountType: ['0', [Validators.required, Validators.min(1)]],
+      hourOpening: ['', [Validators.required, Validators.min(0), Validators.max(23)]],
+      minutesOpening: ['', [Validators.required, Validators.min(0), Validators.max(59)]],
+      hourClosure: ['', [Validators.required, Validators.min(0), Validators.max(23)]],
+      minutesClosure: ['', [Validators.required, Validators.min(0), Validators.max(59)]],
+      days: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.pattern(passwordRegex)]],
+      passwordConfirm: ['', [Validators.required, PasswordValidator('password'), Validators.pattern(passwordRegex)]],
     });
   }
 
@@ -101,6 +103,8 @@ export class BusinessRegistrationComponent implements OnInit {
   }
 
   public onSubmit() {
+
+    if (this.form.invalid) return;
 
     // Local object.
     // const local: Local = {
@@ -142,7 +146,6 @@ export class BusinessRegistrationComponent implements OnInit {
 
   public getRutError() {
     const rut = this.form.get("rut");
-    console.log(rut.errors);
     return rut.hasError("required") ? "Debe ingresar un rut" :
       rut.hasError("minlength") ? "Debe ingresar un rut válido" :
         rut.hasError("maxlength") ? "Debe ingresar un rut válido" :
@@ -162,5 +165,140 @@ export class BusinessRegistrationComponent implements OnInit {
       emailConfirm.hasError("notMatch") ? "El email no coincide" :
         emailConfirm.hasError("email") ? "Debe ingresar un email válido" :
           emailConfirm.hasError("pattern") ? "Debe ingresar un email válido" : null
+  }
+
+  public getContactNumberError() {
+    const contactNumber = this.form.get("contactNumber");
+    return contactNumber.hasError("required") ? "El número no es válido" :
+      contactNumber.hasError("minlength") ? "El número no es válido" : null;
+  }
+
+  public getNameCompanyError() {
+    const nameCompany = this.form.get("nameCompany");
+    return nameCompany.hasError("required") ? "Debe ingresar una razón social" :
+      nameCompany.hasError("minlength") ? "Debe tener mínimo 5 caracteres" :
+        nameCompany.hasError("maxlength") ? "Debe tener máximo 50 caracteres" : null
+  }
+
+  public getBusinessLineError() {
+    const businessLine = this.form.get("businessLine");
+    return businessLine.hasError("required") ? "Debe ingresar un giro" :
+      businessLine.hasError("minlength") ? "Debe tener mínimo 5 caracteres" :
+        businessLine.hasError("maxlength") ? "Debe tener máximo 50 caracteres" : null
+  }
+
+  public getRutLocalError() {
+    const rutLocal = this.form.get("rutLocal");
+    return rutLocal.hasError("required") ? "Debe ingresar un rut" :
+      rutLocal.hasError("minlength") ? "Debe ingresar un rut válido" :
+        rutLocal.hasError("maxlength") ? "Debe ingresar un rut válido" :
+          rutLocal.hasError("invalidRut") ? "Debe ingresar un rut válido" : null
+  }
+
+  public getAddressError() {
+    const address = this.form.get("address");
+    return address.hasError("required") ? "Debe ingresar una calle" :
+      address.hasError("minlength") ? "Debe tener mínimo 5 caracteres" :
+        address.hasError("maxlength") ? "Debe tener máximo 50 caracteres" : null
+  }
+
+  public getNumberError() {
+    const number = this.form.get("number");
+    return number.hasError("required") ? "Debe ingresar una calle" :
+      number.hasError("minlength") ? "Debe tener mínimo 1 caracteres" :
+        number.hasError("maxlength") ? "Debe tener máximo 20 caracteres" : null
+  }
+
+  public getCityError() {
+    const city = this.form.get("city");
+    return city.hasError("required") ? "Debe seleccionar una región" :
+      city.hasError("min") ? "Debe seleccionar una región" : null
+  }
+
+  public getStateError() {
+    const state = this.form.get("state");
+    return state.hasError("required") ? "Debe seleccionar una región" :
+      state.hasError("min") ? "Debe seleccionar una región" : null
+  }
+
+  public getRutAccountOwnerError() {
+    const rutAccountOwner = this.form.get("rutAccountOwner");
+    return rutAccountOwner.hasError("required") ? "Debe ingresar un rut" :
+      rutAccountOwner.hasError("minlength") ? "Debe ingresar un rut válido" :
+        rutAccountOwner.hasError("maxlength") ? "Debe ingresar un rut válido" :
+          rutAccountOwner.hasError("invalidRut") ? "Debe ingresar un rut válido" : null
+  }
+
+  public getNameAccountOwnerError() {
+    const nameAccountOwner = this.form.get("nameAccountOwner");
+    return nameAccountOwner.hasError("required") ? "Debe ingresar un nombre" :
+      nameAccountOwner.hasError("minlength") ? "Debe tener mínimo 5 caracteres" :
+        nameAccountOwner.hasError("maxlength") ? "Debe tener máximo 50 caracteres" : null
+  }
+
+  public getAccountNumberError() {
+    const accountNumber = this.form.get("accountNumber");
+    return accountNumber.hasError("required") ? "Debe ingresar un nombre" :
+      accountNumber.hasError("minlength") ? "Debe tener mínimo 4 caracteres" :
+        accountNumber.hasError("maxlength") ? "Debe tener máximo 20 caracteres" : null
+  }
+
+  public getBankError() {
+    const bank = this.form.get("bank");
+    return bank.hasError("required") ? "Debe seleccionar un banco" :
+      bank.hasError("min") ? "Debe seleccionar un banco" : null
+  }
+
+  public getAccountTypeError() {
+    const accountType = this.form.get("accountType");
+    return accountType.hasError("required") ? "Debe seleccionar un tipo de cuenta" :
+      accountType.hasError("min") ? "Debe seleccionar un tipo de cuenta" : null
+  }
+
+  public getHourOpeningError() {
+    const hourOpening = this.form.get("hourOpening");
+    return hourOpening.hasError("required") ? "Valor inválido" :
+      hourOpening.hasError("min") ? "Valor inválido" :
+        hourOpening.hasError("max") ? "Valor inválido" : null
+  }
+
+  public getMinutesOpeningError() {
+    const minutesOpening = this.form.get("minutesOpening");
+    return minutesOpening.hasError("required") ? "Valor inválido" :
+      minutesOpening.hasError("min") ? "Valor inválido" :
+        minutesOpening.hasError("max") ? "Valor inválido" : null
+  }
+
+  public getHourClosureError() {
+    const hourClosure = this.form.get("hourClosure");
+    return hourClosure.hasError("required") ? "Valor inválido" :
+      hourClosure.hasError("min") ? "Valor inválido" :
+        hourClosure.hasError("max") ? "Valor inválido" : null
+  }
+
+  public getMinutesClosureError() {
+    const minutesClosure = this.form.get("minutesClosure");
+    return minutesClosure.hasError("required") ? "Valor inválido" :
+      minutesClosure.hasError("min") ? "Valor inválido" :
+        minutesClosure.hasError("max") ? "Valor inválido" : null
+  }
+
+  public getDaysError() {
+    const days = this.form.get("days");
+    console.log(days.errors);
+    return days.hasError("required") ? "Debe escoger días de funcionamiento" : null;
+  }
+
+  public getPasswordError() {
+    const password = this.form.get("password");
+    return password.hasError("required") ? "Debe ingresar una contraseña" :
+      password.hasError("pattern") ? "Debe tener como mínimo 8 dígitos, 1 mayúscula y 1 número" : null;
+  }
+
+  public getPasswordConfirmError() {
+    const passwordConfirm = this.form.get("passwordConfirm");
+    return passwordConfirm.hasError("required") ? "Debe ingresar una contraseña" :
+      passwordConfirm.hasError("notMatch") ? "La contraseña no coincide" : 
+      passwordConfirm.hasError("pattern") ? "No cumple" : null;
   }
 }

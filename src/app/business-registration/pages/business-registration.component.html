@@ -6,12 +6,14 @@
 
     <mat-card>
 
+        <!--Tittle-->
         <div class="row pl-5">
             <div class="col">
                 <h3 class="titulo-3">Registro para Locales</h3>
             </div>
         </div>
 
+        <!--Description-->
         <div class="row pl-5">
             <div class="col">
                 <p class="parrafo">Registra tu local y preparate para obtener mayores resultados y brindar más y nuevas
@@ -29,8 +31,9 @@
             </div>
 
             <div class="row pl-5">
+
+                <!--Nombre del representante-->
                 <div class="col">
-                    <!--Nombre del representante-->
                     <label class="label-input-name">Nombre *</label>
                     <mat-form-field appearance="outline">
                         <input matInput formControlName="name" type="text">
@@ -39,8 +42,9 @@
                         </mat-error>
                     </mat-form-field>
                 </div>
+
+                <!--Apellidos del representante-->
                 <div class="col">
-                    <!--Apellidos del representante-->
                     <label class="label-input-name">Apellidos *</label>
                     <mat-form-field appearance="outline">
                         <input matInput formControlName="lastName" type="text">
@@ -49,11 +53,12 @@
                         </mat-error>
                     </mat-form-field>
                 </div>
+
+                <!--Rut del representante-->
                 <div class="col">
                     <label class="label-input-name">Rut *</label>
                     <mat-form-field appearance="outline">
                         <input matInput formControlName="rut" type="text" maxlength="9" formatRut>
-                            <!-- [ngModel]="rutRepresentanteLegal | rut" (ngModelChange)="rutRepresentanteLegal=$event"> -->
                         <mat-error>
                             {{getRutError()}}
                         </mat-error>
@@ -62,30 +67,37 @@
             </div>
 
             <div class="row pl-5 mb-4">
+
+                <!--Email del representante-->
                 <div class="col">
                     <label class="label-input-name">Email *</label>
                     <mat-form-field appearance="outline">
                         <input matInput formControlName="email" type="text">
                         <mat-error>
-                          {{getEmailError()}}
+                            {{getEmailError()}}
                         </mat-error>
                     </mat-form-field>
                 </div>
+
+                <!--Confirmacion email representante-->
                 <div class="col">
                     <label class="label-input-name">Confirme su email *</label>
                     <mat-form-field appearance="outline">
                         <input matInput formControlName="emailConfirm" type="text">
                         <mat-error>
                             {{getEmailConfirmError()}}
-                          </mat-error>
+                        </mat-error>
                     </mat-form-field>
                 </div>
+
+                <!--Telefono del representante-->
                 <div class="col">
                     <label class="label-input-name">Teléfono de contacto *</label>
                     <mat-form-field appearance="outline">
-                        <input matInput formControlName="contactNumber" type="text" placeholder="+XX X XXXX XXXX">
-                        <mat-error *ngIf="form.get('contactNumber').invalid && form.get('contactNumber').dirty">
-                            Debes ingresar un teléfono de contacto!
+                        <input matInput formControlName="contactNumber" type="text" placeholder="+XX X XXXX XXXX"
+                            phoneMask>
+                        <mat-error>
+                            {{getContactNumberError()}}
                         </mat-error>
                     </mat-form-field>
                 </div>
@@ -99,30 +111,36 @@
             </div>
 
             <div class="row pl-5">
+
+                <!--Nombre razón social-->
                 <div class="col">
                     <label class="label-input-name">Razón social *</label>
                     <mat-form-field appearance="outline">
-                        <input matInput formControlName="socialReason" type="text">
-                        <mat-error *ngIf="form.get('socialReason').invalid && form.get('socialReason').dirty">
-                            Debes ingresar una razón social!
+                        <input matInput formControlName="nameCompany" type="text">
+                        <mat-error>
+                            {{getNameCompanyError()}}
                         </mat-error>
                     </mat-form-field>
                 </div>
+
+                <!--Giro del local-->
                 <div class="col">
                     <label class="label-input-name">Giro del local *</label>
                     <mat-form-field appearance="outline">
-                        <input matInput formControlName="localTurn" type="text">
-                        <mat-error *ngIf="form.get('localTurn').invalid && form.get('localTurn').dirty">
-                            Debes ingresar un giro de local!
+                        <input matInput formControlName="businessLine" type="text">
+                        <mat-error>
+                            {{getBusinessLineError()}}
                         </mat-error>
                     </mat-form-field>
                 </div>
+
+                <!--Rut del local-->
                 <div class="col">
                     <label class="label-input-name">Rut Local *</label>
                     <mat-form-field appearance="outline">
-                        <input matInput formControlName="rutLocal" type="text">
-                        <mat-error *ngIf="form.get('rutLocal').invalid && form.get('rutLocal').dirty">
-                            Debes ingresar un rut de local!
+                        <input matInput formControlName="rutLocal" type="text" maxlength="9" formatRut>
+                        <mat-error>
+                            {{getRutLocalError()}}
                         </mat-error>
                     </mat-form-field>
                 </div>
@@ -135,6 +153,9 @@
                     <label class="label-input-name">Calle *</label>
                     <mat-form-field appearance="outline">
                         <input matInput formControlName="address" type="text">
+                        <mat-error>
+                            {{getAddressError()}}
+                        </mat-error>
                     </mat-form-field>
                 </div>
 
@@ -143,6 +164,9 @@
                     <label class="label-input-name">Número *</label>
                     <mat-form-field appearance="outline">
                         <input matInput formControlName="number" type="text">
+                        <mat-error>
+                            {{getNumberError()}}
+                        </mat-error>
                     </mat-form-field>
                 </div>
 
@@ -154,6 +178,9 @@
                             <mat-option value="0">Seleccionar...</mat-option>
                             <mat-option [value]="x.id" *ngFor="let x of cities">{{x.name}}</mat-option>
                         </mat-select>
+                        <mat-error>
+                            {{getCityError()}}
+                        </mat-error>
                     </mat-form-field>
                 </div>
 
@@ -169,13 +196,16 @@
                             <mat-option value="0">Seleccionar...</mat-option>
                             <mat-option [value]="x.id" *ngFor="let x of states">{{x.name}}</mat-option>
                         </mat-select>
+                        <mat-error>
+                            {{getStateError()}}
+                        </mat-error>
                     </mat-form-field>
                 </div>
 
                 <div class="col-4">
                     <label class="label-input-name">¿Tienes Mascota? *</label>
                     <mat-form-field appearance="outline">
-                        <mat-select formControlName="state">
+                        <mat-select formControlName="havePet">
                             <mat-option value="0">No</mat-option>
                             <mat-option value="1">Si</mat-option>
                         </mat-select>
@@ -191,36 +221,44 @@
             </div>
 
             <div class="row pl-5">
+
+                <!--Rut titulas-->
                 <div class="col">
                     <label class="label-input-name">Rut titular de la cuenta *</label>
                     <mat-form-field appearance="outline">
-                        <input matInput formControlName="rutAccountOwner" type="text">
-                        <mat-error *ngIf="form.get('rutAccountOwner').invalid && form.get('rutAccountOwner').dirty">
-                            Debes ingresar el rut del titular de cuenta!
+                        <input matInput formControlName="rutAccountOwner" type="text" maxlength="9" formatRut>
+                        <mat-error>
+                            {{getRutAccountOwnerError()}}
                         </mat-error>
                     </mat-form-field>
                 </div>
+
+                <!--Nombre titular de la cuenta-->
                 <div class="col">
                     <label class="label-input-name">Nombre titular de la cuenta *</label>
                     <mat-form-field appearance="outline">
                         <input matInput formControlName="nameAccountOwner" type="text">
-                        <mat-error *ngIf="form.get('nameAccountOwner').invalid && form.get('nameAccountOwner').dirty">
-                            Debes ingresar el nombre del titular de cuenta!
+                        <mat-error>
+                            {{getNameAccountOwnerError()}}
                         </mat-error>
                     </mat-form-field>
                 </div>
+
+                <!--Número de cuenta-->
                 <div class="col">
                     <label class="label-input-name">Numero de cuenta *</label>
                     <mat-form-field appearance="outline">
                         <input matInput formControlName="accountNumber" type="text">
-                        <mat-error *ngIf="form.get('accountNumber').invalid && form.get('accountNumber').dirty">
-                            Debes ingresar el número de cuenta!
+                        <mat-error>
+                            {{getAccountNumberError()}}
                         </mat-error>
                     </mat-form-field>
                 </div>
             </div>
 
             <div class="row mb-4 pl-5 justify-content-start">
+
+                <!--Banco-->
                 <div class="col-lg-4 col-md-6">
                     <label class="label-input-name">Banco *</label>
                     <mat-form-field appearance="outline">
@@ -228,16 +266,22 @@
                             <mat-option value="0">Seleccionar...</mat-option>
                             <mat-option [value]="x.id" *ngFor="let x of banks">{{x.name}}</mat-option>
                         </mat-select>
+                        <mat-error>
+                            {{getBankError()}}
+                        </mat-error>
                     </mat-form-field>
                 </div>
+
+                <!--Tipo de cuenta-->
                 <div class="col-lg-4 col-md-6">
                     <label class="label-input-name">Tipo de cuenta *</label>
                     <mat-form-field appearance="outline">
                         <mat-select formControlName="accountType">
-                            <mat-option value="cuenta">Cuenta</mat-option>
+                            <mat-option value="0">Seleccione...</mat-option>
+                            <mat-option value="1">Cuenta</mat-option>
                         </mat-select>
-                        <mat-error *ngIf="form.get('accountType').invalid && form.get('accountType').dirty">
-                            Debes escoger un tipo de cuenta!
+                        <mat-error>
+                            {{getAccountTypeError()}}
                         </mat-error>
                     </mat-form-field>
                 </div>
@@ -266,7 +310,10 @@
                         <div class="col-sm-5">
                             <mat-form-field appearance="outline">
                                 <input formControlName="hourOpening" class="day-schedule" matInput placeholder="hh"
-                                    type="text">
+                                    type="number">
+                                <mat-error>
+                                    {{getHourOpeningError()}}
+                                </mat-error>
                             </mat-form-field>
                         </div>
                         <div class="col-sm-1">
@@ -275,7 +322,10 @@
                         <div class="col-sm-5">
                             <mat-form-field appearance="outline">
                                 <input formControlName="minutesOpening" class="day-schedule" matInput placeholder="mm"
-                                    type="text">
+                                    type="number">
+                                <mat-error>
+                                    {{getMinutesOpeningError()}}
+                                </mat-error>
                             </mat-form-field>
                         </div>
                     </div>
@@ -294,7 +344,10 @@
                         <div class="col-sm-5">
                             <mat-form-field appearance="outline">
                                 <input formControlName="hourClosure" class="day-schedule" matInput placeholder="hh"
-                                    type="text">
+                                    type="number">
+                                <mat-error>
+                                    {{getHourClosureError()}}
+                                </mat-error>
                             </mat-form-field>
                         </div>
                         <div class="col-sm-1">
@@ -303,7 +356,10 @@
                         <div class="col-sm-5">
                             <mat-form-field appearance="outline">
                                 <input formControlName="minutesClosure" class="day-schedule" matInput placeholder="mm"
-                                    type="text">
+                                    type="number">
+                                <mat-error>
+                                    {{getMinutesClosureError()}}
+                                </mat-error>
                             </mat-form-field>
                         </div>
                     </div>
@@ -311,26 +367,18 @@
                 </div>
 
                 <div class="col-lg-4 col-md-6 col-sm-8">
-                    <!-- <div class="row">
-                        <div class="col">
-                            <label class="label-input-name">Días de funcionamiento *</label>
-                        </div>
-                    </div> -->
+
                     <div class="row">
-                        <!-- <div *ngFor="let day of days; let i=index" class="col-sm-2">
-                            <mat-checkbox [value]="day.value" (change)="onDaysCheckboxChange($event)">{{day.name}}
-                            </mat-checkbox>
-                        </div> -->
                         <div class="col">
                             <label class="label-input-name">Días de funcionamiento *</label>
                             <mat-form-field appearance="outline">
-                                <mat-select multiple>
+                                <mat-select multiple formControlName="days">
                                     <mat-option *ngFor="let x of days" [value]="x">{{x.name}}</mat-option>
                                 </mat-select>
+                                <mat-error>
+                                    {{getDaysError()}}
+                                </mat-error>
                             </mat-form-field>
-                            <!-- <mat-error *ngIf="form.controls['days'].errors?.required">
-                                Debes escoger al menos 1 día
-                            </mat-error> -->
                         </div>
                     </div>
                 </div>
@@ -343,9 +391,9 @@
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <label class="label-input-name">Contraseña *</label>
                     <mat-form-field appearance="outline">
-                        <input formControlName="password" matInput formControlName="name" type="password">
-                        <mat-error *ngIf="this.form.controls['password'].errors?.required">
-                            Debes ingresar una contraseña!
+                        <input formControlName="password" matInput type="password">
+                        <mat-error>
+                            {{getPasswordError()}}
                         </mat-error>
                     </mat-form-field>
 
@@ -353,7 +401,10 @@
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <label class="label-input-name">Repite tu contraseña *</label>
                     <mat-form-field appearance="outline">
-                        <input formControlName="passwordConfirm" matInput formControlName="name" type="password">
+                        <input formControlName="passwordConfirm" matInput type="password">
+                        <mat-error>
+                            {{getPasswordConfirmError()}}
+                        </mat-error>
                     </mat-form-field>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12 pl-5 pt-2">

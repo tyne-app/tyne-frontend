@@ -1,5 +1,8 @@
 import {AbstractControl} from '@angular/forms';
 
+/**
+ * DEPRECATED, IT NEED TO BE DELETED
+ */
 export class PasswordValidation {
 
     static MatchPassword(AC: AbstractControl) {

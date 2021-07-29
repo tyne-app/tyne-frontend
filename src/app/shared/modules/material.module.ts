@@ -20,7 +20,8 @@ import {
   MatToolbarModule,
   MatExpansionModule,
   MatNativeDateModule,
-  MatDatepickerModule
+  MatDatepickerModule,
+  MatTooltipModule
 } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table';
 
@@ -47,7 +48,8 @@ const MaterialComponents = [
   MatSelectModule, 
   MatExpansionModule,
   MatNativeDateModule,
-  MatDatepickerModule
+  MatDatepickerModule,
+  MatTooltipModule
 ];
 
 @NgModule({
