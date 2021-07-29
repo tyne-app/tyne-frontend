@@ -204,7 +204,7 @@ export class BusinessRegistrationComponent implements OnInit {
 
   public getNumberError() {
     const number = this.form.get("number");
-    return number.hasError("required") ? "Debe ingresar una calle" :
+    return number.hasError("required") ? "Debe ingresar un número de calle" :
       number.hasError("minlength") ? "Debe tener mínimo 1 caracteres" :
         number.hasError("maxlength") ? "Debe tener máximo 20 caracteres" : null
   }
@@ -217,8 +217,8 @@ export class BusinessRegistrationComponent implements OnInit {
 
   public getStateError() {
     const state = this.form.get("state");
-    return state.hasError("required") ? "Debe seleccionar una región" :
-      state.hasError("min") ? "Debe seleccionar una región" : null
+    return state.hasError("required") ? "Debe seleccionar una comuna" :
+      state.hasError("min") ? "Debe seleccionar una comuna" : null
   }
 
   public getRutAccountOwnerError() {
@@ -231,14 +231,14 @@ export class BusinessRegistrationComponent implements OnInit {
 
   public getNameAccountOwnerError() {
     const nameAccountOwner = this.form.get("nameAccountOwner");
-    return nameAccountOwner.hasError("required") ? "Debe ingresar un nombre" :
+    return nameAccountOwner.hasError("required") ? "Debe ingresar el nombre del titular" :
       nameAccountOwner.hasError("minlength") ? "Debe tener mínimo 5 caracteres" :
         nameAccountOwner.hasError("maxlength") ? "Debe tener máximo 50 caracteres" : null
   }
 
   public getAccountNumberError() {
     const accountNumber = this.form.get("accountNumber");
-    return accountNumber.hasError("required") ? "Debe ingresar un nombre" :
+    return accountNumber.hasError("required") ? "Debe ingresar un número de cuenta" :
       accountNumber.hasError("minlength") ? "Debe tener mínimo 4 caracteres" :
         accountNumber.hasError("maxlength") ? "Debe tener máximo 20 caracteres" : null
   }
@@ -257,30 +257,30 @@ export class BusinessRegistrationComponent implements OnInit {
 
   public getHourOpeningError() {
     const hourOpening = this.form.get("hourOpening");
-    return hourOpening.hasError("required") ? "Valor inválido" :
-      hourOpening.hasError("min") ? "Valor inválido" :
-        hourOpening.hasError("max") ? "Valor inválido" : null
+    return hourOpening.hasError("required") ? "Solo entre 0 y 23" :
+      hourOpening.hasError("min") ? "Solo entre 0 y 23" :
+        hourOpening.hasError("max") ? "Solo entre 0 y 23" : null
   }
 
   public getMinutesOpeningError() {
     const minutesOpening = this.form.get("minutesOpening");
-    return minutesOpening.hasError("required") ? "Valor inválido" :
-      minutesOpening.hasError("min") ? "Valor inválido" :
-        minutesOpening.hasError("max") ? "Valor inválido" : null
+    return minutesOpening.hasError("required") ? "Solo entre 0 y 59" :
+      minutesOpening.hasError("min") ? "Solo entre 0 y 59" :
+        minutesOpening.hasError("max") ? "Solo entre 0 y 59" : null
   }
 
   public getHourClosureError() {
     const hourClosure = this.form.get("hourClosure");
-    return hourClosure.hasError("required") ? "Valor inválido" :
-      hourClosure.hasError("min") ? "Valor inválido" :
-        hourClosure.hasError("max") ? "Valor inválido" : null
+    return hourClosure.hasError("required") ? "Solo entre 0 y 23" :
+      hourClosure.hasError("min") ? "Solo entre 0 y 23" :
+        hourClosure.hasError("max") ? "Solo entre 0 y 23" : null
   }
 
   public getMinutesClosureError() {
     const minutesClosure = this.form.get("minutesClosure");
-    return minutesClosure.hasError("required") ? "Valor inválido" :
-      minutesClosure.hasError("min") ? "Valor inválido" :
-        minutesClosure.hasError("max") ? "Valor inválido" : null
+    return minutesClosure.hasError("required") ? "Solo entre 0 y 59" :
+      minutesClosure.hasError("min") ? "Solo entre 0 y 59" :
+        minutesClosure.hasError("max") ? "Solo entre 0 y 59" : null
   }
 
   public getDaysError() {
