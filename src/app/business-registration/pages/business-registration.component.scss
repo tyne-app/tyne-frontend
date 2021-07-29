@@ -22,27 +22,6 @@ mat-form-field {
     margin-top: 20px;
 }
 
-// ::ng-deep .mat-form-field-outline-start {
-//     border-radius: 10px 0 0 10px !important;
-//     min-width: 10px !important;
-// }
-
-// ::ng-deep .mat-form-field-outline-end {
-//     border-radius: 0 10px 10px 0 !important;
-// }
-
-::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
-    color: #3C0000;
-}
-  
-::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
-    color: #3C0000;
-}
-
-::ng-deep .mat-form-field-outline {
-    background-color: white;
-}
-
 .mensaje-campo-obligatorio {
     color: #3C0000;
     font-style: normal;

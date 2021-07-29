@@ -30,13 +30,3 @@ input {
   font-size: 25px;
   color: #3C0000;
 }
-
-// ::ng-deep -> Deprecated en versiones superiores de angular https://angular.io/guide/component-styles#deprecated-deep--and-ng-deep
-
-::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
-  color: #3C0000;
-}
-
-::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
-  color: #3C0000;
-}
