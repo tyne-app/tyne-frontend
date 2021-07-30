@@ -34,8 +34,8 @@
 
                 <!--Nombre del representante-->
                 <div class="col">
-                    <label class="label-input-name">Nombre *</label>
                     <mat-form-field appearance="outline">
+                        <mat-label>Nombre *</mat-label>
                         <input matInput formControlName="name" type="text">
                         <mat-error>
                             {{getNameError()}}
@@ -45,8 +45,8 @@
 
                 <!--Apellidos del representante-->
                 <div class="col">
-                    <label class="label-input-name">Apellidos *</label>
                     <mat-form-field appearance="outline">
+                        <mat-label>Apellidos *</mat-label>
                         <input matInput formControlName="lastName" type="text">
                         <mat-error>
                             {{getLastNameError()}}
@@ -56,8 +56,8 @@
 
                 <!--Rut del representante-->
                 <div class="col">
-                    <label class="label-input-name">Rut *</label>
                     <mat-form-field appearance="outline">
+                        <mat-label>Rut *</mat-label>
                         <input matInput formControlName="rut" type="text" maxlength="9" formatRut>
                         <mat-error>
                             {{getRutError()}}
@@ -70,8 +70,8 @@
 
                 <!--Email del representante-->
                 <div class="col">
-                    <label class="label-input-name">Email *</label>
                     <mat-form-field appearance="outline">
+                        <mat-label>Email *</mat-label>
                         <input matInput formControlName="email" type="text">
                         <mat-error>
                             {{getEmailError()}}
@@ -81,8 +81,8 @@
 
                 <!--Confirmacion email representante-->
                 <div class="col">
-                    <label class="label-input-name">Confirme su email *</label>
                     <mat-form-field appearance="outline">
+                        <mat-label>Confirme su email *</mat-label>
                         <input matInput formControlName="emailConfirm" type="text">
                         <mat-error>
                             {{getEmailConfirmError()}}
@@ -92,8 +92,8 @@
 
                 <!--Telefono del representante-->
                 <div class="col">
-                    <label class="label-input-name">Teléfono de contacto *</label>
                     <mat-form-field appearance="outline">
+                        <mat-label>Teléfono de contacto *</mat-label>
                         <input matInput formControlName="contactNumber" type="text" placeholder="+XX X XXXX XXXX"
                             phoneMask>
                         <mat-error>
@@ -114,8 +114,8 @@
 
                 <!--Nombre razón social-->
                 <div class="col">
-                    <label class="label-input-name">Razón social *</label>
                     <mat-form-field appearance="outline">
+                        <mat-label>Razón social *</mat-label>
                         <input matInput formControlName="nameCompany" type="text">
                         <mat-error>
                             {{getNameCompanyError()}}
@@ -125,8 +125,8 @@
 
                 <!--Giro del local-->
                 <div class="col">
-                    <label class="label-input-name">Giro del local *</label>
                     <mat-form-field appearance="outline">
+                        <mat-label>Giro del local *</mat-label>
                         <input matInput formControlName="businessLine" type="text">
                         <mat-error>
                             {{getBusinessLineError()}}
@@ -136,8 +136,8 @@
 
                 <!--Rut del local-->
                 <div class="col">
-                    <label class="label-input-name">Rut Local *</label>
                     <mat-form-field appearance="outline">
+                        <mat-label>Rut Local *</mat-label>
                         <input matInput formControlName="rutLocal" type="text" maxlength="9" formatRut>
                         <mat-error>
                             {{getRutLocalError()}}
@@ -150,8 +150,8 @@
 
                 <!--Datos de la calle-->
                 <div class="col">
-                    <label class="label-input-name">Calle *</label>
                     <mat-form-field appearance="outline">
+                        <mat-label>Calle *</mat-label>
                         <input matInput formControlName="address" type="text">
                         <mat-error>
                             {{getAddressError()}}
@@ -161,8 +161,8 @@
 
                 <!--Datos del número de dirección-->
                 <div class="col">
-                    <label class="label-input-name">Número *</label>
                     <mat-form-field appearance="outline">
+                        <mat-label>Número *</mat-label>
                         <input matInput formControlName="number" type="text">
                         <mat-error>
                             {{getNumberError()}}
@@ -172,8 +172,8 @@
 
                 <!--Datos de la región-->
                 <div class="col">
-                    <label class="label-input-name">Ingrese región *</label>
                     <mat-form-field appearance="outline">
+                        <mat-label>Ingrese región *</mat-label>
                         <mat-select formControlName="city" (selectionChange)="getStates()">
                             <mat-option value="0">Seleccionar...</mat-option>
                             <mat-option [value]="x.id" *ngFor="let x of cities">{{x.name}}</mat-option>
@@ -189,9 +189,9 @@
             <div class="row pl-5">
 
                 <!--Datos de la comuna-->
-                <div class="col-4">
-                    <label class="label-input-name">Ingrese comuna *</label>
+                <div class="col-6 col-sm-6 col-md-4">
                     <mat-form-field appearance="outline">
+                        <mat-label>Ingrese comuna *</mat-label>
                         <mat-select formControlName="state">
                             <mat-option value="0">Seleccionar...</mat-option>
                             <mat-option [value]="x.id" *ngFor="let x of states">{{x.name}}</mat-option>
@@ -202,9 +202,9 @@
                     </mat-form-field>
                 </div>
 
-                <div class="col-4">
-                    <label class="label-input-name">¿Tienes Mascota? *</label>
+                <div class="col-6 col-sm-6 col-md-4">
                     <mat-form-field appearance="outline">
+                        <mat-label>¿Tienes Mascota? *</mat-label>
                         <mat-select formControlName="havePet">
                             <mat-option value="0">No</mat-option>
                             <mat-option value="1">Si</mat-option>
@@ -224,8 +224,8 @@
 
                 <!--Rut titulas-->
                 <div class="col">
-                    <label class="label-input-name">Rut titular de la cuenta *</label>
                     <mat-form-field appearance="outline">
+                        <mat-label>Rut titular de la cuenta *</mat-label>
                         <input matInput formControlName="rutAccountOwner" type="text" maxlength="9" formatRut>
                         <mat-error>
                             {{getRutAccountOwnerError()}}
@@ -235,8 +235,8 @@
 
                 <!--Nombre titular de la cuenta-->
                 <div class="col">
-                    <label class="label-input-name">Nombre titular de la cuenta *</label>
                     <mat-form-field appearance="outline">
+                        <mat-label>Nombre titular de la cuenta *</mat-label>
                         <input matInput formControlName="nameAccountOwner" type="text">
                         <mat-error>
                             {{getNameAccountOwnerError()}}
@@ -246,8 +246,8 @@
 
                 <!--Número de cuenta-->
                 <div class="col">
-                    <label class="label-input-name">Numero de cuenta *</label>
                     <mat-form-field appearance="outline">
+                        <mat-label>Numero de cuenta *</mat-label>
                         <input matInput formControlName="accountNumber" type="text">
                         <mat-error>
                             {{getAccountNumberError()}}
@@ -260,8 +260,8 @@
 
                 <!--Banco-->
                 <div class="col-lg-4 col-md-6">
-                    <label class="label-input-name">Banco *</label>
                     <mat-form-field appearance="outline">
+                        <mat-label>Banco *</mat-label>
                         <mat-select formControlName="bank">
                             <mat-option value="0">Seleccionar...</mat-option>
                             <mat-option [value]="x.id" *ngFor="let x of banks">{{x.name}}</mat-option>
@@ -274,8 +274,8 @@
 
                 <!--Tipo de cuenta-->
                 <div class="col-lg-4 col-md-6">
-                    <label class="label-input-name">Tipo de cuenta *</label>
                     <mat-form-field appearance="outline">
+                        <mat-label>Tipo de cuenta *</mat-label>
                         <mat-select formControlName="accountType">
                             <mat-option value="0">Seleccione...</mat-option>
                             <mat-option value="1">Cuenta</mat-option>
@@ -300,28 +300,28 @@
                 <div class="col-lg-4 col-md-6 col-sm-8">
 
                     <div class="row">
-                        <div class="col-12 col-lg-4 col-md-6">
+                        <div class="col">
                             <label class="label-input-name">Apertura *</label>
                         </div>
                     </div>
 
                     <div class="row">
 
-                        <div class="col-sm-5">
+                        <div class="col-4">
                             <mat-form-field appearance="outline">
-                                <input formControlName="hourOpening" class="day-schedule" matInput placeholder="hh"
+                                <input formControlName="hourOpening" class="day-schedule" matInput placeholder="HH"
                                     type="number">
                                 <mat-error>
                                     {{getHourOpeningError()}}
                                 </mat-error>
                             </mat-form-field>
                         </div>
-                        <div class="col-sm-1">
+                        <div class="col-1">
                             <h4>:</h4>
                         </div>
-                        <div class="col-sm-5">
+                        <div class="col-4">
                             <mat-form-field appearance="outline">
-                                <input formControlName="minutesOpening" class="day-schedule" matInput placeholder="mm"
+                                <input formControlName="minutesOpening" class="day-schedule" matInput placeholder="MM"
                                     type="number">
                                 <mat-error>
                                     {{getMinutesOpeningError()}}
@@ -335,27 +335,27 @@
                 <div class="col-lg-4 col-md-6 col-sm-8">
 
                     <div class="row">
-                        <div class="col-12 col-lg-4 col-md-6">
+                        <div class="col">
                             <label class="label-input-name">Cierre *</label>
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="col-sm-5">
+                        <div class="col-4">
                             <mat-form-field appearance="outline">
-                                <input formControlName="hourClosure" class="day-schedule" matInput placeholder="hh"
+                                <input formControlName="hourClosure" class="day-schedule" matInput placeholder="HH"
                                     type="number">
                                 <mat-error>
                                     {{getHourClosureError()}}
                                 </mat-error>
                             </mat-form-field>
                         </div>
-                        <div class="col-sm-1">
+                        <div class="col-1">
                             <h4>:</h4>
                         </div>
-                        <div class="col-sm-5">
+                        <div class="col-4">
                             <mat-form-field appearance="outline">
-                                <input formControlName="minutesClosure" class="day-schedule" matInput placeholder="mm"
+                                <input formControlName="minutesClosure" class="day-schedule" matInput placeholder="MM"
                                     type="number">
                                 <mat-error>
                                     {{getMinutesClosureError()}}
@@ -389,8 +389,8 @@
             <div class="row pl-5 mb-5">
 
                 <div class="col-lg-4 col-md-6 col-sm-12">
-                    <label class="label-input-name">Contraseña *</label>
                     <mat-form-field appearance="outline">
+                        <mat-label>Contraseña *</mat-label>
                         <input formControlName="password" matInput type="password">
                         <mat-error>
                             {{getPasswordError()}}
@@ -399,15 +399,15 @@
 
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12">
-                    <label class="label-input-name">Repite tu contraseña *</label>
                     <mat-form-field appearance="outline">
+                        <mat-label>Repite tu contraseña *</mat-label>
                         <input formControlName="passwordConfirm" matInput type="password">
                         <mat-error>
                             {{getPasswordConfirmError()}}
                         </mat-error>
                     </mat-form-field>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 pl-5 pt-2">
+                <div class="col-11 col-sm-12 col-md-12 col-lg-3 pl-5 pt-2 d-flex justify-content-center">
                     <button type="submit" class="register-button" mat-raised-button>
                         ¡Listo!
                     </button>

@@ -19,7 +19,6 @@ mat-form-field {
     background-color: #E10000;
     width: 161.93px;
     height: 43px;
-    margin-top: 20px;
 }
 
 .mensaje-campo-obligatorio {
@@ -28,4 +27,8 @@ mat-form-field {
     font-weight: bold;
     font-size: 16px;
     line-height: 19px;
+}
+
+mat-label {
+    color: #3C0000;
 }
