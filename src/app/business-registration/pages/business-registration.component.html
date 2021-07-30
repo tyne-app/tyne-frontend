@@ -6,12 +6,14 @@
 
     <mat-card>
 
+        <!--Tittle-->
         <div class="row pl-5">
             <div class="col">
                 <h3 class="titulo-3">Registro para Locales</h3>
             </div>
         </div>
 
+        <!--Description-->
         <div class="row pl-5">
             <div class="col">
                 <p class="parrafo">Registra tu local y preparate para obtener mayores resultados y brindar más y nuevas
@@ -29,58 +31,73 @@
             </div>
 
             <div class="row pl-5">
+
+                <!--Nombre del representante-->
                 <div class="col">
-                    <label class="label-input-name">Nombre *</label>
                     <mat-form-field appearance="outline">
-                        <input matInput formControlName="name" type="text" >
-                        <mat-error *ngIf="form.get('name').invalid && form.get('name').dirty">
-                            Debes ingresar tu nombre!
+                        <mat-label>Nombre *</mat-label>
+                        <input matInput formControlName="name" type="text">
+                        <mat-error>
+                            {{getNameError()}}
                         </mat-error>
                     </mat-form-field>
                 </div>
+
+                <!--Apellidos del representante-->
                 <div class="col">
-                    <label class="label-input-name">Apellidos *</label>
                     <mat-form-field appearance="outline">
+                        <mat-label>Apellidos *</mat-label>
                         <input matInput formControlName="lastName" type="text">
-                        <mat-error *ngIf="form.get('lastName').invalid && form.get('lastName').dirty">
-                            Debes ingresar tu Apellido!
+                        <mat-error>
+                            {{getLastNameError()}}
                         </mat-error>
                     </mat-form-field>
                 </div>
+
+                <!--Rut del representante-->
                 <div class="col">
-                    <label class="label-input-name">Rut *</label>
                     <mat-form-field appearance="outline">
-                        <input matInput formControlName="rut" type="text">
-                        <mat-error *ngIf="form.get('rut').invalid && form.get('rut').dirty ">
-                            Debes ingresar tu rut!
+                        <mat-label>Rut *</mat-label>
+                        <input matInput formControlName="rut" type="text" maxlength="9" formatRut>
+                        <mat-error>
+                            {{getRutError()}}
                         </mat-error>
                     </mat-form-field>
                 </div>
             </div>
 
             <div class="row pl-5 mb-4">
+
+                <!--Email del representante-->
                 <div class="col">
-                    <label class="label-input-name">Email *</label>
                     <mat-form-field appearance="outline">
+                        <mat-label>Email *</mat-label>
                         <input matInput formControlName="email" type="text">
-                        <mat-error
-                            *ngIf="form.get('email').invalid && form.get('email').dirty && form.get('email').hasError('pattern')">
-                            Debes ingresar tu mail!
+                        <mat-error>
+                            {{getEmailError()}}
                         </mat-error>
                     </mat-form-field>
                 </div>
+
+                <!--Confirmacion email representante-->
                 <div class="col">
-                    <label class="label-input-name">Confirme su email *</label>
                     <mat-form-field appearance="outline">
+                        <mat-label>Confirme su email *</mat-label>
                         <input matInput formControlName="emailConfirm" type="text">
+                        <mat-error>
+                            {{getEmailConfirmError()}}
+                        </mat-error>
                     </mat-form-field>
                 </div>
+
+                <!--Telefono del representante-->
                 <div class="col">
-                    <label class="label-input-name">Teléfono de contacto *</label>
                     <mat-form-field appearance="outline">
-                        <input matInput formControlName="contactNumber" type="text" placeholder="+XX X XXXX XXXX">
-                        <mat-error *ngIf="form.get('contactNumber').invalid && form.get('contactNumber').dirty">
-                            Debes ingresar un teléfono de contacto!
+                        <mat-label>Teléfono de contacto *</mat-label>
+                        <input matInput formControlName="contactNumber" type="text" placeholder="+XX X XXXX XXXX"
+                            phoneMask>
+                        <mat-error>
+                            {{getContactNumberError()}}
                         </mat-error>
                     </mat-form-field>
                 </div>
@@ -94,30 +111,36 @@
             </div>
 
             <div class="row pl-5">
+
+                <!--Nombre razón social-->
                 <div class="col">
-                    <label class="label-input-name">Razón social *</label>
                     <mat-form-field appearance="outline">
-                        <input matInput formControlName="socialReason" type="text">
-                        <mat-error *ngIf="form.get('socialReason').invalid && form.get('socialReason').dirty">
-                            Debes ingresar una razón social!
+                        <mat-label>Razón social *</mat-label>
+                        <input matInput formControlName="nameCompany" type="text">
+                        <mat-error>
+                            {{getNameCompanyError()}}
                         </mat-error>
                     </mat-form-field>
                 </div>
+
+                <!--Giro del local-->
                 <div class="col">
-                    <label class="label-input-name">Giro del local *</label>
                     <mat-form-field appearance="outline">
-                        <input matInput formControlName="localTurn" type="text">
-                        <mat-error *ngIf="form.get('localTurn').invalid && form.get('localTurn').dirty">
-                            Debes ingresar un giro de local!
+                        <mat-label>Giro del local *</mat-label>
+                        <input matInput formControlName="businessLine" type="text">
+                        <mat-error>
+                            {{getBusinessLineError()}}
                         </mat-error>
                     </mat-form-field>
                 </div>
+
+                <!--Rut del local-->
                 <div class="col">
-                    <label class="label-input-name">Rut Local *</label>
                     <mat-form-field appearance="outline">
-                        <input matInput formControlName="rutLocal" type="text">
-                        <mat-error *ngIf="form.get('rutLocal').invalid && form.get('rutLocal').dirty">
-                            Debes ingresar un rut de local!
+                        <mat-label>Rut Local *</mat-label>
+                        <input matInput formControlName="rutLocal" type="text" maxlength="9" formatRut>
+                        <mat-error>
+                            {{getRutLocalError()}}
                         </mat-error>
                     </mat-form-field>
                 </div>
@@ -127,28 +150,37 @@
 
                 <!--Datos de la calle-->
                 <div class="col">
-                    <label class="label-input-name">Calle *</label>
                     <mat-form-field appearance="outline">
+                        <mat-label>Calle *</mat-label>
                         <input matInput formControlName="address" type="text">
+                        <mat-error>
+                            {{getAddressError()}}
+                        </mat-error>
                     </mat-form-field>
                 </div>
 
                 <!--Datos del número de dirección-->
                 <div class="col">
-                    <label class="label-input-name">Número *</label>
                     <mat-form-field appearance="outline">
+                        <mat-label>Número *</mat-label>
                         <input matInput formControlName="number" type="text">
+                        <mat-error>
+                            {{getNumberError()}}
+                        </mat-error>
                     </mat-form-field>
                 </div>
 
                 <!--Datos de la región-->
                 <div class="col">
-                    <label class="label-input-name">Ingrese región *</label>
                     <mat-form-field appearance="outline">
+                        <mat-label>Ingrese región *</mat-label>
                         <mat-select formControlName="city" (selectionChange)="getStates()">
                             <mat-option value="0">Seleccionar...</mat-option>
                             <mat-option [value]="x.id" *ngFor="let x of cities">{{x.name}}</mat-option>
                         </mat-select>
+                        <mat-error>
+                            {{getCityError()}}
+                        </mat-error>
                     </mat-form-field>
                 </div>
 
@@ -157,20 +189,23 @@
             <div class="row pl-5">
 
                 <!--Datos de la comuna-->
-                <div class="col-4">
-                    <label class="label-input-name">Ingrese comuna *</label>
+                <div class="col-6 col-sm-6 col-md-4">
                     <mat-form-field appearance="outline">
+                        <mat-label>Ingrese comuna *</mat-label>
                         <mat-select formControlName="state">
                             <mat-option value="0">Seleccionar...</mat-option>
                             <mat-option [value]="x.id" *ngFor="let x of states">{{x.name}}</mat-option>
                         </mat-select>
+                        <mat-error>
+                            {{getStateError()}}
+                        </mat-error>
                     </mat-form-field>
                 </div>
 
-                <div class="col-4">
-                    <label class="label-input-name">¿Tienes Mascota? *</label>
+                <div class="col-6 col-sm-6 col-md-4">
                     <mat-form-field appearance="outline">
-                        <mat-select formControlName="state">
+                        <mat-label>¿Tienes Mascota? *</mat-label>
+                        <mat-select formControlName="havePet">
                             <mat-option value="0">No</mat-option>
                             <mat-option value="1">Si</mat-option>
                         </mat-select>
@@ -186,53 +221,67 @@
             </div>
 
             <div class="row pl-5">
+
+                <!--Rut titulas-->
                 <div class="col">
-                    <label class="label-input-name">Rut titular de la cuenta *</label>
                     <mat-form-field appearance="outline">
-                        <input matInput formControlName="rutAccountOwner" type="text">
-                        <mat-error *ngIf="form.get('rutAccountOwner').invalid && form.get('rutAccountOwner').dirty">
-                            Debes ingresar el rut del titular de cuenta!
+                        <mat-label>Rut titular de la cuenta *</mat-label>
+                        <input matInput formControlName="rutAccountOwner" type="text" maxlength="9" formatRut>
+                        <mat-error>
+                            {{getRutAccountOwnerError()}}
                         </mat-error>
                     </mat-form-field>
                 </div>
+
+                <!--Nombre titular de la cuenta-->
                 <div class="col">
-                    <label class="label-input-name">Nombre titular de la cuenta *</label>
                     <mat-form-field appearance="outline">
+                        <mat-label>Nombre titular de la cuenta *</mat-label>
                         <input matInput formControlName="nameAccountOwner" type="text">
-                        <mat-error *ngIf="form.get('nameAccountOwner').invalid && form.get('nameAccountOwner').dirty">
-                            Debes ingresar el nombre del titular de cuenta!
+                        <mat-error>
+                            {{getNameAccountOwnerError()}}
                         </mat-error>
                     </mat-form-field>
                 </div>
+
+                <!--Número de cuenta-->
                 <div class="col">
-                    <label class="label-input-name">Numero de cuenta *</label>
                     <mat-form-field appearance="outline">
+                        <mat-label>Numero de cuenta *</mat-label>
                         <input matInput formControlName="accountNumber" type="text">
-                        <mat-error *ngIf="form.get('accountNumber').invalid && form.get('accountNumber').dirty">
-                            Debes ingresar el número de cuenta!
+                        <mat-error>
+                            {{getAccountNumberError()}}
                         </mat-error>
                     </mat-form-field>
                 </div>
             </div>
 
             <div class="row mb-4 pl-5 justify-content-start">
+
+                <!--Banco-->
                 <div class="col-lg-4 col-md-6">
-                    <label class="label-input-name">Banco *</label>
                     <mat-form-field appearance="outline">
+                        <mat-label>Banco *</mat-label>
                         <mat-select formControlName="bank">
                             <mat-option value="0">Seleccionar...</mat-option>
                             <mat-option [value]="x.id" *ngFor="let x of banks">{{x.name}}</mat-option>
                         </mat-select>
+                        <mat-error>
+                            {{getBankError()}}
+                        </mat-error>
                     </mat-form-field>
                 </div>
+
+                <!--Tipo de cuenta-->
                 <div class="col-lg-4 col-md-6">
-                    <label class="label-input-name">Tipo de cuenta *</label>
                     <mat-form-field appearance="outline">
+                        <mat-label>Tipo de cuenta *</mat-label>
                         <mat-select formControlName="accountType">
-                            <mat-option value="cuenta">Cuenta</mat-option>
+                            <mat-option value="0">Seleccione...</mat-option>
+                            <mat-option [value]="x.id" *ngFor="let x of accountType">{{x.name}}</mat-option>
                         </mat-select>
-                        <mat-error *ngIf="form.get('accountType').invalid && form.get('accountType').dirty">
-                            Debes escoger un tipo de cuenta!
+                        <mat-error>
+                            {{getAccountTypeError()}}
                         </mat-error>
                     </mat-form-field>
                 </div>
@@ -251,26 +300,32 @@
                 <div class="col-lg-4 col-md-6 col-sm-8">
 
                     <div class="row">
-                        <div class="col-12 col-lg-4 col-md-6">
+                        <div class="col">
                             <label class="label-input-name">Apertura *</label>
                         </div>
                     </div>
 
                     <div class="row">
 
-                        <div class="col-sm-5">
+                        <div class="col-4">
                             <mat-form-field appearance="outline">
-                                <input formControlName="hourOpening" class="day-schedule" matInput placeholder="hh"
-                                    type="text">
+                                <input formControlName="hourOpening" class="day-schedule" matInput placeholder="HH"
+                                    type="number">
+                                <mat-error>
+                                    {{getHourOpeningError()}}
+                                </mat-error>
                             </mat-form-field>
                         </div>
-                        <div class="col-sm-1">
+                        <div class="col-1">
                             <h4>:</h4>
                         </div>
-                        <div class="col-sm-5">
+                        <div class="col-4">
                             <mat-form-field appearance="outline">
-                                <input formControlName="minutesOpening" class="day-schedule" matInput placeholder="mm"
-                                    type="text">
+                                <input formControlName="minutesOpening" class="day-schedule" matInput placeholder="MM"
+                                    type="number">
+                                <mat-error>
+                                    {{getMinutesOpeningError()}}
+                                </mat-error>
                             </mat-form-field>
                         </div>
                     </div>
@@ -280,25 +335,31 @@
                 <div class="col-lg-4 col-md-6 col-sm-8">
 
                     <div class="row">
-                        <div class="col-12 col-lg-4 col-md-6">
+                        <div class="col">
                             <label class="label-input-name">Cierre *</label>
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="col-sm-5">
+                        <div class="col-4">
                             <mat-form-field appearance="outline">
-                                <input formControlName="hourClosure" class="day-schedule" matInput placeholder="hh"
-                                    type="text">
+                                <input formControlName="hourClosure" class="day-schedule" matInput placeholder="HH"
+                                    type="number">
+                                <mat-error>
+                                    {{getHourClosureError()}}
+                                </mat-error>
                             </mat-form-field>
                         </div>
-                        <div class="col-sm-1">
+                        <div class="col-1">
                             <h4>:</h4>
                         </div>
-                        <div class="col-sm-5">
+                        <div class="col-4">
                             <mat-form-field appearance="outline">
-                                <input formControlName="minutesClosure" class="day-schedule" matInput placeholder="mm"
-                                    type="text">
+                                <input formControlName="minutesClosure" class="day-schedule" matInput placeholder="MM"
+                                    type="number">
+                                <mat-error>
+                                    {{getMinutesClosureError()}}
+                                </mat-error>
                             </mat-form-field>
                         </div>
                     </div>
@@ -306,26 +367,18 @@
                 </div>
 
                 <div class="col-lg-4 col-md-6 col-sm-8">
-                    <!-- <div class="row">
-                        <div class="col">
-                            <label class="label-input-name">Días de funcionamiento *</label>
-                        </div>
-                    </div> -->
+
                     <div class="row">
-                        <!-- <div *ngFor="let day of days; let i=index" class="col-sm-2">
-                            <mat-checkbox [value]="day.value" (change)="onDaysCheckboxChange($event)">{{day.name}}
-                            </mat-checkbox>
-                        </div> -->
                         <div class="col">
                             <label class="label-input-name">Días de funcionamiento *</label>
                             <mat-form-field appearance="outline">
-                                <mat-select multiple>
+                                <mat-select multiple formControlName="days">
                                     <mat-option *ngFor="let x of days" [value]="x">{{x.name}}</mat-option>
                                 </mat-select>
+                                <mat-error>
+                                    {{getDaysError()}}
+                                </mat-error>
                             </mat-form-field>
-                            <!-- <mat-error *ngIf="form.controls['days'].errors?.required">
-                                Debes escoger al menos 1 día
-                            </mat-error> -->
                         </div>
                     </div>
                 </div>
@@ -336,22 +389,25 @@
             <div class="row pl-5 mb-5">
 
                 <div class="col-lg-4 col-md-6 col-sm-12">
-                    <label class="label-input-name">Contraseña *</label>
                     <mat-form-field appearance="outline">
-                        <input formControlName="password" matInput formControlName="name" type="password">
-                        <mat-error *ngIf="this.form.controls['password'].errors?.required">
-                            Debes ingresar una contraseña!
+                        <mat-label>Contraseña *</mat-label>
+                        <input formControlName="password" matInput type="password">
+                        <mat-error>
+                            {{getPasswordError()}}
                         </mat-error>
                     </mat-form-field>
 
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12">
-                    <label class="label-input-name">Repite tu contraseña *</label>
                     <mat-form-field appearance="outline">
-                        <input formControlName="passwordConfirm" matInput formControlName="name" type="password">
+                        <mat-label>Repite tu contraseña *</mat-label>
+                        <input formControlName="passwordConfirm" matInput type="password">
+                        <mat-error>
+                            {{getPasswordConfirmError()}}
+                        </mat-error>
                     </mat-form-field>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 pl-5 pt-2">
+                <div class="col-11 col-sm-12 col-md-12 col-lg-3 pl-5 pt-2 d-flex justify-content-center">
                     <button type="submit" class="register-button" mat-raised-button>
                         ¡Listo!
                     </button>
