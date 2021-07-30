@@ -23,6 +23,7 @@ export class BusinessRegistrationComponent implements OnInit {
   public cities: City[] = [];
   public states: State[] = [];
   public banks: Bank[] = [];
+  public accountType = [];
   public rutRepresentanteLegal: string = null;
   public form: FormGroup;
 
@@ -49,6 +50,7 @@ export class BusinessRegistrationComponent implements OnInit {
     this.initForm();
     this.getCities();
     this.getBanks();
+    this.getAccountType();
   }
 
   public initForm() {
@@ -100,6 +102,16 @@ export class BusinessRegistrationComponent implements OnInit {
     this.banksService.getBanks().subscribe(banks => {
       this.banks = banks;
     });
+  }
+
+  public getAccountType() {
+    this.accountType = [{
+      id: 1,
+      name: "Vista"
+    },{
+      id: 2,
+      name: "Corriente"
+    }];
   }
 
   public onSubmit() {

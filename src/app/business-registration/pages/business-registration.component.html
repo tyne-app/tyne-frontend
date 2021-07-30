@@ -278,7 +278,7 @@
                         <mat-label>Tipo de cuenta *</mat-label>
                         <mat-select formControlName="accountType">
                             <mat-option value="0">Seleccione...</mat-option>
-                            <mat-option value="1">Cuenta</mat-option>
+                            <mat-option [value]="x.id" *ngFor="let x of accountType">{{x.name}}</mat-option>
                         </mat-select>
                         <mat-error>
                             {{getAccountTypeError()}}
