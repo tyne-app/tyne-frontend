@@ -1,0 +1,60 @@
+mat-card {
+    background: #FFFDFA;
+    border: 0.2px solid #000000;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+
+mat-label {
+    color: #3C0000;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.titulo-principal {
+    margin-bottom: 20px;
+}
+
+.titulo {
+    font-weight: 300;
+    font-size: 25px;
+    line-height: 30px;
+    color: #3C0000;
+    margin-bottom: -20px;
+    margin-top: 10px;
+}
+
+.subtitulo {
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 30px;
+    color: #3C0000;
+}
+
+.normal-button {
+    background: #FFFFFF;
+    border: 1px solid #E10000;
+    box-sizing: border-box;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.submit-button {
+    color: white;
+    background: #E10000;
+    border: 1px solid #E10000;
+    box-sizing: border-box;
+    border-radius: 10px;
+    width: 100%;
+}
+
+// .mat-stroked-button {
+//     width: 100%;
+//     background-color: #E10000;
+//     color: white;
+//     border-radius: 10px;
+//     font-weight: lighter;
+// }

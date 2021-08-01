@@ -1,0 +1,130 @@
+<div class="container">
+
+  <!--Titulo principal-->
+  <div class="row">
+    <div class="col">
+      <h3 class="titulo-2 titulo-principal">Bienvenido, Los Vikingos</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col ml-2">
+      <h3 class="titulo-3">Perfil</h3>
+    </div>
+  </div>
+
+  <mat-card>
+    <div class="row">
+      <div class="col-lg-5">
+
+        <div class="row">
+          <div class="col ml-5 pt-4">
+            <h4 class="titulo">Nombre del local</h4>
+            <p class="subtitulo">Los vikingos</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col ml-5">
+            <h4 class="titulo">Teléfono</h4>
+            <p class="subtitulo">+56 9 6585 6514</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col ml-5">
+            <h4 class="titulo">Email</h4>
+            <p class="subtitulo">contacto@vikingos.cl</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col ml-5">
+            <h4 class="titulo">Rut representante legal</h4>
+            <p class="subtitulo">12.345.678-9</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col ml-5">
+            <h4 class="titulo">Nombre representante legal</h4>
+            <p class="subtitulo">María Guzmán</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col ml-5">
+            <h4 class="titulo">Dirección del local</h4>
+            <p class="subtitulo">Avenida Grecia #544</p>
+          </div>
+        </div>
+
+        <div class="row pt-5">
+          <div class="col-lg-1"></div>
+          <div class="col d-flex justify-content-center">
+            <button mat-stroked-button class="normal-button">Cambiar datos</button>
+          </div>
+          <div class="col d-flex justify-content-center">
+            <button mat-stroked-button class="normal-button">Ver datos bancarios</button>
+          </div>
+        </div>
+
+      </div>
+
+      <mat-divider class="col-lg-1" [vertical]="true"></mat-divider>
+
+      <div class="col-lg-6">
+        <div class="row">
+          <div class="col d-flex justify-content-center">
+            <h3 class="titulo-3">Editar contraseña</h3>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col md-2">
+
+            <form [formGroup]="form">
+
+              <div class="row d-flex justify-content-center">
+                <div class="col-sm-8 col-lg-8">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Contraseña Actual</mat-label>
+                    <input matInput type="password">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row d-flex justify-content-center">
+                <div class="col-sm-8 col-lg-8">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Contraseña Nueva</mat-label>
+                    <input matInput type="password">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row d-flex justify-content-center">
+                <div class="col-sm-8 col-lg-8">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Repetir Contraseña</mat-label>
+                    <input matInput type="password">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row mt-5">
+                <div class="col-3"></div>
+                <div class="col-6">
+                  <button class="submit-button" mat-stroked-button>Guardar</button>
+                </div>
+                <div class="col-3"></div>
+              </div>
+
+            </form>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</div>
