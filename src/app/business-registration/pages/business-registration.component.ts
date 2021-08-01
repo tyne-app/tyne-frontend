@@ -80,7 +80,7 @@ export class BusinessRegistrationComponent implements OnInit {
       minutesClosure: ['', [Validators.required, Validators.min(0), Validators.max(59)]],
       days: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.pattern(passwordRegex)]],
-      passwordConfirm: ['', [Validators.required, PasswordValidator('password'), Validators.pattern(passwordRegex)]],
+      passwordConfirm: ['', [Validators.required, PasswordValidator('password')]],
     });
   }
 
@@ -310,7 +310,6 @@ export class BusinessRegistrationComponent implements OnInit {
   public getPasswordConfirmError() {
     const passwordConfirm = this.form.get("passwordConfirm");
     return passwordConfirm.hasError("required") ? "Debe ingresar una contraseña" :
-      passwordConfirm.hasError("notMatch") ? "La contraseña no coincide" : 
-      passwordConfirm.hasError("pattern") ? "No cumple" : null;
+      passwordConfirm.hasError("notMatch") ? "La contraseña no coincide" : null;
   }
 }

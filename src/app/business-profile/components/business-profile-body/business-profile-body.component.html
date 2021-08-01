@@ -89,25 +89,34 @@
                 <div class="col-sm-8 col-lg-8">
                   <mat-form-field appearance="outline">
                     <mat-label>Contraseña Actual</mat-label>
-                    <input matInput type="password">
+                    <input matInput type="password" formControlName="currentPassword">
+                    <mat-error>
+                      {{getCurrentPasswordError()}}
+                    </mat-error>
                   </mat-form-field>
                 </div>
               </div>
 
-              <div class="row d-flex justify-content-center">
+              <div class="row d-flex justify-content-center pt-3">
                 <div class="col-sm-8 col-lg-8">
                   <mat-form-field appearance="outline">
                     <mat-label>Contraseña Nueva</mat-label>
-                    <input matInput type="password">
+                    <input matInput type="password" formControlName="password">
+                    <mat-error>
+                      {{getPasswordError()}}
+                    </mat-error>
                   </mat-form-field>
                 </div>
               </div>
 
-              <div class="row d-flex justify-content-center">
+              <div class="row d-flex justify-content-center pt-3">
                 <div class="col-sm-8 col-lg-8">
                   <mat-form-field appearance="outline">
                     <mat-label>Repetir Contraseña</mat-label>
-                    <input matInput type="password">
+                    <input matInput type="password" formControlName="passwordConfirm">
+                    <mat-error>
+                      {{getPasswordConfirmError()}}
+                    </mat-error>
                   </mat-form-field>
                 </div>
               </div>
