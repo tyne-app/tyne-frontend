@@ -28,6 +28,10 @@ export class BusinessProfileBodyComponent implements OnInit {
     });
   }
 
+  public updatePassword() {
+    // TODO
+  }
+
   public getCurrentPasswordError() {
     const currentPassword = this.form.get("currentPassword");
     return currentPassword.hasError("required") ? "Debe ingresar una contraseña" : null;
