@@ -20,6 +20,9 @@
     </div>
 
     <mat-vertical-stepper class="pt-3" orientation="vertical" [linear]="isLinear" #stepper>
+        <ng-template matStepperIcon="edit">
+            <mat-icon>check</mat-icon>
+        </ng-template>
 
         <!--First Stepper-->
         <!--Datos sobre el encargado-->
@@ -29,6 +32,7 @@
                 <ng-template matStepLabel>
                     <h4 class="titulo-4">Sobre el Encargado</h4>
                 </ng-template>
+
 
                 <p class="parrafo-16">
                     Estos serán los datos del usuario con los que podrás acceder a la aplicación.
@@ -87,7 +91,7 @@
                     <!--Email confirmacion encargado-->
                     <div class="col">
                         <mat-form-field appearance="outline">
-                            <mat-label>Confirme su email *</mat-label>
+                            <mat-label>Repetir email *</mat-label>
                             <input matInput formControlName="managerEmailConfirm" type="text">
                             <mat-error>
                                 {{getManagerEmailConfirmError()}}
@@ -98,7 +102,7 @@
                     <!--Contraseña encargado-->
                     <div class="col">
                         <mat-form-field appearance="outline">
-                            <mat-label>Contraseña tu contraseña *</mat-label>
+                            <mat-label>Ingresa tu contraseña *</mat-label>
                             <input formControlName="password" matInput type="password">
                             <mat-error>
                                 {{getPasswordError()}}
@@ -121,8 +125,8 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-2">
+                <div class="row pt-3">
+                    <div class="col-4 col-sm-4 col-md-3 col-lg-2">
                         <button class="next-button" mat-stroked-button matStepperNext>Siguiente</button>
                     </div>
                 </div>
@@ -201,14 +205,12 @@
 
                 </div>
 
-                <p class="subtitulo">Casa Matriz</p>
-
                 <div class="row">
 
                     <!--Nombre razón social-->
                     <div class="col">
                         <mat-form-field appearance="outline">
-                            <mat-label>Razón social *</mat-label>
+                            <mat-label>Nombre del Local *</mat-label>
                             <input matInput formControlName="legalRepresentativeNameCompany" type="text">
                             <mat-error>
                                 {{getLegalRepresentativeNameCompanyError()}}
@@ -237,6 +239,18 @@
                                 {{getLegalRepresentativeRutBusinessError()}}
                             </mat-error>
                         </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <p class="subtitulo">Casa Matriz
+                            <mat-icon
+                                matTooltip="Podrás agregar más sucursales al ingresar a la aplicación, dentro del perfil."
+                                matTooltipPosition="right">
+                                info_outline
+                            </mat-icon>
+                        </p>
                     </div>
                 </div>
 
@@ -297,21 +311,21 @@
                     </div>
 
                     <div class="col-6 col-sm-6 col-md-4">
-                        <mat-form-field appearance="outline">
-                            <mat-label>¿Tienes Mascota? *</mat-label>
-                            <mat-select formControlName="principalLocationHavePet">
-                                <mat-option value="0">No</mat-option>
-                                <mat-option value="1">Si</mat-option>
-                            </mat-select>
-                        </mat-form-field>
+                        <!-- <mat-form-field appearance="outline"> -->
+                        <label>¿Aceptan Mascota? *</label>
+                        <mat-radio-group formControlName="principalLocationHavePet">
+                            <mat-radio-button value="1">Si</mat-radio-button>
+                            <mat-radio-button value="0">No</mat-radio-button>
+                        </mat-radio-group>
+                        <!-- </mat-form-field> -->
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-2">
+                <div class="row pt-3">
+                    <div class="col-4 col-sm-4 col-md-3 col-lg-2">
                         <button class="back-button" mat-stroked-button matStepperPrevious>Atrás</button>
                     </div>
-                    <div class="col-2">
+                    <div class="col-4 col-sm-4 col-md-3 col-lg-2">
                         <button class="next-button" mat-stroked-button matStepperNext>Siguiente</button>
                     </div>
                 </div>
@@ -330,7 +344,7 @@
                 </ng-template>
 
                 <p class="parrafo-16">
-                    Tranquilo, cuidaremos tu seguridad y la de tus datos. <br/>
+                    Tranquilo, cuidaremos tu seguridad y la de tus datos. <br />
                     Estos datos son usados para los pagos de transferencias que realizaremos.
                 </p>
 
@@ -396,11 +410,11 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-2">
+                <div class="row pt-3">
+                    <div class="col-4 col-sm-4 col-md-3 col-lg-2">
                         <button class="back-button" mat-stroked-button matStepperPrevious>Atrás</button>
                     </div>
-                    <div class="col-2">
+                    <div class="col-4 col-sm-4 col-md-3 col-lg-2">
                         <button type="submit" class="next-button" mat-stroked-button matStepperNext>¡Listo!</button>
                     </div>
                 </div>

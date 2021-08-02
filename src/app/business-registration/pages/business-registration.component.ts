@@ -12,6 +12,7 @@ import { BankService } from 'src/app/shared/services/bank.service';
 import { TerritorialsService } from 'src/app/shared/services/territorials.service';
 import { EmailValidator } from 'src/app/shared/validations/email-validator';
 import { PasswordValidator } from 'src/app/shared/validations/password-validator';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-business-registration',
@@ -20,7 +21,7 @@ import { PasswordValidator } from 'src/app/shared/validations/password-validator
 })
 export class BusinessRegistrationComponent implements OnInit {
 
-  public isLinear = false;
+  public isLinear = environment.production;
   public cities: City[] = [];
   public states: State[] = [];
   public banks: Bank[] = [];
