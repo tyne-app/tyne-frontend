@@ -1,16 +1,16 @@
-mat-card {
-    background-color: #fffdfa;
-}
-
 mat-form-field {
     width: 95%;
     margin-bottom: 16px;
 }
 
-.day-schedule {
-    width: 100%;
+mat-label {
+    color: #3C0000;
 }
 
+::ng-deep .mat-step-header .mat-step-icon-selected {
+    background-color: red; 
+ }
+ 
 .register-button {
     color: white;
     border-radius: 15px;
@@ -21,14 +21,28 @@ mat-form-field {
     height: 43px;
 }
 
-.mensaje-campo-obligatorio {
-    color: #3C0000;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 19px;
+.back-button {
+    color: #E10000;
+    background: white;
+    border: 1px solid #E10000;
+    box-sizing: border-box;
+    border-radius: 10px;
+    width: 100%;
 }
 
-mat-label {
+.next-button {
+    color: white;
+    background: #E10000;
+    border: 1px solid #E10000;
+    box-sizing: border-box;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.subtitulo {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
     color: #3C0000;
 }

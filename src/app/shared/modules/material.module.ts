@@ -14,14 +14,14 @@ import {
   MatRadioModule,
   MatSidenavModule,
   MatSnackBarModule,
-  MatStepperModule,
   MatSelectModule,
   MatTableModule,
   MatToolbarModule,
   MatExpansionModule,
   MatNativeDateModule,
   MatDatepickerModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatStepperModule
 } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table';
 
@@ -49,11 +49,12 @@ const MaterialComponents = [
   MatExpansionModule,
   MatNativeDateModule,
   MatDatepickerModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatFormFieldModule
 ];
 
 @NgModule({
   imports: [MaterialComponents],
-  exports: [MaterialComponents, MatFormFieldModule]
+  exports: [MaterialComponents]
 })
 export class MaterialModule { }

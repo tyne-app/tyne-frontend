@@ -4,426 +4,412 @@
 <!--Content-->
 <div class="container pt-5">
 
-    <mat-card>
-
-        <!--Tittle-->
-        <div class="row pl-5">
-            <div class="col">
-                <h3 class="titulo-3">Registro para Locales</h3>
-            </div>
+    <!--Tittle-->
+    <div class="row pl-4">
+        <div class="col">
+            <h3 class="titulo-3">Registro para Locales</h3>
         </div>
+    </div>
 
-        <!--Description-->
-        <div class="row pl-5">
-            <div class="col">
-                <p class="parrafo">Registra tu local y preparate para obtener mayores resultados y brindar más y nuevas
-                    experiencias a tus comensales.</p>
-            </div>
+    <!--Description-->
+    <div class="row pl-4">
+        <div class="col">
+            <p class="parrafo">Registra tu local y preparate para obtener mayores resultados y brindar más y nuevas
+                experiencias a tus comensales.</p>
         </div>
+    </div>
 
-        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-vertical-stepper class="pt-3" orientation="vertical" [linear]="isLinear" #stepper>
 
-            <!-- Sobre el representante legal -->
-            <div class="row pl-5">
-                <div class="col">
-                    <h4 class="titulo-4">Sobre el representante legal:</h4>
-                </div>
-            </div>
+        <!--First Stepper-->
+        <!--Datos sobre el encargado-->
+        <mat-step [stepControl]="firstFormGroup">
 
-            <div class="row pl-5">
+            <form [formGroup]="firstFormGroup">
+                <ng-template matStepLabel>
+                    <h4 class="titulo-4">Sobre el Encargado</h4>
+                </ng-template>
 
-                <!--Nombre del representante-->
-                <div class="col">
-                    <mat-form-field appearance="outline">
-                        <mat-label>Nombre *</mat-label>
-                        <input matInput formControlName="name" type="text">
-                        <mat-error>
-                            {{getNameError()}}
-                        </mat-error>
-                    </mat-form-field>
-                </div>
+                <p class="parrafo-16">
+                    Estos serán los datos del usuario con los que podrás acceder a la aplicación.
+                </p>
 
-                <!--Apellidos del representante-->
-                <div class="col">
-                    <mat-form-field appearance="outline">
-                        <mat-label>Apellidos *</mat-label>
-                        <input matInput formControlName="lastName" type="text">
-                        <mat-error>
-                            {{getLastNameError()}}
-                        </mat-error>
-                    </mat-form-field>
-                </div>
+                <div class="row pt-3">
 
-                <!--Rut del representante-->
-                <div class="col">
-                    <mat-form-field appearance="outline">
-                        <mat-label>Rut *</mat-label>
-                        <input matInput formControlName="rut" type="text" maxlength="9" formatRut>
-                        <mat-error>
-                            {{getRutError()}}
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-            </div>
-
-            <div class="row pl-5 mb-4">
-
-                <!--Email del representante-->
-                <div class="col">
-                    <mat-form-field appearance="outline">
-                        <mat-label>Email *</mat-label>
-                        <input matInput formControlName="email" type="text">
-                        <mat-error>
-                            {{getEmailError()}}
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-
-                <!--Confirmacion email representante-->
-                <div class="col">
-                    <mat-form-field appearance="outline">
-                        <mat-label>Confirme su email *</mat-label>
-                        <input matInput formControlName="emailConfirm" type="text">
-                        <mat-error>
-                            {{getEmailConfirmError()}}
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-
-                <!--Telefono del representante-->
-                <div class="col">
-                    <mat-form-field appearance="outline">
-                        <mat-label>Teléfono de contacto *</mat-label>
-                        <input matInput formControlName="contactNumber" type="text" placeholder="+XX X XXXX XXXX"
-                            phoneMask>
-                        <mat-error>
-                            {{getContactNumberError()}}
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-            </div>
-
-            <!-- Sobre el local -->
-            <div class="row pl-5">
-                <div class="col">
-                    <h4 class="titulo-4">Sobre el local:</h4>
-                </div>
-            </div>
-
-            <div class="row pl-5">
-
-                <!--Nombre razón social-->
-                <div class="col">
-                    <mat-form-field appearance="outline">
-                        <mat-label>Razón social *</mat-label>
-                        <input matInput formControlName="nameCompany" type="text">
-                        <mat-error>
-                            {{getNameCompanyError()}}
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-
-                <!--Giro del local-->
-                <div class="col">
-                    <mat-form-field appearance="outline">
-                        <mat-label>Giro del local *</mat-label>
-                        <input matInput formControlName="businessLine" type="text">
-                        <mat-error>
-                            {{getBusinessLineError()}}
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-
-                <!--Rut del local-->
-                <div class="col">
-                    <mat-form-field appearance="outline">
-                        <mat-label>Rut Local *</mat-label>
-                        <input matInput formControlName="rutLocal" type="text" maxlength="9" formatRut>
-                        <mat-error>
-                            {{getRutLocalError()}}
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-            </div>
-
-            <div class="row pl-5">
-
-                <!--Datos de la calle-->
-                <div class="col">
-                    <mat-form-field appearance="outline">
-                        <mat-label>Calle *</mat-label>
-                        <input matInput formControlName="address" type="text">
-                        <mat-error>
-                            {{getAddressError()}}
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-
-                <!--Datos del número de dirección-->
-                <div class="col">
-                    <mat-form-field appearance="outline">
-                        <mat-label>Número *</mat-label>
-                        <input matInput formControlName="number" type="text">
-                        <mat-error>
-                            {{getNumberError()}}
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-
-                <!--Datos de la región-->
-                <div class="col">
-                    <mat-form-field appearance="outline">
-                        <mat-label>Ingrese región *</mat-label>
-                        <mat-select formControlName="city" (selectionChange)="getStates()">
-                            <mat-option value="0">Seleccionar...</mat-option>
-                            <mat-option [value]="x.id" *ngFor="let x of cities">{{x.name}}</mat-option>
-                        </mat-select>
-                        <mat-error>
-                            {{getCityError()}}
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-
-            </div>
-
-            <div class="row pl-5">
-
-                <!--Datos de la comuna-->
-                <div class="col-6 col-sm-6 col-md-4">
-                    <mat-form-field appearance="outline">
-                        <mat-label>Ingrese comuna *</mat-label>
-                        <mat-select formControlName="state">
-                            <mat-option value="0">Seleccionar...</mat-option>
-                            <mat-option [value]="x.id" *ngFor="let x of states">{{x.name}}</mat-option>
-                        </mat-select>
-                        <mat-error>
-                            {{getStateError()}}
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-
-                <div class="col-6 col-sm-6 col-md-4">
-                    <mat-form-field appearance="outline">
-                        <mat-label>¿Tienes Mascota? *</mat-label>
-                        <mat-select formControlName="havePet">
-                            <mat-option value="0">No</mat-option>
-                            <mat-option value="1">Si</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-            </div>
-
-            <!-- Datos bancarios -->
-            <div class="row pl-5">
-                <div class="col">
-                    <h4 class="titulo-4">Datos bancarios:</h4>
-                </div>
-            </div>
-
-            <div class="row pl-5">
-
-                <!--Rut titulas-->
-                <div class="col">
-                    <mat-form-field appearance="outline">
-                        <mat-label>Rut titular de la cuenta *</mat-label>
-                        <input matInput formControlName="rutAccountOwner" type="text" maxlength="9" formatRut>
-                        <mat-error>
-                            {{getRutAccountOwnerError()}}
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-
-                <!--Nombre titular de la cuenta-->
-                <div class="col">
-                    <mat-form-field appearance="outline">
-                        <mat-label>Nombre titular de la cuenta *</mat-label>
-                        <input matInput formControlName="nameAccountOwner" type="text">
-                        <mat-error>
-                            {{getNameAccountOwnerError()}}
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-
-                <!--Número de cuenta-->
-                <div class="col">
-                    <mat-form-field appearance="outline">
-                        <mat-label>Numero de cuenta *</mat-label>
-                        <input matInput formControlName="accountNumber" type="text">
-                        <mat-error>
-                            {{getAccountNumberError()}}
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-            </div>
-
-            <div class="row mb-4 pl-5 justify-content-start">
-
-                <!--Banco-->
-                <div class="col-lg-4 col-md-6">
-                    <mat-form-field appearance="outline">
-                        <mat-label>Banco *</mat-label>
-                        <mat-select formControlName="bank">
-                            <mat-option value="0">Seleccionar...</mat-option>
-                            <mat-option [value]="x.id" *ngFor="let x of banks">{{x.name}}</mat-option>
-                        </mat-select>
-                        <mat-error>
-                            {{getBankError()}}
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-
-                <!--Tipo de cuenta-->
-                <div class="col-lg-4 col-md-6">
-                    <mat-form-field appearance="outline">
-                        <mat-label>Tipo de cuenta *</mat-label>
-                        <mat-select formControlName="accountType">
-                            <mat-option value="0">Seleccione...</mat-option>
-                            <mat-option [value]="x.id" *ngFor="let x of accountType">{{x.name}}</mat-option>
-                        </mat-select>
-                        <mat-error>
-                            {{getAccountTypeError()}}
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-            </div>
-
-            <!-- Horario funcionamiento -->
-            <div class="row pl-5">
-                <div class="col">
-                    <h4 class="titulo-4">Horario funcionamiento:</h4>
-                </div>
-            </div>
-
-            <!-- Grid anidada. Row principal se divide en 3 columnas, y cada una de ellas teiene 2 rows dentro(row titulo, row contenido). -->
-            <div class="row pl-5 mb-5">
-
-                <div class="col-lg-4 col-md-6 col-sm-8">
-
-                    <div class="row">
-                        <div class="col">
-                            <label class="label-input-name">Apertura *</label>
-                        </div>
+                    <!--Nombre del encargado-->
+                    <div class="col">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Nombre *</mat-label>
+                            <input matInput formControlName="managerName" type="text">
+                            <mat-error>
+                                {{getManagerNameError()}}
+                            </mat-error>
+                        </mat-form-field>
                     </div>
 
-                    <div class="row">
+                    <!--Apellidos del encargado-->
+                    <div class="col">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Apellidos *</mat-label>
+                            <input matInput formControlName="managerLastName" type="text">
+                            <mat-error>
+                                {{getManagerLastNameError()}}
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
 
-                        <div class="col-4">
-                            <mat-form-field appearance="outline">
-                                <input formControlName="hourOpening" class="day-schedule" matInput placeholder="HH"
-                                    type="number">
-                                <mat-error>
-                                    {{getHourOpeningError()}}
-                                </mat-error>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-1">
-                            <h4>:</h4>
-                        </div>
-                        <div class="col-4">
-                            <mat-form-field appearance="outline">
-                                <input formControlName="minutesOpening" class="day-schedule" matInput placeholder="MM"
-                                    type="number">
-                                <mat-error>
-                                    {{getMinutesOpeningError()}}
-                                </mat-error>
-                            </mat-form-field>
-                        </div>
+                    <!--Telefono del encargado-->
+                    <div class="col">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Teléfono de contacto *</mat-label>
+                            <input matInput formControlName="managerPhone" type="text" placeholder="+XX X XXXX XXXX"
+                                phoneMask>
+                            <mat-error>
+                                {{getManagerPhoneError()}}
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <!--Email encargado-->
+                    <div class="col">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Email *</mat-label>
+                            <input matInput formControlName="managerEmail" type="text">
+                            <mat-error>
+                                {{getManagerEmailError()}}
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <!--Email confirmacion encargado-->
+                    <div class="col">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Confirme su email *</mat-label>
+                            <input matInput formControlName="managerEmailConfirm" type="text">
+                            <mat-error>
+                                {{getManagerEmailConfirmError()}}
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <!--Contraseña encargado-->
+                    <div class="col">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Contraseña tu contraseña *</mat-label>
+                            <input formControlName="password" matInput type="password">
+                            <mat-error>
+                                {{getPasswordError()}}
+                            </mat-error>
+                        </mat-form-field>
                     </div>
 
                 </div>
 
-                <div class="col-lg-4 col-md-6 col-sm-8">
-
-                    <div class="row">
-                        <div class="col">
-                            <label class="label-input-name">Cierre *</label>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-4">
-                            <mat-form-field appearance="outline">
-                                <input formControlName="hourClosure" class="day-schedule" matInput placeholder="HH"
-                                    type="number">
-                                <mat-error>
-                                    {{getHourClosureError()}}
-                                </mat-error>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-1">
-                            <h4>:</h4>
-                        </div>
-                        <div class="col-4">
-                            <mat-form-field appearance="outline">
-                                <input formControlName="minutesClosure" class="day-schedule" matInput placeholder="MM"
-                                    type="number">
-                                <mat-error>
-                                    {{getMinutesClosureError()}}
-                                </mat-error>
-                            </mat-form-field>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="col-lg-4 col-md-6 col-sm-8">
-
-                    <div class="row">
-                        <div class="col">
-                            <label class="label-input-name">Días de funcionamiento *</label>
-                            <mat-form-field appearance="outline">
-                                <mat-select multiple formControlName="days">
-                                    <mat-option *ngFor="let x of days" [value]="x">{{x.name}}</mat-option>
-                                </mat-select>
-                                <mat-error>
-                                    {{getDaysError()}}
-                                </mat-error>
-                            </mat-form-field>
-                        </div>
+                <div class="row">
+                    <!--Contraseña confirmacion encargado-->
+                    <div class="col-lg-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Repite tu contraseña *</mat-label>
+                            <input formControlName="passwordConfirm" matInput type="password">
+                            <mat-error>
+                                {{getPasswordConfirmError()}}
+                            </mat-error>
+                        </mat-form-field>
                     </div>
                 </div>
 
-            </div>
+                <div class="row">
+                    <div class="col-2">
+                        <button class="next-button" mat-stroked-button matStepperNext>Siguiente</button>
+                    </div>
+                </div>
+            </form>
 
-            <!-- Contraseña y submit. -->
-            <div class="row pl-5 mb-5">
+        </mat-step>
 
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <mat-form-field appearance="outline">
-                        <mat-label>Contraseña *</mat-label>
-                        <input formControlName="password" matInput type="password">
-                        <mat-error>
-                            {{getPasswordError()}}
-                        </mat-error>
-                    </mat-form-field>
+        <!--Second Stepper-->
+        <!--Datos sobre el local-->
+        <mat-step [stepControl]="secondFormGroup">
+
+            <form [formGroup]="secondFormGroup">
+                <ng-template matStepLabel>
+                    <h4 class="titulo-4">Sobre el Local</h4>
+                </ng-template>
+
+                <p class="subtitulo">Representante Legal</p>
+
+                <div class="row pt-3">
+
+                    <!--Nombre representante legal-->
+                    <div class="col">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Nombre *</mat-label>
+                            <input matInput formControlName="legalRepresentativeName" type="text">
+                            <mat-error>
+                                {{getLegalRepresentativeNameError()}}
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Apellidos *</mat-label>
+                            <input matInput formControlName="legalRepresentativeLastName" type="text">
+                            <mat-error>
+                                {{getLegalRepresentativeLastNameError()}}
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Rut *</mat-label>
+                            <input matInput formControlName="legalRepresentativeRut" type="text" maxlength="9"
+                                formatRut>
+                            <mat-error>
+                                {{getLegalRepresentativeRutError()}}
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-lg-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Email *</mat-label>
+                            <input matInput formControlName="legalRepresentativeEmail" type="text">
+                            <mat-error>
+                                {{getLegalRepresentativeEmailError()}}
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Teléfono de contacto *</mat-label>
+                            <input matInput formControlName="legalRepresentativePhone" type="text"
+                                placeholder="+XX X XXXX XXXX" phoneMask>
+                            <mat-error>
+                                {{getLegalRepresentativePhoneError()}}
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
 
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <mat-form-field appearance="outline">
-                        <mat-label>Repite tu contraseña *</mat-label>
-                        <input formControlName="passwordConfirm" matInput type="password">
-                        <mat-error>
-                            {{getPasswordConfirmError()}}
-                        </mat-error>
-                    </mat-form-field>
+
+                <p class="subtitulo">Casa Matriz</p>
+
+                <div class="row">
+
+                    <!--Nombre razón social-->
+                    <div class="col">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Razón social *</mat-label>
+                            <input matInput formControlName="legalRepresentativeNameCompany" type="text">
+                            <mat-error>
+                                {{getLegalRepresentativeNameCompanyError()}}
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <!--Giro del local-->
+                    <div class="col">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Giro del local *</mat-label>
+                            <input matInput formControlName="legalRepresentativeBusinessLine" type="text">
+                            <mat-error>
+                                {{getLegalRepresentativeBusinessLineError()}}
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <!--Rut del local-->
+                    <div class="col">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Rut Local *</mat-label>
+                            <input matInput formControlName="legalRepresentativeRutBusiness" type="text" maxlength="9"
+                                formatRut>
+                            <mat-error>
+                                {{getLegalRepresentativeRutBusinessError()}}
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
                 </div>
-                <div class="col-11 col-sm-12 col-md-12 col-lg-3 pl-5 pt-2 d-flex justify-content-center">
-                    <button type="submit" class="register-button" mat-raised-button>
-                        ¡Listo!
-                    </button>
+
+                <div class="row">
+
+                    <!--Datos de la calle-->
+                    <div class="col">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Calle *</mat-label>
+                            <input matInput formControlName="principalLocationAddress" type="text">
+                            <mat-error>
+                                {{getPrincipalLocationAddressError()}}
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <!--Datos del número de dirección-->
+                    <div class="col">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Número *</mat-label>
+                            <input matInput formControlName="principalLocationNumber" type="text">
+                            <mat-error>
+                                {{getPrincipalLocationNumberError()}}
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <!--Datos de la región-->
+                    <div class="col">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Ingrese región *</mat-label>
+                            <mat-select formControlName="principalLocationCity" (selectionChange)="getStates()">
+                                <mat-option value="0">Seleccionar...</mat-option>
+                                <mat-option [value]="x.id" *ngFor="let x of cities">{{x.name}}</mat-option>
+                            </mat-select>
+                            <mat-error>
+                                {{getPrincipalLocationCityError()}}
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
                 </div>
 
-            </div>
+                <div class="row">
 
-            <div class="row pl-5">
-                <div class="col">
-                    <p class="mensaje-campo-obligatorio">* Campos obligatorios</p>
+                    <!--Datos de la comuna-->
+                    <div class="col-6 col-sm-6 col-md-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Ingrese comuna *</mat-label>
+                            <mat-select formControlName="principalLocationState">
+                                <mat-option value="0">Seleccionar...</mat-option>
+                                <mat-option [value]="x.id" *ngFor="let x of states">{{x.name}}</mat-option>
+                            </mat-select>
+                            <mat-error>
+                                {{getPrincipalLocationStateError()}}
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-6 col-sm-6 col-md-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>¿Tienes Mascota? *</mat-label>
+                            <mat-select formControlName="principalLocationHavePet">
+                                <mat-option value="0">No</mat-option>
+                                <mat-option value="1">Si</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
                 </div>
-            </div>
 
-        </form>
+                <div class="row">
+                    <div class="col-2">
+                        <button class="back-button" mat-stroked-button matStepperPrevious>Atrás</button>
+                    </div>
+                    <div class="col-2">
+                        <button class="next-button" mat-stroked-button matStepperNext>Siguiente</button>
+                    </div>
+                </div>
 
-    </mat-card>
+            </form>
+
+        </mat-step>
+
+        <!--third Stepper-->
+        <!--Datos de transferencia-->
+        <mat-step [stepControl]="thirdFormGroup">
+
+            <form [formGroup]="thirdFormGroup" (ngSubmit)="saveNewBusiness()">
+                <ng-template matStepLabel>
+                    <h4 class="titulo-4">Datos de Transferencia</h4>
+                </ng-template>
+
+                <p class="parrafo-16">
+                    Tranquilo, cuidaremos tu seguridad y la de tus datos. <br/>
+                    Estos datos son usados para los pagos de transferencias que realizaremos.
+                </p>
+
+                <div class="row pt-3">
+
+                    <div class="col">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Rut titular de la cuenta *</mat-label>
+                            <input matInput formControlName="rutAccountOwner" type="text" maxlength="9" formatRut>
+                            <mat-error>
+                                {{getRutAccountOwnerError()}}
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Nombre titular de la cuenta *</mat-label>
+                            <input matInput formControlName="nameAccountOwner" type="text">
+                            <mat-error>
+                                {{getNameAccountOwnerError()}}
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Numero de cuenta *</mat-label>
+                            <input matInput formControlName="accountNumber" type="text">
+                            <mat-error>
+                                {{getAccountNumberError()}}
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-lg-4 col-md-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Banco *</mat-label>
+                            <mat-select formControlName="bank">
+                                <mat-option value="0">Seleccionar...</mat-option>
+                                <mat-option [value]="x.id" *ngFor="let x of banks">{{x.name}}</mat-option>
+                            </mat-select>
+                            <mat-error>
+                                {{getBankError()}}
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Tipo de cuenta *</mat-label>
+                            <mat-select formControlName="accountType">
+                                <mat-option value="0">Seleccione...</mat-option>
+                                <mat-option [value]="x.id" *ngFor="let x of accountType">{{x.name}}</mat-option>
+                            </mat-select>
+                            <mat-error>
+                                {{getAccountTypeError()}}
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-2">
+                        <button class="back-button" mat-stroked-button matStepperPrevious>Atrás</button>
+                    </div>
+                    <div class="col-2">
+                        <button type="submit" class="next-button" mat-stroked-button matStepperNext>¡Listo!</button>
+                    </div>
+                </div>
+
+            </form>
+
+        </mat-step>
+
+    </mat-vertical-stepper>
 
 </div>
 

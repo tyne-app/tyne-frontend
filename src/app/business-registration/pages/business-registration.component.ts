@@ -20,12 +20,15 @@ import { PasswordValidator } from 'src/app/shared/validations/password-validator
 })
 export class BusinessRegistrationComponent implements OnInit {
 
+  public isLinear = false;
   public cities: City[] = [];
   public states: State[] = [];
   public banks: Bank[] = [];
   public accountType = [];
   public rutRepresentanteLegal: string = null;
-  public form: FormGroup;
+  public firstFormGroup: FormGroup;
+  public secondFormGroup: FormGroup;
+  public thirdFormGroup: FormGroup;
 
   days: Array<any> = [
     { value: 0, name: 'Lunes' },
@@ -47,40 +50,51 @@ export class BusinessRegistrationComponent implements OnInit {
   ) { }
 
   public ngOnInit() {
-    this.initForm();
+    this.initFirstFormGroup();
+    this.initSecondFormGroup();
+    this.initThirdFormGroup();
     this.getCities();
     this.getBanks();
     this.getAccountType();
   }
 
-  public initForm() {
-    this.form = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
-      lastName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
-      rut: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(9), this.rutValidator]],
-      email: ['', [Validators.email, Validators.required, Validators.pattern(emailRegex)]],
-      emailConfirm: ['', [Validators.required, Validators.pattern(emailRegex), EmailValidator('email')]],
-      contactNumber: ['', [Validators.required, Validators.minLength(17)]],
-      nameCompany: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
-      businessLine: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
-      rutLocal: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(9), this.rutValidator]],
-      address: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
-      number: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(20)]],
-      city: ['0', [Validators.required, Validators.min(1)]],
-      state: ['0', [Validators.required, Validators.min(1)]],
-      havePet: ["0"],
+  public initFirstFormGroup() {
+    this.firstFormGroup = this.fb.group({
+      managerName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
+      managerLastName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
+      managerPhone: ['', [Validators.required, Validators.minLength(17)]],
+      managerEmail: ['', [Validators.email, Validators.required, Validators.pattern(emailRegex)]],
+      managerEmailConfirm: ['', [Validators.required, Validators.pattern(emailRegex), EmailValidator('managerEmail')]],
+      password: ['', [Validators.required, Validators.pattern(passwordRegex)]],
+      passwordConfirm: ['', [Validators.required, PasswordValidator('password')]],
+    });
+  }
+
+  public initSecondFormGroup() {
+    this.secondFormGroup = this.fb.group({
+      legalRepresentativeName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
+      legalRepresentativeLastName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
+      legalRepresentativeRut: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(9), this.rutValidator]],
+      legalRepresentativeEmail: ['', [Validators.email, Validators.required, Validators.pattern(emailRegex)]],
+      legalRepresentativePhone: ['', [Validators.required, Validators.minLength(17)]],
+      legalRepresentativeNameCompany: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
+      legalRepresentativeBusinessLine: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
+      legalRepresentativeRutBusiness: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(9), this.rutValidator]],
+      principalLocationAddress: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
+      principalLocationNumber: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(20)]],
+      principalLocationCity: ['0', [Validators.required, Validators.min(1)]],
+      principalLocationState: ['0', [Validators.required, Validators.min(1)]],
+      principalLocationHavePet: ["0"],
+    });
+  }
+
+  public initThirdFormGroup() {
+    this.thirdFormGroup = this.fb.group({
       rutAccountOwner: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(9), this.rutValidator]],
       nameAccountOwner: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
       accountNumber: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(30)]],
       bank: ['0', [Validators.required, Validators.min(1)]],
       accountType: ['0', [Validators.required, Validators.min(1)]],
-      hourOpening: ['', [Validators.required, Validators.min(0), Validators.max(23)]],
-      minutesOpening: ['', [Validators.required, Validators.min(0), Validators.max(59)]],
-      hourClosure: ['', [Validators.required, Validators.min(0), Validators.max(23)]],
-      minutesClosure: ['', [Validators.required, Validators.min(0), Validators.max(59)]],
-      days: ['', [Validators.required]],
-      password: ['', [Validators.required, Validators.pattern(passwordRegex)]],
-      passwordConfirm: ['', [Validators.required, PasswordValidator('password')]],
     });
   }
 
@@ -91,10 +105,10 @@ export class BusinessRegistrationComponent implements OnInit {
   }
 
   public getStates() {
-    const idCity = this.form.get("city").value;
+    const idCity = this.secondFormGroup.get("principalLocationCity").value;
     this.territorialsService.getStates(idCity).subscribe(states => {
       this.states = states;
-      this.form.get("state").setValue("0");
+      this.secondFormGroup.get("principalLocationState").setValue("0");
     });
   }
 
@@ -114,202 +128,184 @@ export class BusinessRegistrationComponent implements OnInit {
     }];
   }
 
-  public onSubmit() {
+  public saveNewBusiness() {
 
-    if (this.form.invalid) return;
+    if (this.thirdFormGroup.invalid) return;
 
-    // Local object.
-    // const local: Local = {
-    //   days: this.form.get('days').value,
-    //   ending_hour: this.closure,
-    //   opening_hour: this.opening,
-    //   region: this.form.get('region').value,
-    //   commune: this.form.get('commune').value,
-    //   address: this.form.get('address').value,
-    //   rut: this.form.get('rut').value,
-    //   type: this.form.get('accountType').value,
-    //   pets: this.form.get('havePet').value,
-    //   phone: this.form.get('contactNumber').value,
-    //   social_reason: this.form.get('socialReason').value
-    // };
-
-    // console.log(local);
-
-    // **HAY QUE SETEAR EL DISEÑO  */
-    this.snackBar.open('Ha registrado satisfactoriamente el local', 'ok', {
-      duration: 3000
-    });
-    this.router.navigateByUrl('/inicio');
+    // this.snackBar.open('Ha registrado satisfactoriamente el local', 'ok', {
+    //   duration: 3000
+    // });
+    // this.router.navigateByUrl('/inicio');
   }
 
-  public getNameError() {
-    const name = this.form.get("name");
-    return name.hasError("required") ? "Debe ingresar un nombre" :
-      name.hasError("minlength") ? "Debe tener mínimo 2 caracteres" :
-        name.hasError("maxlength") ? "Debe tener máximo 30 caracteres" : null
+  //#region First stepper validations
+  public getManagerNameError() {
+    const control = this.firstFormGroup.get("managerName");
+    return control.hasError("required") ? "Debe ingresar un nombre" :
+      control.hasError("minlength") ? "Debe tener mínimo 2 caracteres" :
+        control.hasError("maxlength") ? "Debe tener máximo 30 caracteres" : null
   }
 
-  public getLastNameError() {
-    const lastName = this.form.get("lastName");
-    return lastName.hasError("required") ? "Debe ingresar un apellido" :
-      lastName.hasError("minlength") ? "Debe tener mínimo 2 caracteres" :
-        lastName.hasError("maxlength") ? "Debe tener máximo 30 caracteres" : null
+  public getManagerLastNameError() {
+    const control = this.firstFormGroup.get("managerLastName");
+    return control.hasError("required") ? "Debe ingresar un apellido" :
+      control.hasError("minlength") ? "Debe tener mínimo 2 caracteres" :
+        control.hasError("maxlength") ? "Debe tener máximo 30 caracteres" : null
   }
 
-  public getRutError() {
-    const rut = this.form.get("rut");
-    return rut.hasError("required") ? "Debe ingresar un rut" :
-      rut.hasError("minlength") ? "Debe ingresar un rut válido" :
-        rut.hasError("maxlength") ? "Debe ingresar un rut válido" :
-          rut.hasError("invalidRut") ? "Debe ingresar un rut válido" : null
+  public getManagerPhoneError() {
+    const control = this.firstFormGroup.get("managerPhone");
+    return control.hasError("required") ? "El número no es válido" :
+      control.hasError("minlength") ? "El número no es válido" : null;
   }
 
-  public getEmailError() {
-    const email = this.form.get("email");
-    return email.hasError("required") ? "Debe ingresar un email" :
-      email.hasError("email") ? "Debe ingresar un email válido" :
-        email.hasError("pattern") ? "Debe ingresar un email válido" : null
+  public getManagerEmailError() {
+    const control = this.firstFormGroup.get("managerEmail");
+    return control.hasError("required") ? "Debe ingresar un email" :
+      control.hasError("email") ? "Debe ingresar un email válido" :
+        control.hasError("pattern") ? "Debe ingresar un email válido" : null
   }
 
-  public getEmailConfirmError() {
-    const emailConfirm = this.form.get("emailConfirm");
-    return emailConfirm.hasError("required") ? "Debe ingresar un email" :
-      emailConfirm.hasError("notMatch") ? "El email no coincide" :
-        emailConfirm.hasError("email") ? "Debe ingresar un email válido" :
-          emailConfirm.hasError("pattern") ? "Debe ingresar un email válido" : null
-  }
-
-  public getContactNumberError() {
-    const contactNumber = this.form.get("contactNumber");
-    return contactNumber.hasError("required") ? "El número no es válido" :
-      contactNumber.hasError("minlength") ? "El número no es válido" : null;
-  }
-
-  public getNameCompanyError() {
-    const nameCompany = this.form.get("nameCompany");
-    return nameCompany.hasError("required") ? "Debe ingresar una razón social" :
-      nameCompany.hasError("minlength") ? "Debe tener mínimo 5 caracteres" :
-        nameCompany.hasError("maxlength") ? "Debe tener máximo 50 caracteres" : null
-  }
-
-  public getBusinessLineError() {
-    const businessLine = this.form.get("businessLine");
-    return businessLine.hasError("required") ? "Debe ingresar un giro" :
-      businessLine.hasError("minlength") ? "Debe tener mínimo 5 caracteres" :
-        businessLine.hasError("maxlength") ? "Debe tener máximo 50 caracteres" : null
-  }
-
-  public getRutLocalError() {
-    const rutLocal = this.form.get("rutLocal");
-    return rutLocal.hasError("required") ? "Debe ingresar un rut" :
-      rutLocal.hasError("minlength") ? "Debe ingresar un rut válido" :
-        rutLocal.hasError("maxlength") ? "Debe ingresar un rut válido" :
-          rutLocal.hasError("invalidRut") ? "Debe ingresar un rut válido" : null
-  }
-
-  public getAddressError() {
-    const address = this.form.get("address");
-    return address.hasError("required") ? "Debe ingresar una calle" :
-      address.hasError("minlength") ? "Debe tener mínimo 5 caracteres" :
-        address.hasError("maxlength") ? "Debe tener máximo 50 caracteres" : null
-  }
-
-  public getNumberError() {
-    const number = this.form.get("number");
-    return number.hasError("required") ? "Debe ingresar un número de calle" :
-      number.hasError("minlength") ? "Debe tener mínimo 1 caracteres" :
-        number.hasError("maxlength") ? "Debe tener máximo 20 caracteres" : null
-  }
-
-  public getCityError() {
-    const city = this.form.get("city");
-    return city.hasError("required") ? "Debe seleccionar una región" :
-      city.hasError("min") ? "Debe seleccionar una región" : null
-  }
-
-  public getStateError() {
-    const state = this.form.get("state");
-    return state.hasError("required") ? "Debe seleccionar una comuna" :
-      state.hasError("min") ? "Debe seleccionar una comuna" : null
-  }
-
-  public getRutAccountOwnerError() {
-    const rutAccountOwner = this.form.get("rutAccountOwner");
-    return rutAccountOwner.hasError("required") ? "Debe ingresar un rut" :
-      rutAccountOwner.hasError("minlength") ? "Debe ingresar un rut válido" :
-        rutAccountOwner.hasError("maxlength") ? "Debe ingresar un rut válido" :
-          rutAccountOwner.hasError("invalidRut") ? "Debe ingresar un rut válido" : null
-  }
-
-  public getNameAccountOwnerError() {
-    const nameAccountOwner = this.form.get("nameAccountOwner");
-    return nameAccountOwner.hasError("required") ? "Debe ingresar el nombre del titular" :
-      nameAccountOwner.hasError("minlength") ? "Debe tener mínimo 5 caracteres" :
-        nameAccountOwner.hasError("maxlength") ? "Debe tener máximo 50 caracteres" : null
-  }
-
-  public getAccountNumberError() {
-    const accountNumber = this.form.get("accountNumber");
-    return accountNumber.hasError("required") ? "Debe ingresar un número de cuenta" :
-      accountNumber.hasError("minlength") ? "Debe tener mínimo 4 caracteres" :
-        accountNumber.hasError("maxlength") ? "Debe tener máximo 20 caracteres" : null
-  }
-
-  public getBankError() {
-    const bank = this.form.get("bank");
-    return bank.hasError("required") ? "Debe seleccionar un banco" :
-      bank.hasError("min") ? "Debe seleccionar un banco" : null
-  }
-
-  public getAccountTypeError() {
-    const accountType = this.form.get("accountType");
-    return accountType.hasError("required") ? "Debe seleccionar un tipo de cuenta" :
-      accountType.hasError("min") ? "Debe seleccionar un tipo de cuenta" : null
-  }
-
-  public getHourOpeningError() {
-    const hourOpening = this.form.get("hourOpening");
-    return hourOpening.hasError("required") ? "Solo entre 0 y 23" :
-      hourOpening.hasError("min") ? "Solo entre 0 y 23" :
-        hourOpening.hasError("max") ? "Solo entre 0 y 23" : null
-  }
-
-  public getMinutesOpeningError() {
-    const minutesOpening = this.form.get("minutesOpening");
-    return minutesOpening.hasError("required") ? "Solo entre 0 y 59" :
-      minutesOpening.hasError("min") ? "Solo entre 0 y 59" :
-        minutesOpening.hasError("max") ? "Solo entre 0 y 59" : null
-  }
-
-  public getHourClosureError() {
-    const hourClosure = this.form.get("hourClosure");
-    return hourClosure.hasError("required") ? "Solo entre 0 y 23" :
-      hourClosure.hasError("min") ? "Solo entre 0 y 23" :
-        hourClosure.hasError("max") ? "Solo entre 0 y 23" : null
-  }
-
-  public getMinutesClosureError() {
-    const minutesClosure = this.form.get("minutesClosure");
-    return minutesClosure.hasError("required") ? "Solo entre 0 y 59" :
-      minutesClosure.hasError("min") ? "Solo entre 0 y 59" :
-        minutesClosure.hasError("max") ? "Solo entre 0 y 59" : null
-  }
-
-  public getDaysError() {
-    const days = this.form.get("days");
-    console.log(days.errors);
-    return days.hasError("required") ? "Debe escoger días de funcionamiento" : null;
+  public getManagerEmailConfirmError() {
+    const control = this.firstFormGroup.get("managerEmailConfirm");
+    return control.hasError("required") ? "Debe ingresar un email" :
+      control.hasError("notMatch") ? "El email no coincide" :
+        control.hasError("email") ? "Debe ingresar un email válido" :
+          control.hasError("pattern") ? "Debe ingresar un email válido" : null
   }
 
   public getPasswordError() {
-    const password = this.form.get("password");
-    return password.hasError("required") ? "Debe ingresar una contraseña" :
-      password.hasError("pattern") ? "Debe tener como mínimo 8 dígitos, 1 mayúscula y 1 número" : null;
+    const control = this.firstFormGroup.get("password");
+    return control.hasError("required") ? "Debe ingresar una contraseña" :
+      control.hasError("pattern") ? "Debe tener como mínimo 8 dígitos, 1 mayúscula y 1 número" : null;
   }
 
   public getPasswordConfirmError() {
-    const passwordConfirm = this.form.get("passwordConfirm");
-    return passwordConfirm.hasError("required") ? "Debe ingresar una contraseña" :
-      passwordConfirm.hasError("notMatch") ? "La contraseña no coincide" : null;
+    const control = this.firstFormGroup.get("passwordConfirm");
+    return control.hasError("required") ? "Debe ingresar una contraseña" :
+      control.hasError("notMatch") ? "La contraseña no coincide" : null;
   }
+  //#endregion First stepper validations
+
+  //#region Second stepper validations
+  public getLegalRepresentativeNameError() {
+    const control = this.secondFormGroup.get("legalRepresentativeName");
+    return control.hasError("required") ? "Debe ingresar un nombre" :
+      control.hasError("minlength") ? "Debe tener mínimo 2 caracteres" :
+        control.hasError("maxlength") ? "Debe tener máximo 30 caracteres" : null
+  }
+
+  public getLegalRepresentativeLastNameError() {
+    const control = this.secondFormGroup.get("legalRepresentativeLastName");
+    return control.hasError("required") ? "Debe ingresar un apellido" :
+      control.hasError("minlength") ? "Debe tener mínimo 2 caracteres" :
+        control.hasError("maxlength") ? "Debe tener máximo 30 caracteres" : null
+  }
+
+  public getLegalRepresentativeRutError() {
+    const control = this.secondFormGroup.get("legalRepresentativeRut");
+    return control.hasError("required") ? "Debe ingresar un rut" :
+      control.hasError("minlength") ? "Debe ingresar un rut válido" :
+        control.hasError("maxlength") ? "Debe ingresar un rut válido" :
+          control.hasError("invalidRut") ? "Debe ingresar un rut válido" : null
+  }
+
+  public getLegalRepresentativeEmailError() {
+    const control = this.secondFormGroup.get("legalRepresentativeEmail");
+    return control.hasError("required") ? "Debe ingresar un email" :
+      control.hasError("email") ? "Debe ingresar un email válido" :
+        control.hasError("pattern") ? "Debe ingresar un email válido" : null
+    
+  }
+
+  public getLegalRepresentativePhoneError() {
+    const control = this.secondFormGroup.get("legalRepresentativePhone");
+    return control.hasError("required") ? "El número no es válido" :
+      control.hasError("minlength") ? "El número no es válido" : null;
+  }
+
+  public getLegalRepresentativeNameCompanyError() {
+    const control = this.secondFormGroup.get("legalRepresentativeNameCompany");
+    return control.hasError("required") ? "Debe ingresar una razón social" :
+      control.hasError("minlength") ? "Debe tener mínimo 5 caracteres" :
+        control.hasError("maxlength") ? "Debe tener máximo 50 caracteres" : null
+  }
+
+  public getLegalRepresentativeBusinessLineError() {
+    const control = this.secondFormGroup.get("legalRepresentativeBusinessLine");
+    return control.hasError("required") ? "Debe ingresar un giro" :
+      control.hasError("minlength") ? "Debe tener mínimo 5 caracteres" :
+        control.hasError("maxlength") ? "Debe tener máximo 50 caracteres" : null
+  }
+
+  public getLegalRepresentativeRutBusinessError() {
+    const control = this.secondFormGroup.get("legalRepresentativeRutBusiness");
+    return control.hasError("required") ? "Debe ingresar un rut" :
+      control.hasError("minlength") ? "Debe ingresar un rut válido" :
+        control.hasError("maxlength") ? "Debe ingresar un rut válido" :
+          control.hasError("invalidRut") ? "Debe ingresar un rut válido" : null
+  }
+
+  public getPrincipalLocationAddressError() {
+    const control = this.secondFormGroup.get("principalLocationAddress");
+    return control.hasError("required") ? "Debe ingresar una calle" :
+      control.hasError("minlength") ? "Debe tener mínimo 5 caracteres" :
+        control.hasError("maxlength") ? "Debe tener máximo 50 caracteres" : null
+  }
+
+  public getPrincipalLocationNumberError() {
+    const control = this.secondFormGroup.get("principalLocationNumber");
+    return control.hasError("required") ? "Debe ingresar un número de calle" :
+      control.hasError("minlength") ? "Debe tener mínimo 1 caracteres" :
+        control.hasError("maxlength") ? "Debe tener máximo 20 caracteres" : null
+  }
+
+  public getPrincipalLocationCityError() {
+    const control = this.secondFormGroup.get("principalLocationCity");
+    return control.hasError("required") ? "Debe seleccionar una región" :
+      control.hasError("min") ? "Debe seleccionar una región" : null
+  }
+
+  public getPrincipalLocationStateError() {
+    const control = this.secondFormGroup.get("principalLocationState");
+    return control.hasError("required") ? "Debe seleccionar una comuna" :
+      control.hasError("min") ? "Debe seleccionar una comuna" : null
+  }
+  //#endregion Second stepper validations
+
+  //#region Third stepper validations
+  public getRutAccountOwnerError() {
+    const control = this.thirdFormGroup.get("rutAccountOwner");
+    return control.hasError("required") ? "Debe ingresar un rut" :
+      control.hasError("minlength") ? "Debe ingresar un rut válido" :
+        control.hasError("maxlength") ? "Debe ingresar un rut válido" :
+          control.hasError("invalidRut") ? "Debe ingresar un rut válido" : null
+  }
+
+  public getNameAccountOwnerError() {
+    const control = this.thirdFormGroup.get("nameAccountOwner");
+    return control.hasError("required") ? "Debe ingresar el nombre del titular" :
+      control.hasError("minlength") ? "Debe tener mínimo 5 caracteres" :
+        control.hasError("maxlength") ? "Debe tener máximo 50 caracteres" : null
+  }
+
+  public getAccountNumberError() {
+    const control = this.thirdFormGroup.get("accountNumber");
+    return control.hasError("required") ? "Debe ingresar un número de cuenta" :
+      control.hasError("minlength") ? "Debe tener mínimo 4 caracteres" :
+        control.hasError("maxlength") ? "Debe tener máximo 20 caracteres" : null
+  }
+
+  public getBankError() {
+    const control = this.thirdFormGroup.get("bank");
+    return control.hasError("required") ? "Debe seleccionar un banco" :
+      control.hasError("min") ? "Debe seleccionar un banco" : null
+  }
+
+  public getAccountTypeError() {
+    const control = this.thirdFormGroup.get("accountType");
+    return control.hasError("required") ? "Debe seleccionar un tipo de cuenta" :
+      control.hasError("min") ? "Debe seleccionar un tipo de cuenta" : null
+  }
+  //#endregion Third stepper validations
 }
