@@ -1,139 +1,102 @@
 <div class="container">
 
-  <!--Titulo principal-->
+  <!--Nombre del local-->
   <div class="row">
-    <div class="col">
-      <h3 class="titulo-2 titulo-principal">Bienvenido, Los Vikingos</h3>
+    <div class="col-12 d-flex justify-content-center">
+      <h3 class="titulo-2 titulo-principal">Juan y Medio</h3>
     </div>
   </div>
 
-  <div class="row">
+  <div class="row ml-2">
     <div class="col ml-2">
-      <h3 class="titulo-3">Perfil</h3>
+      <h3 class="titulo-4">Mis Datos</h3>
     </div>
   </div>
 
+  <!--Datos principales del local-->
   <mat-card>
-    <div class="row">
-      <div class="col-lg-5">
-
-        <div class="row">
-          <div class="col ml-5 pt-4">
-            <h4 class="titulo">Nombre del local</h4>
-            <p class="subtitulo">Los vikingos</p>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col ml-5">
-            <h4 class="titulo">Teléfono</h4>
-            <p class="subtitulo">+56 9 6585 6514</p>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col ml-5">
-            <h4 class="titulo">Email</h4>
-            <p class="subtitulo">contacto@vikingos.cl</p>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col ml-5">
-            <h4 class="titulo">Rut representante legal</h4>
-            <p class="subtitulo">12.345.678-9</p>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col ml-5">
-            <h4 class="titulo">Nombre representante legal</h4>
-            <p class="subtitulo">María Guzmán</p>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col ml-5">
-            <h4 class="titulo">Dirección del local</h4>
-            <p class="subtitulo">Avenida Grecia #544</p>
-          </div>
-        </div>
-
-        <div class="row pt-5">
-          <div class="col-lg-1"></div>
-          <div class="col d-flex justify-content-center">
-            <button mat-stroked-button class="normal-button">Cambiar datos</button>
-          </div>
-          <div class="col d-flex justify-content-center">
-            <button mat-stroked-button class="normal-button">Ver datos bancarios</button>
-          </div>
-        </div>
-
+    <div class="row ml-1">
+      <div class="col-4">
+        <h4 class="titulo">Nombre del local</h4>
+        <p class="subtitulo">Los vikingos</p>
       </div>
+      <div class="col-4">
+        <h4 class="titulo">Teléfono</h4>
+        <p class="subtitulo">+56 9 6585 6514</p>
+      </div>
+      <div class="col-4">
+        <h4 class="titulo">Dirección del local</h4>
+        <p class="subtitulo">Avenida Grecia #544</p>
+      </div>
+    </div>
 
-      <mat-divider class="col-lg-1" [vertical]="true"></mat-divider>
+    <div class="row ml-1">
+      <div class="col-4">
+        <h4 class="titulo">Email</h4>
+        <p class="subtitulo">contacto@vikingos.cl</p>
+      </div>
+      <div class="col-4">
+        <h4 class="titulo">Nombre encargado</h4>
+        <p class="subtitulo">María Guzmán</p>
+      </div>
+      <div class="col-4">
+        <h4 class="titulo">Rut encargado</h4>
+        <p class="subtitulo">12.345.678-9</p>
+      </div>
+    </div>
 
-      <div class="col-lg-6">
+    <div class="row pt-5">
+      <div class="col-4 d-flex justify-content-center">
+        <button mat-stroked-button class="normal-button">Editar mis datos</button>
+      </div>
+      <div class="col-4 d-flex justify-content-center">
+        <button mat-stroked-button class="normal-button">Editar contraseña</button>
+      </div>
+      <div class="col-4 d-flex justify-content-center">
+        <button mat-stroked-button class="normal-button">Ver mis datos bancarios</button>
+      </div>
+    </div>
+
+  </mat-card>
+
+  <mat-card class="mat-card-pt-4">
+    <div class="row ml-1">
+      <div class="col-5 d-flex justify-content-center">
+        <h4 class="titulo">Horario y días de funcionamiento:</h4>
+      </div>
+      <div class="col-3">
+        <h4 class="titulo">Sucursales:</h4>
+      </div>
+    </div>
+
+    <div class="row ml-1 pt-3">
+      <div class="col-5">
+        <p class="subtitulo d-flex justify-content-center">Martes y sábado 12:30 a 23:30</p>
+        <p class="subtitulo d-flex justify-content-center">Domingo 14:30 a 21:00</p>
+      </div>
+      <div class="col-3">
+        <p class="subtitulo">Juan y Medio Providencia</p>
+        <p class="subtitulo">Juan y Medio La Reina</p>
+        <p class="subtitulo">Juan y Medio Maipu</p>
+      </div>
+      <div class="col-4">
         <div class="row">
-          <div class="col d-flex justify-content-center">
-            <h3 class="titulo-3">Editar contraseña</h3>
+          <div class="col-1">
+            <img src="./../../../../assets/aceptan_mascotas.svg" />
           </div>
-        </div>
-
-        <div class="row">
-          <div class="col md-2">
-
-            <form [formGroup]="form" (ngSubmit)="updatePassword()">
-
-              <div class="row d-flex justify-content-center">
-                <div class="col-sm-8 col-lg-8">
-                  <mat-form-field appearance="outline">
-                    <mat-label>Contraseña Actual</mat-label>
-                    <input matInput type="password" formControlName="currentPassword">
-                    <mat-error>
-                      {{getCurrentPasswordError()}}
-                    </mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="row d-flex justify-content-center pt-3">
-                <div class="col-sm-8 col-lg-8">
-                  <mat-form-field appearance="outline">
-                    <mat-label>Contraseña Nueva</mat-label>
-                    <input matInput type="password" formControlName="password">
-                    <mat-error>
-                      {{getPasswordError()}}
-                    </mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="row d-flex justify-content-center pt-3">
-                <div class="col-sm-8 col-lg-8">
-                  <mat-form-field appearance="outline">
-                    <mat-label>Repetir Contraseña</mat-label>
-                    <input matInput type="password" formControlName="passwordConfirm">
-                    <mat-error>
-                      {{getPasswordConfirmError()}}
-                    </mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="row mt-5">
-                <div class="col-3"></div>
-                <div class="col-6">
-                  <button class="submit-button" mat-stroked-button>Guardar</button>
-                </div>
-                <div class="col-3"></div>
-              </div>
-
-            </form>
-            
+          <div class="col-11 pl-5">
+            <h4 class="titulo-4">Aceptan mascotas</h4>
           </div>
         </div>
       </div>
     </div>
+
+    <div class="row ml-1 pt-3">
+      <div class="col-5 d-flex justify-content-center">
+        <button mat-stroked-button class="normal-button">Editar Horarios y Sucursales</button>
+      </div>
+    </div>
+
   </mat-card>
+
 </div>
