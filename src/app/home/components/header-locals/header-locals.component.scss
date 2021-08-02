@@ -1,0 +1,44 @@
+.img-logo {
+    cursor: pointer;
+}
+@media only screen and (max-width: 577px) {
+  .img-logo {
+    width: 100%;
+  }
+}
+
+.dropdown-menu {
+  background: #E10000;
+  border-radius: 10px;
+  color: #FFF;
+  ::ng-deep  &__content {
+    border-radius: 0 0 5px 5px !important;
+  }
+  ::ng-deep  &__content .mat-menu-content {
+    padding-top: 0 !important;
+  }
+  
+}
+@media only screen and (min-width: 577px) {
+  .dropdown-menu {
+    min-width: 160px;
+    ::ng-deep  &__content {
+      position: absolute;
+      left: -30px;
+      min-width: calc(160px + 30px) !important;
+    }
+  }
+}
+@media only screen and (min-width: 992px) {
+  .dropdown-menu {
+    min-width: 170px;
+    ::ng-deep  &__content {
+      position: absolute;
+      left: -40px;
+      min-width: calc(170px + 40px) !important;
+    }
+  }
+  .cdk-overlay-pane {
+    position: relative !important;
+  }
+}

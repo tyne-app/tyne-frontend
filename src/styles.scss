@@ -59,7 +59,10 @@ body { margin: 0; padding: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
     color: #3C0000;
 }
 
-
+.img-responsive {
+    max-width: 100%;
+    height: auto;
+}
 
 
 // @import '~@angular/material/theming';
