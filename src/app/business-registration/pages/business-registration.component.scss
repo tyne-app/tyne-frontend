@@ -80,9 +80,9 @@ mat-radio-group {
 }
   
 ::ng-deep .mat-radio-button.mat-accent .mat-radio-inner-circle {
-    background-color: red!important;   /*inner circle color change*/
+    background-color: red!important;
 }
   
-::ng-deep.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
-    border-color:red!important; /*outer ring color change*/
+::ng-deep .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+    border-color:red!important;
 }
