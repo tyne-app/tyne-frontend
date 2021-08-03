@@ -9,6 +9,7 @@ import { FooterComponent } from '../components/footer/footer.component';
 import { HeaderComponent } from '../components/header/header.component';
 import { HeaderLoginComponent } from '../components/header-login/header-login.component';
 import { SearchBarComponent } from '../../shared/components/search-bar/search-bar.component';
+import { HeaderLocalsComponent } from '../components/header-locals/header-locals.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { SearchBarComponent } from '../../shared/components/search-bar/search-ba
     HeaderLoginComponent,
     SearchBarComponent,
     HomeComponent,
+    HeaderLocalsComponent,
   ],
   imports: [
     CommonModule,
@@ -29,7 +31,8 @@ import { SearchBarComponent } from '../../shared/components/search-bar/search-ba
     FooterComponent,
     HeaderComponent,
     HeaderLoginComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    HeaderLocalsComponent,
   ]
 })
 export class HomeModule { }
