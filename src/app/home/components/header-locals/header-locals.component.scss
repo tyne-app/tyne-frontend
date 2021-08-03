@@ -13,6 +13,12 @@
   color: #FFF;
   ::ng-deep  &__content {
     border-radius: 0 0 5px 5px !important;
+    & .mat-menu-item {
+      color: #3C0000;
+    }
+    & .mat-menu-item:hover {
+      background: #FAFAFA !important;
+    }
   }
   ::ng-deep  &__content .mat-menu-content {
     padding-top: 0 !important;
