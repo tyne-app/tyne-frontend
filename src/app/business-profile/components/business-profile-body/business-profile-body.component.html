@@ -1,8 +1,8 @@
 <div class="container">
 
   <!--Nombre del local-->
-  <div class="row">
-    <div class="col-12 d-flex justify-content-center">
+  <div class="row justify-content-center">
+    <div class="col-sm-6 col-md-6 col-lg-4">
       <h3 class="titulo-2 titulo-principal">Juan y Medio</h3>
     </div>
   </div>
@@ -16,75 +16,72 @@
   <!--Datos principales del local-->
   <mat-card>
     <div class="row ml-1">
-      <div class="col-4">
+      <div class="col-md-4 col-lg-4">
         <h4 class="titulo">Nombre del local</h4>
         <p class="subtitulo">Los vikingos</p>
       </div>
-      <div class="col-4">
+      <div class="col-md-4 col-lg-4">
         <h4 class="titulo">Teléfono</h4>
         <p class="subtitulo">+56 9 6585 6514</p>
       </div>
-      <div class="col-4">
+      <div class="col-md-4 col-lg-4">
         <h4 class="titulo">Dirección del local</h4>
         <p class="subtitulo">Avenida Grecia #544</p>
       </div>
     </div>
 
     <div class="row ml-1">
-      <div class="col-4">
+      <div class="col-md-4 col-lg-4">
         <h4 class="titulo">Email</h4>
         <p class="subtitulo">contacto@vikingos.cl</p>
       </div>
-      <div class="col-4">
+      <div class="col-md-4 col-lg-4">
         <h4 class="titulo">Nombre encargado</h4>
         <p class="subtitulo">María Guzmán</p>
       </div>
-      <div class="col-4">
+      <div class="col-md-4 col-lg-4">
         <h4 class="titulo">Rut encargado</h4>
         <p class="subtitulo">12.345.678-9</p>
       </div>
     </div>
 
-    <div class="row pt-5">
-      <div class="col-4 d-flex justify-content-center">
-        <button mat-stroked-button class="normal-button">Editar mis datos</button>
+    <div class="row pt-5 justify-content-center">
+      <div class="col-6 col-md-4 col-lg-4 col-center">
+        <button mat-stroked-button class="normal-button" (click)="openEditDataComponent()">Editar mis datos</button>
       </div>
-      <div class="col-4 d-flex justify-content-center">
-        <button mat-stroked-button class="normal-button">Editar contraseña</button>
+      <div class="col-6 col-md-4 col-lg-4 col-center">
+        <button mat-stroked-button class="normal-button" (click)="openEditPasswordComponent()">Editar contraseña</button>
       </div>
-      <div class="col-4 d-flex justify-content-center">
-        <button mat-stroked-button class="normal-button">Ver mis datos bancarios</button>
+      <div class="col-12 col-md-4 col-lg-4 col-center">
+        <button mat-stroked-button class="normal-button" (click)="openEditBankDataComponent()">Ver mis datos bancarios</button>
       </div>
     </div>
 
   </mat-card>
 
   <mat-card class="mat-card-pt-4">
-    <div class="row ml-1">
-      <div class="col-5 d-flex justify-content-center">
-        <h4 class="titulo">Horario y días de funcionamiento:</h4>
-      </div>
-      <div class="col-3">
-        <h4 class="titulo">Sucursales:</h4>
-      </div>
-    </div>
 
     <div class="row ml-1 pt-3">
-      <div class="col-5">
-        <p class="subtitulo d-flex justify-content-center">Martes y sábado 12:30 a 23:30</p>
-        <p class="subtitulo d-flex justify-content-center">Domingo 14:30 a 21:00</p>
+
+      <div class="col-lg-5">
+        <h4 class="titulo pb-3">Horario y días de funcionamiento:</h4>
+        <p class="subtitulo">Martes y sábado 12:30 a 23:30</p>
+        <p class="subtitulo">Domingo 14:30 a 21:00</p>
       </div>
-      <div class="col-3">
+
+      <div class="col-lg-3">
+        <h4 class="titulo pb-3">Sucursales:</h4>
         <p class="subtitulo">Juan y Medio Providencia</p>
         <p class="subtitulo">Juan y Medio La Reina</p>
         <p class="subtitulo">Juan y Medio Maipu</p>
       </div>
-      <div class="col-4">
+
+      <div class="col-lg-4 pt-5">
         <div class="row">
-          <div class="col-1">
-            <img src="./../../../../assets/aceptan_mascotas.svg" />
+          <div class="col-1 col-md-6 col-lg-1">
+            <img src="./../../../../assets/aceptan_mascotas.svg" class="img-mascota"/>
           </div>
-          <div class="col-11 pl-5">
+          <div class="col-11 col-md-8 col-lg-11 pl-5">
             <h4 class="titulo-4">Aceptan mascotas</h4>
           </div>
         </div>
@@ -92,8 +89,8 @@
     </div>
 
     <div class="row ml-1 pt-3">
-      <div class="col-5 d-flex justify-content-center">
-        <button mat-stroked-button class="normal-button">Editar Horarios y Sucursales</button>
+      <div class="col-lg-5 d-flex justify-content-center">
+        <button mat-stroked-button class="normal-button" (click)="openEditWorkDaysComponent()">Editar Horarios y Sucursales</button>
       </div>
     </div>
 

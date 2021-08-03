@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material';
 import { passwordRegex } from 'src/app/shared/constants/password';
 import { PasswordValidator } from 'src/app/shared/validations/password-validator';
+import { BusinessProfileEditBankDataComponent } from '../business-profile-edit-bank-data/business-profile-edit-bank-data.component';
+import { BusinessProfileEditDataComponent } from '../business-profile-edit-data/business-profile-edit-data.component';
+import { BusinessProfileEditPasswordComponent } from '../business-profile-edit-password/business-profile-edit-password.component';
+import { BusinessProfileEditWorkDaysComponent } from '../business-profile-edit-work-days/business-profile-edit-work-days.component';
 
 @Component({
   selector: 'app-business-profile-body',
@@ -13,9 +18,10 @@ export class BusinessProfileBodyComponent implements OnInit {
   public form: FormGroup;
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private dialog: MatDialog
   ) { }
-
+  
   ngOnInit() {
     this.initForm();
   }
@@ -27,9 +33,45 @@ export class BusinessProfileBodyComponent implements OnInit {
       passwordConfirm: ['', [Validators.required, PasswordValidator('password')]],
     });
   }
+  
+  public openEditDataComponent(): void {
+    const dialogRef = this.dialog.open(BusinessProfileEditDataComponent, {
+      maxWidth: '100%',
+      width: '75%'
+    });
 
-  public updatePassword() {
-    // TODO
+    dialogRef.afterClosed().subscribe(result => {
+    });
+  }
+
+  public openEditPasswordComponent(): void {
+    const dialogRef = this.dialog.open(BusinessProfileEditPasswordComponent, {
+      maxWidth: '100%',
+      width: '75%'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
+  }
+
+  public openEditBankDataComponent(): void {
+    const dialogRef = this.dialog.open(BusinessProfileEditBankDataComponent, {
+      maxWidth: '100%',
+      width: '75%'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
+  }
+
+  public openEditWorkDaysComponent(): void {
+    const dialogRef = this.dialog.open(BusinessProfileEditWorkDaysComponent, {
+      maxWidth: '100%',
+      width: '75%'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
   }
 
   public getCurrentPasswordError() {

@@ -6,6 +6,7 @@ import { HomeModule } from 'src/app/home/modules/home.module';
 import { BusinessProfileComponent } from '../pages/business-profile.component';
 import { BusinessProfileRoutingModule } from '../routes/business-registration-routing.module';
 import { BusinessProfileBodyComponent } from '../components/business-profile-body/business-profile-body.component';
+import { SwiperModule } from 'swiper/angular';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { BusinessProfileBodyComponent } from '../components/business-profile-bod
     BusinessProfileRoutingModule,
     SharedModule,
     MaterialModule,
-    HomeModule
+    HomeModule,
+    SwiperModule
   ]
 })
 export class BusinessProfileModule { }
