@@ -40,6 +40,10 @@ const routes: Routes = [
     loadChildren: () => import('./search-restaurant/modules/search-restaurant.module').then( m=> m.SearchRestaurantModule)
   },
   {
+    path: 'menu-local',
+    loadChildren: () => import('./business-menus/modules/business-menus.module').then( m=> m.BusinessMenusModule)
+  },
+  {
     path: '**',
     redirectTo: 'inicio'
   },
