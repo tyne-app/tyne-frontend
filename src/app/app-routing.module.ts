@@ -20,6 +20,10 @@ const routes: Routes = [
     loadChildren: () => import('./client-profile/modules/client-profile.module').then(m=>m.ClientProfileModule)
   },
   {
+    path: 'perfil-local',
+    loadChildren: () => import('./business-profile/modules/business-registration.module').then(m=>m.BusinessProfileModule)
+  },
+  {
     path: 'reembolso',
     loadChildren: () => import('./refund-policy/modules/refund-policy.module').then( m => m.RefundPolicyModule),
   },
