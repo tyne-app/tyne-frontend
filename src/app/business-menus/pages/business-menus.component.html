@@ -1,8 +1,149 @@
-<!--Header-->
-<app-header [isWhiteLogo]="false"></app-header>
+<div class="img-container">
+    <!--Header-->
+    <app-header [isWhiteLogo]="true"></app-header>
 
-<!--Content-->
-<div class="container pt-5">
+    <!--Content-->
+    <div class="container">
 
+        <!--Principal title-->
+        <div class="row">
+            <div class="col-12 col-center">
+                <h1 class="principal-title">Carta</h1>
+            </div>
+        </div>
 
+        <!--Business info-->
+        <mat-card>
+            <div class="row pl-3 justify-content-center">
+                <div class="col-lg-5">
+                    <p class="title">Juan y Medio</p>
+                </div>
+                <div class="col-lg-3">
+                    <p class="titulo-4">Rango de Precios:</p>
+                    <p class="money">$$$$$</p>
+                </div>
+                <div class="col-lg-4">
+                    <p class="titulo-4">Calificación:</p>
+                    <img src="../../../assets/sarten-2.svg" />
+                    <img src="../../../assets/sarten-2.svg" />
+                    <img src="../../../assets/sarten-2.svg" />
+                    <img src="../../../assets/sarten-1.svg" />
+                    <img src="../../../assets/sarten-1.svg" />
+                </div>
+            </div>
+        </mat-card>
+
+        <br><br>
+
+        <mat-card>
+            <button class="btn-add-accordion" mat-stroked-button (click)="addSection()">
+                <mat-icon>add_circle</mat-icon>
+                Añadir sección
+            </button>
+        </mat-card>
+
+        <br>
+
+        <mat-accordion cdkDropList (cdkDropListDropped)="drop($event)">
+
+            <mat-expansion-panel *ngFor="let panel of accordions" cdkDrag (opened)="panelOpenState = false"
+                hideToggle="true" #toggleIcon>
+
+                <mat-expansion-panel-header class="disabled-pointer">
+
+                    <mat-panel-title>
+                        <button class="btn-accordion" mat-stroked-button (click)="eliminar(panel.id)">
+                            <mat-icon>delete</mat-icon>
+                            Borrar sección
+                        </button>
+                    </mat-panel-title>
+
+                    <mat-panel-description class="title-description" (dblclick)="algo(panel.id)"
+                        (click)="singleClick($event)">
+
+                        <label *ngIf="!panel.isTitleVisible" style="pointer-events: auto;">
+                            {{panel.title}}
+                        </label>
+
+                        <input type="text" [value]="panel.title" *ngIf="panel.isTitleVisible" (blur)="blurs(panel.id)"
+                            style="pointer-events: auto;" (keyup.enter)="save(panel.id)" [(ngModel)]="title"
+                            (keydown)="$event.stopPropagation()" />
+
+                    </mat-panel-description>
+
+                    <mat-panel-description class="title-icon-toggle">
+                        <mat-icon *ngIf="!toggleIcon.expanded" class="toggleIcon">expand_more</mat-icon>
+                        <mat-icon *ngIf="toggleIcon.expanded" class="toggleIcon">expand_less</mat-icon>
+                    </mat-panel-description>
+
+                </mat-expansion-panel-header>
+
+                <!-- <ng-container *ngIf="panel.subAccordion">
+
+                    <mat-accordion>
+                        <mat-expansion-panel *ngFor="let subpanel of panel.subAccordion"
+                            (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>{{ subpanel.title }}</mat-panel-title>
+                                <mat-panel-description>{{ subpanel.description }}</mat-panel-description>
+                            </mat-expansion-panel-header>
+                            <p>{{ subpanel.content }}</p>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+
+                </ng-container> -->
+
+                <mat-accordion>
+                    <div class="container">
+
+                        <div class="row pl-5">
+                            <div class="col">
+                                <mat-icon style="font-size: 40px; cursor: pointer;">
+                                    add_circle
+                                </mat-icon>
+                            </div>
+                        </div>
+
+                        <div *ngFor="let product of panel.products">
+                            <div class="row pl-5">
+                                <div class="col">
+                                    <p class="name-product">{{product.name}}</p>
+                                </div>
+                            </div>
+
+                            <div class="row pl-5">
+                                <div class="col-2">
+
+                                    <img [src]="product.imageUrl" style="width: 225px; height: 165px;" />
+
+                                    <button class="btn-accordion" mat-stroked-button>
+                                        <mat-icon>image</mat-icon>
+                                        Cambiar foto
+                                    </button>
+
+                                </div>
+                                <div class="col-5 pl-5">
+                                    <p class="parrafo">{{product.description}}</p>
+                                </div>
+                                <div class="col-3 col-center">
+                                    <p class="parrafo">$ {{product.price}} c/u</p>
+
+                                    <button class="btn-accordion" mat-stroked-button>
+                                        <mat-icon>delete</mat-icon>
+                                        Borrar plato
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-accordion>
+
+            </mat-expansion-panel>
+
+        </mat-accordion>
+
+    </div>
+
+    <!--Footer-->
+    <app-footer></app-footer>
 </div>

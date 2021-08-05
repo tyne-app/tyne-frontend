@@ -5,6 +5,7 @@ import { SharedModule } from 'src/app/shared/modules/shared.module';
 import { MaterialModule } from 'src/app/shared/modules/material.module';
 import { BusinessMenusComponent } from '../pages/business-menus.component';
 import { businessMenusRoutingModule } from '../routes/business-menus-routing.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { businessMenusRoutingModule } from '../routes/business-menus-routing.mod
     CommonModule,
     HomeModule,
     SharedModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule
   ]
 })
 export class BusinessMenusModule { }
