@@ -35,6 +35,7 @@
 
         <br><br>
 
+        <!--Add section button-->
         <mat-card>
             <button class="btn-add-accordion" mat-stroked-button (click)="addSection()">
                 <mat-icon>add_circle</mat-icon>
@@ -44,92 +45,111 @@
 
         <br>
 
-        <mat-accordion cdkDropList (cdkDropListDropped)="drop($event)">
+        <form [formGroup]="form">
 
-            <mat-expansion-panel *ngFor="let panel of accordions" cdkDrag (opened)="panelOpenState = false"
-                hideToggle="true" #toggleIcon>
+            <ng-container formArrayName="sections">
 
-                <mat-expansion-panel-header class="disabled-pointer">
+                <mat-accordion cdkDropList (cdkDropListDropped)="dropSection($event)">
 
-                    <mat-panel-title>
-                        <button class="btn-accordion" mat-stroked-button (click)="eliminar(panel.id)">
-                            <mat-icon>delete</mat-icon>
-                            Borrar sección
-                        </button>
-                    </mat-panel-title>
+                    <mat-expansion-panel *ngFor="let section of sections.controls; let i = index" cdkDrag
+                        (opened)="panelOpenState = false" hideToggle="true" #toggleIcon>
 
-                    <mat-panel-description class="title-description" (dblclick)="algo(panel.id)"
-                        (click)="singleClick($event)">
+                        <mat-expansion-panel-header class="disabled-pointer" [formGroup]="section">
 
-                        <label *ngIf="!panel.isTitleVisible" style="pointer-events: auto;">
-                            {{panel.title}}
-                        </label>
+                            <mat-panel-title>
+                                <button class="btn-delete" mat-stroked-button (click)="deleteSection(i)">
+                                    <mat-icon>delete</mat-icon>
+                                    Borrar sección
+                                </button>
+                            </mat-panel-title>
 
-                        <input type="text" [value]="panel.title" *ngIf="panel.isTitleVisible" (blur)="blurs(panel.id)"
-                            style="pointer-events: auto;" (keyup.enter)="save(panel.id)" [(ngModel)]="title"
-                            (keydown)="$event.stopPropagation()" />
+                            <mat-panel-description class="title-description">
 
-                    </mat-panel-description>
+                                <label>
+                                    {{section.get("title").value}}
+                                </label>
 
-                    <mat-panel-description class="title-icon-toggle">
-                        <mat-icon *ngIf="!toggleIcon.expanded" class="toggleIcon">expand_more</mat-icon>
-                        <mat-icon *ngIf="toggleIcon.expanded" class="toggleIcon">expand_less</mat-icon>
-                    </mat-panel-description>
+                            </mat-panel-description>
 
-                </mat-expansion-panel-header>
+                            <mat-panel-description class="title-icon-toggle">
+                                <mat-icon *ngIf="!toggleIcon.expanded" class="toggleIcon">expand_more</mat-icon>
+                                <mat-icon *ngIf="toggleIcon.expanded" class="toggleIcon">expand_less</mat-icon>
+                            </mat-panel-description>
 
-                <mat-accordion>
-                    <div class="container">
+                        </mat-expansion-panel-header>
 
-                        <div class="row pl-5">
-                            <div class="col">
-                                <mat-icon style="font-size: 40px; cursor: pointer;" (click)="addProduct(panel.id)">
-                                    add_circle
-                                </mat-icon>
-                            </div>
-                        </div>
+                        <!--Section Content-->
+                        <mat-accordion>
+                            <ng-container>
+                                <div class="container">
 
-                        <div *ngFor="let product of panel.products" class="pb-4">
-                            <div class="row pl-5">
-                                <div class="col">
-                                    <!-- <p class="name-product">{{product.name}}</p> -->
-                                    <input type="text" [value]="product.name"/>
+                                    <div class="row pl-5">
+                                        <div class="col">
+                                            <mat-icon style="font-size: 40px; cursor: pointer;" (click)="addProduct(i)">
+                                                add_circle
+                                            </mat-icon>
+                                        </div>
+                                    </div>
+
+                                    <div *ngFor="let product of products(section); let p = index" class="pb-4">
+
+                                        <ng-container [formGroup]="product">
+
+                                            <div class="row pl-5">
+                                                <div class="col">
+                                                    <mat-form-field appearance="outline">
+                                                        <input matInput formControlName="name" type="text">
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+
+                                            <div class="row pl-5">
+
+                                                <div class="col-2 col-center">
+                                                    <img class="img-responsive" [src]="product.get('imageUrl').value" />
+
+                                                    <button class="btn-accordion" mat-stroked-button>
+                                                        <mat-icon>image</mat-icon>
+                                                        Cambiar foto
+                                                    </button>
+                                                </div>
+
+                                                <div class="col-5 pl-5">
+                                                    <!-- <p class="parrafo">{{product.description}}</p> -->
+                                                    <mat-form-field class="example-full-width" appearance="fill">
+                                                        <textarea matInput formControlName="description"
+                                                            placeholder="Ex. It makes me feel..."></textarea>
+                                                    </mat-form-field>
+                                                </div>
+
+                                                <div class="col-3 col-center">
+                                                    <!-- <p class="parrafo">$ {{product.price}} c/u</p> -->
+
+                                                    <mat-form-field appearance="outline">
+                                                        <input matInput formControlName="price" type="number">
+                                                    </mat-form-field>
+
+                                                    <button class="btn-accordion" mat-stroked-button
+                                                        (click)="deleteProduct(i, p)">
+                                                        <mat-icon>delete</mat-icon>
+                                                        Borrar plato
+                                                    </button>
+                                                </div>
+
+                                            </div>
+
+                                        </ng-container>
+                                    </div>
                                 </div>
-                            </div>
-
-                            <div class="row pl-5">
-                                <div class="col-2 col-center">
-
-                                    <img [src]="product.imageUrl" class="img-responsive"/>
-
-                                    <button class="btn-accordion" mat-stroked-button>
-                                        <mat-icon>image</mat-icon>
-                                        Cambiar foto
-                                    </button>
-
-                                </div>
-                                <div class="col-5 pl-5">
-                                    <p class="parrafo">{{product.description}}</p>
-                                </div>
-                                <div class="col-3 col-center">
-                                    <p class="parrafo">$ {{product.price}} c/u</p>
-
-                                    <button class="btn-accordion" mat-stroked-button (click)="deleteProduct(panel.id, product.id)">
-                                        <mat-icon>delete</mat-icon>
-                                        Borrar plato
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                            </ng-container>
+                        </mat-accordion>
+                    </mat-expansion-panel>
                 </mat-accordion>
-
-            </mat-expansion-panel>
-
-        </mat-accordion>
-
+            </ng-container>
+        </form>
     </div>
 
     <!--Footer-->
     <app-footer></app-footer>
+
 </div>

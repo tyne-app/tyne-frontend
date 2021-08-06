@@ -56,6 +56,18 @@
   pointer-events: auto;
 }
 
+.btn-delete {
+  color: #3C0000;;
+  background: white;
+  border: 1px solid #E10000;
+  box-sizing: border-box;
+  border-radius: 10px;
+  width: 100%;
+  width: 216px;
+  height: 43px;
+  pointer-events: auto;
+}
+
 .mat-expansion-panel {
   margin-top: 10px;
 }
@@ -90,4 +102,11 @@
   font-weight: normal;
   font-size: 18px;
   color: #3C0000;
+}
+
+mat-form-field {
+  width: 50%;
+  height: 10%;
+  font-size: 13px;
+  margin-top: 10px;
 }
