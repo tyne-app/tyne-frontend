@@ -13,7 +13,7 @@ export class BusinessMenusComponent implements OnInit {
   timer: any;
   delay: Number;
   title = "";
-  
+
   constructor() { }
 
   ngOnInit() {
@@ -27,56 +27,64 @@ export class BusinessMenusComponent implements OnInit {
       title: '1',
       isTitleVisible: false,
       products: [{
+        id: 1,
         name: 'Carne al jugo',
         imageUrl: 'https://sevilla.abc.es/gurme/wp-content/uploads/sites/24/2012/01/comida-rapida-casera.jpg',
         price: '4500',
         description: 'Sabrosa carne al jugo Sabrosa carne al jugo Sabrosa carne al jugo Sabrosa carne al jugo Sabrosa carne al jugo'
       },
       {
+        id: 2,
         name: 'item 2',
         description: '',
-        content: 'Content of subpanel 02',
+        imageUrl: '',
+        price: '4500',
       }]
     },
     {
       id: 2,
-      title: '2', 
-      description: 'simply click, drag & drop one of us around',
+      title: '2',
+      isTitleVisible: false,
       products: [{
-        name: 'item 1', 
+        id: 1,
+        name: 'item 1',
         description: 'description',
-        content: 'Content of subpanel 01',
+        imageUrl: '',
+        price: '4500',
       }]
     },
     {
       id: 3,
-      title: '3', 
-      description: 'You will see, it\'s very easy!',
+      title: '3',
+      isTitleVisible: false,
       products: [{
-        name: 'item 1', 
+        id: 1,
+        name: 'item 1',
         description: 'description',
-        content: 'Content of subpanel 01',
+        imageUrl: '',
+        price: '4500',
       }]
     },
     {
       id: 4,
-      title: '4', 
-      description: 'Try it now, go ahead',
+      title: '4',
+      isTitleVisible: false,
       products: [{
-        name: 'item 1', 
+        id: 1,
+        name: 'item 1',
         description: 'description',
-        content: 'Content of subpanel 01',
+        imageUrl: '',
+        price: '4500',
       }]
     },
   ]
-  
+
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.accordions, event.previousIndex, event.currentIndex);
 
     for (let index = 0; index < this.accordions.length; index++) {
       this.accordions[index].id = index + 1;
     }
-
   }
 
   eliminar(id) {
@@ -91,17 +99,14 @@ export class BusinessMenusComponent implements OnInit {
 
     this.accordions.push({
       id: 0,
-      title: '63', 
-      description: 'you can reorder this list easily',
+      title: 'Nueva Sección',
+      isTitleVisible: false,
       products: [{
+        id: 1,
         name: 'item 1',
-        description: 'description',
-        content: 'Content of subpanel 01',
-      },
-      {
-        name: 'item 2',
-        description: '',
-        content: 'Content of subpanel 02',
+        description: 'Ingresa una descripción',
+        imageUrl: '../../../../../assets/alternate-photo.png',
+        price: '0'
       }]
     });
 
@@ -116,11 +121,11 @@ export class BusinessMenusComponent implements OnInit {
 
   singleClick(event) {
     this.preventSingleClick = false;
-     const delay = 200;
-      this.timer = setTimeout(() => {
-        if (!this.preventSingleClick) {
-        }
-      }, delay);
+    const delay = 200;
+    this.timer = setTimeout(() => {
+      if (!this.preventSingleClick) {
+      }
+    }, delay);
   }
 
   blurs(id: number) {
@@ -137,9 +142,32 @@ export class BusinessMenusComponent implements OnInit {
     if (ev.keyCode === 32) {
       ev.stopPropagation();
     }
-   }
+  }
 
-  algomas() {
-    console.log("ssss");
+  deleteProduct(seccionId: number, productId: number) {
+    const section = this.accordions.find(x => x.id === seccionId)
+
+    if (section) {
+      section.products = section.products.filter(x => x.id != productId);
+
+      if (section.products.length === 0) {
+        this.accordions = this.accordions.filter(x => x.id != seccionId);
+      }
+    }
+  }
+
+  addProduct(seccionId: number) {
+    const section = this.accordions.find(x => x.id === seccionId)
+    section.products.push({
+      id: 1,
+      name: 'item 1',
+      description: 'Ingresa una descripción',
+      imageUrl: '../../../../../assets/alternate-photo.png',
+      price: '0'
+    });
+
+    for (let index = 0; index < section.products.length; index++) {
+      section.products[index].id = index + 1;
+    }
   }
 }

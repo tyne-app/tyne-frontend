@@ -78,43 +78,29 @@
 
                 </mat-expansion-panel-header>
 
-                <!-- <ng-container *ngIf="panel.subAccordion">
-
-                    <mat-accordion>
-                        <mat-expansion-panel *ngFor="let subpanel of panel.subAccordion"
-                            (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                            <mat-expansion-panel-header>
-                                <mat-panel-title>{{ subpanel.title }}</mat-panel-title>
-                                <mat-panel-description>{{ subpanel.description }}</mat-panel-description>
-                            </mat-expansion-panel-header>
-                            <p>{{ subpanel.content }}</p>
-                        </mat-expansion-panel>
-                    </mat-accordion>
-
-                </ng-container> -->
-
                 <mat-accordion>
                     <div class="container">
 
                         <div class="row pl-5">
                             <div class="col">
-                                <mat-icon style="font-size: 40px; cursor: pointer;">
+                                <mat-icon style="font-size: 40px; cursor: pointer;" (click)="addProduct(panel.id)">
                                     add_circle
                                 </mat-icon>
                             </div>
                         </div>
 
-                        <div *ngFor="let product of panel.products">
+                        <div *ngFor="let product of panel.products" class="pb-4">
                             <div class="row pl-5">
                                 <div class="col">
-                                    <p class="name-product">{{product.name}}</p>
+                                    <!-- <p class="name-product">{{product.name}}</p> -->
+                                    <input type="text" [value]="product.name"/>
                                 </div>
                             </div>
 
                             <div class="row pl-5">
-                                <div class="col-2">
+                                <div class="col-2 col-center">
 
-                                    <img [src]="product.imageUrl" style="width: 225px; height: 165px;" />
+                                    <img [src]="product.imageUrl" class="img-responsive"/>
 
                                     <button class="btn-accordion" mat-stroked-button>
                                         <mat-icon>image</mat-icon>
@@ -128,7 +114,7 @@
                                 <div class="col-3 col-center">
                                     <p class="parrafo">$ {{product.price}} c/u</p>
 
-                                    <button class="btn-accordion" mat-stroked-button>
+                                    <button class="btn-accordion" mat-stroked-button (click)="deleteProduct(panel.id, product.id)">
                                         <mat-icon>delete</mat-icon>
                                         Borrar plato
                                     </button>
