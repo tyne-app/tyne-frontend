@@ -45,14 +45,13 @@
 
         <br>
 
-        <form [formGroup]="form">
+        <form [formGroup]="form" (ngSubmit)="saveChanges()" (keydown.enter)="$event.preventDefault()">
 
             <ng-container formArrayName="sections">
 
                 <mat-accordion cdkDropList (cdkDropListDropped)="dropSection($event)">
 
-                    <mat-expansion-panel *ngFor="let section of sections.controls; let i = index" cdkDrag
-                        (opened)="panelOpenState = false" hideToggle="true" #toggleIcon>
+                    <mat-expansion-panel *ngFor="let section of sections.controls; let i = index" cdkDrag hideToggle="true" #toggleIcon>
 
                         <mat-expansion-panel-header class="disabled-pointer" [formGroup]="section">
 
@@ -65,7 +64,7 @@
 
                             <mat-panel-description class="title-description">
 
-                                <label>
+                                <label class="section-title">
                                     {{section.get("title").value}}
                                 </label>
 
@@ -83,7 +82,7 @@
                             <ng-container>
                                 <div class="container">
 
-                                    <div class="row pl-5">
+                                    <div class="row pt-2">
                                         <div class="col">
                                             <mat-icon style="font-size: 40px; cursor: pointer;" (click)="addProduct(i)">
                                                 add_circle
@@ -91,45 +90,48 @@
                                         </div>
                                     </div>
 
-                                    <div *ngFor="let product of products(section); let p = index" class="pb-4">
+                                    <div *ngFor="let product of products(section); let p = index" class="pb-4 pr-5">
 
                                         <ng-container [formGroup]="product">
 
-                                            <div class="row pl-5">
-                                                <div class="col">
-                                                    <mat-form-field appearance="outline">
+                                            <div class="row">
+                                                <div class="col-md-11 col-lg-3">
+                                                    <mat-form-field appearance="outline" class="input-product-name">
                                                         <input matInput formControlName="name" type="text">
                                                     </mat-form-field>
                                                 </div>
                                             </div>
 
-                                            <div class="row pl-5">
+                                            <div class="row">
 
-                                                <div class="col-2 col-center">
+                                                <div class="col-md-12 col-lg-3">
                                                     <img class="img-responsive" [src]="product.get('imageUrl').value" />
 
-                                                    <button class="btn-accordion" mat-stroked-button>
+                                                    <button class="btn-change-photo" mat-stroked-button>
                                                         <mat-icon>image</mat-icon>
                                                         Cambiar foto
                                                     </button>
                                                 </div>
 
-                                                <div class="col-5 pl-5">
-                                                    <!-- <p class="parrafo">{{product.description}}</p> -->
-                                                    <mat-form-field class="example-full-width" appearance="fill">
-                                                        <textarea matInput formControlName="description"
-                                                            placeholder="Ex. It makes me feel..."></textarea>
+                                                <div class="col-md-11 col-lg-4">
+                                                    <mat-form-field class="input-product-description" appearance="fill">
+                                                        <textarea matInput formControlName="description" rows="4"
+                                                            placeholder="Ingresa una descripción"></textarea>
+                                                        <mat-error>
+                                                            error
+                                                        </mat-error>
                                                     </mat-form-field>
                                                 </div>
 
-                                                <div class="col-3 col-center">
-                                                    <!-- <p class="parrafo">$ {{product.price}} c/u</p> -->
+                                                <div class="col-md-12 col-lg-3">
 
-                                                    <mat-form-field appearance="outline">
-                                                        <input matInput formControlName="price" type="number">
+                                                    <label class="price">$</label>
+                                                    <mat-form-field appearance="outline" class="input-product-price">
+                                                        <input matInput formControlName="price" type="text">
                                                     </mat-form-field>
+                                                    <label class="price">c/u</label>
 
-                                                    <button class="btn-accordion" mat-stroked-button
+                                                    <button class="btn-delete-product" mat-stroked-button
                                                         (click)="deleteProduct(i, p)">
                                                         <mat-icon>delete</mat-icon>
                                                         Borrar plato
@@ -139,6 +141,9 @@
                                             </div>
 
                                         </ng-container>
+
+                                        <mat-divider></mat-divider>
+
                                     </div>
                                 </div>
                             </ng-container>
@@ -146,6 +151,15 @@
                     </mat-expansion-panel>
                 </mat-accordion>
             </ng-container>
+
+            <br><br>
+
+            <div class="row">
+                <div class="col" style="text-align: right;">
+                    <button type="submit" class="btn-submit" mat-stroked-button>Guardar Cambios</button>
+                </div>
+            </div>
+
         </form>
     </div>
 

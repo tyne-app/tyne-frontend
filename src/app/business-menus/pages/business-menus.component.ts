@@ -24,6 +24,10 @@ export class BusinessMenusComponent implements OnInit {
     this.initForm();
   }
 
+  public saveChanges() {
+    console.log(this.form);
+  }
+
   public dropSection(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.sections.controls, event.previousIndex, event.currentIndex);
 
@@ -34,8 +38,8 @@ export class BusinessMenusComponent implements OnInit {
 
   public addSection() {
     this.sections.push(this.fb.group({
-      title: ["Nueva Sección", Validators.required],
       id: ['0'],
+      title: ["Nueva Sección", Validators.required],
       products: this.addDefaultProduct()
     }));
 
@@ -60,7 +64,7 @@ export class BusinessMenusComponent implements OnInit {
     products.push(this.fb.group({
       id: ['0'],
       name: ['Nombre del Producto', Validators.required],
-      description: ['Ingresa una descripción'],
+      description: ['Ingresa una descripción', [Validators.required, Validators.maxLength(250)]],
       imageUrl: ['../../../../../assets/alternate-photo.png'],
       price: ['0']
     }));
@@ -163,7 +167,7 @@ export class BusinessMenusComponent implements OnInit {
         name: [x.name, Validators.required],
         imageUrl: [x.imageUrl],
         price: [x.price],
-        description: [x.description]
+        description: [x.description, [Validators.required, Validators.maxLength(250)]]
       }))
     })
 
