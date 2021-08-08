@@ -1,0 +1,187 @@
+.img-container {
+    background:url(../../../assets/bg_home.png);
+    background-repeat: no-repeat;
+    background-size:auto;
+    background-position: center;
+}
+
+.principal-title {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 75px;
+    text-align: center;
+    color: #FFFDFA;
+}
+
+.title {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 48px;
+    color: #3C0000;
+    margin-top: 15px;
+}
+
+.money {
+    color: #3C0000;
+    font-size: 28px;
+    margin-top: -10px;
+}
+
+.section-title {
+  font-weight: normal;
+  font-size: 25px;
+  line-height: 30px;
+  text-align: center;
+  color: #3C0000;
+  pointer-events: auto;
+}
+
+.mat-icon {
+  color: red;
+}
+
+.btn-submit {
+  color: white;
+  background: #E10000;
+  border: 1px solid #E10000;
+  box-sizing: border-box;
+  border-radius: 10px;
+  width: 100%;
+  width: 203.91px;
+  height: 43px;
+}
+
+.btn-add-accordion {
+  color: #3C0000;;
+  background: white;
+  border: 1px solid #E10000;
+  box-sizing: border-box;
+  border-radius: 10px;
+  width: 100%;
+  width: 216px;
+  height: 43px;
+  margin-left: 8px;
+}
+
+.btn-accordion {
+  color: #3C0000;;
+  background: white;
+  border: 1px solid #E10000;
+  box-sizing: border-box;
+  border-radius: 10px;
+  width: 100%;
+  width: 216px;
+  height: 43px;
+  pointer-events: auto;
+}
+
+.btn-delete {
+  color: #3C0000;;
+  background: white;
+  border: 1px solid #E10000;
+  box-sizing: border-box;
+  border-radius: 10px;
+  width: 100%;
+  height: 43px;
+  pointer-events: auto;
+}
+
+.btn-change-photo {
+  color: #3C0000;;
+  background: white;
+  border: 1px solid #E10000;
+  box-sizing: border-box;
+  border-radius: 10px;
+  width: 100%;
+  height: 43px;
+  pointer-events: auto;
+}
+
+.btn-delete-product {
+  color: #3C0000;;
+  background: white;
+  border: 1px solid #E10000;
+  box-sizing: border-box;
+  border-radius: 10px;
+  width: 100%;
+  height: 43px;
+  pointer-events: auto;
+}
+
+.mat-expansion-panel {
+  margin-top: 10px;
+}
+
+.mat-expansion-panel-header {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.title-description{
+  width: 70%; 
+  justify-content: center;
+}
+
+.title-icon-toggle {
+  width: 30%; 
+  justify-content: flex-end;
+}
+
+.disabled-pointer {
+  pointer-events: none;
+}
+
+.toggleIcon {
+  pointer-events: auto;
+  font-size: 40px;
+  color: #3C0000;
+}
+
+.name-product {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  color: #3C0000;
+}
+
+.input-product-name {
+  width: 110%;
+}
+
+.input-product-price {
+  width: 40%;
+}
+
+.input-product-description {
+  width: 100%;
+}
+
+.price {
+  color: #3C0000;
+  font-weight: normal;
+  font-size: 18px;
+}
+
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+  color: white;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: white;
+}
+
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+  background-color: white;
+}
+
+.mat-input-element {
+  color: #3C0000;
+  font-weight: normal;
+  font-size: 18px;
+  // line-height: 22px;
+}
+
+mat-divider {
+  margin-top: 25px;
+}

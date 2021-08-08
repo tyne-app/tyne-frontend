@@ -24,6 +24,7 @@ import {
   MatStepperModule
 } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 const MaterialComponents = [
   MatStepperModule,
@@ -50,7 +51,8 @@ const MaterialComponents = [
   MatNativeDateModule,
   MatDatepickerModule,
   MatTooltipModule,
-  MatFormFieldModule
+  MatFormFieldModule,
+  DragDropModule
 ];
 
 @NgModule({
