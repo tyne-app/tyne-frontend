@@ -17,7 +17,6 @@ body { margin: 0; padding: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
     padding-left: 5px;
     color: #3C0000;
     font-style: normal;
-    font-weight: bold;
     font-size: 16px;
     line-height: 19px;
 }
@@ -29,6 +28,22 @@ body { margin: 0; padding: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
     font-weight: normal;
     font-size: 18px;
     line-height: 21px;
+}
+
+.parrafo-16 {
+    color: #3C0000;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 21px;
+}
+
+.titulo-2 {
+    color: #3C0000;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 57px;
 }
 
 .titulo-3 {
@@ -47,10 +62,40 @@ body { margin: 0; padding: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
     line-height: 29px;
 }
 
+/*Inputs*/
+.mat-form-field-outline {
+    background-color: white;
+}
 
+.mat-form-field-appearance-outline .mat-form-field-outline {
+    color: #BFBFBF;
+}
+  
+.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    color: #3C0000;
+}
 
+/*stepper*/
+.mat-step-header .mat-step-icon-state-edit {
+    background-color: red;
+}
 
+.img-responsive {
+    max-width: 100%;
+    height: auto;
+}
 
+.col-center {
+    text-align: center;
+}
+
+.col-right {
+    text-align: right;
+}
+
+/*
+Buttons
+*/
 
 
 

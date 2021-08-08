@@ -86,10 +86,12 @@ export class SearchBarComponent implements OnInit {
     return this.form.get("name").hasError("minlength") ? "Debe tener mínimo 3 caracteres" :
       this.form.get("name").hasError("required") ? "Debe ingresar un nombre" : null;
   }
-
+  
   public dateReservationErrorMessage() {
+    console.log(this.form.get("dateReservation").errors);
     return this.form.get("dateReservation").hasError("required") ? "Debe ingresar una fecha válida" :
-      this.form.get("dateReservation").hasError("invalidDate") ? "Debe ser igual o mayor a hoy" : null;
+      this.form.get("dateReservation").hasError("invalidDate") ? "Debe ser igual o mayor a hoy" :
+      this.form.get("dateReservation").hasError("matDatepickerParse") ? "Debe ingresar una fecha válida" : null;
   }
 
   public stateErrorMessage() {

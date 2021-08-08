@@ -14,15 +14,17 @@ import {
   MatRadioModule,
   MatSidenavModule,
   MatSnackBarModule,
-  MatStepperModule,
   MatSelectModule,
   MatTableModule,
   MatToolbarModule,
   MatExpansionModule,
   MatNativeDateModule,
-  MatDatepickerModule
+  MatDatepickerModule,
+  MatTooltipModule,
+  MatStepperModule
 } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 const MaterialComponents = [
   MatStepperModule,
@@ -47,11 +49,14 @@ const MaterialComponents = [
   MatSelectModule, 
   MatExpansionModule,
   MatNativeDateModule,
-  MatDatepickerModule
+  MatDatepickerModule,
+  MatTooltipModule,
+  MatFormFieldModule,
+  DragDropModule
 ];
 
 @NgModule({
   imports: [MaterialComponents],
-  exports: [MaterialComponents, MatFormFieldModule]
+  exports: [MaterialComponents]
 })
 export class MaterialModule { }

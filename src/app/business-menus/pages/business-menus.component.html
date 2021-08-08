@@ -1,0 +1,169 @@
+<div class="img-container">
+    <!--Header-->
+    <app-header [isWhiteLogo]="true"></app-header>
+
+    <!--Content-->
+    <div class="container">
+
+        <!--Principal title-->
+        <div class="row">
+            <div class="col-12 col-center">
+                <h1 class="principal-title">Carta</h1>
+            </div>
+        </div>
+
+        <!--Business info-->
+        <mat-card>
+            <div class="row pl-3 justify-content-center">
+                <div class="col-lg-5">
+                    <p class="title">Juan y Medio</p>
+                </div>
+                <div class="col-lg-3">
+                    <p class="titulo-4">Rango de Precios:</p>
+                    <p class="money">$$$$$</p>
+                </div>
+                <div class="col-lg-4">
+                    <p class="titulo-4">Calificación:</p>
+                    <img src="../../../assets/sarten-2.svg" />
+                    <img src="../../../assets/sarten-2.svg" />
+                    <img src="../../../assets/sarten-2.svg" />
+                    <img src="../../../assets/sarten-1.svg" />
+                    <img src="../../../assets/sarten-1.svg" />
+                </div>
+            </div>
+        </mat-card>
+
+        <br><br>
+
+        <!--Add section button-->
+        <mat-card>
+            <button class="btn-add-accordion" mat-stroked-button (click)="addSection()">
+                <mat-icon>add_circle</mat-icon>
+                Añadir sección
+            </button>
+        </mat-card>
+
+        <br>
+
+        <form [formGroup]="form" (ngSubmit)="saveChanges()" (keydown.enter)="$event.preventDefault()">
+
+            <ng-container formArrayName="sections">
+
+                <mat-accordion cdkDropList (cdkDropListDropped)="dropSection($event)">
+
+                    <mat-expansion-panel *ngFor="let section of sections.controls; let i = index" cdkDrag hideToggle="true" #toggleIcon>
+
+                        <mat-expansion-panel-header class="disabled-pointer" [formGroup]="section">
+
+                            <mat-panel-title>
+                                <button class="btn-delete" mat-stroked-button (click)="deleteSection(i)">
+                                    <mat-icon>delete</mat-icon>
+                                    Borrar sección
+                                </button>
+                            </mat-panel-title>
+
+                            <mat-panel-description class="title-description">
+
+                                <label class="section-title">
+                                    {{section.get("title").value}}
+                                </label>
+
+                            </mat-panel-description>
+
+                            <mat-panel-description class="title-icon-toggle">
+                                <mat-icon *ngIf="!toggleIcon.expanded" class="toggleIcon">expand_more</mat-icon>
+                                <mat-icon *ngIf="toggleIcon.expanded" class="toggleIcon">expand_less</mat-icon>
+                            </mat-panel-description>
+
+                        </mat-expansion-panel-header>
+
+                        <!--Section Content-->
+                        <mat-accordion>
+                            <ng-container>
+                                <div class="container">
+
+                                    <div class="row pt-2">
+                                        <div class="col">
+                                            <mat-icon style="font-size: 40px; cursor: pointer;" (click)="addProduct(i)">
+                                                add_circle
+                                            </mat-icon>
+                                        </div>
+                                    </div>
+
+                                    <div *ngFor="let product of products(section); let p = index" class="pb-4 pr-5">
+
+                                        <ng-container [formGroup]="product">
+
+                                            <div class="row">
+                                                <div class="col-md-11 col-lg-3">
+                                                    <mat-form-field appearance="outline" class="input-product-name">
+                                                        <input matInput formControlName="name" type="text">
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+
+                                                <div class="col-md-12 col-lg-3">
+                                                    <img class="img-responsive" [src]="product.get('imageUrl').value" />
+
+                                                    <button class="btn-change-photo" mat-stroked-button>
+                                                        <mat-icon>image</mat-icon>
+                                                        Cambiar foto
+                                                    </button>
+                                                </div>
+
+                                                <div class="col-md-11 col-lg-4">
+                                                    <mat-form-field class="input-product-description" appearance="fill">
+                                                        <textarea matInput formControlName="description" rows="4"
+                                                            placeholder="Ingresa una descripción"></textarea>
+                                                        <mat-error>
+                                                            error
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+
+                                                <div class="col-md-12 col-lg-3">
+
+                                                    <label class="price">$</label>
+                                                    <mat-form-field appearance="outline" class="input-product-price">
+                                                        <input matInput formControlName="price" type="text">
+                                                    </mat-form-field>
+                                                    <label class="price">c/u</label>
+
+                                                    <button class="btn-delete-product" mat-stroked-button
+                                                        (click)="deleteProduct(i, p)">
+                                                        <mat-icon>delete</mat-icon>
+                                                        Borrar plato
+                                                    </button>
+                                                </div>
+
+                                            </div>
+
+                                        </ng-container>
+
+                                        <mat-divider></mat-divider>
+
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </mat-accordion>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </ng-container>
+
+            <br><br>
+
+            <div class="row">
+                <div class="col" style="text-align: right;">
+                    <button type="submit" class="btn-submit" mat-stroked-button>Guardar Cambios</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+    <!--Footer-->
+    <app-footer></app-footer>
+
+</div>

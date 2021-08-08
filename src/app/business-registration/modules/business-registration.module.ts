@@ -5,6 +5,7 @@ import { SharedModule } from 'src/app/shared/modules/shared.module';
 import { MaterialModule } from '../../shared/modules/material.module';
 import { BusinessRegistrationComponent } from '../pages/business-registration.component';
 import { HomeModule } from 'src/app/home/modules/home.module';
+import { Ng9RutModule } from 'ng9-rut';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { HomeModule } from 'src/app/home/modules/home.module';
     BusinessRegistrationRoutingModule,
     SharedModule,
     MaterialModule,
-    HomeModule
+    HomeModule,
+    Ng9RutModule
   ]
 })
 export class BusinessRegistrationModule { }

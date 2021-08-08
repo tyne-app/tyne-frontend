@@ -19,7 +19,7 @@ import { HomeModule } from 'src/app/home/modules/home.module';
   ],
   imports: [
     CommonModule,
-    ClientProfileRoutingModule ,
+    ClientProfileRoutingModule,
     SharedModule,
     MaterialModule, 
     ReactiveFormsModule,
