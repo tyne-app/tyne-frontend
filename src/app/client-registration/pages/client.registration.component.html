@@ -1,143 +1,215 @@
-<div class="container mb-4 pl-4 pr-4">
-  <div class="row mt-4">
+<div class="container modal-body-register">
+  <div class="row">
     <div class="col">
-      <h1 class="register-title" mat-dialog-title>Registro</h1>
+      <div class="logo my-5 d-flex justify-content-center">
+        <img [src]="getLogo()" class="img-logo" routerLink="/" />
+      </div>
+      <div class="d-flex justify-content-center my-5">
+        <img src="/assets/img/bienvenido.svg" alt="tyne-app-welcome" />
+      </div>
+      <h2 class="register-title d-flex justify-content-center" mat-dialog-title>
+        Registrate con:
+      </h2>
+      <!-- Button -->
+      <div class="col mb-4 d-flex justify-content-center">
+        <button class="register-button" mat-raised-button type="submit">
+          <img
+            src="/assets/img/facebook-register.svg"
+            alt="facebook-registration"
+          />
+          Facebook
+        </button>
+      </div>
+      <!-- Button -->
+      <div class="col d-flex justify-content-center">
+        <button class="register-button" mat-raised-button type="submit">
+          <img
+            src="/assets/img/google-register.svg"
+            alt="google-registration"
+          />
+          Google
+        </button>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="mb-4 pl-4 pr-4">
+        <div class="row mt-4">
+          <div class="col">
+            <h2 class="register-title" mat-dialog-title>
+              o ingresa tus datos:
+            </h2>
+          </div>
+        </div>
+
+        <div mat-dialog-actions>
+          <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <!-- First row -->
+            <div class="row">
+              <!-- Name input -->
+
+              <div class="col">
+                <label class="label-input-name">Nombre *</label>
+                <mat-form-field appearance="outline">
+                  <input
+                    matInput
+                    formControlName="name"
+                    type="text"
+                    placeholder="Nombre"
+                    autocomplete="off"
+                  />
+                  <mat-error *ngIf="name.invalid && name.dirty">
+                    Debes ingresar tu nombre!
+                  </mat-error>
+                </mat-form-field>
+              </div>
+
+              <!-- Lastname input -->
+
+              <div class="col">
+                <label class="label-input-name">Apellido *</label>
+                <mat-form-field appearance="outline">
+                  <input
+                    matInput
+                    formControlName="lastName"
+                    type="text"
+                    placeholder="Apellido"
+                    autocomplete="off"
+                  />
+                  <mat-error *ngIf="lastName.invalid && lastName.dirty">
+                    Debes ingresar tu apellido!
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <!-- Second row -->
+            <div class="row">
+              <!-- Email input -->
+
+              <div class="col">
+                <label class="label-input-name">Email *</label>
+                <mat-form-field appearance="outline">
+                  <input
+                    matInput
+                    formControlName="email"
+                    type="email"
+                    placeholder="Email"
+                    autocomplete="off"
+                  />
+                  <mat-error
+                    *ngIf="
+                      email.invalid && email.dirty && email.hasError('pattern')
+                    "
+                  >
+                    Debes ingresar una direccion de correo!
+                  </mat-error>
+                </mat-form-field>
+              </div>
+
+              <!-- Cellphone input -->
+
+              <div class="col">
+                <label class="label-input-name">Celular *</label>
+                <mat-form-field appearance="outline" hintLabel="+xx xxxxxxxxx">
+                  <input
+                    matInput
+                    formControlName="phoneNumber"
+                    type="text"
+                    placeholder="Celular"
+                    autocomplete="off"
+                  />
+                  <mat-error *ngIf="phoneNumber.invalid && phoneNumber.dirty">
+                    Debes ingresar tu numero de telefono!
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row">
+              <!-- Password input -->
+
+              <div class="col">
+                <label class="label-input-name">Contraseña *</label>
+                <mat-form-field
+                  appearance="outline"
+                  hintLabel="Debe tener al menos 6 caracteres"
+                >
+                  <input
+                    matInput
+                    formControlName="password"
+                    type="password"
+                    placeholder="Contraseña"
+                    autocomplete="off"
+                  />
+                  <mat-error *ngIf="password.invalid && password.dirty">
+                    Debes crear tu contraseña
+                  </mat-error>
+                </mat-form-field>
+              </div>
+
+              <!-- Confirm Password input -->
+
+              <div class="col">
+                <label class="label-input-name">Repite tu contraseña *</label>
+                <mat-form-field
+                  appearance="outline"
+                  [color]="passwordDoesMatch ? 'primary' : 'warn'"
+                >
+                  <input
+                    matInput
+                    formControlName="passwordConfirm"
+                    type="password"
+                    placeholder="Repite tu contraseña"
+                    autocomplete="off"
+                  />
+                  <mat-error
+                    *ngIf="passwordConfirm.invalid && passwordConfirm.dirty"
+                  >
+                    La contraseña no coincide!
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row">
+              <!-- Birthdate input -->
+              <div class="col-md-6">
+                <label class="label-input-name">Fecha de Nacimiento *</label>
+                <mat-form-field appearance="outline">
+                  <input
+                    matInput
+                    formControlName="birthDate"
+                    placeholder="Fecha de Nacimiento"
+                    autocomplete="off"
+                    [matDatepicker]="picker"
+                  />
+                  <mat-datepicker-toggle
+                    matSuffix
+                    [for]="picker"
+                  ></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                  <mat-error *ngIf="birthDate.invalid && birthDate.dirty">
+                    Debes ingresar tu fecha de nacimiento!
+                  </mat-error>
+                </mat-form-field>
+              </div>
+
+              <!-- Button -->
+              <div class="col">
+                <button
+                  class="register-button submit-button"
+                  mat-raised-button
+                  type="submit"
+                >
+                  <!-- [disabled]="form.invalid || !passwordDoesMatch || loading" -->
+                  ¡Listo!
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
-
-  <div mat-dialog-actions>
-      <form [formGroup]="form" (ngSubmit)="onSubmit()">
-
-        <!-- First row -->
-        <div class="row justify-content-start">
-          <!-- Name input -->
-          <div class="col-lg-4 col-md-6 d-flex justify-content-center">
-            <mat-form-field appearance="outline">
-              <input
-                matInput
-                formControlName="name"
-                type="text"
-                placeholder="Nombre"
-                autocomplete="off"
-              >
-              <mat-error *ngIf="name.invalid && name.dirty">
-                Debes ingresar tu nombre!
-              </mat-error>
-            </mat-form-field>
-
-          </div>
-          <!-- Lastname input -->
-          <div class="col-lg-4 col-md-6 d-flex justify-content-center">
-            <mat-form-field appearance="outline">
-              <input 
-                matInput
-                formControlName="lastName"
-                type="text"
-                placeholder="Apellido"
-                autocomplete="off"
-              >
-              <mat-error *ngIf="lastName.invalid && lastName.dirty">
-                Debes ingresar tu apellido!
-              </mat-error>
-            </mat-form-field>
-          </div>
-          <!-- Birthdate input -->
-          <div class="col-lg-4 col-md-12 d-flex justify-content-center">
-
-            <mat-form-field appearance="outline">
-              <input matInput formControlName="birthDate"placeholder="Fecha de Nacimiento"
-              autocomplete="off" [matDatepicker]="picker">
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-              <mat-error *ngIf="birthDate.invalid && birthDate.dirty">
-                Debes ingresar tu fecha de nacimiento!
-              </mat-error>
-            </mat-form-field>
-            
-          </div>
-
-        </div>
-
-        <!-- Second Row -->
-        <div class="row">
-          <!-- Email input -->
-          <div class="col-lg-4 col-md-6 d-flex justify-content-center">
-            <mat-form-field appearance="outline">
-              <input 
-                matInput
-                formControlName="email"
-                type="email"
-                placeholder="Email"
-                autocomplete="off"
-              >
-              <mat-error *ngIf="email.invalid && email.dirty && email.hasError('pattern')">
-                Debes ingresar una direccion de correo!
-              </mat-error>
-            </mat-form-field>
-          </div>
-          <!-- Cellphone input -->
-          <div class="col-lg-4 col-md-6 d-flex justify-content-center">
-            <mat-form-field appearance="outline" hintLabel="+xx xxxxxxxxx">
-              <input 
-                matInput
-                formControlName="phoneNumber"
-                type="text"
-                placeholder="Celular"
-                autocomplete="off"
-              >
-              <mat-error *ngIf="phoneNumber.invalid && phoneNumber.dirty">
-                Debes ingresar tu numero de telefono!
-              </mat-error>
-            </mat-form-field>
-          </div>
-          <!-- Password input -->
-          <div class="col-lg-4 col-md-6 d-flex justify-content-center">
-            <mat-form-field appearance="outline" hintLabel="Debe tener al menos 6 caracteres">
-              <input 
-                matInput
-                formControlName="password"
-                type="password"
-                placeholder="Contraseña"
-                autocomplete="off"
-              >
-              <mat-error *ngIf="password.invalid && password.dirty">
-                Debes crear tu contraseña
-              </mat-error>
-            </mat-form-field>
-          </div>
-        </div>
-
-        <!-- Third row -->
-        <div class="row justify-content-between" >
-          <!-- Confirm Password input -->
-          <div class="col-lg-4 col-md-6 d-flex">
-            <mat-form-field appearance="outline" [color]="passwordDoesMatch ? 'primary' : 'warn'">
-              <input 
-                matInput
-                formControlName="passwordConfirm"
-                type="password"
-                placeholder="Repite tu contraseña"
-                autocomplete="off"
-              >
-              <mat-error *ngIf="passwordConfirm.invalid && passwordConfirm.dirty">
-                La contraseña no coincide!
-              </mat-error>
-            </mat-form-field>
-          </div>
-          <!-- Button -->
-          <div class="col-lg-4 col-md-6 d-flex justify-content-center align-self-center">
-            <button
-              class="register-button"
-              mat-raised-button
-              type="submit"
-              >
-              <!-- [disabled]="form.invalid || !passwordDoesMatch || loading" -->
-            ¡Listo!
-            </button>
-          </div>
-        </div>
-      
-      </form>
-  </div>
-  
 </div>
