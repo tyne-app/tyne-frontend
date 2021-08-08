@@ -82,6 +82,8 @@ export class ClientRegistrationComponent implements OnInit {
     });
     this.matDialogRef.close();
   }
-
-
+  public isWhiteLogo: boolean = false;
+  public getLogo() {
+    return this.isWhiteLogo ? "/assets/logo-home.png" : "/assets/logo2 1.png";
+  }
 }
