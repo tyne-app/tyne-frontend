@@ -46,8 +46,9 @@ export class BusinessProfileBodyComponent implements OnInit {
 
   public openEditPasswordComponent(): void {
     const dialogRef = this.dialog.open(BusinessProfileEditPasswordComponent, {
-      maxWidth: '100%',
-      width: '75%'
+      maxWidth: '95%',
+      minWidth: '75%',
+      panelClass: 'business-profile-dialog'
     });
 
     dialogRef.afterClosed().subscribe(result => {
