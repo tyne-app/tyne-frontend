@@ -98,6 +98,23 @@ body { margin: 0; padding: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
 
 /* Buttons */
 
+.btn-normal {
+    cursor: pointer;
+    color: #3C0000;
+    background-color: white;
+    border: 1px solid #E10000;
+    box-sizing: border-box;
+    border-radius: 10px;
+    width: 255px;
+    height: 40px;
+    font-size: 20px;
+}
+
+.btn-normal:hover {
+    background-color: #E10000;
+    color:white;
+}
+
 .btn-normal-red {
     cursor: pointer;
     color: #E10000;
@@ -136,14 +153,22 @@ body { margin: 0; padding: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 @media only screen and (max-width: 768px) {
+    .btn-normal {
+        width: 100%;
+        font-size: 15px;
+        margin-bottom: 10px;
+    }
+
     .btn-normal-red {
         width: 100%;
         font-size: 15px;
+        margin-bottom: 10px;
     }
 
     .btn-submit {
         width: 100%;
         font-size: 15px;
+        margin-bottom: 10px;
     }
 }
 
