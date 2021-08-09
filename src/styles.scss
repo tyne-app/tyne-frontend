@@ -98,7 +98,7 @@ body { margin: 0; padding: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
 
 /* Buttons */
 
-.btn-normal {
+.btn-normal-red {
     cursor: pointer;
     color: #E10000;
     background-color: white;
@@ -110,7 +110,7 @@ body { margin: 0; padding: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
     font-size: 20px;
 }
 
-.btn-normal:hover {
+.btn-normal-red:hover {
     background-color: #E10000;
     color:white;
 }
@@ -127,8 +127,16 @@ body { margin: 0; padding: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
     font-size: 20px;
 }
 
+.btn-close {
+    cursor: pointer;
+    border-style: none;
+    background-color: #fff;
+    font-size: 1.5em;
+    color: #3C0000;
+}
+
 @media only screen and (max-width: 768px) {
-    .btn-normal {
+    .btn-normal-red {
         width: 100%;
         font-size: 15px;
     }
