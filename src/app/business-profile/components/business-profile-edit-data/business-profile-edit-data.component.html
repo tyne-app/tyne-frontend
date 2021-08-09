@@ -1,5 +1,101 @@
-<div class="grid-container">
-  <p>
-    ¡Muy Pronto!
-  </p>  
+<div class="container body">
+
+  <form [formGroup]="form" (ngSubmit)="save()" (keydown.enter)="$event.preventDefault()">
+
+    <div class="row mb-n5">
+      <div class="col col-center">
+        <h3 class="titulo-3">Mis Datos</h3>
+      </div>
+    </div>
+
+    <div class="row mb-n2">
+      <div class="col col-center">
+        <h3 class="titulo-2">Los Vikingos</h3>
+      </div>
+    </div>
+
+    <div class="row col-center">
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <mat-form-field appearance="outline">
+          <mat-label>Nombre del Local *</mat-label>
+          <input matInput formControlName="businessName" type="text" />
+          <mat-error>
+            {{getBusinessNameError()}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <mat-form-field appearance="outline">
+          <mat-label>Teléfono *</mat-label>
+          <input matInput formControlName="businessPhone" type="text" placeholder="+XX X XXXX XXXX" phoneMask />
+          <mat-error>
+            {{getBusinessPhoneError()}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-12 col-lg-4">
+        <mat-form-field appearance="outline">
+          <mat-label>Dirección Casa Matriz *</mat-label>
+          <input matInput formControlName="businessLocation" type="text" />
+          <mat-error>
+            {{getBusinessLocationError()}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <mat-form-field appearance="outline">
+          <mat-label>Email *</mat-label>
+          <input matInput formControlName="email" type="text" />
+          <mat-error>
+            {{getLegalRepresentativeEmailError()}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <mat-form-field appearance="outline">
+          <mat-label>Nombre del Encargado *</mat-label>
+          <input matInput formControlName="managerName" type="text" />
+          <mat-error>
+            {{getManagerNameError()}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-12 col-lg-4">
+        <mat-form-field appearance="outline">
+          <mat-label>Número del Encargado *</mat-label>
+          <input matInput formControlName="phoneManager" type="text" placeholder="+XX X XXXX XXXX" phoneMask />
+          <mat-error>
+            {{getPhoneManagerError()}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+    </div>
+  
+    <div class="row pt-5">
+      <div class="col-12 col-md-6 col-lg-6 col-center">
+        <button type="button" class="btn-normal">
+          Volver a mis datos
+        </button>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-6 col-center">
+        <button type="submit" class="btn-submit">
+          Guardar cambios
+        </button>
+      </div>
+    </div>
+
+  </form>
+
 </div>

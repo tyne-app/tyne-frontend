@@ -1,0 +1,56 @@
+mat-label {
+    color: #3C0000;
+}
+
+mat-form-field  {
+    width: 100%;
+}
+
+::ng-deep .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+    background-color: red !important;
+}
+  
+::ng-deep .mat-radio-button.mat-accent .mat-radio-inner-circle {
+    background-color: red!important;
+}
+  
+::ng-deep .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+    border-color:red!important;
+}
+
+.titulo-2 {
+    font-weight: normal;
+}
+
+.mb-n5 {
+    margin-bottom: -50px;
+}
+
+.mb-n2 {
+    margin-bottom: -20px;
+}
+
+@media only screen and (max-width: 768px) {
+    .btn-normal {
+        margin-bottom: 10px;
+    }
+
+    .btn-submit {
+        margin-bottom: 10px;
+    }
+
+    .body {
+        overflow-y: auto;
+        overflow-x: hidden;
+        height: 70vh;
+        width: auto;
+    }
+
+    .titulo-3 {
+        font-size: 27px;
+    }
+
+    .titulo-2 {
+        font-size: 25px;
+    }
+}
