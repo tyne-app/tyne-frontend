@@ -51,22 +51,45 @@
 
                 <mat-accordion cdkDropList (cdkDropListDropped)="dropSection($event)">
 
-                    <mat-expansion-panel *ngFor="let section of sections.controls; let i = index" cdkDrag hideToggle="true" #toggleIcon>
+                    <mat-expansion-panel *ngFor="let section of sections.controls; let i = index" cdkDrag
+                        hideToggle="true" #toggleIcon>
 
-                        <mat-expansion-panel-header class="disabled-pointer" [formGroup]="section">
+                        <mat-expansion-panel-header class="panel-header" [formGroup]="section"
+                            (keydown.space)="$event.preventDefault();">
 
                             <mat-panel-title>
-                                <button class="btn-delete" mat-stroked-button (click)="deleteSection(i)">
+                                <button type="button" class="btn-delete" mat-stroked-button (click)="deleteSection(i)">
                                     <mat-icon>delete</mat-icon>
                                     Borrar sección
                                 </button>
                             </mat-panel-title>
 
-                            <mat-panel-description class="title-description">
+                            <mat-panel-description class="panel-description">
 
-                                <label class="section-title">
+                                <label class="section-title" *ngIf="!isTitleVisible(i)">
                                     {{section.get("title").value}}
                                 </label>
+
+                                <!-- <label class="section-title" *ngIf="!isTitleVisible(i)"
+                                    (dblclick)="changeSectionTitleEditing(i)" (click)="toggleIcon.expanded = true">
+                                    {{section.get("title").value}}
+                                </label> -->
+
+                                <div style="font-size: 4px; pointer-events: auto;"
+                                    *ngIf="isTitleVisible(i)" (click)="toggleIcon.expanded = true">
+                                    <mat-form-field appearance="outline" style="width: 300px;">
+                                        <input class="title-input" matInput formControlName="title" type="text"
+                                            (blur)="changeSectionTitleEditing(i)"
+                                            (keyup.enter)="changeSectionTitleEditing(i)"
+                                            (keydown)="$event.stopPropagation()">
+                                    </mat-form-field>
+                                </div>
+
+                                &nbsp;&nbsp;
+                                <mat-icon class="icon-edit" (click)="toggleIcon.expanded = true"
+                                    (click)="changeSectionTitleEditing(i)">
+                                    edit
+                                </mat-icon>
 
                             </mat-panel-description>
 
@@ -83,11 +106,12 @@
                                 <div class="container">
 
                                     <div class="row pt-2">
-                                        <div class="col">
+                                        <div class="col-4">
                                             <mat-icon style="font-size: 40px; cursor: pointer;" (click)="addProduct(i)">
                                                 add_circle
                                             </mat-icon>
                                         </div>
+
                                     </div>
 
                                     <div *ngFor="let product of products(section); let p = index" class="pb-4 pr-5">
@@ -156,7 +180,7 @@
 
             <div class="row">
                 <div class="col" style="text-align: right;">
-                    <button type="submit" class="btn-submit" mat-stroked-button>Guardar Cambios</button>
+                    <button type="submit" class="btn-submit">Guardar Cambios</button>
                 </div>
             </div>
 

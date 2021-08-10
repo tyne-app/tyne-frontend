@@ -34,22 +34,10 @@
   line-height: 30px;
   text-align: center;
   color: #3C0000;
-  pointer-events: auto;
 }
 
 .mat-icon {
   color: red;
-}
-
-.btn-submit {
-  color: white;
-  background: #E10000;
-  border: 1px solid #E10000;
-  box-sizing: border-box;
-  border-radius: 10px;
-  width: 100%;
-  width: 203.91px;
-  height: 43px;
 }
 
 .btn-add-accordion {
@@ -118,8 +106,8 @@
   padding-bottom: 10px;
 }
 
-.title-description{
-  width: 70%; 
+.panel-description {
+  width: 100%; 
   justify-content: center;
 }
 
@@ -164,24 +152,46 @@
 }
 
 :host ::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
-  color: white;
+  color: #fff;
 }
 
 :host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
-  color: white;
+  color: #fff;
 }
 
 :host ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
-  background-color: white;
+  background-color: #fff;
+}
+
+:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
+  padding: 0;
+}
+
+:host ::ng-deep .mat-form-field:hover {
+  background-color: #fff;
 }
 
 .mat-input-element {
   color: #3C0000;
   font-weight: normal;
   font-size: 18px;
-  // line-height: 22px;
 }
 
 mat-divider {
   margin-top: 25px;
+}
+
+.panel-header {
+  border: 1px solid;
+  pointer-events: none;
+  height: 100px;
+}
+
+.icon-edit {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.title-input {
+  text-align: center;
 }

@@ -25,7 +25,7 @@ export class BusinessMenusComponent implements OnInit {
   }
 
   public saveChanges() {
-    console.log(this.form);
+    // console.log(this.form);
   }
 
   public dropSection(event: CdkDragDrop<string[]>) {
@@ -40,6 +40,7 @@ export class BusinessMenusComponent implements OnInit {
     this.sections.push(this.fb.group({
       id: ['0'],
       title: ["Nueva Sección", Validators.required],
+      isTitleVisible: [false],
       products: this.addDefaultProduct()
     }));
 
@@ -82,6 +83,23 @@ export class BusinessMenusComponent implements OnInit {
 
   public products(form: any) {
     return form.controls.products ? form.controls.products.controls : new FormArray([]);
+  }
+
+  public changeSectionTitleEditing(seccionId: number) {
+
+    const title = this.sections.controls[seccionId].get("title");
+
+    if (!title.errors) {
+      const isTitleVisible = this.sections.controls[seccionId].get("isTitleVisible");
+      isTitleVisible.setValue(!isTitleVisible.value);
+    } else {
+      // this.sections.controls[seccionId].get("title").markAsTouched();
+    }
+  }
+
+  public isTitleVisible(seccionId: number) : boolean {
+    const isTitleVisible = this.sections.controls[seccionId].get("isTitleVisible");
+    return isTitleVisible ? isTitleVisible.value : false;
   }
 
   private getDataMock() {
@@ -152,7 +170,8 @@ export class BusinessMenusComponent implements OnInit {
     this.getDataMock().forEach(x => {
       this.sections.push(this.fb.group({
         id: [x.id],
-        title: [x.title, Validators.required],
+        title: [x.title, [Validators.required, Validators.maxLength(20)]],
+        isTitleVisible: [false],
         products: this.initProducts(x.products)
       }));
     });
