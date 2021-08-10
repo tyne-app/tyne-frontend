@@ -25,7 +25,7 @@ export class BusinessMenusComponent implements OnInit {
   }
 
   public saveChanges() {
-    console.log(this.form);
+    // console.log(this.form);
   }
 
   public dropSection(event: CdkDragDrop<string[]>) {
@@ -86,17 +86,20 @@ export class BusinessMenusComponent implements OnInit {
   }
 
   public changeSectionTitleEditing(seccionId: number) {
-    const isTitleVisible = this.sections.controls[seccionId].get("isTitleVisible");
-    isTitleVisible.setValue(!isTitleVisible.value);
+
+    const title = this.sections.controls[seccionId].get("title");
+
+    if (!title.errors) {
+      const isTitleVisible = this.sections.controls[seccionId].get("isTitleVisible");
+      isTitleVisible.setValue(!isTitleVisible.value);
+    } else {
+      // this.sections.controls[seccionId].get("title").markAsTouched();
+    }
   }
 
   public isTitleVisible(seccionId: number) : boolean {
     const isTitleVisible = this.sections.controls[seccionId].get("isTitleVisible");
     return isTitleVisible ? isTitleVisible.value : false;
-  }
-
-  public get() {
-    console.log("aa");
   }
 
   private getDataMock() {
