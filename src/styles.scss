@@ -102,12 +102,13 @@ body { margin: 0; padding: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
     cursor: pointer;
     color: #3C0000;
     background-color: white;
-    border: 1px solid #E10000;
+    border: 1px solid #E10000 !important;
     box-sizing: border-box;
-    border-radius: 10px;
+    border-radius: 10px !important;
     width: 255px;
     height: 40px;
     font-size: 20px;
+    font-weight: 250;
 }
 
 .btn-normal:hover {
@@ -119,9 +120,9 @@ body { margin: 0; padding: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
     cursor: pointer;
     color: #E10000;
     background-color: white;
-    border: 1px solid #E10000;
+    border: 1px solid #E10000 !important;
     box-sizing: border-box;
-    border-radius: 10px;
+    border-radius: 10px !important;
     width: 255px;
     height: 40px;
     font-size: 20px;
@@ -133,12 +134,12 @@ body { margin: 0; padding: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 .btn-submit {
-    cursor: pointer;
+    // cursor: pointer;
     color: white;
     background-color: #E10000;
-    border: 1px solid #E10000;
+    border: 1px solid #E10000 !important;
     box-sizing: border-box;
-    border-radius: 10px;
+    border-radius: 10px !important;
     width: 255px;
     height: 40px;
     font-size: 20px;
