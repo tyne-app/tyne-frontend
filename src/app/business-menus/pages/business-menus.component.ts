@@ -85,7 +85,7 @@ export class BusinessMenusComponent implements OnInit {
     return form.controls.products ? form.controls.products.controls : new FormArray([]);
   }
 
-  public enableSectionTitleEditing(seccionId: number) {
+  public changeSectionTitleEditing(seccionId: number) {
     const isTitleVisible = this.sections.controls[seccionId].get("isTitleVisible");
     isTitleVisible.setValue(!isTitleVisible.value);
   }
@@ -93,6 +93,10 @@ export class BusinessMenusComponent implements OnInit {
   public isTitleVisible(seccionId: number) : boolean {
     const isTitleVisible = this.sections.controls[seccionId].get("isTitleVisible");
     return isTitleVisible ? isTitleVisible.value : false;
+  }
+
+  public get() {
+    console.log("aa");
   }
 
   private getDataMock() {
@@ -163,7 +167,7 @@ export class BusinessMenusComponent implements OnInit {
     this.getDataMock().forEach(x => {
       this.sections.push(this.fb.group({
         id: [x.id],
-        title: [x.title, [Validators.required]],
+        title: [x.title, [Validators.required, Validators.maxLength(20)]],
         isTitleVisible: [false],
         products: this.initProducts(x.products)
       }));
