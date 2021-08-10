@@ -47,13 +47,13 @@
 
     <div class="row pt-5 justify-content-center">
       <div class="col-6 col-md-4 col-lg-4 col-center">
-        <button mat-stroked-button class="normal-button" (click)="openEditDataComponent()">Editar mis datos</button>
+        <button class="btn-normal" (click)="openEditDataComponent()">Editar mis datos</button>
       </div>
       <div class="col-6 col-md-4 col-lg-4 col-center">
-        <button mat-stroked-button class="normal-button" (click)="openEditPasswordComponent()">Editar contraseña</button>
+        <button class="btn-normal" (click)="openEditPasswordComponent()">Editar contraseña</button>
       </div>
       <div class="col-12 col-md-4 col-lg-4 col-center">
-        <button mat-stroked-button class="normal-button" (click)="openEditBankDataComponent()">Ver mis datos bancarios</button>
+        <button class="btn-normal" (click)="openEditBankDataComponent()">Ver mis datos bancarios</button>
       </div>
     </div>
 
@@ -63,34 +63,16 @@
 
     <div class="row ml-1 pt-3">
 
-      <div class="col-lg-5">
+      <div class="col-lg-6 col-center">
         <h4 class="titulo pb-3">Horario y días de funcionamiento:</h4>
         <p class="subtitulo">Martes y sábado 12:30 a 23:30</p>
         <p class="subtitulo">Domingo 14:30 a 21:00</p>
+        <button class="btn-normal" (click)="openEditWorkDaysComponent()">Editar Horarios</button>
       </div>
 
-      <div class="col-lg-3">
-        <h4 class="titulo pb-3">Sucursales:</h4>
-        <p class="subtitulo">Juan y Medio Providencia</p>
-        <p class="subtitulo">Juan y Medio La Reina</p>
-        <p class="subtitulo">Juan y Medio Maipu</p>
-      </div>
-
-      <div class="col-lg-4 pt-5">
-        <div class="row">
-          <div class="col-1 col-md-6 col-lg-1">
-            <img src="./../../../../assets/aceptan_mascotas.svg" class="img-mascota"/>
-          </div>
-          <div class="col-11 col-md-8 col-lg-11 pl-5">
-            <h4 class="titulo-4">Aceptan mascotas</h4>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row ml-1 pt-3">
-      <div class="col-lg-5 d-flex justify-content-center">
-        <button mat-stroked-button class="normal-button" (click)="openEditWorkDaysComponent()">Editar Horarios y Sucursales</button>
+      <div class="col-lg-6 pt-5 col-center">
+        <img src="./../../../../assets/aceptan_mascotas.svg"/>
+        <h4 class="titulo-4">Aceptan mascotas</h4>
       </div>
     </div>
 

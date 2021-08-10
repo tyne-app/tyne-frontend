@@ -30,36 +30,3 @@ mat-card {
     line-height: 22px;
     color: #3C0000;
 }
-
-.normal-button {
-    background: #FFFFFF;
-    border: 1px solid #E10000;
-    box-sizing: border-box;
-    border-radius: 10px;
-    color: #3C0000;
-    font-weight: 250;
-    line-height: 24px;
-    height: 43px;
-}
-
-.normal-button:hover {
-    background-color: #E10000;
-    color:white;
-}
-
-.submit-button {
-    color: white;
-    background: #E10000;
-    border: 1px solid #E10000;
-    box-sizing: border-box;
-    border-radius: 10px;
-    width: 100%;
-}
-
-.img-mascota {
-    margin-top: 25px;
-}
-
-.col-center {
-    text-align: center;
-}
