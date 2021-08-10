@@ -163,15 +163,15 @@
   font-size: 18px;
 }
 
-::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+:host ::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
   color: white;
 }
 
-::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
   color: white;
 }
 
-::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+:host ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
   background-color: white;
 }
 
