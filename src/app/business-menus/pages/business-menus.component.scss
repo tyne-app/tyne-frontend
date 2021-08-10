@@ -34,7 +34,7 @@
   line-height: 30px;
   text-align: center;
   color: #3C0000;
-  pointer-events: auto;
+  // pointer-events: auto;
 }
 
 .mat-icon {
@@ -184,4 +184,15 @@
 
 mat-divider {
   margin-top: 25px;
+}
+
+.panel-header {
+  border: 1px solid;
+  pointer-events: none;
+  // padding-top: 30px;
+}
+
+.icon-edit {
+  pointer-events: auto;
+  cursor: pointer;
 }

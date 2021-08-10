@@ -51,9 +51,10 @@
 
                 <mat-accordion cdkDropList (cdkDropListDropped)="dropSection($event)">
 
-                    <mat-expansion-panel *ngFor="let section of sections.controls; let i = index" cdkDrag hideToggle="true" #toggleIcon>
+                    <mat-expansion-panel *ngFor="let section of sections.controls; let i = index" cdkDrag
+                        hideToggle="true" #toggleIcon>
 
-                        <mat-expansion-panel-header class="disabled-pointer" [formGroup]="section">
+                        <mat-expansion-panel-header class="panel-header" [formGroup]="section" (keydown.space)="$event.preventDefault();">
 
                             <mat-panel-title>
                                 <button class="btn-delete" mat-stroked-button (click)="deleteSection(i)">
@@ -64,9 +65,24 @@
 
                             <mat-panel-description class="title-description">
 
-                                <label class="section-title">
+                                <label class="section-title" *ngIf="!isTitleVisible(i)">
                                     {{section.get("title").value}}
                                 </label>
+
+                                <div style="font-size: 11px; margin-bottom: -20px; pointer-events: auto;"
+                                    *ngIf="isTitleVisible(i)"
+                                    (click)="toggleIcon.expanded = true">
+                                    <mat-form-field appearance="outline" >
+                                        <input matInput formControlName="title" type="text" (keydown)="$event.stopPropagation()">
+                                    </mat-form-field>
+                                </div>
+
+                                &nbsp;&nbsp;
+
+                                <mat-icon class="icon-edit" (click)="toggleIcon.expanded = true"
+                                    (click)="enableSectionTitleEditing(i)">
+                                    edit
+                                </mat-icon>
 
                             </mat-panel-description>
 
@@ -83,11 +99,19 @@
                                 <div class="container">
 
                                     <div class="row pt-2">
-                                        <div class="col">
+                                        <div class="col-4">
                                             <mat-icon style="font-size: 40px; cursor: pointer;" (click)="addProduct(i)">
                                                 add_circle
                                             </mat-icon>
                                         </div>
+                                        <!-- 
+                                        <div class="col">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Nuevo Título de Sección</mat-label>
+                                                <input matInput formControlName="price" type="text">
+                                            </mat-form-field>
+                                        </div> -->
+
                                     </div>
 
                                     <div *ngFor="let product of products(section); let p = index" class="pb-4 pr-5">
