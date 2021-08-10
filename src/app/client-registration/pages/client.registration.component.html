@@ -1,11 +1,16 @@
-<div class="container modal-body-register">
+<div class="modal-body-register">
+  <div class="container d-flex justify-content-end">
+    <button type="button" class="close" mat-button [mat-dialog-close]="true">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
   <div class="row">
     <div class="col">
       <div class="logo my-5 d-flex justify-content-center">
         <img [src]="getLogo()" class="img-logo" routerLink="/" />
       </div>
       <div class="d-flex justify-content-center my-5">
-        <img src="/assets/img/bienvenido.svg" alt="tyne-app-welcome" />
+        <img src="/assets/img/bienvenido.svg" alt="tyne-app-welcome" class="img-welcomer" />
       </div>
       <h2 class="register-title d-flex justify-content-center" mat-dialog-title>
         Registrate con:
@@ -49,13 +54,12 @@
               <!-- Name input -->
 
               <div class="col">
-                <label class="label-input-name">Nombre *</label>
                 <mat-form-field appearance="outline">
+                  <mat-label class="mat-label-input-name">Nombre *</mat-label>
                   <input
                     matInput
                     formControlName="name"
                     type="text"
-                    placeholder="Nombre"
                     autocomplete="off"
                   />
                   <mat-error *ngIf="name.invalid && name.dirty">
@@ -67,13 +71,12 @@
               <!-- Lastname input -->
 
               <div class="col">
-                <label class="label-input-name">Apellido *</label>
                 <mat-form-field appearance="outline">
+                  <mat-label class="mat-label-input-name">Apellido *</mat-label>
                   <input
                     matInput
                     formControlName="lastName"
                     type="text"
-                    placeholder="Apellido"
                     autocomplete="off"
                   />
                   <mat-error *ngIf="lastName.invalid && lastName.dirty">
@@ -88,13 +91,12 @@
               <!-- Email input -->
 
               <div class="col">
-                <label class="label-input-name">Email *</label>
                 <mat-form-field appearance="outline">
+                  <mat-label class="mat-label-input-name">Email *</mat-label>
                   <input
                     matInput
                     formControlName="email"
                     type="email"
-                    placeholder="Email"
                     autocomplete="off"
                   />
                   <mat-error
@@ -110,13 +112,15 @@
               <!-- Cellphone input -->
 
               <div class="col">
-                <label class="label-input-name">Celular *</label>
-                <mat-form-field appearance="outline" hintLabel="+xx xxxxxxxxx">
+                <mat-form-field
+                  appearance="outline"
+                  hintmat-label="+xx xxxxxxxxx"
+                >
+                  <mat-label class="mat-label-input-name">Celular *</mat-label>
                   <input
                     matInput
                     formControlName="phoneNumber"
                     type="text"
-                    placeholder="Celular"
                     autocomplete="off"
                   />
                   <mat-error *ngIf="phoneNumber.invalid && phoneNumber.dirty">
@@ -130,16 +134,17 @@
               <!-- Password input -->
 
               <div class="col">
-                <label class="label-input-name">Contraseña *</label>
                 <mat-form-field
                   appearance="outline"
-                  hintLabel="Debe tener al menos 6 caracteres"
+                  hintmat-label="Debe tener al menos 6 caracteres"
                 >
+                  <mat-label class="mat-label-input-name"
+                    >Contraseña *</mat-label
+                  >
                   <input
                     matInput
                     formControlName="password"
                     type="password"
-                    placeholder="Contraseña"
                     autocomplete="off"
                   />
                   <mat-error *ngIf="password.invalid && password.dirty">
@@ -151,16 +156,17 @@
               <!-- Confirm Password input -->
 
               <div class="col">
-                <label class="label-input-name">Repite tu contraseña *</label>
                 <mat-form-field
                   appearance="outline"
                   [color]="passwordDoesMatch ? 'primary' : 'warn'"
                 >
+                  <mat-label class="mat-label-input-name"
+                    >Repite tu contraseña *</mat-label
+                  >
                   <input
                     matInput
                     formControlName="passwordConfirm"
                     type="password"
-                    placeholder="Repite tu contraseña"
                     autocomplete="off"
                   />
                   <mat-error
@@ -175,12 +181,13 @@
             <div class="row">
               <!-- Birthdate input -->
               <div class="col-md-6">
-                <label class="label-input-name">Fecha de Nacimiento *</label>
                 <mat-form-field appearance="outline">
+                  <mat-label class="mat-label-input-name"
+                    >Fecha de Nacimiento *</mat-label
+                  >
                   <input
                     matInput
                     formControlName="birthDate"
-                    placeholder="Fecha de Nacimiento"
                     autocomplete="off"
                     [matDatepicker]="picker"
                   />

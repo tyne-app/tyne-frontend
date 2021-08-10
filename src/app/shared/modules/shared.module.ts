@@ -5,10 +5,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import  {RouterModule } from '@angular/router';
 import { MapComponent } from '../components/map/components/map.component';
 import { PhoneMaskDirective } from '../directives/phone-mask.directive';
+import { CloseModalComponent } from '../components/close-modal/close-modal.component';
 
 @NgModule({
   declarations: [
     MapComponent,
+    CloseModalComponent,
     PhoneMaskDirective
   ],
   imports: [
@@ -20,6 +22,7 @@ import { PhoneMaskDirective } from '../directives/phone-mask.directive';
   exports: [
     ReactiveFormsModule,
     MapComponent,
+    CloseModalComponent,
     PhoneMaskDirective
   ]
 })

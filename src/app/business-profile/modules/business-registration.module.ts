@@ -8,10 +8,9 @@ import { BusinessProfileRoutingModule } from '../routes/business-registration-ro
 import { BusinessProfileBodyComponent } from '../components/business-profile-body/business-profile-body.component';
 import { SwiperModule } from 'swiper/angular';
 import { BusinessProfileEditPasswordComponent } from '../components/business-profile-edit-password/business-profile-edit-password.component';
-import { BusinessProfileEditBankDataComponent } from '../components/business-profile-edit-bank-data/business-profile-edit-bank-data.component';
 import { BusinessProfileEditDataComponent } from '../components/business-profile-edit-data/business-profile-edit-data.component';
+import { BusinessProfileEditBankDataComponent } from '../components/business-profile-edit-bank-data/business-profile-edit-bank-data.component';
 import { BusinessProfileEditWorkDaysComponent } from '../components/business-profile-edit-work-days/business-profile-edit-work-days.component';
-
 
 @NgModule({
   declarations: [
@@ -21,6 +20,7 @@ import { BusinessProfileEditWorkDaysComponent } from '../components/business-pro
     BusinessProfileEditBankDataComponent,
     BusinessProfileEditDataComponent,
     BusinessProfileEditWorkDaysComponent
+
   ],
   imports: [
     CommonModule,
