@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder ,FormGroup, Validators } from '@angular/forms';
+
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialogRef } from '@angular/material/dialog';
+
 import { emailRegex } from 'src/app/shared/constants/email';
 import { ClientService } from 'src/app/shared/services/client.service';
 
@@ -41,10 +43,14 @@ export class LoginComponent implements OnInit {
 
   onSubmit(): void {
     if(!this.formLogin.invalid){
-      this.clientservice.login(this.email.value, this.password.value).subscribe(token => {
-        localStorage.setItem("access_token", token);
-        this.closeClick();
-      })
+      this.clientservice.login(this.email.value, this.password.value).subscribe({
+        next(token){        
+          localStorage.setItem("access_token", token);
+          this.closeClick();},
+        error(error){
+          this.showError();
+        }
+      });
     }
   } 
 
@@ -57,4 +63,11 @@ export class LoginComponent implements OnInit {
     this.router.navigateByUrl('/perfil-cliente');
   }
 
+  showError(): void {
+    this.snackbar.open('Ha ocurrido un problema, intente nuevamente', 'ok', {
+      duration: 3000
+    });
+  }
+ 
+ 
 }
