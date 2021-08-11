@@ -26,7 +26,8 @@ export class BusinessProfileEditDataComponent implements OnInit {
       businessLocation: [{ value: 'Avenida Grecia #1223', disabled: true }, [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
       email: ['', [Validators.email, Validators.required, Validators.pattern(emailRegex)]],
       managerName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
-      phoneManager: ['', [Validators.required, Validators.minLength(17)]]
+      phoneManager: ['', [Validators.required, Validators.minLength(17)]],
+      petsAllowed: ['0']
     });
   }
 

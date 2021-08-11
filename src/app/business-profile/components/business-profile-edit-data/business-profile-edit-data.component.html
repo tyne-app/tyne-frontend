@@ -84,6 +84,24 @@
 
     </div>
 
+    <div class="row">
+      <div class="col col-center">
+
+        <mat-radio-group formControlName="petsAllowed"> 
+          <mat-radio-button value="1">
+            <img src="./../../../../assets/aceptan_mascotas.svg"/>
+            <h4 class="titulo-4">Aceptan mascotas</h4>
+          </mat-radio-button>
+          <mat-radio-button value="0" class="second-radio">
+            <img src="./../../../../assets/no_aceptan_mascotas.svg" />
+            <h4 class="titulo-4">No aceptan mascotas</h4>
+          </mat-radio-button>
+        </mat-radio-group>
+
+      </div>
+    </div>
+
+
     <div class="row pt-5">
       <div class="col-12 col-md-6 col-lg-6 col-center">
         <button type="button" class="btn-normal-red" [mat-dialog-close]="true">

@@ -36,3 +36,9 @@ mat-card {
     line-height: 22px;
     color: #3C0000;
 }
+
+@media only screen and (max-width: 768px) {
+    .titulo-2 {
+        font-size: 30px;
+    }
+}
