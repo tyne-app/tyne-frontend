@@ -6,12 +6,16 @@ import  {RouterModule } from '@angular/router';
 import { MapComponent } from '../components/map/components/map.component';
 import { PhoneMaskDirective } from '../directives/phone-mask.directive';
 import { CloseModalComponent } from '../components/close-modal/close-modal.component';
+import { SanitizeHtmlDirective } from '../directives/sanitize-html.directive';
+import { SafeHtml } from '../pipe/safeHtml.pipe';
 
 @NgModule({
   declarations: [
     MapComponent,
     CloseModalComponent,
-    PhoneMaskDirective
+    PhoneMaskDirective,
+    SanitizeHtmlDirective,
+    SafeHtml
   ],
   imports: [
     CommonModule,
@@ -23,7 +27,9 @@ import { CloseModalComponent } from '../components/close-modal/close-modal.compo
     ReactiveFormsModule,
     MapComponent,
     CloseModalComponent,
-    PhoneMaskDirective
+    PhoneMaskDirective,
+    SanitizeHtmlDirective,
+    SafeHtml
   ]
 })
 export class SharedModule { }

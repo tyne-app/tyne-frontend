@@ -30,25 +30,40 @@
 
 .section-title {
   font-weight: normal;
-  font-size: 25px;
+  font-size: 1.5rem;
   line-height: 30px;
   text-align: center;
   color: #3C0000;
+  @media only screen and (max-width: 600px) {
+    font-size: 1.2rem;
+  }
 }
 
 .mat-icon {
   color: red;
 }
 
-.btn-add-accordion {
-  color: #3C0000;;
-  background: white;
+@mixin btn-baseStyles {
+  color: #3C0000;
+  background: #fff;
   border: 1px solid #E10000;
   box-sizing: border-box;
   border-radius: 10px;
-  width: 100%;
-  width: 216px;
   height: 43px;
+  & ::ng-deep .mat-button-wrapper {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    & .mat-icon {
+      margin-right: .7rem;
+    }
+  }
+}
+
+.btn-add-accordion {
+  @include btn-baseStyles;
+  // width: 100%;
+  min-width: 216px;
   margin-left: 8px;
 }
 
@@ -65,36 +80,31 @@
 }
 
 .btn-delete {
-  color: #3C0000;;
-  background: white;
-  border: 1px solid #E10000;
-  box-sizing: border-box;
-  border-radius: 10px;
-  width: 100%;
-  height: 43px;
+  @include btn-baseStyles;
+  min-width: 216px;
   pointer-events: auto;
+  @media only screen and (max-width: 600px) {
+    min-width: 56px;
+    & ::ng-deep .mat-button-wrapper .txt-btn {
+      display: none;
+    }
+    & ::ng-deep .mat-button-wrapper .mat-icon {
+      margin-right: 0;
+    }
+  }
 }
 
 .btn-change-photo {
-  color: #3C0000;;
-  background: white;
-  border: 1px solid #E10000;
-  box-sizing: border-box;
-  border-radius: 10px;
+  @include btn-baseStyles;
   width: 100%;
-  height: 43px;
   pointer-events: auto;
 }
 
 .btn-delete-product {
-  color: #3C0000;;
-  background: white;
-  border: 1px solid #E10000;
-  box-sizing: border-box;
-  border-radius: 10px;
+  @include btn-baseStyles;
   width: 100%;
-  height: 43px;
   pointer-events: auto;
+  margin-top: 10px;
 }
 
 .mat-expansion-panel {
@@ -107,6 +117,7 @@
 }
 
 .panel-description {
+  align-self: center;
   width: 100%; 
   justify-content: center;
 }
@@ -134,11 +145,11 @@
 }
 
 .input-product-name {
-  width: 110%;
+  width: 100%;
 }
 
 .input-product-price {
-  width: 40%;
+  width: 60%;
 }
 
 .input-product-description {
@@ -194,4 +205,18 @@ mat-divider {
 
 .title-input {
   text-align: center;
+}
+
+@media only screen and (min-width:992px) {
+  .product-h-img {
+    height: 165px;
+  }
+}
+
+.center-text {
+  text-align: center;
+}
+
+.left-text {
+  text-align: left;
 }
