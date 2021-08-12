@@ -32,10 +32,11 @@ import { RestClientService } from './shared/services/rest-client.service';
 
 import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS, MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material/core';
+import { SpinnerComponent } from './shared/components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,7 +54,7 @@ import { DateAdapter, MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/materia
     RefundPolicyModule,
     FrequentQuestionsModule
   ],
-  entryComponents: [ClientRegistrationComponent, LoginComponent],
+  entryComponents: [ClientRegistrationComponent, LoginComponent, SpinnerComponent],
   providers: [
     RestClientService,
     {
