@@ -1,6 +1,7 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FileService } from 'src/app/shared/services/application/file.service';
 
 @Component({
   selector: 'app-business-menus',
@@ -13,7 +14,8 @@ export class BusinessMenusComponent implements OnInit {
   public panelOpenState = true;
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private fileService: FileService
   ) { }
 
   get sections() {
@@ -64,10 +66,10 @@ export class BusinessMenusComponent implements OnInit {
 
     products.push(this.fb.group({
       id: ['0'],
-      name: ['Nombre del Producto', Validators.required],
-      description: ['Ingresa una descripción', [Validators.required, Validators.maxLength(250)]],
+      name: ['Nombre del Producto', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
       imageUrl: ['../../../../../assets/alternate-photo.png'],
-      price: ['0']
+      price: ['0', [Validators.required, Validators.min(100), Validators.max(100000)]],
+      description: ['Ingresa una descripción', [Validators.required, Validators.maxLength(200)]]
     }));
   }
 
@@ -92,14 +94,31 @@ export class BusinessMenusComponent implements OnInit {
     if (!title.errors) {
       const isTitleVisible = this.sections.controls[seccionId].get("isTitleVisible");
       isTitleVisible.setValue(!isTitleVisible.value);
-    } else {
-      // this.sections.controls[seccionId].get("title").markAsTouched();
     }
   }
 
-  public isTitleVisible(seccionId: number) : boolean {
+  public isTitleVisible(seccionId: number): boolean {
     const isTitleVisible = this.sections.controls[seccionId].get("isTitleVisible");
     return isTitleVisible ? isTitleVisible.value : false;
+  }
+
+  public uploadImage(seccionId: number, productId: number, event: any) {
+
+    const products = this.sections.controls[seccionId].get("products") as FormArray;
+    const imageUrl = products.controls[productId].get("imageUrl");
+
+    if (imageUrl) {
+      const file: File = event.target.files[0];
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      
+      reader.onload = () => {
+        this.fileService.compressImage(reader.result, 400, 250).then(compressed => {
+          console.log(compressed);
+          imageUrl.setValue(compressed)
+        });
+      };
+    }
   }
 
   private getDataMock() {
@@ -183,10 +202,10 @@ export class BusinessMenusComponent implements OnInit {
     products.forEach(x => {
       formArray.push(this.fb.group({
         id: [x.id],
-        name: [x.name, Validators.required],
+        name: [x.name, [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
         imageUrl: [x.imageUrl],
-        price: [x.price],
-        description: [x.description, [Validators.required, Validators.maxLength(250)]]
+        price: [x.price, [Validators.required, Validators.min(100), Validators.max(100000)]],
+        description: [x.description, [Validators.required, Validators.minLength(10), Validators.maxLength(200)]],
       }))
     })
 
@@ -198,12 +217,56 @@ export class BusinessMenusComponent implements OnInit {
 
     formArray.push(this.fb.group({
       id: ['0'],
-      name: ['Nombre del Producto', Validators.required],
-      description: ['Ingresa una descripción'],
+      name: ['Nombre del Producto', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
       imageUrl: ['../../../../../assets/alternate-photo.png'],
-      price: ['0']
+      price: ['0', [Validators.required, Validators.min(100), Validators.max(100000)]],
+      description: ['Ingresa una descripción', [Validators.required, Validators.minLength(10), Validators.maxLength(200)]],
     }));
 
     return formArray;
+  }
+
+  private compressImage(src, newX, newY) {
+    return new Promise((res, rej) => {
+      const img = new Image();
+      img.src = src;
+      img.onload = () => {
+        const elem = document.createElement('canvas');
+        elem.width = newX;
+        elem.height = newY;
+        const ctx = elem.getContext('2d');
+        ctx.drawImage(img, 0, 0, newX, newY);
+        const data = ctx.canvas.toDataURL();
+        res(data);
+      }
+      img.onerror = error => rej(error);
+    })
+  }
+
+  public getProductNameError(seccionId: number, productId: number) {
+    const products = this.sections.controls[seccionId].get("products") as FormArray;
+    const control = products.controls[productId].get("name");
+
+    return control.hasError("required") ? "Debe ingresar un nombre" :
+      control.hasError("minlength") ? "Debe tener mínimo 3 caracteres" :
+        control.hasError("maxlength") ? "Debe tener máximo 50 caracteres" : null
+  }
+
+  public getProductPriceError(seccionId: number, productId: number) {
+    const products = this.sections.controls[seccionId].get("products") as FormArray;
+    const control = products.controls[productId].get("price");
+
+    return control.hasError("required") ? "Debe ingresar un precio" :
+      control.hasError("min") ? "El valor mínimo es de $100" :
+        control.hasError("max") ? "El valor máximo es $100.000" : null
+  }
+
+  public getProductDescriptionError(seccionId: number, productId: number) {
+    const products = this.sections.controls[seccionId].get("products") as FormArray;
+    const control = products.controls[productId].get("description");
+
+    return control.hasError("required") ? "Debe ingresar una descripción" :
+      control.hasError("minlength") ? "Debe tener mínimo 10 caracteres" :
+        control.hasError("maxlength") ? "Debe tener máximo 200 caracteres" : null
   }
 }

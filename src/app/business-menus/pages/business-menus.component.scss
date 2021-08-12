@@ -104,6 +104,7 @@
   @include btn-baseStyles;
   width: 100%;
   pointer-events: auto;
+  margin-top: 10px;
 }
 
 .mat-expansion-panel {
@@ -148,7 +149,7 @@
 }
 
 .input-product-price {
-  width: 40%;
+  width: 60%;
 }
 
 .input-product-description {
@@ -210,4 +211,12 @@ mat-divider {
   .product-h-img {
     height: 165px;
   }
+}
+
+.center-text {
+  text-align: center;
+}
+
+.left-text {
+  text-align: left;
 }
