@@ -32,6 +32,22 @@ mat-form-field  {
 }
 
 
+:host ::ng-deep .mat-radio-label-content {
+    display: flex;
+}
+
+
+.second-radio {
+    padding-left: 150px;
+}
+
+
+@media only screen and (max-width: 1024px) { 
+    .second-radio {
+        padding-left: 0px;
+    }
+}
+
 @media only screen and (max-width: 768px) {
 
     .body {
@@ -40,6 +56,10 @@ mat-form-field  {
         height: 70vh;
         width: auto;
     }
+    
+    .titulo-4 {
+        font-size: 20px;
+    }
 
     .titulo-3 {
         font-size: 27px;
@@ -47,5 +67,20 @@ mat-form-field  {
 
     .titulo-2 {
         font-size: 25px;
+    }
+
+    .second-radio {
+        padding-left: 0px;
+    }
+}
+
+
+@media only screen and (max-width: 425px) {
+    img {
+        display: none;
+    }
+
+    .titulo-4 {
+        font-size: 14px;
     }
 }

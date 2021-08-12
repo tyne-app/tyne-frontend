@@ -36,14 +36,13 @@
         <br><br>
 
         <!--Add section button-->
-        <mat-card>
+        <mat-card class="mb-4">
             <button class="btn-add-accordion" mat-stroked-button (click)="addSection()">
-                <mat-icon>add_circle</mat-icon>
-                Añadir sección
+                <mat-icon>add_circle_outline</mat-icon>
+                <span class="txt-btn">Añadir sección</span>
+                
             </button>
         </mat-card>
-
-        <br>
 
         <form [formGroup]="form" (ngSubmit)="saveChanges()" (keydown.enter)="$event.preventDefault()">
 
@@ -60,7 +59,7 @@
                             <mat-panel-title>
                                 <button type="button" class="btn-delete" mat-stroked-button (click)="deleteSection(i)">
                                     <mat-icon>delete</mat-icon>
-                                    Borrar sección
+                                    <span class="txt-btn">Borrar sección</span>
                                 </button>
                             </mat-panel-title>
 
@@ -103,56 +102,64 @@
                         <!--Section Content-->
                         <mat-accordion>
                             <ng-container>
-                                <div class="container">
+                                <div class="container px-0">
 
-                                    <div class="row pt-2">
-                                        <div class="col-4">
+                                    <div class="row mx-0 mx-lg-5 py-2 py-sm-3">
+                                        <div class="col-4 px-0">
                                             <mat-icon style="font-size: 40px; cursor: pointer;" (click)="addProduct(i)">
-                                                add_circle
+                                                add_circle_outline
                                             </mat-icon>
                                         </div>
-
                                     </div>
 
-                                    <div *ngFor="let product of products(section); let p = index" class="pb-4 pr-5">
+                                    <div *ngFor="let product of products(section); let p = index" class="pb-4 wrap-product">
 
                                         <ng-container [formGroup]="product">
 
-                                            <div class="row">
-                                                <div class="col-md-11 col-lg-3">
+                                            <div class="row mx-0 mx-lg-5">
+                                                <div class="col-md-12 col-lg-6 px-0">
                                                     <mat-form-field appearance="outline" class="input-product-name">
                                                         <input matInput formControlName="name" type="text">
+                                                        <mat-error>
+                                                            {{getProductNameError(i, p)}}
+                                                        </mat-error>
                                                     </mat-form-field>
                                                 </div>
                                             </div>
 
-                                            <div class="row">
+                                            <div class="row mx-0 mx-lg-5">
 
-                                                <div class="col-md-12 col-lg-3">
-                                                    <img class="img-responsive" [src]="product.get('imageUrl').value" />
-
-                                                    <button class="btn-change-photo" mat-stroked-button>
+                                                <div class="col-md-12 col-lg-3 px-0 pr-lg-4 mb-3 mb-lg-0 col-center">
+                                                    <img class="img-responsive border-rounded product-h-img" [src]="product.get('imageUrl').value | safeHtml" />
+                                                   
+                                                    <input type="file" accept="image/*" #file style="display: none;" (change)="uploadImage(i, p, $event)">
+                                                    <button class="btn-change-photo mt-2" mat-stroked-button (click)="file.click()">
                                                         <mat-icon>image</mat-icon>
                                                         Cambiar foto
                                                     </button>
                                                 </div>
 
-                                                <div class="col-md-11 col-lg-4">
+                                                <div class="col-md-11 col-lg-4 pr-lg-4">
                                                     <mat-form-field class="input-product-description" appearance="fill">
                                                         <textarea matInput formControlName="description" rows="4"
                                                             placeholder="Ingresa una descripción"></textarea>
                                                         <mat-error>
-                                                            error
+                                                            {{getProductDescriptionError(i, p)}}
                                                         </mat-error>
                                                     </mat-form-field>
                                                 </div>
 
-                                                <div class="col-md-12 col-lg-3">
+                                                <div class="col-md-12 col-lg-3 col-center">
 
                                                     <label class="price">$</label>
-                                                    <mat-form-field appearance="outline" class="input-product-price">
-                                                        <input matInput formControlName="price" type="text">
+                                                    &nbsp;&nbsp;
+                                                    <mat-form-field appearance="outline" class="input-product-price center-text">
+                                                        <input matInput formControlName="price" type="number">
+                                                        <mat-error class="left-text">
+                                                            {{getProductPriceError(i, p)}}
+                                                        </mat-error>
                                                     </mat-form-field>
+                                                    &nbsp;&nbsp;
                                                     <label class="price">c/u</label>
 
                                                     <button class="btn-delete-product" mat-stroked-button

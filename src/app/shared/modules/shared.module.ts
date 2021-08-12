@@ -7,13 +7,19 @@ import { MapComponent } from '../components/map/components/map.component';
 import { PhoneMaskDirective } from '../directives/phone-mask.directive';
 import { CloseModalComponent } from '../components/close-modal/close-modal.component';
 import { SpinnerComponent } from '../components/spinner/spinner.component';
+import { SanitizeHtmlDirective } from '../directives/sanitize-html.directive';
+import { SafeHtml } from '../pipe/safeHtml.pipe';
+
 
 @NgModule({
   declarations: [
     MapComponent,
     CloseModalComponent,
     SpinnerComponent,
-    PhoneMaskDirective
+    PhoneMaskDirective,
+    PhoneMaskDirective,
+    SanitizeHtmlDirective,
+    SafeHtml
   ],
   imports: [
     CommonModule,
@@ -26,7 +32,9 @@ import { SpinnerComponent } from '../components/spinner/spinner.component';
     MapComponent,
     CloseModalComponent,
     PhoneMaskDirective,
-    SpinnerComponent
+    SpinnerComponent,
+    SanitizeHtmlDirective,
+    SafeHtml
   ]
 })
 export class SharedModule { }
