@@ -79,7 +79,8 @@ export class LoginComponent implements OnInit {
   openSpinner(): void {
     this.spinnerRef = this.dialog.open(SpinnerComponent,{
       width: '200px',
-      panelClass: 'custom-dialog'
+      panelClass: 'custom-dialog',
+      disableClose: true
     });
   }
 
