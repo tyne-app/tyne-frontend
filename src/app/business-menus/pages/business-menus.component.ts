@@ -116,6 +116,7 @@ export class BusinessMenusComponent implements OnInit {
         this.fileService.compressImage(reader.result, 400, 250).then(compressed => {
           imageUrl.setValue(compressed)
         });
+        
       };
     }
   }
