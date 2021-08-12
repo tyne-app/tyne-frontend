@@ -7,6 +7,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 
 import { emailRegex } from 'src/app/shared/constants/email';
 import { ClientService } from 'src/app/shared/services/client.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -34,7 +35,7 @@ export class LoginComponent implements OnInit {
     public matDialogRef: MatDialogRef<LoginComponent>,
     private clientservice:ClientService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.formLogin = this.fb.group({
       email: ['', [Validators.required, Validators.pattern(emailRegex)]],
       password: ['', [Validators.required]]
@@ -44,11 +45,16 @@ export class LoginComponent implements OnInit {
   onSubmit(): void {
     if(!this.formLogin.invalid){
       this.clientservice.login(this.email.value, this.password.value).subscribe({
-        next(token){        
+        next: (token:string) => {        
           localStorage.setItem("access_token", token);
-          this.closeClick();},
-        error(error){
-          this.showError();
+          this.closeClick();
+        },
+        error: (error: HttpErrorResponse) => {
+
+          this.snackbar.open('Ha ocurrido un problema, intente nuevamente', 'ok', {
+            duration: 3000
+          });
+          
         }
       });
     }
@@ -56,18 +62,12 @@ export class LoginComponent implements OnInit {
 
   closeClick(): void {
     this.matDialogRef.close();
-    // **HAY QUE SETEAR EL DISEÑO  */
     this.snackbar.open('Ha ingresado satisfactoriamente', 'ok', {
       duration: 3000
     });
     this.router.navigateByUrl('/perfil-cliente');
   }
 
-  showError(): void {
-    this.snackbar.open('Ha ocurrido un problema, intente nuevamente', 'ok', {
-      duration: 3000
-    });
-  }
- 
+
  
 }
