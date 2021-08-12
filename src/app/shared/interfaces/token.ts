@@ -12,6 +12,7 @@ export interface Claims {
     id:        number;
     name:      string;
     last_name: string;
+    birth_date: Date;
     email:     string;
     phone:     string;
     state_id:  number;

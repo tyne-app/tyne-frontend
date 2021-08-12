@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { JwtDecodeService } from 'src/app/shared/helpers/jwt-decode.service';
+import { Claims, Token } from 'src/app/shared/interfaces/token';
 
 @Component({
   selector: 'app-client-profile',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientProfileComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  @Output() ClientData:EventEmitter<Claims> = new EventEmitter<Claims>();
+  constructor(
+    public jwtService: JwtDecodeService
+  ) { }
+  
+  claims: Claims;
+  
+  ngOnInit(): void { 
+    const token:Token = this.jwtService.getToken();
+    this.claims = token.claims;
+    this.ClientData.emit(this.claims); 
   }
-
 }

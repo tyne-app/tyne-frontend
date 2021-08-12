@@ -21,7 +21,8 @@ import {
   MatNativeDateModule,
   MatDatepickerModule,
   MatTooltipModule,
-  MatStepperModule
+  MatStepperModule,
+  MatProgressSpinnerModule
 } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table';
 import {DragDropModule} from '@angular/cdk/drag-drop';
@@ -52,7 +53,8 @@ const MaterialComponents = [
   MatDatepickerModule,
   MatTooltipModule,
   MatFormFieldModule,
-  DragDropModule
+  DragDropModule,
+  MatProgressSpinnerModule
 ];
 
 @NgModule({
