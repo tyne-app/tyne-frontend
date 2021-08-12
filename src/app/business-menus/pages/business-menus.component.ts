@@ -111,10 +111,9 @@ export class BusinessMenusComponent implements OnInit {
       const file: File = event.target.files[0];
       const reader = new FileReader();
       reader.readAsDataURL(file);
-      
+
       reader.onload = () => {
         this.fileService.compressImage(reader.result, 400, 250).then(compressed => {
-          console.log(compressed);
           imageUrl.setValue(compressed)
         });
       };
