@@ -18,14 +18,37 @@
     ],
     "rules": {
         "no-console": 1,
-        "semi": [2, "always"],
+        "semi": [
+            2,
+            "always"
+        ],
         "spaced-comment": 1,
         "no-multi-spaces": "error",
         "default-case": 1,
         "no-var": "error",
         "@typescript-eslint/no-useless-constructor": "error",
-        "sort-imports": "error",
-        "max-params": [1, { "max": 3 }],
-        "multiline-comment-style": ["error", "starred-block"]
+        "sort-imports": [
+            "error",
+            {
+                "ignoreCase": false,
+                "ignoreDeclarationSort": true,
+                "ignoreMemberSort": true,
+                "memberSyntaxSortOrder": [
+                    "none",
+                    "all",
+                    "multiple",
+                    "single"
+                ],
+                "allowSeparatedGroups": false
+            }
+        ],
+        // "max-params": [1, { "max": 3 }],
+        "multiline-comment-style": [
+            "error",
+            "starred-block"
+        ],
+        "@typescript-eslint/explicit-member-accessibility": [
+            "error"
+        ]
     }
 }

@@ -14,6 +14,7 @@ import { EmailValidator } from 'src/app/shared/validations/email-validator';
 import { PasswordValidator } from 'src/app/shared/validations/password-validator';
 import { environment } from 'src/environments/environment';
 
+
 @Component({
   selector: 'app-business-registration',
   templateUrl: './business-registration.component.html',
@@ -311,12 +312,4 @@ export class BusinessRegistrationComponent implements OnInit {
       control.hasError("min") ? "Debe seleccionar un tipo de cuenta" : null;
   }
   // #endregion Third stepper validations
-
-  public a(): void {
-    // aa
-    const a = 1;
-    // bas
-    const b = a;
-    // aafsdfsdf
-  }
 }
