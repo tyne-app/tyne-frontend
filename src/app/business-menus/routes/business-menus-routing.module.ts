@@ -4,12 +4,12 @@ import { BusinessMenusComponent } from '../pages/business-menus.component';
 
 const routes: Routes = [
   {
-    path: '', component: BusinessMenusComponent
-  }
-]; 
+    path: '', component: BusinessMenusComponent,
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class businessMenusRoutingModule { }
