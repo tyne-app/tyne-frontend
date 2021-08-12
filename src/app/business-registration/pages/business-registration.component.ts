@@ -123,7 +123,7 @@ export class BusinessRegistrationComponent implements OnInit {
     this.accountType = [{
       id: 1,
       name: "Vista"
-    },{
+    }, {
       id: 2,
       name: "Corriente"
     }];
@@ -133,10 +133,12 @@ export class BusinessRegistrationComponent implements OnInit {
 
     if (this.thirdFormGroup.invalid) return;
 
-    // this.snackBar.open('Ha registrado satisfactoriamente el local', 'ok', {
-    //   duration: 3000
-    // });
-    // this.router.navigateByUrl('/inicio');
+    /*
+     * this.snackBar.open('Ha registrado satisfactoriamente el local', 'ok', {
+     *   duration: 3000
+     * });
+     * this.router.navigateByUrl('/inicio');  
+     */
   }
 
   // #region First stepper validations
@@ -216,7 +218,7 @@ export class BusinessRegistrationComponent implements OnInit {
     return control.hasError("required") ? "Debe ingresar un email" :
       control.hasError("email") ? "Debe ingresar un email válido" :
         control.hasError("pattern") ? "Debe ingresar un email válido" : null;
-    
+
   }
 
   public getLegalRepresentativePhoneError() {
@@ -267,7 +269,7 @@ export class BusinessRegistrationComponent implements OnInit {
       control.hasError("min") ? "Debe seleccionar una región" : null;
   }
 
-  public getPrincipalLocationStateError(): string{
+  public getPrincipalLocationStateError(): string {
     const control = this.secondFormGroup.get("principalLocationState");
     return control.hasError("required") ? "Debe seleccionar una comuna" :
       control.hasError("min") ? "Debe seleccionar una comuna" : null;
@@ -309,4 +311,12 @@ export class BusinessRegistrationComponent implements OnInit {
       control.hasError("min") ? "Debe seleccionar un tipo de cuenta" : null;
   }
   // #endregion Third stepper validations
+
+  public a(): void {
+    // aa
+    const a = 1;
+    // bas
+    const b = a;
+    // aafsdfsdf
+  }
 }
