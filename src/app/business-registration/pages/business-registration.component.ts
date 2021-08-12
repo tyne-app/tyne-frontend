@@ -267,7 +267,7 @@ export class BusinessRegistrationComponent implements OnInit {
       control.hasError("min") ? "Debe seleccionar una región" : null;
   }
 
-  public getPrincipalLocationStateError() {
+  public getPrincipalLocationStateError(): string{
     const control = this.secondFormGroup.get("principalLocationState");
     return control.hasError("required") ? "Debe seleccionar una comuna" :
       control.hasError("min") ? "Debe seleccionar una comuna" : null;
