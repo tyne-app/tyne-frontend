@@ -114,9 +114,9 @@ export class BusinessMenusComponent implements OnInit {
 
       reader.onload = () => {
         this.fileService.compressImage(reader.result, 400, 250).then(compressed => {
-          imageUrl.setValue(compressed)
+          imageUrl.setValue(compressed);
         });
-        
+
       };
     }
   }
@@ -178,7 +178,7 @@ export class BusinessMenusComponent implements OnInit {
           price: '4500',
         }]
       },
-    ]
+    ];
   }
 
   private initForm() {
@@ -206,8 +206,8 @@ export class BusinessMenusComponent implements OnInit {
         imageUrl: [x.imageUrl],
         price: [x.price, [Validators.required, Validators.min(100), Validators.max(100000)]],
         description: [x.description, [Validators.required, Validators.minLength(10), Validators.maxLength(200)]],
-      }))
-    })
+      }));
+    });
 
     return formArray;
   }
@@ -238,18 +238,18 @@ export class BusinessMenusComponent implements OnInit {
         ctx.drawImage(img, 0, 0, newX, newY);
         const data = ctx.canvas.toDataURL();
         res(data);
-      }
+      };
       img.onerror = error => rej(error);
-    })
+    });
   }
 
-  public getProductNameError(seccionId: number, productId: number) {
+  public getProductNameError(seccionId: number, productId: number): string {
     const products = this.sections.controls[seccionId].get("products") as FormArray;
     const control = products.controls[productId].get("name");
 
     return control.hasError("required") ? "Debe ingresar un nombre" :
       control.hasError("minlength") ? "Debe tener mínimo 3 caracteres" :
-        control.hasError("maxlength") ? "Debe tener máximo 50 caracteres" : null
+        control.hasError("maxlength") ? "Debe tener máximo 50 caracteres" : null;
   }
 
   public getProductPriceError(seccionId: number, productId: number) {
@@ -258,7 +258,7 @@ export class BusinessMenusComponent implements OnInit {
 
     return control.hasError("required") ? "Debe ingresar un precio" :
       control.hasError("min") ? "El valor mínimo es de $100" :
-        control.hasError("max") ? "El valor máximo es $100.000" : null
+        control.hasError("max") ? "El valor máximo es $100.000" : null;
   }
 
   public getProductDescriptionError(seccionId: number, productId: number) {
@@ -267,6 +267,6 @@ export class BusinessMenusComponent implements OnInit {
 
     return control.hasError("required") ? "Debe ingresar una descripción" :
       control.hasError("minlength") ? "Debe tener mínimo 10 caracteres" :
-        control.hasError("maxlength") ? "Debe tener máximo 200 caracteres" : null
+        control.hasError("maxlength") ? "Debe tener máximo 200 caracteres" : null;
   }
 }

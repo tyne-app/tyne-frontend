@@ -1,9 +1,66 @@
-.footer{
-    position: absolute;
-    width:100%;
-    height: 164px;
-    left: 0px;
-    top: 1309px;
+// .footer{
+//     position: absolute;
+//     width:100%;
+//     height: 164px;
+//     left: 0px;
+//     top: 1309px;
+// }
+// @mixin min($width) {
+//     @media only screen and (min-width: $width) {
+//         @content;
+//     }
+// }
+
+.footer {
+    background-color: #3C0000;
+    margin-top: 15%;
+    &__row {
+        padding: 2.5rem 0;
+    }
+    &__list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    &__list--after {
+        padding-bottom: 1rem;
+        position: relative;
+        @media only screen and (min-width: 577px) {
+            padding-bottom: 0;
+        }
+        &::after {
+            background-color: #FFFDFA;
+            content: "";
+            position: absolute;
+            bottom: 0;
+            height: 3px;
+            width: 75%;
+            @media only screen and (min-width: 577px) {
+                content: none;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 577px) {
+    .border-r {
+        border-right: 3px solid #FFFDFA;
+    }
+}
+
+.list {
+    &__item {
+        // text-align: center;
+        padding-bottom: .35rem;
+        @media only screen and (min-width: 577px) {
+            text-align: center;
+        }
+    }
+    &__link {
+        color: #FFFDFA;
+        text-decoration: none;
+        font-size: 1.1rem;
+    }
 }
 
 .link{
@@ -18,7 +75,7 @@
     font-size: 18px;
     line-height: 24px;
 }
-.btn{
+.btn {
     color: #FFFDFA;
     text-decoration: none;
     font-size: large;
@@ -27,8 +84,10 @@
 .btn-primary{
     background: #E10000;
     border-radius: 5px;
-    width: 60%;
+    width: 80%;
+    max-width: 280px;
     color: #FFFDFA;
-    font-size: large;
+    font-size: 1rem;
     font-weight: lighter;
 }
+
