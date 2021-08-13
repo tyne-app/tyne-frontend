@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { passwordRegex } from 'src/app/shared/constants/password';
 import { PasswordValidator } from 'src/app/shared/validations/password-validator';
 import { BusinessProfileEditBankDataComponent } from '../business-profile-edit-bank-data/business-profile-edit-bank-data.component';
