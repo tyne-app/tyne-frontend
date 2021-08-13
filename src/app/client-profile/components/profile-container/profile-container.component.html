@@ -1,5 +1,5 @@
 
-<div class="container pt-5">
+<div class="container">
     <mat-card>
         <div class="row">
             <div class="col-lg-4 mb-3">
@@ -14,7 +14,7 @@
 
                     <div class="col ml-2">
                         <h4>Nombre</h4>
-                        <h4><b>{{this.username}}</b></h4>
+                        <h4><b>{{this.ClientDataInfo.name}} {{this.ClientDataInfo.last_name}}</b></h4>
                     </div>
                 </div>
 
@@ -22,21 +22,21 @@
 
                     <div class="col ml-2">
                         <h4>Fecha de nacimiento</h4>
-                        <h4><b>{{this.birthday}}</b></h4>
+                        <h4><b>{{this.ClientDataInfo.birth_date |  date: 'dd/MM/yyyy' }}</b></h4>
                     </div>
                 </div>
 
                 <div class="row ">
                     <div class="col ml-2">
                         <h4>Email</h4>
-                        <h4><b>{{this.email}}</b></h4>
+                        <h4><b>{{this.ClientDataInfo.email}}</b></h4>
                     </div>
                 </div>
 
                 <div class="row ">
                     <div class="col ml-2">
                         <h4>Celular</h4>
-                        <h4><b>{{this.phonenumber}}</b></h4>
+                        <h4><b>{{this.ClientDataInfo.phone}}</b></h4>
                     </div>
                 </div>
 
@@ -47,7 +47,7 @@
                 </div>
                 
             </div>
-            <div class="col-lg-4 d-flex justify-content-center">
+            <div class="col-lg-4">
                 <app-profile-image></app-profile-image>
                 
             </div>

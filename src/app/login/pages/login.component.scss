@@ -106,3 +106,8 @@ mat-form-field {
         justify-self: center;
     }
 }
+
+
+::ng-deep .custom-dialog > mat-dialog-container {
+    background-color: var(--background);
+  }

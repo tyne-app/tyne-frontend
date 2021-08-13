@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container pb-5">
 
     <div class="row mb-5 pt-3">
         
@@ -6,13 +6,18 @@
             <div class="logo">
                 <img src="/assets/logo2 1.png" alt="">
             </div>
-        </div>
+        </div> 
 
         <div class="col-lg-2 w-50 mt-3">
-            <button  mat-stroked-button>¡Hola {{this.username}}!</button>
+            <button  mat-stroked-button [matMenuTriggerFor]="tyneMenu">¡Hola {{this.username}}! <mat-icon matSuffix ><span class="material-icons-outlined">
+                expand_more
+                </span></mat-icon></button>
+            <mat-menu #tyneMenu="matMenu" xPosition="before">
+                <button (click)="OnClick(this.menuItem.key)" *ngFor=" let menuItem of this.menu | keyvalue: asIsOrder" mat-menu-item>{{menuItem.value}}</button>
+            </mat-menu> 
         </div>
 
-    </div>
+    </div> 
 </div>
 
 

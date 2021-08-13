@@ -1,4 +1,14 @@
+/**
+ * COMPONENTS 
+ */
+
 import { AppComponent } from './app.component';
+import { LoginComponent } from './login/pages/login.component';
+import { ClientRegistrationComponent } from './client-registration/pages/client.registration.component';
+
+/**
+ * MODULES
+ */
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
@@ -11,18 +21,22 @@ import { ClientProfileModule } from './client-profile/modules/client-profile.mod
 import { PrivacyModule } from './privacy/modules/privacy.module';
 import { RefundPolicyModule } from './refund-policy/modules/refund-policy.module';
 import { FrequentQuestionsModule } from './frecuent-questions/modules/frequent-questions.module';
-import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS, MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
-import { DateAdapter, MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material/core';
-import { LoginComponent } from './login/pages/login.component';
-import { ClientRegistrationComponent } from './client-registration/pages/client.registration.component';
 import { LoginModule } from './login/modules/login.module';
 import { ClientRegistrationModule } from './client-registration/modules/client-registration.module';
 import { BusinessDetailsModule } from './business-details/modules/business-details.module';
+
+/**
+ * SERVICES
+ */
 import { RestClientService } from './shared/services/rest-client.service';
+
+import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS, MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
+import { DateAdapter, MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material/core';
+import { SpinnerComponent } from './shared/components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,7 +54,7 @@ import { RestClientService } from './shared/services/rest-client.service';
     RefundPolicyModule,
     FrequentQuestionsModule
   ],
-  entryComponents: [ClientRegistrationComponent, LoginComponent],
+  entryComponents: [ClientRegistrationComponent, LoginComponent, SpinnerComponent],
   providers: [
     RestClientService,
     {

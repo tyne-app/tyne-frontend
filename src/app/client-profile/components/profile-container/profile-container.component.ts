@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Claims } from 'src/app/shared/interfaces/token';
 import { PasswordValidation } from 'src/app/shared/validations/password-validation';
 
 @Component({
@@ -8,32 +9,34 @@ import { PasswordValidation } from 'src/app/shared/validations/password-validati
   styleUrls: ['./profile-container.component.scss']
 })
 export class ProfileContainerComponent implements OnInit {
-
   /** Es posible que se ocupe el objeto del usuario */
-  username:string    = "Cristopher Angulo";
+  username:string    = "Cristopher Angulo"; 
   phonenumber:string = "+569 2222 3333";
   birthday:string    ="DD/MM/AA";
   email:string        = "misterion_es_loMásGrande@gmail.com"
-  
+  recoverPasswordForm:FormGroup; 
 
-  recoverPasswordForm:FormGroup;  
+  @Input() ClientDataInfo: Claims;
   
   constructor(
     private fb: FormBuilder
   ) { }
 
   ngOnInit(): void {
+    this.buildForm();    
+  }
+  
+  buildForm(): void {
     this.recoverPasswordForm = this.fb.group({
       currentPassword: ['', [Validators.required]],
       newPassword: ['', [Validators.required]],
       confirmPassword: ['', [Validators.required]],
     }, {
-      validator: PasswordValidation.MatchPassword // your validation method
+      validator: PasswordValidation.MatchPassword
     }
     );
   }
-
   OnSubmit():void{
-
+    
   }
 }
