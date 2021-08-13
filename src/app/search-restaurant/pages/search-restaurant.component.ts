@@ -31,8 +31,8 @@ export class SearchRestaurantComponent implements OnInit {
   ngOnInit() {
   }
 
+  // sdfsdf
   public onFavoriteIconClick(index: number) {
     this.restaurants[index].isFavorite = !this.restaurants[index].isFavorite;
   }
-
 }
