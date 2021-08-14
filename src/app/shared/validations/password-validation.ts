@@ -1,17 +1,16 @@
-import {AbstractControl} from '@angular/forms';
+import { AbstractControl } from "@angular/forms";
 
 /**
- * DEPRECATED, IT NEED TO BE DELETED
+ * @deprecated The method should not be used
  */
 export class PasswordValidation {
-
-    static MatchPassword(AC: AbstractControl) {
-       const password = AC.get('newPassword').value; 
-       const confirmPassword = AC.get('confirmPassword').value;
-        if(password != confirmPassword) {
-            AC.get('confirmPassword').setErrors( {MatchPassword: true} );
-        } else {
-            return null;
-        }
+  static MatchPassword(AC: AbstractControl) {
+    const password = AC.get("newPassword").value;
+    const confirmPassword = AC.get("confirmPassword").value;
+    if (password != confirmPassword) {
+      AC.get("confirmPassword").setErrors({ MatchPassword: true });
+    } else {
+      return null;
     }
+  }
 }
