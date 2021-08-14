@@ -1,44 +1,44 @@
 @mixin view-min($width) {
-    @media only screen and (min-width: $width) {
-        @content;
-    }
+  @media only screen and (min-width: $width) {
+    @content;
+  }
 }
 
 mat-card {
-    background: #FAFAFA;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
+  background: #fafafa;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
 }
 
 .mat-card-pt-4 {
-    margin-top: 40px;
+  margin-top: 40px;
 }
 
 .titulo-principal {
-    margin-bottom: -15px;
-    text-align: center;
+  margin-bottom: -15px;
+  text-align: center;
 }
 
 .titulo {
-    font-style: normal;
-    font-weight: 300;
-    font-size: 24px;
-    line-height: 29px;
-    color: #3C0000;
-    margin-bottom: -20px;
-    margin-top: 10px;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 29px;
+  color: #3c0000;
+  margin-bottom: -20px;
+  margin-top: 10px;
 }
 
 .subtitulo {
-    font-style: normal;
-    font-weight: 300;
-    font-size: 18px;
-    line-height: 22px;
-    color: #3C0000;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 22px;
+  color: #3c0000;
 }
 
 @media only screen and (max-width: 768px) {
-    .titulo-2 {
-        font-size: 30px;
-    }
+  .titulo-2 {
+    font-size: 30px;
+  }
 }

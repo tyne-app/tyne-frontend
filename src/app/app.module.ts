@@ -2,37 +2,37 @@
  * COMPONENTS 
  */
 
-import { AppComponent } from './app.component';
-import { LoginComponent } from './login/pages/login.component';
-import { ClientRegistrationComponent } from './client-registration/pages/client.registration.component';
-
+import { HttpClientModule } from '@angular/common/http';
 /**
  * MODULES
  */
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { MAT_MOMENT_DATE_ADAPTER_OPTIONS, MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SharedModule } from './shared/modules/shared.module';
-import { MaterialModule } from './shared/modules/material.module';
-import { HomeModule } from './home/modules/home.module';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { BusinessDetailsModule } from './business-details/modules/business-details.module';
 import { ClientProfileModule } from './client-profile/modules/client-profile.module';
+import { ClientRegistrationModule } from './client-registration/modules/client-registration.module';
+import { ClientRegistrationComponent } from './client-registration/pages/client.registration.component';
+import { FrequentQuestionsModule } from './frecuent-questions/modules/frequent-questions.module';
+import { HomeModule } from './home/modules/home.module';
+import { LoginModule } from './login/modules/login.module';
+import { LoginComponent } from './login/pages/login.component';
 import { PrivacyModule } from './privacy/modules/privacy.module';
 import { RefundPolicyModule } from './refund-policy/modules/refund-policy.module';
-import { FrequentQuestionsModule } from './frecuent-questions/modules/frequent-questions.module';
-import { LoginModule } from './login/modules/login.module';
-import { ClientRegistrationModule } from './client-registration/modules/client-registration.module';
-import { BusinessDetailsModule } from './business-details/modules/business-details.module';
-
+import { SpinnerComponent } from './shared/components/spinner/spinner.component';
+import { MaterialModule } from './shared/modules/material.module';
+import { SharedModule } from './shared/modules/shared.module';
 /**
  * SERVICES
  */
 import { RestClientService } from './shared/services/rest-client.service';
 
-import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS, MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
-import { DateAdapter, MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material/core';
-import { SpinnerComponent } from './shared/components/spinner/spinner.component';
+
+
 
 @NgModule({
   declarations: [
@@ -66,7 +66,7 @@ import { SpinnerComponent } from './shared/components/spinner/spinner.component'
       deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS ]
     },
     {
-      provide:  MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS
+      provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS
     }
   ],
   bootstrap: [AppComponent]

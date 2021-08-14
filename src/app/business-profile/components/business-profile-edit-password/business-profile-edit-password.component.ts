@@ -29,7 +29,7 @@ export class BusinessProfileEditPasswordComponent implements OnInit {
       currentPassword: ['',[Validators.required]],
       password: ['', [Validators.required, Validators.pattern(passwordRegex)]],
       passwordConfirm: ['', [Validators.required, PasswordValidator('password')]],
-    })
+    });
   }
 
   public getCurrentPasswordError() {

@@ -14,13 +14,13 @@ export class HeaderLoginComponent implements OnInit {
   constructor(
     public router: Router
   ) { }
-  /**TODO: Posible Refactor */
+  /** TODO: Posible Refactor */
   ngOnInit(): void {
     this.menu = new Map<number,string>()
     .set(1,'Perfil')
     .set(2,'Locales Favoritos')
     .set(3,'Reservas Pendientes')
-    .set(4,'Cerrar sesión')
+    .set(4,'Cerrar sesión');
   }
 
   public asIsOrder(a, b) {
@@ -47,7 +47,7 @@ export class HeaderLoginComponent implements OnInit {
   }
 
   private closeSession(): void {
-    this.goToRoute('/inicio')
+    this.goToRoute('/inicio');
     localStorage.removeItem('access_token');
   }
 
