@@ -8,7 +8,7 @@ export class FileService {
   constructor() { }
 
   public getObjectUrl(event: any): string {
-    let file: File = event.target.files[0];
+    const file: File = event.target.files[0];
     const objectUrl = URL.createObjectURL(file);
     return objectUrl;
   }
@@ -25,9 +25,9 @@ export class FileService {
         ctx.drawImage(img, 0, 0, newX, newY);
         const data = ctx.canvas.toDataURL();
         res(data);
-      }
+      };
       img.onerror = error => rej(error);
-    })
+    });
   }
 
   // It doesn't work yet

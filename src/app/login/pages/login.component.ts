@@ -17,7 +17,7 @@ import { SpinnerComponent } from 'src/app/shared/components/spinner/spinner.comp
 })
 export class LoginComponent implements OnInit {
   
-  //#region "Variables"
+  // #region "Variables"
   formLogin: FormGroup;
   get email() {
       return this.formLogin.get('email');
@@ -27,10 +27,10 @@ export class LoginComponent implements OnInit {
       return this.formLogin.get('password');
     }
     
-  public isLoading: boolean = false; 
- ;
+  public isLoading = false; 
+ 
 
-  //#endregion "Variables"
+  // #endregion "Variables"
 
   constructor(
     private snackbar: MatSnackBar,

@@ -11,13 +11,13 @@ export class MapComponent implements OnInit {
 
   // **Default Values */
   @Input() Long = -70.66129503199164;
-  @Input() Lat  = -33.468330883364935;
+  @Input() Lat = -33.468330883364935;
   tyneMap : mapboxgl.Map; 
 
   constructor() { }
 
   ngOnInit() {
-    this.tyneMap  = new mapboxgl.Map({
+    this.tyneMap = new mapboxgl.Map({
       container: 'TyneMap',
       style: TyneMapStyle,
       center: [this.Long, this.Lat],
@@ -31,6 +31,6 @@ export class MapComponent implements OnInit {
     const marker = new mapboxgl.Marker({
       draggable: true
     }).setLngLat([this.Long, this.Lat])
-    .addTo(this.tyneMap)
+    .addTo(this.tyneMap);
   }
 }
