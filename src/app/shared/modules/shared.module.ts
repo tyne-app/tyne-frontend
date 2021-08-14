@@ -1,12 +1,19 @@
+
+/**MODULES */
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from './material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import  {RouterModule } from '@angular/router';
+
+/**COMPONENTS */
 import { MapComponent } from '../components/map/components/map.component';
-import { PhoneMaskDirective } from '../directives/phone-mask.directive';
 import { CloseModalComponent } from '../components/close-modal/close-modal.component';
 import { SpinnerComponent } from '../components/spinner/spinner.component';
+import { NotFoundPageComponent } from '../components/not-found-page/not-found-page.component';
+
+/**DIRECTIVES */
+import { PhoneMaskDirective } from '../directives/phone-mask.directive';
 import { SanitizeHtmlDirective } from '../directives/sanitize-html.directive';
 import { SafeHtml } from '../pipe/safeHtml.pipe';
 
@@ -19,13 +26,15 @@ import { SafeHtml } from '../pipe/safeHtml.pipe';
     PhoneMaskDirective,
     PhoneMaskDirective,
     SanitizeHtmlDirective,
-    SafeHtml
+    SafeHtml,
+    NotFoundPageComponent
   ],
   imports: [
     CommonModule,
     MaterialModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+ 
   ],
   exports: [
     ReactiveFormsModule,
@@ -34,7 +43,8 @@ import { SafeHtml } from '../pipe/safeHtml.pipe';
     PhoneMaskDirective,
     SpinnerComponent,
     SanitizeHtmlDirective,
-    SafeHtml
+    SafeHtml,
+    NotFoundPageComponent
   ]
 })
 export class SharedModule { }

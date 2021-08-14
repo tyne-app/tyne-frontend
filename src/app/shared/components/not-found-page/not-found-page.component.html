@@ -1,3 +1,37 @@
-<p>
-  not-found-page works!
-</p>
+<div class="img-container">
+  <div class="container">
+
+    <div class="row mb-5 pt-3 align-items-center">
+        <div class="col-lg-5">
+            <div class="logo">
+                <img [src]="getLogo()" class="img-logo" routerLink="/">
+            </div>
+        </div>
+        <div class="col-lg-3 d-flex align-items-end">
+            <div class="b-register-button">
+                <a mat-stroked-button routerLink="/registro-negocio">¿Quieres unir tu local?</a>
+            </div>
+        </div>
+        <div class="col-lg-2 d-flex align-items-end">
+            <div class="normal-button">
+                <a mat-stroked-button (click)="openLoginDialog()">Iniciar Sesión</a>
+            </div>
+        </div>
+        <div class="col-lg-2 d-flex align-items-end">
+            <div class="normal-button">
+                <a mat-stroked-button (click)="openRegistrationDialog()">Registrate</a>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h2>La página que buscas no fue encontrada</h2>
+        <button class="btn-submit">Volver al inicio</button>
+      </div>
+    </div>
+  </div>
+
+</div>

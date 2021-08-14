@@ -1,0 +1,47 @@
+.img-container {
+  background-image:url(../../../../assets/img/NotFoundBackground.png);
+  /* Full height */
+  height: 100%; 
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+} 
+
+.b-register-button {
+    width: 100%;
+    background-color: #E10000;
+    color: white;
+    border-radius: 10px;
+    font-weight: lighter;
+    margin-block: 1%;
+}
+
+
+.normal-button {
+    width: 100%;
+    background-color: #FFFDFA;
+    border-radius: 10px;
+    color: #E10000;
+    margin-block: 1%;
+}
+
+.mat-stroked-button {
+    width: 100%;
+    border-radius: 10px;
+    border-color: #E10000;
+    
+}
+
+.img-logo {
+    cursor: pointer;
+}
+
+h2{
+    color: #FFFDFA;
+    size: 64px;
+    line-height: 76.8px;
+    align-items: center;
+    font-weight: 400;
+}

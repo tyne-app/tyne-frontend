@@ -15,5 +15,6 @@ export enum TyneRoutes {
     EditReservation    = "edicion-reserva",
     BuyConfirmation    = "confirmacion-compra",
     CancelReservation  = "cancelacion-reserva",
-    QualifyExperience  = "calificar-experiencia" 
+    QualifyExperience  = "calificar-experiencia",
+    NotFound           = "pagina-no-encontrada"
 }
