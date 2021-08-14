@@ -8,7 +8,7 @@ export class SearchResultsModel {
     public higherPrice: number;
     public description: string;
 
-    constructor (
+    public constructor (
         isFavorite: boolean,
         name: string,
         rating: number,

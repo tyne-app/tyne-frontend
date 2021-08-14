@@ -8,10 +8,10 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'Frontend';
+  public title = 'Frontend';
 
   /** Llamada Global MapBox */
-  ngOnInit(): void {
+  public ngOnInit(): void {
     (mapboxgl as any).accessToken = environment.mapboxToken;
   }
 }
