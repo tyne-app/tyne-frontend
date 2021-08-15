@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
+import { Router } from '@angular/router';
 import { ClientRegistrationComponent } from 'src/app/client-registration/pages/client.registration.component';
 import { LoginComponent } from 'src/app/login/pages/login.component';
 
@@ -13,7 +14,10 @@ export class NotFoundPageComponent implements OnInit {
   @Input()
   public isWhiteLogo: boolean = true;
 
-  constructor(public dialog: MatDialog) { }
+  constructor(
+    public dialog: MatDialog,
+    public router:Router
+    ) { }
 
   public openRegistrationDialog(): void {
     const dialogRef = this.dialog.open(ClientRegistrationComponent, {
@@ -22,7 +26,6 @@ export class NotFoundPageComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('Closed');
     });
   }
 
@@ -33,7 +36,6 @@ export class NotFoundPageComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('Closed');
     });
   }
 
@@ -43,5 +45,9 @@ export class NotFoundPageComponent implements OnInit {
   public getLogo() {
     return this.isWhiteLogo ? "/assets/logo-home.png" : "/assets/logo2 1.png";
   }
-}
+
+  public goToHome(): void{
+    this.router.navigateByUrl('/');
+  }
+} 
  
