@@ -7,14 +7,14 @@ mat-form-field {
   display: contents;
 }
 
-input {    
-    height: 1.6em;              
-    div.mat-form-field-infix {
-      padding: .3em 0;
-      input.mat-input-element {
-        vertical-align: top;
-      }
+input {
+  height: 1.6em;
+  div.mat-form-field-infix {
+    padding: 0.3em 0;
+    input.mat-input-element {
+      vertical-align: top;
     }
+  }
 }
 
 .register-button {
@@ -23,9 +23,9 @@ input {
   border-radius: 15px;
   font-size: 18px;
   font-weight: normal;
-  background-color: #E10000;
+  background-color: #e10000;
 }
-.submit-button{
+.submit-button {
   position: absolute;
   width: 90%;
   top: 20%;
@@ -33,7 +33,7 @@ input {
 
 .register-title {
   font-size: 25px;
-  color: #3C0000;
+  color: #3c0000;
 }
 input.mat-input-element {
   position: absolute;
@@ -43,13 +43,13 @@ input.mat-input-element {
   margin: auto;
 }
 // ::ng-deep -> Deprecated en versiones superiores de angular https://angular.io/guide/component-styles#deprecated-deep--and-ng-deep
-.mat-form-field-appearance-outline .mat-form-field-outline {
-  color: #3C0000;
-  height: 6vh;
+:host::ng-deep.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: #3c0000;
 }
 
-.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
-  color: #3C0000;
+:host::ng-deep.mat-form-field-appearance-outline.mat-focused
+  .mat-form-field-outline-thick {
+  color: #3c0000;
 }
 .modal-body-register {
   overflow-y: auto;
@@ -72,7 +72,7 @@ input.mat-input-element {
     width: 90%;
     margin: 0 -1vw;
   }
-  .img-logo  {
+  .img-logo {
     width: 50%;
   }
   .img-welcomer {

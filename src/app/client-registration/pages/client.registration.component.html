@@ -10,7 +10,11 @@
         <img [src]="getLogo()" class="img-logo" routerLink="/" />
       </div>
       <div class="d-flex justify-content-center my-5">
-        <img src="/assets/img/bienvenido.svg" alt="tyne-app-welcome" class="img-welcomer" />
+        <img
+          src="/assets/img/bienvenido.svg"
+          alt="tyne-app-welcome"
+          class="img-welcomer"
+        />
       </div>
       <h2 class="register-title d-flex justify-content-center" mat-dialog-title>
         Registrate con:
@@ -48,22 +52,22 @@
         </div>
 
         <div mat-dialog-actions>
-          <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <form [formGroup]="form">
             <!-- First row -->
             <div class="row">
               <!-- Name input -->
 
               <div class="col">
                 <mat-form-field appearance="outline">
-                  <mat-label class="mat-label-input-name">Nombre *</mat-label>
+                  <mat-label>Nombre *</mat-label>
                   <input
                     matInput
-                    formControlName="name"
+                    formControlName="clientName"
                     type="text"
                     autocomplete="off"
                   />
-                  <mat-error *ngIf="name.invalid && name.dirty">
-                    Debes ingresar tu nombre!
+                  <mat-error>
+                    {{ getClientNameError() }}
                   </mat-error>
                 </mat-form-field>
               </div>
@@ -72,15 +76,15 @@
 
               <div class="col">
                 <mat-form-field appearance="outline">
-                  <mat-label class="mat-label-input-name">Apellido *</mat-label>
+                  <mat-label>Apellido *</mat-label>
                   <input
                     matInput
-                    formControlName="lastName"
+                    formControlName="clientLastName"
                     type="text"
                     autocomplete="off"
                   />
-                  <mat-error *ngIf="lastName.invalid && lastName.dirty">
-                    Debes ingresar tu apellido!
+                  <mat-error>
+                    {{ getClientLastNameError() }}
                   </mat-error>
                 </mat-form-field>
               </div>
@@ -92,19 +96,15 @@
 
               <div class="col">
                 <mat-form-field appearance="outline">
-                  <mat-label class="mat-label-input-name">Email *</mat-label>
+                  <mat-label>Email *</mat-label>
                   <input
                     matInput
-                    formControlName="email"
+                    formControlName="clientEmail"
                     type="email"
                     autocomplete="off"
                   />
-                  <mat-error
-                    *ngIf="
-                      email.invalid && email.dirty && email.hasError('pattern')
-                    "
-                  >
-                    Debes ingresar una direccion de correo!
+                  <mat-error>
+                    {{ getClientEmailError() }}
                   </mat-error>
                 </mat-form-field>
               </div>
@@ -116,15 +116,15 @@
                   appearance="outline"
                   hintmat-label="+xx xxxxxxxxx"
                 >
-                  <mat-label class="mat-label-input-name">Celular *</mat-label>
+                  <mat-label>Celular *</mat-label>
                   <input
                     matInput
-                    formControlName="phoneNumber"
+                    formControlName="clientPhone"
                     type="text"
                     autocomplete="off"
                   />
-                  <mat-error *ngIf="phoneNumber.invalid && phoneNumber.dirty">
-                    Debes ingresar tu numero de telefono!
+                  <mat-error>
+                    {{ getClientPhoneError() }}
                   </mat-error>
                 </mat-form-field>
               </div>
@@ -138,17 +138,15 @@
                   appearance="outline"
                   hintmat-label="Debe tener al menos 6 caracteres"
                 >
-                  <mat-label class="mat-label-input-name"
-                    >Contraseña *</mat-label
-                  >
+                  <mat-label>Contraseña *</mat-label>
                   <input
                     matInput
                     formControlName="password"
                     type="password"
                     autocomplete="off"
                   />
-                  <mat-error *ngIf="password.invalid && password.dirty">
-                    Debes crear tu contraseña
+                  <mat-error>
+                    {{ getPasswordError() }}
                   </mat-error>
                 </mat-form-field>
               </div>
@@ -156,23 +154,16 @@
               <!-- Confirm Password input -->
 
               <div class="col">
-                <mat-form-field
-                  appearance="outline"
-                  [color]="passwordDoesMatch ? 'primary' : 'warn'"
-                >
-                  <mat-label class="mat-label-input-name"
-                    >Repite tu contraseña *</mat-label
-                  >
+                <mat-form-field appearance="outline">
+                  <mat-label>Repite tu contraseña *</mat-label>
                   <input
                     matInput
                     formControlName="passwordConfirm"
                     type="password"
                     autocomplete="off"
                   />
-                  <mat-error
-                    *ngIf="passwordConfirm.invalid && passwordConfirm.dirty"
-                  >
-                    La contraseña no coincide!
+                  <mat-error>
+                    {{ getPasswordConfirmError() }}
                   </mat-error>
                 </mat-form-field>
               </div>
@@ -180,11 +171,9 @@
 
             <div class="row">
               <!-- Birthdate input -->
-              <div class="col-md-6">
+              <div class="col">
                 <mat-form-field appearance="outline">
-                  <mat-label class="mat-label-input-name"
-                    >Fecha de Nacimiento *</mat-label
-                  >
+                  <mat-label>Fecha de Nacimiento *</mat-label>
                   <input
                     matInput
                     formControlName="birthDate"
@@ -196,8 +185,8 @@
                     [for]="picker"
                   ></mat-datepicker-toggle>
                   <mat-datepicker #picker></mat-datepicker>
-                  <mat-error *ngIf="birthDate.invalid && birthDate.dirty">
-                    Debes ingresar tu fecha de nacimiento!
+                  <mat-error>
+                    {{ getBirthDateError() }}
                   </mat-error>
                 </mat-form-field>
               </div>
