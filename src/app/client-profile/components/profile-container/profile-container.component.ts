@@ -10,10 +10,10 @@ import { PasswordValidation } from 'src/app/shared/validations/password-validati
 })
 export class ProfileContainerComponent implements OnInit {
   /** Es posible que se ocupe el objeto del usuario */
-  username:string    = "Cristopher Angulo"; 
-  phonenumber:string = "+569 2222 3333";
-  birthday:string    ="DD/MM/AA";
-  email:string        = "misterion_es_loMásGrande@gmail.com"
+  username = "Cristopher Angulo"; 
+  phonenumber = "+569 2222 3333";
+  birthday ="DD/MM/AA";
+  email = "misterion_es_loMásGrande@gmail.com"
   recoverPasswordForm:FormGroup; 
 
   @Input() ClientDataInfo: Claims;

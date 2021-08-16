@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderLocalsComponent implements OnInit {
 
-  public isWhiteLogo: boolean = false;
+  public isWhiteLogo = false;
 
   constructor() { }
 

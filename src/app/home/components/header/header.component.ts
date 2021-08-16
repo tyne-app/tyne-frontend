@@ -11,7 +11,7 @@ import { LoginComponent } from 'src/app/login/pages/login.component';
 export class HeaderComponent implements OnInit {
   
   @Input()
-  public isWhiteLogo: boolean = true;
+  public isWhiteLogo = true;
 
   constructor(public dialog: MatDialog) { }
 

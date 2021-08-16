@@ -21,17 +21,17 @@ export class TerritorialsService {
     const url = this.urlBase + `v1/territorials/country/${idCountry}/cities`;
     return this.client.get<GenericDataResponse<City[]>>(url)
       .pipe(map(res => {
-        return res.data
+        return res.data;
       })
-      )
+      );
   }
 
   public getStates(idcity: number) {
     const url = this.urlBase + `v1/territorials/city/${idcity}/states`;
     return this.client.get<GenericDataResponse<State[]>>(url)
       .pipe(map(res => {
-        return res.data
+        return res.data;
       })
-      )
+      );
   }
 }

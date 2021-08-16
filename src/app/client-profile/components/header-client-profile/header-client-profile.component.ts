@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class HeaderClientProfileComponent implements OnInit {
 
-  @Input() username:string = "Cristopher"
+  @Input() username = "Cristopher"
   constructor() { }
 
   ngOnInit(): void {

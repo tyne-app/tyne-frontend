@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { NotFoundPageComponent } from './shared/components/not-found-page/not-found-page.component';
+import { TyneRoutes } from './shared/constants/url-routes';
  
-/** Se deben añadir los guards correspondientes en cada caso */
+/** TODO: ADD GUARD VERY CASE */
 const routes: Routes = [
   {
-    path: 'inicio',
+    path: TyneRoutes.Init,
     loadChildren: () => import('./home/modules/home.module').then( m => m.HomeModule),
   },
   {
@@ -12,27 +14,27 @@ const routes: Routes = [
     loadChildren: () => import('./business-details/modules/business-details.module').then( m=>m.BusinessDetailsModule),
   },
   {
-    path: 'registro-negocio',
+    path: TyneRoutes.CommensalRegister,
     loadChildren: () => import('./business-registration/modules/business-registration.module').then( m => m.BusinessRegistrationModule),
   },
   {
-    path: 'perfil-cliente',
+    path: TyneRoutes.ClientProfile,
     loadChildren: () => import('./client-profile/modules/client-profile.module').then(m=>m.ClientProfileModule)
   },
   {
-    path: 'perfil-local',
+    path: TyneRoutes.LocalProfile,
     loadChildren: () => import('./business-profile/modules/business-registration.module').then(m=>m.BusinessProfileModule)
   },
   {
-    path: 'reembolso',
+    path: TyneRoutes.Refund,
     loadChildren: () => import('./refund-policy/modules/refund-policy.module').then( m => m.RefundPolicyModule),
   },
   {
-    path: 'preguntas-frecuentes',
+    path: TyneRoutes.FrecuentQuestion,
     loadChildren: () => import('./frecuent-questions/modules/frequent-questions.module').then( m => m.FrequentQuestionsModule),
   },
   {
-    path: 'privacidad',
+    path: TyneRoutes.Privacity,
     loadChildren: () => import('./privacy/modules/privacy.module').then( m=> m.PrivacyModule)
   },
   {
@@ -40,12 +42,19 @@ const routes: Routes = [
     loadChildren: () => import('./search-restaurant/modules/search-restaurant.module').then( m=> m.SearchRestaurantModule)
   },
   {
-    path: 'menu-local',
+    path: TyneRoutes.Menu,
     loadChildren: () => import('./business-menus/modules/business-menus.module').then( m=> m.BusinessMenusModule)
   },
   {
+    path: TyneRoutes.NotFound,
+    component: NotFoundPageComponent
+  },
+  { path: '', 
+    redirectTo: TyneRoutes.Init, 
+    pathMatch: 'full' },
+  {
     path: '**',
-    redirectTo: 'inicio'
+    redirectTo: TyneRoutes.NotFound 
   },
 ];
 

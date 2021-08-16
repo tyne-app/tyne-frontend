@@ -1,4 +1,4 @@
 export interface GenericDataResponse<T> {
-    data:  T;
+    data: T;
     error: string;
 }

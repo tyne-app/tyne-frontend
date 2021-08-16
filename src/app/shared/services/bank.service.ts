@@ -20,8 +20,8 @@ export class BankService {
     const url = this.urlBase + `v1/banks`;
     return this.client.get<GenericDataResponse<Bank[]>>(url)
       .pipe(map(res => {
-        return res.data
+        return res.data;
       })
-      )
+      );
   }
 }

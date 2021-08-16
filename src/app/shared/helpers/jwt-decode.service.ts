@@ -11,7 +11,7 @@ export class JwtDecodeService {
   constructor() {}
   
 
-  public getToken():  Token {
+  public getToken(): Token {
     const token: string = localStorage.getItem('access_token');
     const JwtHelper = new JwtHelperService();
     const decodedToken:Token = JwtHelper.decodeToken<Token>(token);
