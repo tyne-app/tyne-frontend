@@ -47,6 +47,11 @@
         border-right: 3px solid #FFFDFA;
     }
 }
+@media only screen and (min-width: 992px) {
+    .border-r {
+        border-right: none;
+    }
+}
 
 .list {
     &__item {
@@ -55,26 +60,35 @@
         @media only screen and (min-width: 577px) {
             text-align: center;
         }
+        @media only screen and (min-width: 992px) {
+            text-align: initial;
+        }
+
     }
     &__link {
         color: #FFFDFA;
         text-decoration: none;
         font-size: 1.1rem;
+        @media only screen and (min-width: 992px) {
+            &:hover {
+                text-decoration: underline;
+            }
+        }
     }
 }
 
-.link{
-    position: absolute;
+// .link{
+//     position: absolute;
     
-    left: 60px;
-    top: 50px;
+//     left: 60px;
+//     top: 50px;
 
-    font-family: Museo Sans;
-    font-style: normal;
-    font-weight: 250;
-    font-size: 18px;
-    line-height: 24px;
-}
+//     font-family: Museo Sans;
+//     font-style: normal;
+//     font-weight: 250;
+//     font-size: 18px;
+//     line-height: 24px;
+// }
 .btn {
     color: #FFFDFA;
     text-decoration: none;
@@ -83,11 +97,19 @@
 
 .btn-primary{
     background: #E10000;
-    border-radius: 5px;
+    border-radius: 10px;
     width: 80%;
+    max-height: 55px;
     max-width: 280px;
     color: #FFFDFA;
     font-size: 1rem;
     font-weight: lighter;
+    padding: .3rem 0;
+    @media only screen and (min-width: 768px) {
+        padding: .4rem 0;
+    }
+    @media only screen and (min-width: 992px) {
+        max-width: 255px;
+    }
 }
 
