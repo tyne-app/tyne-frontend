@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { NotFoundPageComponent } from './shared/components/not-found-page/not-found-page.component';
 import { TyneRoutes } from './shared/constants/url-routes';
  
 /** TODO: ADD GUARD VERY CASE */
@@ -45,8 +46,15 @@ const routes: Routes = [
     loadChildren: () => import('./business-menus/modules/business-menus.module').then( m=> m.BusinessMenusModule)
   },
   {
+    path: TyneRoutes.NotFound,
+    component: NotFoundPageComponent
+  },
+  { path: '', 
+    redirectTo: TyneRoutes.Init, 
+    pathMatch: 'full' },
+  {
     path: '**',
-    redirectTo: TyneRoutes.Init
+    redirectTo: TyneRoutes.NotFound 
   },
 ];
 

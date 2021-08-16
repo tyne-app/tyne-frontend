@@ -1,0 +1,51 @@
+.img-container {
+  background-image: url(../../../../assets/img/NotFoundBackground.png);
+  background-position: center center;
+  max-height: 60%;
+  background-repeat: no-repeat;
+  background-size: cover;
+} 
+
+
+.b-register-button {
+    width: 100%;
+    background-color: #E10000;
+    color: white;
+    border-radius: 10px;
+    font-weight: lighter;
+    margin-block: 1%;
+}
+
+
+.normal-button {
+    width: 100%;
+    background-color: #FFFDFA;
+    border-radius: 10px;
+    color: #E10000;
+    margin-block: 1%;
+}
+
+.mat-stroked-button {
+    width: 100%;
+    border-radius: 10px;
+    border-color: #E10000;
+    
+}
+
+.img-logo {
+    cursor: pointer;
+}
+
+.text{
+    width: 678px;
+    height: 154px;
+    font-family: Museo Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 64px;
+    line-height: 77px;
+    align-items: center; 
+    color: #FFFDFA; 
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
