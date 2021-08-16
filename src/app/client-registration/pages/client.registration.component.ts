@@ -1,91 +1,154 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
-import {MatSnackBar} from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
-import { ClientService } from 'src/app/shared/services/client.service';
-import { emailRegex } from 'src/app/shared/constants/email';
-
+import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { MatDialogRef } from "@angular/material/dialog";
+import { MatSnackBar } from "@angular/material/snack-bar";
+import { Router } from "@angular/router";
+import { emailRegex } from "src/app/shared/constants/email";
+import { passwordRegex } from "src/app/shared/constants/password";
+import { ClientService } from "src/app/shared/services/client.service";
+import { PasswordValidator } from "src/app/shared/validations/password-validator";
 @Component({
-  selector: 'app-client-registration',
-  templateUrl: './client.registration.component.html',
-  styleUrls: ['./client.registration.component.scss']
+  selector: "app-client-registration",
+  templateUrl: "./client.registration.component.html",
+  styleUrls: ["./client.registration.component.scss"],
 })
 export class ClientRegistrationComponent implements OnInit {
-
-  form!: FormGroup;
-
-  loading = false; // Una vez que se haga submit, loading pasa a  ser verdadero y el boton se deshabilita.
+  public form!: FormGroup;
+  public loading = false; // Una vez que se haga submit, loading pasa a  ser verdadero y el boton se deshabilita.
 
   // Injeccion de servicios, dialog, formbuilder y servicio cliente.
-  constructor(private fb: FormBuilder,
-              public matDialogRef: MatDialogRef<ClientRegistrationComponent>,
-              private router:Router, 
-              private clientService: ClientService,
-              private _SNACKBAR: MatSnackBar) { }
+  public constructor(
+    private fb: FormBuilder,
+    public matDialogRef: MatDialogRef<ClientRegistrationComponent>,
+    private router: Router,
+    private clientService: ClientService,
+    private _SNACKBAR: MatSnackBar
+  ) {}
 
   // Creación de formgroup.
-  ngOnInit() {
-    this.form = this.fb.group({
-      name: ['', [Validators.required]],
-      lastName: ['', [Validators.required]],
-      birthDate: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.pattern(emailRegex)]],
-      phoneNumber: ['', [Validators.required]],
-      password:  ['', [Validators.required, Validators.minLength(6)]],
-      passwordConfirm: ['', []]
-    });
-  }
-
-  // Getters de cada campo del form.
-
-  get name() { return this.form.get('name'); }
-
-  get lastName() { return this.form.get('lastName'); }
-
-  get birthDate() { return this.form.get('birthDate'); }
-
-  get email() { return this.form.get('email'); }
-
-  get phoneNumber() { return this.form.get('phoneNumber'); }
-
-  get password() { return this.form.get('password'); }
-
-  get passwordConfirm() { return this.form.get('passwordConfirm'); }
-  
-  get passwordDoesMatch() { return this.password.value === this.passwordConfirm.value; }
-
-  // Implementacion de logica del submit
-  async onSubmit() {
-    this.loading = true;
-
+  public ngOnInit(): void {
+    this.initForm();
     /*
-     * Objeto cliente.
-     * const clientRegister: Client = {
-     *   name: this.name.value,
-     *   last_name: this.lastName.value,
-     *   birth_date: this.birthDate.value,
-     *   email: this.email.value,
-     *   password: this.password.value
-     * }
+     * this.form = this.fb.group({
+     * name: ['', [Validators.required]],
+     * lastName: ['', [Validators.required]],
+     * birthDate: ['', [Validators.required]],
+     * email: ['', [Validators.required, Validators.pattern(emailRegex)]],
+     * phoneNumber: ['', [Validators.required]],
+     * password:  ['', [Validators.required, Validators.minLength(6)]],
+     * passwordConfirm: ['', []]
+     * });
      */
-
-    // const response = await this.clientService.register(clientRegister);
-    this.router.navigateByUrl('/inicio');
-    this.closeClick();
-
-    console.log('loggin test');
   }
 
   // Cierra el modal (Dialog)
-  closeClick(): void {
-    this._SNACKBAR.open('Se Ha registrado satisfactoriamente', 'ok', {
-      duration: 3000
+  public closeClick(): void {
+    this._SNACKBAR.open("Se Ha registrado satisfactoriamente", "ok", {
+      duration: 3000,
     });
     this.matDialogRef.close();
   }
   public isWhiteLogo = false;
-  public getLogo() {
+
+  public getLogo(): string {
     return this.isWhiteLogo ? "/assets/logo-home.png" : "/assets/logo2 1.png";
+  }
+  public initForm(): void {
+    this.form = this.fb.group({
+      clientName: [
+        "",
+        [
+          Validators.required,
+          Validators.minLength(2),
+          Validators.maxLength(30),
+        ],
+      ],
+      clientLastName: [
+        "",
+        [
+          Validators.required,
+          Validators.minLength(2),
+          Validators.maxLength(30),
+        ],
+      ],
+      clientPhone: ["", [Validators.required, Validators.minLength(17)]],
+      clientEmail: [
+        "",
+        [Validators.email, Validators.required, Validators.pattern(emailRegex)],
+      ],
+      password: ["", [Validators.required, Validators.pattern(passwordRegex)]],
+      passwordConfirm: [
+        "",
+        [Validators.required, PasswordValidator("password")],
+      ],
+      birthDate: ["", [Validators.required]],
+    });
+  }
+
+  public getClientNameError(): string {
+    const control = this.form.get("clientName");
+    return control.hasError("required")
+      ? "Debe ingresar un nombre"
+      : control.hasError("minlength")
+      ? "Debe tener mínimo 2 caracteres"
+      : control.hasError("maxlength")
+      ? "Debe tener máximo 30 caracteres"
+      : null;
+  }
+
+  public getClientLastNameError(): string {
+    const control = this.form.get("clientLastName");
+    return control.hasError("required")
+      ? "Debe ingresar un apellido"
+      : control.hasError("minlength")
+      ? "Debe tener mínimo 2 caracteres"
+      : control.hasError("maxlength")
+      ? "Debe tener máximo 30 caracteres"
+      : null;
+  }
+
+  public getClientPhoneError(): string {
+    const control = this.form.get("clientPhone");
+    return control.hasError("required")
+      ? "El número no es válido"
+      : control.hasError("minlength")
+      ? "El número no es válido"
+      : null;
+  }
+
+  public getClientEmailError(): string {
+    const control = this.form.get("clientEmail");
+    return control.hasError("required")
+      ? "Debe ingresar un email"
+      : control.hasError("email")
+      ? "Debe ingresar un email válido"
+      : control.hasError("pattern")
+      ? "Debe ingresar un email válido"
+      : null;
+  }
+
+  public getPasswordError(): string {
+    const control = this.form.get("password");
+    return control.hasError("required")
+      ? "Debe ingresar una contraseña"
+      : control.hasError("pattern")
+      ? "Debe tener como mínimo 8 dígitos, 1 mayúscula y 1 número"
+      : null;
+  }
+
+  public getPasswordConfirmError(): string {
+    const control = this.form.get("passwordConfirm");
+    return control.hasError("required")
+      ? "Debe ingresar una contraseña"
+      : control.hasError("notMatch")
+      ? "La contraseña no coincide"
+      : null;
+  }
+
+  public getBirthDateError(): string {
+    const control = this.form.get("birthDate");
+    return control.hasError("required")
+      ? "Debe ingresar una fecha de nacimiento"
+      : null;
   }
 }
