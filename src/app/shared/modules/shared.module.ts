@@ -36,6 +36,7 @@ import { SafeHtml } from '../pipe/safeHtml.pipe';
     RouterModule,
  
   ],
+  imports: [CommonModule, MaterialModule, ReactiveFormsModule, RouterModule],
   exports: [
     ReactiveFormsModule,
     MapComponent,
@@ -47,4 +48,4 @@ import { SafeHtml } from '../pipe/safeHtml.pipe';
     NotFoundPageComponent
   ]
 })
-export class SharedModule { }
+export class SharedModule {}

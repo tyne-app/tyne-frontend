@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RestaurantService } from 'src/app/shared/services/restaurant.service';
 import { State } from '../../interfaces/state';
@@ -112,17 +112,17 @@ export class SearchBarComponent implements OnInit {
       this.form.get("name").setValue(x.name);
       this.form.get("dateReservation").setValue(x.dateReservation ? new Date(x.dateReservation) : null);
       this.form.get("state").setValue(x.state != null ? Number(x.state) : 0);
-    })
+    });
   }
 
   private dateValidator(control: FormControl): { [s: string]: boolean } {
     if (control.value) {
 
-      var date = new Date(control.value).setHours(0, 0, 0, 0,);
-      var today = new Date().setHours(0, 0, 0, 0,);
+      const date = new Date(control.value).setHours(0, 0, 0, 0,);
+      const today = new Date().setHours(0, 0, 0, 0,);
 
       if (date < today) {
-        return { 'invalidDate': true }
+        return { 'invalidDate': true };
       }
     }
 

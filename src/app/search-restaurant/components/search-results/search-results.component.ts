@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { RestaurantService } from 'src/app/shared/services/restaurant.service';
 import { SearchResultsModel } from '../../models/search-results.model';
@@ -13,13 +13,13 @@ export class SearchResultsComponent implements OnInit {
 
   public restaurants: SearchResultsModel[] = [];
 
-  constructor(
+  public constructor(
     private restaurantService: RestaurantService,
     private snackBar: MatSnackBar,
     private router: ActivatedRoute
   ) { }
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.getRestaurants();
   }
 
@@ -27,11 +27,11 @@ export class SearchResultsComponent implements OnInit {
     return this.restaurants == null || this.restaurants.length === 0;
   }
 
-  public onFavoriteIconClick(index: number) {
+  public onFavoriteIconClick(index: number): void {
     this.restaurants[index].isFavorite = !this.restaurants[index].isFavorite;
   }
 
-  public getRestaurants() {
+  public getRestaurants(): void {
     this.restaurantService.currentRestaurant.subscribe(restaurants => {
       if (restaurants) {
         this.restaurants = restaurants;
@@ -42,7 +42,7 @@ export class SearchResultsComponent implements OnInit {
     });
   }
 
-  public orderRestaurants(value: string) {
+  public orderRestaurants(value: string): void {
     const restaurants = this.restaurantService.getRestaurantsByFilterMock(value);
     this.restaurantService.restaurantsDataSource.next(restaurants);
   }
@@ -53,9 +53,11 @@ export class SearchResultsComponent implements OnInit {
    */
   private getQueryParams() {
     this.router.queryParams.subscribe(x => {
-      // this.form.get("name").setValue(x.name);
-      // this.form.get("dateReservation").setValue(x.dateReservation ? new Date(x.dateReservation) : null);
-      // this.form.get("state").setValue(x.state);
-    })
+      /*
+       * this.form.get("name").setValue(x.name);
+       * this.form.get("dateReservation").setValue(x.dateReservation ? new Date(x.dateReservation) : null);
+       * this.form.get("state").setValue(x.state);
+       */
+    });
   }
 }

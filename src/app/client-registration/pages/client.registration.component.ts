@@ -59,14 +59,16 @@ export class ClientRegistrationComponent implements OnInit {
   async onSubmit() {
     this.loading = true;
 
-    // Objeto cliente.
-    // const clientRegister: Client = {
-    //   name: this.name.value,
-    //   last_name: this.lastName.value,
-    //   birth_date: this.birthDate.value,
-    //   email: this.email.value,
-    //   password: this.password.value
-    // }
+    /*
+     * Objeto cliente.
+     * const clientRegister: Client = {
+     *   name: this.name.value,
+     *   last_name: this.lastName.value,
+     *   birth_date: this.birthDate.value,
+     *   email: this.email.value,
+     *   password: this.password.value
+     * }
+     */
 
     // const response = await this.clientService.register(clientRegister);
     this.router.navigateByUrl('/inicio');
@@ -82,7 +84,7 @@ export class ClientRegistrationComponent implements OnInit {
     });
     this.matDialogRef.close();
   }
-  public isWhiteLogo: boolean = false;
+  public isWhiteLogo = false;
   public getLogo() {
     return this.isWhiteLogo ? "/assets/logo-home.png" : "/assets/logo2 1.png";
   }

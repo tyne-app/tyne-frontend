@@ -1,31 +1,31 @@
 .img-container {
-    background:url(../../../assets/bg_home.png);
-    background-repeat: no-repeat;
-    background-size:auto;
-    background-position: center;
+  background: url(../../../assets/bg_home.png);
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position: center;
 }
 
 .principal-title {
-    font-style: normal;
-    font-weight: 400;
-    font-size: 64px;
-    line-height: 75px;
-    text-align: center;
-    color: #FFFDFA;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 75px;
+  text-align: center;
+  color: #fffdfa;
 }
 
 .title {
-    font-style: normal;
-    font-weight: 300;
-    font-size: 48px;
-    color: #3C0000;
-    margin-top: 15px;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 48px;
+  color: #3c0000;
+  margin-top: 15px;
 }
 
 .money {
-    color: #3C0000;
-    font-size: 28px;
-    margin-top: -10px;
+  color: #3c0000;
+  font-size: 28px;
+  margin-top: -10px;
 }
 
 .section-title {
@@ -33,7 +33,7 @@
   font-size: 1.5rem;
   line-height: 30px;
   text-align: center;
-  color: #3C0000;
+  color: #3c0000;
   @media only screen and (max-width: 600px) {
     font-size: 1.2rem;
   }
@@ -44,9 +44,9 @@
 }
 
 @mixin btn-baseStyles {
-  color: #3C0000;
+  color: #3c0000;
   background: #fff;
-  border: 1px solid #E10000;
+  border: 1px solid #e10000;
   box-sizing: border-box;
   border-radius: 10px;
   height: 43px;
@@ -55,7 +55,7 @@
     display: flex;
     justify-content: center;
     & .mat-icon {
-      margin-right: .7rem;
+      margin-right: 0.7rem;
     }
   }
 }
@@ -68,9 +68,9 @@
 }
 
 .btn-accordion {
-  color: #3C0000;;
+  color: #3c0000;
   background: white;
-  border: 1px solid #E10000;
+  border: 1px solid #e10000;
   box-sizing: border-box;
   border-radius: 10px;
   width: 100%;
@@ -118,12 +118,12 @@
 
 .panel-description {
   align-self: center;
-  width: 100%; 
+  width: 100%;
   justify-content: center;
 }
 
 .title-icon-toggle {
-  width: 30%; 
+  width: 30%;
   justify-content: flex-end;
 }
 
@@ -134,14 +134,14 @@
 .toggleIcon {
   pointer-events: auto;
   font-size: 40px;
-  color: #3C0000;
+  color: #3c0000;
 }
 
 .name-product {
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
-  color: #3C0000;
+  color: #3c0000;
 }
 
 .input-product-name {
@@ -157,12 +157,15 @@
 }
 
 .price {
-  color: #3C0000;
+  color: #3c0000;
   font-weight: normal;
   font-size: 18px;
 }
 
-:host ::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+:host
+  ::ng-deep
+  .mat-form-field-appearance-outline.mat-focused
+  .mat-form-field-outline-thick {
   color: #fff;
 }
 
@@ -183,7 +186,7 @@
 }
 
 .mat-input-element {
-  color: #3C0000;
+  color: #3c0000;
   font-weight: normal;
   font-size: 18px;
 }
@@ -195,7 +198,6 @@ mat-divider {
 .panel-header {
   border: 1px solid;
   pointer-events: none;
-  height: 100px;
 }
 
 .icon-edit {
@@ -207,7 +209,7 @@ mat-divider {
   text-align: center;
 }
 
-@media only screen and (min-width:992px) {
+@media only screen and (min-width: 992px) {
   .product-h-img {
     height: 165px;
   }
