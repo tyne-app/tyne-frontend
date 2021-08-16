@@ -1,24 +1,44 @@
-<div class="container-fluid" style="background-color: #3C0000; margin-top: 15%;">
-    
+<div class="container-fluid footer">
+
     <div class="container">
-        <div class="row" style="padding-top: 5%; padding-bottom: 5%;">
-            <div class="col-lg-4 col-md-4">
-                <a class="btn" href="#" role="button">Ver todos los locales</a>
+        <div class="row footer__row">
+            <div
+                class="col-lg-4 mb-4 mb-md-5 mb-lg-0 order-lg-3 d-flex justify-content-center justify-content-lg-end align-self-stretch">
+                <button mat-stroked-button class="btn btn-primary" type="button">¡Quiero unir mi Local!</button>
+            </div>
+            <div class="col-lg-4 col-sm-6 order-lg-1 border-r">
+                <ul class="footer__list footer__list--after">
+                    <li class="list__item">
+                        <a href="#" class="list__link" role="button">Ver todos los locales</a>
+                    </li>
+                    <li class="list__item">
+                        <a href="#" class="list__link" role="button">Sobre Nosotros</a>
+                    </li>
+                    <li class="list__item">
+                        <a routerLink="/preguntas-frecuentes" class="list__link" role="button">Preguntas frecuentes</a>
+                    </li>
+                </ul>
+                <!-- <a class="btn" href="#" role="button">Ver todos los locales</a>
                 <br>
                 <a class="btn" href="#" role="button">Sobre Nosotros</a>
                 <br>
-                <a class="btn"  routerLink= "/preguntas-frecuentes" >Preguntas frecuentes</a>
-            </div> 
-            <div class="col-lg-4 col-md-4">
-                <a class="btn" href="#" role="button">Soporte Técnico</a>
-                <br>
-                <a class="btn" routerLink= "/privacidad" >Póliticas de Privacidad</a>
-                <br>
-                <a class="btn"  routerLink= "/reembolso" >Póliticas de reembolso</a>
+                <a class="btn" >Preguntas frecuentes</a> -->
             </div>
-            <div class="col-lg-4 col-md-4 d-flex justify-content-end align-self-stretch">
-                <button mat-stroked-button class="btn btn-primary" type="button">¡Quiero unir mi Local!</button>
+            <div class="col-lg-4 col-sm-6 order-lg-2">
+                <ul class="footer__list pt-3 pt-sm-0">
+                    <li class="list__item">
+                        <a href="#" class="list__link" role="button">Soporte Técnico</a>
+                    </li>
+                    <li class="list__item">
+                        <a routerLink="/privacidad" class="list__link">Póliticas de Privacidad</a>
+                    </li>
+                    <li class="list__item">
+                        <a routerLink="/reembolso" class="list__link">Póliticas de reembolso</a>
+                    </li>
+                </ul>
             </div>
+
+
         </div>
     </div>
 
