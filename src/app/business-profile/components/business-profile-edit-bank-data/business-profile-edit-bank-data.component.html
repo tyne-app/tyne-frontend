@@ -100,7 +100,18 @@
       </div>
 
       <div class="col-12 col-md-6 col-lg-6 col-center">
-        <button type="button" class="btn-submit">Solicitar Edición</button>
+        <button
+          type="button"
+          class="btn-submit"
+          (click)="requestDataEdition()"
+          *ngIf="!isSubmitButtonEnabled"
+        >
+          Solicitar Edición
+        </button>
+
+        <button type="submit" class="btn-submit" *ngIf="isSubmitButtonEnabled">
+          Guardar cambios
+        </button>
       </div>
     </div>
   </form>

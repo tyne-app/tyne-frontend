@@ -14,6 +14,7 @@ export class BusinessProfileEditBankDataComponent implements OnInit {
   public form: FormGroup;
   public accountType = [];
   public banks: Bank[] = [];
+  public isSubmitButtonEnabled = false;
 
   public constructor(
     private fb: FormBuilder,
@@ -30,7 +31,7 @@ export class BusinessProfileEditBankDataComponent implements OnInit {
   public initForm(): void {
     this.form = this.fb.group({
       rut: [
-        { value: "123456785", disabled: false },
+        { value: "123456785", disabled: true },
         [
           Validators.required,
           Validators.minLength(8),
@@ -69,6 +70,16 @@ export class BusinessProfileEditBankDataComponent implements OnInit {
     });
   }
 
+  public requestDataEdition(): void {
+    this.isSubmitButtonEnabled = true;
+    this.form.get("rut").enable();
+    this.form.get("bank").enable();
+    this.form.get("accountNumber").enable();
+    this.form.get("nameAccountOwner").enable();
+    this.form.get("accountType").enable();
+    this.form.get("email").enable();
+  }
+
   public save(): void {
     //
   }
@@ -91,6 +102,8 @@ export class BusinessProfileEditBankDataComponent implements OnInit {
       this.banks = banks;
     });
   }
+
+  // #region Errors
 
   public getRutError(): string {
     const control = this.form.get("rut");
@@ -155,4 +168,6 @@ export class BusinessProfileEditBankDataComponent implements OnInit {
       ? "Debe seleccionar un tipo de cuenta"
       : null;
   }
+
+  // #endregion
 }
