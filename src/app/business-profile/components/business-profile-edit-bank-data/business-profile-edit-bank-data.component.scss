@@ -3,44 +3,12 @@ mat-form-field {
   padding-bottom: 10px;
 }
 
-::ng-deep .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
-  background-color: red !important;
-}
-
-::ng-deep .mat-radio-button.mat-accent .mat-radio-inner-circle {
-  background-color: red !important;
-}
-
-::ng-deep
-  .mat-radio-button.mat-accent.mat-radio-checked
-  .mat-radio-outer-circle {
-  border-color: red !important;
-}
-
-.titulo-2 {
-  font-weight: normal;
-}
-
-.mb-n5 {
-  margin-bottom: -50px;
-}
-
 .mb-n2 {
   margin-bottom: -20px;
 }
 
 :host ::ng-deep .mat-radio-label-content {
   display: flex;
-}
-
-.second-radio {
-  padding-left: 150px;
-}
-
-@media only screen and (max-width: 1024px) {
-  .second-radio {
-    padding-left: 0px;
-  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -51,29 +19,13 @@ mat-form-field {
     width: auto;
   }
 
-  .titulo-4 {
-    font-size: 20px;
-  }
-
   .titulo-3 {
     font-size: 27px;
-  }
-
-  .titulo-2 {
-    font-size: 25px;
-  }
-
-  .second-radio {
-    padding-left: 0px;
   }
 }
 
 @media only screen and (max-width: 425px) {
   img {
     display: none;
-  }
-
-  .titulo-4 {
-    font-size: 14px;
   }
 }
