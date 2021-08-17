@@ -1,0 +1,31 @@
+mat-form-field {
+  width: 100%;
+  padding-bottom: 10px;
+}
+
+.mb-n2 {
+  margin-bottom: -20px;
+}
+
+:host ::ng-deep .mat-radio-label-content {
+  display: flex;
+}
+
+@media only screen and (max-width: 768px) {
+  .body {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 70vh;
+    width: auto;
+  }
+
+  .titulo-3 {
+    font-size: 27px;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  img {
+    display: none;
+  }
+}
