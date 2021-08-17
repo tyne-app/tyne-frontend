@@ -27,12 +27,12 @@ export class ClientProfileService {
     return this.http.get<any>(`${this.endpoint}/image`, this.httpOptions);
   }
 
-  public putPassword(): Observable<any> {
-    return this.http.put<any>(`${this.endpoint}`, this.httpOptions);
+  public putPassword(imageId: string): Observable<any> {
+    return this.http.put<any>(`${this.endpoint}/image`, this.httpOptions, { params: { imageId }});
   }
 
   public putImageProfile(): Observable<any>{
-    return this.http.put<any>(`${this.endpoint}`, this.httpOptions);
+    return this.http.put<any>(`${this.endpoint}/update-password`, this.httpOptions);
   } 
 
 }
