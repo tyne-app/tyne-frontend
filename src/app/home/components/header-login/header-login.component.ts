@@ -30,7 +30,7 @@ export class HeaderLoginComponent implements OnInit {
     return 1;
   }
   
-  public OnClick(option:number): void {
+  public OnNavigate(option:number): void {
     switch (option) {
       case 1:
         this.goToPerfil();
@@ -45,6 +45,7 @@ export class HeaderLoginComponent implements OnInit {
         this.closeSession();
         break;    
       default:
+        this.goToInit();
         break;
     } 
   }
@@ -58,10 +59,14 @@ export class HeaderLoginComponent implements OnInit {
     this.goToRoute(TyneRoutes.FavouriteLocal);
   }
 
+  private goToInit(){
+    this.goToRoute(TyneRoutes.Init);
+  }
+
   private goToTableReservation(): void{
     this.goToRoute(TyneRoutes.TableReservation)
   }
-  
+
   private goToPerfil(): void{
     this.goToRoute(TyneRoutes.ClientProfile);
   }
