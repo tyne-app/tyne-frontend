@@ -15,7 +15,7 @@ export class ProfileContainerComponent implements OnInit {
   @Input() ClientDataInfo: Claims;
   
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
   ) { }
 
   ngOnInit(): void {

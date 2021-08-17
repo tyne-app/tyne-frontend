@@ -16,6 +16,11 @@ import { ProfileContainerComponent } from '../components/profile-container/profi
 import { ProfileImageComponent } from '../components/profile-image/profile-image.component';
 import { ClientProfileComponent } from '../pages/client-profile.component';
 
+/**
+ * SERVICES
+ */
+
+
 @NgModule({
   declarations: [
     ClientProfileComponent, 

@@ -1,8 +1,11 @@
 /**ANGULAR CORE */
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
+/**REACTIVE */
 import { Observable } from 'rxjs';
 
+/**ENVIRONMENT */
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -22,7 +25,9 @@ export class ClientProfileService {
       })
     };
   }
-  
+
+  /**TODO: ADD INTERFACES AS RESPONSES  */
+
   public getImageProfile(): Observable<any> {
     return this.http.get<any>(`${this.endpoint}/image`, this.httpOptions);
   }

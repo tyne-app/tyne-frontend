@@ -12,4 +12,10 @@ export class ProfileImageComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**TODO: ADD CONSUME IMAGE PROFILE */
+  public getImageProfile(): string {
+    let existImage: Boolean = true;
+    return (existImage)? '/assets/img/user-profile.svg' : ''; 
+  } 
+
 }
