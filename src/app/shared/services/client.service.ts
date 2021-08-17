@@ -8,7 +8,6 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-
 import { DataResponse } from 'src/app/shared/interfaces/token';
 
 @Injectable({
@@ -40,5 +39,10 @@ export class ClientService {
         return res.data;
       })
     );
+  }
+
+  logout(): void {
+    sessionStorage.clear();
+    localStorage.clear();
   }
 }
