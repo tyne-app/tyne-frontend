@@ -65,7 +65,7 @@ const routes: Routes = [
       ),
   },
   {
-    path: TyneRoutes.Menu,
+    path: TyneRoutes.BusinessEditMenu,
     loadChildren: () =>
       import("./business-menus/modules/business-menus.module").then(
         (m) => m.BusinessMenusModule

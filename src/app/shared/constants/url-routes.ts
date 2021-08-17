@@ -9,7 +9,7 @@ export enum TyneRoutes {
   BusinessProfile = "perfil-local",
   ClientProfile = "perfil-cliente",
   BusinessSearchResults = "resultados-locales",
-  Menu = "menu",
+  BusinessEditMenu = "menu",
   TableReservation = "reserva-mesa",
   FavouriteLocal = "locales-favoritos",
   EditReservation = "edicion-reserva",
