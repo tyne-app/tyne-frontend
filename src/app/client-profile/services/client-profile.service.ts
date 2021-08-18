@@ -21,14 +21,21 @@ export class ClientProfileService {
             .pipe( map ( res => {
               return res.data;
             }));
-  }
+          }
+          
+  public putImageProfile( imageId:string, imageProfile: File): Observable<any>{
 
-  public putPassword(imageId:string, imageProfile: FormData): Observable<any> {
-    return this.http.put<any>(`${this.endpoint}/clients/image/${imageId}`, imageProfile);
-  }
-
-  public putImageProfile(password:string): Observable<any>{
-    return this.http.put<any>(`${this.endpoint}/clients/update-password`, password);
+    const formData: FormData = new FormData();
+    formData.append('file', imageProfile);
+    return this.http.put<any>(`${this.endpoint}/clients/image/${imageId}`, formData);
+    
   } 
+
+  public putPassword(password:string): Observable<any> {
+    return this.http.put<any>(`${this.endpoint}/clients/update-password`, password);
+  }
+
+
+
 
 }
