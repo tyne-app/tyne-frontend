@@ -15,15 +15,15 @@ export class ClientProfileService {
   constructor(private http: HttpClient) {}
 
   public getImageProfile(): Observable<string> {
-    return this.http.get<string>(`${this.endpoint}/image`);
+    return this.http.get<string>(`${this.endpoint}/clients/image`);
   }
 
   public putPassword(imageId:string, imageProfile: FormData): Observable<any> {
-    return this.http.put<any>(`${this.endpoint}/image/${imageId}`, imageProfile);
+    return this.http.put<any>(`${this.endpoint}/clients/image/${imageId}`, imageProfile);
   }
 
   public putImageProfile(password:string): Observable<any>{
-    return this.http.put<any>(`${this.endpoint}/update-password`, password);
+    return this.http.put<any>(`${this.endpoint}/clients/update-password`, password);
   } 
 
 }
