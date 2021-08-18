@@ -1,6 +1,9 @@
+/**ANGULAR CORE */
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+/**REACTIVE */
 import { Observable } from 'rxjs';
+/**SERVICES */
 import { TokenService } from '../helpers/token.service';
 
 @Injectable({

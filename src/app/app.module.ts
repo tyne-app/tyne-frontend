@@ -24,7 +24,7 @@ import { LoginComponent } from './login/pages/login.component';
 import { PrivacyModule } from './privacy/modules/privacy.module';
 import { RefundPolicyModule } from './refund-policy/modules/refund-policy.module';
 import { SpinnerComponent } from './shared/components/spinner/spinner.component';
-import { InterceptorService } from './shared/interceptors/interceptor.service';
+import { authInterceptorProviders, InterceptorService } from './shared/interceptors/interceptor.service';
 import { MaterialModule } from './shared/modules/material.module';
 import { SharedModule } from './shared/modules/shared.module';
 /**
@@ -57,11 +57,7 @@ import { RestClientService } from './shared/services/rest-client.service';
   ],
   entryComponents: [ClientRegistrationComponent, LoginComponent, SpinnerComponent],
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: InterceptorService,
-      multi:true
-    },
+    authInterceptorProviders,
     RestClientService,
     {
       provide: MAT_DATE_LOCALE, useValue: 'es'

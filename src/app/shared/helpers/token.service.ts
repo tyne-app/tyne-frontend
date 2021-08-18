@@ -1,7 +1,12 @@
-
+/**ANGULAR CORE */
 import { Injectable } from '@angular/core';
+
+/**SERVICES */
 import { JwtHelperService } from '@auth0/angular-jwt';
+
+/**INTERFACES */
 import { Token } from '../interfaces/token';
+
 
 @Injectable({
   providedIn: 'root'
