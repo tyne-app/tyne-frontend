@@ -33,11 +33,11 @@ export class ClientProfileService {
   }
 
   public putPassword(imageId: string): Observable<any> {
-    return this.http.put<any>(`${this.endpoint}/image`, this.httpOptions, { params: { imageId }});
+    return this.http.put<any>(`${this.endpoint}/image/${imageId}`, this.httpOptions);
   }
 
-  public putImageProfile(): Observable<any>{
-    return this.http.put<any>(`${this.endpoint}/update-password`, this.httpOptions);
+  public putImageProfile(password:string): Observable<any>{
+    return this.http.put<any>(`${this.endpoint}/update-password`, password,  this.httpOptions);
   } 
 
 }
