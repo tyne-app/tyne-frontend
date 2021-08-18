@@ -22,6 +22,7 @@ export class MapComponent implements OnInit {
       zoom: 14,
     });
     this.createMarker();
+    this.tyneMap.addControl(new mapboxgl.NavigationControl());
   }
 
   private createMarker(): void {
