@@ -6,16 +6,21 @@ import { Token } from '../interfaces/token';
 @Injectable({
   providedIn: 'root'
 })
-export class JwtDecodeService {
-  
+export class TokenService {
+   
   constructor() {}
   
 
-  public getToken(): Token {
+  public getDecodedJwtToken(): Token {
     const token: string = localStorage.getItem('access_token');
     const JwtHelper = new JwtHelperService();
     const decodedToken:Token = JwtHelper.decodeToken<Token>(token);
     return decodedToken; 
+  }
+
+  public getTokenFromLocalStorage(): string {
+    const token: string = localStorage.getItem('access_token');
+    return token;
   }
   
 }
