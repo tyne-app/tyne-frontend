@@ -15,8 +15,6 @@ import { Claims, Token } from 'src/app/shared/interfaces/token';
 })
 export class ClientProfileComponent implements OnInit {
 
-
-
   constructor(
     public tokenService: TokenService,
     public clientProfileService: ClientProfileService
@@ -29,19 +27,13 @@ export class ClientProfileComponent implements OnInit {
   ngOnInit(): void { 
     const token:Token = this.tokenService.getDecodedJwtToken();
     this.claims = token.claims;
-    this.clientProfileService.getImageProfile().subscribe((resp)=>{
+    this.clientProfileService.getImageProfile().subscribe((resp)=>{   
       this.urlImage = resp;
-      console.log("esta es la url de la imagen",this.urlImage);
       this.dataClientProfile = {
         claims: this.claims,
         urlImage: this.urlImage 
       }
     });
- 
-
 
   }
-
-  
-
 }

@@ -13,6 +13,7 @@ export class ProfileContainerComponent implements OnInit {
   recoverPasswordForm:FormGroup;  
 
   @Input() ClientDataInfo: Claims;
+  @Input() urlImage: string;
   
   constructor(
     private fb: FormBuilder,
