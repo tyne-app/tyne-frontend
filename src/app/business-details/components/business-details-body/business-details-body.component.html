@@ -1,19 +1,21 @@
 <!--Header-->
-<div class="row">
-  <div class="col d-flex justify-content-center">
-    <h2 class="titulo-2">Juan y Medio</h2>
-    <mat-icon class="icon-favorite" (click)="onFavoriteIconClick()">
-      {{ isFavorite ? "favorite" : "favorite_border" }}
-    </mat-icon>
+<div class="row title">
+  <div class="col-9 col-sm-9 col-md-10 col-lg-10">
+    <h2 class="titulo-2">
+      Juan y Medio
+      <mat-icon class="icon-favorite" (click)="onFavoriteIconClick()">
+        {{ isFavorite ? "favorite" : "favorite_border" }}
+      </mat-icon>
+    </h2>
   </div>
-  <div class="col-2">
+  <div class="col">
     <button class="btn-submit" mat-raised-button>Carta</button>
   </div>
 </div>
 
 <!--Body-->
 <div class="row">
-  <div class="col-5">
+  <div class="col-md-12 col-lg-5 business-details-panel">
     <mat-card>
       <mat-card-content>
         <p class="parrafo">
@@ -52,7 +54,7 @@
 </div>
 
 <div class="row mt-3">
-  <div class="col-5">
+  <div class="col-12 col-lg-5">
     <div class="row">
       <div class="col col-center">
         <mat-card>
@@ -69,7 +71,7 @@
         </mat-card>
       </div>
     </div>
-    <div class="row mt-3">
+    <div class="row mt-3 working-hours-panel">
       <div class="col col-center">
         <mat-card>
           <mat-card-content>
@@ -90,6 +92,6 @@
     </div>
   </div>
   <div class="col">
-    <app-map></app-map>
+    <app-map [Lat]="-33.5263415" [Long]="-70.5920142"></app-map>
   </div>
 </div>

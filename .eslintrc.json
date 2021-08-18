@@ -21,7 +21,8 @@
     "no-multi-spaces": "error",
     "default-case": 1,
     "no-var": "error",
-    "@typescript-eslint/no-useless-constructor": "error",
+    "@typescript-eslint/no-useless-constructor": 0,
+    "@typescript-eslint/no-empty-function": 0,
     "sort-imports": [
       "error",
       {
