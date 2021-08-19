@@ -18,8 +18,8 @@ export class ProfileImageComponent implements OnInit {
   } 
 
   public changeImageProfile(): void{
-    
+
   }
 
 }
- 
+  

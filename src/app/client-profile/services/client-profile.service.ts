@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 /**REACTIVE */
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/internal/operators/map';
+import { map } from 'rxjs/operators';
 import { DataResponse } from 'src/app/shared/interfaces/token';
 /**ENVIRONMENT */
 import { environment } from 'src/environments/environment';
@@ -27,6 +27,7 @@ export class ClientProfileService {
 
     const formData: FormData = new FormData();
     formData.append('file', imageProfile);
+    
     return this.http.put<any>(`${this.endpoint}/clients/image/${imageId}`, formData);
     
   } 
@@ -34,8 +35,4 @@ export class ClientProfileService {
   public putPassword(password:string): Observable<any> {
     return this.http.put<any>(`${this.endpoint}/clients/update-password`, password);
   }
-
-
-
-
 }
