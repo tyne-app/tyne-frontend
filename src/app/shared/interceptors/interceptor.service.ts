@@ -1,9 +1,15 @@
-/**ANGULAR CORE */
+/**
+ * ANGULAR CORE
+ */
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-/**REACTIVE */
+/**
+ * REACTIVE 
+ */
 import { Observable } from 'rxjs';
-/**SERVICES */
+/**
+ * SERVICES 
+ */
 import { TokenService } from '../helpers/token.service';
 
 @Injectable({
@@ -33,4 +39,4 @@ export const authInterceptorProviders = [
   {
     provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true
   }
-]
+];
