@@ -1,11 +1,15 @@
-/**ANGULAR CORE */
+/**
+ * ANGULAR CORE 
+ */
 import { Component,OnInit} from '@angular/core';
-
-/**SERVICES */
+/**
+ * SERVICES 
+ */
 import { TokenService } from 'src/app/shared/helpers/token.service';
 import { ClientProfileService } from '../services/client-profile.service';
-
-/**INTERFACES */
+/**
+ * INTERFACES 
+ */
 import { Claims, Token } from 'src/app/shared/interfaces/token';
 
 @Component({

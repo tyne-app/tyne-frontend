@@ -2,42 +2,48 @@
 <div class="container">
     <mat-card class="bg">
         <div class="row">
-            <div class="col-lg-3 mb-3">
-                    <div class="col m-2 d-flex justify-content-start">
-                        <h1 >Perfil</h1>
+             <!-- SECTION DISPLAY INFO-->
+            <div class="col-lg-3 mb-5">
+                    <div class="col mb-3 d-flex justify-content-start">
+                        <h2 class="titulo-3" >Perfil</h2>
                     </div>
-                    <div class="col ml-2">
-                        <h4>Nombre</h4>
-                        <h4><b>{{this.ClientDataInfo.name}} {{this.ClientDataInfo.last_name}}</b></h4>
+                    <div class="col ml-0 ">
+                        <h5 class="titulo-5 my-0 mb-1">Nombre</h5>
+                        <h5 class="titulo-4 my-0 mb-3" ><b>{{this.ClientDataInfo.name}} {{this.ClientDataInfo.last_name}}</b></h5>
                     </div>
-                    <div class="col ml-2">
-                        <h4>Fecha de nacimiento</h4>
-                        <h4><b>{{this.ClientDataInfo.birth_date |  date: 'dd/MM/yyyy' }}</b></h4>
-                    </div>                   
-                    <div class="col ml-2">
-                        <h4>Email</h4>
-                        <h4><b>{{this.ClientDataInfo.email}}</b></h4>
+                    <div class="col ml-0 my-0">
+                        <h5 class="titulo-5 my-0 mb-1">Fecha de nacimiento</h5>
+                        <h5 class="titulo-4 my-0 mb-3"><b>{{this.ClientDataInfo.birth_date |  date: 'dd/mm/yyyy' }}</b></h5>
+                    </div>                    
+                    <div class="col mx-0">
+                        <h5 class="titulo-5 my-0 mb-1">Email</h5>
+                        <h5 class="titulo-4 my-0 mb-3"><b>{{this.ClientDataInfo.email}}</b></h5>
                     </div>
-                    <div class="col ml-2">
-                        <h4>Celular</h4>
-                        <h4><b>{{this.ClientDataInfo.phone}}</b></h4>
+                    <div class="col mx-0">
+                        <h5 class="titulo-5 my-0 mb-1">Celular</h5>
+                        <h5 class="titulo-4 my-0 "><b>{{this.ClientDataInfo.phone}}</b></h5>
                     </div>          
             </div>
-            <div class="col-lg-4">
+             <!-- SECTION IMAGE PROFILE-->
+            <div class="col-lg-4 ml-2 mb-5">
                 <app-profile-image [urlImage]="this.urlImage"></app-profile-image>            
             </div> 
 
-            <mat-divider class="col-lg-1 mr-5" [vertical]="true"></mat-divider>
-
-            <div class="col-lg-3 mb-3 mt-1">
+            
+            <mat-divider class="col-lg-1 mr-5 mb-5" [vertical]="true"></mat-divider>
+            
+            <!-- SECTION CHANGE PASSWORD -->
+            <div class="col-lg-3 mb-5 mt-1">
                 <div class="row "> 
-                    <div class="col m-1 d-flex justify-content-start">
-                        <h1>Editar contraseña</h1>
+                    <div class="col  d-flex justify-content-start">
+                        <h2 class="titulo-3">Editar contraseña</h2>
                     </div>
                 </div>  
 
+
                 <div class="row">
                     <div class="col">
+                        <!-- SECTION FORM GROUP -->
                         <form [formGroup]="this.recoverPasswordForm" (ngSubmit)="OnSubmit()">
                             <div class="row">
 
@@ -58,13 +64,13 @@
                                 </mat-form-field>    
                             </div>
                          
-                            <div class="row mt-5">
+                            <div class="row mt-5 mb-5">
                                 <div class="d-flex col align-items-center">
-                                    <button class="btn btn-submit">Guardar</button>
+                                    <button class="btn btn-submit mb-5">Guardar</button>
                                 </div>
                             </div>
 
-                          </form>
+                          </form> 
                     </div>
                 </div>
             </div>

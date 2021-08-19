@@ -1,4 +1,4 @@
 export interface DataResponse {
-    data:  string,
+    data: string,
     error: string
 }

@@ -1,11 +1,17 @@
-/**ANGULAR CORE */
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+/**
+ * ANGULAR CORE 
+ */
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-/**REACTIVE */
+/**
+ *REACTIVE 
+ */
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { DataResponse } from 'src/app/shared/interfaces/token';
-/**ENVIRONMENT */
+/**
+ *ENVIRONMENT 
+ */
 import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
@@ -14,7 +20,7 @@ export class ClientProfileService {
   
   private endpoint = environment.API_BASE_CLIENTS; 
   
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {};
 
   public getImageProfile(): Observable<string> {
     return this.http.get<DataResponse>(`${this.endpoint}/clients/image`)
