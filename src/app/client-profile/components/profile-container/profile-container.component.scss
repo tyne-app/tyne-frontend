@@ -1,13 +1,14 @@
-h1, h2, h3, h4 {
-    color: #3C0000;
-    font-weight: 400; 
-    
+.btn{
+    width: 255px;
 }
 
-.mat-stroked-button {
-    width: 100%;
-    background-color: #E10000;
-    color: white;
-    border-radius: 10px;
-    font-weight: lighter;
+.bg{ 
+    background: #FAFAFA;
 }
+
+.mat-divider {
+    display: block;
+    margin: 0;
+    border-top-width: 1px;
+    border-top-style: solid;
+ }

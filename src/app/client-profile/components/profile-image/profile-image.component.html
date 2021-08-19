@@ -1,2 +1,7 @@
-<img class="mt-5 img-responsive" src="/assets/img/user-profile.svg" alt="">
-<button mat-stroked-button class="btn">Cambiar foto</button>
+<img class="mt-5 img-responsive" [src]="this.getImageProfile()" alt="">
+
+<div class="row ">
+    <div class="d-flex col align-items-center">
+        <button class="btn btn-submit" (click)="changeImageProfile()">Cambiar Foto</button>
+    </div> 
+</div>    
