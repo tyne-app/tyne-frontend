@@ -1,5 +1,5 @@
 /**ANGULAR CORE */
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component,OnInit} from '@angular/core';
 
 /**SERVICES */
 import { TokenService } from 'src/app/shared/helpers/token.service';
@@ -22,7 +22,7 @@ export class ClientProfileComponent implements OnInit {
   
   public claims: Claims;
   public urlImage: string;
-  public dataClientProfile: any = { };
+  public dataClientProfile = { };
   
   ngOnInit(): void { 
     const token:Token = this.tokenService.getDecodedJwtToken();

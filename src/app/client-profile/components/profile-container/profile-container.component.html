@@ -41,22 +41,21 @@
                         <form [formGroup]="this.recoverPasswordForm" (ngSubmit)="OnSubmit()">
                             <div class="row">
 
-                                <mat-form-field class="col-lg-12" >
+                                <mat-form-field appearance="outline" class="col-lg-12" >
                                   <mat-label> Contraseña Actual </mat-label>
-                                  <input matInput formControlName="currentPassword" placeholder="" value="">
+                                  <input matInput formControlName="currentPassword" type="text"> 
                                 </mat-form-field>
     
-                                <mat-form-field  class="col-lg-12">
+                                <mat-form-field  appearance="outline" class="col-lg-12">
                                     <mat-label>Contraseña Nueva</mat-label>
-                                    <input matInput formControlName="newPassword" placeholder="" value="">
+                                    <input matInput formControlName="newPassword" type="text">
                                 </mat-form-field>
      
-                                <mat-form-field class="col-lg-12" >
+                                <mat-form-field appearance="outline" class="col-lg-12" >
                                     <mat-label>Repetir Contraseña</mat-label>
-                                    <input matInput formControlName="confirmPassword" placeholder="" value="">
+                                    <input matInput formControlName="confirmPassword" type="text">
                                     <mat-error *ngIf="this.recoverPasswordForm.controls.confirmPassword.errors?.MatchPassword">Contraseñas no conciden </mat-error>
                                 </mat-form-field>    
-
                             </div>
                          
                             <div class="row mt-5">

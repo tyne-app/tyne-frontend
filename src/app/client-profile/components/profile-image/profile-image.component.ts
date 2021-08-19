@@ -7,13 +7,13 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ProfileImageComponent implements OnInit {
 
-  @Input() urlImage: string;
+  @Input() public urlImage: string;
 
   constructor() { }
   ngOnInit(): void {}
 
   public getImageProfile(): string {
-    let existImage: Boolean = true;
+    const existImage = true;
     return (existImage)? this.urlImage : '/assets/img/user-profile.svg'; 
   } 
 
