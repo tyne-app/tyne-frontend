@@ -12,6 +12,7 @@ import { ClientProfileService } from '../../services/client-profile.service';
 export class ProfileImageComponent implements OnInit {
 
   @Input() public urlImage: string;
+  public file: File = null; // Variable to store file
 
   public constructor(
     public clientProfileService: ClientProfileService
@@ -23,10 +24,15 @@ export class ProfileImageComponent implements OnInit {
     return (existImage)? this.urlImage : '/assets/img/user-profile.svg'; 
   } 
 
+     // On file Select
+  public onChange(event): void {
+    console.log(event); 
+    this.file = event.target.files[0];
+  }
   public changeImageProfile(): void{
     this.uploadImageFromDirectory();
-    
   }
+
 
   public uploadImageFromDirectory(): void {
     
