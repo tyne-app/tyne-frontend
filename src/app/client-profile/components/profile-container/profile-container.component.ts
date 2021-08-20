@@ -9,17 +9,14 @@ import { PasswordValidation } from 'src/app/shared/validations/password-validati
   styleUrls: ['./profile-container.component.scss']
 })
 export class ProfileContainerComponent implements OnInit {
-  /** Es posible que se ocupe el objeto del usuario */
-  username = "Cristopher Angulo"; 
-  phonenumber = "+569 2222 3333";
-  birthday ="DD/MM/AA";
-  email = "misterion_es_loMásGrande@gmail.com"
-  recoverPasswordForm:FormGroup; 
+
+  recoverPasswordForm:FormGroup;  
 
   @Input() ClientDataInfo: Claims;
+  @Input() urlImage: string;
   
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
   ) { }
 
   ngOnInit(): void {

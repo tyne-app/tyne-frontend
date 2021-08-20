@@ -1,5 +1,15 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { JwtDecodeService } from 'src/app/shared/helpers/jwt-decode.service';
+/**
+ * ANGULAR CORE 
+ */
+import { Component,OnInit} from '@angular/core';
+/**
+ * SERVICES 
+ */
+import { TokenService } from 'src/app/shared/helpers/token.service';
+import { ClientProfileService } from '../services/client-profile.service';
+/**
+ * INTERFACES 
+ */
 import { Claims, Token } from 'src/app/shared/interfaces/token';
 
 @Component({
@@ -9,16 +19,25 @@ import { Claims, Token } from 'src/app/shared/interfaces/token';
 })
 export class ClientProfileComponent implements OnInit {
 
-  @Output() ClientData:EventEmitter<Claims> = new EventEmitter<Claims>();
   constructor(
-    public jwtService: JwtDecodeService
+    public tokenService: TokenService,
+    public clientProfileService: ClientProfileService
   ) { }
   
-  claims: Claims;
+  public claims: Claims;
+  public urlImage: string;
+  public dataClientProfile = { };
   
   ngOnInit(): void { 
-    const token:Token = this.jwtService.getToken();
+    const token:Token = this.tokenService.getDecodedJwtToken();
     this.claims = token.claims;
-    this.ClientData.emit(this.claims); 
+    this.clientProfileService.getImageProfile().subscribe((resp)=>{   
+      this.urlImage = resp;
+      this.dataClientProfile = {
+        claims: this.claims,
+        urlImage: this.urlImage 
+      }
+    });
+
   }
 }

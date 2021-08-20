@@ -44,4 +44,9 @@ export class ClientService {
         })
       );
   }
+
+  logout(): void {
+    sessionStorage.clear();
+    localStorage.clear();
+  }
 }
