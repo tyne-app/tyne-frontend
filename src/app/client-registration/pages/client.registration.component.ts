@@ -4,7 +4,9 @@ import { MatDialogRef } from "@angular/material/dialog";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { Router } from "@angular/router";
 import { emailRegex } from "src/app/shared/constants/email";
+import { ErrorMessages } from "src/app/shared/constants/error-messages.enum";
 import { passwordRegex } from "src/app/shared/constants/password";
+import { Client } from "src/app/shared/interfaces/client";
 import { ClientService } from "src/app/shared/services/client.service";
 import { PasswordValidator } from "src/app/shared/validations/password-validator";
 @Component({
@@ -13,46 +15,54 @@ import { PasswordValidator } from "src/app/shared/validations/password-validator
   styleUrls: ["./client.registration.component.scss"],
 })
 export class ClientRegistrationComponent implements OnInit {
+  // Una vez que se haga submit, loading pasa a  ser verdadero y el boton se deshabilita.
+  public loading = false;
   public form!: FormGroup;
-  public loading = false; // Una vez que se haga submit, loading pasa a  ser verdadero y el boton se deshabilita.
+  public isWhiteLogo = false;
 
-  // Injeccion de servicios, dialog, formbuilder y servicio cliente.
   public constructor(
     private fb: FormBuilder,
     public matDialogRef: MatDialogRef<ClientRegistrationComponent>,
     private router: Router,
     private clientService: ClientService,
-    private _SNACKBAR: MatSnackBar
+    private snackbar: MatSnackBar
   ) {}
 
-  // Creación de formgroup.
   public ngOnInit(): void {
     this.initForm();
-    /*
-     * this.form = this.fb.group({
-     * name: ['', [Validators.required]],
-     * lastName: ['', [Validators.required]],
-     * birthDate: ['', [Validators.required]],
-     * email: ['', [Validators.required, Validators.pattern(emailRegex)]],
-     * phoneNumber: ['', [Validators.required]],
-     * password:  ['', [Validators.required, Validators.minLength(6)]],
-     * passwordConfirm: ['', []]
-     * });
-     */
   }
 
-  // Cierra el modal (Dialog)
+  public createClient(): void {
+    if (this.form.invalid) {
+      this.showMessage(ErrorMessages.FormNotReady);
+      return;
+    }
+
+    const client: Client = {
+      name: this.form.get("clientName").value,
+      lastName: this.form.get("clientLastName").value,
+      phone: this.form.get("clientPhone").value,
+      email: this.form.get("clientEmail").value,
+      password: this.form.get("password").value,
+      birthDate: this.form.get("birthDate").value,
+      state: "1",
+      uid: "0",
+    };
+
+    this.clientService.register(client).subscribe((x) => {});
+  }
+
   public closeClick(): void {
-    this._SNACKBAR.open("Se Ha registrado satisfactoriamente", "ok", {
+    this.snackbar.open("Se Ha registrado satisfactoriamente", "ok", {
       duration: 3000,
     });
     this.matDialogRef.close();
   }
-  public isWhiteLogo = false;
 
   public getLogo(): string {
     return this.isWhiteLogo ? "/assets/logo-home.png" : "/assets/logo2 1.png";
   }
+
   public initForm(): void {
     this.form = this.fb.group({
       clientName: [
@@ -85,70 +95,81 @@ export class ClientRegistrationComponent implements OnInit {
     });
   }
 
+  private showMessage(message: string) {
+    this.snackbar.open(message, "Aceptar", {
+      duration: 3000,
+      panelClass: ["error-snackbar"],
+    });
+  }
+
+  // #region Errors
+
   public getClientNameError(): string {
     const control = this.form.get("clientName");
     return control.hasError("required")
-      ? "Debe ingresar un nombre"
+      ? ErrorMessages.Required.replace("{0}", "nombre")
       : control.hasError("minlength")
-      ? "Debe tener mínimo 2 caracteres"
+      ? ErrorMessages.Minlength.replace("{0}", "2")
       : control.hasError("maxlength")
-      ? "Debe tener máximo 30 caracteres"
+      ? ErrorMessages.Maxlength.replace("{0}", "30")
       : null;
   }
 
   public getClientLastNameError(): string {
     const control = this.form.get("clientLastName");
     return control.hasError("required")
-      ? "Debe ingresar un apellido"
+      ? ErrorMessages.Required.replace("{0}", "apellido")
       : control.hasError("minlength")
-      ? "Debe tener mínimo 2 caracteres"
+      ? ErrorMessages.Minlength.replace("{0}", "2")
       : control.hasError("maxlength")
-      ? "Debe tener máximo 30 caracteres"
+      ? ErrorMessages.Maxlength.replace("{0}", "30")
       : null;
   }
 
   public getClientPhoneError(): string {
     const control = this.form.get("clientPhone");
     return control.hasError("required")
-      ? "El número no es válido"
+      ? ErrorMessages.Required.replace("{0}", "teléfono")
       : control.hasError("minlength")
-      ? "El número no es válido"
+      ? ErrorMessages.Required.replace("{0}", "teléfono válido")
       : null;
   }
 
   public getClientEmailError(): string {
     const control = this.form.get("clientEmail");
     return control.hasError("required")
-      ? "Debe ingresar un email"
+      ? ErrorMessages.Required.replace("{0}", "email")
       : control.hasError("email")
-      ? "Debe ingresar un email válido"
+      ? ErrorMessages.Invalid.replace("{0}", "email")
       : control.hasError("pattern")
-      ? "Debe ingresar un email válido"
+      ? ErrorMessages.Invalid.replace("{0}", "email")
       : null;
   }
 
   public getPasswordError(): string {
     const control = this.form.get("password");
     return control.hasError("required")
-      ? "Debe ingresar una contraseña"
+      ? ErrorMessages.RequiredVariant.replace("{0}", "contraseña")
       : control.hasError("pattern")
-      ? "Debe tener como mínimo 8 dígitos, 1 mayúscula y 1 número"
+      ? ErrorMessages.PasswordPattern
       : null;
   }
 
   public getPasswordConfirmError(): string {
     const control = this.form.get("passwordConfirm");
     return control.hasError("required")
-      ? "Debe ingresar una contraseña"
+      ? ErrorMessages.RequiredVariant.replace("{0}", "contraseña")
       : control.hasError("notMatch")
-      ? "La contraseña no coincide"
+      ? ErrorMessages.PasswordDoesntMatch
       : null;
   }
 
   public getBirthDateError(): string {
     const control = this.form.get("birthDate");
     return control.hasError("required")
-      ? "Debe ingresar una fecha de nacimiento"
+      ? ErrorMessages.RequiredVariant.replace("{0}", "fecha de nacimiento")
       : null;
   }
+
+  // #endregion
 }
