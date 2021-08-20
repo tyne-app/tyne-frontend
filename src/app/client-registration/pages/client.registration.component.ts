@@ -34,10 +34,11 @@ export class ClientRegistrationComponent implements OnInit {
 
   public createClient(): void {
     if (this.form.invalid) {
-      this.showMessage(ErrorMessages.FormNotReady);
+      this.showMessage(ErrorMessages.FormNotReady, false);
       return;
     }
 
+    this.loading = true;
     const client: Client = {
       name: this.form.get("clientName").value,
       lastName: this.form.get("clientLastName").value,
@@ -49,7 +50,9 @@ export class ClientRegistrationComponent implements OnInit {
       uid: "0",
     };
 
-    this.clientService.register(client).subscribe((x) => {});
+    this.clientService.register(client).subscribe((x) => {
+      this.showMessage("Usuario creado exitosamente - test");
+    });
   }
 
   public closeClick(): void {
@@ -95,10 +98,10 @@ export class ClientRegistrationComponent implements OnInit {
     });
   }
 
-  private showMessage(message: string) {
+  private showMessage(message: string, isSucceful = true) {
     this.snackbar.open(message, "Aceptar", {
       duration: 3000,
-      panelClass: ["error-snackbar"],
+      panelClass: [isSucceful ? "" : "error-snackbar"],
     });
   }
 
