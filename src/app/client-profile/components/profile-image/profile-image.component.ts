@@ -2,6 +2,9 @@
  * ANGULAR CORE
  */
 import { Component, Input, OnInit } from '@angular/core';
+/**
+ * SERVICES
+ */
 import { ClientProfileService } from '../../services/client-profile.service';
 
 @Component({
@@ -10,33 +13,34 @@ import { ClientProfileService } from '../../services/client-profile.service';
   styleUrls: ['./profile-image.component.scss']
 })
 export class ProfileImageComponent implements OnInit {
-
+  
+  // #region Variables
   @Input() public urlImage: string;
-  public file: File = null; // Variable to store file
+  public imageProfile: File = null; 
+  // #endregion
 
   public constructor(
     public clientProfileService: ClientProfileService
   ) { }
+
   public ngOnInit(): void {}
 
   public getImageProfile(): string {
-    const existImage = true;
-    return (existImage)? this.urlImage : '/assets/img/user-profile.svg'; 
+    return (this.urlImage)? this.urlImage : '/assets/img/user-profile.svg'; 
   } 
-
-     // On file Select
-  public onChange(event): void {
-    console.log(event); 
-    this.file = event.target.files[0];
-  }
-  public changeImageProfile(): void{
-    this.uploadImageFromDirectory();
+   
+  public uploadImageFromDirectory(event): void {
+    this.imageProfile = event.target.files[0];
+    console.log("imagen a actualizar", this.imageProfile);
+    this.updateImageProfile(this.imageProfile);
   }
 
-
-  public uploadImageFromDirectory(): void {
-    
+  public updateImageProfile(imageProfile:File): void{
+    this.clientProfileService.putImageProfile(imageProfile).subscribe((resp)=>{
+      this.urlImage = resp;
+    });
   }
+
 
 }
   

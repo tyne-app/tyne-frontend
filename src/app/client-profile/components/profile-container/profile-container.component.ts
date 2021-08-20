@@ -15,6 +15,7 @@ import { passwordRegex } from 'src/app/shared/constants/password';
  * VALIDATORS
  */
 import { PasswordValidator } from 'src/app/shared/validations/password-validator';
+import { ClientProfileService } from '../../services/client-profile.service';
 
 @Component({
   selector: 'app-profile-container',
@@ -44,7 +45,8 @@ export class ProfileContainerComponent implements OnInit {
   // #endregion
   
   public constructor(
-    private fb: FormBuilder,
+    private fb: FormBuilder, 
+    private clientProfileService: ClientProfileService
   ) { }
 
   public ngOnInit(): void {
@@ -60,7 +62,9 @@ export class ProfileContainerComponent implements OnInit {
   }
 
   public OnSubmit() :void {
-    
+    this.clientProfileService.putPassword(this.newPasswordControl.value).subscribe((resp)=>{
+      console.log(resp);
+    });
   }
 
   public getPasswordError():string {
