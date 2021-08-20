@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { HomeModule } from '../../home/modules/home.module';
-import { MaterialModule } from 'src/app/shared/modules/material.module';
-import { PrivacyRoutingModule } from './privacy-routing.module';
-import { SharedModule } from 'src/app/shared/modules/shared.module';
-import { PrivacyComponent } from '../pages/privacy.component';
+import { CommonModule } from "@angular/common";
+import { NgModule } from "@angular/core";
+import { MaterialModule } from "src/app/shared/modules/material.module";
+import { SharedModule } from "src/app/shared/modules/shared.module";
+import { HomeModule } from "../../home/modules/home.module";
+import { PrivacyComponent } from "../pages/privacy.component";
+import { PrivacyRoutingModule } from "./privacy-routing.module";
 
 @NgModule({
   declarations: [PrivacyComponent],
@@ -13,7 +13,7 @@ import { PrivacyComponent } from '../pages/privacy.component';
     CommonModule,
     HomeModule,
     MaterialModule,
-    SharedModule
-  ]
+    SharedModule,
+  ],
 })
-export class PrivacyModule { }
+export class PrivacyModule {}

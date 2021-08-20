@@ -1,10 +1,11 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { BusinessMenusComponent } from '../pages/business-menus.component';
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
+import { BusinessMenusComponent } from "../pages/business-menus.component";
 
 const routes: Routes = [
   {
-    path: '', component: BusinessMenusComponent,
+    path: "",
+    component: BusinessMenusComponent,
   },
 ];
 
@@ -12,4 +13,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class businessMenusRoutingModule { }
+export class businessMenusRoutingModule {}

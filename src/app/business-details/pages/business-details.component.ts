@@ -1,22 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-business-details',
-  templateUrl: './business-details.component.html',
-  styleUrls: ['./business-details.component.scss']
+  selector: "app-business-details",
+  templateUrl: "./business-details.component.html",
+  styleUrls: ["./business-details.component.scss"],
 })
 export class BusinessDetailsComponent implements OnInit {
+  public constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-  onSwiper(swiper) {
-    console.log(swiper);
-  }
-  onSlideChange() {
-    console.log('slide change');
-  }
-
+  public ngOnInit(): void {}
 }

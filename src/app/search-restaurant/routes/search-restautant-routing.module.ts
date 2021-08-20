@@ -1,13 +1,11 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { SearchRestaurantComponent } from '../pages/search-restaurant.component';
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
+import { SearchRestaurantComponent } from "../pages/search-restaurant.component";
 
-const routes: Routes = [
-  {path: '', component: SearchRestaurantComponent}
-];
+const routes: Routes = [{ path: "", component: SearchRestaurantComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class SearchRestaurantRoutingModule { }
+export class SearchRestaurantRoutingModule {}
