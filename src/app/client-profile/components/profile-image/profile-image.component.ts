@@ -1,4 +1,8 @@
+/**
+ * ANGULAR CORE
+ */
 import { Component, Input, OnInit } from '@angular/core';
+import { ClientProfileService } from '../../services/client-profile.service';
 
 @Component({
   selector: 'app-profile-image',
@@ -9,8 +13,10 @@ export class ProfileImageComponent implements OnInit {
 
   @Input() public urlImage: string;
 
-  constructor() { }
-  ngOnInit(): void {}
+  public constructor(
+    public clientProfileService: ClientProfileService
+  ) { }
+  public ngOnInit(): void {}
 
   public getImageProfile(): string {
     const existImage = true;
@@ -18,7 +24,12 @@ export class ProfileImageComponent implements OnInit {
   } 
 
   public changeImageProfile(): void{
+    this.uploadImageFromDirectory();
+    
+  }
 
+  public uploadImageFromDirectory(): void {
+    
   }
 
 }
