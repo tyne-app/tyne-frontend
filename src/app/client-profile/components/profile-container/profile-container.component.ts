@@ -10,10 +10,10 @@ import { PasswordValidation } from 'src/app/shared/validations/password-validati
 })
 export class ProfileContainerComponent implements OnInit {
 
-  recoverPasswordForm:FormGroup;  
+  public recoverPasswordForm:FormGroup;  
 
-  @Input() ClientDataInfo: Claims;
-  @Input() urlImage: string;
+  @Input() public ClientDataInfo: Claims;
+  @Input() public urlImage: string;
   
   constructor(
     private fb: FormBuilder,

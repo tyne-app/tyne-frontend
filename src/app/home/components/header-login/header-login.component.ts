@@ -9,8 +9,9 @@ import { ClientService } from "src/app/shared/services/client.service";
   styleUrls: ["./header-login.component.scss"],
 })
 export class HeaderLoginComponent implements OnInit {
-  @Input() username: string;
-  public menu: Map<number, string>;
+  
+  @Input() public username:string; 
+  public menu: Map<number,string>; 
 
   constructor(public router: Router, public clientService: ClientService) {}
 
@@ -22,7 +23,7 @@ export class HeaderLoginComponent implements OnInit {
       .set(4, "Cerrar sesión");
   }
 
-  public asIsOrder(a, b) {
+  public asIsOrder(a, b):number {
     return 1;
   }
 
@@ -47,7 +48,7 @@ export class HeaderLoginComponent implements OnInit {
   }
 
   private closeSession(): void {
-    this.goToRoute(TyneRoutes.InitTyne);
+    this.goToRoute(TyneRoutes.Home);
     this.clientService.logout();
   }
 
@@ -55,11 +56,11 @@ export class HeaderLoginComponent implements OnInit {
     this.goToRoute(TyneRoutes.FavouriteLocal);
   }
 
-  private goToInit() {
-    this.goToRoute(TyneRoutes.InitTyne);
+  private goToInit(){
+    this.goToRoute(TyneRoutes.Home);
   }
 
-  private goToTableReservation(): void {
+  private goToTableReservation(): void{
     this.goToRoute(TyneRoutes.TableReservation);
   }
 
