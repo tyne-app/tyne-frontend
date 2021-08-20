@@ -20,7 +20,7 @@ export class ClientProfileService {
   
   private endpoint = environment.API_BASE_CLIENTS; 
   
-  constructor(private http: HttpClient) {};
+  public constructor(private http: HttpClient) {}
 
   public getImageProfile(): Observable<string> {
     return this.http.get<DataResponse>(`${this.endpoint}/clients/image`)
@@ -29,16 +29,15 @@ export class ClientProfileService {
             }));
           }
           
-  public putImageProfile( imageId:string, imageProfile: File): Observable<any>{
+  public putImageProfile( imageProfile: File): Observable<any>{
 
     const formData: FormData = new FormData();
-    formData.append('file', imageProfile);
-    
-    return this.http.put<any>(`${this.endpoint}/clients/image/${imageId}`, formData);
+    formData.append('fileName', imageProfile);
+    return this.http.put(`${this.endpoint}/clients/image`, formData);
     
   } 
 
   public putPassword(password:string): Observable<any> {
-    return this.http.put<any>(`${this.endpoint}/clients/update-password`, password);
+    return this.http.put(`${this.endpoint}/clients/update-password`, password);
   }
 }
