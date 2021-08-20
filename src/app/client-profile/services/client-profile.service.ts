@@ -32,8 +32,8 @@ export class ClientProfileService {
   public putImageProfile( imageProfile: File): Observable<any>{
 
     const formData: FormData = new FormData();
-    formData.append('fileName', imageProfile);
-    return this.http.put(`${this.endpoint}/clients/image`, formData);
+    formData.append('fileName', imageProfile, imageProfile.name);
+    return this.http.put<any>(`${this.endpoint}/clients/image`, formData);
     
   } 
 

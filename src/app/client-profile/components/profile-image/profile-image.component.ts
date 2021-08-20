@@ -15,7 +15,7 @@ import { ClientProfileService } from '../../services/client-profile.service';
 export class ProfileImageComponent implements OnInit {
   
   // #region Variables
-  @Input() public urlImage: string;
+  @Input() public urlImage: string | ArrayBuffer;
   public imageProfile: File = null; 
   // #endregion
 
@@ -25,19 +25,22 @@ export class ProfileImageComponent implements OnInit {
 
   public ngOnInit(): void {}
 
-  public getImageProfile(): string {
+  public getImageProfile(): string | ArrayBuffer {
     return (this.urlImage)? this.urlImage : '/assets/img/user-profile.svg'; 
   } 
    
   public uploadImageFromDirectory(event): void {
     this.imageProfile = event.target.files[0];
-    console.log("imagen a actualizar", this.imageProfile);
     this.updateImageProfile(this.imageProfile);
   }
 
   public updateImageProfile(imageProfile:File): void{
     this.clientProfileService.putImageProfile(imageProfile).subscribe((resp)=>{
-      this.urlImage = resp;
+      const reader = new FileReader();
+      reader.readAsDataURL(this.imageProfile); 
+      reader.onload = (_event) => { 
+          this.urlImage = reader.result;  
+      };
     });
   }
 
