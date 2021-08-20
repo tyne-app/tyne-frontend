@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialogRef } from "@angular/material/dialog";
+import { ErrorMessages } from "src/app/shared/constants/error-messages.enum";
 import { passwordRegex } from "src/app/shared/constants/password";
 import { PasswordValidator } from "src/app/shared/validations/password-validator";
 
@@ -34,24 +35,26 @@ export class BusinessProfileEditPasswordComponent implements OnInit {
 
   public getCurrentPasswordError(): string {
     const control = this.form.get("currentPassword");
-    return control.hasError("required") ? "Ingresa tu contraseña actual" : null;
+    return control.hasError("required")
+      ? ErrorMessages.Required.replace("{0}", "contraseña")
+      : null;
   }
 
   public getPasswordError(): string {
     const control = this.form.get("password");
     return control.hasError("required")
-      ? "Debe ingresar una contraseña"
+      ? ErrorMessages.Required.replace("{0}", "contraseña")
       : control.hasError("pattern")
-      ? "Debe tener como mínimo 8 dígitos, 1 mayúscula y 1 número"
+      ? ErrorMessages.PasswordPattern
       : null;
   }
 
   public getPasswordConfirmError(): string {
     const control = this.form.get("passwordConfirm");
     return control.hasError("required")
-      ? "Debe ingresar una contraseña"
+      ? ErrorMessages.Required.replace("{0}", "contraseña")
       : control.hasError("notMatch")
-      ? "La contraseña no coincide"
+      ? ErrorMessages.PasswordDoesntMatch
       : null;
   }
 }
