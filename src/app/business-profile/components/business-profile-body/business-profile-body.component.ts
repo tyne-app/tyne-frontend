@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialog } from "@angular/material/dialog";
+import { ErrorMessages } from "src/app/shared/constants/error-messages.enum";
 import { passwordRegex } from "src/app/shared/constants/password";
 import { PasswordValidator } from "src/app/shared/validations/password-validator";
 import { BusinessProfileEditBankDataComponent } from "../business-profile-edit-bank-data/business-profile-edit-bank-data.component";
@@ -81,25 +82,25 @@ export class BusinessProfileBodyComponent implements OnInit {
   public getCurrentPasswordError(): string {
     const currentPassword = this.form.get("currentPassword");
     return currentPassword.hasError("required")
-      ? "Debe ingresar una contraseña"
+      ? ErrorMessages.RequiredVariant.replace("{0}", "contraseña")
       : null;
   }
 
   public getPasswordError(): string {
     const password = this.form.get("password");
     return password.hasError("required")
-      ? "Debe ingresar una contraseña"
+      ? ErrorMessages.RequiredVariant.replace("{0}", "contraseña")
       : password.hasError("pattern")
-      ? "Debe tener como mínimo 8 dígitos, 1 mayúscula y 1 número"
+      ? ErrorMessages.PasswordPattern
       : null;
   }
 
   public getPasswordConfirmError(): string {
     const passwordConfirm = this.form.get("passwordConfirm");
     return passwordConfirm.hasError("required")
-      ? "Debe ingresar una contraseña"
+      ? ErrorMessages.RequiredVariant.replace("{0}", "contraseña")
       : passwordConfirm.hasError("notMatch")
-      ? "La contraseña no coincide"
+      ? ErrorMessages.PasswordDoesntMatch
       : null;
   }
 }

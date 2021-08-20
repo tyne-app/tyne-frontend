@@ -4,6 +4,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 import { Router } from "@angular/router";
 import { RutValidator } from "ng9-rut";
 import { emailRegex } from "src/app/shared/constants/email";
+import { ErrorMessages } from "src/app/shared/constants/error-messages.enum";
 import { passwordRegex } from "src/app/shared/constants/password";
 import { Bank } from "src/app/shared/interfaces/bank";
 import { City } from "src/app/shared/interfaces/city";
@@ -249,73 +250,73 @@ export class BusinessRegistrationComponent implements OnInit {
   public getManagerNameError(): string {
     const control = this.firstFormGroup.get("managerName");
     return control.hasError("required")
-      ? "Debe ingresar un nombre"
+      ? ErrorMessages.Required.replace("{0}", "nombre")
       : control.hasError("minlength")
-      ? "Debe tener mínimo 2 caracteres"
+      ? ErrorMessages.Minlength.replace("{0}", "2")
       : control.hasError("maxlength")
-      ? "Debe tener máximo 30 caracteres"
+      ? ErrorMessages.Maxlength.replace("{0}", "50")
       : null;
   }
 
   public getManagerLastNameError(): string {
     const control = this.firstFormGroup.get("managerLastName");
     return control.hasError("required")
-      ? "Debe ingresar un apellido"
+      ? ErrorMessages.Required.replace("{0}", "apellido")
       : control.hasError("minlength")
-      ? "Debe tener mínimo 2 caracteres"
+      ? ErrorMessages.Minlength.replace("{0}", "2")
       : control.hasError("maxlength")
-      ? "Debe tener máximo 30 caracteres"
+      ? ErrorMessages.Maxlength.replace("{0}", "30")
       : null;
   }
 
   public getManagerPhoneError(): string {
     const control = this.firstFormGroup.get("managerPhone");
     return control.hasError("required")
-      ? "El número no es válido"
+      ? ErrorMessages.Required.replace("{0}", "número")
       : control.hasError("minlength")
-      ? "El número no es válido"
+      ? ErrorMessages.Invalid.replace("{0}", "número")
       : null;
   }
 
   public getManagerEmailError(): string {
     const control = this.firstFormGroup.get("managerEmail");
     return control.hasError("required")
-      ? "Debe ingresar un email"
+      ? ErrorMessages.Required.replace("{0}", "email")
       : control.hasError("email")
-      ? "Debe ingresar un email válido"
+      ? ErrorMessages.Invalid.replace("{0}", "email")
       : control.hasError("pattern")
-      ? "Debe ingresar un email válido"
+      ? ErrorMessages.Invalid.replace("{0}", "email")
       : null;
   }
 
   public getManagerEmailConfirmError(): string {
     const control = this.firstFormGroup.get("managerEmailConfirm");
     return control.hasError("required")
-      ? "Debe ingresar un email"
+      ? ErrorMessages.Required.replace("{0}", "email")
       : control.hasError("notMatch")
-      ? "El email no coincide"
+      ? ErrorMessages.EmailDoesntMatch
       : control.hasError("email")
-      ? "Debe ingresar un email válido"
+      ? ErrorMessages.Invalid.replace("{0}", "email")
       : control.hasError("pattern")
-      ? "Debe ingresar un email válido"
+      ? ErrorMessages.Invalid.replace("{0}", "email")
       : null;
   }
 
   public getPasswordError(): string {
     const control = this.firstFormGroup.get("password");
     return control.hasError("required")
-      ? "Debe ingresar una contraseña"
+      ? ErrorMessages.RequiredVariant.replace("{0}", "contraseña")
       : control.hasError("pattern")
-      ? "Debe tener como mínimo 8 dígitos, 1 mayúscula y 1 número"
+      ? ErrorMessages.PasswordPattern
       : null;
   }
 
   public getPasswordConfirmError(): string {
     const control = this.firstFormGroup.get("passwordConfirm");
     return control.hasError("required")
-      ? "Debe ingresar una contraseña"
+      ? ErrorMessages.RequiredVariant.replace("{0}", "contraseña")
       : control.hasError("notMatch")
-      ? "La contraseña no coincide"
+      ? ErrorMessages.PasswordDoesntMatch
       : null;
   }
   // #endregion First stepper validations
@@ -324,130 +325,130 @@ export class BusinessRegistrationComponent implements OnInit {
   public getLegalRepresentativeNameError(): string {
     const control = this.secondFormGroup.get("legalRepresentativeName");
     return control.hasError("required")
-      ? "Debe ingresar un nombre"
+      ? ErrorMessages.Required.replace("{0}", "nombre")
       : control.hasError("minlength")
-      ? "Debe tener mínimo 2 caracteres"
+      ? ErrorMessages.Minlength.replace("{0}", "2")
       : control.hasError("maxlength")
-      ? "Debe tener máximo 30 caracteres"
+      ? ErrorMessages.Maxlength.replace("{0}", "30")
       : null;
   }
 
   public getLegalRepresentativeLastNameError(): string {
     const control = this.secondFormGroup.get("legalRepresentativeLastName");
     return control.hasError("required")
-      ? "Debe ingresar un apellido"
+      ? ErrorMessages.Required.replace("{0}", "apellido")
       : control.hasError("minlength")
-      ? "Debe tener mínimo 2 caracteres"
+      ? ErrorMessages.Minlength.replace("{0}", "2")
       : control.hasError("maxlength")
-      ? "Debe tener máximo 30 caracteres"
+      ? ErrorMessages.Maxlength.replace("{0}", "30")
       : null;
   }
 
   public getLegalRepresentativeRutError(): string {
     const control = this.secondFormGroup.get("legalRepresentativeRut");
     return control.hasError("required")
-      ? "Debe ingresar un rut"
+      ? ErrorMessages.Required.replace("{0}", "rut")
       : control.hasError("minlength")
-      ? "Debe ingresar un rut válido"
+      ? ErrorMessages.Invalid.replace("{0}", "rut")
       : control.hasError("maxlength")
-      ? "Debe ingresar un rut válido"
+      ? ErrorMessages.Invalid.replace("{0}", "rut")
       : control.hasError("invalidRut")
-      ? "Debe ingresar un rut válido"
+      ? ErrorMessages.Invalid.replace("{0}", "rut")
       : null;
   }
 
   public getLegalRepresentativeEmailError(): string {
     const control = this.secondFormGroup.get("legalRepresentativeEmail");
     return control.hasError("required")
-      ? "Debe ingresar un email"
+      ? ErrorMessages.Required.replace("{0}", "email")
       : control.hasError("email")
-      ? "Debe ingresar un email válido"
+      ? ErrorMessages.Invalid.replace("{0}", "email")
       : control.hasError("pattern")
-      ? "Debe ingresar un email válido"
+      ? ErrorMessages.Invalid.replace("{0}", "email")
       : null;
   }
 
   public getLegalRepresentativePhoneError(): string {
     const control = this.secondFormGroup.get("legalRepresentativePhone");
     return control.hasError("required")
-      ? "El número no es válido"
+      ? ErrorMessages.Required.replace("{0}", "número")
       : control.hasError("minlength")
-      ? "El número no es válido"
+      ? ErrorMessages.Invalid.replace("{0}", "número")
       : null;
   }
 
   public getLegalRepresentativeNameCompanyError(): string {
     const control = this.secondFormGroup.get("legalRepresentativeNameCompany");
     return control.hasError("required")
-      ? "Debe ingresar una razón social"
+      ? ErrorMessages.RequiredVariant.replace("{0}", "razón social")
       : control.hasError("minlength")
-      ? "Debe tener mínimo 5 caracteres"
+      ? ErrorMessages.Minlength.replace("{0}", "5")
       : control.hasError("maxlength")
-      ? "Debe tener máximo 50 caracteres"
+      ? ErrorMessages.Maxlength.replace("{0}", "50")
       : null;
   }
 
   public getLegalRepresentativeBusinessLineError(): string {
     const control = this.secondFormGroup.get("legalRepresentativeBusinessLine");
     return control.hasError("required")
-      ? "Debe ingresar un giro"
+      ? ErrorMessages.RequiredVariant.replace("{0}", "giro")
       : control.hasError("minlength")
-      ? "Debe tener mínimo 5 caracteres"
+      ? ErrorMessages.Minlength.replace("{0}", "5")
       : control.hasError("maxlength")
-      ? "Debe tener máximo 50 caracteres"
+      ? ErrorMessages.Maxlength.replace("{0}", "50")
       : null;
   }
 
   public getLegalRepresentativeRutBusinessError(): string {
     const control = this.secondFormGroup.get("legalRepresentativeRutBusiness");
     return control.hasError("required")
-      ? "Debe ingresar un rut"
+      ? ErrorMessages.Required.replace("{0}", "rut")
       : control.hasError("minlength")
-      ? "Debe ingresar un rut válido"
+      ? ErrorMessages.Invalid.replace("{0}", "rut")
       : control.hasError("maxlength")
-      ? "Debe ingresar un rut válido"
+      ? ErrorMessages.Invalid.replace("{0}", "rut")
       : control.hasError("invalidRut")
-      ? "Debe ingresar un rut válido"
+      ? ErrorMessages.Invalid.replace("{0}", "rut")
       : null;
   }
 
   public getPrincipalLocationAddressError(): string {
     const control = this.secondFormGroup.get("principalLocationAddress");
     return control.hasError("required")
-      ? "Debe ingresar una calle"
+      ? ErrorMessages.RequiredVariant.replace("{0}", "calle")
       : control.hasError("minlength")
-      ? "Debe tener mínimo 5 caracteres"
+      ? ErrorMessages.Minlength.replace("{0}", "5")
       : control.hasError("maxlength")
-      ? "Debe tener máximo 50 caracteres"
+      ? ErrorMessages.Maxlength.replace("{0}", "50")
       : null;
   }
 
   public getPrincipalLocationNumberError(): string {
     const control = this.secondFormGroup.get("principalLocationNumber");
     return control.hasError("required")
-      ? "Debe ingresar un número de calle"
+      ? ErrorMessages.Required.replace("{0}", "número de calle")
       : control.hasError("minlength")
-      ? "Debe tener mínimo 1 caracteres"
+      ? ErrorMessages.Minlength.replace("{0}", "1")
       : control.hasError("maxlength")
-      ? "Debe tener máximo 20 caracteres"
+      ? ErrorMessages.Maxlength.replace("{0}", "20")
       : null;
   }
 
   public getPrincipalLocationCityError(): string {
     const control = this.secondFormGroup.get("principalLocationCity");
     return control.hasError("required")
-      ? "Debe seleccionar una región"
+      ? ErrorMessages.RequiredSelectVariant.replace("{0}", "región")
       : control.hasError("min")
-      ? "Debe seleccionar una región"
+      ? ErrorMessages.RequiredSelectVariant.replace("{0}", "región")
       : null;
   }
 
   public getPrincipalLocationStateError(): string {
     const control = this.secondFormGroup.get("principalLocationState");
     return control.hasError("required")
-      ? "Debe seleccionar una comuna"
+      ? ErrorMessages.RequiredSelectVariant.replace("{0}", "comuna")
       : control.hasError("min")
-      ? "Debe seleccionar una comuna"
+      ? ErrorMessages.RequiredSelectVariant.replace("{0}", "comuna")
       : null;
   }
   // #endregion Second stepper validations
@@ -456,53 +457,53 @@ export class BusinessRegistrationComponent implements OnInit {
   public getRutAccountOwnerError(): string {
     const control = this.thirdFormGroup.get("rutAccountOwner");
     return control.hasError("required")
-      ? "Debe ingresar un rut"
+      ? ErrorMessages.Required.replace("{0}", "rut")
       : control.hasError("minlength")
-      ? "Debe ingresar un rut válido"
+      ? ErrorMessages.Invalid.replace("{0}", "rut")
       : control.hasError("maxlength")
-      ? "Debe ingresar un rut válido"
+      ? ErrorMessages.Invalid.replace("{0}", "rut")
       : control.hasError("invalidRut")
-      ? "Debe ingresar un rut válido"
+      ? ErrorMessages.Invalid.replace("{0}", "rut")
       : null;
   }
 
   public getNameAccountOwnerError(): string {
     const control = this.thirdFormGroup.get("nameAccountOwner");
     return control.hasError("required")
-      ? "Debe ingresar el nombre del titular"
+      ? ErrorMessages.Required.replace("{0}", "nombre de titular")
       : control.hasError("minlength")
-      ? "Debe tener mínimo 5 caracteres"
+      ? ErrorMessages.Minlength.replace("{0}", "5")
       : control.hasError("maxlength")
-      ? "Debe tener máximo 50 caracteres"
+      ? ErrorMessages.Maxlength.replace("{0}", "50")
       : null;
   }
 
   public getAccountNumberError(): string {
     const control = this.thirdFormGroup.get("accountNumber");
     return control.hasError("required")
-      ? "Debe ingresar un número de cuenta"
+      ? ErrorMessages.Required.replace("{0}", "número de cuenta")
       : control.hasError("minlength")
-      ? "Debe tener mínimo 4 caracteres"
+      ? ErrorMessages.Minlength.replace("{0}", "4")
       : control.hasError("maxlength")
-      ? "Debe tener máximo 20 caracteres"
+      ? ErrorMessages.Maxlength.replace("{0}", "20")
       : null;
   }
 
   public getBankError(): string {
     const control = this.thirdFormGroup.get("bank");
     return control.hasError("required")
-      ? "Debe seleccionar un banco"
+      ? ErrorMessages.RequiredSelect.replace("{0}", "banco")
       : control.hasError("min")
-      ? "Debe seleccionar un banco"
+      ? ErrorMessages.RequiredSelect.replace("{0}", "banco")
       : null;
   }
 
   public getAccountTypeError(): string {
     const control = this.thirdFormGroup.get("accountType");
     return control.hasError("required")
-      ? "Debe seleccionar un tipo de cuenta"
+      ? ErrorMessages.RequiredSelect.replace("{0}", "tipo de cuenta")
       : control.hasError("min")
-      ? "Debe seleccionar un tipo de cuenta"
+      ? ErrorMessages.RequiredSelect.replace("{0}", "tipo de cuenta")
       : null;
   }
   // #endregion Third stepper validations

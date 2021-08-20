@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { emailRegex } from "src/app/shared/constants/email";
+import { ErrorMessages } from "src/app/shared/constants/error-messages.enum";
 
 @Component({
   selector: "app-business-profile-edit-data",
@@ -60,62 +61,62 @@ export class BusinessProfileEditDataComponent implements OnInit {
   public getBusinessNameError(): string {
     const control = this.form.get("businessName");
     return control.hasError("required")
-      ? "Debe ingresar un nombre"
+      ? ErrorMessages.Required.replace("{0}", "nombre")
       : control.hasError("minlength")
-      ? "Debe tener mínimo 2 caracteres"
+      ? ErrorMessages.Minlength.replace("{0}", "2")
       : control.hasError("maxlength")
-      ? "Debe tener máximo 50 caracteres"
+      ? ErrorMessages.Maxlength.replace("{0}", "50")
       : null;
   }
 
   public getBusinessPhoneError(): string {
     const control = this.form.get("businessPhone");
     return control.hasError("required")
-      ? "El número no es válido"
+      ? ErrorMessages.Required.replace("{0}", "número")
       : control.hasError("minlength")
-      ? "El número no es válido"
+      ? ErrorMessages.Invalid.replace("{0}", "número")
       : null;
   }
 
   public getBusinessLocationError(): string {
     const control = this.form.get("businessLocation");
     return control.hasError("required")
-      ? "Debe ingresar una calle"
+      ? ErrorMessages.RequiredVariant.replace("{0}", "calle")
       : control.hasError("minlength")
-      ? "Debe tener mínimo 5 caracteres"
+      ? ErrorMessages.Minlength.replace("{0}", "5")
       : control.hasError("maxlength")
-      ? "Debe tener máximo 50 caracteres"
+      ? ErrorMessages.Maxlength.replace("{0}", "50")
       : null;
   }
 
   public getLegalRepresentativeEmailError(): string {
     const control = this.form.get("email");
     return control.hasError("required")
-      ? "Debe ingresar un email"
+      ? ErrorMessages.Required.replace("{0}", "email")
       : control.hasError("email")
-      ? "Debe ingresar un email válido"
+      ? ErrorMessages.Invalid.replace("{0}", "email")
       : control.hasError("pattern")
-      ? "Debe ingresar un email válido"
+      ? ErrorMessages.Invalid.replace("{0}", "email")
       : null;
   }
 
   public getManagerNameError(): string {
     const control = this.form.get("managerName");
     return control.hasError("required")
-      ? "Debe ingresar un nombre"
+      ? ErrorMessages.Required.replace("{0}", "nombre")
       : control.hasError("minlength")
-      ? "Debe tener mínimo 2 caracteres"
+      ? ErrorMessages.Minlength.replace("{0}", "2")
       : control.hasError("maxlength")
-      ? "Debe tener máximo 50 caracteres"
+      ? ErrorMessages.Maxlength.replace("{0}", "50")
       : null;
   }
 
   public getPhoneManagerError(): string {
     const control = this.form.get("phoneManager");
     return control.hasError("required")
-      ? "El número no es válido"
+      ? ErrorMessages.Required.replace("{0}", "teléfono")
       : control.hasError("minlength")
-      ? "El número no es válido"
+      ? ErrorMessages.Invalid.replace("{0}", "teléfono")
       : null;
   }
   // #endregion Validations Errors
