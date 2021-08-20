@@ -18,12 +18,4 @@ export class CarouselComponent implements OnInit {
   public constructor() {}
 
   public ngOnInit(): void {}
-
-  public onSwiper(swiper): void {
-    //
-  }
-
-  public onSlideChange(): void {
-    //
-  }
 }

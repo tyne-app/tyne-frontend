@@ -1,9 +1,11 @@
 <app-close-modal></app-close-modal>
 
 <div class="container body">
-
-  <form [formGroup]="form" (ngSubmit)="save()" (keydown.enter)="$event.preventDefault()">
-
+  <form
+    [formGroup]="form"
+    (ngSubmit)="save()"
+    (keydown.enter)="$event.preventDefault()"
+  >
     <div class="row mb-n5">
       <div class="col col-center">
         <h3 class="titulo-3">Mis Datos</h3>
@@ -17,13 +19,12 @@
     </div>
 
     <div class="row col-center">
-
       <div class="col-12 col-md-6 col-lg-4">
         <mat-form-field appearance="outline">
           <mat-label>Nombre del Local *</mat-label>
           <input matInput formControlName="businessName" type="text" />
           <mat-error>
-            {{getBusinessNameError()}}
+            {{ getBusinessNameError() }}
           </mat-error>
         </mat-form-field>
       </div>
@@ -31,9 +32,15 @@
       <div class="col-12 col-md-6 col-lg-4">
         <mat-form-field appearance="outline">
           <mat-label>Teléfono *</mat-label>
-          <input matInput formControlName="businessPhone" type="text" placeholder="+XX X XXXX XXXX" phoneMask />
+          <input
+            matInput
+            formControlName="businessPhone"
+            type="text"
+            placeholder="+XX X XXXX XXXX"
+            phoneMask
+          />
           <mat-error>
-            {{getBusinessPhoneError()}}
+            {{ getBusinessPhoneError() }}
           </mat-error>
         </mat-form-field>
       </div>
@@ -43,21 +50,19 @@
           <mat-label>Dirección Casa Matriz *</mat-label>
           <input matInput formControlName="businessLocation" type="text" />
           <mat-error>
-            {{getBusinessLocationError()}}
+            {{ getBusinessLocationError() }}
           </mat-error>
         </mat-form-field>
       </div>
-
     </div>
 
     <div class="row">
-
       <div class="col-12 col-md-6 col-lg-4">
         <mat-form-field appearance="outline">
           <mat-label>Email *</mat-label>
           <input matInput formControlName="email" type="text" />
           <mat-error>
-            {{getLegalRepresentativeEmailError()}}
+            {{ getLegalRepresentativeEmailError() }}
           </mat-error>
         </mat-form-field>
       </div>
@@ -67,7 +72,7 @@
           <mat-label>Nombre del Encargado *</mat-label>
           <input matInput formControlName="managerName" type="text" />
           <mat-error>
-            {{getManagerNameError()}}
+            {{ getManagerNameError() }}
           </mat-error>
         </mat-form-field>
       </div>
@@ -75,21 +80,25 @@
       <div class="col-12 col-lg-4">
         <mat-form-field appearance="outline">
           <mat-label>Número del Encargado *</mat-label>
-          <input matInput formControlName="phoneManager" type="text" placeholder="+XX X XXXX XXXX" phoneMask />
+          <input
+            matInput
+            formControlName="phoneManager"
+            type="text"
+            placeholder="+XX X XXXX XXXX"
+            phoneMask
+          />
           <mat-error>
-            {{getPhoneManagerError()}}
+            {{ getPhoneManagerError() }}
           </mat-error>
         </mat-form-field>
       </div>
-
     </div>
 
     <div class="row">
       <div class="col col-center">
-
-        <mat-radio-group formControlName="petsAllowed"> 
+        <mat-radio-group formControlName="petsAllowed">
           <mat-radio-button value="1">
-            <img src="./../../../../assets/aceptan_mascotas.svg"/>
+            <img src="./../../../../assets/aceptan_mascotas.svg" />
             <h4 class="titulo-4">Aceptan mascotas</h4>
           </mat-radio-button>
           <mat-radio-button value="0" class="second-radio">
@@ -97,10 +106,8 @@
             <h4 class="titulo-4">No aceptan mascotas</h4>
           </mat-radio-button>
         </mat-radio-group>
-
       </div>
     </div>
-
 
     <div class="row pt-5">
       <div class="col-12 col-md-6 col-lg-6 col-center">
@@ -110,12 +117,8 @@
       </div>
 
       <div class="col-12 col-md-6 col-lg-6 col-center">
-        <button type="submit" class="btn-submit">
-          Guardar cambios
-        </button>
+        <button type="submit" class="btn-submit">Guardar cambios</button>
       </div>
     </div>
-
   </form>
-
 </div>

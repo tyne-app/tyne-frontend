@@ -1,44 +1,47 @@
 /**
- * COMPONENTS 
+ * COMPONENTS
  */
 
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from "@angular/common/http";
 /**
  * MODULES
  */
-import { NgModule } from '@angular/core';
-import { MAT_MOMENT_DATE_ADAPTER_OPTIONS, MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter';
-import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { BusinessDetailsModule } from './business-details/modules/business-details.module';
-import { ClientProfileModule } from './client-profile/modules/client-profile.module';
-import { ClientRegistrationModule } from './client-registration/modules/client-registration.module';
-import { ClientRegistrationComponent } from './client-registration/pages/client.registration.component';
-import { FrequentQuestionsModule } from './frecuent-questions/modules/frequent-questions.module';
-import { HomeModule } from './home/modules/home.module';
-import { LoginModule } from './login/modules/login.module';
-import { LoginComponent } from './login/pages/login.component';
-import { PrivacyModule } from './privacy/modules/privacy.module';
-import { RefundPolicyModule } from './refund-policy/modules/refund-policy.module';
-import { SpinnerComponent } from './shared/components/spinner/spinner.component';
-import { authInterceptorProviders, InterceptorService } from './shared/interceptors/interceptor.service';
-import { MaterialModule } from './shared/modules/material.module';
-import { SharedModule } from './shared/modules/shared.module';
+import { NgModule } from "@angular/core";
+import {
+  MAT_MOMENT_DATE_ADAPTER_OPTIONS,
+  MAT_MOMENT_DATE_FORMATS,
+  MomentDateAdapter,
+} from "@angular/material-moment-adapter";
+import {
+  DateAdapter,
+  MAT_DATE_FORMATS,
+  MAT_DATE_LOCALE,
+} from "@angular/material/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { AppRoutingModule } from "./app-routing.module";
+import { AppComponent } from "./app.component";
+import { BusinessDetailsModule } from "./business-details/modules/business-details.module";
+import { ClientProfileModule } from "./client-profile/modules/client-profile.module";
+import { ClientRegistrationModule } from "./client-registration/modules/client-registration.module";
+import { ClientRegistrationComponent } from "./client-registration/pages/client.registration.component";
+import { FrequentQuestionsModule } from "./frecuent-questions/modules/frequent-questions.module";
+import { HomeModule } from "./home/modules/home.module";
+import { LoginModule } from "./login/modules/login.module";
+import { LoginComponent } from "./login/pages/login.component";
+import { PrivacyModule } from "./privacy/modules/privacy.module";
+import { RefundPolicyModule } from "./refund-policy/modules/refund-policy.module";
+import { SpinnerComponent } from "./shared/components/spinner/spinner.component";
+import { authInterceptorProviders } from "./shared/interceptors/interceptor.service";
+import { MaterialModule } from "./shared/modules/material.module";
+import { SharedModule } from "./shared/modules/shared.module";
 /**
  * SERVICES
  */
-import { RestClientService } from './shared/services/rest-client.service';
-
-
-
+import { RestClientService } from "./shared/services/rest-client.service";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -53,24 +56,30 @@ import { RestClientService } from './shared/services/rest-client.service';
     HttpClientModule,
     ClientProfileModule,
     RefundPolicyModule,
-    FrequentQuestionsModule
+    FrequentQuestionsModule,
   ],
-  entryComponents: [ClientRegistrationComponent, LoginComponent, SpinnerComponent],
+  entryComponents: [
+    ClientRegistrationComponent,
+    LoginComponent,
+    SpinnerComponent,
+  ],
   providers: [
     authInterceptorProviders,
     RestClientService,
     {
-      provide: MAT_DATE_LOCALE, useValue: 'es'
+      provide: MAT_DATE_LOCALE,
+      useValue: "es",
     },
     {
       provide: DateAdapter,
       useClass: MomentDateAdapter,
-      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS ]
+      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
     },
     {
-      provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS
-    }
+      provide: MAT_DATE_FORMATS,
+      useValue: MAT_MOMENT_DATE_FORMATS,
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

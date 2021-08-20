@@ -1,11 +1,10 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class FileService {
-
-  constructor() { }
+  public constructor() {}
 
   public getObjectUrl(event: any): string {
     const file: File = event.target.files[0];
@@ -18,15 +17,15 @@ export class FileService {
       const img = new Image();
       img.src = src;
       img.onload = () => {
-        const elem = document.createElement('canvas');
+        const elem = document.createElement("canvas");
         elem.width = newX;
         elem.height = newY;
-        const ctx = elem.getContext('2d');
+        const ctx = elem.getContext("2d");
         ctx.drawImage(img, 0, 0, newX, newY);
         const data = ctx.canvas.toDataURL();
         res(data);
       };
-      img.onerror = error => rej(error);
+      img.onerror = (error) => rej(error);
     });
   }
 
