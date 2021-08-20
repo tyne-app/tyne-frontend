@@ -1,31 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+import { Autoplay } from "swiper";
 import SwiperCore, {
+  Keyboard,
+  Mousewheel,
   Navigation,
   Pagination,
-  Mousewheel,
-  Keyboard,
-} from 'swiper/core';
+} from "swiper/core";
 
-SwiperCore.use([Navigation, Pagination, Mousewheel, Keyboard]);
-
+SwiperCore.use([Navigation, Pagination, Mousewheel, Keyboard, Autoplay]);
 
 @Component({
-  selector: 'app-carousel',
-  templateUrl: './carousel.component.html',
-  styleUrls: ['./carousel.component.scss']
+  selector: "app-carousel",
+  templateUrl: "./carousel.component.html",
+  styleUrls: ["./carousel.component.scss"],
 })
 export class CarouselComponent implements OnInit {
+  public constructor() {}
 
-  constructor() { }
+  public ngOnInit(): void {}
 
-  ngOnInit(): void {
+  public onSwiper(swiper): void {
+    //
   }
 
-  onSwiper(swiper) {
-    console.log(swiper);
+  public onSlideChange(): void {
+    //
   }
-  onSlideChange() {
-    console.log('slide change');
-  }
-
 }

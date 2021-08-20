@@ -1,5 +1,118 @@
-<div class="grid-container">
-  <p>
-    ¡Muy Pronto!
-  </p>
+<app-close-modal></app-close-modal>
+
+<div class="container body">
+  <form
+    [formGroup]="form"
+    (ngSubmit)="save()"
+    (keydown.enter)="$event.preventDefault()"
+  >
+    <div class="row mb-n2">
+      <div class="col col-center">
+        <h3 class="titulo-3">Edición de tus datos bancarios</h3>
+      </div>
+    </div>
+
+    <div class="row col-center">
+      <div class="col-12 col-md-6 col-lg-4">
+        <mat-form-field appearance="outline">
+          <mat-label>Rut titular de la cuenta *</mat-label>
+          <input
+            matInput
+            formControlName="rut"
+            type="text"
+            maxlength="9"
+            formatRut
+          />
+          <mat-error>
+            {{ getRutError() }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <mat-form-field appearance="outline">
+          <mat-label>Banco *</mat-label>
+          <mat-select formControlName="bank">
+            <mat-option value="0">Seleccionar...</mat-option>
+            <mat-option [value]="x.id" *ngFor="let x of banks">{{
+              x.name
+            }}</mat-option>
+          </mat-select>
+          <mat-error>
+            {{ getBankError() }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-12 col-lg-4">
+        <mat-form-field appearance="outline">
+          <mat-label>Número de cuenta *</mat-label>
+          <input matInput formControlName="accountNumber" type="text" />
+          <mat-error>
+            {{ getAccountNumberError() }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-md-6 col-lg-4">
+        <mat-form-field appearance="outline">
+          <mat-label>Nombre titular de la cuenta *</mat-label>
+          <input matInput formControlName="nameAccountOwner" type="text" />
+          <mat-error>
+            {{ getNameAccountOwnerError() }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <mat-form-field appearance="outline">
+          <mat-label>Tipo de cuenta *</mat-label>
+          <mat-select formControlName="accountType">
+            <mat-option value="0">Seleccione...</mat-option>
+            <mat-option [value]="x.id" *ngFor="let x of accountType">{{
+              x.name
+            }}</mat-option>
+          </mat-select>
+          <mat-error>
+            {{ getAccountTypeError() }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-12 col-lg-4">
+        <mat-form-field appearance="outline">
+          <mat-label>Email *</mat-label>
+          <input matInput formControlName="email" type="text" />
+          <mat-error>
+            {{ getEmailError() }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row pt-5">
+      <div class="col-12 col-md-6 col-lg-6 col-center">
+        <button type="button" class="btn-normal-red" [mat-dialog-close]="true">
+          Volver a mis datos
+        </button>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-6 col-center">
+        <button
+          type="button"
+          class="btn-submit"
+          (click)="requestDataEdition()"
+          *ngIf="!isSubmitButtonEnabled"
+        >
+          Solicitar Edición
+        </button>
+
+        <button type="submit" class="btn-submit" *ngIf="isSubmitButtonEnabled">
+          Guardar cambios
+        </button>
+      </div>
+    </div>
+  </form>
 </div>

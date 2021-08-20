@@ -1,9 +1,9 @@
 .img-container {
-    background:url(../../../assets/bg_home.jpg);
-    background-repeat: no-repeat;
-    background-size:auto;
-    background-position: center;
-    background-attachment: fixed;
+  background: url(../../../assets/bg_home.jpg);
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 .principal-title {
@@ -41,7 +41,7 @@
 }
 
 .mat-icon {
-  color: red;
+  color: #e10000;
 }
 
 @mixin btn-baseStyles {
