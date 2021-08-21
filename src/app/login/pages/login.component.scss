@@ -1,18 +1,3 @@
-// CLASS ELEMENTS.
-
-// Container
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.5rem;
-}
-
-// Left-half of the container, login form.
-.left-half {
-    display: grid;
-    padding: 0.8rem;
-}
-
 .anchor-layout {
     display: grid;
     grid-template-columns: 3fr 3fr 1fr;
@@ -67,8 +52,6 @@ form {
     }
 }
 
-//ANGULAR ELEMENTS
-
 //Remove padding of dialog and make it round.
 ::ng-deep .mat-dialog-container {
     padding: 0;
@@ -83,31 +66,15 @@ mat-form-field {
 }
 
 
-//Adjust each half for smaller screens.
-@media (max-width: 991px) {
-
-    .grid-container {
-        grid-template-rows: repeat(2, 1fr);
-    }
-
-    .left-half {
-        grid-column: 1 / 3;
-    }
-
-    .right-half {
-        grid-column: 1 / 3;
-    }
-
-}
-
-@media (max-width: 616px) {
-    a {
-        grid-column: 1 / 4;
-        justify-self: center;
-    }
-}
 
 
 ::ng-deep .custom-dialog > mat-dialog-container {
     background-color: var(--background);
+  }
+
+.modal-body-login {
+    overflow-y: auto;
+    height: 70vh;
+    width: auto;
+    overflow-x: hidden;
   }

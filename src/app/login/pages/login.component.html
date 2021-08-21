@@ -1,12 +1,11 @@
-<!-- <div class="wrapper" *ngIf="this.isLoading">
-  <app-spinner class="inner"></app-spinner>
-</div> -->
-
-
-<div class="grid-container" >   
-    <div class="left-half">
-
-      <h1>Iniciar Sesión</h1>
+<div class="modal-body-login" >  
+  <div class="row">
+    <div class="col-lg-6 right-half">
+      <div class="photo" style="background-image: url('../../../../assets/login-bienvenido-de-vuelta.svg');"></div>
+      <div class="photo" style="background-image: url('../../../../assets/login-comida-icon.svg');"></div>
+    </div>
+    <div class="col-lg-6">
+      <h1 class="ml-5">Iniciar Sesión</h1>
 
       <form [formGroup]="formLogin" (ngSubmit)="onSubmit()">
 
@@ -34,7 +33,7 @@
           </mat-error>
         </mat-form-field>
         <div class="anchor-layout">
-          <!-- Añadir enrutamiento olvidar contraseña -->
+          <!-- add routing  -->
           <a href="#">¿Olvidaste tu contraseña?</a>
         </div>
 
@@ -42,19 +41,17 @@
           class="register-button"
           mat-raised-button
           type="submit"
-          [disabled]="formLogin.invalid"
-        >
+          [disabled]="formLogin.invalid">
           ¡Listo!
         </button>
 
       </form>
-
     </div>
 
-    <div class="right-half">
-      <div class="photo" style="background-image: url('../../../../assets/login-bienvenido-de-vuelta.svg');"></div>
-      <div class="photo" style="background-image: url('../../../../assets/login-comida-icon.svg');"></div>
-    </div>
+  </div>
+
+
+
 </div>
 
 
