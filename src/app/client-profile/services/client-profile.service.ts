@@ -8,11 +8,14 @@ import { Injectable } from '@angular/core';
  */
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { DataResponse } from 'src/app/shared/interfaces/token';
 /**
  *ENVIRONMENT 
  */
 import { environment } from 'src/environments/environment';
+/**
+ * INTERFACES
+ */
+import { DataResponse } from 'src/app/shared/interfaces/token';
 @Injectable({
   providedIn: 'root'
 })
@@ -20,7 +23,7 @@ export class ClientProfileService {
   
   private endpoint = environment.API_BASE_CLIENTS; 
   
-  constructor(private http: HttpClient) {};
+  public constructor(private http: HttpClient) {}
 
   public getImageProfile(): Observable<string> {
     return this.http.get<DataResponse>(`${this.endpoint}/clients/image`)
@@ -29,16 +32,13 @@ export class ClientProfileService {
             }));
           }
           
-  public putImageProfile( imageId:string, imageProfile: File): Observable<any>{
-
-    const formData: FormData = new FormData();
-    formData.append('file', imageProfile);
-    
-    return this.http.put<any>(`${this.endpoint}/clients/image/${imageId}`, formData);
-    
+  public putImageProfile( imageProfile: File): Observable<any>{
+    const imageProfileFile: FormData = new FormData();
+    imageProfileFile.append('fileName', imageProfile, imageProfile.name);
+    return this.http.put<any>(`${this.endpoint}/clients/image`, imageProfileFile);  
   } 
 
   public putPassword(password:string): Observable<any> {
-    return this.http.put<any>(`${this.endpoint}/clients/update-password`, password);
+    return this.http.put(`${this.endpoint}/clients/update-password`, password);
   }
 }

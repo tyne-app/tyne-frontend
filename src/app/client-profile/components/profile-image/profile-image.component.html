@@ -1,7 +1,8 @@
-<img class="mt-5 img-responsive" [src]="this.getImageProfile()" alt="">
+<img class="mt-5 img-responsive bg-image-circle" [src]="this.getImageProfile()" alt="">
 
-<div class="row ">
+<div class="row">
     <div class="d-flex col align-items-center">
-        <button class="btn btn-submit" (click)="changeImageProfile()">Cambiar Foto</button>
+        <input style="display: none;" type="file" (change)="uploadImageFromDirectory($event)" #fileInput>
+        <button  class="btn btn-submit" (click)="fileInput.click()">Cambiar Foto</button>   
     </div> 
 </div>    
