@@ -67,7 +67,7 @@
                          
                             <div class="row mt-5 mb-5">
                                 <div class="d-flex col justify-content-center align-items-center">
-                                    <button class="btn btn-submit mb-5">Guardar</button>
+                                    <button [class]="getButtonClass()" [disabled]="!this.recoverPasswordForm.valid">Guardar</button>
                                 </div>
                             </div>
                           </form> 

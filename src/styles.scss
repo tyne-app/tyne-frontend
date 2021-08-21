@@ -181,6 +181,20 @@ mat-label {
   color: #3c0000;
 }
 
+.btn-disabled{
+  cursor: pointer;
+  color: white;
+  background-color: #AAAAAA;
+  border: 1px solid  #AAAAAA !important;
+  box-sizing: border-box;
+  border-radius: 10px !important;
+  width: 255px;
+  height: 40px;
+  font-size: 20px;
+  box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%),
+    0 1px 5px 0 rgb(0 0 0 / 12%);
+}
+
 @media only screen and (max-width: 768px) {
   .btn-normal {
     width: 100%;

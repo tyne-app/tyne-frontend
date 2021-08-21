@@ -62,6 +62,7 @@ export class ProfileContainerComponent implements OnInit {
   }
 
   public OnSubmit() :void {
+    console.log("se ha clickeado el boton");
     this.clientProfileService.putPassword(this.newPasswordControl.value).subscribe((resp)=>{
       console.log(resp);
     });
@@ -77,6 +78,10 @@ export class ProfileContainerComponent implements OnInit {
     const control = this.confirmPasswordControl;
     return control.hasError("required") ? "Debe ingresar una contraseña" :
       control.hasError("notMatch") ? "La contraseña no coincide" : null;
+  }
+
+  public getButtonClass():string {
+      return (this.recoverPasswordForm.invalid) ? 'btn btn-disabled' : 'btn btn-submit';
   }
 }
 

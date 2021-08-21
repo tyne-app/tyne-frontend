@@ -16,7 +16,7 @@ import { ClientProfileService } from '../../services/client-profile.service';
 export class ProfileImageComponent implements OnInit {
   
   // #region Variables
-  @Input() public urlImage?: string | ArrayBuffer = '/assets/img/user-profile.svg';
+  @Input() public urlImage: string | ArrayBuffer;
   public imageProfile: File = null; 
   // #endregion
 
