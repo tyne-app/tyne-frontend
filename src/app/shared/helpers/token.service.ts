@@ -1,10 +1,16 @@
-/**ANGULAR CORE */
+/**
+ * ANGULAR CORE 
+ */
 import { Injectable } from '@angular/core';
 
-/**SERVICES */
+/**
+ *SERVICES 
+ */
 import { JwtHelperService } from '@auth0/angular-jwt';
 
-/**INTERFACES */
+/**
+ * INTERFACES 
+ */
 import { Token } from '../interfaces/token';
 
 
@@ -13,7 +19,7 @@ import { Token } from '../interfaces/token';
 })
 export class TokenService {
    
-  constructor() {}
+  public constructor() {}
   
 
   public getDecodedJwtToken(): Token {

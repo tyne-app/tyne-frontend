@@ -24,13 +24,12 @@ import { TokenService } from "../helpers/token.service";
 export class InterceptorService implements HttpInterceptor {
   private TOKEN_HEADER_KEY = "Authorization";
 
-  private TOKEN_HEADER_KEY = 'Authorization';
 
-  constructor( 
+  public constructor( 
     private tokenService: TokenService
   ) { }
 
-  intercept(
+  public intercept(
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
