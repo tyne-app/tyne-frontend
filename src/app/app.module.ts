@@ -1,13 +1,7 @@
 /**
- * COMPONENTS
+ * ANGULAR CORE
  */
-
-import { HttpClientModule } from "@angular/common/http";
-/**
- * MODULES
- */
-import { NgModule } from "@angular/core";
-import {
+ import {
   MAT_MOMENT_DATE_ADAPTER_OPTIONS,
   MAT_MOMENT_DATE_FORMATS,
   MomentDateAdapter,
@@ -17,27 +11,36 @@ import {
   MAT_DATE_FORMATS,
   MAT_DATE_LOCALE,
 } from "@angular/material/core";
-import { BrowserModule } from "@angular/platform-browser";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { AppRoutingModule } from "./app-routing.module";
-import { AppComponent } from "./app.component";
-import { BusinessDetailsModule } from "./business-details/modules/business-details.module";
-import { ClientProfileModule } from "./client-profile/modules/client-profile.module";
-import { ClientRegistrationModule } from "./client-registration/modules/client-registration.module";
-import { ClientRegistrationComponent } from "./client-registration/pages/client.registration.component";
-import { FrequentQuestionsModule } from "./frecuent-questions/modules/frequent-questions.module";
-import { HomeModule } from "./home/modules/home.module";
-import { LoginModule } from "./login/modules/login.module";
-import { LoginComponent } from "./login/pages/login.component";
-import { PrivacyModule } from "./privacy/modules/privacy.module";
-import { RefundPolicyModule } from "./refund-policy/modules/refund-policy.module";
-import { SpinnerComponent } from "./shared/components/spinner/spinner.component";
-import { authInterceptorProviders } from "./shared/interceptors/interceptor.service";
-import { MaterialModule } from "./shared/modules/material.module";
-import { SharedModule } from "./shared/modules/shared.module";
+/**
+ * COMPONENTS
+ */
+ import { AppComponent } from "./app.component";
+ import { ClientRegistrationComponent } from "./client-registration/pages/client.registration.component";
+ import { LoginComponent } from "./login/pages/login.component";
+ import { SpinnerComponent } from "./shared/components/spinner/spinner.component";
+ 
+/**
+ * MODULES
+ */
+ import { BrowserModule } from "@angular/platform-browser";
+ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+ import { AppRoutingModule } from "./app-routing.module";
+ import { NgModule } from "@angular/core";
+ import { HttpClientModule } from "@angular/common/http";
+ import { MaterialModule } from "./shared/modules/material.module";
+ import { SharedModule } from "./shared/modules/shared.module";
+ import { BusinessDetailsModule } from "./business-details/modules/business-details.module";
+ import { ClientProfileModule } from "./client-profile/modules/client-profile.module";
+ import { ClientRegistrationModule } from "./client-registration/modules/client-registration.module";
+ import { PrivacyModule } from "./privacy/modules/privacy.module";
+ import { RefundPolicyModule } from "./refund-policy/modules/refund-policy.module";
+ import { HomeModule } from "./home/modules/home.module";
+ import { LoginModule } from "./login/modules/login.module";
+ import { FrequentQuestionsModule } from "./frecuent-questions/modules/frequent-questions.module";
 /**
  * SERVICES
  */
+import { authInterceptorProviders } from "./shared/interceptors/interceptor.service";
 import { RestClientService } from "./shared/services/rest-client.service";
 
 @NgModule({
