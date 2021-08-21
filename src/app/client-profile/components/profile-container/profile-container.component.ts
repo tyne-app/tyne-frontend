@@ -63,9 +63,13 @@ export class ProfileContainerComponent implements OnInit {
 
   public OnSubmit() :void {
     console.log("se ha clickeado el boton");
-    this.clientProfileService.putPassword(this.newPasswordControl.value).subscribe((resp)=>{
-      console.log(resp);
-    });
+    console.log(this.newPasswordControl.value);
+    console.log(this.confirmPasswordControl.value);
+    if(this.newPasswordControl.value == this.confirmPasswordControl.value){
+      this.clientProfileService.putPassword(this.newPasswordControl.value).subscribe((resp)=>{
+        console.log(resp);
+      });
+    }
   }
 
   public getPasswordError():string {
