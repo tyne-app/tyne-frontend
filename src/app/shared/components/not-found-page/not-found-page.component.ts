@@ -13,7 +13,7 @@ export class NotFoundPageComponent implements OnInit {
   @Input()
   public isWhiteLogo = true;
 
-  constructor(public dialog: MatDialog, public router: Router) {}
+  public constructor(public dialog: MatDialog, public router: Router) {}
 
   public openRegistrationDialog(): void {
     const dialogRef = this.dialog.open(ClientRegistrationComponent, {
@@ -33,9 +33,9 @@ export class NotFoundPageComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {});
   }
 
-  ngOnInit() {}
+  public ngOnInit(): void {}
 
-  public getLogo() {
+  public getLogo(): string {
     return this.isWhiteLogo ? "/assets/logo-home.png" : "/assets/logo2 1.png";
   }
 

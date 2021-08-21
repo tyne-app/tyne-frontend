@@ -6,7 +6,7 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./close-modal.component.scss"],
 })
 export class CloseModalComponent implements OnInit {
-  constructor() {}
+  public constructor() {}
 
-  ngOnInit() {}
+  public ngOnInit(): void {}
 }
