@@ -1,8 +1,12 @@
 <div class="modal-body-login">
   <div class="row d-flex aling-items-center justify-content-center">  
     <div class="col-lg-10">
-      <h1 class="titulo-4 mt-5"> Bienvenido de vuelta Elias  </h1>   
-      <h4 class="titulo-1 mt-2"> Iniciar Sesión </h4>         
+      <div class="row d-flex mt-5 justify-content-center align-items-center">
+        <img class="mx-auto" [src]="'assets/icons/tyne-login.png'" style="height: 8rem;"/>     
+      </div>
+      
+      <h4 class="row titulo-6 mt-5 d-flex aling-items-center justify-content-center mx-1 px-3">Te damos la bienvenida a Tyne</h4>   
+      <h4 class="row titulo-7 mt-2 d-flex aling-items-center justify-content-center">Iniciar Sesión</h4>         
       <div class="row">
         <div class="col">
           <form [formGroup]="this.loginForm" (ngSubmit)="onSubmit()">
@@ -29,31 +33,28 @@
               <button class="col-lg-10 col-md-12 my-2 btn-submit"
               type="submit"
               [disabled]="this.getButtonClass()">
-              ¡Listo!
+              Ingresar
               </button>
-                
-
-              <button class="col-lg-10 col-md-12 my-2  btn-normal"
-              [disabled]="this.getButtonClass()">
-              Olvide la contraseña
-              </button> 
+              
  
             </div> 
             <mat-divider class="row my-1" > </mat-divider>  
             <span> o Ingresa con </span>
             <div class="row my-5 d-flex align-items-center justify-content-center">
-              <button class="col-lg-10 col-md-12  my-2 btn-facebook"
-              style="background-color: #4267B2;"
-              [disabled]="this.getButtonClass()">
-              Facebook
+
+              <button class=" d-flex col-lg-5 col-md-11 mx-1 my-2 btn-facebook justify-content-center"
+              [disabled]="this.getButtonClass()">   
+                <img class="img-responsive mx-4 align-self-center" [src]="'assets/img/facebook-register.svg'" alt="facebook-registration"/>          
+                <span class="align-self-center">Facebook</span>
               </button>
                 
 
-              <button class="col-lg-10 col-md-12  my-2 btn-google"
-              style="background-color: #4267B2;"
+              <button class="d-flex col-lg-5 col-md-11 mx-1 justify-content-center my-2 btn-google"
               [disabled]="this.getButtonClass()">
-              Google
-              </button> 
+                <img class="img-responsive mx-4 align-self-center" [src]="'assets/icons/google-icon.png'" />
+                <span class="align-self-center">Google</span>
+              </button>  
+
             </div>
           </form>
         </div>
