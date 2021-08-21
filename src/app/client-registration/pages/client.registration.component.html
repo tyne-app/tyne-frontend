@@ -52,7 +52,7 @@
         </div>
 
         <div mat-dialog-actions>
-          <form [formGroup]="form">
+          <form [formGroup]="form" (ngSubmit)="createClient()">
             <!-- First row -->
             <div class="row">
               <!-- Name input -->
@@ -197,8 +197,8 @@
                   class="register-button submit-button"
                   mat-raised-button
                   type="submit"
+                  [disabled]="loading"
                 >
-                  <!-- [disabled]="form.invalid || !passwordDoesMatch || loading" -->
                   ¡Listo!
                 </button>
               </div>

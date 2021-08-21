@@ -1,13 +1,11 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { RefundPolicyComponent } from '../pages/refund-policy.component';
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
+import { RefundPolicyComponent } from "../pages/refund-policy.component";
 
-const routes: Routes = [
-  {path: '', component: RefundPolicyComponent}
-];
+const routes: Routes = [{ path: "", component: RefundPolicyComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class RefundPolicyRoutingModule { }
+export class RefundPolicyRoutingModule {}

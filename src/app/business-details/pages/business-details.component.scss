@@ -1,27 +1,30 @@
-h1, h2, h3, h4 {
-  color: #3C0000;
+h1,
+h2,
+h3,
+h4 {
+  color: #3c0000;
   font-weight: 400;
 }
 
 .buttons {
-    // margin-left: 3em;
-    text-align: center;
-    min-width: 12vh;
+  // margin-left: 3em;
+  text-align: center;
+  min-width: 12vh;
 }
 
 .normal-button {
   width: 15%;
-  background-color: #FFFDFA;
+  background-color: #fffdfa;
   border-radius: 10px;
-  border-color: #E10000;
-  color: #3C0000;
+  border-color: #e10000;
+  color: #3c0000;
   font-weight: 400;
   font-size: large;
 }
 
 .swiper-container {
-    width: 100%;
-    height: 40%;
+  width: 100%;
+  height: 40%;
 }
 
 .swiper-slide {

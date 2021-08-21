@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { RutValidator } from "ng9-rut";
 import { emailRegex } from "src/app/shared/constants/email";
+import { ErrorMessages } from "src/app/shared/constants/error-messages.enum";
 import { Bank } from "src/app/shared/interfaces/bank";
 import { BankService } from "src/app/shared/services/bank.service";
 
@@ -108,64 +109,64 @@ export class BusinessProfileEditBankDataComponent implements OnInit {
   public getRutError(): string {
     const control = this.form.get("rut");
     return control.hasError("required")
-      ? "Debe ingresar un rut"
+      ? ErrorMessages.Required.replace("{0}", "rut")
       : control.hasError("minlength")
-      ? "Debe ingresar un rut válido"
+      ? ErrorMessages.Invalid.replace("{0}", "rut")
       : control.hasError("maxlength")
-      ? "Debe ingresar un rut válido"
+      ? ErrorMessages.Invalid.replace("{0}", "rut")
       : control.hasError("invalidRut")
-      ? "Debe ingresar un rut válido"
+      ? ErrorMessages.Invalid.replace("{0}", "rut")
       : null;
   }
 
   public getBankError(): string {
     const control = this.form.get("bank");
     return control.hasError("required")
-      ? "Debe seleccionar un banco"
+      ? ErrorMessages.RequiredSelect.replace("{0}", "banco")
       : control.hasError("min")
-      ? "Debe seleccionar un banco"
+      ? ErrorMessages.RequiredSelect.replace("{0}", "banco")
       : null;
   }
 
   public getAccountNumberError(): string {
     const control = this.form.get("accountNumber");
     return control.hasError("required")
-      ? "Debe ingresar un número de cuenta"
+      ? ErrorMessages.Required.replace("{0}", "número de cuenta")
       : control.hasError("minlength")
-      ? "Debe tener mínimo 4 caracteres"
+      ? ErrorMessages.Minlength.replace("{0}", "4")
       : control.hasError("maxlength")
-      ? "Debe tener máximo 20 caracteres"
+      ? ErrorMessages.Maxlength.replace("{0}", "20")
       : null;
   }
 
   public getNameAccountOwnerError(): string {
     const control = this.form.get("nameAccountOwner");
     return control.hasError("required")
-      ? "Debe ingresar el nombre del titular"
+      ? ErrorMessages.Required.replace("{0}", "nombre de titular")
       : control.hasError("minlength")
-      ? "Debe tener mínimo 5 caracteres"
+      ? ErrorMessages.Minlength.replace("{0}", "5")
       : control.hasError("maxlength")
-      ? "Debe tener máximo 50 caracteres"
+      ? ErrorMessages.Maxlength.replace("{0}", "50")
       : null;
   }
 
   public getEmailError(): string {
     const control = this.form.get("email");
     return control.hasError("required")
-      ? "Debe ingresar un email"
+      ? ErrorMessages.Required.replace("{0}", "email")
       : control.hasError("email")
-      ? "Debe ingresar un email válido"
+      ? ErrorMessages.Invalid.replace("{0}", "email")
       : control.hasError("pattern")
-      ? "Debe ingresar un email válido"
+      ? ErrorMessages.Invalid.replace("{0}", "email")
       : null;
   }
 
   public getAccountTypeError(): string {
     const control = this.form.get("accountType");
     return control.hasError("required")
-      ? "Debe seleccionar un tipo de cuenta"
+      ? ErrorMessages.RequiredSelect.replace("{0}", "tipo de cuenta")
       : control.hasError("min")
-      ? "Debe seleccionar un tipo de cuenta"
+      ? ErrorMessages.RequiredSelect.replace("{0}", "tipo de cuenta")
       : null;
   }
 
