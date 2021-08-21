@@ -16,6 +16,7 @@ import { passwordRegex } from 'src/app/shared/constants/password';
  */
 import { PasswordValidator } from 'src/app/shared/validations/password-validator';
 import { ClientProfileService } from '../../services/client-profile.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-profile-container',
@@ -46,7 +47,8 @@ export class ProfileContainerComponent implements OnInit {
   
   public constructor(
     private fb: FormBuilder, 
-    private clientProfileService: ClientProfileService
+    private clientProfileService: ClientProfileService,
+    private snackbar:MatSnackBar
   ) { }
 
   public ngOnInit(): void {
@@ -55,19 +57,26 @@ export class ProfileContainerComponent implements OnInit {
   
   public buildForm(): void {
     this.recoverPasswordForm = this.fb.group({
-      currentPassword: ['', [Validators.required]],
+      currentPassword: ['', [Validators.required,Validators.pattern(passwordRegex)]],
       newPassword: ['', [Validators.required, Validators.pattern(passwordRegex)]],
       confirmPassword: ['', [Validators.required, PasswordValidator('newPassword')]],
     });
   }
 
   public OnSubmit() :void {
-    console.log("se ha clickeado el boton");
-    console.log(this.newPasswordControl.value);
-    console.log(this.confirmPasswordControl.value);
     if(this.newPasswordControl.value == this.confirmPasswordControl.value){
-      this.clientProfileService.putPassword(this.newPasswordControl.value).subscribe((resp)=>{
-        console.log(resp);
+      this.clientProfileService.putPassword(this.newPasswordControl.value).subscribe({
+        next: () => {
+          this.snackbar.open('Tu contraseña ha sido actualizada exitosamente', 'Aceptar', {
+            duration: 3000
+          });  
+        },
+        error: () => {
+          this.snackbar.open('Ha ocurrido un problema, intente nuevamente', 'Aceptar', {
+            duration: 3000,
+            panelClass: ['error-snackbar']
+          });  
+        }
       });
     }
   }

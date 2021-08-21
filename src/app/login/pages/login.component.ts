@@ -18,12 +18,12 @@ import { SpinnerComponent } from 'src/app/shared/components/spinner/spinner.comp
 export class LoginComponent implements OnInit {
   
   // #region "Variables"
-  formLogin: FormGroup;
-  get email() {
+  public formLogin: FormGroup;
+  public get email() {
       return this.formLogin.get('email');
     }
   
-  get password(){
+  public get password(){
       return this.formLogin.get('password');
     }
     
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
 
   // #endregion "Variables"
 
-  constructor(
+  public constructor(
     private snackbar: MatSnackBar,
     private router: Router, 
     private fb: FormBuilder,
@@ -41,14 +41,14 @@ export class LoginComponent implements OnInit {
     private clientservice: ClientService,
     public dialog: MatDialog) { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.formLogin = this.fb.group({
       email: ['', [Validators.required, Validators.pattern(emailRegex)]],
       password: ['', [Validators.required]]
     });
   }
 
-  onSubmit(): void {
+  public onSubmit(): void {
     this.openSpinner();
     if(!this.formLogin.invalid){
       this.clientservice.login(this.email.value, this.password.value).subscribe({
@@ -68,7 +68,7 @@ export class LoginComponent implements OnInit {
     }
   } 
 
-  closeModal(): void {
+  public closeModal(): void {
     this.loginRef.close();
     this.snackbar.open('Ha ingresado satisfactoriamente', 'Aceptar', {
       duration: 3000,
@@ -76,7 +76,7 @@ export class LoginComponent implements OnInit {
     this.router.navigateByUrl('/perfil-cliente');
   }
 
-  openSpinner(): void {
+  public openSpinner(): void {
     this.spinnerRef = this.dialog.open(SpinnerComponent,{
       width: '200px',
       panelClass: 'custom-dialog',
