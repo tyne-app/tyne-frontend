@@ -2,6 +2,7 @@
 @import "bootstrap/dist/css/bootstrap-grid.min.css";
 @import "~swiper/swiper-bundle";
 
+
 body {
   margin: 0;
   padding: 0;
@@ -68,12 +69,13 @@ body {
 
 .titulo-5 {
   color: #3c0000;
-  font-family: normal;
   font-style: normal;
   font-weight: 300;
   font-size: 25px;
   line-height: 30px;
 }
+
+
 
 /*Inputs*/
 .mat-form-field-outline {
@@ -185,6 +187,34 @@ mat-label {
   color: white;
   background-color: #AAAAAA;
   border: 1px solid  #AAAAAA !important;
+  box-sizing: border-box;
+  border-radius: 10px !important;
+  width: 255px;
+  height: 40px;
+  font-size: 20px;
+  box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%),
+    0 1px 5px 0 rgb(0 0 0 / 12%);
+}
+
+.btn-facebook{
+  cursor: pointer;
+  color: white;
+  background-color: #4267B2;
+  border: 1px solid #4267B2 !important;
+  box-sizing: border-box;
+  border-radius: 10px !important;
+  width: 255px;
+  height: 40px;
+  font-size: 20px;
+  box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%),
+    0 1px 5px 0 rgb(0 0 0 / 12%);
+}
+
+.btn-google{
+  cursor: pointer;
+  color: white;
+  background-color: #4267B2;
+  border: 1px solid #4267B2 !important;
   box-sizing: border-box;
   border-radius: 10px !important;
   width: 255px;
