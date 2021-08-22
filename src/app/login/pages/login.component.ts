@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
   public ngOnInit(): void {
     this.buildForm();
   }
-
+  // TODO: ADD VALIDATIONS 
   //Validators.pattern(passwordRegex)
 
   public buildForm():void {
@@ -99,9 +99,15 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  public getButtonClass():string {
-    return (this.loginForm.invalid) ? 'btn-disabled' : 'btn-submit';
+  public getPasswordError():string {
+    const control = this.passwordControl ;
+    return control.hasError("required") ? "Debe ingresar una contraseña" :
+      control.hasError("pattern") ? "Debe tener como mínimo 8 dígitos, 1 mayúscula y 1 número" : null;
   }
 
+
+  public getButtonClass():string {
+      return (this.loginForm.invalid) ? 'btn btn-disabled' : 'btn btn-submit';
+  }
  
 }
