@@ -30,12 +30,11 @@
                 <mat-error *ngIf="this.passwordControl.errors?.required">
                   Debes ingresar tu Contraseña!
                 </mat-error> 
-              </mat-form-field>
-   
+              </mat-form-field>  
             </div>
             <div class="row d-flex justify-content-center align-content-center mx-1">
               <mat-checkbox class="col-lg-6" [disabled]="false">Recordar Contraseña</mat-checkbox>
-              <button  mat-button (click)="goToForgotPassword()">¿Olvidaste tu contraseña?</button>
+              <button type="button" mat-button (click)="goToForgotPassword()">¿Olvidaste tu contraseña?</button>
             </div>
             <div class="d-flex row align-items-center justify-content-center mx-1 my-2">
               <button class="col-lg-10 col-md-12"
