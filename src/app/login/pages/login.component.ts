@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
     
   public isLoading = false; 
   public hide = true;
+  public checked = false;
  
 
   // #endregion "Getters"
@@ -108,6 +109,10 @@ export class LoginComponent implements OnInit {
 
   public getButtonClass():string {
       return (this.loginForm.invalid) ? 'btn btn-disabled' : 'btn btn-submit';
+  }
+
+  public goToForgotPassword(): void{
+    console.log("Ir a la página de contraseña olvidada");
   }
  
 }
