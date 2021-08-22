@@ -30,7 +30,7 @@ export class HeaderComponent implements OnInit {
   public openLoginDialog(): void {
     const dialogRef = this.dialog.open(LoginComponent, {
       maxWidth: "100%",
-      width: "35%",
+      width: "40%",
       maxHeight: "100%",
     });
 

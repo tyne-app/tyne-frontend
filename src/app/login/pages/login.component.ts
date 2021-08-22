@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
     }
     
   public isLoading = false; 
+  public hide = true;
  
 
   // #endregion "Getters"
