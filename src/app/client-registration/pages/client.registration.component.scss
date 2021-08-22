@@ -2,19 +2,12 @@ mat-form-field {
   width: 100%;
   margin-bottom: 16px;
 }
+:host::ng-deep.mat-form-field-infix {
+  width: 100%;
+}
 
 .mat-dialog-actions {
   display: contents;
-}
-
-input {
-  height: 1.6em;
-  div.mat-form-field-infix {
-    padding: 0.3em 0;
-    input.mat-input-element {
-      vertical-align: top;
-    }
-  }
 }
 
 .register-button {
@@ -28,19 +21,12 @@ input {
 .submit-button {
   position: absolute;
   width: 90%;
-  top: 20%;
+  top: 15%;
 }
 
 .register-title {
   font-size: 25px;
   color: #3c0000;
-}
-input.mat-input-element {
-  position: absolute;
-  top: 0;
-}
-.mat-datepicker-toggle {
-  margin: auto;
 }
 // ::ng-deep -> Deprecated en versiones superiores de angular https://angular.io/guide/component-styles#deprecated-deep--and-ng-deep
 :host::ng-deep.mat-form-field-appearance-outline .mat-form-field-outline {
@@ -53,6 +39,7 @@ input.mat-input-element {
 }
 .modal-body-register {
   overflow-y: auto;
+  overflow-x: hidden;
   height: 70vh;
   width: auto;
 }
@@ -60,6 +47,15 @@ input.mat-input-element {
   border-style: none;
   background-color: #fff;
   font-size: 1.5em;
+}
+.facebook-login {
+  background-color: #2f80ed;
+  width: 80%;
+}
+.google-login {
+  background-color: #fff;
+  color: #000;
+  width: 80%;
 }
 @media only screen and (min-width: 320px) and (max-width: 425px) {
   .register-button {
@@ -78,7 +74,9 @@ input.mat-input-element {
   .img-welcomer {
     width: 50%;
   }
-  .register-button {
+  .register-button,
+  .facebook-login,
+  .google-login {
     width: 70%;
   }
   .register-title {
