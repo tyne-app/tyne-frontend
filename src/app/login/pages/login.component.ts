@@ -123,8 +123,13 @@ export class LoginComponent implements OnInit {
   public goToGoogleSignIn(){
     this.socialService.GoogleLogin().subscribe((resp)=>{
       console.log(resp);
+    });    
+  }
+
+  public goToFacebookSignIn(){
+    this.socialService.FacebookLogin().subscribe((resp)=>{
+      console.log(resp);
     });
-    
   }
 
 }

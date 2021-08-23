@@ -25,7 +25,9 @@ export class SocialService {
     return from(this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider()));
   }
 
-  private FacebookLogin(): void{}
+  public FacebookLogin(): Observable<firebase.auth.UserCredential>{
+    return from(this.afAuth.signInWithPopup(new firebase.auth.FacebookAuthProvider()));
+  }
 
 
    

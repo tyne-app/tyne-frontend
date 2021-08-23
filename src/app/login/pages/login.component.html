@@ -51,7 +51,7 @@
       </div>
       <div class="row my-2 mx-2 d-flex align-items-center justify-content-center">
 
-        <button  class=" d-flex col-lg-5 col-md-11 mx-1 my-2 btn-facebook justify-content-center">
+        <button (click)="this.goToFacebookSignIn()" class=" d-flex col-lg-5 col-md-11 mx-1 my-2 btn-facebook justify-content-center">
           <img class="img-responsive mx-2 align-self-center" [src]="'assets/img/facebook-register.svg'" />          
           <span class="align-self-center">Facebook</span>
         </button>
@@ -61,7 +61,7 @@
           <img class="img-responsive mx-2 align-self-center" [src]="'assets/icons/google-icon.png'" />
           <span class="align-self-center" >Google</span>
         </button>  
- 
+
       </div>
     </div>
   </div>
