@@ -8,34 +8,25 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from "@angular/fire/auth";
 import firebase from 'firebase/app';
 /**
- * RXJS
+ * REACTIVE
  */
- import { from } from 'rxjs';
+import { from, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SocialService {
 
- 
-
-
   public constructor(
     public afAuth: AngularFireAuth 
   ) {}
-  
-  public async GoogleAuth(): Promise<firebase.auth.UserCredential> {
-    return await this.GoogleLogin(new firebase.auth.GoogleAuthProvider());
-  }  
-  private async GoogleLogin(provider): Promise<firebase.auth.UserCredential> {
-    const authCredential = await this.afAuth.signInWithPopup(provider);
-    return authCredential;
+
+  public GoogleLogin(): Observable<firebase.auth.UserCredential> {
+    return from(this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider()));
   }
- 
-  public FacebookAuth(): void{}
 
-  public facebookLogin(): void{}
+  private FacebookLogin(): void{}
 
 
-
+   
 }

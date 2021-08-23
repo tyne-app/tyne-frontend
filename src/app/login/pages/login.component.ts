@@ -20,6 +20,8 @@ import { SpinnerComponent } from 'src/app/shared/components/spinner/spinner.comp
  */
 import { ClientService } from 'src/app/shared/services/client.service';
 import { SocialService } from 'src/app/shared/services/social.service';
+import firebase from 'firebase/app';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -119,7 +121,10 @@ export class LoginComponent implements OnInit {
   }
 
   public goToGoogleSignIn(){
-     this.socialService.GoogleAuth();
+    this.socialService.GoogleLogin().subscribe((resp)=>{
+      console.log(resp);
+    });
+    
   }
 
 }
