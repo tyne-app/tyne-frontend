@@ -4,7 +4,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AbstractControl, FormBuilder ,FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 /**
@@ -20,7 +19,8 @@ import { SpinnerComponent } from 'src/app/shared/components/spinner/spinner.comp
  */
 import { ClientService } from 'src/app/shared/services/client.service';
 import { SocialService } from 'src/app/shared/services/social.service';
-import firebase from 'firebase/app';
+import { CustomSnackbarCommonService } from 'src/app/shared/services/custom-snackbar-common.service';
+
 
 @Component({
   selector: 'app-login',
@@ -39,15 +39,18 @@ export class LoginComponent implements OnInit {
       return this.loginForm.get('password');
     }
     
+    
+  // #endregion "Getters"
+  
+  // #region "Variables"
+  
   public isLoading = false; 
   public hide = true;
   public checked = false;
- 
-
-  // #endregion "Getters"
+  
+  // #endregion "Variables"
 
   public constructor(
-    private snackbar: MatSnackBar,
     private router: Router, 
     private fb: FormBuilder,
     public loginRef: MatDialogRef<LoginComponent>,
@@ -55,6 +58,7 @@ export class LoginComponent implements OnInit {
     private clientservice: ClientService,
     public dialog: MatDialog,
     private socialService: SocialService,
+    private customSnackbarCommon: CustomSnackbarCommonService
    
     ) { }
 
@@ -80,10 +84,7 @@ export class LoginComponent implements OnInit {
           this.spinnerRef.close();
         },
         error: () => {
-          this.snackbar.open('Ha ocurrido un problema, intente nuevamente', 'Aceptar', {
-            duration: 3000,
-            panelClass: ['error-snackbar']
-          });  
+         this.customSnackbarCommon.openErrorSnackbar(); 
          this.spinnerRef.close(); 
         }
       });
@@ -92,9 +93,7 @@ export class LoginComponent implements OnInit {
 
   public closeModal(): void {
     this.loginRef.close();
-    this.snackbar.open('Ha ingresado satisfactoriamente', 'Aceptar', {
-      duration: 3000,
-    });
+    this.customSnackbarCommon.openSuccessSnackbar();
     this.router.navigateByUrl('/perfil-cliente');
   }
 
