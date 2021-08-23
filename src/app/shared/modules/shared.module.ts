@@ -11,6 +11,7 @@ import { SpinnerComponent } from "../components/spinner/spinner.component";
 /** DIRECTIVES */
 import { PhoneMaskDirective } from "../directives/phone-mask.directive";
 import { SanitizeHtmlDirective } from "../directives/sanitize-html.directive";
+import { ErrorHandlerModule } from "../errors/error-handler.module";
 import { SafeHtml } from "../pipe/safeHtml.pipe";
 import { MaterialModule } from "./material.module";
 
@@ -25,7 +26,13 @@ import { MaterialModule } from "./material.module";
     SafeHtml,
     NotFoundPageComponent,
   ],
-  imports: [CommonModule, MaterialModule, ReactiveFormsModule, RouterModule],
+  imports: [
+    CommonModule,
+    MaterialModule,
+    ReactiveFormsModule,
+    RouterModule,
+    ErrorHandlerModule,
+  ],
   exports: [
     ReactiveFormsModule,
     MapComponent,
