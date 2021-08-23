@@ -37,11 +37,14 @@ import {
  import { HomeModule } from "./home/modules/home.module";
  import { LoginModule } from "./login/modules/login.module";
  import { FrequentQuestionsModule } from "./frecuent-questions/modules/frequent-questions.module";
+ import { AngularFireAuthModule } from "@angular/fire/auth";
+ import { AngularFireModule } from "@angular/fire";
 /**
  * SERVICES
  */
 import { authInterceptorProviders } from "./shared/interceptors/interceptor.service";
 import { RestClientService } from "./shared/services/rest-client.service";
+import { environment } from "src/environments/environment";
 
 @NgModule({
   declarations: [AppComponent],
@@ -60,6 +63,8 @@ import { RestClientService } from "./shared/services/rest-client.service";
     ClientProfileModule,
     RefundPolicyModule,
     FrequentQuestionsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
   ],
   entryComponents: [
     ClientRegistrationComponent,

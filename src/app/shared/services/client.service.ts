@@ -35,7 +35,7 @@ export class ClientService {
   }
 
   //* *Return Token */
-  login(email: string, password: string): Observable<string> {
+  public login(email: string, password: string): Observable<string> {
     return this.http
       .post<DataResponse>(`${this.endpoint}/login/`, { email, password })
       .pipe(
@@ -45,7 +45,7 @@ export class ClientService {
       );
   }
 
-  logout(): void {
+  public logout(): void {
     sessionStorage.clear();
     localStorage.clear();
   }
