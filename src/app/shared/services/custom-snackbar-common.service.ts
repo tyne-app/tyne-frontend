@@ -13,14 +13,14 @@ export class CustomSnackbarCommonService {
     private snackbar: MatSnackBar,
   ) { }
 
-  public openSuccessSnackbar(): void {
-    this.snackbar.open('Ha ingresado satisfactoriamente', 'Aceptar', {
+  public openSuccessSnackbar(messageSnackbar:string): void {
+    this.snackbar.open(messageSnackbar, 'Aceptar', {
       duration: 3000,
     });
   }
 
-  public openErrorSnackbar(): void{
-    this.snackbar.open('Ha ocurrido un problema, intente nuevamente', 'Aceptar', {
+  public openErrorSnackbar(messageSnackbar:string): void{
+    this.snackbar.open(messageSnackbar, 'Aceptar', {
       duration: 3000,
       panelClass: ['error-snackbar']
     });  

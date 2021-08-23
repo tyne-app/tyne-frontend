@@ -20,6 +20,8 @@ import { SpinnerComponent } from 'src/app/shared/components/spinner/spinner.comp
 import { ClientService } from 'src/app/shared/services/client.service';
 import { SocialService } from 'src/app/shared/services/social.service';
 import { CustomSnackbarCommonService } from 'src/app/shared/services/custom-snackbar-common.service';
+import { SuccessMessages } from 'src/app/shared/constants/success-messages';
+import { ErrorMessages } from 'src/app/shared/constants/error-messages.enum';
 
 
 @Component({
@@ -84,7 +86,7 @@ export class LoginComponent implements OnInit {
           this.spinnerRef.close();
         },
         error: () => {
-         this.customSnackbarCommon.openErrorSnackbar(); 
+         this.customSnackbarCommon.openErrorSnackbar(ErrorMessages.GenericError); 
          this.spinnerRef.close(); 
         }
       });
@@ -93,7 +95,7 @@ export class LoginComponent implements OnInit {
 
   public closeModal(): void {
     this.loginRef.close();
-    this.customSnackbarCommon.openSuccessSnackbar();
+    this.customSnackbarCommon.openSuccessSnackbar(SuccessMessages.Success);
     this.router.navigateByUrl('/perfil-cliente');
   }
 
