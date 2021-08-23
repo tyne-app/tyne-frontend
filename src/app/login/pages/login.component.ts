@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { AbstractControl, FormBuilder ,FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+
 /**
  * CONSTANTS
  */
@@ -18,6 +19,7 @@ import { SpinnerComponent } from 'src/app/shared/components/spinner/spinner.comp
  * SERVICES
  */
 import { ClientService } from 'src/app/shared/services/client.service';
+import { SocialService } from 'src/app/shared/services/social.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -49,13 +51,15 @@ export class LoginComponent implements OnInit {
     public loginRef: MatDialogRef<LoginComponent>,
     public spinnerRef: MatDialogRef<SpinnerComponent>,
     private clientservice: ClientService,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog,
+    private socialService: SocialService,
+   
+    ) { }
 
   public ngOnInit(): void {
     this.buildForm();
   }
-  // TODO: ADD VALIDATIONS 
-  //Validators.pattern(passwordRegex)
+
 
   public buildForm():void {
     this.loginForm = this.fb.group({
@@ -106,7 +110,6 @@ export class LoginComponent implements OnInit {
       control.hasError("pattern") ? "Debe tener como mínimo 8 dígitos, 1 mayúscula y 1 número" : null;
   }
 
-
   public getButtonClass():string {
       return (this.loginForm.invalid) ? 'btn btn-disabled' : 'btn btn-submit';
   }
@@ -114,5 +117,9 @@ export class LoginComponent implements OnInit {
   public goToForgotPassword(): void{
     console.log("Ir a la página de contraseña olvidada");
   }
- 
+
+  public goToGoogleSignIn(){
+     this.socialService.GoogleAuth();
+  }
+
 }
