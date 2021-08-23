@@ -39,20 +39,35 @@ export class ClientRegistrationComponent implements OnInit {
     }
 
     this.loading = true;
+    let phone: string = this.form.get("clientPhone").value.toString();
+    phone = phone
+      .replace("(", "")
+      .replace(")", "")
+      .replace("+", "")
+      .replace(/\s/g, "");
+
     const client: Client = {
       name: this.form.get("clientName").value,
       lastName: this.form.get("clientLastName").value,
-      phone: this.form.get("clientPhone").value,
+      phone: phone,
       email: this.form.get("clientEmail").value,
       password: this.form.get("password").value,
       birthDate: this.form.get("birthDate").value,
-      state: "1",
-      uid: "0",
     };
 
-    this.clientService.register(client).subscribe((x) => {
-      this.showMessage("Usuario creado exitosamente - test");
-    });
+    this.clientService.register(client).subscribe(
+      (x) => {
+        // TODO: write here the corresponding code
+        this.showMessage("Cliente creado con éxito");
+      },
+      (error) => {
+        this.loading = false;
+        throw error;
+      },
+      () => {
+        this.loading = false;
+      }
+    );
   }
 
   public closeClick(): void {
@@ -101,7 +116,7 @@ export class ClientRegistrationComponent implements OnInit {
   private showMessage(message: string, isSucceful = true) {
     this.snackbar.open(message, "Aceptar", {
       duration: 3000,
-      panelClass: [isSucceful ? "" : "error-snackbar"],
+      panelClass: [isSucceful ? "class-template" : "error-snackbar"],
     });
   }
 
