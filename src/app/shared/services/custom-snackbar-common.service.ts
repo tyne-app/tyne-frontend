@@ -16,6 +16,7 @@ export class CustomSnackbarCommonService {
   public openSuccessSnackbar(messageSnackbar:string): void {
     this.snackbar.open(messageSnackbar, 'Aceptar', {
       duration: 3000,
+      panelClass: ['success-snackbar']
     });
   }
 
