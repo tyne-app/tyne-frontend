@@ -2,7 +2,6 @@
 @import "bootstrap/dist/css/bootstrap-grid.min.css";
 @import "~swiper/swiper-bundle";
 
-
 body {
   margin: 0;
   padding: 0;
@@ -89,9 +88,7 @@ body {
   font-weight: 300;
   font-size: 33px;
   line-height: 43px;
-  
 }
-
 
 /*Inputs*/
 .mat-form-field-outline {
@@ -180,14 +177,13 @@ mat-label {
   cursor: pointer;
   color: white;
   background-color: #e10000;
-  border: 1px solid #e10000 !important;
   box-sizing: border-box;
   border-radius: 10px !important;
   width: 255px;
   height: 40px;
   font-size: 20px;
-  box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%),
-    0 1px 5px 0 rgb(0 0 0 / 12%);
+  // box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%),
+  //   0 1px 5px 0 rgb(0 0 0 / 12%);
 }
 
 .btn-close {
@@ -198,11 +194,11 @@ mat-label {
   color: #3c0000;
 }
 
-.btn-disabled{
+.btn-disabled {
   cursor: pointer;
   color: white;
-  background-color: #AAAAAA;
-  border: 1px solid  #AAAAAA !important;
+  background-color: #aaaaaa;
+  border: 1px solid #aaaaaa !important;
   box-sizing: border-box;
   border-radius: 10px !important;
   width: 255px;
@@ -212,21 +208,21 @@ mat-label {
     0 1px 5px 0 rgb(0 0 0 / 12%);
 }
 
-.btn-facebook{
+.btn-facebook {
   cursor: pointer;
   color: white;
-  background-color: #2F80ED;
+  background-color: #2f80ed;
   box-sizing: border-box;
-  border: 1px solid #2F80ED !important;
+  border: 1px solid #2f80ed !important;
   border-radius: 10px !important;
   width: 255px;
   height: 40px;
   font-size: 20px;
   box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%),
-  0 1px 5px 0 rgb(0 0 0 / 12%);
+    0 1px 5px 0 rgb(0 0 0 / 12%);
 }
 
-.btn-google{
+.btn-google {
   cursor: pointer;
   color: black;
   border: 1px solid gray !important;
@@ -236,7 +232,7 @@ mat-label {
   height: 40px;
   font-size: 20px;
   box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%),
-  0 1px 5px 0 rgb(0 0 0 / 12%);
+    0 1px 5px 0 rgb(0 0 0 / 12%);
 }
 
 @media only screen and (max-width: 768px) {
