@@ -18,7 +18,7 @@ import { SpinnerComponent } from 'src/app/shared/components/spinner/spinner.comp
  */
 import { ClientService } from 'src/app/shared/services/client.service';
 import { SocialService } from 'src/app/shared/services/social.service';
-import { CustomSnackbarCommonService } from 'src/app/shared/services/custom-snackbar-common.service';
+import { CustomSnackbarCommonService } from 'src/app/shared/helpers/custom-snackbar-common.service';
 import { SuccessMessages } from 'src/app/shared/constants/success-messages';
 import { ErrorMessages } from 'src/app/shared/constants/error-messages.enum';
 
