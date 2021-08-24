@@ -17,6 +17,15 @@ body {
   }
 }
 
+.success-snackbar {
+  background: #E1FAF2;
+  color: #3c0000;
+  .mat-simple-snackbar-action {
+    color: #3c0000;
+  }
+}
+
+
 /*Correspondiente a los nombres de los campos*/
 .label-input-name {
   padding-left: 5px;

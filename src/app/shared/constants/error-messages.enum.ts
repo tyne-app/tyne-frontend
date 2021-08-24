@@ -1,5 +1,6 @@
 export enum ErrorMessages {
   ServerDown = "Tenemos problemas técnicos, intente más tarde",
+  GenericError = "Ha ocurrido un problema, intente nuevamente",
 
   // #region Input and form errors
 

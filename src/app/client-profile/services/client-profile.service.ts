@@ -38,7 +38,7 @@ export class ClientProfileService {
     return this.http.put<any>(`${this.endpoint}/clients/image`, imageProfileFile);  
   } 
 
-  public putPassword(password:string): Observable<any> {
-    return this.http.put(`${this.endpoint}/clients/update-password`, password);
+  public putPassword(passwordToUpdate:string): Observable<any> {
+    return this.http.put(`${this.endpoint}/clients/update-password`, { password : passwordToUpdate });
   }
 }
