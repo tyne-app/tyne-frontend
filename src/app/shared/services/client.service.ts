@@ -11,7 +11,7 @@ import { RestClientService } from "./rest-client.service";
   providedIn: "root",
 })
 export class ClientService {
-  private endpoint = environment.API_BASE_CLIENTS;
+  private endpoint = environment.apiClients;
 
   public constructor(
     private http: HttpClient,
@@ -19,22 +19,9 @@ export class ClientService {
   ) {}
 
   public register(client: Client): Observable<any> {
-    return this.restClient.post<any>(
-      "https://api-clients-tyne.herokuapp.com/v1/clients/",
-      client
-    );
-    /*
-     * return new Promise((resolve) => {
-     *   this.http
-     *     .post("https://ms-user-gestor.herokuapp.com/createUser", client)
-     *     .subscribe(async (resp) => {
-     *       console.log(resp);
-     *     });
-     * });
-     */
+    return this.restClient.post<any>(`${this.endpoint}/clients/`, client);
   }
 
-  //* *Return Token */
   public login(email: string, password: string): Observable<string> {
     return this.http
       .post<DataResponse>(`${this.endpoint}/login/`, { email, password })
