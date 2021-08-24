@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable } from "rxjs";
-import { BusinessRegistrationDto } from "src/app/business-registration/models/business-registration.dto";
+import { BusinessRegistrationDto } from "src/app/business-registration/models/business-registration-dto";
 import { SearchResultsModel } from "src/app/search-restaurant/models/search-results.model";
 import { environment } from "src/environments/environment";
 import { RestClientService } from "./rest-client.service";

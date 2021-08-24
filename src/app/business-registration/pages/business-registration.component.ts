@@ -15,7 +15,7 @@ import { TerritorialsService } from "src/app/shared/services/territorials.servic
 import { EmailValidator } from "src/app/shared/validations/email-validator";
 import { PasswordValidator } from "src/app/shared/validations/password-validator";
 import { environment } from "src/environments/environment";
-import { BusinessRegistrationDto } from "../models/business-registration.dto";
+import { BusinessRegistrationDto } from "../models/business-registration-dto";
 
 @Component({
   selector: "app-business-registration",
