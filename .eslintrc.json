@@ -34,7 +34,7 @@
       }
     ],
     // "max-params": [1, { "max": 3 }],
-    "multiline-comment-style": ["error", "starred-block"],
+    "multiline-comment-style": ["error", "separate-lines"],
     "@typescript-eslint/explicit-member-accessibility": ["error"]
   }
 }

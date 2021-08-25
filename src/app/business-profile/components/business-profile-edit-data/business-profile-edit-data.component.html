@@ -38,6 +38,7 @@
             type="text"
             placeholder="+XX X XXXX XXXX"
             phoneMask
+            maxlength="17"
           />
           <mat-error>
             {{ getBusinessPhoneError() }}
@@ -86,6 +87,7 @@
             type="text"
             placeholder="+XX X XXXX XXXX"
             phoneMask
+            maxlength="17"
           />
           <mat-error>
             {{ getPhoneManagerError() }}
@@ -117,7 +119,9 @@
       </div>
 
       <div class="col-12 col-md-6 col-lg-6 col-center">
-        <button type="submit" class="btn-submit">Guardar cambios</button>
+        <button type="submit" class="btn-submit" mat-raised-button>
+          Guardar cambios
+        </button>
       </div>
     </div>
   </form>

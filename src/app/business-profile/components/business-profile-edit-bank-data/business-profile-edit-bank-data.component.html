@@ -105,11 +105,17 @@
           class="btn-submit"
           (click)="requestDataEdition()"
           *ngIf="!isSubmitButtonEnabled"
+          mat-raised-button
         >
           Solicitar Edición
         </button>
 
-        <button type="submit" class="btn-submit" *ngIf="isSubmitButtonEnabled">
+        <button
+          type="submit"
+          class="btn-submit"
+          *ngIf="isSubmitButtonEnabled"
+          mat-raised-button
+        >
           Guardar cambios
         </button>
       </div>

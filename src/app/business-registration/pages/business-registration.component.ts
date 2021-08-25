@@ -10,10 +10,12 @@ import { Bank } from "src/app/shared/interfaces/bank";
 import { City } from "src/app/shared/interfaces/city";
 import { State } from "src/app/shared/interfaces/state";
 import { BankService } from "src/app/shared/services/bank.service";
+import { RestaurantService } from "src/app/shared/services/restaurant.service";
 import { TerritorialsService } from "src/app/shared/services/territorials.service";
 import { EmailValidator } from "src/app/shared/validations/email-validator";
 import { PasswordValidator } from "src/app/shared/validations/password-validator";
 import { environment } from "src/environments/environment";
+import { BusinessRegistrationDto } from "../models/business-registration-dto";
 
 @Component({
   selector: "app-business-registration",
@@ -30,6 +32,7 @@ export class BusinessRegistrationComponent implements OnInit {
   public firstFormGroup: FormGroup;
   public secondFormGroup: FormGroup;
   public thirdFormGroup: FormGroup;
+  public isLoading = false;
 
   public constructor(
     private fb: FormBuilder,
@@ -37,7 +40,8 @@ export class BusinessRegistrationComponent implements OnInit {
     private snackBar: MatSnackBar,
     private router: Router,
     private territorialsService: TerritorialsService,
-    private banksService: BankService
+    private banksService: BankService,
+    private restaurantService: RestaurantService
   ) {}
 
   public ngOnInit(): void {
@@ -67,7 +71,14 @@ export class BusinessRegistrationComponent implements OnInit {
           Validators.maxLength(30),
         ],
       ],
-      managerPhone: ["", [Validators.required, Validators.minLength(17)]],
+      managerPhone: [
+        "",
+        [
+          Validators.required,
+          Validators.minLength(17),
+          Validators.maxLength(17),
+        ],
+      ],
       managerEmail: [
         "",
         [Validators.email, Validators.required, Validators.pattern(emailRegex)],
@@ -121,7 +132,11 @@ export class BusinessRegistrationComponent implements OnInit {
       ],
       legalRepresentativePhone: [
         "",
-        [Validators.required, Validators.minLength(17)],
+        [
+          Validators.required,
+          Validators.minLength(17),
+          Validators.maxLength(17),
+        ],
       ],
       legalRepresentativeNameCompany: [
         "",
@@ -238,12 +253,99 @@ export class BusinessRegistrationComponent implements OnInit {
   public saveNewBusiness(): void {
     if (this.thirdFormGroup.invalid) return;
 
-    /*
-     * this.snackBar.open('Ha registrado satisfactoriamente el local', 'ok', {
-     *   duration: 3000
-     * });
-     * this.router.navigateByUrl('/inicio');
-     */
+    const newBusiness = this.getBusinessData();
+
+    console.log(JSON.stringify(newBusiness));
+
+    this.isLoading = true;
+    this.restaurantService.createNewBusiness(newBusiness).subscribe(
+      (x) => {
+        this.isLoading = false;
+        this.showMessage("Local creado con éxito");
+      },
+      (error) => {
+        this.isLoading = false;
+        throw error;
+      }
+    );
+  }
+
+  private getBusinessData(): BusinessRegistrationDto {
+    const newBusiness: BusinessRegistrationDto = {
+      legal_representative: [
+        {
+          name: this.firstFormGroup.get("managerName").value,
+          last_name: this.firstFormGroup.get("managerLastName").value,
+          phone: this.firstFormGroup
+            .get("managerPhone")
+            .value.toString()
+            .replace("(", "")
+            .replace(")", "")
+            .replace(/\s/g, ""),
+          identifier: null,
+          email: this.firstFormGroup.get("managerEmail").value,
+          password: this.firstFormGroup.get("password").value,
+          type_legal_representative_id: 2,
+        },
+        {
+          name: this.secondFormGroup.get("legalRepresentativeName").value,
+          last_name: this.secondFormGroup.get("legalRepresentativeLastName")
+            .value,
+          identifier: this.secondFormGroup.get("legalRepresentativeRut").value,
+          email: this.secondFormGroup.get("legalRepresentativeEmail").value,
+          phone: this.secondFormGroup
+            .get("legalRepresentativePhone")
+            .value.toString()
+            .replace("(", "")
+            .replace(")", "")
+            .replace(/\s/g, ""),
+          password: null,
+          type_legal_representative_id: 1,
+        },
+      ],
+      branch: {
+        accept_pet:
+          this.secondFormGroup.get("principalLocationHavePet").value == "1"
+            ? true
+            : false,
+        address:
+          this.secondFormGroup.get("principalLocationAddress").value +
+          " " +
+          this.secondFormGroup.get("principalLocationNumber").value,
+        name: this.secondFormGroup.get("legalRepresentativeNameCompany").value,
+        state_id: this.secondFormGroup.get("principalLocationState").value,
+        commercial_activity: this.secondFormGroup.get(
+          "legalRepresentativeBusinessLine"
+        ).value,
+      },
+      restaurant: {
+        identifier: this.secondFormGroup.get("legalRepresentativeRutBusiness")
+          .value,
+        name: this.secondFormGroup.get("legalRepresentativeNameCompany").value,
+        address:
+          this.secondFormGroup.get("principalLocationAddress").value +
+          " " +
+          this.secondFormGroup.get("principalLocationNumber").value,
+        state_id: this.secondFormGroup.get("principalLocationState").value,
+      },
+      bank_restaurant: {
+        account_holder_identifier:
+          this.thirdFormGroup.get("rutAccountOwner").value,
+        account_holder: this.thirdFormGroup.get("nameAccountOwner").value,
+        account_number: this.thirdFormGroup.get("accountNumber").value,
+        bank_id: this.thirdFormGroup.get("bank").value,
+        account_type: this.thirdFormGroup.get("accountType").value,
+      },
+    };
+
+    return newBusiness;
+  }
+
+  private showMessage(message: string, isSucceful = true) {
+    this.snackBar.open(message, "Aceptar", {
+      duration: 3000,
+      panelClass: [isSucceful ? "class-template" : "error-snackbar"],
+    });
   }
 
   // #region First stepper validations
@@ -274,6 +376,8 @@ export class BusinessRegistrationComponent implements OnInit {
     return control.hasError("required")
       ? ErrorMessages.Required.replace("{0}", "número")
       : control.hasError("minlength")
+      ? ErrorMessages.Invalid.replace("{0}", "número")
+      : control.hasError("maxlength")
       ? ErrorMessages.Invalid.replace("{0}", "número")
       : null;
   }
@@ -373,6 +477,8 @@ export class BusinessRegistrationComponent implements OnInit {
     return control.hasError("required")
       ? ErrorMessages.Required.replace("{0}", "número")
       : control.hasError("minlength")
+      ? ErrorMessages.Invalid.replace("{0}", "número")
+      : control.hasError("maxlength")
       ? ErrorMessages.Invalid.replace("{0}", "número")
       : null;
   }

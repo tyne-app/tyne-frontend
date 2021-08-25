@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialogRef } from "@angular/material/dialog";
@@ -39,33 +40,38 @@ export class ClientRegistrationComponent implements OnInit {
     }
 
     this.loading = true;
-    let phone: string = this.form.get("clientPhone").value.toString();
-    phone = phone
-      .replace("(", "")
-      .replace(")", "")
-      .replace("+", "")
-      .replace(/\s/g, "");
 
     const client: Client = {
       name: this.form.get("clientName").value,
       lastName: this.form.get("clientLastName").value,
-      phone: phone,
+      phone: this.form
+        .get("clientPhone")
+        .value.toString()
+        .replace("(", "")
+        .replace(")", "")
+        .replace("+", "")
+        .replace(/\s/g, ""),
       email: this.form.get("clientEmail").value,
       password: this.form.get("password").value,
       birthDate: this.form.get("birthDate").value,
     };
 
     this.clientService.register(client).subscribe(
-      (x) => {
+      () => {
         // TODO: write here the corresponding code
+        this.loading = false;
         this.showMessage("Cliente creado con éxito");
       },
-      (error) => {
+      (error: HttpErrorResponse) => {
         this.loading = false;
-        throw error;
-      },
-      () => {
-        this.loading = false;
+        if (error.status === 409) {
+          this.showMessage(
+            "Usuario ya se encuentra registrado en nuestro sistema",
+            false
+          );
+        } else {
+          throw error;
+        }
       }
     );
   }
