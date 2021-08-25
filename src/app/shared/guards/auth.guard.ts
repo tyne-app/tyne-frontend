@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { TyneRoutes } from '../constants/url-routes';
 /**
- * 
+ * SERVICES
  */
 import { TokenService } from '../helpers/token.service';
+/**
+ * CONSTANTS
+ */
+import { TyneRoutes } from '../constants/url-routes';
 
 @Injectable({
   providedIn: 'root'
@@ -20,11 +23,16 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
        
-    const token: string = this.tokenService.getTokenFromLocalStorage();
-    if(token){
-      return true;      
+    const isToken:boolean = this.tokenService.isTokenSavedInLocalStorage();
+    if(isToken){
+      return this.router.navigateByUrl(TyneRoutes.Home); 
+    }
+    const isTokenExpired:boolean = this.tokenService.isTokenExpired();
+    if(isTokenExpired){
+      return this.router.navigateByUrl(TyneRoutes.Home); 
     } 
-    return this.router.navigateByUrl(TyneRoutes.Home); 
+
+    return true;
   }
   
 }
