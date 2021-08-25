@@ -1,0 +1,19 @@
+@import "../../../../styles.scss";
+
+.close {
+  padding: 0 8px;
+  min-width: 40px;
+  & span {
+    font-size: 1.6rem;
+    color: #3c0000;
+  }
+}
+
+.txt-dialog {
+  color: #3c0000;
+  font-size: 1.6rem;
+  text-align: center;
+  @include view-min(992px) {
+    font-size: 2.2rem;
+  }
+}

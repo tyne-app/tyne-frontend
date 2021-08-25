@@ -17,7 +17,7 @@ import { BusinessProfileEditWorkDaysComponent } from "../business-profile-edit-w
 export class BusinessProfileBodyComponent implements OnInit {
   public form: FormGroup;
 
-  public constructor(private fb: FormBuilder, private dialog: MatDialog) {}
+  public constructor(private fb: FormBuilder, private dialog: MatDialog) { }
 
   public ngOnInit(): void {
     this.initForm();
@@ -70,8 +70,9 @@ export class BusinessProfileBodyComponent implements OnInit {
 
   public openEditWorkDaysComponent(): void {
     const dialogRef = this.dialog.open(BusinessProfileEditWorkDaysComponent, {
-      maxWidth: "100%",
-      width: "75%",
+      maxWidth: "95%",
+      minWidth: "75%",
+      panelClass: "business-profile-dialog",
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -91,8 +92,8 @@ export class BusinessProfileBodyComponent implements OnInit {
     return password.hasError("required")
       ? ErrorMessages.RequiredVariant.replace("{0}", "contraseña")
       : password.hasError("pattern")
-      ? ErrorMessages.PasswordPattern
-      : null;
+        ? ErrorMessages.PasswordPattern
+        : null;
   }
 
   public getPasswordConfirmError(): string {
@@ -100,7 +101,7 @@ export class BusinessProfileBodyComponent implements OnInit {
     return passwordConfirm.hasError("required")
       ? ErrorMessages.RequiredVariant.replace("{0}", "contraseña")
       : passwordConfirm.hasError("notMatch")
-      ? ErrorMessages.PasswordDoesntMatch
-      : null;
+        ? ErrorMessages.PasswordDoesntMatch
+        : null;
   }
 }

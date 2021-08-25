@@ -269,3 +269,16 @@ mat-label {
 }
 
 /* End Buttons */
+
+@mixin view-min($width) {
+  @media only screen and (min-width: $width) {
+    @content;
+  }
+}
+
+::ng-deep.business-profile-dialog .mat-dialog-container {
+  padding: 9px;
+  @include view-min(768px) {
+    padding: 16px;
+  }
+}
