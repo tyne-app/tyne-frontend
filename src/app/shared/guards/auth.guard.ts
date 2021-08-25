@@ -31,7 +31,6 @@ export class AuthGuard implements CanActivate {
     if(isTokenExpired){
       return this.router.navigateByUrl(TyneRoutes.Home); 
     } 
-
     return true;
   }
   

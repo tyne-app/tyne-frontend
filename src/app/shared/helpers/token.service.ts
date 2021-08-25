@@ -43,7 +43,7 @@ export class TokenService {
 
   public isTokenSavedInLocalStorage(): boolean{
     const token:string = this.getTokenFromLocalStorage();
-    return (token == undefined || token == null || token == '' || token == ' ')
+    return (token != undefined || token != null || token != '')
       ? false : true;
   }
   
