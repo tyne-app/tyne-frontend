@@ -261,6 +261,7 @@ export class BusinessRegistrationComponent implements OnInit {
     this.restaurantService.createNewBusiness(newBusiness).subscribe(
       (x) => {
         this.isLoading = false;
+        this.showMessage("Local creado con éxito");
       },
       (error) => {
         this.isLoading = false;
@@ -338,6 +339,13 @@ export class BusinessRegistrationComponent implements OnInit {
     };
 
     return newBusiness;
+  }
+
+  private showMessage(message: string, isSucceful = true) {
+    this.snackBar.open(message, "Aceptar", {
+      duration: 3000,
+      panelClass: [isSucceful ? "class-template" : "error-snackbar"],
+    });
   }
 
   // #region First stepper validations
