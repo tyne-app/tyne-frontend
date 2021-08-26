@@ -38,7 +38,7 @@
     <mat-card class="mb-4">
       <button
         class="btn-add-accordion"
-        mat-stroked-button
+        mat-raised-button
         (click)="addSection()"
       >
         <mat-icon>add_circle_outline</mat-icon>
@@ -68,7 +68,7 @@
                 <button
                   type="button"
                   class="btn-delete"
-                  mat-stroked-button
+                  mat-raised-button
                   (click)="deleteSection(i)"
                 >
                   <mat-icon>delete</mat-icon>
@@ -182,7 +182,7 @@
                           />
                           <button
                             class="btn-change-photo mt-2"
-                            mat-stroked-button
+                            mat-raised-button
                             (click)="file.click()"
                           >
                             <mat-icon>image</mat-icon>
@@ -228,7 +228,7 @@
 
                           <button
                             class="btn-delete-product"
-                            mat-stroked-button
+                            mat-raised-button
                             (click)="deleteProduct(i, p)"
                           >
                             <mat-icon>delete</mat-icon>
@@ -251,7 +251,9 @@
 
       <div class="row">
         <div class="col" style="text-align: right">
-          <button type="submit" class="btn-submit">Guardar Cambios</button>
+          <button type="submit" class="btn-submit" mat-raised-button>
+            Guardar Cambios
+          </button>
         </div>
       </div>
     </form>
