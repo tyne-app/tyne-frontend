@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { NotFoundPageComponent } from "./shared/components/not-found-page/not-found-page.component";
 import { TyneRoutes } from "./shared/constants/url-routes";
+import { AuthGuard } from "./shared/guards/auth.guard";
 
 /** TODO: ADD GUARD VERY CASE */
 const routes: Routes = [
@@ -15,7 +16,7 @@ const routes: Routes = [
     loadChildren: () =>
       import("./business-details/modules/business-details.module").then(
         (m) => m.BusinessDetailsModule
-      ),
+      ),canActivate: [AuthGuard]
   },
   {
     path: TyneRoutes.BusinessRegister,
@@ -29,14 +30,14 @@ const routes: Routes = [
     loadChildren: () =>
       import("./client-profile/modules/client-profile.module").then(
         (m) => m.ClientProfileModule
-      ),
+      ),canActivate: [AuthGuard]
   },
   {
     path: TyneRoutes.BusinessProfile,
     loadChildren: () =>
       import("./business-profile/modules/business-registration.module").then(
         (m) => m.BusinessProfileModule
-      ),
+      ),canActivate: [AuthGuard]
   },
   {
     path: TyneRoutes.Refund,
@@ -69,7 +70,7 @@ const routes: Routes = [
     loadChildren: () =>
       import("./business-menus/modules/business-menus.module").then(
         (m) => m.BusinessMenusModule
-      ),
+      ),canActivate: [AuthGuard]
   },
   {
     path: TyneRoutes.NotFound,

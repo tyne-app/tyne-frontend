@@ -22,16 +22,29 @@ export class TokenService {
   public constructor() {}
   
 
-  public getDecodedJwtToken(): Token {
+  public getTokenFromLocalStorage(): string {
     const token: string = localStorage.getItem('access_token');
+    return token;
+  }
+
+  public getDecodedJwtToken(): Token {
+    const token: string = this.getTokenFromLocalStorage();
     const JwtHelper = new JwtHelperService();
     const decodedToken:Token = JwtHelper.decodeToken<Token>(token);
     return decodedToken; 
   }
 
-  public getTokenFromLocalStorage(): string {
-    const token: string = localStorage.getItem('access_token');
-    return token;
+  public isTokenExpired(): boolean{
+    const token: string = this.getTokenFromLocalStorage();   
+    const JwtHelper = new JwtHelperService();
+    const isTokenExpired:boolean = JwtHelper.isTokenExpired(token);
+    return isTokenExpired;
+  }
+
+  public isTokenSavedInLocalStorage(): boolean{
+    const token:string = this.getTokenFromLocalStorage();
+    return (token != undefined || token != null || token != '')
+      ? false : true;
   }
   
 }
