@@ -1,23 +1,49 @@
-<div class="container pb-5">
+<div class="container pb-4 pb-lg-5">
+  <div class="row mb-3 pt-3 align-items-center">
+    <div class="col-6 col-lg-5">
+      <div class="logo">
+        <img src="/assets/logo2 1.png" class="img-logo" alt="" routerLink="/" />
+      </div>
+    </div>
+    <div class="col-6 col-lg-7 d-flex justify-content-end">
+      <button
+        mat-stroked-button
+        class="dropdown-menu"
+        mat-button
+        [matMenuTriggerFor]="tyneMenu"
+      >
+        ¡Hola {{ this.username }}!
+        <mat-icon matSuffix
+          ><span class="material-icons-outlined"> expand_more </span></mat-icon
+        >
+      </button>
+      <mat-menu class="dropdown-menu__content" #tyneMenu="matMenu">
+        <button
+          (click)="OnNavigate(this.menuItem.key)"
+          *ngFor="let menuItem of menu | keyvalue: asIsOrder"
+          mat-menu-item
+        >
+          {{ menuItem.value }}
+        </button>
+      </mat-menu>
+    </div>
 
-    <div class="row mb-5 pt-3">
-        
-        <div class="col-lg-10">
-            <div class="logo">
-                <img src="/assets/logo2 1.png"  alt="" routerLink="/">
-            </div>
-        </div> 
-
-        <div class="col-lg-2 w-50 mt-3">
-            <button  mat-stroked-button [matMenuTriggerFor]="tyneMenu">¡Hola {{this.username}}! <mat-icon matSuffix ><span class="material-icons-outlined">
-                expand_more
-                </span></mat-icon></button>
-            <mat-menu #tyneMenu="matMenu" xPosition="before">
-                <button (click)="OnNavigate(this.menuItem.key)" *ngFor=" let menuItem of this.menu | keyvalue: asIsOrder" mat-menu-item>{{menuItem.value}}</button>
-            </mat-menu> 
-        </div>
-
-    </div> 
+    <!-- <div class="col-6 col-lg-7 d-flex justify-content-end">
+      <button mat-stroked-button [matMenuTriggerFor]="tyneMenu">
+        ¡Hola {{ this.username }}!
+        <mat-icon matSuffix
+          ><span class="material-icons-outlined"> expand_more </span></mat-icon
+        >
+      </button>
+      <mat-menu #tyneMenu="matMenu" xPosition="before">
+        <button
+          (click)="OnNavigate(this.menuItem.key)"
+          *ngFor="let menuItem of this.menu | keyvalue: asIsOrder"
+          mat-menu-item
+        >
+          {{ menuItem.value }}
+        </button>
+      </mat-menu>
+    </div> -->
+  </div>
 </div>
-
-
