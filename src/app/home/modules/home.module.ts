@@ -5,8 +5,6 @@ import { SharedModule } from "src/app/shared/modules/shared.module";
 import { SearchBarComponent } from "../../shared/components/search-bar/search-bar.component";
 import { BodyComponent } from "../components/body/body.component";
 import { FooterComponent } from "../components/footer/footer.component";
-import { HeaderLoginComponent } from "../components/header-login/header-login.component";
-import { HeaderComponent } from "../components/header/header.component";
 import { HomeComponent } from "../pages/home.component";
 import { HomeRoutingModule } from "../routes/home-routing.module";
 
@@ -14,17 +12,10 @@ import { HomeRoutingModule } from "../routes/home-routing.module";
   declarations: [
     BodyComponent,
     FooterComponent,
-    HeaderComponent,
-    HeaderLoginComponent,
     SearchBarComponent,
     HomeComponent,
   ],
   imports: [CommonModule, HomeRoutingModule, SharedModule, MaterialModule],
-  exports: [
-    FooterComponent,
-    HeaderComponent,
-    HeaderLoginComponent,
-    SearchBarComponent,
-  ],
+  exports: [FooterComponent, SearchBarComponent],
 })
 export class HomeModule {}

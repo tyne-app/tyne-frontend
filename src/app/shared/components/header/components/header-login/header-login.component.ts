@@ -9,13 +9,15 @@ import { ClientService } from "src/app/shared/services/client.service";
   styleUrls: ["./header-login.component.scss"],
 })
 export class HeaderLoginComponent implements OnInit {
-  
-  @Input() public username:string; 
-  public menu: Map<number,string>; 
+  @Input() public username: string;
+  public menu: Map<number, string>;
 
-  constructor(public router: Router, public clientService: ClientService) {}
+  public constructor(
+    public router: Router,
+    public clientService: ClientService
+  ) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.menu = new Map<number, string>()
       .set(1, "Perfil")
       .set(2, "Locales Favoritos")
@@ -23,7 +25,7 @@ export class HeaderLoginComponent implements OnInit {
       .set(4, "Cerrar sesión");
   }
 
-  public asIsOrder(a, b):number {
+  public asIsOrder(a, b): number {
     return 1;
   }
 
@@ -56,11 +58,11 @@ export class HeaderLoginComponent implements OnInit {
     this.goToRoute(TyneRoutes.FavouriteLocal);
   }
 
-  private goToInit(){
+  private goToInit() {
     this.goToRoute(TyneRoutes.Home);
   }
 
-  private goToTableReservation(): void{
+  private goToTableReservation(): void {
     this.goToRoute(TyneRoutes.TableReservation);
   }
 
