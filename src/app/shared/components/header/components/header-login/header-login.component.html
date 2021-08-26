@@ -1,0 +1,22 @@
+<div class="d-flex justify-content-end">
+  <button
+    mat-raised-button
+    class="dropdown-menu"
+    mat-button
+    [matMenuTriggerFor]="tyneMenu"
+  >
+    ¡Hola {{ this.username }}!
+    <mat-icon matSuffix
+      ><span class="material-icons-outlined"> expand_more </span></mat-icon
+    >
+  </button>
+  <mat-menu class="dropdown-menu__content" #tyneMenu="matMenu">
+    <button
+      (click)="OnNavigate(this.menuItem.key)"
+      *ngFor="let menuItem of menu | keyvalue: asIsOrder"
+      mat-menu-item
+    >
+      {{ menuItem.value }}
+    </button>
+  </mat-menu>
+</div>
