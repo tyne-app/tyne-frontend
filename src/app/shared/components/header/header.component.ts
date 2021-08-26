@@ -19,4 +19,10 @@ export class HeaderComponent implements OnInit {
     const token: string = localStorage.getItem("access_token");
     this.isUserLoggedIn = token != null ? true : false;
   }
+
+  public getLogo(): string {
+    return this.isWhiteLogo
+      ? "../../assets/logo-home.png"
+      : "../../assets/logo2 1.png";
+  }
 }
