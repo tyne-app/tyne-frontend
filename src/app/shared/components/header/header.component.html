@@ -1,2 +1,13 @@
-<app-header-public *ngIf="!isUserLoggedIn"></app-header-public>
-<app-header-login *ngIf="isUserLoggedIn"></app-header-login>
+<div class="container">
+  <div class="row mb-5 pt-3 align-items-center">
+    <div class="col-5 col-lg-5">
+      <div class="logo">
+        <img src="/assets/logo2 1.png" class="img-logo" alt="" routerLink="/" />
+      </div>
+    </div>
+    <div class="col">
+      <app-header-public *ngIf="!isUserLoggedIn"></app-header-public>
+      <app-header-login *ngIf="isUserLoggedIn"></app-header-login>
+    </div>
+  </div>
+</div>
