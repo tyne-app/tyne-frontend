@@ -8,7 +8,8 @@
       color: #3c0000;
     }
     & .mat-menu-item:hover {
-      background: #fafafa !important;
+      background-color: #e10000 !important;
+      color: white;
     }
   }
   ::ng-deep &__content .mat-menu-content {
