@@ -21,7 +21,6 @@ export class HeaderLoginComponent implements OnInit {
   ) {}
 
   public ngOnInit(): void {
-    this.getMenuClients();
     this.getUserData();
   }
 
@@ -29,22 +28,38 @@ export class HeaderLoginComponent implements OnInit {
     return 1;
   }
 
-  public OnNavigate(option: number): void {
+  public onNavigate(option: number): void {
     switch (option) {
       case 1:
-        this.goToPerfil();
+        this.goToRoute(TyneRoutes.ClientProfile);
         break;
       case 2:
-        this.goToFavouriteLocal();
+        this.goToRoute(TyneRoutes.FavouriteLocal);
         break;
       case 3:
-        this.goToTableReservation();
+        this.goToRoute(TyneRoutes.TableReservation);
         break;
       case 4:
-        this.closeSession();
+        this.goToRoute(TyneRoutes.BusinessProfile);
+        break;
+      case 5:
+        this.goToRoute(TyneRoutes.IncomeDetails);
+        break;
+      case 6:
+        this.goToRoute(TyneRoutes.BusinessEditMenu);
+        break;
+      case 7:
+        this.goToRoute(TyneRoutes.Opinions);
+        break;
+      case 8:
+        this.goToRoute(TyneRoutes.BusinessCancelations);
+        break;
+      case 9:
+        this.goToRoute(TyneRoutes.Home);
+        this.clientService.logout();
         break;
       default:
-        this.goToInit();
+        this.goToRoute(TyneRoutes.Home);
         break;
     }
   }
@@ -52,35 +67,25 @@ export class HeaderLoginComponent implements OnInit {
   private getUserData() {
     const token = this.tokenService.getDecodedJwtToken();
     this.claims = token.claims;
+    this.getMenuUser();
   }
 
-  private getMenuClients() {
-    this.menu = new Map<number, string>()
-      .set(1, "Perfil")
-      .set(2, "Locales Favoritos")
-      .set(3, "Reservas Pendientes")
-      .set(4, "Cerrar sesión");
-  }
-
-  private closeSession(): void {
-    this.goToRoute(TyneRoutes.Home);
-    this.clientService.logout();
-  }
-
-  private goToFavouriteLocal(): void {
-    this.goToRoute(TyneRoutes.FavouriteLocal);
-  }
-
-  private goToInit() {
-    this.goToRoute(TyneRoutes.Home);
-  }
-
-  private goToTableReservation(): void {
-    this.goToRoute(TyneRoutes.TableReservation);
-  }
-
-  private goToPerfil(): void {
-    this.goToRoute(TyneRoutes.ClientProfile);
+  private getMenuUser() {
+    if (this.claims.rol === "user") {
+      this.menu = new Map<number, string>()
+        .set(1, "Perfil")
+        .set(2, "Locales Favoritos")
+        .set(3, "Reservas Pendientes")
+        .set(9, "Cerrar Sesión");
+    } else {
+      this.menu = new Map<number, string>()
+        .set(4, "Perfil Local")
+        .set(5, "Caja Virtual")
+        .set(6, "Carta / Menú")
+        .set(7, "Opiniones")
+        .set(8, "Cancelaciones")
+        .set(9, "Cerrar Sesión");
+    }
   }
 
   private goToRoute(routename: string): void {

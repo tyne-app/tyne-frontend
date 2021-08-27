@@ -12,7 +12,7 @@
   </button>
   <mat-menu class="dropdown-menu__content" #tyneMenu="matMenu">
     <button
-      (click)="OnNavigate(this.menuItem.key)"
+      (click)="onNavigate(this.menuItem.key)"
       *ngFor="let menuItem of menu | keyvalue: asIsOrder"
       mat-menu-item
     >
