@@ -1,6 +1,8 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { TyneRoutes } from "src/app/shared/constants/url-routes";
+import { TokenService } from "src/app/shared/helpers/token.service";
+import { Claims } from "src/app/shared/interfaces/token";
 import { ClientService } from "src/app/shared/services/client.service";
 
 @Component({
@@ -9,20 +11,18 @@ import { ClientService } from "src/app/shared/services/client.service";
   styleUrls: ["./header-login.component.scss"],
 })
 export class HeaderLoginComponent implements OnInit {
-  @Input() public username: string;
   public menu: Map<number, string>;
+  public claims: Claims;
 
   public constructor(
-    public router: Router,
-    public clientService: ClientService
+    private router: Router,
+    private clientService: ClientService,
+    private tokenService: TokenService
   ) {}
 
   public ngOnInit(): void {
-    this.menu = new Map<number, string>()
-      .set(1, "Perfil")
-      .set(2, "Locales Favoritos")
-      .set(3, "Reservas Pendientes")
-      .set(4, "Cerrar sesión");
+    this.getMenuClients();
+    this.getUserData();
   }
 
   public asIsOrder(a, b): number {
@@ -49,6 +49,19 @@ export class HeaderLoginComponent implements OnInit {
     }
   }
 
+  private getUserData() {
+    const token = this.tokenService.getDecodedJwtToken();
+    this.claims = token.claims;
+  }
+
+  private getMenuClients() {
+    this.menu = new Map<number, string>()
+      .set(1, "Perfil")
+      .set(2, "Locales Favoritos")
+      .set(3, "Reservas Pendientes")
+      .set(4, "Cerrar sesión");
+  }
+
   private closeSession(): void {
     this.goToRoute(TyneRoutes.Home);
     this.clientService.logout();
@@ -70,7 +83,7 @@ export class HeaderLoginComponent implements OnInit {
     this.goToRoute(TyneRoutes.ClientProfile);
   }
 
-  public goToRoute(routename: string): void {
+  private goToRoute(routename: string): void {
     this.router.navigate([`${routename}`]);
   }
 }
