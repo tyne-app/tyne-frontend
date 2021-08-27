@@ -6,7 +6,9 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./business-profile-edit-work-days.component.scss"],
 })
 export class BusinessProfileEditWorkDaysComponent implements OnInit {
-  public constructor() {}
+  public checked = false;
 
-  public ngOnInit(): void {}
+  public constructor() { }
+
+  public ngOnInit(): void { }
 }

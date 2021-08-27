@@ -1,5 +1,12 @@
 @import "../../../../styles.scss";
 
+::ng-deep .business-profile-dialog {
+  @include view-min(600px) {
+    max-width: 75% !important;
+
+  }
+}
+
 .close {
   padding: 0 8px;
   min-width: 40px;
@@ -15,5 +22,38 @@
   text-align: center;
   @include view-min(992px) {
     font-size: 2.2rem;
+  }
+}
+
+.font-sz-22 {
+  font-size: 1.4rem;
+}
+.font-sz-19 {
+  font-size: 1.188rem;
+}
+
+.hours-input, .h-40 {
+  height: 40px;
+}
+
+.wrap-toggle  ::ng-deep .mat-slide-toggle-content {
+  margin-left: 25px;
+  font-size: 1.1rem;
+}
+
+.hours-input {
+  border: 1.5px solid rgba(191, 191, 191, .5);
+  border-radius: 10px;
+  font-size: 1.4rem;
+  max-width: 100%;
+  min-width: 145px;
+  text-align: center;
+  // @include view-min(992px) {
+  //   max-width: 90%;
+  // }
+  &:focus {
+    outline: 0;
+    border-color: #D2D6D6;
+    box-shadow: 0 0 0 .15rem rgb(210 214 214 / 25% );
   }
 }
