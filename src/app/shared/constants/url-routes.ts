@@ -18,4 +18,7 @@ export enum TyneRoutes {
   QualifyExperience = "calificar-experiencia",
   NotFound = "pagina-no-encontrada",
   BusinessDetail = "detalle-local",
+  IncomeDetails = "caja-virtual",
+  Opinions = "opiniones",
+  BusinessCancelations = "cancelaciones",
 }

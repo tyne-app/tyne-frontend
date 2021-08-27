@@ -1,6 +1,8 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { TyneRoutes } from "src/app/shared/constants/url-routes";
+import { TokenService } from "src/app/shared/helpers/token.service";
+import { Claims } from "src/app/shared/interfaces/token";
 import { ClientService } from "src/app/shared/services/client.service";
 
 @Component({
@@ -9,68 +11,87 @@ import { ClientService } from "src/app/shared/services/client.service";
   styleUrls: ["./header-login.component.scss"],
 })
 export class HeaderLoginComponent implements OnInit {
-  @Input() public username: string;
   public menu: Map<number, string>;
+  public claims: Claims;
 
   public constructor(
-    public router: Router,
-    public clientService: ClientService
+    private router: Router,
+    private clientService: ClientService,
+    private tokenService: TokenService
   ) {}
 
   public ngOnInit(): void {
-    this.menu = new Map<number, string>()
-      .set(1, "Perfil")
-      .set(2, "Locales Favoritos")
-      .set(3, "Reservas Pendientes")
-      .set(4, "Cerrar sesión");
+    this.getUserData();
   }
 
   public asIsOrder(a, b): number {
     return 1;
   }
 
-  public OnNavigate(option: number): void {
+  public onNavigate(option: number): void {
     switch (option) {
       case 1:
-        this.goToPerfil();
+        this.goToRoute(TyneRoutes.ClientProfile);
         break;
       case 2:
-        this.goToFavouriteLocal();
+        this.goToRoute(TyneRoutes.FavouriteLocal);
         break;
       case 3:
-        this.goToTableReservation();
+        this.goToRoute(TyneRoutes.TableReservation);
         break;
       case 4:
-        this.closeSession();
+        this.goToRoute(TyneRoutes.BusinessProfile);
+        break;
+      case 5:
+        this.goToRoute(TyneRoutes.IncomeDetails);
+        break;
+      case 6:
+        this.goToRoute(TyneRoutes.BusinessEditMenu);
+        break;
+      case 7:
+        this.goToRoute(TyneRoutes.Opinions);
+        break;
+      case 8:
+        this.goToRoute(TyneRoutes.BusinessCancelations);
+        break;
+      case 9:
+        this.goToRoute(TyneRoutes.Home);
+        this.clientService.logout();
         break;
       default:
-        this.goToInit();
+        this.goToRoute(TyneRoutes.Home);
         break;
     }
   }
 
-  private closeSession(): void {
-    this.goToRoute(TyneRoutes.Home);
-    this.clientService.logout();
+  private getUserData() {
+    const token = this.tokenService.getDecodedJwtToken();
+    this.claims = token.claims;
+    this.getMenuUser();
   }
 
-  private goToFavouriteLocal(): void {
-    this.goToRoute(TyneRoutes.FavouriteLocal);
+  private getMenuUser() {
+    if (this.claims.rol === "user") {
+      this.menu = new Map<number, string>()
+        .set(1, "Perfil")
+        .set(2, "Locales Favoritos")
+        .set(3, "Reservas Pendientes")
+        .set(9, "Cerrar Sesión");
+    } else {
+      this.menu = new Map<number, string>()
+        .set(4, "Perfil Local")
+        .set(5, "Caja Virtual")
+        .set(6, "Carta / Menú")
+        .set(7, "Opiniones")
+        .set(8, "Cancelaciones")
+        .set(9, "Cerrar Sesión");
+    }
   }
 
-  private goToInit() {
-    this.goToRoute(TyneRoutes.Home);
-  }
-
-  private goToTableReservation(): void {
-    this.goToRoute(TyneRoutes.TableReservation);
-  }
-
-  private goToPerfil(): void {
-    this.goToRoute(TyneRoutes.ClientProfile);
-  }
-
-  public goToRoute(routename: string): void {
+  private goToRoute(routename: string): void {
+    if (this.router.url === `/${routename}`) {
+      window.location.reload();
+    }
     this.router.navigate([`${routename}`]);
   }
 }

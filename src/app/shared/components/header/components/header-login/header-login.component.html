@@ -5,14 +5,14 @@
     mat-button
     [matMenuTriggerFor]="tyneMenu"
   >
-    ¡Hola {{ this.username }}!
+    ¡Hola {{ this.claims ? this.claims.name : null }}!
     <mat-icon matSuffix
       ><span class="material-icons-outlined"> expand_more </span></mat-icon
     >
   </button>
   <mat-menu class="dropdown-menu__content" #tyneMenu="matMenu">
     <button
-      (click)="OnNavigate(this.menuItem.key)"
+      (click)="onNavigate(this.menuItem.key)"
       *ngFor="let menuItem of menu | keyvalue: asIsOrder"
       mat-menu-item
     >

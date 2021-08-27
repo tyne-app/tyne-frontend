@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
+import { TokenService } from "../../helpers/token.service";
 
 @Component({
   selector: "app-header",
@@ -9,15 +10,15 @@ export class HeaderComponent implements OnInit {
   @Input() public isWhiteLogo = true;
   public isUserLoggedIn = false;
 
-  public constructor() {}
+  public constructor(private tokenService: TokenService) {}
 
   public ngOnInit(): void {
     this.verifyIfUserIsLoggedIn();
   }
 
   private verifyIfUserIsLoggedIn() {
-    const token: string = localStorage.getItem("access_token");
-    this.isUserLoggedIn = token != null ? true : false;
+    const token = this.tokenService.isTokenSavedInLocalStorage();
+    this.isUserLoggedIn = token;
   }
 
   public getLogo(): string {

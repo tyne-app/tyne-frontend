@@ -16,7 +16,7 @@ const routes: Routes = [
     loadChildren: () =>
       import("./business-details/modules/business-details.module").then(
         (m) => m.BusinessDetailsModule
-      ),canActivate: [AuthGuard]
+      ),
   },
   {
     path: TyneRoutes.BusinessRegister,
@@ -30,14 +30,16 @@ const routes: Routes = [
     loadChildren: () =>
       import("./client-profile/modules/client-profile.module").then(
         (m) => m.ClientProfileModule
-      ),canActivate: [AuthGuard]
+      ),
+    canActivate: [AuthGuard],
   },
   {
     path: TyneRoutes.BusinessProfile,
     loadChildren: () =>
       import("./business-profile/modules/business-registration.module").then(
         (m) => m.BusinessProfileModule
-      ),canActivate: [AuthGuard]
+      ),
+    canActivate: [AuthGuard],
   },
   {
     path: TyneRoutes.Refund,
@@ -70,7 +72,8 @@ const routes: Routes = [
     loadChildren: () =>
       import("./business-menus/modules/business-menus.module").then(
         (m) => m.BusinessMenusModule
-      ),canActivate: [AuthGuard]
+      ),
+    canActivate: [AuthGuard],
   },
   {
     path: TyneRoutes.NotFound,
