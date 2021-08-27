@@ -84,6 +84,10 @@ export class HeaderLoginComponent implements OnInit {
   }
 
   private goToRoute(routename: string): void {
+    // if (this.router.url === routename) {
+    //   //
+    // }
+    // console.log(this.router.url);
     this.router.navigate([`${routename}`]);
   }
 }

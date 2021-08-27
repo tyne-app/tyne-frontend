@@ -5,7 +5,7 @@
     mat-button
     [matMenuTriggerFor]="tyneMenu"
   >
-    ¡Hola {{ this.claims.name }}!
+    ¡Hola {{ this.claims ? this.claims.name : null }}!
     <mat-icon matSuffix
       ><span class="material-icons-outlined"> expand_more </span></mat-icon
     >
