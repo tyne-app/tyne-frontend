@@ -5,19 +5,19 @@ import { NgControl } from "@angular/forms";
   selector: "[phoneMask]",
 })
 export class PhoneMaskDirective {
-  constructor(public ngControl: NgControl) {}
+  public constructor(public ngControl: NgControl) {}
 
   @HostListener("ngModelChange", ["$event"])
-  onModelChange(event) {
+  public onModelChange(event): void {
     this.onInputChange(event, false);
   }
 
   @HostListener("keydown.backspace", ["$event"])
-  keydownBackspace(event) {
+  public keydownBackspace(event): void {
     this.onInputChange(event.target.value, true);
   }
 
-  public onInputChange(event, backspace) {
+  public onInputChange(event, backspace: boolean): void {
     let newVal = event.replace(/\D/g, "");
 
     if (backspace && newVal.length <= 6) {
@@ -44,6 +44,7 @@ export class PhoneMaskDirective {
         "+($1) $2 $3 $4"
       );
     }
+
     this.ngControl.valueAccessor.writeValue(newVal);
   }
 }

@@ -1,7 +1,10 @@
-<ng-container *ngIf="this.dataClientProfile">   
-    <app-header-login [username]="this.claims.name"></app-header-login>
+<ng-container *ngIf="this.dataClientProfile">
+  <app-header [isWhiteLogo]="false"></app-header>
 
-    <app-profile-container [urlImage]="this.urlImage" [ClientDataInfo]="this.claims" ></app-profile-container>
+  <app-profile-container
+    [urlImage]="this.urlImage"
+    [ClientDataInfo]="this.claims"
+  ></app-profile-container>
 
-    <app-footer></app-footer>  
-</ng-container> 
+  <app-footer></app-footer>
+</ng-container>

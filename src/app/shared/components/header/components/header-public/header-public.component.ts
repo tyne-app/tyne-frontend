@@ -6,11 +6,11 @@ import { LoginComponent } from "src/app/login/pages/login.component";
 import { TyneRoutes } from "src/app/shared/constants/url-routes";
 
 @Component({
-  selector: "app-header",
-  templateUrl: "./header.component.html",
-  styleUrls: ["./header.component.scss"],
+  selector: "app-header-public",
+  templateUrl: "./header-public.component.html",
+  styleUrls: ["./header-public.component.scss"],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderPublicComponent implements OnInit {
   @Input()
   public isWhiteLogo = true;
 
