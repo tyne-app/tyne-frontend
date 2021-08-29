@@ -1,8 +1,4 @@
-@mixin view-min($width) {
-  @media only screen and (min-width: $width) {
-    @content;
-  }
-}
+
 
 mat-card {
   background: #fafafa;

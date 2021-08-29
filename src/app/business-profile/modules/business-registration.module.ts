@@ -1,5 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
+import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { Ng9RutModule } from "ng9-rut";
 import { HomeModule } from "src/app/home/modules/home.module";
 import { SharedModule } from "src/app/shared/modules/shared.module";
@@ -30,6 +31,8 @@ import { BusinessProfileRoutingModule } from "../routes/business-registration-ro
     HomeModule,
     SwiperModule,
     Ng9RutModule,
+    MatSlideToggleModule,
   ],
+
 })
-export class BusinessProfileModule {}
+export class BusinessProfileModule { }
