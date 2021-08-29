@@ -36,8 +36,9 @@ export class BusinessProfileBodyComponent implements OnInit {
 
   public openEditDataComponent(): void {
     const dialogRef = this.dialog.open(BusinessProfileEditDataComponent, {
-      maxWidth: "100%",
-      width: "75%",
+      maxWidth: "95%",
+      minWidth: "75%",
+      panelClass: "business-profile-dialog",
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -59,8 +60,9 @@ export class BusinessProfileBodyComponent implements OnInit {
 
   public openEditBankDataComponent(): void {
     const dialogRef = this.dialog.open(BusinessProfileEditBankDataComponent, {
-      maxWidth: "100%",
-      width: "75%",
+      maxWidth: "95%",
+      minWidth: "75%",
+      panelClass: "business-profile-dialog",
     });
 
     dialogRef.afterClosed().subscribe((result) => {

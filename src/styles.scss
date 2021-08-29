@@ -275,6 +275,11 @@ mat-label {
     @content;
   }
 }
+@mixin view-max($width) {
+  @media only screen and (max-width: $width) {
+    @content;
+  }
+}
 
 ::ng-deep.business-profile-dialog .mat-dialog-container {
   padding: 9px;

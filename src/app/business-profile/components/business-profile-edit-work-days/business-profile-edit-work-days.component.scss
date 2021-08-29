@@ -16,6 +16,12 @@
   }
 }
 
+@include view-max(992px) {
+  .grid-container {
+    max-height: 70vh;
+  }
+}
+
 .txt-dialog {
   color: #3c0000;
   font-size: 1.6rem;
