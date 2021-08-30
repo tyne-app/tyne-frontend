@@ -65,11 +65,9 @@ export class SearchResultsComponent implements OnInit {
    */
   private getQueryParams() {
     this.activatedRoute.queryParams.subscribe((x) => {
-      /*
-       * this.form.get("name").setValue(x.name);
-       * this.form.get("dateReservation").setValue(x.dateReservation ? new Date(x.dateReservation) : null);
-       * this.form.get("state").setValue(x.state);
-       */
+      // this.form.get("name").setValue(x.name);
+      // this.form.get("dateReservation").setValue(x.dateReservation ? new Date(x.dateReservation) : null);
+      // this.form.get("state").setValue(x.state);
     });
   }
 }
