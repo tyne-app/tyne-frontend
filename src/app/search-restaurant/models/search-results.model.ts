@@ -2,7 +2,6 @@ export class SearchResultsModel {
   public isFavorite: boolean;
   public name: string;
   public rating: number;
-  public recomendations: number;
   public lowestPrice: number;
   public higherPrice: number;
   public description: string;
@@ -11,7 +10,6 @@ export class SearchResultsModel {
     isFavorite: boolean,
     name: string,
     rating: number,
-    recomendations: number,
     lowestPrice: number,
     higherPrice: number,
     description: string
@@ -19,7 +17,6 @@ export class SearchResultsModel {
     this.isFavorite = isFavorite;
     this.name = name;
     this.rating = rating;
-    this.recomendations = recomendations;
     this.lowestPrice = lowestPrice;
     this.higherPrice = higherPrice;
     this.description = description;
