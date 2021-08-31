@@ -45,9 +45,12 @@ import {
 import { authInterceptorProviders } from "./shared/interceptors/interceptor.service";
 import { RestClientService } from "./shared/services/rest-client.service";
 import { environment } from "src/environments/environment";
+import { ClientMenusComponent } from './client-menus/client-menus.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [	AppComponent,
+      ClientMenusComponent
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
