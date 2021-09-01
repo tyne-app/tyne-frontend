@@ -1,0 +1,198 @@
+@import "../../../styles.scss";
+
+.img-container {
+  background: url(../../../assets/bg_home.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.principal-title {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 75px;
+  text-align: center;
+  color: #fffdfa;
+}
+
+.title {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 48px;
+  color: #3c0000;
+  margin-top: 15px;
+}
+
+.money {
+  color: #3c0000;
+  font-size: 28px;
+  margin-top: -10px;
+}
+
+.section-title {
+  font-weight: normal;
+  font-size: 25px;
+  line-height: 30px;
+  color: #3c0000;
+  @media only screen and (max-width: 600px) {
+    font-size: 1.2rem;
+  }
+}
+
+.panel-description {
+  align-self: center;
+  width: 100%;
+  justify-content: center;
+}
+
+.mat-icon {
+  color: #e10000;
+}
+
+@mixin btn-baseStyles {
+  color: #3c0000;
+  background: #fff;
+  border: 1px solid #e10000;
+  box-sizing: border-box;
+  border-radius: 10px;
+  height: 43px;
+  & ::ng-deep .mat-button-wrapper {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    & .mat-icon {
+      margin-right: 0.7rem;
+    }
+  }
+}
+
+.mat-expansion-panel {
+  margin-top: 10px;
+}
+
+.mat-expansion-panel-header {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.panel-description {
+  align-self: center;
+  width: 100%;
+  justify-content: center;
+}
+
+.title-icon-toggle {
+  width: 30%;
+  justify-content: flex-end;
+}
+
+.toggleIcon {
+  // pointer-events: auto;
+  font-size: 40px;
+  color: #3c0000;
+}
+
+// .name-product {
+//   font-style: normal;
+//   font-weight: normal;
+//   font-size: 18px;
+//   color: #3c0000;
+// }
+
+// .price {
+//   color: #3c0000;
+//   font-weight: normal;
+//   font-size: 18px;
+// }
+
+:host
+  ::ng-deep
+  .mat-form-field-appearance-outline.mat-focused
+  .mat-form-field-outline-thick {
+  color: #fff;
+}
+
+:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: #fff;
+}
+
+:host ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+  background-color: #fff;
+}
+
+:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
+  padding: 0;
+}
+
+:host ::ng-deep .mat-form-field:hover {
+  background-color: #fff;
+}
+
+mat-divider {
+  margin-top: 25px;
+}
+
+.panel-header {
+  border: 1px solid;
+}
+
+.product-h-img {
+  border-radius: 10px;
+}
+
+@media only screen and (min-width: 992px) {
+  .product-h-img {
+    height: 165px;
+  }
+}
+
+.add-remove-item-icon {
+  padding-top: 17px;
+  cursor: pointer;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.quantity-item {
+  color: #3c0000;
+  vertical-align: super;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.col-price {
+  text-align: center;
+  @include view-max(992px) {
+    text-align: right;
+  }
+}
+
+.col-add-remove {
+  text-align: center;
+  @include view-max(992px) {
+    text-align: left;
+  }
+}
+
+.p-message {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 18px;
+  color: #3c0000;
+}
+
+.panel-total {
+  border: 1px solid;
+  pointer-events: none;
+}

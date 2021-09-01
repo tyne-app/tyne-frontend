@@ -1,6 +1,6 @@
 <div class="img-container">
   <!--Header-->
-  <app-header [isWhiteLogo]="false"></app-header>
+  <app-header [isWhiteLogo]="true"></app-header>
 
   <!--Content-->
   <div class="container">
@@ -136,7 +136,11 @@
                   </div>
 
                   <div
-                    *ngFor="let product of products(section); let p = index"
+                    *ngFor="
+                      let product of products(section);
+                      let p = index;
+                      let length = count
+                    "
                     class="pb-4 wrap-product"
                   >
                     <ng-container [formGroup]="product">
@@ -238,7 +242,7 @@
                       </div>
                     </ng-container>
 
-                    <mat-divider></mat-divider>
+                    <mat-divider *ngIf="p != length - 1"></mat-divider>
                   </div>
                 </div>
               </ng-container>
