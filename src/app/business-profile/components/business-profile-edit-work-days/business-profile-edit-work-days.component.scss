@@ -3,7 +3,6 @@
 ::ng-deep .business-profile-dialog {
   @include view-min(600px) {
     max-width: 75% !important;
-
   }
 }
 
@@ -44,11 +43,12 @@
   font-size: 1rem;
 }
 
-.hours-input, .h-40 {
+.hours-input,
+.h-40 {
   height: 40px;
 }
 
-.wrap-toggle  ::ng-deep .mat-slide-toggle-content {
+.wrap-toggle ::ng-deep .mat-slide-toggle-content {
   @include view-min(577px) {
     margin-left: 6px;
   }
@@ -56,11 +56,10 @@
     margin-left: 25px;
     font-size: 1.1rem;
   }
-
 }
 
 .hours-input {
-  border: 1.5px solid rgba(191, 191, 191, .5);
+  border: 1.5px solid rgba(191, 191, 191, 0.5);
   border-radius: 10px;
   font-size: 1.1rem;
   max-width: 100%;
@@ -73,8 +72,8 @@
   }
   &:focus {
     outline: 0;
-    border-color: #D2D6D6;
-    box-shadow: 0 0 0 .15rem rgb(210 214 214 / 25% );
+    border-color: #d2d6d6;
+    box-shadow: 0 0 0 0.15rem rgb(210 214 214 / 25%);
   }
 }
 

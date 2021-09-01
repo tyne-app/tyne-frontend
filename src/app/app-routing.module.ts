@@ -34,6 +34,13 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: TyneRoutes.ClientMenu,
+    loadChildren: () =>
+      import("./client-menus/modules/business-menus.module").then(
+        (m) => m.ClientMenusModule
+      ),
+  },
+  {
     path: TyneRoutes.BusinessProfile,
     loadChildren: () =>
       import("./business-profile/modules/business-registration.module").then(
@@ -73,7 +80,6 @@ const routes: Routes = [
       import("./business-menus/modules/business-menus.module").then(
         (m) => m.BusinessMenusModule
       ),
-    canActivate: [AuthGuard],
   },
   {
     path: TyneRoutes.NotFound,

@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { TyneRoutes } from "src/app/shared/constants/url-routes";
 
 @Component({
   selector: "app-business-details-body",
@@ -13,7 +15,7 @@ export class BusinessDetailsBodyComponent implements OnInit {
     "Juan y medio Las Condes",
   ];
 
-  public constructor() {}
+  public constructor(private router: Router) {}
 
   public ngOnInit(): void {
     //
@@ -21,5 +23,13 @@ export class BusinessDetailsBodyComponent implements OnInit {
 
   public onFavoriteIconClick(): void {
     this.isFavorite = !this.isFavorite;
+  }
+
+  public redirectToMenu(): void {
+    this.router.navigate(["/" + TyneRoutes.ClientMenu], {
+      queryParams: {
+        id: "1002",
+      },
+    });
   }
 }

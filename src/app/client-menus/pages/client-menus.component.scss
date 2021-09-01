@@ -1,3 +1,5 @@
+@import "../../../styles.scss";
+
 .img-container {
   background: url(../../../assets/bg_home.jpg);
   background-repeat: no-repeat;
@@ -31,13 +33,18 @@
 
 .section-title {
   font-weight: normal;
-  font-size: 1.5rem;
+  font-size: 25px;
   line-height: 30px;
-  text-align: center;
   color: #3c0000;
   @media only screen and (max-width: 600px) {
     font-size: 1.2rem;
   }
+}
+
+.panel-description {
+  align-self: center;
+  width: 100%;
+  justify-content: center;
 }
 
 .mat-icon {
@@ -61,53 +68,6 @@
   }
 }
 
-.btn-add-accordion {
-  @include btn-baseStyles;
-  // width: 100%;
-  min-width: 216px;
-  margin-left: 8px;
-}
-
-.btn-accordion {
-  color: #3c0000;
-  background: white;
-  border: 1px solid #e10000;
-  box-sizing: border-box;
-  border-radius: 10px;
-  width: 100%;
-  width: 216px;
-  height: 43px;
-  pointer-events: auto;
-}
-
-.btn-delete {
-  @include btn-baseStyles;
-  min-width: 216px;
-  pointer-events: auto;
-  @media only screen and (max-width: 600px) {
-    min-width: 56px;
-    & ::ng-deep .mat-button-wrapper .txt-btn {
-      display: none;
-    }
-    & ::ng-deep .mat-button-wrapper .mat-icon {
-      margin-right: 0;
-    }
-  }
-}
-
-.btn-change-photo {
-  @include btn-baseStyles;
-  width: 100%;
-  pointer-events: auto;
-}
-
-.btn-delete-product {
-  @include btn-baseStyles;
-  width: 100%;
-  pointer-events: auto;
-  margin-top: 10px;
-}
-
 .mat-expansion-panel {
   margin-top: 10px;
 }
@@ -128,40 +88,24 @@
   justify-content: flex-end;
 }
 
-.disabled-pointer {
-  pointer-events: none;
-}
-
 .toggleIcon {
-  pointer-events: auto;
+  // pointer-events: auto;
   font-size: 40px;
   color: #3c0000;
 }
 
-.name-product {
-  font-style: normal;
-  font-weight: normal;
-  font-size: 18px;
-  color: #3c0000;
-}
+// .name-product {
+//   font-style: normal;
+//   font-weight: normal;
+//   font-size: 18px;
+//   color: #3c0000;
+// }
 
-.input-product-name {
-  width: 100%;
-}
-
-.input-product-price {
-  width: 60%;
-}
-
-.input-product-description {
-  width: 100%;
-}
-
-.price {
-  color: #3c0000;
-  font-weight: normal;
-  font-size: 18px;
-}
+// .price {
+//   color: #3c0000;
+//   font-weight: normal;
+//   font-size: 18px;
+// }
 
 :host
   ::ng-deep
@@ -186,28 +130,16 @@
   background-color: #fff;
 }
 
-.mat-input-element {
-  color: #3c0000;
-  font-weight: normal;
-  font-size: 18px;
-}
-
 mat-divider {
   margin-top: 25px;
 }
 
 .panel-header {
   border: 1px solid;
-  pointer-events: none;
 }
 
-.icon-edit {
-  pointer-events: auto;
-  cursor: pointer;
-}
-
-.title-input {
-  text-align: center;
+.product-h-img {
+  border-radius: 10px;
 }
 
 @media only screen and (min-width: 992px) {
@@ -216,10 +148,51 @@ mat-divider {
   }
 }
 
-.center-text {
-  text-align: center;
+.add-remove-item-icon {
+  padding-top: 17px;
+  cursor: pointer;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
-.left-text {
-  text-align: left;
+.quantity-item {
+  color: #3c0000;
+  vertical-align: super;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.col-price {
+  text-align: center;
+  @include view-max(992px) {
+    text-align: right;
+  }
+}
+
+.col-add-remove {
+  text-align: center;
+  @include view-max(992px) {
+    text-align: left;
+  }
+}
+
+.p-message {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 18px;
+  color: #3c0000;
+}
+
+.panel-total {
+  border: 1px solid;
+  pointer-events: none;
 }

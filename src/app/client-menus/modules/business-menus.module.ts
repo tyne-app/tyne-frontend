@@ -4,13 +4,13 @@ import { FormsModule } from "@angular/forms";
 import { MaterialModule } from "src/app/shared/modules/material.module";
 import { SharedModule } from "src/app/shared/modules/shared.module";
 import { HomeModule } from "../../home/modules/home.module";
-import { BusinessMenusComponent } from "../pages/business-menus.component";
-import { BusinessMenusRoutingModule } from "../routes/business-menus-routing.module";
+import { ClientMenusComponent } from "../pages/client-menus.component";
+import { ClientMenusRoutingModule } from "../routes/client-menus-routing.module";
 
 @NgModule({
-  declarations: [BusinessMenusComponent],
+  declarations: [ClientMenusComponent],
   imports: [
-    BusinessMenusRoutingModule,
+    ClientMenusRoutingModule,
     CommonModule,
     HomeModule,
     SharedModule,
@@ -18,4 +18,4 @@ import { BusinessMenusRoutingModule } from "../routes/business-menus-routing.mod
     FormsModule,
   ],
 })
-export class BusinessMenusModule {}
+export class ClientMenusModule {}
