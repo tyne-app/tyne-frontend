@@ -40,7 +40,10 @@ export class CreateReservationComponent implements OnInit {
     this.form = this.fb.group({
       peopleNumber: ["1", [Validators.min(1), Validators.max(20)]],
       dateReservation: ["", [DateValidator.validator, Validators.required]],
-      hourReservation: ["", []],
+      hourReservation: [
+        "",
+        [Validators.required, Validators.pattern(DateValidator.timeRegex())],
+      ],
       preferredLocation: ["", [Validators.required, Validators.min(1)]],
     });
   }
@@ -59,7 +62,7 @@ export class CreateReservationComponent implements OnInit {
   }
 
   // #region Errors
-  public peopleNumberErrorMessage(): string {
+  public getPeopleNumberErrorMessage(): string {
     const control = this.form.get("peopleNumber");
     return control.hasError("min")
       ? ErrorMessages.Min.replace("{0}", "1")
@@ -68,7 +71,7 @@ export class CreateReservationComponent implements OnInit {
       : null;
   }
 
-  public dateReservationErrorMessage(): string {
+  public getDateReservationErrorMessage(): string {
     const control = this.form.get("dateReservation");
     return control.hasError("required")
       ? ErrorMessages.InvalidVariant.replace("{0}", "fecha")
@@ -76,6 +79,15 @@ export class CreateReservationComponent implements OnInit {
       ? "Debe ser igual o mayor a hoy"
       : control.hasError("matDatepickerParse")
       ? ErrorMessages.InvalidVariant.replace("{0}", "fecha")
+      : null;
+  }
+
+  public getHourReservationErrorMessage(): string {
+    const control = this.form.get("hourReservation");
+    return control.hasError("pattern")
+      ? ErrorMessages.InvalidVariant.replace("{0}", "hora")
+      : control.hasError("required")
+      ? ErrorMessages.RequiredVariant.replace("{0}", "hora")
       : null;
   }
 

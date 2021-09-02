@@ -8,8 +8,7 @@ import { HeaderModule } from "../components/header/modules/header.module";
 import { MapComponent } from "../components/map/components/map.component";
 import { NotFoundPageComponent } from "../components/not-found-page/not-found-page.component";
 import { SpinnerComponent } from "../components/spinner/spinner.component";
-import { PhoneMaskDirective } from "../directives/phone-mask.directive";
-import { SanitizeHtmlDirective } from "../directives/sanitize-html.directive";
+import { SharedDirectivesModule } from "../directives/modules/shared-directives.module";
 import { ErrorHandlerModule } from "../errors/error-handler.module";
 import { SafeHtml } from "../pipe/safeHtml.pipe";
 import { MaterialModule } from "./material.module";
@@ -19,9 +18,6 @@ import { MaterialModule } from "./material.module";
     MapComponent,
     CloseModalComponent,
     SpinnerComponent,
-    PhoneMaskDirective,
-    PhoneMaskDirective,
-    SanitizeHtmlDirective,
     SafeHtml,
     NotFoundPageComponent,
     HeaderComponent,
@@ -30,17 +26,17 @@ import { MaterialModule } from "./material.module";
     CommonModule,
     MaterialModule,
     ReactiveFormsModule,
+    SharedDirectivesModule,
     RouterModule,
     ErrorHandlerModule,
     HeaderModule,
   ],
   exports: [
     ReactiveFormsModule,
+    SharedDirectivesModule,
     MapComponent,
     CloseModalComponent,
-    PhoneMaskDirective,
     SpinnerComponent,
-    SanitizeHtmlDirective,
     SafeHtml,
     NotFoundPageComponent,
     HeaderComponent,

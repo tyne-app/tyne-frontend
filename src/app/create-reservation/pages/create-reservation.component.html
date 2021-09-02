@@ -26,7 +26,7 @@
         >
 
         <mat-error>
-          {{ peopleNumberErrorMessage() }}
+          {{ getPeopleNumberErrorMessage() }}
         </mat-error>
       </div>
     </div>
@@ -50,7 +50,7 @@
           ></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
           <mat-error>
-            {{ dateReservationErrorMessage() }}
+            {{ getDateReservationErrorMessage() }}
           </mat-error>
         </mat-form-field>
       </div>
@@ -61,14 +61,19 @@
         <label class="titulo-3">A las</label>
       </div>
       <div class="col-xl-3 col-lg-4">
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="input-hour-reservation">
           <!-- <mat-label></mat-label> -->
           <input
             matInput
             formControlName="hourReservation"
             type="text"
             placeholder="HH:MM"
+            maxlength="5"
+            time
           />
+          <mat-error>
+            {{ getHourReservationErrorMessage() }}
+          </mat-error>
         </mat-form-field>
       </div>
     </div>
@@ -94,13 +99,13 @@
     </div>
 
     <div class="row pt-5">
-      <div class="col-12 col-md-6 col-lg-6 col-center">
+      <div class="col-12 col-md-6 col-lg-6 col-right">
         <button type="button" class="btn-normal-red" [mat-dialog-close]="true">
           Volver
         </button>
       </div>
 
-      <div class="col-12 col-md-6 col-lg-6 col-center">
+      <div class="col-12 col-md-6 col-lg-6 col-left">
         <button type="submit" class="btn-submit" mat-raised-button>
           Ir a medios de pago
         </button>
