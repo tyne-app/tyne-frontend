@@ -1,0 +1,96 @@
+<!-- <app-close-modal></app-close-modal> -->
+
+<div class="container body">
+  <form
+    [formGroup]="form"
+    (ngSubmit)="save()"
+    (keydown.enter)="$event.preventDefault()"
+  >
+    <div class="row">
+      <div class="col-lg-7 mt-3">
+        <label class="titulo-3">Reservar mesa para</label>
+      </div>
+      <div class="col-xl-3 col-lg-4 col-add-remove">
+        <mat-icon class="add-remove-item-icon">remove_circle_outline</mat-icon>
+        <label class="quantity-item">0</label>
+        <mat-icon class="add-remove-item-icon">add_circle_outline</mat-icon>
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="col-lg-7">
+        <label class="titulo-3">Para el día</label>
+      </div>
+      <div class="col-xl-3 col-lg-4">
+        <mat-form-field appearance="outline">
+          <mat-label>Ingresa fecha de reserva</mat-label>
+          <input
+            matInput
+            formControlName="dateReservation"
+            autocomplete="off"
+            [matDatepicker]="picker"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error>
+            {{ dateReservationErrorMessage() }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-7">
+        <label class="titulo-3">A las</label>
+      </div>
+      <div class="col-xl-3 col-lg-4">
+        <mat-form-field appearance="outline">
+          <!-- <mat-label></mat-label> -->
+          <input
+            matInput
+            formControlName="hourReservation"
+            type="text"
+            placeholder="HH:MM"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-7">
+        <label class="titulo-3">Prefieres</label>
+      </div>
+      <div class="col-xl-3 col-lg-4">
+        <mat-form-field appearance="outline">
+          <mat-label>Seleccione</mat-label>
+          <mat-select formControlName="preferredLocation">
+            <mat-option value="0">Seleccionar...</mat-option>
+            <mat-option *ngFor="let x of preferredLocations" [value]="x.id">{{
+              x.name
+            }}</mat-option>
+          </mat-select>
+          <mat-error>
+            {{ getPreferredLocationsError() }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row pt-5">
+      <div class="col-12 col-md-6 col-lg-6 col-center">
+        <button type="button" class="btn-normal-red" [mat-dialog-close]="true">
+          Volver
+        </button>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-6 col-center">
+        <button type="submit" class="btn-submit" mat-raised-button>
+          Ir a medios de pago
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

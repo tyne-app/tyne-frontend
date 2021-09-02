@@ -21,6 +21,8 @@ import { BusinessDetailsModule } from "./business-details/modules/business-detai
 import { ClientProfileModule } from "./client-profile/modules/client-profile.module";
 import { ClientRegistrationModule } from "./client-registration/modules/client-registration.module";
 import { ClientRegistrationComponent } from "./client-registration/pages/client.registration.component";
+import { CreateReservationModule } from "./create-reservation/modules/client-registration.module";
+import { CreateReservationComponent } from "./create-reservation/pages/create-reservation.component";
 import { FrequentQuestionsModule } from "./frecuent-questions/modules/frequent-questions.module";
 import { HomeModule } from "./home/modules/home.module";
 import { LoginModule } from "./login/modules/login.module";
@@ -52,11 +54,13 @@ import { RestClientService } from "./shared/services/rest-client.service";
     FrequentQuestionsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
+    CreateReservationModule,
   ],
   entryComponents: [
     ClientRegistrationComponent,
     LoginComponent,
     SpinnerComponent,
+    CreateReservationComponent,
   ],
   providers: [
     authInterceptorProviders,
