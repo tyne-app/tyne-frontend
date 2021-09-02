@@ -23,7 +23,7 @@ export class HeaderPublicComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log("Closed");
+      //
     });
   }
 
@@ -35,7 +35,7 @@ export class HeaderPublicComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log("Closed");
+      //
     });
   }
 

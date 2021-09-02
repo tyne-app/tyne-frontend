@@ -1,6 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { ReactiveFormsModule } from "@angular/forms";
+import { RouterModule } from "@angular/router";
 import { MaterialModule } from "src/app/shared/modules/material.module";
 import { CloseModalComponent } from "../close-modal/close-modal.component";
 import { FooterComponent } from "../footer/footer.component";
@@ -19,7 +20,13 @@ import { SpinnerComponent } from "../spinner/spinner.component";
     NotFoundPageComponent,
     SpinnerComponent,
   ],
-  imports: [CommonModule, MaterialModule, ReactiveFormsModule, HeaderModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    MaterialModule,
+    ReactiveFormsModule,
+    HeaderModule,
+  ],
   exports: [
     CloseModalComponent,
     FooterComponent,
