@@ -3,6 +3,7 @@ import { NgModule } from "@angular/core";
 import { ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { CloseModalComponent } from "../components/close-modal/close-modal.component";
+import { FooterComponent } from "../components/footer/footer.component";
 import { HeaderComponent } from "../components/header/header.component";
 import { HeaderModule } from "../components/header/modules/header.module";
 import { MapComponent } from "../components/map/components/map.component";
@@ -21,6 +22,7 @@ import { MaterialModule } from "./material.module";
     SafeHtml,
     NotFoundPageComponent,
     HeaderComponent,
+    FooterComponent,
   ],
   imports: [
     CommonModule,
@@ -40,6 +42,7 @@ import { MaterialModule } from "./material.module";
     SafeHtml,
     NotFoundPageComponent,
     HeaderComponent,
+    FooterComponent,
   ],
 })
 export class SharedModule {}
