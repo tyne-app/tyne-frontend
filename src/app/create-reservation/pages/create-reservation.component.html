@@ -1,16 +1,20 @@
-<!-- <app-close-modal></app-close-modal> -->
-
 <div class="container body">
   <form
     [formGroup]="form"
     (ngSubmit)="save()"
     (keydown.enter)="$event.preventDefault()"
   >
+    <div class="row mb-n2">
+      <div class="col col-center">
+        <h3 class="title">Reserva tu mesa</h3>
+      </div>
+    </div>
+
     <div class="row">
-      <div class="col-lg-7 mt-3">
+      <div class="col-xl-7 col-lg-6 mt-3">
         <label class="titulo-3">Reservar mesa para</label>
       </div>
-      <div class="col-xl-3 col-lg-4 col-add-remove">
+      <div class="col-xl-4 col-lg-5 col-add-remove">
         <mat-icon
           class="add-remove-item-icon"
           (click)="removePersonFromReservation()"
@@ -32,10 +36,10 @@
     </div>
 
     <div class="row mt-5">
-      <div class="col-lg-7">
+      <div class="col-xl-7 col-lg-6 mt-1">
         <label class="titulo-3">Para el día</label>
       </div>
-      <div class="col-xl-3 col-lg-4">
+      <div class="col-xl-4 col-lg-5">
         <mat-form-field appearance="outline">
           <mat-label>Ingresa fecha de reserva</mat-label>
           <input
@@ -43,6 +47,7 @@
             formControlName="dateReservation"
             autocomplete="off"
             [matDatepicker]="picker"
+            [min]="minDate"
           />
           <mat-datepicker-toggle
             matSuffix
@@ -57,10 +62,10 @@
     </div>
 
     <div class="row">
-      <div class="col-lg-7">
+      <div class="col-xl-7 col-lg-6 mt-1">
         <label class="titulo-3">A las</label>
       </div>
-      <div class="col-xl-3 col-lg-4">
+      <div class="col-xl-4 col-lg-5">
         <mat-form-field appearance="outline" class="input-hour-reservation">
           <!-- <mat-label></mat-label> -->
           <input
@@ -79,10 +84,10 @@
     </div>
 
     <div class="row">
-      <div class="col-lg-7">
+      <div class="col-xl-7 col-lg-6 mt-1">
         <label class="titulo-3">Prefieres</label>
       </div>
-      <div class="col-xl-3 col-lg-4">
+      <div class="col-xl-4 col-lg-5">
         <mat-form-field appearance="outline">
           <mat-label>Seleccione</mat-label>
           <mat-select formControlName="preferredLocation">

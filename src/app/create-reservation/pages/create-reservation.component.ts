@@ -11,6 +11,7 @@ import { DateValidator } from "src/app/shared/validations/date-validator";
 export class CreateReservationComponent implements OnInit {
   public form: FormGroup;
   public preferredLocations = [];
+  public minDate = new Date();
 
   public constructor(private fb: FormBuilder) {}
 

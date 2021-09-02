@@ -30,8 +30,9 @@ export class ClientMenusComponent implements OnInit {
 
   public openReservationModal(): void {
     const dialogRef = this.dialog.open(CreateReservationComponent, {
-      maxWidth: "100%",
-      width: "75%",
+      maxWidth: "95%",
+      minWidth: "55%",
+      panelClass: "create-reservation-dialog",
     });
   }
 

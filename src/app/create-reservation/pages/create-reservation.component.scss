@@ -5,11 +5,37 @@ mat-form-field {
   padding-bottom: 0px !important;
 }
 
+::ng-deep.create-reservation-dialog .mat-dialog-container {
+  border-radius: 50px;
+  @include view-max(768px) {
+    border-radius: 25px;
+  }
+  @include view-max(425px) {
+    border-radius: 25px;
+  }
+}
+
+.title {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 48px;
+  @include view-max(1195px) {
+    font-size: 36px;
+  }
+  @include view-max(768px) {
+    font-size: 36px;
+  }
+  @include view-max(425px) {
+    font-size: 24px;
+  }
+}
+
 .titulo-3 {
   font-weight: 300;
   margin-bottom: -10px;
-  padding-left: 150px;
+  padding-left: 80px;
   @include view-max(1195px) {
+    font-size: 24px;
     padding-left: 10px;
   }
   @include view-max(768px) {
