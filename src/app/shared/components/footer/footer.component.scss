@@ -1,6 +1,20 @@
+@import "../../../../styles.scss";
+
 .footer {
   background-color: #3c0000;
   margin-top: 15%;
+
+  @include view-min(2560px) {
+    margin-top: 38%;
+  }
+
+  @include view-max(768px) {
+    margin-top: 30%;
+  }
+  @include view-max(425px) {
+    margin-top: 40%;
+  }
+
   &__row {
     padding: 2.5rem 0;
   }
@@ -12,6 +26,7 @@
   &__list--after {
     padding-bottom: 1rem;
     position: relative;
+
     @media only screen and (min-width: 577px) {
       padding-bottom: 0;
     }
