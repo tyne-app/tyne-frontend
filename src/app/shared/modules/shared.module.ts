@@ -4,9 +4,8 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { CloseModalComponent } from "../components/close-modal/close-modal.component";
 import { FooterComponent } from "../components/footer/footer.component";
-import { HeaderComponent } from "../components/header/header.component";
-import { HeaderModule } from "../components/header/modules/header.module";
 import { MapComponent } from "../components/map/components/map.component";
+import { SharedComponentsModule } from "../components/modules/shared-components.module";
 import { NotFoundPageComponent } from "../components/not-found-page/not-found-page.component";
 import { SpinnerComponent } from "../components/spinner/spinner.component";
 import { SharedDirectivesModule } from "../directives/modules/shared-directives.module";
@@ -21,7 +20,6 @@ import { MaterialModule } from "./material.module";
     SpinnerComponent,
     SafeHtml,
     NotFoundPageComponent,
-    HeaderComponent,
     FooterComponent,
   ],
   imports: [
@@ -31,9 +29,10 @@ import { MaterialModule } from "./material.module";
     SharedDirectivesModule,
     RouterModule,
     ErrorHandlerModule,
-    HeaderModule,
+    SharedComponentsModule,
   ],
   exports: [
+    SharedComponentsModule,
     ReactiveFormsModule,
     SharedDirectivesModule,
     MapComponent,
@@ -41,7 +40,6 @@ import { MaterialModule } from "./material.module";
     SpinnerComponent,
     SafeHtml,
     NotFoundPageComponent,
-    HeaderComponent,
     FooterComponent,
   ],
 })
