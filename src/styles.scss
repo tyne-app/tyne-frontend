@@ -1,17 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 @import "bootstrap/dist/css/bootstrap-grid.min.css";
 @import "~swiper/swiper-bundle";
-
-@font-face {
-  font-family: Railway;
-  src: url(assets/font/Raleway-VariableFont_wght.ttf);
-}
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600&display=swap');
 
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Railway', Roboto, "Helvetica Neue", sans-serif;
-}
+  font-family: 'Raleway', Roboto, "Helvetica Neue", sans-serif;
+} 
 
 .error-snackbar {
   background: #f8d7da;
@@ -96,9 +92,10 @@ body {
 }
 
 .titulo-7 {
+  font-family: "Raleway";
   color: #3c0000;
   font-style: normal;
-  font-weight: 300;
+  font-weight: 600;
   font-size: 33px;
   line-height: 43px;
 }

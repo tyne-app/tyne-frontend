@@ -26,6 +26,7 @@
     "@angular/platform-browser-dynamic": "~10.2.5",
     "@angular/router": "~10.2.5",
     "@auth0/angular-jwt": "^5.0.2",
+    "@fontsource/raleway": "^4.5.0",
     "bootstrap": "^4.6.0",
     "firebase": "^8.10.0",
     "mapbox-gl": "^2.4.0",
