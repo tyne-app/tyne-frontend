@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { BusinessProfileComponent } from '../pages/business-profile.component';
 
 const routes: Routes = [
-   {path: '', component: BusinessProfileComponent}
+    { path: '', component: BusinessProfileComponent }
 ];
 
 @NgModule({
