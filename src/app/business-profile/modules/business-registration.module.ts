@@ -33,6 +33,5 @@ import { BusinessProfileRoutingModule } from "../routes/business-registration-ro
     Ng9RutModule,
     MatSlideToggleModule,
   ],
-
 })
-export class BusinessProfileModule { }
+export class BusinessProfileModule {}

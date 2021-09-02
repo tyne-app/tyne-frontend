@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { MatDialog } from "@angular/material/dialog";
+import { CreateReservationComponent } from "src/app/create-reservation/pages/create-reservation.component";
 
 @Component({
   selector: "app-client-menus",
@@ -12,7 +14,7 @@ export class ClientMenusComponent implements OnInit {
   public total = 0;
   public cart: FormGroup[] = [];
 
-  public constructor(private fb: FormBuilder) {}
+  public constructor(private fb: FormBuilder, public dialog: MatDialog) {}
 
   public get sections(): FormArray {
     return this.form.controls["sections"] as FormArray;
@@ -24,6 +26,14 @@ export class ClientMenusComponent implements OnInit {
 
   public saveChanges(): void {
     // console.log(this.form);
+  }
+
+  public openReservationModal(): void {
+    const dialogRef = this.dialog.open(CreateReservationComponent, {
+      maxWidth: "95%",
+      minWidth: "55%",
+      panelClass: "create-reservation-dialog",
+    });
   }
 
   public products(form: any): FormArray {

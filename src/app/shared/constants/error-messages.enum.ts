@@ -13,6 +13,8 @@ export enum ErrorMessages {
   InvalidVariant = "Debe ingresar una {0} válida",
   Minlength = "Debe tener mínimo {0} caracteres",
   Maxlength = "Debe tener máximo {0} caracteres",
+  Min = "El valor mínimo es de {0}",
+  Max = "El valor máximo es de {0}",
   PasswordPattern = "Debe tener como mínimo 8 dígitos, 1 mayúscula y 1 número",
   PasswordDoesntMatch = "La contraseña no coincide",
   EmailDoesntMatch = "El email no coincide",

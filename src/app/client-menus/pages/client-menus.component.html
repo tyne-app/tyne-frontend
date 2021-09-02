@@ -159,7 +159,12 @@
 
       <div class="row">
         <div class="col col-center">
-          <button type="submit" class="btn-submit" mat-raised-button>
+          <button
+            type="submit"
+            class="btn-submit"
+            mat-raised-button
+            (click)="openReservationModal()"
+          >
             Reservar
           </button>
           <p class="p-message">Se abrirá una ventana emergente</p>
