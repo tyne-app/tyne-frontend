@@ -1,51 +1,43 @@
+@import "../../../../styles.scss";
+
 .img-container {
   background-image: url(../../../../assets/img/Error-404.png);
   background-position: center center;
   max-height: 60%;
   background-repeat: no-repeat;
   background-size: cover;
-} 
-
-
-.b-register-button {
-    width: 100%;
-    background-color: #E10000;
-    color: white;
-    border-radius: 10px;
-    font-weight: lighter;
-    margin-block: 1%;
 }
 
-
-.normal-button {
-    width: 100%;
-    background-color: #FFFDFA;
-    border-radius: 10px;
-    color: #E10000;
-    margin-block: 1%;
+.text {
+  width: 678px;
+  height: 154px;
+  font-family: normal;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 64px;
+  line-height: 77px;
+  align-items: center;
+  color: #fffdfa;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  @include view-max(768px) {
+    font-size: 48px;
+  }
+  @include view-max(425px) {
+    font-size: 28px;
+  }
 }
 
-.mat-stroked-button {
-    width: 100%;
-    border-radius: 10px;
-    border-color: #E10000;
-    
+.second-text {
+  @include view-max(425px) {
+    //
+  }
 }
 
-.img-logo {
-    cursor: pointer;
+.btn-submit {
+  @include view-max(768px) {
+    width: 40%;
+  }
+  @include view-max(425px) {
+    width: 60%;
+  }
 }
-
-.text{
-    width: 678px;
-    height: 154px;
-    font-family: normal;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 64px;
-    line-height: 77px;
-    align-items: center; 
-    color: #FFFDFA; 
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
