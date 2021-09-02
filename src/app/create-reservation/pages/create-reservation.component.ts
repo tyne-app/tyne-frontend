@@ -23,9 +23,22 @@ export class CreateReservationComponent implements OnInit {
     // TODO
   }
 
+  public addPersonToReservation(): void {
+    const control = this.form.get("peopleNumber");
+    control.setValue(+control.value + 1);
+  }
+
+  public removePersonFromReservation(): void {
+    const control = this.form.get("peopleNumber");
+
+    if (+control.value > 0) {
+      control.setValue(+control.value - 1);
+    }
+  }
+
   private initForm(): void {
     this.form = this.fb.group({
-      peopleNumber: ["0", [Validators.min(1)]],
+      peopleNumber: ["1", [Validators.min(1), Validators.max(20)]],
       dateReservation: ["", [DateValidator.validator, Validators.required]],
       hourReservation: ["", []],
       preferredLocation: ["", [Validators.required, Validators.min(1)]],
@@ -46,13 +59,23 @@ export class CreateReservationComponent implements OnInit {
   }
 
   // #region Errors
+  public peopleNumberErrorMessage(): string {
+    const control = this.form.get("peopleNumber");
+    return control.hasError("min")
+      ? ErrorMessages.Min.replace("{0}", "1")
+      : control.hasError("max")
+      ? ErrorMessages.Max.replace("{0}", "20")
+      : null;
+  }
+
   public dateReservationErrorMessage(): string {
-    return this.form.get("dateReservation").hasError("required")
-      ? "Debe ingresar una fecha válida"
-      : this.form.get("dateReservation").hasError("invalidDate")
+    const control = this.form.get("dateReservation");
+    return control.hasError("required")
+      ? ErrorMessages.InvalidVariant.replace("{0}", "fecha")
+      : control.hasError("invalidDate")
       ? "Debe ser igual o mayor a hoy"
-      : this.form.get("dateReservation").hasError("matDatepickerParse")
-      ? "Debe ingresar una fecha válida"
+      : control.hasError("matDatepickerParse")
+      ? ErrorMessages.InvalidVariant.replace("{0}", "fecha")
       : null;
   }
 

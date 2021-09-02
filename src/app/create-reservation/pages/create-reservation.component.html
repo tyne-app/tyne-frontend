@@ -11,9 +11,23 @@
         <label class="titulo-3">Reservar mesa para</label>
       </div>
       <div class="col-xl-3 col-lg-4 col-add-remove">
-        <mat-icon class="add-remove-item-icon">remove_circle_outline</mat-icon>
-        <label class="quantity-item">0</label>
-        <mat-icon class="add-remove-item-icon">add_circle_outline</mat-icon>
+        <mat-icon
+          class="add-remove-item-icon"
+          (click)="removePersonFromReservation()"
+          >remove_circle_outline</mat-icon
+        >
+        <label class="quantity-item">{{
+          this.form.get("peopleNumber").value
+        }}</label>
+        <mat-icon
+          class="add-remove-item-icon"
+          (click)="addPersonToReservation()"
+          >add_circle_outline</mat-icon
+        >
+
+        <mat-error>
+          {{ peopleNumberErrorMessage() }}
+        </mat-error>
       </div>
     </div>
 
