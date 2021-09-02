@@ -1,38 +1,10 @@
 <div class="img-container">
-  <div class="container">
-    <div class="row mb-5 pt-3 align-items-center">
-      <div class="col-lg-5">
-        <div class="logo">
-          <img [src]="getLogo()" class="img-logo" routerLink="/" />
-        </div>
-      </div>
-      <div class="col-lg-3 d-flex align-items-end">
-        <div class="b-register-button">
-          <a mat-stroked-button routerLink="/registro-negocio"
-            >¿Quieres unir tu local?</a
-          >
-        </div>
-      </div>
-      <div class="col-lg-2 d-flex align-items-end">
-        <div class="normal-button">
-          <a mat-stroked-button (click)="openLoginDialog()">Iniciar Sesión</a>
-        </div>
-      </div>
-      <div class="col-lg-2 d-flex align-items-end">
-        <div class="normal-button">
-          <a mat-stroked-button (click)="openRegistrationDialog()"
-            >Registrate</a
-          >
-        </div>
-      </div>
-    </div>
-  </div>
-
+  <app-header [isWhiteLogo]="true"></app-header>
   <div class="container mb-3" style="margin-top: 13%">
     <div class="row">
       <div class="col-lg-12 d-flex align-items-center justify-content-center">
         <p class="text">
-          La página que buscas<br /><span class="ml-5">no fue encontrada</span>
+          La página que buscas<br /><span class="ml-lg-5">no fue encontrada</span>
         </p>
       </div>
     </div>
