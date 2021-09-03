@@ -1,6 +1,11 @@
+@import "../../../styles.scss";
+
 mat-form-field {
   width: 100%;
-  margin-bottom: 16px;
+  margin-bottom: 3px;
+  @include view-min(577px) {
+    margin-bottom: 16px;
+  }
 }
 :host::ng-deep.mat-form-field-infix {
   width: 100%;
@@ -38,25 +43,39 @@ mat-form-field {
   color: #3c0000;
 }
 .modal-body-register {
-  overflow-y: auto;
-  overflow-x: hidden;
-  height: 70vh;
+  @include view-max(577px) {
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 80vh;
+  }
   width: auto;
 }
 .close {
-  border-style: none;
-  background-color: #fff;
-  font-size: 1.5em;
+  padding: 0 8px;
+  min-width: 40px;
+  & span {
+    font-size: 1.6rem;
+    color: #3c0000;
+  }
 }
 .facebook-login {
   background-color: #2f80ed;
   width: 80%;
+  @include view-max(577px) {
+    font-size: 1rem;
+    width: 100% !important;
+  }
 }
 .google-login {
   background-color: #fff;
   color: #000;
   width: 80%;
+  @include view-max(577px) {
+    font-size: 1rem;
+    width: 100% !important;
+  }
 }
+
 @media only screen and (min-width: 320px) and (max-width: 425px) {
   .register-button {
     width: 100%;
@@ -74,9 +93,7 @@ mat-form-field {
   .img-welcomer {
     width: 50%;
   }
-  .register-button,
-  .facebook-login,
-  .google-login {
+  .register-button {
     width: 70%;
   }
   .register-title {

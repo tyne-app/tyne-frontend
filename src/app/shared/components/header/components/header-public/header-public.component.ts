@@ -14,12 +14,13 @@ export class HeaderPublicComponent implements OnInit {
   @Input()
   public isWhiteLogo = true;
 
-  public constructor(public dialog: MatDialog, private router: Router) {}
+  public constructor(public dialog: MatDialog, private router: Router) { }
 
   public openRegistrationDialog(): void {
     const dialogRef = this.dialog.open(ClientRegistrationComponent, {
-      maxWidth: "100%",
-      width: "75%",
+      maxWidth: "95%",
+      minWidth: "75%",
+      panelClass: "business-profile-dialog",
     });
 
     dialogRef.afterClosed().subscribe((result) => {
