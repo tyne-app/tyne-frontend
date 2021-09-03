@@ -7,9 +7,9 @@ import {
 } from "@angular/forms";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { ActivatedRoute, Router } from "@angular/router";
+import { State } from "src/app/shared/interfaces/state";
 import { RestaurantService } from "src/app/shared/services/restaurant.service";
-import { State } from "../../interfaces/state";
-import { TerritorialsService } from "../../services/territorials.service";
+import { TerritorialsService } from "src/app/shared/services/territorials.service";
 
 @Component({
   selector: "app-search-bar",
