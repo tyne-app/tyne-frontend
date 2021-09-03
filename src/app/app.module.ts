@@ -29,7 +29,7 @@ import { LoginModule } from "./login/modules/login.module";
 import { LoginComponent } from "./login/pages/login.component";
 import { PrivacyModule } from "./privacy/modules/privacy.module";
 import { RefundPolicyModule } from "./refund-policy/modules/refund-policy.module";
-import { SpinnerComponent } from "./shared/components/spinner/spinner.component";
+import { SpinnerComponent } from "./shared/components/components/spinner/spinner.component";
 import { authInterceptorProviders } from "./shared/interceptors/interceptor.service";
 import { MaterialModule } from "./shared/modules/material.module";
 import { SharedModule } from "./shared/modules/shared.module";

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { TokenService } from "../../../helpers/token.service";
+import { TokenService } from "src/app/shared/helpers/token.service";
 
 @Component({
   selector: "app-header",

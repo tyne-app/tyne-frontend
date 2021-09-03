@@ -3,13 +3,13 @@ import { NgModule } from "@angular/core";
 import { ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { MaterialModule } from "src/app/shared/modules/material.module";
-import { CloseModalComponent } from "../close-modal/close-modal.component";
-import { FooterComponent } from "../footer/footer.component";
-import { HeaderModule } from "../header/modules/header.module";
-import { HeaderComponent } from "../header/pages/header.component";
-import { MapComponent } from "../map/components/map.component";
-import { NotFoundPageComponent } from "../not-found-page/not-found-page.component";
-import { SpinnerComponent } from "../spinner/spinner.component";
+import { CloseModalComponent } from "../components/close-modal/close-modal.component";
+import { FooterComponent } from "../components/footer/footer.component";
+import { HeaderModule } from "../components/header/modules/header.module";
+import { HeaderComponent } from "../components/header/pages/header.component";
+import { MapComponent } from "../components/map/components/map.component";
+import { NotFoundPageComponent } from "../components/not-found-page/not-found-page.component";
+import { SpinnerComponent } from "../components/spinner/spinner.component";
 
 @NgModule({
   declarations: [
