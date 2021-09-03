@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { MaterialModule } from "src/app/shared/modules/material.module";
 import { CloseModalComponent } from "../components/close-modal/close-modal.component";
+import { DialogComponent } from "../components/dialog/pages/dialog.component";
 import { FooterComponent } from "../components/footer/footer.component";
 import { HeaderModule } from "../components/header/modules/header.module";
 import { HeaderComponent } from "../components/header/pages/header.component";
@@ -19,6 +20,7 @@ import { SpinnerComponent } from "../components/spinner/spinner.component";
     MapComponent,
     NotFoundPageComponent,
     SpinnerComponent,
+    DialogComponent,
   ],
   imports: [
     CommonModule,
@@ -34,6 +36,7 @@ import { SpinnerComponent } from "../components/spinner/spinner.component";
     MapComponent,
     NotFoundPageComponent,
     SpinnerComponent,
+    DialogComponent,
   ],
 })
 export class SharedComponentsModule {}

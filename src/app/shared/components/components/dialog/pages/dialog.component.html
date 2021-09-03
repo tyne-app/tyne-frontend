@@ -1,0 +1,22 @@
+<app-close-modal></app-close-modal>
+
+<div class="container">
+  <div class="row">
+    <div class="col col-center">
+      <img class="icon-img" src="../../../../../assets/logo2 1.png" />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col col-center">
+      <h3 class="titulo-3">{{ this.data.title }}</h3>
+      <p class="parrafo">{{ this.data.subtitle }}</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col col-center mt-5">
+      <button class="btn-submit" mat-raised-button (click)="action()">
+        {{ this.data.messageButton }}
+      </button>
+    </div>
+  </div>
+</div>
