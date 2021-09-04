@@ -4,9 +4,12 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialogRef } from "@angular/material/dialog";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { Router } from "@angular/router";
+import { DialogModel } from "src/app/shared/components/components/dialog/models/dialog-model";
+import { DialogService } from "src/app/shared/components/components/dialog/services/dialog.service";
 import { emailRegex } from "src/app/shared/constants/email";
 import { ErrorMessages } from "src/app/shared/constants/error-messages.enum";
 import { passwordRegex } from "src/app/shared/constants/password";
+import { TyneRoutes } from "src/app/shared/constants/url-routes";
 import { Client } from "src/app/shared/interfaces/client";
 import { ClientService } from "src/app/shared/services/client.service";
 import { PasswordValidator } from "src/app/shared/validations/password-validator";
@@ -26,7 +29,8 @@ export class ClientRegistrationComponent implements OnInit {
     public matDialogRef: MatDialogRef<ClientRegistrationComponent>,
     private router: Router,
     private clientService: ClientService,
-    private snackbar: MatSnackBar
+    private snackbar: MatSnackBar,
+    private dialogService: DialogService
   ) {}
 
   public ngOnInit(): void {
@@ -58,22 +62,41 @@ export class ClientRegistrationComponent implements OnInit {
 
     this.clientService.register(client).subscribe(
       () => {
-        // TODO: write here the corresponding code
         this.loading = false;
-        this.showMessage("Cliente creado con éxito");
+        this.showSuccessMessage();
       },
       (error: HttpErrorResponse) => {
         this.loading = false;
         if (error.status === 409) {
-          this.showMessage(
-            "Usuario ya se encuentra registrado en nuestro sistema",
-            false
-          );
+          this.showErrorMessage();
         } else {
           throw error;
         }
       }
     );
+  }
+
+  private showSuccessMessage() {
+    const dialogModel: DialogModel = {
+      title: "¡Se ha registrado exitosamente!",
+      subtitle: "Le hemos enviado un email de bienvenida",
+      isSuccessful: true,
+      messageButton: "Ir a mi cuenta",
+      redirectTo: TyneRoutes.ClientProfile,
+    };
+
+    this.dialogService.openDialog(dialogModel);
+  }
+
+  private showErrorMessage() {
+    const dialogModel: DialogModel = {
+      title: "¡Lo sentimos!",
+      subtitle: "Ya existe una cuenta con estos datos",
+      isSuccessful: false,
+      messageButton: "Volver",
+    };
+
+    this.dialogService.openDialog(dialogModel);
   }
 
   public closeClick(): void {
