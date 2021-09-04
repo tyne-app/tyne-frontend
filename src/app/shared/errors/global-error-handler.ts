@@ -1,20 +1,32 @@
 import { ErrorHandler, Injectable, NgZone } from "@angular/core";
-import { MatSnackBar } from "@angular/material/snack-bar";
+import { DialogModel } from "../components/components/dialog/models/dialog-model";
+import { DialogService } from "../components/components/dialog/services/dialog.service";
+import { ErrorMessages } from "../constants/error-messages.enum";
 
 @Injectable()
 export class GlobalErrorHandler implements ErrorHandler {
-  public constructor(private zone: NgZone, private snackbar: MatSnackBar) {}
+  public constructor(
+    private zone: NgZone,
+    private dialogService: DialogService
+  ) {}
 
   public handleError(error: Error): void {
     if (!error) return;
 
     this.zone.run(() => {
-      this.snackbar.open("Ha ocurrido un error inesperado", "Aceptar", {
-        duration: 8000,
-        panelClass: ["error-snackbar"],
-      });
-
+      this.showErrorMessage();
       console.error("Error details", error);
     });
+  }
+
+  private showErrorMessage() {
+    const dialogModel: DialogModel = {
+      title: "¡Lo sentimos!",
+      subtitle: ErrorMessages.GenericError,
+      isSuccessful: false,
+      messageButton: "Volver",
+    };
+
+    this.dialogService.openDialog(dialogModel);
   }
 }

@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { Router } from "@angular/router";
 import { RutValidator } from "ng9-rut";
+import { DialogModel } from "src/app/shared/components/components/dialog/models/dialog-model";
+import { DialogService } from "src/app/shared/components/components/dialog/services/dialog.service";
 import { emailRegex } from "src/app/shared/constants/email";
 import { ErrorMessages } from "src/app/shared/constants/error-messages.enum";
 import { passwordRegex } from "src/app/shared/constants/password";
@@ -41,7 +43,8 @@ export class BusinessRegistrationComponent implements OnInit {
     private router: Router,
     private territorialsService: TerritorialsService,
     private banksService: BankService,
-    private restaurantService: RestaurantService
+    private restaurantService: RestaurantService,
+    private dialogService: DialogService
   ) {}
 
   public ngOnInit(): void {
@@ -255,13 +258,11 @@ export class BusinessRegistrationComponent implements OnInit {
 
     const newBusiness = this.getBusinessData();
 
-    console.log(JSON.stringify(newBusiness));
-
     this.isLoading = true;
     this.restaurantService.createNewBusiness(newBusiness).subscribe(
       (x) => {
         this.isLoading = false;
-        this.showMessage("Local creado con éxito");
+        this.showSuccessMessage();
       },
       (error) => {
         this.isLoading = false;
@@ -341,11 +342,15 @@ export class BusinessRegistrationComponent implements OnInit {
     return newBusiness;
   }
 
-  private showMessage(message: string, isSucceful = true) {
-    this.snackBar.open(message, "Aceptar", {
-      duration: 3000,
-      panelClass: [isSucceful ? "class-template" : "error-snackbar"],
-    });
+  private showSuccessMessage() {
+    const dialogModel: DialogModel = {
+      title: "¡Felicidades!",
+      subtitle: "Te has registrado exitosamente",
+      isSuccessful: true,
+      messageButton: "Entendido",
+    };
+
+    this.dialogService.openDialog(dialogModel);
   }
 
   // #region First stepper validations

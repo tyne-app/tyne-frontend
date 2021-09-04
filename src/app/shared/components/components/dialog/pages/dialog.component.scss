@@ -1,0 +1,35 @@
+@import "../../../../../../styles.scss";
+
+::ng-deep.dialog .mat-dialog-container {
+  border-radius: 20px;
+  @include view-max(768px) {
+    border-radius: 20px;
+  }
+  @include view-max(425px) {
+    border-radius: 15px;
+  }
+}
+
+.icon-img {
+  @include view-max(768px) {
+    width: 40%;
+  }
+}
+
+.btn-submit {
+  @include view-max(768px) {
+    width: 50%;
+  }
+}
+
+.titulo-3 {
+  @include view-max(768px) {
+    font-size: 24px;
+  }
+}
+
+.parrafo {
+  @include view-max(768px) {
+    font-size: 18px;
+  }
+}

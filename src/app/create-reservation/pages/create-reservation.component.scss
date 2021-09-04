@@ -33,8 +33,12 @@ mat-form-field {
 .titulo-3 {
   font-weight: 300;
   margin-bottom: -10px;
-  padding-left: 80px;
-  @include view-max(1195px) {
+  padding-left: 40px;
+
+  @include view-max(1330px) {
+    padding-left: 10px;
+  }
+  @include view-max(1240px) {
     font-size: 24px;
     padding-left: 10px;
   }
