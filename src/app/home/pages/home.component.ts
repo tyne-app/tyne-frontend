@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { MatDialog } from "@angular/material/dialog";
 import { DialogModel } from "src/app/shared/components/components/dialog/models/dialog-model";
-import { DialogComponent } from "src/app/shared/components/components/dialog/pages/dialog.component";
+import { DialogService } from "src/app/shared/components/components/dialog/services/dialog.service";
 import { TyneRoutes } from "src/app/shared/constants/url-routes";
 
 @Component({
@@ -10,7 +9,7 @@ import { TyneRoutes } from "src/app/shared/constants/url-routes";
   styleUrls: ["./home.component.scss"],
 })
 export class HomeComponent implements OnInit {
-  public constructor(public dialog: MatDialog) {}
+  public constructor(private dialogService: DialogService) {}
 
   public ngOnInit(): void {
     this.open();
@@ -25,11 +24,6 @@ export class HomeComponent implements OnInit {
       redirectTo: TyneRoutes.Privacity,
     };
 
-    this.dialog.open(DialogComponent, {
-      data: dialogModel,
-      maxWidth: "95%",
-      minWidth: "55%",
-      panelClass: "dialog",
-    });
+    this.dialogService.openDialog(dialogModel);
   }
 }
