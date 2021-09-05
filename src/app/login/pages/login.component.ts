@@ -15,6 +15,7 @@ import { emailRegex } from "src/app/shared/constants/email";
 import { ErrorMessages } from "src/app/shared/constants/error-messages.enum";
 import { SuccessMessages } from "src/app/shared/constants/success-messages";
 import { CustomSnackbarCommonService } from "src/app/shared/helpers/custom-snackbar-common.service";
+import { InvokeDialogCommonService } from "src/app/shared/helpers/invoke-dialog-common.service";
 import { ClientService } from "src/app/shared/services/client.service";
 import { SocialService } from "src/app/shared/services/social.service";
 
@@ -46,7 +47,8 @@ export class LoginComponent implements OnInit {
     public dialog: MatDialog,
     private socialService: SocialService,
     private customSnackbarCommon: CustomSnackbarCommonService,
-    private dialogService: DialogService
+    private dialogService: DialogService,
+    private invokeDialogCommon: InvokeDialogCommonService
   ) {}
 
   public ngOnInit(): void {
@@ -116,11 +118,7 @@ export class LoginComponent implements OnInit {
   }
 
   public openSpinner(): void {
-    this.spinnerRef = this.dialog.open(SpinnerComponent, {
-      width: "200px",
-      panelClass: "custom-dialog",
-      disableClose: true,
-    });
+    this.spinnerRef = this.invokeDialogCommon.openSpinner();
   }
 
   public getPasswordError(): string {

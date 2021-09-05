@@ -1,9 +1,8 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { Router } from "@angular/router";
-import { ClientRegistrationComponent } from "src/app/client-registration/pages/client.registration.component";
-import { LoginComponent } from "src/app/login/pages/login.component";
 import { TyneRoutes } from "src/app/shared/constants/url-routes";
+import { InvokeDialogAuthService } from "src/app/shared/helpers/invoke-dialog-auth.service";
 
 @Component({
   selector: "app-header-public",
@@ -14,34 +13,28 @@ export class HeaderPublicComponent implements OnInit {
   @Input()
   public isWhiteLogo = true;
 
-  public constructor(public dialog: MatDialog, private router: Router) { }
-
+  public constructor(
+    public dialog: MatDialog, 
+    private router: Router,
+    private invokeDialogAuthService: InvokeDialogAuthService
+    ) { }
+  
+  public ngOnInit(): void {
+    //
+  }
+    
   public openRegistrationDialog(): void {
-    const dialogRef = this.dialog.open(ClientRegistrationComponent, {
-      maxWidth: "95%",
-      minWidth: "75%",
-      panelClass: "business-profile-dialog",
-    });
-
+    const dialogRef = this.invokeDialogAuthService.openRegister();
     dialogRef.afterClosed().subscribe((result) => {
       //
     });
   }
 
   public openLoginDialog(): void {
-    const dialogRef = this.dialog.open(LoginComponent, {
-      maxWidth: "100%",
-      width: "40%",
-      maxHeight: "100%",
-    });
-
+    const dialogRef = this.invokeDialogAuthService.openLogin();
     dialogRef.afterClosed().subscribe((result) => {
       //
     });
-  }
-
-  public ngOnInit(): void {
-    //
   }
 
   public getLogo(): string {
