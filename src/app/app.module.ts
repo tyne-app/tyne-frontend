@@ -2,16 +2,6 @@ import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
-import {
-  MAT_MOMENT_DATE_ADAPTER_OPTIONS,
-  MAT_MOMENT_DATE_FORMATS,
-  MomentDateAdapter,
-} from "@angular/material-moment-adapter";
-import {
-  DateAdapter,
-  MAT_DATE_FORMATS,
-  MAT_DATE_LOCALE,
-} from "@angular/material/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { environment } from "src/environments/environment";
@@ -30,10 +20,11 @@ import { LoginComponent } from "./login/pages/login.component";
 import { PrivacyModule } from "./privacy/modules/privacy.module";
 import { RefundPolicyModule } from "./refund-policy/modules/refund-policy.module";
 import { SpinnerComponent } from "./shared/components/components/spinner/spinner.component";
-import { authInterceptorProviders } from "./shared/interceptors/interceptor.service";
+import { authInterceptorProvider } from "./shared/providers/auth.provider";
 import { MaterialModule } from "./shared/modules/material.module";
 import { SharedModule } from "./shared/modules/shared.module";
 import { RestClientService } from "./shared/services/rest-client.service";
+import { DateAdapterProvider, MatDateFormatProvider } from "./shared/providers/mat-date.provider";
 
 @NgModule({
   declarations: [AppComponent],
@@ -63,21 +54,10 @@ import { RestClientService } from "./shared/services/rest-client.service";
     CreateReservationComponent,
   ],
   providers: [
-    authInterceptorProviders,
+    authInterceptorProvider,
     RestClientService,
-    {
-      provide: MAT_DATE_LOCALE,
-      useValue: "es",
-    },
-    {
-      provide: DateAdapter,
-      useClass: MomentDateAdapter,
-      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
-    },
-    {
-      provide: MAT_DATE_FORMATS,
-      useValue: MAT_MOMENT_DATE_FORMATS,
-    },
+    DateAdapterProvider,
+    MatDateFormatProvider
   ],
   bootstrap: [AppComponent],
 })
