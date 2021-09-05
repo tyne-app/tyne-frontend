@@ -6,7 +6,6 @@ import {
   HttpHandler,
   HttpInterceptor,
   HttpRequest,
-  HTTP_INTERCEPTORS,
 } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 /**
@@ -41,10 +40,4 @@ export class InterceptorService implements HttpInterceptor {
   }
 }
 
-export const authInterceptorProviders = [
-  {
-    provide: HTTP_INTERCEPTORS,
-    useClass: InterceptorService,
-    multi: true,
-  },
-];
+
