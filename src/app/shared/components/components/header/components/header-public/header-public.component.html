@@ -1,9 +1,7 @@
 <div class="row">
   <div class="col-lg-6 align-items-end d-none d-xl-block d-lg-block">
     <div class="b-register-button">
-      <a mat-stroked-button (click)="redirectToBusinessRegistration()"
-        >¿Quieres unir tu local?</a
-      >
+      <a mat-stroked-button (click)="redirectToBusinessRegistration()">¿Quieres unir tu local?</a>
     </div>
   </div>
   <div class="col-lg-3 align-items-end d-none d-xl-block d-lg-block">
@@ -22,21 +20,13 @@
       <mat-icon> menu </mat-icon>
     </button>
     <mat-menu class="dropdown-menu__content" #menu="matMenu">
-      <button
-        class="menu-item"
-        mat-menu-item
-        (click)="redirectToBusinessRegistration()"
-      >
+      <button class="menu-item" mat-menu-item (click)="redirectToBusinessRegistration()">
         ¿Quieres unir tu local?
       </button>
       <button class="menu-item" mat-menu-item (click)="openLoginDialog()">
         Iniciar sesión
       </button>
-      <button
-        class="menu-item"
-        mat-menu-item
-        (click)="openRegistrationDialog()"
-      >
+      <button class="menu-item" mat-menu-item (click)="openRegistrationDialog()">
         Registrate
       </button>
     </mat-menu>
