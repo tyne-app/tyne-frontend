@@ -45,7 +45,6 @@ mat-form-field {
 }
 
 ::ng-deep.login-dialog .mat-dialog-container {
-    // background-color: royalblue;
     padding: 9px;
     @include view-min(768px) {
         padding: 16px;
