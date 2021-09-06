@@ -6,15 +6,6 @@
   }
 }
 
-.close {
-  padding: 0 8px;
-  min-width: 40px;
-  & span {
-    font-size: 1.6rem;
-    color: #3c0000;
-  }
-}
-
 @include view-max(992px) {
   .grid-container {
     max-height: 70vh;

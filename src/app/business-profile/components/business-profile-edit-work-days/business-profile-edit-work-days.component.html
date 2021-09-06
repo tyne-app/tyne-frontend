@@ -1,9 +1,5 @@
 <div class="grid-container">
-  <div class="col-12 px-0 d-flex justify-content-end">
-    <button type="button" class="close" mat-button [mat-dialog-close]="true">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
+  <app-close-modal></app-close-modal>
 
   <div class="row mx-0 justify-content-center px-2 px-lg-0">
 
@@ -68,10 +64,10 @@
       <span>Completar todos los campos *</span>
     </div>
     <div class="col-12 col-md-6 col-lg-5 col-center mb-2 mb-md-3">
-      <button class="btn-normal-red">Volver a mis datos</button>
+      <button class="btn-normal-red" mat-raised-button>Volver a mis datos</button>
     </div>
     <div class="col-12 col-md-6 col-lg-5 col-center mb-3">
-      <button class="btn-submit">Confirmar</button>
+      <button class="btn-submit" mat-raised-button>Confirmar</button>
     </div>
 
   </div>
