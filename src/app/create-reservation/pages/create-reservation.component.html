@@ -48,12 +48,13 @@
             autocomplete="off"
             [matDatepicker]="picker"
             [min]="minDate"
+            [disabled]="true"
           />
           <mat-datepicker-toggle
             matSuffix
             [for]="picker"
           ></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
+          <mat-datepicker [disabled]="false" #picker></mat-datepicker>
           <mat-error>
             {{ getDateReservationErrorMessage() }}
           </mat-error>
