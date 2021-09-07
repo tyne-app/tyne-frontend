@@ -7,9 +7,9 @@ import {
 } from "@angular/forms";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { ActivatedRoute, Router } from "@angular/router";
-import { OrderByRestaurants } from "src/app/search-restaurant/models/order-by-restaurants.enum";
+import { OrderByRestaurants } from "src/app/search-restaurant/enums/order-by-restaurants.enum";
+import { SortByRestaurants } from "src/app/search-restaurant/enums/sort-by-restaurants.enum";
 import { SearchRestaurantRequest } from "src/app/search-restaurant/models/search-restaurant-request";
-import { SortByRestaurants } from "src/app/search-restaurant/models/sort-by-restaurants.enum";
 import { State } from "src/app/shared/interfaces/state";
 import { RestaurantService } from "src/app/shared/services/restaurant.service";
 import { TerritorialsService } from "src/app/shared/services/territorials.service";

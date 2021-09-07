@@ -2,10 +2,10 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { TyneRoutes } from "src/app/shared/constants/url-routes";
 import { RestaurantService } from "src/app/shared/services/restaurant.service";
-import { OrderByRestaurants } from "../../models/order-by-restaurants.enum";
+import { OrderByRestaurants } from "../../enums/order-by-restaurants.enum";
+import { SortByRestaurants } from "../../enums/sort-by-restaurants.enum";
 import { SearchRestaurantRequest } from "../../models/search-restaurant-request";
 import { SearchRestaurantResponse } from "../../models/search-restaurant-response";
-import { SortByRestaurants } from "../../models/sort-by-restaurants.enum";
 
 @Component({
   selector: "app-search-results",
