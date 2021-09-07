@@ -10,6 +10,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { State } from "src/app/shared/interfaces/state";
 import { RestaurantService } from "src/app/shared/services/restaurant.service";
 import { TerritorialsService } from "src/app/shared/services/territorials.service";
+import { SearchBarService } from "../services/search-bar.service";
 
 @Component({
   selector: "app-search-bar",
@@ -27,7 +28,8 @@ export class SearchBarComponent implements OnInit {
     private router: ActivatedRoute,
     private snackBar: MatSnackBar,
     private restaurantService: RestaurantService,
-    private territorialsService: TerritorialsService
+    private territorialsService: TerritorialsService,
+    private searchBarService: SearchBarService
   ) {}
 
   public ngOnInit(): void {
@@ -48,6 +50,7 @@ export class SearchBarComponent implements OnInit {
       dateReservationParam = `${yyyy}/${mm}/${dd}`;
     }
 
+    this.searchBarService.setDateReservation(dateReservationParam);
     const restaurants = this.restaurantService.getRestaurantsByFilterMock("3");
     this.restaurantService.restaurantsDataSource.next(restaurants);
 
