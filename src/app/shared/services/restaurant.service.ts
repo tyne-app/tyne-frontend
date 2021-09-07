@@ -1,20 +1,28 @@
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable } from "rxjs";
+import { map } from "rxjs/operators";
 import { BusinessRegistrationDto } from "src/app/business-registration/models/business-registration-dto";
+import { SearchRestaurantRequest } from "src/app/search-restaurant/models/search-restaurant-request";
+import { SearchRestaurantResponse } from "src/app/search-restaurant/models/search-restaurant-response";
 import { SearchResultsModel } from "src/app/search-restaurant/models/search-results.model";
 import { environment } from "src/environments/environment";
+import { GenericDataResponse } from "../interfaces/generic-data-response";
 import { RestClientService } from "./rest-client.service";
 
 @Injectable({
   providedIn: "root",
 })
 export class RestaurantService {
-  public restaurantsDataSource = new BehaviorSubject<SearchResultsModel[]>(
-    null
-  );
+  public restaurantsDataSource = new BehaviorSubject<
+    SearchRestaurantResponse[]
+  >(null);
   public currentRestaurant = this.restaurantsDataSource.asObservable();
 
-  public constructor(private restClient: RestClientService) {}
+  public constructor(
+    private restClient: RestClientService,
+    private client: HttpClient
+  ) {}
 
   public getRestaurantsByFilterMock(orderBy: string): SearchResultsModel[] {
     // we'll need to call the real service
@@ -73,5 +81,19 @@ export class RestaurantService {
       environment.apiLocals + "/api/local/register",
       business
     );
+  }
+
+  public getRestaurants(
+    request: SearchRestaurantRequest
+  ): Observable<SearchRestaurantResponse[]> {
+    const url = environment.apiLocals + "/api/search/all-branch";
+
+    return this.client
+      .post<GenericDataResponse<SearchRestaurantResponse[]>>(url, request)
+      .pipe(
+        map((res) => {
+          return res.data;
+        })
+      );
   }
 }

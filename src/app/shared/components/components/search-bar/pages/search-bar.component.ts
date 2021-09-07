@@ -7,6 +7,7 @@ import {
 } from "@angular/forms";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { ActivatedRoute, Router } from "@angular/router";
+import { SearchRestaurantRequest } from "src/app/search-restaurant/models/search-restaurant-request";
 import { State } from "src/app/shared/interfaces/state";
 import { RestaurantService } from "src/app/shared/services/restaurant.service";
 import { TerritorialsService } from "src/app/shared/services/territorials.service";
@@ -51,20 +52,31 @@ export class SearchBarComponent implements OnInit {
     }
 
     this.searchBarService.setDateReservation(dateReservationParam);
-    const restaurants = this.restaurantService.getRestaurantsByFilterMock("3");
-    this.restaurantService.restaurantsDataSource.next(restaurants);
 
-    if (restaurants && restaurants.length > 0) {
-      this.route.navigate(["buscar-locales"], {
-        queryParams: {
-          name: this.form.get("name").value,
-          dateReservation: dateReservationParam,
-          state: this.form.get("state").value,
-        },
-      });
-    } else {
-      this.showNotResults();
-    }
+    const request: SearchRestaurantRequest = {
+      name: this.form.get("name").value,
+      dateReservation: dateReservationParam,
+      state: this.form.get("state").value,
+    };
+
+    this.restaurantService.getRestaurants(request).subscribe((response) => {
+      console.log(response);
+
+      // const restaurants = this.restaurantService.getRestaurantsByFilterMock("3");
+      this.restaurantService.restaurantsDataSource.next(response);
+
+      if (response && response.length > 0) {
+        this.route.navigate(["buscar-locales"], {
+          queryParams: {
+            name: this.form.get("name").value,
+            dateReservation: dateReservationParam,
+            state: this.form.get("state").value,
+          },
+        });
+      } else {
+        this.showNotResults();
+      }
+    });
   }
 
   public getStates(): void {
