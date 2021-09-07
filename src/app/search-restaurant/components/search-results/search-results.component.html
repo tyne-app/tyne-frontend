@@ -8,10 +8,9 @@
       placeholder="Ordenar Por:"
       (selectionChange)="orderRestaurants($event.value)"
     >
-      <mat-option value="1">Mejor Valorados</mat-option>
-      <mat-option value="2">A - Z</mat-option>
-      <mat-option value="3">Mayor Precio</mat-option>
-      <mat-option value="4">Menor Precio</mat-option>
+      <mat-option *ngFor="let x of orderOptions" [value]="x.id">{{
+        x.name
+      }}</mat-option>
     </mat-select>
   </div>
 </div>

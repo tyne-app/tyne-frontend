@@ -7,7 +7,9 @@ import {
 } from "@angular/forms";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { ActivatedRoute, Router } from "@angular/router";
+import { OrderByRestaurants } from "src/app/search-restaurant/models/order-by-restaurants.enum";
 import { SearchRestaurantRequest } from "src/app/search-restaurant/models/search-restaurant-request";
+import { SortByRestaurants } from "src/app/search-restaurant/models/sort-by-restaurants.enum";
 import { State } from "src/app/shared/interfaces/state";
 import { RestaurantService } from "src/app/shared/services/restaurant.service";
 import { TerritorialsService } from "src/app/shared/services/territorials.service";
@@ -57,12 +59,11 @@ export class SearchBarComponent implements OnInit {
       name: this.form.get("name").value,
       dateReservation: dateReservationParam,
       state: this.form.get("state").value,
+      orderBy: OrderByRestaurants.Name,
+      sortBy: SortByRestaurants.Asc,
     };
 
     this.restaurantService.getRestaurants(request).subscribe((response) => {
-      console.log(response);
-
-      // const restaurants = this.restaurantService.getRestaurantsByFilterMock("3");
       this.restaurantService.restaurantsDataSource.next(response);
 
       if (response && response.length > 0) {
@@ -71,6 +72,8 @@ export class SearchBarComponent implements OnInit {
             name: this.form.get("name").value,
             dateReservation: dateReservationParam,
             state: this.form.get("state").value,
+            orderBy: OrderByRestaurants.Name,
+            sortBy: SortByRestaurants.Asc,
           },
         });
       } else {

@@ -1,9 +1,11 @@
 import { Component, OnInit } from "@angular/core";
-import { MatSnackBar } from "@angular/material/snack-bar";
 import { ActivatedRoute, Router } from "@angular/router";
 import { TyneRoutes } from "src/app/shared/constants/url-routes";
 import { RestaurantService } from "src/app/shared/services/restaurant.service";
+import { OrderByRestaurants } from "../../models/order-by-restaurants.enum";
+import { SearchRestaurantRequest } from "../../models/search-restaurant-request";
 import { SearchRestaurantResponse } from "../../models/search-restaurant-response";
+import { SortByRestaurants } from "../../models/sort-by-restaurants.enum";
 
 @Component({
   selector: "app-search-results",
@@ -12,12 +14,30 @@ import { SearchRestaurantResponse } from "../../models/search-restaurant-respons
 })
 export class SearchResultsComponent implements OnInit {
   public restaurants: SearchRestaurantResponse[] = [];
+  public orderOptions = [
+    {
+      id: OrderByRestaurants.Rating,
+      name: "Más valorados",
+    },
+    {
+      id: OrderByRestaurants.Name,
+      name: "A - Z",
+    },
+    {
+      id: OrderByRestaurants.HighestPrice,
+      name: "Mayor precio",
+    },
+    {
+      id: OrderByRestaurants.LowestPrice,
+      name: "Menor precio",
+    },
+  ];
 
   public constructor(
     private restaurantService: RestaurantService,
-    private snackBar: MatSnackBar,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private activeRoute: ActivatedRoute
   ) {}
 
   public ngOnInit(): void {
@@ -35,7 +55,6 @@ export class SearchResultsComponent implements OnInit {
   public redirectToBusinessDetail(restaurant: SearchRestaurantResponse): void {
     this.router.navigate(["/" + TyneRoutes.BusinessDetail], {
       queryParams: {
-        // name: restaurant.name,
         id: restaurant.id,
       },
     });
@@ -46,35 +65,54 @@ export class SearchResultsComponent implements OnInit {
       if (restaurants) {
         this.restaurants = restaurants;
       } else {
-        // const restaurants = this.restaurantService.getRestaurantsByFilterMock("3");
-        // this.restaurantService.restaurantsDataSource.next(restaurants);
-        // const request: SearchRestaurantRequest = {
-        //   name: this.form.get("name").value,
-        //   dateReservation: dateReservationParam,
-        //   state: this.form.get("state").value,
-        // };
-        // this.restaurantService.getRestaurants(request).subscribe((response) => {
-        //   //
-        // });
+        this.activatedRoute.queryParams.subscribe((x) => {
+          const request: SearchRestaurantRequest = {
+            name: x.name,
+            dateReservation: x.dateReservation,
+            state: x.state,
+            orderBy: OrderByRestaurants.Name,
+            sortBy: SortByRestaurants.Asc,
+          };
+
+          this.restaurantService
+            .getRestaurants(request)
+            .subscribe((response) => {
+              this.restaurantService.restaurantsDataSource.next(response);
+            });
+        });
       }
     });
   }
 
-  public orderRestaurants(value: string): void {
-    // const restaurants =
-    //   this.restaurantService.getRestaurantsByFilterMock(value);
-    // this.restaurantService.restaurantsDataSource.next(restaurants);
-  }
-
-  /**
-   * TODO: Necesitamos obtener los filtros para cuando se reordene la lista
-   * TODO: y para cuando se haga un refresh de la página
-   */
-  private getQueryParams() {
+  public orderRestaurants(value: number): void {
     this.activatedRoute.queryParams.subscribe((x) => {
-      // this.form.get("name").setValue(x.name);
-      // this.form.get("dateReservation").setValue(x.dateReservation ? new Date(x.dateReservation) : null);
-      // this.form.get("state").setValue(x.state);
+      const request: SearchRestaurantRequest = {
+        name: x.name,
+        dateReservation: x.dateReservation,
+        state: x.state,
+        orderBy: value == 4 ? OrderByRestaurants.HighestPrice : value,
+        sortBy:
+          value == OrderByRestaurants.HighestPrice
+            ? SortByRestaurants.Desc
+            : value == OrderByRestaurants.LowestPrice
+            ? SortByRestaurants.Asc
+            : SortByRestaurants.Asc,
+      };
+
+      this.restaurantService.getRestaurants(request).subscribe((response) => {
+        this.restaurantService.restaurantsDataSource.next(response);
+        // this.router.navigate([], {
+        //   relativeTo: this.activeRoute,
+        //   queryParams: {
+        //     name: request.name,
+        //     dateReservation: request.dateReservation,
+        //     state: request.state,
+        //     orderBy: request.orderBy,
+        //     sortBy: request.sortBy,
+        //   },
+        //   queryParamsHandling: "merge",
+        // });
+      });
     });
   }
 
