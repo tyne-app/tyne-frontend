@@ -5,7 +5,7 @@ mat-form-field {
   padding-bottom: 0px !important;
 }
 
-::ng-deep.create-reservation-dialog .mat-dialog-container {
+::ng-deep .create-reservation-dialog .mat-dialog-container {
   border-radius: 50px;
   @include view-max(768px) {
     border-radius: 25px;

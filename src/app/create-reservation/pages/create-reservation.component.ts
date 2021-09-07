@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { SearchBarService } from "src/app/shared/components/components/search-bar/services/search-bar.service";
 import { ErrorMessages } from "src/app/shared/constants/error-messages.enum";
 import { DateValidator } from "src/app/shared/validations/date-validator";
 
@@ -13,11 +14,15 @@ export class CreateReservationComponent implements OnInit {
   public preferredLocations = [];
   public minDate = new Date();
 
-  public constructor(private fb: FormBuilder) {}
+  public constructor(
+    private fb: FormBuilder,
+    private searchBarService: SearchBarService
+  ) {}
 
   public ngOnInit(): void {
     this.initForm();
     this.getPreferredLocations();
+    this.getDateReservation();
   }
 
   public save(): void {
@@ -39,7 +44,7 @@ export class CreateReservationComponent implements OnInit {
 
   private initForm(): void {
     this.form = this.fb.group({
-      peopleNumber: ["1", [Validators.min(1), Validators.max(20)]],
+      peopleNumber: ["1", [Validators.min(1), Validators.max(5)]],
       dateReservation: ["", [DateValidator.validator, Validators.required]],
       hourReservation: [
         "",
@@ -62,13 +67,19 @@ export class CreateReservationComponent implements OnInit {
     ];
   }
 
+  private getDateReservation() {
+    this.form
+      .get("dateReservation")
+      .setValue(new Date(this.searchBarService.getDateReservation()));
+  }
+
   // #region Errors
   public getPeopleNumberErrorMessage(): string {
     const control = this.form.get("peopleNumber");
     return control.hasError("min")
       ? ErrorMessages.Min.replace("{0}", "1")
       : control.hasError("max")
-      ? ErrorMessages.Max.replace("{0}", "20")
+      ? ErrorMessages.Max.replace("{0}", "5")
       : null;
   }
 
