@@ -45,10 +45,10 @@
           <input
             matInput
             formControlName="dateReservation"
+            [disabled]="true"
             autocomplete="off"
             [matDatepicker]="picker"
             [min]="minDate"
-            [disabled]="true"
           />
           <mat-datepicker-toggle
             matSuffix
