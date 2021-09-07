@@ -135,6 +135,7 @@ export class SearchBarComponent implements OnInit {
         .get("dateReservation")
         .setValue(x.dateReservation ? new Date(x.dateReservation) : null);
       this.form.get("state").setValue(x.state != null ? Number(x.state) : 0);
+      this.searchBarService.setDateReservation(x.dateReservation);
     });
   }
 
