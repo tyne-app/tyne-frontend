@@ -16,19 +16,19 @@ export class SearchResultsComponent implements OnInit {
   public restaurants: SearchRestaurantResponse[] = [];
   public orderOptions = [
     {
-      id: OrderByRestaurants.Rating,
+      id: SortByRestaurants.Rating,
       name: "Más valorados",
     },
     {
-      id: OrderByRestaurants.Name,
+      id: SortByRestaurants.Name,
       name: "A - Z",
     },
     {
-      id: OrderByRestaurants.HighestPrice,
+      id: SortByRestaurants.HighestPrice,
       name: "Mayor precio",
     },
     {
-      id: OrderByRestaurants.LowestPrice,
+      id: SortByRestaurants.LowestPrice,
       name: "Menor precio",
     },
   ];
@@ -70,8 +70,8 @@ export class SearchResultsComponent implements OnInit {
             name: x.name,
             dateReservation: x.dateReservation,
             state: x.state,
-            orderBy: OrderByRestaurants.Name,
-            sortBy: SortByRestaurants.Asc,
+            sortBy: SortByRestaurants.Name,
+            orderBy: OrderByRestaurants.Asc,
           };
 
           this.restaurantService
@@ -90,13 +90,15 @@ export class SearchResultsComponent implements OnInit {
         name: x.name,
         dateReservation: x.dateReservation,
         state: x.state,
-        orderBy: value == 4 ? OrderByRestaurants.HighestPrice : value,
-        sortBy:
-          value == OrderByRestaurants.HighestPrice
-            ? SortByRestaurants.Desc
-            : value == OrderByRestaurants.LowestPrice
-            ? SortByRestaurants.Asc
-            : SortByRestaurants.Asc,
+        sortBy: value == 4 ? SortByRestaurants.HighestPrice : value,
+        orderBy:
+          value == SortByRestaurants.HighestPrice
+            ? OrderByRestaurants.Desc
+            : value == SortByRestaurants.LowestPrice
+            ? OrderByRestaurants.Asc
+            : value == SortByRestaurants.Name
+            ? OrderByRestaurants.Asc
+            : OrderByRestaurants.Desc,
       };
 
       this.restaurantService.getRestaurants(request).subscribe((response) => {

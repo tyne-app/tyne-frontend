@@ -5,7 +5,6 @@ import {
   FormGroup,
   Validators,
 } from "@angular/forms";
-import { MatSnackBar } from "@angular/material/snack-bar";
 import { ActivatedRoute, Router } from "@angular/router";
 import { OrderByRestaurants } from "src/app/search-restaurant/enums/order-by-restaurants.enum";
 import { SortByRestaurants } from "src/app/search-restaurant/enums/sort-by-restaurants.enum";
@@ -13,6 +12,8 @@ import { SearchRestaurantRequest } from "src/app/search-restaurant/models/search
 import { State } from "src/app/shared/interfaces/state";
 import { RestaurantService } from "src/app/shared/services/restaurant.service";
 import { TerritorialsService } from "src/app/shared/services/territorials.service";
+import { DialogModel } from "../../dialog/models/dialog-model";
+import { DialogService } from "../../dialog/services/dialog.service";
 import { SearchBarService } from "../services/search-bar.service";
 
 @Component({
@@ -29,10 +30,10 @@ export class SearchBarComponent implements OnInit {
     private fb: FormBuilder,
     private route: Router,
     private router: ActivatedRoute,
-    private snackBar: MatSnackBar,
     private restaurantService: RestaurantService,
     private territorialsService: TerritorialsService,
-    private searchBarService: SearchBarService
+    private searchBarService: SearchBarService,
+    private dialogService: DialogService
   ) {}
 
   public ngOnInit(): void {
@@ -59,8 +60,8 @@ export class SearchBarComponent implements OnInit {
       name: this.form.get("name").value,
       dateReservation: dateReservationParam,
       state: this.form.get("state").value,
-      orderBy: OrderByRestaurants.Name,
-      sortBy: SortByRestaurants.Asc,
+      sortBy: SortByRestaurants.Name,
+      orderBy: OrderByRestaurants.Asc,
     };
 
     this.restaurantService.getRestaurants(request).subscribe((response) => {
@@ -72,8 +73,8 @@ export class SearchBarComponent implements OnInit {
             name: this.form.get("name").value,
             dateReservation: dateReservationParam,
             state: this.form.get("state").value,
-            orderBy: OrderByRestaurants.Name,
-            sortBy: SortByRestaurants.Asc,
+            sortBy: SortByRestaurants.Name,
+            orderBy: OrderByRestaurants.Asc,
           },
         });
       } else {
@@ -168,9 +169,13 @@ export class SearchBarComponent implements OnInit {
   }
 
   private showNotResults() {
-    this.snackBar.open("No existen resultados para la búsqueda", "Aceptar", {
-      duration: 3000,
-      panelClass: ["error-snackbar"],
-    });
+    const dialog: DialogModel = {
+      isSuccessful: false,
+      messageButton: "Aceptar",
+      title: "¡Lo sentimos!",
+      subtitle: "No existen resultados para la búsqueda",
+    };
+
+    this.dialogService.openDialog(dialog);
   }
 }

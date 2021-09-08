@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable } from "rxjs";
 import { map } from "rxjs/operators";
@@ -31,8 +31,18 @@ export class RestaurantService {
   ): Observable<SearchRestaurantResponse[]> {
     const url = environment.apiLocals + "/api/search/all-branch";
 
+    const params = new HttpParams()
+      .set("name", request.name ? request.name : "")
+      .set(
+        "dateReservation",
+        request.dateReservation ? request.dateReservation : ""
+      )
+      .set("state", request.state.toString())
+      .set("sortBy", request.sortBy.toString())
+      .set("orderBy", request.orderBy.toString());
+
     return this.client
-      .post<GenericDataResponse<SearchRestaurantResponse[]>>(url, request)
+      .get<GenericDataResponse<SearchRestaurantResponse[]>>(url, { params })
       .pipe(
         map((res) => {
           return res.data;
