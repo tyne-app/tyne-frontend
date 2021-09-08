@@ -7,6 +7,7 @@
     <mat-select
       placeholder="Ordenar Por:"
       (selectionChange)="orderRestaurants($event.value)"
+      [(value)]="selectedOption"
     >
       <mat-option *ngFor="let x of orderOptions" [value]="x.id">{{
         x.name
@@ -48,8 +49,7 @@
         </div>
 
         <!--Imagen local-->
-        <!-- <img mat-card-image src="../../../assets/foto_juanymedio 1.png" /> -->
-        <img mat-card-image [src]="x.image_url" />
+        <img class="img-restaurant" mat-card-image [src]="x.image_url" />
 
         <!--Descripción del local-->
         <mat-card-content>

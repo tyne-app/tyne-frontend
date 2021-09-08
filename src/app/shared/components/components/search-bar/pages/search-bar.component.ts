@@ -64,17 +64,18 @@ export class SearchBarComponent implements OnInit {
       orderBy: OrderByRestaurants.Asc,
     };
 
+    // TODO: aca necesitamos un endpoint que nos retorne true o false para saber si hay resultados
     this.restaurantService.getRestaurants(request).subscribe((response) => {
       this.restaurantService.restaurantsDataSource.next(response);
 
       if (response && response.length > 0) {
         this.route.navigate(["buscar-locales"], {
           queryParams: {
-            name: this.form.get("name").value,
-            dateReservation: dateReservationParam,
-            state: this.form.get("state").value,
-            sortBy: SortByRestaurants.Name,
-            orderBy: OrderByRestaurants.Asc,
+            name: request.name,
+            dateReservation: request.dateReservation,
+            state: request.state,
+            sortBy: request.sortBy,
+            orderBy: request.orderBy,
           },
         });
       } else {

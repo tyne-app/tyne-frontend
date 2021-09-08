@@ -14,6 +14,7 @@ import { SearchRestaurantResponse } from "../../models/search-restaurant-respons
 })
 export class SearchResultsComponent implements OnInit {
   public restaurants: SearchRestaurantResponse[] = [];
+  public selectedOption = 0;
   public orderOptions = [
     {
       id: SortByRestaurants.Rating,
@@ -41,6 +42,7 @@ export class SearchResultsComponent implements OnInit {
   ) {}
 
   public ngOnInit(): void {
+    this.setOrderOptions();
     this.getRestaurants();
   }
 
@@ -103,17 +105,6 @@ export class SearchResultsComponent implements OnInit {
 
       this.restaurantService.getRestaurants(request).subscribe((response) => {
         this.restaurantService.restaurantsDataSource.next(response);
-        // this.router.navigate([], {
-        //   relativeTo: this.activeRoute,
-        //   queryParams: {
-        //     name: request.name,
-        //     dateReservation: request.dateReservation,
-        //     state: request.state,
-        //     orderBy: request.orderBy,
-        //     sortBy: request.sortBy,
-        //   },
-        //   queryParamsHandling: "merge",
-        // });
       });
     });
   }
@@ -126,5 +117,11 @@ export class SearchResultsComponent implements OnInit {
     restaurant: SearchRestaurantResponse
   ): Array<number> {
     return new Array(restaurant.rating ? 5 - Math.round(restaurant.rating) : 0);
+  }
+
+  private setOrderOptions() {
+    this.activatedRoute.queryParams.subscribe((x) => {
+      this.selectedOption = +x.sortBy;
+    });
   }
 }
