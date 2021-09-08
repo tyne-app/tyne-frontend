@@ -5,11 +5,15 @@ import {
   FormGroup,
   Validators,
 } from "@angular/forms";
-import { MatSnackBar } from "@angular/material/snack-bar";
 import { ActivatedRoute, Router } from "@angular/router";
+import { OrderByRestaurants } from "src/app/search-restaurant/enums/order-by-restaurants.enum";
+import { SortByRestaurants } from "src/app/search-restaurant/enums/sort-by-restaurants.enum";
+import { SearchRestaurantRequest } from "src/app/search-restaurant/models/search-restaurant-request";
 import { State } from "src/app/shared/interfaces/state";
 import { RestaurantService } from "src/app/shared/services/restaurant.service";
 import { TerritorialsService } from "src/app/shared/services/territorials.service";
+import { DialogModel } from "../../dialog/models/dialog-model";
+import { DialogService } from "../../dialog/services/dialog.service";
 import { SearchBarService } from "../services/search-bar.service";
 
 @Component({
@@ -26,10 +30,10 @@ export class SearchBarComponent implements OnInit {
     private fb: FormBuilder,
     private route: Router,
     private router: ActivatedRoute,
-    private snackBar: MatSnackBar,
     private restaurantService: RestaurantService,
     private territorialsService: TerritorialsService,
-    private searchBarService: SearchBarService
+    private searchBarService: SearchBarService,
+    private dialogService: DialogService
   ) {}
 
   public ngOnInit(): void {
@@ -51,20 +55,33 @@ export class SearchBarComponent implements OnInit {
     }
 
     this.searchBarService.setDateReservation(dateReservationParam);
-    const restaurants = this.restaurantService.getRestaurantsByFilterMock("3");
-    this.restaurantService.restaurantsDataSource.next(restaurants);
 
-    if (restaurants && restaurants.length > 0) {
-      this.route.navigate(["buscar-locales"], {
-        queryParams: {
-          name: this.form.get("name").value,
-          dateReservation: dateReservationParam,
-          state: this.form.get("state").value,
-        },
-      });
-    } else {
-      this.showNotResults();
-    }
+    const request: SearchRestaurantRequest = {
+      name: this.form.get("name").value,
+      dateReservation: dateReservationParam,
+      state: this.form.get("state").value,
+      sortBy: SortByRestaurants.Name,
+      orderBy: OrderByRestaurants.Asc,
+    };
+
+    // TODO: aca necesitamos un endpoint que nos retorne true o false para saber si hay resultados
+    this.restaurantService.getRestaurants(request).subscribe((response) => {
+      this.restaurantService.restaurantsDataSource.next(response);
+
+      if (response && response.length > 0) {
+        this.route.navigate(["buscar-locales"], {
+          queryParams: {
+            name: request.name,
+            dateReservation: request.dateReservation,
+            state: request.state,
+            sortBy: request.sortBy,
+            orderBy: request.orderBy,
+          },
+        });
+      } else {
+        this.showNotResults();
+      }
+    });
   }
 
   public getStates(): void {
@@ -153,9 +170,13 @@ export class SearchBarComponent implements OnInit {
   }
 
   private showNotResults() {
-    this.snackBar.open("No existen resultados para la búsqueda", "Aceptar", {
-      duration: 3000,
-      panelClass: ["error-snackbar"],
-    });
+    const dialog: DialogModel = {
+      isSuccessful: false,
+      messageButton: "Aceptar",
+      title: "¡Lo sentimos!",
+      subtitle: "No existen resultados para la búsqueda",
+    };
+
+    this.dialogService.openDialog(dialog);
   }
 }

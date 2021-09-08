@@ -7,21 +7,21 @@
     <mat-select
       placeholder="Ordenar Por:"
       (selectionChange)="orderRestaurants($event.value)"
+      [(value)]="selectedOption"
     >
-      <mat-option value="1">Mejor Valorados</mat-option>
-      <mat-option value="2">A - Z</mat-option>
-      <mat-option value="3">Mayor Precio</mat-option>
-      <mat-option value="4">Menor Precio</mat-option>
+      <mat-option *ngFor="let x of orderOptions" [value]="x.id">{{
+        x.name
+      }}</mat-option>
     </mat-select>
   </div>
 </div>
 
 <!--Mensaje en caso de no haber resultados-->
 <div class="row" *ngIf="isRestaurantsEmpty()">
-  <div class="col-lg-9 col-md-8 col-sm-6 col-6 div-resultados">
+  <div class="col-lg-9 col-md-8 col-sm-6 col-12 div-resultados">
     <h1>Resultados:</h1>
   </div>
-  <div class="col-lg-9 col-md-8 col-sm-6 col-6 div-resultados">
+  <div class="col-lg-9 col-md-8 col-sm-6 col-12 div-resultados">
     <h4>No hay resultados para los parámetros ingresados</h4>
   </div>
 </div>
@@ -38,7 +38,7 @@
         <div class="row">
           <div class="col-10 col-sm-10">
             <p class="nombre-local">
-              <a (click)="redirectToBusinessDetail()">{{ x.name }}</a>
+              <a (click)="redirectToBusinessDetail(x)">{{ x.name }}</a>
             </p>
           </div>
           <div class="col-2 col-sm-2">
@@ -49,7 +49,7 @@
         </div>
 
         <!--Imagen local-->
-        <img mat-card-image src="../../../assets/foto_juanymedio 1.png" />
+        <img class="img-restaurant" mat-card-image [src]="x.image_url" />
 
         <!--Descripción del local-->
         <mat-card-content>
@@ -61,11 +61,11 @@
             <div class="col-6">
               <img
                 src="../../../assets/sarten-2.svg"
-                *ngFor="let z of x.getRatingsArray()"
+                *ngFor="let z of getRatingsArray(x)"
               />
               <img
                 src="../../../assets/sarten-1.svg"
-                *ngFor="let z of x.getNotRatingsArray()"
+                *ngFor="let z of getNotRatingsArray(x)"
               />
             </div>
           </div>
