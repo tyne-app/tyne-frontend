@@ -259,7 +259,7 @@ export class BusinessRegistrationComponent implements OnInit {
     const newBusiness = this.getBusinessData();
 
     this.isLoading = true;
-    this.restaurantService.createNewBusiness(newBusiness).subscribe(
+    this.restaurantService.createNewRestaurant(newBusiness).subscribe(
       (x) => {
         this.isLoading = false;
         this.showSuccessMessage();
