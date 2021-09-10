@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid" *ngIf="images?.length > 0">
   <swiper
     class="mySwiper"
     [mousewheel]="true"
@@ -27,7 +27,11 @@
       }
     }"
   >
-    <ng-template swiperSlide>
+    <ng-template swiperSlide *ngFor="let img of restaurant?.branch_images">
+      <img [src]="img.url" alt="" />
+    </ng-template>
+
+    <!-- <ng-template swiperSlide>
       <img src="../../../../../assets/foto_juanymedio 1.png" alt="" />
     </ng-template>
     <ng-template swiperSlide>
@@ -41,6 +45,6 @@
     </ng-template>
     <ng-template swiperSlide>
       <img src="../../../../../assets/bg_home.jpg" alt="" />
-    </ng-template>
+    </ng-template> -->
   </swiper>
 </div>

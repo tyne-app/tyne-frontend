@@ -1,6 +1,3 @@
-/**
- * ANGULAR CORE
- */
 import {
   HttpEvent,
   HttpHandler,
@@ -8,13 +5,7 @@ import {
   HttpRequest,
 } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-/**
- * REACTIVE
- */
 import { Observable } from "rxjs";
-/**
- * SERVICES
- */
 import { TokenService } from "../helpers/token.service";
 
 @Injectable({
@@ -30,14 +21,16 @@ export class InterceptorService implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     let authReq = req;
-    const token = this.tokenService.getTokenFromLocalStorage();
-    if (token != null) {
+
+    const isTokenValid: boolean = this.tokenService.isTokenValid();
+
+    if (isTokenValid) {
+      const token = this.tokenService.getTokenFromLocalStorage();
+
       authReq = req.clone({
         headers: req.headers.set(this.TOKEN_HEADER_KEY, token),
       });
     }
     return next.handle(authReq);
   }
-} 
-
-
+}

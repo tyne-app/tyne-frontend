@@ -39,6 +39,7 @@ const routes: Routes = [
       import("./client-menus/modules/business-menus.module").then(
         (m) => m.ClientMenusModule
       ),
+    canActivate: [AuthGuard],
   },
   {
     path: TyneRoutes.BusinessProfile,

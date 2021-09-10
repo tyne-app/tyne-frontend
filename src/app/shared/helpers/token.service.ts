@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
 import { JwtHelperService } from "@auth0/angular-jwt";
 import { Token } from "../interfaces/token";
 
@@ -6,7 +7,7 @@ import { Token } from "../interfaces/token";
   providedIn: "root",
 })
 export class TokenService {
-  public constructor() {}
+  public constructor(private router: Router) {}
 
   public getTokenFromLocalStorage(): string {
     const token: string = localStorage.getItem("access_token");
@@ -14,9 +15,17 @@ export class TokenService {
   }
 
   public getDecodedJwtToken(): Token {
-    const token: string = this.getTokenFromLocalStorage();
-    const JwtHelper = new JwtHelperService();
-    const decodedToken: Token = JwtHelper.decodeToken<Token>(token);
+    let decodedToken: Token = null;
+
+    try {
+      const token: string = this.getTokenFromLocalStorage();
+      const JwtHelper = new JwtHelperService();
+      decodedToken = JwtHelper.decodeToken<Token>(token);
+    } catch (error) {
+      sessionStorage.clear();
+      localStorage.clear();
+    }
+
     return decodedToken;
   }
 
@@ -27,8 +36,8 @@ export class TokenService {
     return isTokenExpired;
   }
 
-  public isTokenSavedInLocalStorage(): boolean {
-    const token: string = this.getTokenFromLocalStorage();
+  public isTokenValid(): boolean {
+    const token = this.getDecodedJwtToken();
     return token ? true : false;
   }
 }

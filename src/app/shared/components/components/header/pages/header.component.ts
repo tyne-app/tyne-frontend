@@ -17,8 +17,8 @@ export class HeaderComponent implements OnInit {
   }
 
   private verifyIfUserIsLoggedIn() {
-    const token = this.tokenService.isTokenSavedInLocalStorage();
-    this.isUserLoggedIn = token;
+    const isTokenValid = this.tokenService.isTokenValid();
+    this.isUserLoggedIn = isTokenValid;
   }
 
   public getLogo(): string {

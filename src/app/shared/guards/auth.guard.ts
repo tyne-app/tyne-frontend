@@ -33,14 +33,18 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    const isToken: boolean = this.tokenService.isTokenSavedInLocalStorage();
-    if (!isToken) {
+    const isTokenValid: boolean = this.tokenService.isTokenValid();
+
+    if (!isTokenValid) {
       return this.router.navigateByUrl(TyneRoutes.Home);
     }
+
     const isTokenExpired: boolean = this.tokenService.isTokenExpired();
+
     if (isTokenExpired) {
       return this.router.navigateByUrl(TyneRoutes.Home);
     }
+
     return true;
   }
 }
