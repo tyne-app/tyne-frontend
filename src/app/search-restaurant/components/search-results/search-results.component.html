@@ -54,7 +54,7 @@
         <!--Descripción del local-->
         <mat-card-content>
           <div class="row">
-            <div class="col-6 valoracion-local">
+            <div class="col-6 valoracion-local" *ngIf="isUserLogged">
               ${{ x.lowestPrice }} - ${{ x.higherPrice }}
             </div>
 

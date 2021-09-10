@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { TyneRoutes } from "src/app/shared/constants/url-routes";
+import { InvokeDialogAuthService } from "src/app/shared/helpers/invoke-dialog-auth.service";
+import { TokenService } from "src/app/shared/helpers/token.service";
 import { BusinessDetailsResponse } from "../../models/business-details-response";
 
 @Component({
@@ -15,6 +17,7 @@ export class BusinessDetailsBodyComponent implements OnInit {
   public schedule: Array<unknown> = [];
   public ratingsArray: Array<number> = [];
   public noRatingsArray: Array<number> = [];
+  public isUserLogged = false;
 
   public isFavorite = false;
   public branches = [
@@ -23,9 +26,15 @@ export class BusinessDetailsBodyComponent implements OnInit {
     "Juan y medio Las Condes",
   ];
 
-  public constructor(private router: Router) {}
+  public constructor(
+    private router: Router,
+    private tokenService: TokenService,
+    private dialogAuthService: InvokeDialogAuthService
+  ) {}
 
-  public ngOnInit(): void {}
+  public ngOnInit(): void {
+    this.validateSession();
+  }
 
   public ngOnChanges(): void {
     this.getSchedule();
@@ -37,11 +46,17 @@ export class BusinessDetailsBodyComponent implements OnInit {
   }
 
   public redirectToMenu(): void {
-    this.router.navigate(["/" + TyneRoutes.ClientMenu], {
-      queryParams: {
-        id: this.restaurant.id,
-      },
-    });
+    const isTokenValid = this.tokenService.isTokenValid();
+
+    if (isTokenValid) {
+      this.router.navigate(["/" + TyneRoutes.ClientMenu], {
+        queryParams: {
+          id: this.restaurant.id,
+        },
+      });
+    } else {
+      this.dialogAuthService.openLogin();
+    }
   }
 
   private getRatings(): void {
@@ -59,8 +74,9 @@ export class BusinessDetailsBodyComponent implements OnInit {
 
     this.restaurant?.schedule_list.map((x) => {
       this.schedule.push({
-        name:
-          this.getDay(x.day) + " de " + x.opening_hour + " a " + x.closing_hour,
+        name: this.getDay(x.day),
+        openingHour: x.opening_hour.slice(0, 5),
+        closingHour: x.closing_hour.slice(0, 5),
       });
     });
   }
@@ -79,5 +95,9 @@ export class BusinessDetailsBodyComponent implements OnInit {
       : dayNumber == 5
       ? "Sábado"
       : "Domingo";
+  }
+
+  private validateSession() {
+    this.isUserLogged = this.tokenService.isTokenValid();
   }
 }

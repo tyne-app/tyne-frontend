@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { TyneRoutes } from "src/app/shared/constants/url-routes";
+import { TokenService } from "src/app/shared/helpers/token.service";
 import { RestaurantService } from "src/app/shared/services/restaurant.service";
 import { OrderByRestaurants } from "../../enums/order-by-restaurants.enum";
 import { SortByRestaurants } from "../../enums/sort-by-restaurants.enum";
@@ -13,6 +14,7 @@ import { SearchRestaurantResponse } from "../../models/search-restaurant-respons
   styleUrls: ["./search-results.component.scss"],
 })
 export class SearchResultsComponent implements OnInit {
+  public isUserLogged = false;
   public restaurants: SearchRestaurantResponse[] = [];
   public selectedOption = 0;
   public orderOptions = [
@@ -38,10 +40,11 @@ export class SearchResultsComponent implements OnInit {
     private restaurantService: RestaurantService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private activeRoute: ActivatedRoute
+    private tokenService: TokenService
   ) {}
 
   public ngOnInit(): void {
+    this.validateSession();
     this.setOrderOptions();
     this.getRestaurants();
   }
@@ -126,5 +129,9 @@ export class SearchResultsComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe((x) => {
       this.selectedOption = +x.sortBy;
     });
+  }
+
+  private validateSession() {
+    this.isUserLogged = this.tokenService.isTokenValid();
   }
 }
