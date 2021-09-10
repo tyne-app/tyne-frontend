@@ -11,7 +11,7 @@ import { HeaderComponent } from "../components/header/pages/header.component";
 import { MapComponent } from "../components/map/components/map.component";
 import { NotFoundPageComponent } from "../components/not-found-page/not-found-page.component";
 import { SpinnerComponent } from "../components/spinner/spinner.component";
-
+import { DateAdapterProvider, MatDateFormatProvider, MatDateLocalProvider } from "../../providers/mat-date.provider";
 @NgModule({
   declarations: [
     CloseModalComponent,
@@ -37,6 +37,11 @@ import { SpinnerComponent } from "../components/spinner/spinner.component";
     NotFoundPageComponent,
     SpinnerComponent,
     DialogComponent,
+  ],
+  providers: [
+    MatDateLocalProvider,
+    DateAdapterProvider,
+    MatDateFormatProvider
   ],
 })
 export class SharedComponentsModule {}

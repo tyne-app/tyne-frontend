@@ -24,7 +24,7 @@ import { authInterceptorProvider } from "./shared/providers/auth.provider";
 import { MaterialModule } from "./shared/modules/material.module";
 import { SharedModule } from "./shared/modules/shared.module";
 import { RestClientService } from "./shared/services/rest-client.service";
-import { DateAdapterProvider, MatDateFormatProvider } from "./shared/providers/mat-date.provider";
+import { MatDateLocalProvider, DateAdapterProvider, MatDateFormatProvider } from "./shared/providers/mat-date.provider";
 
 @NgModule({
   declarations: [AppComponent],
@@ -56,8 +56,10 @@ import { DateAdapterProvider, MatDateFormatProvider } from "./shared/providers/m
   providers: [
     authInterceptorProvider,
     RestClientService,
+    MatDateLocalProvider,
     DateAdapterProvider,
     MatDateFormatProvider
+    
   ],
   bootstrap: [AppComponent],
 })
