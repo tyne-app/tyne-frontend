@@ -110,13 +110,16 @@ export class SearchResultsComponent implements OnInit {
   }
 
   public getRatingsArray(restaurant: SearchRestaurantResponse): Array<number> {
-    return new Array(restaurant.rating ? Math.round(restaurant.rating) : 0);
+    const rating = Math.round(restaurant?.rating);
+    return new Array(rating);
   }
 
   public getNotRatingsArray(
     restaurant: SearchRestaurantResponse
   ): Array<number> {
-    return new Array(restaurant.rating ? 5 - Math.round(restaurant.rating) : 0);
+    const rating = Math.round(restaurant?.rating);
+    const ratingsArray = new Array(rating);
+    return new Array(5 - ratingsArray.length);
   }
 
   private setOrderOptions() {

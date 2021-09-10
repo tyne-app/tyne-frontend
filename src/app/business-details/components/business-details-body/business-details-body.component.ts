@@ -29,8 +29,7 @@ export class BusinessDetailsBodyComponent implements OnInit {
 
   public ngOnChanges(): void {
     this.getSchedule();
-    this.getRatingsArray();
-    this.getNotRatingsArray();
+    this.getRatings();
   }
 
   public onFavoriteIconClick(): void {
@@ -45,24 +44,12 @@ export class BusinessDetailsBodyComponent implements OnInit {
     });
   }
 
-  private getRatingsArray(): void {
-    if (this.ratingsArray.length > 0) {
-      return;
+  private getRatings(): void {
+    if (this.restaurant) {
+      const rating = Math.round(this.restaurant?.rating);
+      this.ratingsArray = new Array(rating);
+      this.noRatingsArray = new Array(5 - this.ratingsArray.length);
     }
-
-    this.ratingsArray = new Array(
-      this.restaurant?.rating ? Math.round(this.restaurant?.rating) : 0
-    );
-  }
-
-  private getNotRatingsArray(): void {
-    if (this.noRatingsArray.length > 0) {
-      return;
-    }
-
-    this.noRatingsArray = new Array(
-      this.restaurant?.rating ? 5 - Math.round(this.restaurant?.rating) : 0
-    );
   }
 
   private getSchedule(): void {
