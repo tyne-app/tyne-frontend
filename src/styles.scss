@@ -8,6 +8,9 @@ body {
   padding: 0;
   font-family: "Raleway", Roboto, "Helvetica Neue", sans-serif;
 }
+.cdk-visually-hidden {
+  display: none;
+}
 
 .error-snackbar {
   background: #f8d7da;

@@ -102,9 +102,9 @@
               <div class="col-12 col-sm-6">
                 <mat-form-field class="birthday-field" appearance="outline">
                   <mat-label>Fecha de Nacimiento *</mat-label>
-                  <input matInput [disabled]="true" formControlName="birthDate" autocomplete="off" [matDatepicker]="picker" />
+                  <input matInput formControlName="birthDate" autocomplete="off" [matDatepicker]="picker" />
                   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                  <mat-datepicker [disabled]="false" #picker></mat-datepicker>
+                  <mat-datepicker  #picker></mat-datepicker>
                   <mat-error>
                     {{ getBirthDateError() }}
                   </mat-error>
