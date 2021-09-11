@@ -10,7 +10,7 @@ import { Observable } from "rxjs";
 /**
  * CONSTANTS
  */
-import { TyneRoutes } from "../constants/url-routes";
+import { TyneRoutes } from "../inmutable/enums/url-routes";
 /**
  * SERVICES
  */

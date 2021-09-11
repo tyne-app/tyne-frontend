@@ -1,4 +1,4 @@
-import { TyneRoutes } from "src/app/shared/constants/url-routes";
+import { TyneRoutes } from "src/app/shared/inmutable/enums/url-routes";
 
 export interface DialogModel {
   title: string;

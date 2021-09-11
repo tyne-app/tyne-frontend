@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { TyneRoutes } from "src/app/shared/constants/url-routes";
+import { TyneRoutes } from "src/app/shared/inmutable/enums/url-routes";
 import { TokenService } from "src/app/shared/helpers/token.service";
 import { RestaurantService } from "src/app/shared/services/restaurant.service";
 import { OrderByRestaurants } from "../../enums/order-by-restaurants.enum";

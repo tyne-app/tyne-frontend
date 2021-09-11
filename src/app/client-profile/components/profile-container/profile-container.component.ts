@@ -6,8 +6,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Claims } from 'src/app/shared/interfaces/token';
 import { DialogModel } from 'src/app/shared/components/components/dialog/models/dialog-model';
 /** CONSTANTS */
-import { ErrorMessages } from 'src/app/shared/constants/error-messages.enum';
-import { passwordRegex } from 'src/app/shared/constants/password';
+import { ErrorMessages } from 'src/app/shared/inmutable/enums/error-messages';
+import { passwordRegex } from 'src/app/shared/inmutable/constants/password';
 /** VALIDATORS */
 import { PasswordValidator } from 'src/app/shared/validations/password-validator';
 /** SERVICES */

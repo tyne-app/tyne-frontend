@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { RutValidator } from "ng9-rut";
-import { emailRegex } from "src/app/shared/constants/email";
-import { ErrorMessages } from "src/app/shared/constants/error-messages.enum";
+import { emailRegex } from "src/app/shared/inmutable/constants/email";
+import { ErrorMessages } from "src/app/shared/inmutable/enums/error-messages";
 import { Bank } from "src/app/shared/interfaces/bank";
 import { BankService } from "src/app/shared/services/bank.service";
 
