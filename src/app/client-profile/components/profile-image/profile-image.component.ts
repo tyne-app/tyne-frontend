@@ -1,7 +1,7 @@
 /** ANGULAR CORE */ 
 import { Component, Input, OnInit } from '@angular/core';
 /** ENUMS */
-import { ErrorMessages } from 'src/app/shared/constants/error-messages.enum';
+import { ErrorMessages } from 'src/app/shared/inmutable/enums/error-messages';
 /** MODELS - INTERFACES */
 import { DialogModel } from 'src/app/shared/components/components/dialog/models/dialog-model';
 import { HTMLInputEvent } from '../../interfaces/event-input-file';

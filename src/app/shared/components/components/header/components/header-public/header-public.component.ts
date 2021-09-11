@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { Router } from "@angular/router";
-import { TyneRoutes } from "src/app/shared/constants/url-routes";
+import { TyneRoutes } from "src/app/shared/inmutable/enums/url-routes";
 import { InvokeDialogAuthService } from "src/app/shared/helpers/invoke-dialog-auth.service";
 
 @Component({

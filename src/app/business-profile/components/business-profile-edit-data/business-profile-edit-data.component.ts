@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { emailRegex } from "src/app/shared/constants/email";
-import { ErrorMessages } from "src/app/shared/constants/error-messages.enum";
+import { emailRegex } from "src/app/shared/inmutable/constants/email";
+import { ErrorMessages } from "src/app/shared/inmutable/enums/error-messages";
 
 @Component({
   selector: "app-business-profile-edit-data",
