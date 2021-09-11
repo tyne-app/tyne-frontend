@@ -104,7 +104,7 @@
                   <mat-label>Fecha de Nacimiento *</mat-label>
                   <input matInput formControlName="birthDate" autocomplete="off" [matDatepicker]="picker" />
                   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                  <mat-datepicker  #picker></mat-datepicker>
+                  <mat-datepicker #picker></mat-datepicker>
                   <mat-error>
                     {{ getBirthDateError() }}
                   </mat-error>
@@ -131,21 +131,21 @@
       <div class="row mx-0">
         <div class="col-6 col-sm-12 px-1 px-lg-0 mb-2 mb-lg-4 d-flex justify-content-center">
           <button class="register-button facebook-login" mat-raised-button type="submit">
-            <img src="/assets/img/facebook-register.svg" alt="facebook-registration" />
+            <img src="/assets/img/facebook-logo.svg" alt="facebook-registration" />
             Facebook
           </button>
         </div>
 
         <div class="col-6 col-sm-12 px-1 px-lg-0 mb-2 mb-lg-4 d-flex justify-content-center">
           <button class="register-button google-login" mat-raised-button type="submit">
-            <img src="/assets/google-logo.svg" alt="google-registration" />
+            <img src="/assets/icons/google-logo.svg" alt="google-registration" />
             Google
           </button>
         </div>
       </div>
 
       <div class="logo my-5 d-flex justify-content-center">
-        <img src="/assets/logo-register-client.svg" routerLink="/" class="ml-5" />
+        <img src="/assets/icons/tyne-logo-register-client.svg" routerLink="/" class="ml-5" />
       </div>
     </div>
   </div>
