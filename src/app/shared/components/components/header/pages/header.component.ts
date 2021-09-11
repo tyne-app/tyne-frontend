@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit {
 
   public getLogo(): string {
     return this.isWhiteLogo
-      ? "../../assets/tyne-logo-white.png"
-      : "../../assets/tyne-logo-color.png";
+      ? "../../assets/icons/tyne-logo-white.png"
+      : "../../assets/icons/tyne-logo-color.png";
   }
 }
