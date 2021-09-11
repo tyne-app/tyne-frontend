@@ -4,14 +4,11 @@
     <h1>Resultados:</h1>
   </div>
   <div class="col-lg-3 col-md-4 col-sm-6 col-6 div-ordenar-locales">
-    <mat-select
-      placeholder="Ordenar Por:"
-      (selectionChange)="orderRestaurants($event.value)"
-      [(value)]="selectedOption"
-    >
+    <mat-select placeholder="Ordenar Por:" (selectionChange)="orderRestaurants($event.value)"
+      [(value)]="selectedOption">
       <mat-option *ngFor="let x of orderOptions" [value]="x.id">{{
         x.name
-      }}</mat-option>
+        }}</mat-option>
     </mat-select>
   </div>
 </div>
@@ -29,10 +26,7 @@
 <!--Contenido de la búsqueda-->
 <div class="content">
   <div class="row">
-    <div
-      class="contenido-locales col-12 col-sm-12 col-md-6 col-lg-4"
-      *ngFor="let x of restaurants; let i = index"
-    >
+    <div class="contenido-locales col-12 col-sm-12 col-md-6 col-lg-4" *ngFor="let x of restaurants; let i = index">
       <mat-card class="mat-elevation-z4">
         <!--Nombre Local y fav icon-->
         <div class="row">
@@ -59,14 +53,8 @@
             </div>
 
             <div class="col-6">
-              <img
-                src="../../../assets/sarten-2.svg"
-                *ngFor="let z of getRatingsArray(x)"
-              />
-              <img
-                src="../../../assets/sarten-1.svg"
-                *ngFor="let z of getNotRatingsArray(x)"
-              />
+              <img src="../../../assets/frying-pan-2.svg" *ngFor="let z of getRatingsArray(x)" />
+              <img src="../../../assets/frying-pan-1.svg" *ngFor="let z of getNotRatingsArray(x)" />
             </div>
           </div>
 

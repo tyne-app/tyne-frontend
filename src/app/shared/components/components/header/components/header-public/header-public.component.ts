@@ -14,15 +14,15 @@ export class HeaderPublicComponent implements OnInit {
   public isWhiteLogo = true;
 
   public constructor(
-    public dialog: MatDialog, 
+    public dialog: MatDialog,
     private router: Router,
     private invokeDialogAuthService: InvokeDialogAuthService
-    ) { }
-  
+  ) {}
+
   public ngOnInit(): void {
     //
   }
-    
+
   public openRegistrationDialog(): void {
     const dialogRef = this.invokeDialogAuthService.openRegister();
     dialogRef.afterClosed().subscribe((result) => {
@@ -38,7 +38,9 @@ export class HeaderPublicComponent implements OnInit {
   }
 
   public getLogo(): string {
-    return this.isWhiteLogo ? "/assets/logo-home.png" : "/assets/logo2 1.png";
+    return this.isWhiteLogo
+      ? "/assets/tyne-logo-white.png"
+      : "/assets/tyne-logo-color.png";
   }
 
   public redirectToBusinessRegistration(): void {

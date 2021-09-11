@@ -107,7 +107,9 @@ export class ClientRegistrationComponent implements OnInit {
   }
 
   public getLogo(): string {
-    return this.isWhiteLogo ? "/assets/logo-home.png" : "/assets/logo2 1.png";
+    return this.isWhiteLogo
+      ? "/assets/tyne-logo-white.png"
+      : "/assets/tyne-logo-color.png";
   }
 
   public initForm(): void {
