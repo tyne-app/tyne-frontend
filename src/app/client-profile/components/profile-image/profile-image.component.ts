@@ -1,11 +1,12 @@
-/**
- * ANGULAR CORE
- */
+/** ANGULAR CORE */ 
 import { Component, Input, OnInit } from '@angular/core';
+/** ENUMS */
+import { ErrorMessages } from 'src/app/shared/constants/error-messages.enum';
+/** MODELS - INTERFACES */
+import { DialogModel } from 'src/app/shared/components/components/dialog/models/dialog-model';
 import { HTMLInputEvent } from '../../interfaces/event-input-file';
-/**
- * SERVICES
- */
+/** SERVICES */
+import { DialogService } from 'src/app/shared/components/components/dialog/services/dialog.service';
 import { ClientProfileService } from '../../services/client-profile.service';
 
 @Component({
@@ -21,7 +22,8 @@ export class ProfileImageComponent implements OnInit {
   // #endregion
 
   public constructor(
-    public clientProfileService: ClientProfileService
+    public clientProfileService: ClientProfileService,
+    private dialogService :DialogService
   ) { }
 
   public ngOnInit(): void {}
@@ -38,6 +40,14 @@ export class ProfileImageComponent implements OnInit {
   public updateImageProfile(imageProfile:File): void{
     this.clientProfileService.putImageProfile(imageProfile).subscribe(()=>{
       this.updateImageUrlSource();
+    },(error)=>{
+      const dialogModel: DialogModel = {
+        title: "¡Lo sentimos!",
+        subtitle: ErrorMessages.GenericError,
+        isSuccessful: false,
+        messageButton: "Volver",
+      };
+      this.dialogService.openDialog(dialogModel);
     });
   }
 
