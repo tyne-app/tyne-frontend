@@ -9,6 +9,7 @@ import { HTMLInputEvent } from '../../interfaces/event-input-file';
 import { DialogService } from 'src/app/shared/components/components/dialog/services/dialog.service';
 import { ClientProfileService } from '../../services/client-profile.service';
 import { FileService } from 'src/app/shared/helpers/file.service';
+import { errorContent } from 'src/app/shared/inmutable/constants/dialog-messages';
 
 @Component({
   selector: 'app-profile-image',
@@ -43,13 +44,7 @@ export class ProfileImageComponent implements OnInit {
     this.clientProfileService.putImageProfile(imageProfile).subscribe(()=>{
       this.updateImageUrlSource();
     },(error)=>{
-      const dialogModel: DialogModel = {
-        title: "¡Lo sentimos!",
-        subtitle: ErrorMessages.GenericError,
-        isSuccessful: false,
-        messageButton: "Volver",
-      };
-      this.dialogService.openDialog(dialogModel);
+      this.dialogService.openDialog(errorContent);
     });
   }
 
@@ -66,13 +61,7 @@ export class ProfileImageComponent implements OnInit {
     if(isValidImageFormat){
       this.updateImageProfile(this.imageProfile);
     }else{
-      const dialogModel: DialogModel = {
-        title: "¡Lo sentimos!",
-        subtitle: ErrorMessages.GenericError,
-        isSuccessful: false,
-        messageButton: "Volver",
-      };
-      this.dialogService.openDialog(dialogModel);
+      this.dialogService.openDialog(errorContent);
     }
 
   }

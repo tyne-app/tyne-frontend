@@ -1,6 +1,10 @@
 export enum ErrorMessages {
   ServerDown = "Tenemos problemas técnicos, intente más tarde",
   GenericError = "Ha ocurrido un problema, intente nuevamente",
+  WeAreSorry = "¡Lo sentimos!",
+  AccounAlreadyExist = "Ya existe una cuenta con estos datos",
+  RequestFailed = "No hemos podido completar el registro",
+
 
   // #region Input and form errors
 

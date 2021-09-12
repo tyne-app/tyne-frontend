@@ -13,6 +13,7 @@ import { TyneRoutes } from "src/app/shared/inmutable/enums/url-routes";
 import { Client } from "src/app/shared/interfaces/client";
 import { ClientService } from "src/app/shared/services/client.service";
 import { PasswordValidator } from "src/app/shared/validations/password-validator";
+import { errorContent, registerClientContent } from "src/app/shared/inmutable/constants/dialog-messages";
 @Component({
   selector: "app-client-registration",
   templateUrl: "./client.registration.component.html",
@@ -77,26 +78,11 @@ export class ClientRegistrationComponent implements OnInit {
   }
 
   private showSuccessMessage() {
-    const dialogModel: DialogModel = {
-      title: "¡Se ha registrado exitosamente!",
-      subtitle: "Le hemos enviado un email de bienvenida",
-      isSuccessful: true,
-      messageButton: "Ir a mi cuenta",
-      redirectTo: TyneRoutes.ClientProfile,
-    };
-
-    this.dialogService.openDialog(dialogModel);
+    this.dialogService.openDialog(registerClientContent);
   }
 
   private showErrorMessage() {
-    const dialogModel: DialogModel = {
-      title: "¡Lo sentimos!",
-      subtitle: "Ya existe una cuenta con estos datos",
-      isSuccessful: false,
-      messageButton: "Volver",
-    };
-
-    this.dialogService.openDialog(dialogModel);
+    this.dialogService.openDialog(errorContent);
   }
 
   public closeClick(): void {
