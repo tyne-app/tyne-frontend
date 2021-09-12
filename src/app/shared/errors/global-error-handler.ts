@@ -1,7 +1,7 @@
 import { ErrorHandler, Injectable, NgZone } from "@angular/core";
 import { DialogModel } from "../components/components/dialog/models/dialog-model";
 import { DialogService } from "../components/components/dialog/services/dialog.service";
-import { ErrorMessages } from "../inmutable/enums/error-messages";
+import { ErrorMessages } from "../inmutable/enums/error-messages"; 
 
 @Injectable()
 export class GlobalErrorHandler implements ErrorHandler {
