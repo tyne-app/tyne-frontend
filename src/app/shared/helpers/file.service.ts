@@ -11,7 +11,6 @@ export class FileService {
   public isValidFormatImageToUpload(file: File): boolean {
     const uploadFile: File = file;
     const { type: formatType } = uploadFile;
-    console.log(formatType);
     switch (formatType) {
       case PNGType:
         return true;
