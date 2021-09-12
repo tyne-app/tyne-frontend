@@ -83,20 +83,6 @@ export class LoginComponent implements OnInit {
             this.spinnerRef.close();
           }
         );
-
-      // this.clientservice
-      //   .login(this.emailControl.value, this.passwordControl.value)
-      //   .subscribe({
-      //     next: (token: string) => {
-      //       localStorage.setItem("access_token", token);
-      //       this.closeModal();
-      //       this.spinnerRef.close();
-      //     },
-      //     error: () => {
-      //       this.showErrorMessage();
-      //       this.spinnerRef.close();
-      //     },
-      //   });
     }
   }
 
