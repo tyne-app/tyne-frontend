@@ -8,6 +8,7 @@ import { DialogModel } from 'src/app/shared/components/components/dialog/models/
 /** CONSTANTS */
 import { ErrorMessages } from 'src/app/shared/inmutable/enums/error-messages';
 import { passwordRegex } from 'src/app/shared/inmutable/constants/password';
+import { passwordClientUpdatedContent } from 'src/app/shared/inmutable/constants/dialog-messages';
 /** VALIDATORS */
 import { PasswordValidator } from 'src/app/shared/validations/password-validator';
 /** SERVICES */
@@ -68,14 +69,8 @@ export class ProfileContainerComponent implements OnInit {
     if(this.newPasswordControl.value == this.confirmPasswordControl.value){
       this.clientProfileService.putPassword(this.newPasswordControl.value).subscribe({
         next: () => {
-          const dialogModel: DialogModel = {
-            title: "¡Felicidades!",
-            subtitle: "¡Tu contraseña se ha cambiado con éxito!",
-            isSuccessful: true,
-            messageButton: "Entendido",
-          };
       
-          this.dialogService.openDialog(dialogModel);
+          this.dialogService.openDialog(passwordClientUpdatedContent);
           this.cleanPasswordControlForm();
         },
         error: () => {
