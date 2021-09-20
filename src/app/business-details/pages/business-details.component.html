@@ -1,14 +1,16 @@
 <!--Header-->
 <app-header [isWhiteLogo]="false"></app-header>
 
-<!--Photos-->
-<app-carousel [restaurant]="restaurant"></app-carousel>
+<ng-container *ngIf="this.restaurant">
+  <!--Photos-->
+  <app-carousel [restaurant]="restaurant"></app-carousel>
 
-<div class="container">
-  <app-business-details-body
-    [restaurant]="restaurant"
-  ></app-business-details-body>
-</div>
+  <div class="container">
+    <app-business-details-body
+      [restaurant]="restaurant"
+    ></app-business-details-body>
+  </div>
+</ng-container>
 
 <!--Footer-->
 <app-footer></app-footer>

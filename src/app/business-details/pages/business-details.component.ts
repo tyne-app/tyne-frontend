@@ -24,15 +24,16 @@ export class BusinessDetailsComponent implements OnInit {
 
   private getRestaurant() {
     this.activatedRoute.queryParams.subscribe((x) => {
+      if (!+x.id) {
+        this.router.navigate(["/" + TyneRoutes.NotFound]);
+        return;
+      }
+
       this.restaurantService.getRestaurant(+x.id).subscribe((response) => {
-        if (response) {
+        if (response != null && response.id > 0) {
           this.restaurant = response;
         } else {
-          this.router.navigate(["/" + TyneRoutes.BusinessSearchResults], {
-            queryParams: {
-              id: x.id,
-            },
-          });
+          this.router.navigate(["/" + TyneRoutes.NotFound]);
         }
       });
     });

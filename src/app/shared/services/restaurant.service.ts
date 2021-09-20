@@ -24,7 +24,7 @@ export class RestaurantService {
     business: BusinessRegistrationDto
   ): Observable<any> {
     return this.client.post<any>(
-      environment.apiLocals + "/api/local/register",
+      environment.apiLocals + "/locals/register",
       business
     );
   }
@@ -32,7 +32,7 @@ export class RestaurantService {
   public getRestaurants(
     request: SearchRestaurantRequest
   ): Observable<SearchRestaurantResponse[]> {
-    const url = environment.apiLocals + "/api/search/all-branch";
+    const url = environment.apiLocals + "/locals/search/all-branch";
 
     const params = new HttpParams()
       .set("name", request.name ? request.name : "")
@@ -54,13 +54,13 @@ export class RestaurantService {
   }
 
   public getRestaurant(id: number): Observable<BusinessDetailsResponse> {
-    const url = environment.apiLocals + "/api/search/" + id;
+    const url = environment.apiLocals + "/locals/search/" + id;
 
     return this.client
       .get<GenericDataResponse<BusinessDetailsResponse>>(url)
       .pipe(
         map((res) => {
-          return res.data;
+          return res.data ? res.data : null;
         })
       );
   }
