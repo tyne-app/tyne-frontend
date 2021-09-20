@@ -9,6 +9,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { OrderByRestaurants } from "src/app/search-restaurant/enums/order-by-restaurants.enum";
 import { SortByRestaurants } from "src/app/search-restaurant/enums/sort-by-restaurants.enum";
 import { SearchRestaurantRequest } from "src/app/search-restaurant/models/search-restaurant-request";
+import { TyneRoutes } from "src/app/shared/inmutable/enums/url-routes";
 import { State } from "src/app/shared/interfaces/state";
 import { RestaurantService } from "src/app/shared/services/restaurant.service";
 import { TerritorialsService } from "src/app/shared/services/territorials.service";
@@ -69,7 +70,7 @@ export class SearchBarComponent implements OnInit {
       this.restaurantService.restaurantsDataSource.next(response);
 
       if (response && response.length > 0) {
-        this.route.navigate(["buscar-locales"], {
+        this.route.navigate([TyneRoutes.BusinessSearchResults], {
           queryParams: {
             name: request.name,
             dateReservation: request.dateReservation,

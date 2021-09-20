@@ -38,11 +38,11 @@
             </div>
           </div>
           <div class="col col-center mt-5" *ngIf="restaurant?.accept_pet">
-            <img src="./../../../../assets/keeping-pet.svg" />
+            <img src="./../../../../assets/icons/keeping-pet.svg" />
             <h4 class="titulo-4">Aceptan mascotas</h4>
           </div>
           <div class="col col-center mt-5" *ngIf="!restaurant?.accept_pet">
-            <img src="./../../../../assets/not-keeping-pet.svg" />
+            <img src="./../../../../assets/icons/not-keeping-pet.svg" />
             <h4 class="titulo-4">No aceptan mascotas</h4>
           </div>
         </div>
@@ -62,8 +62,14 @@
               $2.000 a $19.990
             </h2>
             <h4 class="titulo-4">Calificación:</h4>
-            <img src="../../../assets/frying-pan-2.svg" *ngFor="let z of ratingsArray" />
-            <img src="../../../assets/frying-pan-1.svg" *ngFor="let z of noRatingsArray" />
+            <img
+              src="../../../assets/icons/frying-pan-2.svg"
+              *ngFor="let z of ratingsArray"
+            />
+            <img
+              src="../../../assets/icons/frying-pan-1.svg"
+              *ngFor="let z of noRatingsArray"
+            />
           </mat-card-content>
         </mat-card>
       </div>

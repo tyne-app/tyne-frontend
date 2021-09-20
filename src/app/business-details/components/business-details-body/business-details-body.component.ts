@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { TyneRoutes } from "src/app/shared/inmutable/enums/url-routes";
 import { InvokeDialogAuthService } from "src/app/shared/helpers/invoke-dialog-auth.service";
 import { TokenService } from "src/app/shared/helpers/token.service";
+import { TyneRoutes } from "src/app/shared/inmutable/enums/url-routes";
 import { BusinessDetailsResponse } from "../../models/business-details-response";
 
 @Component({
@@ -60,7 +60,7 @@ export class BusinessDetailsBodyComponent implements OnInit {
   }
 
   private getRatings(): void {
-    if (this.restaurant) {
+    if (this.restaurant && this.restaurant?.id > 0) {
       const rating = Math.round(this.restaurant?.rating);
       this.ratingsArray = new Array(rating);
       this.noRatingsArray = new Array(5 - this.ratingsArray.length);
@@ -68,7 +68,7 @@ export class BusinessDetailsBodyComponent implements OnInit {
   }
 
   private getSchedule(): void {
-    if (this.schedule.length > 0) {
+    if (this.schedule.length <= 0) {
       return;
     }
 

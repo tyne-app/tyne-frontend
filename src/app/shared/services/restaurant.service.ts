@@ -60,7 +60,7 @@ export class RestaurantService {
       .get<GenericDataResponse<BusinessDetailsResponse>>(url)
       .pipe(
         map((res) => {
-          return res.data;
+          return res.data ? res.data : null;
         })
       );
   }

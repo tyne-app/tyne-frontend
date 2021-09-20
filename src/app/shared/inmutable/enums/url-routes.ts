@@ -3,7 +3,7 @@ export enum TyneRoutes {
   InitTyne = "inicio-tyne",
   BusinessRegister = "registro-comensales",
   BusinessProfile = "perfil-local",
-  BusinessSearchResults = "resultados-locales",
+  BusinessSearchResults = "buscar-locales",
   BusinessEditMenu = "menu",
   BusinessDetail = "detalle-local",
   ClientProfile = "perfil-cliente",
