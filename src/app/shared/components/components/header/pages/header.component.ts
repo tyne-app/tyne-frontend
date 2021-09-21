@@ -25,7 +25,10 @@ export class HeaderComponent implements OnInit {
 
   private verifyIsUserIsBusiness() {
     const token = this.tokenService.getDecodedJwtToken();
-    this.isUserBusiness = token.claims.rol != "user";
+
+    if (token) {
+      this.isUserBusiness = token.claims.rol != "user";
+    }
   }
 
   public getLogo(): string {
