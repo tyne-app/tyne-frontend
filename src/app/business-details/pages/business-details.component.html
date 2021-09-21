@@ -1,7 +1,7 @@
-<!--Header-->
-<app-header [isWhiteLogo]="false"></app-header>
-
 <ng-container *ngIf="this.restaurant">
+  <!--Header-->
+  <app-header [isWhiteLogo]="false"></app-header>
+
   <!--Photos-->
   <app-carousel [restaurant]="restaurant"></app-carousel>
 
@@ -10,7 +10,7 @@
       [restaurant]="restaurant"
     ></app-business-details-body>
   </div>
-</ng-container>
 
-<!--Footer-->
-<app-footer></app-footer>
+  <!--Footer-->
+  <app-footer></app-footer>
+</ng-container>
