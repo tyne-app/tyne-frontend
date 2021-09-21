@@ -242,55 +242,6 @@
         </div>
 
         <div class="row">
-          <!--Nombre razón social-->
-          <div class="col">
-            <mat-form-field appearance="outline">
-              <mat-label>Nombre del Local *</mat-label>
-              <input
-                matInput
-                formControlName="legalRepresentativeNameCompany"
-                type="text"
-              />
-              <mat-error>
-                {{ getLegalRepresentativeNameCompanyError() }}
-              </mat-error>
-            </mat-form-field>
-          </div>
-
-          <!--Giro del local-->
-          <div class="col">
-            <mat-form-field appearance="outline">
-              <mat-label>Giro del local *</mat-label>
-              <input
-                matInput
-                formControlName="legalRepresentativeBusinessLine"
-                type="text"
-              />
-              <mat-error>
-                {{ getLegalRepresentativeBusinessLineError() }}
-              </mat-error>
-            </mat-form-field>
-          </div>
-
-          <!--Rut del local-->
-          <div class="col">
-            <mat-form-field appearance="outline">
-              <mat-label>Rut Local *</mat-label>
-              <input
-                matInput
-                formControlName="legalRepresentativeRutBusiness"
-                type="text"
-                maxlength="9"
-                formatRut
-              />
-              <mat-error>
-                {{ getLegalRepresentativeRutBusinessError() }}
-              </mat-error>
-            </mat-form-field>
-          </div>
-        </div>
-
-        <div class="row">
           <div class="col">
             <p class="subtitulo">
               Casa Matriz
@@ -305,17 +256,66 @@
         </div>
 
         <div class="row">
-          <!--Datos de la calle-->
+          <!--Nombre razón social-->
           <div class="col">
             <mat-form-field appearance="outline">
-              <mat-label>Calle *</mat-label>
+              <mat-label>Nombre del Local *</mat-label>
               <input
                 matInput
-                formControlName="principalLocationAddress"
+                formControlName="mainOfficeNameCompany"
                 type="text"
               />
               <mat-error>
-                {{ getPrincipalLocationAddressError() }}
+                {{ getMainOfficeNameCompanyError() }}
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <!--Giro del local-->
+          <div class="col">
+            <mat-form-field appearance="outline">
+              <mat-label>Giro del local *</mat-label>
+              <input
+                matInput
+                formControlName="mainOfficeBusinessLine"
+                type="text"
+              />
+              <mat-error>
+                {{ getMainOfficeBusinessLineError() }}
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <!--Rut del local-->
+          <div class="col">
+            <mat-form-field appearance="outline">
+              <mat-label>Rut Local *</mat-label>
+              <input
+                matInput
+                formControlName="mainOfficeRutBusiness"
+                type="text"
+                maxlength="9"
+                formatRut
+              />
+              <mat-error>
+                {{ getMainOfficeRutBusinessError() }}
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <!--Datos de la calle-->
+          <div class="col">
+            <mat-form-field appearance="outline">
+              <mat-label>Calle casa matriz *</mat-label>
+              <input
+                matInput
+                formControlName="mainOfficeLocationAddress"
+                type="text"
+              />
+              <mat-error>
+                {{ getMainOfficeLocationAddressError() }}
               </mat-error>
             </mat-form-field>
           </div>
@@ -326,11 +326,100 @@
               <mat-label>Número *</mat-label>
               <input
                 matInput
-                formControlName="principalLocationNumber"
+                formControlName="mainOfficeLocationNumber"
                 type="text"
               />
               <mat-error>
-                {{ getPrincipalLocationNumberError() }}
+                {{ getMainOfficeLocationNumberError() }}
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <!--Telefono casa matriz-->
+          <div class="col">
+            <mat-form-field appearance="outline">
+              <mat-label>Teléfono de contacto *</mat-label>
+              <input
+                matInput
+                formControlName="mainOfficePhone"
+                type="text"
+                placeholder="+XX X XXXX XXXX"
+                phoneMask
+                maxlength="17"
+              />
+              <mat-error>
+                {{ getMainOfficePhoneError() }}
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <!--Datos de la región-->
+          <div class="col-6 col-sm-6 col-md-4">
+            <mat-form-field appearance="outline">
+              <mat-label>Ingrese región *</mat-label>
+              <mat-select
+                formControlName="mainOfficeLocationCity"
+                (selectionChange)="getStates()"
+              >
+                <mat-option value="0">Seleccionar...</mat-option>
+                <mat-option [value]="x.id" *ngFor="let x of cities">{{
+                  x.name
+                }}</mat-option>
+              </mat-select>
+              <mat-error>
+                {{ getMainOfficeLocationCityError() }}
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <!--Datos de la comuna-->
+          <div class="col-6 col-sm-6 col-md-4">
+            <mat-form-field appearance="outline">
+              <mat-label>Ingrese comuna *</mat-label>
+              <mat-select formControlName="mainOfficeLocationState">
+                <mat-option value="0">Seleccionar...</mat-option>
+                <mat-option [value]="x.id" *ngFor="let x of states">{{
+                  x.name
+                }}</mat-option>
+              </mat-select>
+              <mat-error>
+                {{ getMainOfficeLocationStateError() }}
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <p class="subtitulo">Datos del local a registrar en Tyne</p>
+
+        <div class="row">
+          <!--Datos de la calle-->
+          <div class="col">
+            <mat-form-field appearance="outline">
+              <mat-label>Calle *</mat-label>
+              <input
+                matInput
+                formControlName="branchLocationAddress"
+                type="text"
+              />
+              <mat-error>
+                {{ getBranchLocationAddressError() }}
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <!--Datos del número de dirección-->
+          <div class="col">
+            <mat-form-field appearance="outline">
+              <mat-label>Número *</mat-label>
+              <input
+                matInput
+                formControlName="branchLocationNumber"
+                type="text"
+              />
+              <mat-error>
+                {{ getBranchLocationNumberError() }}
               </mat-error>
             </mat-form-field>
           </div>
@@ -340,16 +429,16 @@
             <mat-form-field appearance="outline">
               <mat-label>Ingrese región *</mat-label>
               <mat-select
-                formControlName="principalLocationCity"
-                (selectionChange)="getStates()"
+                formControlName="branchLocationCity"
+                (selectionChange)="getStatesForBranch()"
               >
                 <mat-option value="0">Seleccionar...</mat-option>
-                <mat-option [value]="x.id" *ngFor="let x of cities">{{
+                <mat-option [value]="x.id" *ngFor="let x of citiesForBranchs">{{
                   x.name
                 }}</mat-option>
               </mat-select>
               <mat-error>
-                {{ getPrincipalLocationCityError() }}
+                {{ getBranchLocationCityError() }}
               </mat-error>
             </mat-form-field>
           </div>
@@ -360,22 +449,23 @@
           <div class="col-6 col-sm-6 col-md-4">
             <mat-form-field appearance="outline">
               <mat-label>Ingrese comuna *</mat-label>
-              <mat-select formControlName="principalLocationState">
+              <mat-select formControlName="branchLocationState">
                 <mat-option value="0">Seleccionar...</mat-option>
-                <mat-option [value]="x.id" *ngFor="let x of states">{{
+                <mat-option [value]="x.id" *ngFor="let x of statesForBranchs">{{
                   x.name
                 }}</mat-option>
               </mat-select>
               <mat-error>
-                {{ getPrincipalLocationStateError() }}
+                {{ getBranchLocationStateError() }}
               </mat-error>
             </mat-form-field>
           </div>
 
+          <!--Aceptan mascotas?-->
           <div class="col-6 col-sm-6 col-md-4">
             <!-- <mat-form-field appearance="outline"> -->
             <label>¿Aceptan Mascota? *</label>
-            <mat-radio-group formControlName="principalLocationHavePet">
+            <mat-radio-group formControlName="branchHavePet">
               <mat-radio-button value="1">Si</mat-radio-button>
               <mat-radio-button value="0">No</mat-radio-button>
             </mat-radio-group>

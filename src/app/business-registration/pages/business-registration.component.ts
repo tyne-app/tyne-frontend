@@ -6,8 +6,8 @@ import { RutValidator } from "ng9-rut";
 import { DialogModel } from "src/app/shared/components/components/dialog/models/dialog-model";
 import { DialogService } from "src/app/shared/components/components/dialog/services/dialog.service";
 import { emailRegex } from "src/app/shared/inmutable/constants/email";
-import { ErrorMessages } from "src/app/shared/inmutable/enums/error-messages";
 import { passwordRegex } from "src/app/shared/inmutable/constants/password";
+import { ErrorMessages } from "src/app/shared/inmutable/enums/error-messages";
 import { Bank } from "src/app/shared/interfaces/bank";
 import { City } from "src/app/shared/interfaces/city";
 import { State } from "src/app/shared/interfaces/state";
@@ -28,6 +28,8 @@ export class BusinessRegistrationComponent implements OnInit {
   public isLinear = environment.production;
   public cities: City[] = [];
   public states: State[] = [];
+  public citiesForBranchs: City[] = [];
+  public statesForBranchs: State[] = [];
   public banks: Bank[] = [];
   public accountType = [];
   public rutRepresentanteLegal: string = null;
@@ -141,7 +143,7 @@ export class BusinessRegistrationComponent implements OnInit {
           Validators.maxLength(17),
         ],
       ],
-      legalRepresentativeNameCompany: [
+      mainOfficeNameCompany: [
         "",
         [
           Validators.required,
@@ -149,7 +151,7 @@ export class BusinessRegistrationComponent implements OnInit {
           Validators.maxLength(50),
         ],
       ],
-      legalRepresentativeBusinessLine: [
+      mainOfficeBusinessLine: [
         "",
         [
           Validators.required,
@@ -157,7 +159,7 @@ export class BusinessRegistrationComponent implements OnInit {
           Validators.maxLength(50),
         ],
       ],
-      legalRepresentativeRutBusiness: [
+      mainOfficeRutBusiness: [
         "",
         [
           Validators.required,
@@ -166,7 +168,7 @@ export class BusinessRegistrationComponent implements OnInit {
           this.rutValidator,
         ],
       ],
-      principalLocationAddress: [
+      mainOfficeLocationAddress: [
         "",
         [
           Validators.required,
@@ -174,7 +176,7 @@ export class BusinessRegistrationComponent implements OnInit {
           Validators.maxLength(50),
         ],
       ],
-      principalLocationNumber: [
+      mainOfficeLocationNumber: [
         "",
         [
           Validators.required,
@@ -182,9 +184,35 @@ export class BusinessRegistrationComponent implements OnInit {
           Validators.maxLength(20),
         ],
       ],
-      principalLocationCity: ["0", [Validators.required, Validators.min(1)]],
-      principalLocationState: ["0", [Validators.required, Validators.min(1)]],
-      principalLocationHavePet: ["0"],
+      mainOfficePhone: [
+        "",
+        [
+          Validators.required,
+          Validators.minLength(17),
+          Validators.maxLength(17),
+        ],
+      ],
+      mainOfficeLocationCity: ["0", [Validators.required, Validators.min(1)]],
+      mainOfficeLocationState: ["0", [Validators.required, Validators.min(1)]],
+      branchLocationAddress: [
+        "",
+        [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(50),
+        ],
+      ],
+      branchLocationNumber: [
+        "",
+        [
+          Validators.required,
+          Validators.minLength(1),
+          Validators.maxLength(20),
+        ],
+      ],
+      branchLocationCity: ["0", [Validators.required, Validators.min(1)]],
+      branchLocationState: ["0", [Validators.required, Validators.min(1)]],
+      branchHavePet: ["0"],
     });
   }
 
@@ -223,14 +251,23 @@ export class BusinessRegistrationComponent implements OnInit {
   public getCities(): void {
     this.territorialsService.getCities(1).subscribe((cities) => {
       this.cities = cities;
+      this.citiesForBranchs = cities;
     });
   }
 
   public getStates(): void {
-    const idCity = this.secondFormGroup.get("principalLocationCity").value;
+    const idCity = this.secondFormGroup.get("mainOfficeLocationCity").value;
     this.territorialsService.getStates(idCity).subscribe((states) => {
       this.states = states;
-      this.secondFormGroup.get("principalLocationState").setValue("0");
+      this.secondFormGroup.get("mainOfficeLocationState").setValue("0");
+    });
+  }
+
+  public getStatesForBranch(): void {
+    const idCity = this.secondFormGroup.get("branchLocationCity").value;
+    this.territorialsService.getStates(idCity).subscribe((states) => {
+      this.statesForBranchs = states;
+      this.secondFormGroup.get("branchLocationState").setValue("0");
     });
   }
 
@@ -310,24 +347,22 @@ export class BusinessRegistrationComponent implements OnInit {
             ? true
             : false,
         address:
-          this.secondFormGroup.get("principalLocationAddress").value +
+          this.secondFormGroup.get("mainOfficeLocationAddress").value +
           " " +
-          this.secondFormGroup.get("principalLocationNumber").value,
-        name: this.secondFormGroup.get("legalRepresentativeNameCompany").value,
-        state_id: this.secondFormGroup.get("principalLocationState").value,
-        commercial_activity: this.secondFormGroup.get(
-          "legalRepresentativeBusinessLine"
-        ).value,
+          this.secondFormGroup.get("mainOfficeLocationNumber").value,
+        name: this.secondFormGroup.get("mainOfficeNameCompany").value,
+        state_id: this.secondFormGroup.get("mainOfficeLocationState").value,
+        commercial_activity: this.secondFormGroup.get("mainOfficeBusinessLine")
+          .value,
       },
       restaurant: {
-        identifier: this.secondFormGroup.get("legalRepresentativeRutBusiness")
-          .value,
-        name: this.secondFormGroup.get("legalRepresentativeNameCompany").value,
+        identifier: this.secondFormGroup.get("mainOfficeRutBusiness").value,
+        name: this.secondFormGroup.get("mainOfficeNameCompany").value,
         address:
-          this.secondFormGroup.get("principalLocationAddress").value +
+          this.secondFormGroup.get("mainOfficeLocationAddress").value +
           " " +
-          this.secondFormGroup.get("principalLocationNumber").value,
-        state_id: this.secondFormGroup.get("principalLocationState").value,
+          this.secondFormGroup.get("mainOfficeLocationNumber").value,
+        state_id: this.secondFormGroup.get("mainOfficeLocationState").value,
       },
       bank_restaurant: {
         account_holder_identifier:
@@ -488,10 +523,10 @@ export class BusinessRegistrationComponent implements OnInit {
       : null;
   }
 
-  public getLegalRepresentativeNameCompanyError(): string {
-    const control = this.secondFormGroup.get("legalRepresentativeNameCompany");
+  public getMainOfficeNameCompanyError(): string {
+    const control = this.secondFormGroup.get("mainOfficeNameCompany");
     return control.hasError("required")
-      ? ErrorMessages.RequiredVariant.replace("{0}", "razón social")
+      ? ErrorMessages.Required.replace("{0}", "nombre de local")
       : control.hasError("minlength")
       ? ErrorMessages.Minlength.replace("{0}", "5")
       : control.hasError("maxlength")
@@ -499,8 +534,8 @@ export class BusinessRegistrationComponent implements OnInit {
       : null;
   }
 
-  public getLegalRepresentativeBusinessLineError(): string {
-    const control = this.secondFormGroup.get("legalRepresentativeBusinessLine");
+  public getMainOfficeBusinessLineError(): string {
+    const control = this.secondFormGroup.get("mainOfficeBusinessLine");
     return control.hasError("required")
       ? ErrorMessages.RequiredVariant.replace("{0}", "giro")
       : control.hasError("minlength")
@@ -510,8 +545,8 @@ export class BusinessRegistrationComponent implements OnInit {
       : null;
   }
 
-  public getLegalRepresentativeRutBusinessError(): string {
-    const control = this.secondFormGroup.get("legalRepresentativeRutBusiness");
+  public getMainOfficeRutBusinessError(): string {
+    const control = this.secondFormGroup.get("mainOfficeRutBusiness");
     return control.hasError("required")
       ? ErrorMessages.Required.replace("{0}", "rut")
       : control.hasError("minlength")
@@ -523,8 +558,8 @@ export class BusinessRegistrationComponent implements OnInit {
       : null;
   }
 
-  public getPrincipalLocationAddressError(): string {
-    const control = this.secondFormGroup.get("principalLocationAddress");
+  public getMainOfficeLocationAddressError(): string {
+    const control = this.secondFormGroup.get("mainOfficeLocationAddress");
     return control.hasError("required")
       ? ErrorMessages.RequiredVariant.replace("{0}", "calle")
       : control.hasError("minlength")
@@ -534,8 +569,8 @@ export class BusinessRegistrationComponent implements OnInit {
       : null;
   }
 
-  public getPrincipalLocationNumberError(): string {
-    const control = this.secondFormGroup.get("principalLocationNumber");
+  public getMainOfficeLocationNumberError(): string {
+    const control = this.secondFormGroup.get("mainOfficeLocationNumber");
     return control.hasError("required")
       ? ErrorMessages.Required.replace("{0}", "número de calle")
       : control.hasError("minlength")
@@ -545,8 +580,19 @@ export class BusinessRegistrationComponent implements OnInit {
       : null;
   }
 
-  public getPrincipalLocationCityError(): string {
-    const control = this.secondFormGroup.get("principalLocationCity");
+  public getMainOfficePhoneError(): string {
+    const control = this.secondFormGroup.get("mainOfficePhone");
+    return control.hasError("required")
+      ? ErrorMessages.Required.replace("{0}", "número")
+      : control.hasError("minlength")
+      ? ErrorMessages.Invalid.replace("{0}", "número")
+      : control.hasError("maxlength")
+      ? ErrorMessages.Invalid.replace("{0}", "número")
+      : null;
+  }
+
+  public getMainOfficeLocationCityError(): string {
+    const control = this.secondFormGroup.get("mainOfficeLocationCity");
     return control.hasError("required")
       ? ErrorMessages.RequiredSelectVariant.replace("{0}", "región")
       : control.hasError("min")
@@ -554,14 +600,55 @@ export class BusinessRegistrationComponent implements OnInit {
       : null;
   }
 
-  public getPrincipalLocationStateError(): string {
-    const control = this.secondFormGroup.get("principalLocationState");
+  public getMainOfficeLocationStateError(): string {
+    const control = this.secondFormGroup.get("mainOfficeLocationState");
     return control.hasError("required")
       ? ErrorMessages.RequiredSelectVariant.replace("{0}", "comuna")
       : control.hasError("min")
       ? ErrorMessages.RequiredSelectVariant.replace("{0}", "comuna")
       : null;
   }
+
+  public getBranchLocationAddressError(): string {
+    const control = this.secondFormGroup.get("branchLocationAddress");
+    return control.hasError("required")
+      ? ErrorMessages.RequiredVariant.replace("{0}", "calle")
+      : control.hasError("minlength")
+      ? ErrorMessages.Minlength.replace("{0}", "5")
+      : control.hasError("maxlength")
+      ? ErrorMessages.Maxlength.replace("{0}", "50")
+      : null;
+  }
+
+  public getBranchLocationNumberError(): string {
+    const control = this.secondFormGroup.get("branchLocationNumber");
+    return control.hasError("required")
+      ? ErrorMessages.Required.replace("{0}", "número de calle")
+      : control.hasError("minlength")
+      ? ErrorMessages.Minlength.replace("{0}", "1")
+      : control.hasError("maxlength")
+      ? ErrorMessages.Maxlength.replace("{0}", "20")
+      : null;
+  }
+
+  public getBranchLocationCityError(): string {
+    const control = this.secondFormGroup.get("branchLocationCity");
+    return control.hasError("required")
+      ? ErrorMessages.RequiredSelectVariant.replace("{0}", "región")
+      : control.hasError("min")
+      ? ErrorMessages.RequiredSelectVariant.replace("{0}", "región")
+      : null;
+  }
+
+  public getBranchLocationStateError(): string {
+    const control = this.secondFormGroup.get("branchLocationState");
+    return control.hasError("required")
+      ? ErrorMessages.RequiredSelectVariant.replace("{0}", "comuna")
+      : control.hasError("min")
+      ? ErrorMessages.RequiredSelectVariant.replace("{0}", "comuna")
+      : null;
+  }
+
   // #endregion Second stepper validations
 
   // #region Third stepper validations
