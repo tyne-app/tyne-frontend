@@ -6,6 +6,7 @@ export enum TyneRoutes {
   BusinessSearchResults = "buscar-locales",
   BusinessEditMenu = "menu",
   BusinessDetail = "detalle-local",
+  BusinessNewBranch = "registrar-nueva-sucursal",
   ClientProfile = "perfil-cliente",
   ClientMenu = "detalle-menu",
   Privacity = "privacidad",
