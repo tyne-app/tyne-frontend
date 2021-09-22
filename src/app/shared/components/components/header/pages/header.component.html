@@ -13,7 +13,9 @@
       "
       *ngIf="isUserBusiness"
     >
-      <button class="btn-normal-red">Agregar Sucursal</button>
+      <button class="btn-normal-red" (click)="redirectToBranchRegistration()">
+        Agregar Sucursal
+      </button>
     </div>
     <div class="col">
       <app-header-public *ngIf="!isUserLoggedIn"></app-header-public>
@@ -23,7 +25,9 @@
 
   <div class="row mt-n3" *ngIf="isUserBusiness">
     <div class="col align-center d-block d-lg-none d-xl-none d-md-none">
-      <button class="btn-normal-red">Agregar Sucursal</button>
+      <button class="btn-normal-red" (click)="redirectToBranchRegistration()">
+        Agregar Sucursal
+      </button>
     </div>
   </div>
 </div>

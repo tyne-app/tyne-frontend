@@ -1,0 +1,66 @@
+mat-form-field {
+  width: 95%;
+  margin-bottom: 16px;
+}
+
+::ng-deep .mat-step-header .mat-step-icon-selected {
+  background-color: red;
+}
+
+mat-icon {
+  vertical-align: middle;
+}
+
+::ng-deep .mat-tooltip {
+  background-color: #f8d7da;
+  color: black !important;
+  font-weight: 250;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: justify;
+  border: 1px solid gray;
+}
+
+.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+  color: #3c0000;
+}
+
+.btn-normal-red {
+  width: 100%;
+}
+
+.btn-submit {
+  width: 100%;
+}
+
+.subtitulo {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #3c0000;
+}
+
+mat-radio-group {
+  display: flex;
+  flex-direction: row;
+  margin: 15px 0;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
+
+::ng-deep .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+  background-color: red !important;
+}
+
+::ng-deep .mat-radio-button.mat-accent .mat-radio-inner-circle {
+  background-color: red !important;
+}
+
+::ng-deep
+  .mat-radio-button.mat-accent.mat-radio-checked
+  .mat-radio-outer-circle {
+  border-color: red !important;
+}

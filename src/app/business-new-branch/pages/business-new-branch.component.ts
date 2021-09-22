@@ -20,14 +20,12 @@ import { environment } from "src/environments/environment";
 import { BusinessRegistrationDto } from "../models/business-registration-dto";
 
 @Component({
-  selector: "app-business-registration",
-  templateUrl: "./business-registration.component.html",
-  styleUrls: ["./business-registration.component.scss"],
+  selector: "app-business-new-branch",
+  templateUrl: "./business-new-branch.component.html",
+  styleUrls: ["./business-new-branch.component.scss"],
 })
-export class BusinessRegistrationComponent implements OnInit {
+export class BusinessNewBranchComponent implements OnInit {
   public isLinear = environment.production;
-  public cities: City[] = [];
-  public states: State[] = [];
   public citiesForBranchs: City[] = [];
   public statesForBranchs: State[] = [];
   public banks: Bank[] = [];
@@ -106,94 +104,6 @@ export class BusinessRegistrationComponent implements OnInit {
 
   public initSecondFormGroup(): void {
     this.secondFormGroup = this.fb.group({
-      legalRepresentativeName: [
-        "",
-        [
-          Validators.required,
-          Validators.minLength(2),
-          Validators.maxLength(30),
-        ],
-      ],
-      legalRepresentativeLastName: [
-        "",
-        [
-          Validators.required,
-          Validators.minLength(2),
-          Validators.maxLength(30),
-        ],
-      ],
-      legalRepresentativeRut: [
-        "",
-        [
-          Validators.required,
-          Validators.minLength(8),
-          Validators.maxLength(9),
-          this.rutValidator,
-        ],
-      ],
-      legalRepresentativeEmail: [
-        "",
-        [Validators.email, Validators.required, Validators.pattern(emailRegex)],
-      ],
-      legalRepresentativePhone: [
-        "",
-        [
-          Validators.required,
-          Validators.minLength(17),
-          Validators.maxLength(17),
-        ],
-      ],
-      mainOfficeNameCompany: [
-        "",
-        [
-          Validators.required,
-          Validators.minLength(5),
-          Validators.maxLength(50),
-        ],
-      ],
-      mainOfficeBusinessLine: [
-        "",
-        [
-          Validators.required,
-          Validators.minLength(5),
-          Validators.maxLength(50),
-        ],
-      ],
-      mainOfficeRutBusiness: [
-        "",
-        [
-          Validators.required,
-          Validators.minLength(8),
-          Validators.maxLength(9),
-          this.rutValidator,
-        ],
-      ],
-      mainOfficeLocationAddress: [
-        "",
-        [
-          Validators.required,
-          Validators.minLength(5),
-          Validators.maxLength(50),
-        ],
-      ],
-      mainOfficeLocationNumber: [
-        "",
-        [
-          Validators.required,
-          Validators.minLength(1),
-          Validators.maxLength(20),
-        ],
-      ],
-      mainOfficePhone: [
-        "",
-        [
-          Validators.required,
-          Validators.minLength(17),
-          Validators.maxLength(17),
-        ],
-      ],
-      mainOfficeLocationCity: ["0", [Validators.required, Validators.min(1)]],
-      mainOfficeLocationState: ["0", [Validators.required, Validators.min(1)]],
       branchLocationAddress: [
         "",
         [
@@ -250,16 +160,7 @@ export class BusinessRegistrationComponent implements OnInit {
 
   public getCities(): void {
     this.territorialsService.getCities(1).subscribe((cities) => {
-      this.cities = cities;
       this.citiesForBranchs = cities;
-    });
-  }
-
-  public getStates(): void {
-    const idCity = this.secondFormGroup.get("mainOfficeLocationCity").value;
-    this.territorialsService.getStates(idCity).subscribe((states) => {
-      this.states = states;
-      this.secondFormGroup.get("mainOfficeLocationState").setValue("0");
     });
   }
 
@@ -466,148 +367,6 @@ export class BusinessRegistrationComponent implements OnInit {
   // #endregion First stepper validations
 
   // #region Second stepper validations
-  public getLegalRepresentativeNameError(): string {
-    const control = this.secondFormGroup.get("legalRepresentativeName");
-    return control.hasError("required")
-      ? ErrorMessages.Required.replace("{0}", "nombre")
-      : control.hasError("minlength")
-      ? ErrorMessages.Minlength.replace("{0}", "2")
-      : control.hasError("maxlength")
-      ? ErrorMessages.Maxlength.replace("{0}", "30")
-      : null;
-  }
-
-  public getLegalRepresentativeLastNameError(): string {
-    const control = this.secondFormGroup.get("legalRepresentativeLastName");
-    return control.hasError("required")
-      ? ErrorMessages.Required.replace("{0}", "apellido")
-      : control.hasError("minlength")
-      ? ErrorMessages.Minlength.replace("{0}", "2")
-      : control.hasError("maxlength")
-      ? ErrorMessages.Maxlength.replace("{0}", "30")
-      : null;
-  }
-
-  public getLegalRepresentativeRutError(): string {
-    const control = this.secondFormGroup.get("legalRepresentativeRut");
-    return control.hasError("required")
-      ? ErrorMessages.Required.replace("{0}", "rut")
-      : control.hasError("minlength")
-      ? ErrorMessages.Invalid.replace("{0}", "rut")
-      : control.hasError("maxlength")
-      ? ErrorMessages.Invalid.replace("{0}", "rut")
-      : control.hasError("invalidRut")
-      ? ErrorMessages.Invalid.replace("{0}", "rut")
-      : null;
-  }
-
-  public getLegalRepresentativeEmailError(): string {
-    const control = this.secondFormGroup.get("legalRepresentativeEmail");
-    return control.hasError("required")
-      ? ErrorMessages.Required.replace("{0}", "email")
-      : control.hasError("email")
-      ? ErrorMessages.Invalid.replace("{0}", "email")
-      : control.hasError("pattern")
-      ? ErrorMessages.Invalid.replace("{0}", "email")
-      : null;
-  }
-
-  public getLegalRepresentativePhoneError(): string {
-    const control = this.secondFormGroup.get("legalRepresentativePhone");
-    return control.hasError("required")
-      ? ErrorMessages.Required.replace("{0}", "número")
-      : control.hasError("minlength")
-      ? ErrorMessages.Invalid.replace("{0}", "número")
-      : control.hasError("maxlength")
-      ? ErrorMessages.Invalid.replace("{0}", "número")
-      : null;
-  }
-
-  public getMainOfficeNameCompanyError(): string {
-    const control = this.secondFormGroup.get("mainOfficeNameCompany");
-    return control.hasError("required")
-      ? ErrorMessages.Required.replace("{0}", "nombre de local")
-      : control.hasError("minlength")
-      ? ErrorMessages.Minlength.replace("{0}", "5")
-      : control.hasError("maxlength")
-      ? ErrorMessages.Maxlength.replace("{0}", "50")
-      : null;
-  }
-
-  public getMainOfficeBusinessLineError(): string {
-    const control = this.secondFormGroup.get("mainOfficeBusinessLine");
-    return control.hasError("required")
-      ? ErrorMessages.RequiredVariant.replace("{0}", "giro")
-      : control.hasError("minlength")
-      ? ErrorMessages.Minlength.replace("{0}", "5")
-      : control.hasError("maxlength")
-      ? ErrorMessages.Maxlength.replace("{0}", "50")
-      : null;
-  }
-
-  public getMainOfficeRutBusinessError(): string {
-    const control = this.secondFormGroup.get("mainOfficeRutBusiness");
-    return control.hasError("required")
-      ? ErrorMessages.Required.replace("{0}", "rut")
-      : control.hasError("minlength")
-      ? ErrorMessages.Invalid.replace("{0}", "rut")
-      : control.hasError("maxlength")
-      ? ErrorMessages.Invalid.replace("{0}", "rut")
-      : control.hasError("invalidRut")
-      ? ErrorMessages.Invalid.replace("{0}", "rut")
-      : null;
-  }
-
-  public getMainOfficeLocationAddressError(): string {
-    const control = this.secondFormGroup.get("mainOfficeLocationAddress");
-    return control.hasError("required")
-      ? ErrorMessages.RequiredVariant.replace("{0}", "calle")
-      : control.hasError("minlength")
-      ? ErrorMessages.Minlength.replace("{0}", "5")
-      : control.hasError("maxlength")
-      ? ErrorMessages.Maxlength.replace("{0}", "50")
-      : null;
-  }
-
-  public getMainOfficeLocationNumberError(): string {
-    const control = this.secondFormGroup.get("mainOfficeLocationNumber");
-    return control.hasError("required")
-      ? ErrorMessages.Required.replace("{0}", "número de calle")
-      : control.hasError("minlength")
-      ? ErrorMessages.Minlength.replace("{0}", "1")
-      : control.hasError("maxlength")
-      ? ErrorMessages.Maxlength.replace("{0}", "20")
-      : null;
-  }
-
-  public getMainOfficePhoneError(): string {
-    const control = this.secondFormGroup.get("mainOfficePhone");
-    return control.hasError("required")
-      ? ErrorMessages.Required.replace("{0}", "número")
-      : control.hasError("minlength")
-      ? ErrorMessages.Invalid.replace("{0}", "número")
-      : control.hasError("maxlength")
-      ? ErrorMessages.Invalid.replace("{0}", "número")
-      : null;
-  }
-
-  public getMainOfficeLocationCityError(): string {
-    const control = this.secondFormGroup.get("mainOfficeLocationCity");
-    return control.hasError("required")
-      ? ErrorMessages.RequiredSelectVariant.replace("{0}", "región")
-      : control.hasError("min")
-      ? ErrorMessages.RequiredSelectVariant.replace("{0}", "región")
-      : null;
-  }
-
-  public getMainOfficeLocationStateError(): string {
-    const control = this.secondFormGroup.get("mainOfficeLocationState");
-    return control.hasError("required")
-      ? ErrorMessages.RequiredSelectVariant.replace("{0}", "comuna")
-      : control.hasError("min")
-      ? ErrorMessages.RequiredSelectVariant.replace("{0}", "comuna")
-      : null;
-  }
 
   public getBranchLocationAddressError(): string {
     const control = this.secondFormGroup.get("branchLocationAddress");

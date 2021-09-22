@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { TokenService } from "src/app/shared/helpers/token.service";
+import { TyneRoutes } from "src/app/shared/inmutable/enums/url-routes";
 
 @Component({
   selector: "app-header",
@@ -11,11 +13,18 @@ export class HeaderComponent implements OnInit {
   public isUserLoggedIn = false;
   public isUserBusiness = false;
 
-  public constructor(private tokenService: TokenService) {}
+  public constructor(
+    private router: Router,
+    private tokenService: TokenService
+  ) {}
 
   public ngOnInit(): void {
     this.verifyIfUserIsLoggedIn();
     this.verifyIsUserIsBusiness();
+  }
+
+  public redirectToBranchRegistration(): void {
+    this.router.navigate([TyneRoutes.BusinessNewBranch]);
   }
 
   private verifyIfUserIsLoggedIn() {
@@ -27,7 +36,7 @@ export class HeaderComponent implements OnInit {
     const token = this.tokenService.getDecodedJwtToken();
 
     if (token) {
-      this.isUserBusiness = token.claims.rol != "user";
+      this.isUserBusiness = token.claims.rol === "user";
     }
   }
 
