@@ -11,13 +11,14 @@ export interface Category {
 export interface Menu {
   id: number;
   product: Product;
+  quantity: number; // special
 }
 
 export interface Product {
   id: number;
   name: string;
   description: string;
-  price: Price;
+  price: Price[];
   image_product: ImageProduct[];
 }
 
@@ -27,6 +28,10 @@ export interface Price {
 }
 
 export interface ImageProduct {
+  image: Image;
+}
+
+export interface Image {
   id: number;
   url: string;
 }
