@@ -36,7 +36,7 @@ export class HeaderComponent implements OnInit {
     const token = this.tokenService.getDecodedJwtToken();
 
     if (token) {
-      this.isUserBusiness = token.claims.rol === "user";
+      this.isUserBusiness = token.claims.rol != "user";
     }
   }
 

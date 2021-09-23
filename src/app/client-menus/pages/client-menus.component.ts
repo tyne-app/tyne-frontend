@@ -1,7 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialog } from "@angular/material/dialog";
+import { ActivatedRoute } from "@angular/router";
+import { BusinessDetailsResponse } from "src/app/business-details/models/business-details-response";
 import { CreateReservationComponent } from "src/app/create-reservation/pages/create-reservation.component";
+import { MenuService } from "src/app/shared/services/menus/menu.service";
+import { RestaurantService } from "src/app/shared/services/restaurant.service";
 
 @Component({
   selector: "app-client-menus",
@@ -13,8 +17,17 @@ export class ClientMenusComponent implements OnInit {
   public panelOpenState = true;
   public total = 0;
   public cart: FormGroup[] = [];
+  public restaurant: BusinessDetailsResponse = null;
+  public ratingsArray: Array<number> = [];
+  public noRatingsArray: Array<number> = [];
 
-  public constructor(private fb: FormBuilder, public dialog: MatDialog) {}
+  public constructor(
+    private activatedRoute: ActivatedRoute,
+    private fb: FormBuilder,
+    public dialog: MatDialog,
+    private menuService: MenuService,
+    private restaurantService: RestaurantService
+  ) {}
 
   public get sections(): FormArray {
     return this.form.controls["sections"] as FormArray;
@@ -22,6 +35,7 @@ export class ClientMenusComponent implements OnInit {
 
   public ngOnInit(): void {
     this.initForm();
+    this.getData();
   }
 
   public saveChanges(): void {
@@ -81,7 +95,6 @@ export class ClientMenusComponent implements OnInit {
       {
         id: 1,
         title: "Entrada",
-        isTitleVisible: false,
         products: [
           {
             id: 1,
@@ -108,7 +121,6 @@ export class ClientMenusComponent implements OnInit {
       {
         id: 2,
         title: "Almuerzo",
-        isTitleVisible: false,
         products: [
           {
             id: 3,
@@ -125,7 +137,6 @@ export class ClientMenusComponent implements OnInit {
       {
         id: 3,
         title: "Postres",
-        isTitleVisible: false,
         products: [
           {
             id: 4,
@@ -142,7 +153,6 @@ export class ClientMenusComponent implements OnInit {
       {
         id: 4,
         title: "Bebidas",
-        isTitleVisible: false,
         products: [
           {
             id: 5,
@@ -169,7 +179,6 @@ export class ClientMenusComponent implements OnInit {
         this.fb.group({
           id: [x.id],
           title: [x.title, [Validators.required, Validators.maxLength(20)]],
-          isTitleVisible: [false],
           products: this.initProducts(x.products),
         })
       );
@@ -210,5 +219,22 @@ export class ClientMenusComponent implements OnInit {
     });
 
     return formArray;
+  }
+
+  private getData(): void {
+    this.activatedRoute.queryParams.subscribe((x) => {
+      this.restaurantService.getRestaurant(x.id).subscribe((response) => {
+        this.restaurant = response;
+        this.getRatings();
+      });
+    });
+  }
+
+  private getRatings(): void {
+    if (this.restaurant && this.restaurant?.id > 0) {
+      const rating = Math.round(this.restaurant?.rating);
+      this.ratingsArray = new Array(rating);
+      this.noRatingsArray = new Array(5 - this.ratingsArray.length);
+    }
   }
 }
