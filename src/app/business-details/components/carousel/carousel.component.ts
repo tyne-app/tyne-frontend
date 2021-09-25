@@ -4,11 +4,11 @@ import SwiperCore, {
   Keyboard,
   Mousewheel,
   Navigation,
-  Pagination,
+  Pagination
 } from "swiper/core";
 import {
   BranchImage,
-  BusinessDetailsResponse,
+  BusinessDetailsResponse
 } from "../../models/business-details-response";
 
 SwiperCore.use([Navigation, Pagination, Mousewheel, Keyboard, Autoplay]);
