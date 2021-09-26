@@ -1,9 +1,10 @@
-
+@import "../../../../styles.scss";
 
 mat-card {
   background: #fafafa;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
+  padding-bottom: 2.2rem;
 }
 
 .mat-card-pt-4 {
@@ -12,6 +13,10 @@ mat-card {
 
 .titulo-principal {
   margin-bottom: -15px;
+  text-align: center;
+}
+
+.titulo-2 {
   text-align: center;
 }
 
@@ -33,8 +38,25 @@ mat-card {
   color: #3c0000;
 }
 
-@media only screen and (max-width: 768px) {
+@include view-max (768px) {
   .titulo-2 {
     font-size: 30px;
+  }
+}
+
+.btn-xs {
+  font-size: .9rem;
+  max-width: 300px;
+}
+
+@include view-min (577px) {
+  .btn-xs {
+    font-size: .96rem;
+  }
+}
+
+@include view-min (992px) {
+  .btn-xs {
+    font-size: 1.1rem;
   }
 }

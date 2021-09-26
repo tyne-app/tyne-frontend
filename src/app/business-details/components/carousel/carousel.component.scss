@@ -1,3 +1,5 @@
+@import "../../../../styles.scss";
+
 .swiper-container {
   width: 100%;
   height: 100%;
@@ -21,6 +23,33 @@
   align-items: center;
 }
 
+::ng-deep
+  .swiper-container-horizontal
+  > .swiper-pagination-bullets
+  .swiper-pagination-bullet {
+  margin: 0 5px;
+}
+
+@include view-min(577px) {
+  ::ng-deep
+    .swiper-container-horizontal
+    > .swiper-pagination-bullets
+    .swiper-pagination-bullet {
+    margin: 0 6px;
+  }
+}
+
+::ng-deep .swiper-pagination-bullet {
+  background: #3c0000;
+  height: 11px;
+  opacity: 1;
+  width: 11px;
+}
+
+::ng-deep .swiper-pagination-bullet-active {
+  background: #e10000;
+}
+
 img {
   width: 100%;
   height: 100%;
@@ -32,26 +61,26 @@ img {
   height: 400px;
 }
 
-@media only screen and (max-width: 1024px) {
+@include view-max(1024px) {
   .mySwiper {
     height: 300px;
   }
 }
 
-@media only screen and (max-width: 768px) {
+@include view-max(768px) {
+  .mySwiper {
+    height: 280px;
+  }
+}
+
+@include view-max(425px) {
   .mySwiper {
     height: 250px;
   }
 }
 
-@media only screen and (max-width: 425px) {
+@include view-max(320px) {
   .mySwiper {
-    height: 200px;
-  }
-}
-
-@media only screen and (max-width: 320px) {
-  .mySwiper {
-    height: 150px;
+    height: 180px;
   }
 }
