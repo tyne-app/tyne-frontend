@@ -11,6 +11,7 @@ import { BusinessProfileEditBankDataComponent } from "../components/business-pro
 import { BusinessProfileEditDataComponent } from "../components/business-profile-edit-data/business-profile-edit-data.component";
 import { BusinessProfileEditPasswordComponent } from "../components/business-profile-edit-password/business-profile-edit-password.component";
 import { BusinessProfileEditWorkDaysComponent } from "../components/business-profile-edit-work-days/business-profile-edit-work-days.component";
+import { BusinessProfileImageLocalsComponent } from "../components/business-profile-image-locals/business-profile-image-locals.component";
 import { BusinessProfileComponent } from "../pages/business-profile.component";
 import { BusinessProfileRoutingModule } from "../routes/business-registration-routing.module";
 
@@ -22,6 +23,7 @@ import { BusinessProfileRoutingModule } from "../routes/business-registration-ro
     BusinessProfileEditBankDataComponent,
     BusinessProfileEditDataComponent,
     BusinessProfileEditWorkDaysComponent,
+    BusinessProfileImageLocalsComponent,
   ],
   imports: [
     CommonModule,

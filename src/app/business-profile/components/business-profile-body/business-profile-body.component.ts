@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialog } from "@angular/material/dialog";
-import { ErrorMessages } from "src/app/shared/inmutable/enums/error-messages";
 import { passwordRegex } from "src/app/shared/inmutable/constants/password";
+import { ErrorMessages } from "src/app/shared/inmutable/enums/error-messages";
 import { PasswordValidator } from "src/app/shared/validations/password-validator";
 import { BusinessProfileEditBankDataComponent } from "../business-profile-edit-bank-data/business-profile-edit-bank-data.component";
 import { BusinessProfileEditDataComponent } from "../business-profile-edit-data/business-profile-edit-data.component";

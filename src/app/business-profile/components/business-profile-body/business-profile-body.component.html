@@ -2,12 +2,12 @@
   <!--Nombre del local-->
   <div class="row justify-content-center">
     <div class="col-sm-6 col-md-6 col-lg-4">
-      <h3 class="titulo-2">Juan y Medio</h3>
+      <h3 class="titulo-2 mt-4 mt-md-5 mb-2 mb-md-3">Juan y Medio</h3>
     </div>
   </div>
 
-  <div class="row ml-2">
-    <div class="col ml-2">
+  <div class="row mx-0">
+    <div class="col px-0 px-md-2 ml-md-4">
       <h3 class="titulo-4">Mis Datos</h3>
     </div>
   </div>
@@ -44,19 +44,19 @@
       </div>
     </div>
 
-    <div class="row pt-5 justify-content-center">
-      <div class="col-6 col-md-4 col-lg-4 col-center">
-        <button mat-raised-button class="btn-normal-red" (click)="openEditDataComponent()">
+    <div class="row pt-4 justify-content-center">
+      <div class="col-12 col-md-4 col-center mb-2 mb-md-0">
+        <button mat-raised-button class="btn-normal-red btn-xs" (click)="openEditDataComponent()">
           Editar mis datos
         </button>
       </div>
-      <div class="col-6 col-md-4 col-lg-4 col-center">
-        <button mat-raised-button class="btn-normal-red" (click)="openEditPasswordComponent()">
+      <div class="col-12 col-md-4 col-center mb-2 mb-md-0">
+        <button mat-raised-button class="btn-normal-red btn-xs" (click)="openEditPasswordComponent()">
           Editar contraseña
         </button>
       </div>
-      <div class="col-12 col-md-4 col-lg-4 col-center">
-        <button mat-raised-button class="btn-normal-red" (click)="openEditBankDataComponent()">
+      <div class="col-12 col-md-4 col-center">
+        <button mat-raised-button class="btn-normal-red btn-xs" (click)="openEditBankDataComponent()">
           Ver mis datos bancarios
         </button>
       </div>
@@ -69,7 +69,7 @@
         <h4 class="titulo pb-3">Horario y días de funcionamiento:</h4>
         <p class="subtitulo">Martes y sábado 12:30 a 23:30</p>
         <p class="subtitulo">Domingo 14:30 a 21:00</p>
-        <button class="btn-normal-red" (click)="openEditWorkDaysComponent()">
+        <button class="btn-normal-red btn-xs" (click)="openEditWorkDaysComponent()" mat-raised-button>
           Editar Horarios
         </button>
       </div>
