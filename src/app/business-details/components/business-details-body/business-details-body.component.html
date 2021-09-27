@@ -98,6 +98,10 @@
     </div>
   </div>
   <div class="col">
-    <app-map [Lat]="-33.5263415" [Long]="-70.5920142"></app-map>
+    <app-map
+      [Lat]="restaurant.latitude"
+      [Long]="restaurant.longitude"
+      [Address]="restaurant.address"
+    ></app-map>
   </div>
 </div>

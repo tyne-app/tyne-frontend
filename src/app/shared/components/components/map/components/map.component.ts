@@ -10,6 +10,7 @@ import { TyneMapStyle } from "../models/map";
 export class MapComponent implements OnInit {
   @Input() public Long = -70.66129503199164;
   @Input() public Lat = -33.468330883364935;
+  @Input() public Address: string = null;
   private tyneMap: mapboxgl.Map;
 
   public constructor() {}
@@ -26,10 +27,19 @@ export class MapComponent implements OnInit {
   }
 
   private createMarker(): void {
+    // https://docs.mapbox.com/mapbox-gl-js/api/markers/#popup
+    const popup = new mapboxgl.Popup({
+      closeButton: false,
+      closeOnClick: false,
+    })
+      .setText(this.Address)
+      .addTo(this.tyneMap);
+
     const marker = new mapboxgl.Marker({
-      draggable: true,
+      draggable: false,
     })
       .setLngLat([this.Long, this.Lat])
-      .addTo(this.tyneMap);
+      .addTo(this.tyneMap)
+      .setPopup(popup);
   }
 }
