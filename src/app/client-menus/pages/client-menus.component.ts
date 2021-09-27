@@ -1,7 +1,16 @@
 import { Component, OnInit } from "@angular/core";
 import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialog } from "@angular/material/dialog";
+import { ActivatedRoute } from "@angular/router";
+import { forkJoin } from "rxjs";
+import { BusinessDetailsResponse } from "src/app/business-details/models/business-details-response";
 import { CreateReservationComponent } from "src/app/create-reservation/pages/create-reservation.component";
+import {
+  Menu,
+  MenuResponse,
+} from "src/app/shared/services/menus/menu-response";
+import { MenuService } from "src/app/shared/services/menus/menu.service";
+import { RestaurantService } from "src/app/shared/services/restaurant.service";
 
 @Component({
   selector: "app-client-menus",
@@ -13,8 +22,18 @@ export class ClientMenusComponent implements OnInit {
   public panelOpenState = true;
   public total = 0;
   public cart: FormGroup[] = [];
+  public restaurant: BusinessDetailsResponse = null;
+  public menus: MenuResponse[] = [];
+  public ratingsArray: Array<number> = [];
+  public noRatingsArray: Array<number> = [];
 
-  public constructor(private fb: FormBuilder, public dialog: MatDialog) {}
+  public constructor(
+    private activatedRoute: ActivatedRoute,
+    private fb: FormBuilder,
+    public dialog: MatDialog,
+    private menuService: MenuService,
+    private restaurantService: RestaurantService
+  ) {}
 
   public get sections(): FormArray {
     return this.form.controls["sections"] as FormArray;
@@ -22,6 +41,7 @@ export class ClientMenusComponent implements OnInit {
 
   public ngOnInit(): void {
     this.initForm();
+    this.getData();
   }
 
   public saveChanges(): void {
@@ -76,107 +96,42 @@ export class ClientMenusComponent implements OnInit {
     );
   }
 
-  private getDataMock() {
-    return [
-      {
-        id: 1,
-        title: "Entrada",
-        isTitleVisible: false,
-        products: [
-          {
-            id: 1,
-            name: "Carne al jugo",
-            imageUrl:
-              "https://sevilla.abc.es/gurme/wp-content/uploads/sites/24/2012/01/comida-rapida-casera.jpg",
-            price: "4500",
-            description:
-              "Sabrosa carne al jugo Sabrosa carne al jugo Sabrosa carne al jugo Sabrosa carne al jugo Sabrosa carne al jugo",
-            quantity: 0,
-          },
-          {
-            id: 2,
-            name: "item 2",
-            description:
-              "Sabrosa carne al jugo Sabrosa carne al jugo Sabrosa carne al jugo Sabrosa carne al jugo Sabrosa carne al jugo",
-            imageUrl:
-              "https://sevilla.abc.es/gurme/wp-content/uploads/sites/24/2012/01/comida-rapida-casera.jpg",
-            price: "4500",
-            quantity: 0,
-          },
-        ],
-      },
-      {
-        id: 2,
-        title: "Almuerzo",
-        isTitleVisible: false,
-        products: [
-          {
-            id: 3,
-            name: "item 1",
-            description:
-              "Sabrosa carne al jugo Sabrosa carne al jugo Sabrosa carne al jugo Sabrosa carne al jugo Sabrosa carne al jugo",
-            imageUrl:
-              "https://sevilla.abc.es/gurme/wp-content/uploads/sites/24/2012/01/comida-rapida-casera.jpg",
-            price: "4500",
-            quantity: 0,
-          },
-        ],
-      },
-      {
-        id: 3,
-        title: "Postres",
-        isTitleVisible: false,
-        products: [
-          {
-            id: 4,
-            name: "item 1",
-            description:
-              "Sabrosa carne al jugo Sabrosa carne al jugo Sabrosa carne al jugo Sabrosa carne al jugo Sabrosa carne al jugo",
-            imageUrl:
-              "https://sevilla.abc.es/gurme/wp-content/uploads/sites/24/2012/01/comida-rapida-casera.jpg",
-            price: "4500",
-            quantity: 0,
-          },
-        ],
-      },
-      {
-        id: 4,
-        title: "Bebidas",
-        isTitleVisible: false,
-        products: [
-          {
-            id: 5,
-            name: "item 1",
-            description:
-              "Sabrosa carne al jugo Sabrosa carne al jugo Sabrosa carne al jugo Sabrosa carne al jugo Sabrosa carne al jugo",
-            imageUrl:
-              "https://sevilla.abc.es/gurme/wp-content/uploads/sites/24/2012/01/comida-rapida-casera.jpg",
-            price: "4500",
-            quantity: 0,
-          },
-        ],
-      },
-    ];
-  }
-
   private initForm() {
     this.form = this.fb.group({
       sections: this.fb.array([]),
     });
+  }
 
-    this.getDataMock().forEach((x) => {
+  private getData(): void {
+    this.activatedRoute.queryParams.subscribe((x) => {
+      const restaurant = this.restaurantService.getRestaurant(x.id);
+      const menus = this.menuService.getMenusByBranch(x.id);
+
+      forkJoin([restaurant, menus]).subscribe((results) => {
+        this.restaurant = results[0];
+        this.menus = results[1];
+        this.getRatings();
+        this.initCategories();
+      });
+    });
+  }
+
+  private initCategories(): void {
+    this.menus.forEach((x) => {
       this.sections.push(
         this.fb.group({
-          id: [x.id],
-          title: [x.title, [Validators.required, Validators.maxLength(20)]],
-          isTitleVisible: [false],
-          products: this.initProducts(x.products),
+          id: [x.category.id],
+          title: [
+            x.category.name,
+            [Validators.required, Validators.maxLength(20)],
+          ],
+          products: this.initMenus(x.menu),
         })
       );
     });
   }
 
-  private initProducts(products: any): FormArray {
+  private initMenus(products: Menu[]): FormArray {
     const formArray = new FormArray([]);
 
     products.forEach((x) => {
@@ -184,31 +139,39 @@ export class ClientMenusComponent implements OnInit {
         this.fb.group({
           id: [x.id],
           name: [
-            x.name,
+            x.product.name,
             [
               Validators.required,
               Validators.minLength(3),
               Validators.maxLength(50),
             ],
           ],
-          imageUrl: [x.imageUrl],
+          imageUrl: [x.product.image_product[0].image.url],
           price: [
-            x.price,
+            x.product.price[0].amount,
             [Validators.required, Validators.min(100), Validators.max(100000)],
           ],
           description: [
-            x.description,
+            x.product.description,
             [
               Validators.required,
               Validators.minLength(10),
               Validators.maxLength(200),
             ],
           ],
-          quantity: [x.quantity],
+          quantity: [0],
         })
       );
     });
 
     return formArray;
+  }
+
+  private getRatings(): void {
+    if (this.restaurant && this.restaurant?.id > 0) {
+      const rating = Math.round(this.restaurant?.rating);
+      this.ratingsArray = new Array(rating);
+      this.noRatingsArray = new Array(5 - this.ratingsArray.length);
+    }
   }
 }
