@@ -194,6 +194,14 @@ export class BusinessRegistrationComponent implements OnInit {
       ],
       mainOfficeLocationCity: ["0", [Validators.required, Validators.min(1)]],
       mainOfficeLocationState: ["0", [Validators.required, Validators.min(1)]],
+      nameCompany: [
+        "",
+        [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(50),
+        ],
+      ],
       branchLocationAddress: [
         "",
         [
@@ -526,7 +534,7 @@ export class BusinessRegistrationComponent implements OnInit {
   public getMainOfficeNameCompanyError(): string {
     const control = this.secondFormGroup.get("mainOfficeNameCompany");
     return control.hasError("required")
-      ? ErrorMessages.Required.replace("{0}", "nombre de local")
+      ? ErrorMessages.RequiredVariant.replace("{0}", "una razón social")
       : control.hasError("minlength")
       ? ErrorMessages.Minlength.replace("{0}", "5")
       : control.hasError("maxlength")
@@ -606,6 +614,17 @@ export class BusinessRegistrationComponent implements OnInit {
       ? ErrorMessages.RequiredSelectVariant.replace("{0}", "comuna")
       : control.hasError("min")
       ? ErrorMessages.RequiredSelectVariant.replace("{0}", "comuna")
+      : null;
+  }
+
+  public getNameCompanyError(): string {
+    const control = this.secondFormGroup.get("nameCompany");
+    return control.hasError("required")
+      ? ErrorMessages.Required.replace("{0}", "nombre de local")
+      : control.hasError("minlength")
+      ? ErrorMessages.Minlength.replace("{0}", "5")
+      : control.hasError("maxlength")
+      ? ErrorMessages.Maxlength.replace("{0}", "50")
       : null;
   }
 
