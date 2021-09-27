@@ -1,22 +1,19 @@
-/**
- * ANGULAR CORE
- */
+/** ANGULAR CORE */
 import { Component, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-/**
- * INTERFACES
- */
-import { Claims } from 'src/app/shared/interfaces/token';
-/**
- * CONSTANTS
- */
-import { passwordRegex } from 'src/app/shared/constants/password';
-/**
- * VALIDATORS
- */
-import { PasswordValidator } from 'src/app/shared/validations/password-validator';
-import { ClientProfileService } from '../../services/client-profile.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+/** INTERFACES - MODELS */
+import { Claims } from 'src/app/shared/interfaces/token';
+import { DialogModel } from 'src/app/shared/components/components/dialog/models/dialog-model';
+/** CONSTANTS */
+import { ErrorMessages } from 'src/app/shared/inmutable/enums/error-messages';
+import { passwordRegex } from 'src/app/shared/inmutable/constants/password';
+import { passwordClientUpdatedContent } from 'src/app/shared/inmutable/constants/dialog-messages';
+/** VALIDATORS */
+import { PasswordValidator } from 'src/app/shared/validations/password-validator';
+/** SERVICES */
+import { ClientProfileService } from '../../services/client-profile.service';
+import { DialogService } from 'src/app/shared/components/components/dialog/services/dialog.service';
 
 @Component({
   selector: 'app-profile-container',
@@ -43,12 +40,17 @@ export class ProfileContainerComponent implements OnInit {
     return this.recoverPasswordForm.get('confirmPassword');
   }
 
+  public get currentPasswordControl(): AbstractControl{
+    return this.recoverPasswordForm.get('currentPassword');
+  }
+
   // #endregion
   
   public constructor(
     private fb: FormBuilder, 
     private clientProfileService: ClientProfileService,
-    private snackbar:MatSnackBar
+    private snackbar:MatSnackBar,
+    private dialogService :DialogService
   ) { }
 
   public ngOnInit(): void {
@@ -67,15 +69,19 @@ export class ProfileContainerComponent implements OnInit {
     if(this.newPasswordControl.value == this.confirmPasswordControl.value){
       this.clientProfileService.putPassword(this.newPasswordControl.value).subscribe({
         next: () => {
-          this.snackbar.open('Tu contraseña ha sido actualizada exitosamente', 'Aceptar', {
-            duration: 3000
-          });  
+      
+          this.dialogService.openDialog(passwordClientUpdatedContent);
+          this.cleanPasswordControlForm();
         },
         error: () => {
-          this.snackbar.open('Ha ocurrido un problema, intente nuevamente', 'Aceptar', {
-            duration: 3000,
-            panelClass: ['error-snackbar']
-          });  
+          const dialogModel: DialogModel = {
+            title: "¡Lo sentimos!",
+            subtitle: ErrorMessages.GenericError,
+            isSuccessful: false,
+            messageButton: "Volver",
+          };
+          this.dialogService.openDialog(dialogModel);
+          this.cleanPasswordControlForm();        
         }
       });
     }
@@ -96,6 +102,16 @@ export class ProfileContainerComponent implements OnInit {
   public getButtonClass():string {
       return (this.recoverPasswordForm.invalid) ? 'btn btn-disabled' : 'btn btn-submit';
   }
+  
+  private resetPasswordForm = (): void => this.recoverPasswordForm.reset();
+
+  private cleanPasswordControlForm(): void {
+    this.recoverPasswordForm.reset();
+    this.recoverPasswordForm.clearValidators(); 
+    this.recoverPasswordForm.markAsUntouched();
+  }
+
+  
 }
 
  

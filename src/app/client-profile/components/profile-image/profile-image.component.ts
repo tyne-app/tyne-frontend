@@ -1,12 +1,15 @@
-/**
- * ANGULAR CORE
- */
+/** ANGULAR CORE */ 
 import { Component, Input, OnInit } from '@angular/core';
+/** ENUMS */
+import { ErrorMessages } from 'src/app/shared/inmutable/enums/error-messages';
+/** MODELS - INTERFACES */
+import { DialogModel } from 'src/app/shared/components/components/dialog/models/dialog-model';
 import { HTMLInputEvent } from '../../interfaces/event-input-file';
-/**
- * SERVICES
- */
+/** SERVICES */
+import { DialogService } from 'src/app/shared/components/components/dialog/services/dialog.service';
 import { ClientProfileService } from '../../services/client-profile.service';
+import { FileService } from 'src/app/shared/helpers/file.service';
+import { errorContent } from 'src/app/shared/inmutable/constants/dialog-messages';
 
 @Component({
   selector: 'app-profile-image',
@@ -21,7 +24,9 @@ export class ProfileImageComponent implements OnInit {
   // #endregion
 
   public constructor(
-    public clientProfileService: ClientProfileService
+    public clientProfileService: ClientProfileService,
+    private dialogService :DialogService,
+    private fileService: FileService
   ) { }
 
   public ngOnInit(): void {}
@@ -32,16 +37,18 @@ export class ProfileImageComponent implements OnInit {
    
   public uploadImageFromDirectory(event: HTMLInputEvent): void {
     this.imageProfile = event.target.files[0];
-    this.updateImageProfile(this.imageProfile);
+    this.ValidateImageFormatToUpload(this.imageProfile);
   }
 
   public updateImageProfile(imageProfile:File): void{
     this.clientProfileService.putImageProfile(imageProfile).subscribe(()=>{
       this.updateImageUrlSource();
+    },(error)=>{
+      this.dialogService.openDialog(errorContent);
     });
   }
 
-  public updateImageUrlSource(): void{
+  private updateImageUrlSource(): void{
     const reader = new FileReader();
     reader.readAsDataURL(this.imageProfile); 
     reader.onload = () => { 
@@ -49,6 +56,17 @@ export class ProfileImageComponent implements OnInit {
     };
   }
 
+  private ValidateImageFormatToUpload(file:File): void {
+    const isValidImageFormat = this.fileService.isValidFormatImageToUpload(file);
+    if(isValidImageFormat){
+      this.updateImageProfile(this.imageProfile);
+    }else{
+      this.dialogService.openDialog(errorContent);
+    }
+
+  }
+  
+  
 
 }
   

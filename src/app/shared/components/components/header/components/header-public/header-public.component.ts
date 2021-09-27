@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { Router } from "@angular/router";
-import { TyneRoutes } from "src/app/shared/constants/url-routes";
+import { TyneRoutes } from "src/app/shared/inmutable/enums/url-routes";
 import { InvokeDialogAuthService } from "src/app/shared/helpers/invoke-dialog-auth.service";
 
 @Component({
@@ -14,15 +14,15 @@ export class HeaderPublicComponent implements OnInit {
   public isWhiteLogo = true;
 
   public constructor(
-    public dialog: MatDialog, 
+    public dialog: MatDialog,
     private router: Router,
     private invokeDialogAuthService: InvokeDialogAuthService
-    ) { }
-  
+  ) {}
+
   public ngOnInit(): void {
     //
   }
-    
+
   public openRegistrationDialog(): void {
     const dialogRef = this.invokeDialogAuthService.openRegister();
     dialogRef.afterClosed().subscribe((result) => {
@@ -38,7 +38,9 @@ export class HeaderPublicComponent implements OnInit {
   }
 
   public getLogo(): string {
-    return this.isWhiteLogo ? "/assets/logo-home.png" : "/assets/logo2 1.png";
+    return this.isWhiteLogo
+      ? "/assets/icons/tyne-logo-white.png"
+      : "/assets/icons/tyne-logo-color.png";
   }
 
   public redirectToBusinessRegistration(): void {

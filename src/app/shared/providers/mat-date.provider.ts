@@ -19,9 +19,11 @@ export const MatDateLocalProvider = [{
 /** TODO: Refactor */
 /** Date Adapter */
 export const DateAdapterProvider = [{
+    
     provide: DateAdapter,
     useClass: MomentDateAdapter,
-    deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
+    deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
+      
 }];
 
 /** TODO: Refactor */

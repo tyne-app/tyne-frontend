@@ -54,17 +54,17 @@
         <!--Descripción del local-->
         <mat-card-content>
           <div class="row">
-            <div class="col-6 valoracion-local">
+            <div class="col-6 valoracion-local" *ngIf="isUserLogged">
               ${{ x.lowestPrice }} - ${{ x.higherPrice }}
             </div>
 
             <div class="col-6">
               <img
-                src="../../../assets/sarten-2.svg"
+                src="../../../assets/icons/frying-pan-2.svg"
                 *ngFor="let z of getRatingsArray(x)"
               />
               <img
-                src="../../../assets/sarten-1.svg"
+                src="../../../assets/icons/frying-pan-1.svg"
                 *ngFor="let z of getNotRatingsArray(x)"
               />
             </div>

@@ -45,6 +45,7 @@
           <input
             matInput
             formControlName="dateReservation"
+            [disabled]="true"
             autocomplete="off"
             [matDatepicker]="picker"
             [min]="minDate"
@@ -53,7 +54,7 @@
             matSuffix
             [for]="picker"
           ></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
+          <mat-datepicker [disabled]="false" #picker></mat-datepicker>
           <mat-error>
             {{ getDateReservationErrorMessage() }}
           </mat-error>

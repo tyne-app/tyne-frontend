@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { SearchBarService } from "src/app/shared/components/components/search-bar/services/search-bar.service";
-import { ErrorMessages } from "src/app/shared/constants/error-messages.enum";
+import { ErrorMessages } from "src/app/shared/inmutable/enums/error-messages";
 import { DateValidator } from "src/app/shared/validations/date-validator";
 
 @Component({

@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialogRef } from "@angular/material/dialog";
-import { ErrorMessages } from "src/app/shared/constants/error-messages.enum";
-import { passwordRegex } from "src/app/shared/constants/password";
+import { ErrorMessages } from "src/app/shared/inmutable/enums/error-messages";
+import { passwordRegex } from "src/app/shared/inmutable/constants/password";
 import { PasswordValidator } from "src/app/shared/validations/password-validator";
 
 @Component({

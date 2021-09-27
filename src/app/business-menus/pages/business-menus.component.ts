@@ -1,7 +1,7 @@
 import { CdkDragDrop, moveItemInArray } from "@angular/cdk/drag-drop";
 import { Component, OnInit } from "@angular/core";
 import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { FileService } from "src/app/shared/services/application/file.service";
+import { FileService } from "src/app/shared/helpers/file.service";
 
 @Component({
   selector: "app-business-menus",

@@ -1,10 +1,29 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
+import { JPGType, PNGType } from '../inmutable/constants/file-type';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root'
 })
 export class FileService {
-  public constructor() {}
+
+  public constructor() { }
+
+  public isValidFormatImageToUpload(file: File): boolean {
+    const uploadFile: File = file;
+    const { type: formatType } = uploadFile;
+    switch (formatType) {
+      case PNGType:
+        return true;
+      case JPGType:
+        return true;
+      default:
+        return false;
+    }
+  } 
+  /**TODO: Validate is name */
+  public isFileName(file: File): boolean {
+    return true;
+  }
 
   public getObjectUrl(event: any): string {
     const file: File = event.target.files[0];
@@ -37,4 +56,5 @@ export class FileService {
       return reader.result;
     };
   }
+
 }

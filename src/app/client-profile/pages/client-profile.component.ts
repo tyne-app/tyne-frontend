@@ -33,6 +33,7 @@ export class ClientProfileComponent implements OnInit {
     this.claims = token.claims;
     this.clientProfileService.getImageProfile().subscribe((resp)=>{   
       this.urlImage = resp;
+      console.log(this.urlImage);
       this.dataClientProfile = {
         claims: this.claims,
         urlImage: this.urlImage 

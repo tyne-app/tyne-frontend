@@ -2,7 +2,7 @@
 <div class="row title">
   <div class="col-9 col-sm-9 col-md-10 col-lg-10">
     <h2 class="titulo-2">
-      Juan y Medio
+      {{ restaurant?.name }}
       <mat-icon class="icon-favorite" (click)="onFavoriteIconClick()">
         {{ isFavorite ? "favorite" : "favorite_border" }}
       </mat-icon>
@@ -18,18 +18,10 @@
 <!--Body-->
 <div class="row">
   <div class="col-md-12 col-lg-5 business-details-panel">
-    <mat-card >
-      <mat-card-content class="py-2 px-2">
-        <p class="parrafo py-0">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab suscipit,
-          reiciendis hic quia sunt laborum ducimus qui eum magnam consequuntur?
-          Ipsa beatae ad pariatur dolorum iure quasi, consequatur unde labore.
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab suscipit,
-          reiciendis hic quia sunt laborum ducimus qui eum magnam consequuntur?
-          Ipsa beatae ad pariatur dolorum iure quasi, consequatur unde labore.
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab suscipit,
-          reiciendis hic quia sunt laborum ducimus qui eum magnam consequuntur?
-          Ipsa beatae ad pariatur dolorum iure quasi, consequatur unde labore.
+    <mat-card>
+      <mat-card-content>
+        <p class="parrafo">
+          {{ restaurant?.description }}
         </p>
       </mat-card-content>
     </mat-card>
@@ -45,9 +37,13 @@
               <p class="parrafo branch">{{ branch }}</p>
             </div>
           </div>
-          <div class="col col-center mt-5">
-            <img src="./../../../../assets/aceptan_mascotas.svg" />
+          <div class="col col-center mt-5" *ngIf="restaurant?.accept_pet">
+            <img src="./../../../../assets/icons/keeping-pet.svg" />
             <h4 class="titulo-4">Aceptan mascotas</h4>
+          </div>
+          <div class="col col-center mt-5" *ngIf="!restaurant?.accept_pet">
+            <img src="./../../../../assets/icons/not-keeping-pet.svg" />
+            <h4 class="titulo-4">No aceptan mascotas</h4>
           </div>
         </div>
       </mat-card-content>
@@ -61,14 +57,19 @@
       <div class="col col-center">
         <mat-card>
           <mat-card-content>
-            <h4 class="titulo-4">Rango de Precios:</h4>
-            <h2 class="titulo-3 mt-n3">$2.000 a $19.990</h2>
+            <h4 class="titulo-4" *ngIf="isUserLogged">Rango de Precios:</h4>
+            <h2 class="titulo-3 mt-n3" *ngIf="isUserLogged">
+              $2.000 a $19.990
+            </h2>
             <h4 class="titulo-4">Calificación:</h4>
-            <img src="../../../assets/sarten-2.svg" />
-            <img src="../../../assets/sarten-2.svg" />
-            <img src="../../../assets/sarten-2.svg" />
-            <img src="../../../assets/sarten-1.svg" />
-            <img src="../../../assets/sarten-1.svg" />
+            <img
+              src="../../../assets/icons/frying-pan-2.svg"
+              *ngFor="let z of ratingsArray"
+            />
+            <img
+              src="../../../assets/icons/frying-pan-1.svg"
+              *ngFor="let z of noRatingsArray"
+            />
           </mat-card-content>
         </mat-card>
       </div>
@@ -87,7 +88,10 @@
               <button class="btn-red">S</button>
               <button class="btn">D</button>
             </div>
-            <p class="parrafo">Martes a Sábado de 12:30 a 23:30</p>
+            <p class="parrafo" *ngFor="let x of schedule">
+              {{ x.name }} de {{ x.openingHour }} a
+              {{ x.closingHour }}
+            </p>
           </mat-card-content>
         </mat-card>
       </div>

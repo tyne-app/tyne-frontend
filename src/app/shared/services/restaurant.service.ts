@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable } from "rxjs";
 import { map } from "rxjs/operators";
+import { BusinessDetailsResponse } from "src/app/business-details/models/business-details-response";
 import { BusinessRegistrationDto } from "src/app/business-registration/models/business-registration-dto";
 import { SearchRestaurantRequest } from "src/app/search-restaurant/models/search-restaurant-request";
 import { SearchRestaurantResponse } from "src/app/search-restaurant/models/search-restaurant-response";
@@ -19,9 +20,11 @@ export class RestaurantService {
 
   public constructor(private client: HttpClient) {}
 
-  public createNewBusiness(business: BusinessRegistrationDto): Observable<any> {
+  public createNewRestaurant(
+    business: BusinessRegistrationDto
+  ): Observable<any> {
     return this.client.post<any>(
-      environment.apiLocals + "/api/local/register",
+      environment.apiLocals + "/locals/register",
       business
     );
   }
@@ -29,7 +32,7 @@ export class RestaurantService {
   public getRestaurants(
     request: SearchRestaurantRequest
   ): Observable<SearchRestaurantResponse[]> {
-    const url = environment.apiLocals + "/api/search/all-branch";
+    const url = environment.apiLocals + "/locals/search/all-branch";
 
     const params = new HttpParams()
       .set("name", request.name ? request.name : "")
@@ -46,6 +49,18 @@ export class RestaurantService {
       .pipe(
         map((res) => {
           return res.data;
+        })
+      );
+  }
+
+  public getRestaurant(id: number): Observable<BusinessDetailsResponse> {
+    const url = environment.apiLocals + "/locals/search/" + id;
+
+    return this.client
+      .get<GenericDataResponse<BusinessDetailsResponse>>(url)
+      .pipe(
+        map((res) => {
+          return res.data ? res.data : null;
         })
       );
   }
