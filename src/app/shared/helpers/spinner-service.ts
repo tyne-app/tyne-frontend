@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { MatDialog } from "@angular/material/dialog";
+import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { SpinnerComponent } from "../components/components/spinner/spinner.component";
 
 @Injectable({
@@ -7,6 +7,7 @@ import { SpinnerComponent } from "../components/components/spinner/spinner.compo
 })
 export class SpinnerService {
   private count = 0;
+  private spinnerComponentDialog: MatDialogRef<SpinnerComponent> = null;
 
   public constructor(private dialog: MatDialog) {}
 
@@ -24,7 +25,7 @@ export class SpinnerService {
   }
 
   private openSpinner(): void {
-    this.dialog.open(SpinnerComponent, {
+    this.spinnerComponentDialog = this.dialog.open(SpinnerComponent, {
       width: "200px",
       panelClass: "custom-dialog",
       disableClose: true,
@@ -32,6 +33,6 @@ export class SpinnerService {
   }
 
   private closeSpinner(): void {
-    this.dialog.closeAll();
+    this.spinnerComponentDialog.close();
   }
 }
