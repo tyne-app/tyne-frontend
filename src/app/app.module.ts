@@ -20,11 +20,15 @@ import { LoginComponent } from "./login/pages/login.component";
 import { PrivacyModule } from "./privacy/modules/privacy.module";
 import { RefundPolicyModule } from "./refund-policy/modules/refund-policy.module";
 import { SpinnerComponent } from "./shared/components/components/spinner/spinner.component";
-import { authInterceptorProvider } from "./shared/providers/auth.provider";
 import { MaterialModule } from "./shared/modules/material.module";
 import { SharedModule } from "./shared/modules/shared.module";
+import { authInterceptorProvider } from "./shared/providers/auth.provider";
+import {
+  DateAdapterProvider,
+  MatDateFormatProvider,
+  MatDateLocalProvider,
+} from "./shared/providers/mat-date.provider";
 import { RestClientService } from "./shared/services/rest-client.service";
-import { MatDateLocalProvider, DateAdapterProvider, MatDateFormatProvider } from "./shared/providers/mat-date.provider";
 
 @NgModule({
   declarations: [AppComponent],
@@ -58,8 +62,7 @@ import { MatDateLocalProvider, DateAdapterProvider, MatDateFormatProvider } from
     RestClientService,
     MatDateLocalProvider,
     DateAdapterProvider,
-    MatDateFormatProvider
-    
+    MatDateFormatProvider,
   ],
   bootstrap: [AppComponent],
 })

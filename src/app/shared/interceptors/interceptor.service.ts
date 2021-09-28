@@ -3,9 +3,12 @@ import {
   HttpHandler,
   HttpInterceptor,
   HttpRequest,
+  HttpResponse,
 } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { catchError, map } from "rxjs/operators";
+import { SpinnerService } from "../helpers/spinner-service";
 import { TokenService } from "../helpers/token.service";
 
 @Injectable({
@@ -14,7 +17,10 @@ import { TokenService } from "../helpers/token.service";
 export class InterceptorService implements HttpInterceptor {
   private TOKEN_HEADER_KEY = "Authorization";
 
-  public constructor(private tokenService: TokenService) {}
+  public constructor(
+    private tokenService: TokenService,
+    private spinnerService: SpinnerService
+  ) {}
 
   public intercept(
     req: HttpRequest<any>,
@@ -31,6 +37,24 @@ export class InterceptorService implements HttpInterceptor {
         headers: req.headers.set(this.TOKEN_HEADER_KEY, token),
       });
     }
-    return next.handle(authReq);
+
+    this.spinnerService.setLoading(true);
+
+    return next
+      .handle(authReq)
+      .pipe(
+        catchError((err) => {
+          this.spinnerService.setLoading(false);
+          return err;
+        })
+      )
+      .pipe(
+        map<HttpEvent<any>, any>((evt: HttpEvent<any>) => {
+          if (evt instanceof HttpResponse) {
+            this.spinnerService.setLoading(false);
+          }
+          return evt;
+        })
+      );
   }
 }

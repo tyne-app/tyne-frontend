@@ -4,19 +4,18 @@ import {
   AbstractControl,
   FormBuilder,
   FormGroup,
-  Validators,
+  Validators
 } from "@angular/forms";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { Router } from "@angular/router";
 import { DialogService } from "src/app/shared/components/components/dialog/services/dialog.service";
-import { SpinnerComponent } from "src/app/shared/components/components/spinner/spinner.component";
+import { CustomSnackbarCommonService } from "src/app/shared/helpers/custom-snackbar-common.service";
+import { SpinnerService } from "src/app/shared/helpers/spinner-service";
+import { errorContent } from "src/app/shared/inmutable/constants/dialog-messages";
 import { emailRegex } from "src/app/shared/inmutable/constants/email";
 import { SuccessMessages } from "src/app/shared/inmutable/enums/success-messages";
-import { CustomSnackbarCommonService } from "src/app/shared/helpers/custom-snackbar-common.service";
-import { InvokeDialogCommonService } from "src/app/shared/helpers/invoke-dialog-common.service";
 import { ClientService } from "src/app/shared/services/client.service";
 import { SocialService } from "src/app/shared/services/social.service";
-import { errorContent } from "src/app/shared/inmutable/constants/dialog-messages";
 
 @Component({
   selector: "app-login",
@@ -41,13 +40,12 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     public loginRef: MatDialogRef<LoginComponent>,
-    public spinnerRef: MatDialogRef<SpinnerComponent>,
     private clientservice: ClientService,
     public dialog: MatDialog,
     private socialService: SocialService,
     private customSnackbarCommon: CustomSnackbarCommonService,
     private dialogService: DialogService,
-    private invokeDialogCommon: InvokeDialogCommonService
+    private invokeDialogCommon: SpinnerService
   ) {}
 
   public ngOnInit(): void {
@@ -62,7 +60,6 @@ export class LoginComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    this.openSpinner();
     if (!this.loginForm.invalid) {
       this.clientservice
         .login(this.emailControl.value, this.passwordControl.value)
@@ -71,14 +68,10 @@ export class LoginComponent implements OnInit {
             if (token) {
               localStorage.setItem("access_token", token);
               this.closeModal();
-              this.spinnerRef.close();
-            } else {
-              this.spinnerRef.close();
             }
           },
           (error: HttpErrorResponse) => {
             this.showErrorMessage();
-            this.spinnerRef.close();
           }
         );
     }
@@ -92,10 +85,6 @@ export class LoginComponent implements OnInit {
     this.loginRef.close();
     this.customSnackbarCommon.openSuccessSnackbar(SuccessMessages.Success);
     this.router.navigateByUrl("/perfil-cliente");
-  }
-
-  public openSpinner(): void {
-    this.spinnerRef = this.invokeDialogCommon.openSpinner();
   }
 
   public getPasswordError(): string {
