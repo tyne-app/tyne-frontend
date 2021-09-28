@@ -4,90 +4,63 @@ import { NotFoundPageComponent } from "./shared/components/components/not-found-
 import { AuthGuard } from "./shared/guards/auth.guard";
 import { TyneRoutes } from "./shared/inmutable/enums/url-routes";
 
-/** TODO: ADD GUARD VERY CASE */
 const routes: Routes = [
   {
     path: TyneRoutes.Home,
-    loadChildren: () =>
-      import("./home/modules/home.module").then((m) => m.HomeModule),
+    loadChildren: () => import("./home/modules/home.module").then((m) => m.HomeModule),
   },
   {
     path: "detalle-local",
     loadChildren: () =>
-      import("./business-details/modules/business-details.module").then(
-        (m) => m.BusinessDetailsModule
-      ),
+      import("./business-details/modules/business-details.module").then((m) => m.BusinessDetailsModule),
   },
   {
     path: TyneRoutes.BusinessRegister,
     loadChildren: () =>
-      import(
-        "./business-registration/modules/business-registration.module"
-      ).then((m) => m.BusinessRegistrationModule),
+      import("./business-registration/modules/business-registration.module").then((m) => m.BusinessRegistrationModule),
   },
   {
     path: TyneRoutes.BusinessNewBranch,
     loadChildren: () =>
-      import("./business-new-branch/modules/business-new-branch.module").then(
-        (m) => m.BusinessNewBranchModule
-      ),
+      import("./business-new-branch/modules/business-new-branch.module").then((m) => m.BusinessNewBranchModule),
   },
   {
     path: TyneRoutes.ClientProfile,
-    loadChildren: () =>
-      import("./client-profile/modules/client-profile.module").then(
-        (m) => m.ClientProfileModule
-      ),
+    loadChildren: () => import("./client-profile/modules/client-profile.module").then((m) => m.ClientProfileModule),
     canActivate: [AuthGuard],
   },
   {
     path: TyneRoutes.ClientMenu,
-    loadChildren: () =>
-      import("./client-menus/modules/business-menus.module").then(
-        (m) => m.ClientMenusModule
-      ),
+    loadChildren: () => import("./client-menus/modules/business-menus.module").then((m) => m.ClientMenusModule),
     canActivate: [AuthGuard],
   },
   {
     path: TyneRoutes.BusinessProfile,
     loadChildren: () =>
-      import("./business-profile/modules/business-registration.module").then(
-        (m) => m.BusinessProfileModule
-      ),
+      import("./business-profile/modules/business-registration.module").then((m) => m.BusinessProfileModule),
     canActivate: [AuthGuard],
   },
   {
     path: TyneRoutes.Refund,
-    loadChildren: () =>
-      import("./refund-policy/modules/refund-policy.module").then(
-        (m) => m.RefundPolicyModule
-      ),
+    loadChildren: () => import("./refund-policy/modules/refund-policy.module").then((m) => m.RefundPolicyModule),
   },
   {
     path: TyneRoutes.FrecuentQuestion,
     loadChildren: () =>
-      import("./frecuent-questions/modules/frequent-questions.module").then(
-        (m) => m.FrequentQuestionsModule
-      ),
+      import("./frecuent-questions/modules/frequent-questions.module").then((m) => m.FrequentQuestionsModule),
   },
   {
     path: TyneRoutes.Privacity,
-    loadChildren: () =>
-      import("./privacy/modules/privacy.module").then((m) => m.PrivacyModule),
+    loadChildren: () => import("./privacy/modules/privacy.module").then((m) => m.PrivacyModule),
   },
   {
     path: "buscar-locales",
     loadChildren: () =>
-      import("./search-restaurant/modules/search-restaurant.module").then(
-        (m) => m.SearchRestaurantModule
-      ),
+      import("./search-restaurant/modules/search-restaurant.module").then((m) => m.SearchRestaurantModule),
   },
   {
     path: TyneRoutes.BusinessEditMenu,
-    loadChildren: () =>
-      import("./business-menus/modules/business-menus.module").then(
-        (m) => m.BusinessMenusModule
-      ),
+    loadChildren: () => import("./business-menus/modules/business-menus.module").then((m) => m.BusinessMenusModule),
   },
   {
     path: TyneRoutes.NotFound,
@@ -101,9 +74,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes, { scrollPositionRestoration: "enabled" }),
-  ],
+  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: "enabled" })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

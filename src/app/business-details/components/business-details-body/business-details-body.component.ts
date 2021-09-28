@@ -20,17 +20,9 @@ export class BusinessDetailsBodyComponent implements OnInit {
   public isUserLogged = false;
 
   public isFavorite = false;
-  public branches = [
-    "Juan y medio Santiago",
-    "Juan y medio Providencia",
-    "Juan y medio Las Condes",
-  ];
+  public branches = ["Juan y medio Santiago", "Juan y medio Providencia", "Juan y medio Las Condes"];
 
-  public constructor(
-    private router: Router,
-    private tokenService: TokenService,
-    private dialogAuthService: InvokeDialogAuthService
-  ) {}
+  public constructor(private router: Router, private tokenService: TokenService, private dialogAuthService: InvokeDialogAuthService) {}
 
   public ngOnInit(): void {
     this.validateSession();

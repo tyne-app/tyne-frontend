@@ -58,68 +58,20 @@ export class BusinessNewBranchComponent implements OnInit {
 
   public initFirstFormGroup(): void {
     this.firstFormGroup = this.fb.group({
-      managerName: [
-        "",
-        [
-          Validators.required,
-          Validators.minLength(2),
-          Validators.maxLength(30),
-        ],
-      ],
-      managerLastName: [
-        "",
-        [
-          Validators.required,
-          Validators.minLength(2),
-          Validators.maxLength(30),
-        ],
-      ],
-      managerPhone: [
-        "",
-        [
-          Validators.required,
-          Validators.minLength(17),
-          Validators.maxLength(17),
-        ],
-      ],
-      managerEmail: [
-        "",
-        [Validators.email, Validators.required, Validators.pattern(emailRegex)],
-      ],
-      managerEmailConfirm: [
-        "",
-        [
-          Validators.required,
-          Validators.pattern(emailRegex),
-          EmailValidator("managerEmail"),
-        ],
-      ],
+      managerName: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
+      managerLastName: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
+      managerPhone: ["", [Validators.required, Validators.minLength(17), Validators.maxLength(17)]],
+      managerEmail: ["", [Validators.email, Validators.required, Validators.pattern(emailRegex)]],
+      managerEmailConfirm: ["", [Validators.required, Validators.pattern(emailRegex), EmailValidator("managerEmail")]],
       password: ["", [Validators.required, Validators.pattern(passwordRegex)]],
-      passwordConfirm: [
-        "",
-        [Validators.required, PasswordValidator("password")],
-      ],
+      passwordConfirm: ["", [Validators.required, PasswordValidator("password")]],
     });
   }
 
   public initSecondFormGroup(): void {
     this.secondFormGroup = this.fb.group({
-      branchLocationAddress: [
-        "",
-        [
-          Validators.required,
-          Validators.minLength(5),
-          Validators.maxLength(50),
-        ],
-      ],
-      branchLocationNumber: [
-        "",
-        [
-          Validators.required,
-          Validators.minLength(1),
-          Validators.maxLength(20),
-        ],
-      ],
+      branchLocationAddress: ["", [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
+      branchLocationNumber: ["", [Validators.required, Validators.minLength(1), Validators.maxLength(20)]],
       branchLocationCity: ["0", [Validators.required, Validators.min(1)]],
       branchLocationState: ["0", [Validators.required, Validators.min(1)]],
       branchHavePet: ["0"],
@@ -128,31 +80,9 @@ export class BusinessNewBranchComponent implements OnInit {
 
   public initThirdFormGroup(): void {
     this.thirdFormGroup = this.fb.group({
-      rutAccountOwner: [
-        "",
-        [
-          Validators.required,
-          Validators.minLength(8),
-          Validators.maxLength(9),
-          this.rutValidator,
-        ],
-      ],
-      nameAccountOwner: [
-        "",
-        [
-          Validators.required,
-          Validators.minLength(5),
-          Validators.maxLength(50),
-        ],
-      ],
-      accountNumber: [
-        "",
-        [
-          Validators.required,
-          Validators.minLength(4),
-          Validators.maxLength(30),
-        ],
-      ],
+      rutAccountOwner: ["", [Validators.required, Validators.minLength(8), Validators.maxLength(9), this.rutValidator]],
+      nameAccountOwner: ["", [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
+      accountNumber: ["", [Validators.required, Validators.minLength(4), Validators.maxLength(30)]],
       bank: ["0", [Validators.required, Validators.min(1)]],
       accountType: ["0", [Validators.required, Validators.min(1)]],
     });
@@ -228,8 +158,7 @@ export class BusinessNewBranchComponent implements OnInit {
         },
         {
           name: this.secondFormGroup.get("legalRepresentativeName").value,
-          last_name: this.secondFormGroup.get("legalRepresentativeLastName")
-            .value,
+          last_name: this.secondFormGroup.get("legalRepresentativeLastName").value,
           identifier: this.secondFormGroup.get("legalRepresentativeRut").value,
           email: this.secondFormGroup.get("legalRepresentativeEmail").value,
           phone: this.secondFormGroup
@@ -243,18 +172,14 @@ export class BusinessNewBranchComponent implements OnInit {
         },
       ],
       branch: {
-        accept_pet:
-          this.secondFormGroup.get("principalLocationHavePet").value == "1"
-            ? true
-            : false,
+        accept_pet: this.secondFormGroup.get("principalLocationHavePet").value == "1" ? true : false,
         address:
           this.secondFormGroup.get("mainOfficeLocationAddress").value +
           " " +
           this.secondFormGroup.get("mainOfficeLocationNumber").value,
         name: this.secondFormGroup.get("mainOfficeNameCompany").value,
         state_id: this.secondFormGroup.get("mainOfficeLocationState").value,
-        commercial_activity: this.secondFormGroup.get("mainOfficeBusinessLine")
-          .value,
+        commercial_activity: this.secondFormGroup.get("mainOfficeBusinessLine").value,
       },
       restaurant: {
         identifier: this.secondFormGroup.get("mainOfficeRutBusiness").value,
@@ -266,8 +191,7 @@ export class BusinessNewBranchComponent implements OnInit {
         state_id: this.secondFormGroup.get("mainOfficeLocationState").value,
       },
       bank_restaurant: {
-        account_holder_identifier:
-          this.thirdFormGroup.get("rutAccountOwner").value,
+        account_holder_identifier: this.thirdFormGroup.get("rutAccountOwner").value,
         account_holder: this.thirdFormGroup.get("nameAccountOwner").value,
         account_number: this.thirdFormGroup.get("accountNumber").value,
         bank_id: this.thirdFormGroup.get("bank").value,

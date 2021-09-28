@@ -9,9 +9,7 @@
     </h2>
   </div>
   <div class="col">
-    <button class="btn-submit" mat-raised-button (click)="redirectToMenu()">
-      Carta
-    </button>
+    <button class="btn-submit" mat-raised-button (click)="redirectToMenu()">Carta</button>
   </div>
 </div>
 
@@ -58,18 +56,10 @@
         <mat-card>
           <mat-card-content>
             <h4 class="titulo-4" *ngIf="isUserLogged">Rango de Precios:</h4>
-            <h2 class="titulo-3 mt-n3" *ngIf="isUserLogged">
-              $2.000 a $19.990
-            </h2>
+            <h2 class="titulo-3 mt-n3" *ngIf="isUserLogged">$2.000 a $19.990</h2>
             <h4 class="titulo-4">Calificación:</h4>
-            <img
-              src="../../../assets/icons/frying-pan-2.svg"
-              *ngFor="let z of ratingsArray"
-            />
-            <img
-              src="../../../assets/icons/frying-pan-1.svg"
-              *ngFor="let z of noRatingsArray"
-            />
+            <img src="../../../assets/icons/frying-pan-2.svg" *ngFor="let z of ratingsArray" />
+            <img src="../../../assets/icons/frying-pan-1.svg" *ngFor="let z of noRatingsArray" />
           </mat-card-content>
         </mat-card>
       </div>
@@ -98,10 +88,6 @@
     </div>
   </div>
   <div class="col">
-    <app-map
-      [Lat]="restaurant.latitude"
-      [Long]="restaurant.longitude"
-      [Address]="restaurant.address"
-    ></app-map>
+    <app-map [Lat]="restaurant.latitude" [Long]="restaurant.longitude" [Address]="restaurant.address"></app-map>
   </div>
 </div>
