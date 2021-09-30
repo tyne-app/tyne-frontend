@@ -17,16 +17,17 @@ export interface Representative {
 
 export interface Branch {
   name: string;
-  accept_pet: boolean;
-  commercial_activity: string;
   address: string;
   state_id: number;
+  accept_pet: boolean;
 }
 
 export interface Restaurant {
   identifier: string;
-  name: string;
+  social_reason: string;
+  commercial_activity: string;
   address: string;
+  phone: string;
   state_id: number;
 }
 

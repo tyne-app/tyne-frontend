@@ -60,164 +60,40 @@ export class BusinessRegistrationComponent implements OnInit {
 
   public initFirstFormGroup(): void {
     this.firstFormGroup = this.fb.group({
-      managerName: [
-        "",
-        [
-          Validators.required,
-          Validators.minLength(2),
-          Validators.maxLength(30),
-        ],
-      ],
-      managerLastName: [
-        "",
-        [
-          Validators.required,
-          Validators.minLength(2),
-          Validators.maxLength(30),
-        ],
-      ],
-      managerPhone: [
-        "",
-        [
-          Validators.required,
-          Validators.minLength(17),
-          Validators.maxLength(17),
-        ],
-      ],
-      managerEmail: [
-        "",
-        [Validators.email, Validators.required, Validators.pattern(emailRegex)],
-      ],
-      managerEmailConfirm: [
-        "",
-        [
-          Validators.required,
-          Validators.pattern(emailRegex),
-          EmailValidator("managerEmail"),
-        ],
-      ],
+      managerName: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
+      managerLastName: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
+      managerPhone: ["", [Validators.required, Validators.minLength(17), Validators.maxLength(17)]],
+      managerEmail: ["", [Validators.email, Validators.required, Validators.pattern(emailRegex)]],
+      managerEmailConfirm: ["", [Validators.required, Validators.pattern(emailRegex), EmailValidator("managerEmail")]],
       password: ["", [Validators.required, Validators.pattern(passwordRegex)]],
-      passwordConfirm: [
-        "",
-        [Validators.required, PasswordValidator("password")],
-      ],
+      passwordConfirm: ["", [Validators.required, PasswordValidator("password")]],
     });
   }
 
   public initSecondFormGroup(): void {
     this.secondFormGroup = this.fb.group({
-      legalRepresentativeName: [
-        "",
-        [
-          Validators.required,
-          Validators.minLength(2),
-          Validators.maxLength(30),
-        ],
-      ],
-      legalRepresentativeLastName: [
-        "",
-        [
-          Validators.required,
-          Validators.minLength(2),
-          Validators.maxLength(30),
-        ],
-      ],
+      legalRepresentativeName: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
+      legalRepresentativeLastName: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
       legalRepresentativeRut: [
         "",
-        [
-          Validators.required,
-          Validators.minLength(8),
-          Validators.maxLength(9),
-          this.rutValidator,
-        ],
+        [Validators.required, Validators.minLength(8), Validators.maxLength(9), this.rutValidator],
       ],
-      legalRepresentativeEmail: [
-        "",
-        [Validators.email, Validators.required, Validators.pattern(emailRegex)],
-      ],
-      legalRepresentativePhone: [
-        "",
-        [
-          Validators.required,
-          Validators.minLength(17),
-          Validators.maxLength(17),
-        ],
-      ],
-      mainOfficeNameCompany: [
-        "",
-        [
-          Validators.required,
-          Validators.minLength(5),
-          Validators.maxLength(50),
-        ],
-      ],
-      mainOfficeBusinessLine: [
-        "",
-        [
-          Validators.required,
-          Validators.minLength(5),
-          Validators.maxLength(50),
-        ],
-      ],
+      legalRepresentativeEmail: ["", [Validators.email, Validators.required, Validators.pattern(emailRegex)]],
+      legalRepresentativePhone: ["", [Validators.required, Validators.minLength(17), Validators.maxLength(17)]],
+      mainOfficeNameCompany: ["", [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
+      mainOfficeBusinessLine: ["", [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
       mainOfficeRutBusiness: [
         "",
-        [
-          Validators.required,
-          Validators.minLength(8),
-          Validators.maxLength(9),
-          this.rutValidator,
-        ],
+        [Validators.required, Validators.minLength(8), Validators.maxLength(9), this.rutValidator],
       ],
-      mainOfficeLocationAddress: [
-        "",
-        [
-          Validators.required,
-          Validators.minLength(5),
-          Validators.maxLength(50),
-        ],
-      ],
-      mainOfficeLocationNumber: [
-        "",
-        [
-          Validators.required,
-          Validators.minLength(1),
-          Validators.maxLength(20),
-        ],
-      ],
-      mainOfficePhone: [
-        "",
-        [
-          Validators.required,
-          Validators.minLength(17),
-          Validators.maxLength(17),
-        ],
-      ],
+      mainOfficeLocationAddress: ["", [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
+      mainOfficeLocationNumber: ["", [Validators.required, Validators.minLength(1), Validators.maxLength(20)]],
+      mainOfficePhone: ["", [Validators.required, Validators.minLength(17), Validators.maxLength(17)]],
       mainOfficeLocationCity: ["0", [Validators.required, Validators.min(1)]],
       mainOfficeLocationState: ["0", [Validators.required, Validators.min(1)]],
-      nameCompany: [
-        "",
-        [
-          Validators.required,
-          Validators.minLength(5),
-          Validators.maxLength(50),
-        ],
-      ],
-      branchLocationAddress: [
-        "",
-        [
-          Validators.required,
-          Validators.minLength(5),
-          Validators.maxLength(50),
-        ],
-      ],
-      branchLocationNumber: [
-        "",
-        [
-          Validators.required,
-          Validators.minLength(1),
-          Validators.maxLength(20),
-        ],
-      ],
+      nameCompany: ["", [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
+      branchLocationAddress: ["", [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
+      branchLocationNumber: ["", [Validators.required, Validators.minLength(1), Validators.maxLength(20)]],
       branchLocationCity: ["0", [Validators.required, Validators.min(1)]],
       branchLocationState: ["0", [Validators.required, Validators.min(1)]],
       branchHavePet: ["0"],
@@ -226,31 +102,9 @@ export class BusinessRegistrationComponent implements OnInit {
 
   public initThirdFormGroup(): void {
     this.thirdFormGroup = this.fb.group({
-      rutAccountOwner: [
-        "",
-        [
-          Validators.required,
-          Validators.minLength(8),
-          Validators.maxLength(9),
-          this.rutValidator,
-        ],
-      ],
-      nameAccountOwner: [
-        "",
-        [
-          Validators.required,
-          Validators.minLength(5),
-          Validators.maxLength(50),
-        ],
-      ],
-      accountNumber: [
-        "",
-        [
-          Validators.required,
-          Validators.minLength(4),
-          Validators.maxLength(30),
-        ],
-      ],
+      rutAccountOwner: ["", [Validators.required, Validators.minLength(8), Validators.maxLength(9), this.rutValidator]],
+      nameAccountOwner: ["", [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
+      accountNumber: ["", [Validators.required, Validators.minLength(4), Validators.maxLength(30)]],
       bank: ["0", [Validators.required, Validators.min(1)]],
       accountType: ["0", [Validators.required, Validators.min(1)]],
     });
@@ -335,8 +189,7 @@ export class BusinessRegistrationComponent implements OnInit {
         },
         {
           name: this.secondFormGroup.get("legalRepresentativeName").value,
-          last_name: this.secondFormGroup.get("legalRepresentativeLastName")
-            .value,
+          last_name: this.secondFormGroup.get("legalRepresentativeLastName").value,
           identifier: this.secondFormGroup.get("legalRepresentativeRut").value,
           email: this.secondFormGroup.get("legalRepresentativeEmail").value,
           phone: this.secondFormGroup
@@ -350,31 +203,32 @@ export class BusinessRegistrationComponent implements OnInit {
         },
       ],
       branch: {
-        accept_pet:
-          this.secondFormGroup.get("principalLocationHavePet").value == "1"
-            ? true
-            : false,
+        name: this.secondFormGroup.get("nameCompany").value,
         address:
-          this.secondFormGroup.get("mainOfficeLocationAddress").value +
+          this.secondFormGroup.get("branchLocationAddress").value +
           " " +
-          this.secondFormGroup.get("mainOfficeLocationNumber").value,
-        name: this.secondFormGroup.get("mainOfficeNameCompany").value,
-        state_id: this.secondFormGroup.get("mainOfficeLocationState").value,
-        commercial_activity: this.secondFormGroup.get("mainOfficeBusinessLine")
-          .value,
+          this.secondFormGroup.get("branchLocationNumber").value,
+        accept_pet: this.secondFormGroup.get("branchHavePet").value == "1" ? true : false,
+        state_id: this.secondFormGroup.get("branchLocationState").value,
       },
       restaurant: {
         identifier: this.secondFormGroup.get("mainOfficeRutBusiness").value,
-        name: this.secondFormGroup.get("mainOfficeNameCompany").value,
+        social_reason: this.secondFormGroup.get("mainOfficeNameCompany").value,
+        commercial_activity: this.secondFormGroup.get("mainOfficeBusinessLine").value,
         address:
           this.secondFormGroup.get("mainOfficeLocationAddress").value +
           " " +
           this.secondFormGroup.get("mainOfficeLocationNumber").value,
+        phone: this.secondFormGroup
+          .get("mainOfficePhone")
+          .value.toString()
+          .replace("(", "")
+          .replace(")", "")
+          .replace(/\s/g, ""),
         state_id: this.secondFormGroup.get("mainOfficeLocationState").value,
       },
       bank_restaurant: {
-        account_holder_identifier:
-          this.thirdFormGroup.get("rutAccountOwner").value,
+        account_holder_identifier: this.thirdFormGroup.get("rutAccountOwner").value,
         account_holder: this.thirdFormGroup.get("nameAccountOwner").value,
         account_number: this.thirdFormGroup.get("accountNumber").value,
         bank_id: this.thirdFormGroup.get("bank").value,
@@ -382,6 +236,7 @@ export class BusinessRegistrationComponent implements OnInit {
       },
     };
 
+    console.log(JSON.stringify(newBusiness));
     return newBusiness;
   }
 
