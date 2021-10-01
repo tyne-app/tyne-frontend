@@ -13,23 +13,18 @@ import { RestClientService } from "./rest-client.service";
 export class ClientService {
   private endpoint = environment.apiClients;
 
-  public constructor(
-    private http: HttpClient,
-    private restClient: RestClientService
-  ) {}
+  public constructor(private http: HttpClient, private restClient: RestClientService) {}
 
   public register(client: Client): Observable<any> {
     return this.restClient.post<any>(`${this.endpoint}/clients/`, client);
   }
 
   public login(email: string, password: string): Observable<string> {
-    return this.http
-      .post<DataResponse>(`${this.endpoint}/login/`, { email, password })
-      .pipe(
-        map((res) => {
-          return res.data;
-        })
-      );
+    return this.http.post<DataResponse>(`${this.endpoint}/login/`, { email, password }).pipe(
+      map((res) => {
+        return res.data;
+      })
+    );
   }
 
   public logout(): void {

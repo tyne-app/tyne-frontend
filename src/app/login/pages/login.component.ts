@@ -1,16 +1,10 @@
 import { HttpErrorResponse } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
-import {
-  AbstractControl,
-  FormBuilder,
-  FormGroup,
-  Validators
-} from "@angular/forms";
+import { AbstractControl, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { Router } from "@angular/router";
 import { DialogService } from "src/app/shared/components/components/dialog/services/dialog.service";
 import { CustomSnackbarCommonService } from "src/app/shared/helpers/custom-snackbar-common.service";
-import { SpinnerService } from "src/app/shared/helpers/spinner-service";
 import { errorContent } from "src/app/shared/inmutable/constants/dialog-messages";
 import { emailRegex } from "src/app/shared/inmutable/constants/email";
 import { SuccessMessages } from "src/app/shared/inmutable/enums/success-messages";
@@ -44,8 +38,7 @@ export class LoginComponent implements OnInit {
     public dialog: MatDialog,
     private socialService: SocialService,
     private customSnackbarCommon: CustomSnackbarCommonService,
-    private dialogService: DialogService,
-    private invokeDialogCommon: SpinnerService
+    private dialogService: DialogService
   ) {}
 
   public ngOnInit(): void {
@@ -61,19 +54,17 @@ export class LoginComponent implements OnInit {
 
   public onSubmit(): void {
     if (!this.loginForm.invalid) {
-      this.clientservice
-        .login(this.emailControl.value, this.passwordControl.value)
-        .subscribe(
-          (token) => {
-            if (token) {
-              localStorage.setItem("access_token", token);
-              this.closeModal();
-            }
-          },
-          (error: HttpErrorResponse) => {
-            this.showErrorMessage();
+      this.clientservice.login(this.emailControl.value, this.passwordControl.value).subscribe(
+        (token) => {
+          if (token) {
+            localStorage.setItem("access_token", token);
+            this.closeModal();
           }
-        );
+        },
+        (error: HttpErrorResponse) => {
+          this.showErrorMessage();
+        }
+      );
     }
   }
 

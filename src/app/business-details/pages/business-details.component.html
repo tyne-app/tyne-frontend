@@ -1,4 +1,4 @@
-<ng-container *ngIf="this.restaurant">
+<ng-container>
   <!--Header-->
   <app-header [isWhiteLogo]="false"></app-header>
 
@@ -6,9 +6,7 @@
   <app-carousel [restaurant]="restaurant"></app-carousel>
 
   <div class="container">
-    <app-business-details-body
-      [restaurant]="restaurant"
-    ></app-business-details-body>
+    <app-business-details-body [restaurant]="restaurant"></app-business-details-body>
   </div>
 
   <!--Footer-->

@@ -127,16 +127,16 @@ export class BusinessNewBranchComponent implements OnInit {
     const newBusiness = this.getBusinessData();
 
     this.isLoading = true;
-    this.restaurantService.createNewRestaurant(newBusiness).subscribe(
-      (x) => {
-        this.isLoading = false;
-        this.showSuccessMessage();
-      },
-      (error) => {
-        this.isLoading = false;
-        throw error;
-      }
-    );
+    // this.restaurantService.createNewRestaurant(newBusiness).subscribe(
+    //   (x) => {
+    //     this.isLoading = false;
+    //     this.showSuccessMessage();
+    //   },
+    //   (error) => {
+    //     this.isLoading = false;
+    //     throw error;
+    //   }
+    // );
   }
 
   private getBusinessData(): BusinessRegistrationDto {

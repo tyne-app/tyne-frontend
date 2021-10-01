@@ -1,6 +1,4 @@
-/** MODELS */
 import { DialogModel } from "../../components/components/dialog/models/dialog-model";
-/** ENUMS */
 import { ErrorMessages } from "../enums/error-messages";
 import { InformationMessages } from "../enums/infomation-messages";
 import { SuccessMessages } from "../enums/success-messages";
@@ -13,9 +11,8 @@ export const errorContent: DialogModel = {
   messageButton: "Volver",
 };
 
-
 export const passwordClientUpdatedContent: DialogModel = {
-  title:SuccessMessages.Congratulations,
+  title: SuccessMessages.Congratulations,
   subtitle: SuccessMessages.SuccessPasswordUpdated,
   isSuccessful: true,
   messageButton: "Entendido",
@@ -28,7 +25,6 @@ export const passwordClientRecoverContent: DialogModel = {
   messageButton: "Ir a mi cuenta",
 };
 
-
 export const registerClientContent: DialogModel = {
   title: SuccessMessages.RegiterSuccessful,
   subtitle: InformationMessages.SendEmail,
@@ -36,5 +32,3 @@ export const registerClientContent: DialogModel = {
   messageButton: "Ir a mi cuenta",
   redirectTo: TyneRoutes.ClientProfile,
 };
-
-
