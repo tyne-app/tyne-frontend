@@ -5,15 +5,19 @@ import { MatDialogRef } from "@angular/material/dialog";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { Router } from "@angular/router";
 import { DialogModel } from "src/app/shared/components/components/dialog/models/dialog-model";
-import { DialogService } from "src/app/shared/components/components/dialog/services/dialog.service";
 import { emailRegex } from "src/app/shared/inmutable/constants/email";
 import { ErrorMessages } from "src/app/shared/inmutable/enums/error-messages";
 import { passwordRegex } from "src/app/shared/inmutable/constants/password";
 import { TyneRoutes } from "src/app/shared/inmutable/enums/url-routes";
 import { Client } from "src/app/shared/interfaces/client";
-import { ClientService } from "src/app/shared/services/client.service";
 import { PasswordValidator } from "src/app/shared/validations/password-validator";
 import { errorContent, registerClientContent } from "src/app/shared/inmutable/constants/dialog-messages";
+/** SERVICES */
+import { ClientService } from "src/app/shared/services/client.service";
+import { SocialService } from "src/app/shared/services/social.service";
+import { DialogService } from "src/app/shared/components/components/dialog/services/dialog.service";
+
+
 @Component({
   selector: "app-client-registration",
   templateUrl: "./client.registration.component.html",
@@ -65,7 +69,8 @@ export class ClientRegistrationComponent implements OnInit {
     private router: Router,
     private clientService: ClientService,
     private snackbar: MatSnackBar,
-    private dialogService: DialogService
+    private dialogService: DialogService,
+    private socialService:SocialService
   ) {}
 
   public ngOnInit(): void {
@@ -108,6 +113,17 @@ export class ClientRegistrationComponent implements OnInit {
         }
       }
     );
+  }
+
+  public registerFacebook():void{
+    this.socialService.FacebookLogin().subscribe(resp=>{
+      
+    });
+  }
+  public registerGoogle():void{
+    this.socialService.GoogleLogin().subscribe(resp=>{
+
+    });
   }
 
   private showSuccessMessage() {
