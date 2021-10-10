@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { AbstractControl, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialogRef } from "@angular/material/dialog";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { Router } from "@angular/router";
@@ -20,10 +20,44 @@ import { errorContent, registerClientContent } from "src/app/shared/inmutable/co
   styleUrls: ["./client.registration.component.scss"],
 })
 export class ClientRegistrationComponent implements OnInit {
-  // Una vez que se haga submit, loading pasa a  ser verdadero y el boton se deshabilita.
   public loading = false;
-  public form!: FormGroup;
-  public isWhiteLogo = false;
+  public clientRegisterForm!: FormGroup;
+  public isWhiteLogo = false; 
+
+ // #region Getters 
+ public get ClientNameControl():AbstractControl{
+  return this.clientRegisterForm.get("clientName");
+ }
+
+ public get ClientLastNameControl():AbstractControl{
+  return this.clientRegisterForm.get("clientLastName");
+ }
+
+ public get ClientEmailControl(): AbstractControl {
+  return this.clientRegisterForm.get("clientEmail");
+ }
+
+ public get ClientPhoneControl():AbstractControl {
+  return this.clientRegisterForm.get("clientPhone");
+ }
+
+ public get ClientPasswordControl():AbstractControl{
+   return this.clientRegisterForm.get("password");
+ }
+
+ public get ClientBirthdayControl():AbstractControl{
+   return this.clientRegisterForm.get("birthDate");
+ }
+
+ // #endregion
+  /**
+   * @param fb 
+   * @param matDialogRef 
+   * @param router 
+   * @param clientService 
+   * @param snackbar 
+   * @param dialogService 
+   */
 
   public constructor(
     private fb: FormBuilder,
@@ -39,7 +73,7 @@ export class ClientRegistrationComponent implements OnInit {
   }
 
   public createClient(): void {
-    if (this.form.invalid) {
+    if (this.clientRegisterForm.invalid) {
       this.showMessage(ErrorMessages.FormNotReady, false);
       return;
     }
@@ -47,18 +81,17 @@ export class ClientRegistrationComponent implements OnInit {
     this.loading = true;
 
     const client: Client = {
-      name: this.form.get("clientName").value,
-      lastName: this.form.get("clientLastName").value,
-      phone: this.form
-        .get("clientPhone")
+      name: this.ClientNameControl.value,
+      lastName: this.ClientLastNameControl.value,
+      phone: this.ClientPhoneControl
         .value.toString()
         .replace("(", "")
         .replace(")", "")
         .replace("+", "")
         .replace(/\s/g, ""),
-      email: this.form.get("clientEmail").value,
-      password: this.form.get("password").value,
-      birthDate: this.form.get("birthDate").value,
+      email: this.ClientEmailControl.value,
+      password: this.ClientPasswordControl.value,
+      birthDate: this.ClientBirthdayControl.value
     };
 
     this.clientService.register(client).subscribe(
@@ -99,7 +132,7 @@ export class ClientRegistrationComponent implements OnInit {
   }
 
   public initForm(): void {
-    this.form = this.fb.group({
+    this.clientRegisterForm = this.fb.group({
       clientName: [
         "",
         [
@@ -140,8 +173,8 @@ export class ClientRegistrationComponent implements OnInit {
   // #region Errors
 
   public getClientNameError(): string {
-    const control = this.form.get("clientName");
-    return control.hasError("required")
+    const control = this.ClientNameControl;
+    return this.ClientNameControl.hasError("required")
       ? ErrorMessages.Required.replace("{0}", "nombre")
       : control.hasError("minlength")
       ? ErrorMessages.Minlength.replace("{0}", "2")
@@ -151,7 +184,7 @@ export class ClientRegistrationComponent implements OnInit {
   }
 
   public getClientLastNameError(): string {
-    const control = this.form.get("clientLastName");
+    const control = this.ClientLastNameControl;
     return control.hasError("required")
       ? ErrorMessages.Required.replace("{0}", "apellido")
       : control.hasError("minlength")
@@ -162,7 +195,7 @@ export class ClientRegistrationComponent implements OnInit {
   }
 
   public getClientPhoneError(): string {
-    const control = this.form.get("clientPhone");
+    const control = this.ClientPhoneControl;
     return control.hasError("required")
       ? ErrorMessages.Required.replace("{0}", "teléfono")
       : control.hasError("minlength")
@@ -171,7 +204,7 @@ export class ClientRegistrationComponent implements OnInit {
   }
 
   public getClientEmailError(): string {
-    const control = this.form.get("clientEmail");
+    const control = this.ClientEmailControl;
     return control.hasError("required")
       ? ErrorMessages.Required.replace("{0}", "email")
       : control.hasError("email")
@@ -182,7 +215,7 @@ export class ClientRegistrationComponent implements OnInit {
   }
 
   public getPasswordError(): string {
-    const control = this.form.get("password");
+    const control = this.ClientPasswordControl;
     return control.hasError("required")
       ? ErrorMessages.RequiredVariant.replace("{0}", "contraseña")
       : control.hasError("pattern")
@@ -191,7 +224,7 @@ export class ClientRegistrationComponent implements OnInit {
   }
 
   public getPasswordConfirmError(): string {
-    const control = this.form.get("passwordConfirm");
+    const control = this.ClientPasswordControl;
     return control.hasError("required")
       ? ErrorMessages.RequiredVariant.replace("{0}", "contraseña")
       : control.hasError("notMatch")
@@ -200,7 +233,7 @@ export class ClientRegistrationComponent implements OnInit {
   }
 
   public getBirthDateError(): string {
-    const control = this.form.get("birthDate");
+    const control = this.ClientBirthdayControl;
     return control.hasError("required")
       ? ErrorMessages.RequiredVariant.replace("{0}", "fecha de nacimiento")
       : null;
