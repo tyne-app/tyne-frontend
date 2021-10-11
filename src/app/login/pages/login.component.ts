@@ -96,14 +96,24 @@ export class LoginComponent implements OnInit {
   }
 
   public goToGoogleSignIn() {
-    this.socialService.GoogleLogin().subscribe((resp) => {
-      console.log(resp);
+    this.socialService.GoogleLogin().subscribe((userInfo) => {
+      const user:any = userInfo.additionalUserInfo.profile;
+      const email:string = user.email;
+      this.clientservice.login(email)
+        .subscribe(resp=>{
+
+      });
     });
   }
 
   public goToFacebookSignIn() {
-    this.socialService.FacebookLogin().subscribe((resp) => {
-      console.log(resp);
+    this.socialService.FacebookLogin().subscribe((userInfo) => {
+      const user:any = userInfo.additionalUserInfo.profile;
+      const email:string = user.email;
+      this.clientservice.login(email)
+        .subscribe(resp=>{
+          
+      });
     });
   }
 }

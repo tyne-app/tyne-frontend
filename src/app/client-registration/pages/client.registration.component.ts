@@ -1,22 +1,23 @@
-import { HttpErrorResponse } from "@angular/common/http";
+/** ANGULAR CORE */
 import { Component, OnInit } from "@angular/core";
 import { AbstractControl, FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { HttpErrorResponse } from "@angular/common/http";
+/** ANGULAR MATERIAL */
 import { MatDialogRef } from "@angular/material/dialog";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { Router } from "@angular/router";
-import { DialogModel } from "src/app/shared/components/components/dialog/models/dialog-model";
+/** INMUTABLE */
 import { emailRegex } from "src/app/shared/inmutable/constants/email";
 import { ErrorMessages } from "src/app/shared/inmutable/enums/error-messages";
 import { passwordRegex } from "src/app/shared/inmutable/constants/password";
-import { TyneRoutes } from "src/app/shared/inmutable/enums/url-routes";
+import { errorContent, registerClientContent } from "src/app/shared/inmutable/constants/dialog-messages";
+
 import { Client } from "src/app/shared/interfaces/client";
 import { PasswordValidator } from "src/app/shared/validations/password-validator";
-import { errorContent, registerClientContent } from "src/app/shared/inmutable/constants/dialog-messages";
 /** SERVICES */
 import { ClientService } from "src/app/shared/services/client.service";
 import { SocialService } from "src/app/shared/services/social.service";
 import { DialogService } from "src/app/shared/components/components/dialog/services/dialog.service";
-
 
 @Component({
   selector: "app-client-registration",
@@ -116,13 +117,35 @@ export class ClientRegistrationComponent implements OnInit {
   }
 
   public registerFacebook():void{
-    this.socialService.FacebookLogin().subscribe(resp=>{
-      
+    this.socialService.FacebookLogin().subscribe(userInfo=>{
+      const user:any = userInfo.additionalUserInfo.profile;      
+      const userClient:Client = {
+        name: user.given_name,
+        email: user.email,
+        lastName: user.given_name,
+        phone: "No tiene número de télefono asociado",
+        birthDate: null,
+        password:null
+      };
+      // this.clientService.register(userClient).subscribe(resp=>{
+      //   console.log(resp);
+      // });
     });
   }
   public registerGoogle():void{
-    this.socialService.GoogleLogin().subscribe(resp=>{
-
+    this.socialService.GoogleLogin().subscribe(userInfo=>{
+      const user:any = userInfo.additionalUserInfo.profile;      
+      const userClient:Client = {
+        name: user.given_name,
+        email: user.email,
+        lastName: user.given_name,
+        phone: "No tiene número de télefono asociado",
+        birthDate: null,
+        password:null
+      };
+      // this.clientService.register(userClient).subscribe(resp=>{
+      //   console.log(resp);
+      // });
     });
   }
 
