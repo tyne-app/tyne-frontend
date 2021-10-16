@@ -5,10 +5,7 @@ import { ActivatedRoute } from "@angular/router";
 import { forkJoin } from "rxjs";
 import { BusinessDetailsResponse } from "src/app/business-details/models/business-details-response";
 import { CreateReservationComponent } from "src/app/create-reservation/pages/create-reservation.component";
-import {
-  Menu,
-  MenuResponse,
-} from "src/app/shared/services/menus/menu-response";
+import { Menu, MenuResponse } from "src/app/shared/services/menus/menu-response";
 import { MenuService } from "src/app/shared/services/menus/menu.service";
 import { RestaurantService } from "src/app/shared/services/restaurant.service";
 
@@ -53,13 +50,12 @@ export class ClientMenusComponent implements OnInit {
       maxWidth: "95%",
       minWidth: "55%",
       panelClass: "create-reservation-dialog",
+      data: { total: this.total },
     });
   }
 
   public products(form: any): FormArray {
-    return form.controls.products
-      ? form.controls.products.controls
-      : new FormArray([]);
+    return form.controls.products ? form.controls.products.controls : new FormArray([]);
   }
 
   public addProduct(product: FormGroup): void {
@@ -81,19 +77,14 @@ export class ClientMenusComponent implements OnInit {
 
     if (value >= 0) {
       control.setValue(value);
-      const index = this.cart.findIndex(
-        (x) => x.get("id").value === product.get("id").value
-      );
+      const index = this.cart.findIndex((x) => x.get("id").value === product.get("id").value);
       this.cart.splice(index, 1);
       this.updateTotal();
     }
   }
 
   private updateTotal() {
-    this.total = this.cart.reduce(
-      (sum, current) => sum + +current.get("price").value,
-      0
-    );
+    this.total = this.cart.reduce((sum, current) => sum + +current.get("price").value, 0);
   }
 
   private initForm() {
@@ -121,10 +112,7 @@ export class ClientMenusComponent implements OnInit {
       this.sections.push(
         this.fb.group({
           id: [x.category.id],
-          title: [
-            x.category.name,
-            [Validators.required, Validators.maxLength(20)],
-          ],
+          title: [x.category.name, [Validators.required, Validators.maxLength(20)]],
           products: this.initMenus(x.menu),
         })
       );
@@ -138,26 +126,12 @@ export class ClientMenusComponent implements OnInit {
       formArray.push(
         this.fb.group({
           id: [x.id],
-          name: [
-            x.product.name,
-            [
-              Validators.required,
-              Validators.minLength(3),
-              Validators.maxLength(50),
-            ],
-          ],
+          name: [x.product.name, [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
           imageUrl: [x.product.image_product[0].image.url],
-          price: [
-            x.product.price[0].amount,
-            [Validators.required, Validators.min(100), Validators.max(100000)],
-          ],
+          price: [x.product.price[0].amount, [Validators.required, Validators.min(100), Validators.max(100000)]],
           description: [
             x.product.description,
-            [
-              Validators.required,
-              Validators.minLength(10),
-              Validators.maxLength(200),
-            ],
+            [Validators.required, Validators.minLength(10), Validators.maxLength(200)],
           ],
           quantity: [0],
         })

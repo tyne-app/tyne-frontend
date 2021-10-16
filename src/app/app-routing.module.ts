@@ -63,9 +63,15 @@ const routes: Routes = [
     loadChildren: () => import("./business-menus/modules/business-menus.module").then((m) => m.BusinessMenusModule),
   },
   {
+    path: TyneRoutes.StatusPay,
+    loadChildren: () => import("./status-pay/modules/status-pay.module").then((m) => m.StatusPayModule),
+  },
+
+  {
     path: TyneRoutes.NotFound,
     component: NotFoundPageComponent,
   },
+
   { path: "", redirectTo: TyneRoutes.Home, pathMatch: "full" },
   {
     path: "**",
