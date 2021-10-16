@@ -11,12 +11,12 @@ import { RestClientService } from "./rest-client.service";
   providedIn: "root",
 })
 export class TerritorialsService {
-  private urlBase = environment.apiBackoffice;
+  private urlBase = environment.apiLocals;
 
   public constructor(private client: RestClientService) {}
 
   public getCities(idCountry: number): Observable<City[]> {
-    const url = this.urlBase + `v1/territorials/country/${idCountry}/cities`;
+    const url = this.urlBase + `/territories/countries/${idCountry}/cities`;
     return this.client.get<GenericDataResponse<City[]>>(url).pipe(
       map((res) => {
         return res.data;
@@ -25,7 +25,7 @@ export class TerritorialsService {
   }
 
   public getStates(idcity: number): Observable<State[]> {
-    const url = this.urlBase + `v1/territorials/city/${idcity}/states`;
+    const url = this.urlBase + `/territories/cities/${idcity}/states`;
     return this.client.get<GenericDataResponse<State[]>>(url).pipe(
       map((res) => {
         return res.data;

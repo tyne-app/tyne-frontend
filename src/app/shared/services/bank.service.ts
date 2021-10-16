@@ -10,12 +10,12 @@ import { RestClientService } from "./rest-client.service";
   providedIn: "root",
 })
 export class BankService {
-  private urlBase = environment.apiBackoffice;
+  private urlBase = environment.apiLocals;
 
   public constructor(private client: RestClientService) {}
 
   public getBanks(): Observable<Bank[]> {
-    const url = this.urlBase + `v1/banks`;
+    const url = this.urlBase + `/banks`;
     return this.client.get<GenericDataResponse<Bank[]>>(url).pipe(
       map((res) => {
         return res.data;
