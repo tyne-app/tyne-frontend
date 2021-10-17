@@ -10,7 +10,8 @@ import { Router } from "@angular/router";
 import { emailRegex } from "src/app/shared/inmutable/constants/email";
 import { ErrorMessages } from "src/app/shared/inmutable/enums/error-messages";
 import { passwordRegex } from "src/app/shared/inmutable/constants/password";
-import { errorContent, registerClientContent } from "src/app/shared/inmutable/constants/dialog-messages";
+import { errorContent, invalidFormContent, registerClientContent } from "src/app/shared/inmutable/constants/dialog-messages";
+import { DialogModel } from "src/app/shared/components/components/dialog/models/dialog-model";
 
 import { Client } from "src/app/shared/interfaces/client";
 import { PasswordValidator } from "src/app/shared/validations/password-validator";
@@ -80,7 +81,7 @@ export class ClientRegistrationComponent implements OnInit {
 
   public createClient(): void {
     if (this.clientRegisterForm.invalid) {
-      this.showMessage(ErrorMessages.FormNotReady, false);
+      this.showErrorMessage(invalidFormContent);
       return;
     }
 
@@ -108,7 +109,7 @@ export class ClientRegistrationComponent implements OnInit {
       (error: HttpErrorResponse) => {
         this.loading = false;
         if (error.status === 409) {
-          this.showErrorMessage();
+          this.showErrorMessage(errorContent);
         } else {
           throw error;
         }
@@ -153,9 +154,11 @@ export class ClientRegistrationComponent implements OnInit {
     this.dialogService.openDialog(registerClientContent);
   }
 
-  private showErrorMessage() {
-    this.dialogService.openDialog(errorContent);
+  private showErrorMessage(dialogContent:DialogModel) {
+    this.dialogService.openDialog(dialogContent);
   }
+
+  
 
   public closeClick(): void {
     this.snackbar.open("Se Ha registrado satisfactoriamente", "ok", {
