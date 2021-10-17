@@ -1,8 +1,13 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Inject, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { SearchBarService } from "src/app/shared/components/components/search-bar/services/search-bar.service";
 import { ErrorMessages } from "src/app/shared/inmutable/enums/error-messages";
 import { DateValidator } from "src/app/shared/validations/date-validator";
+import { PaymentService } from "src/app/shared/services/payment.service";
+import { PaymentKhipuRequest } from "src/app/shared/interfaces/payment-khipu-request";
+import { PaymentCreateResponse } from "src/app/shared/interfaces/payment-create-response";
+import { HttpErrorResponse } from "@angular/common/http";
+import { MAT_DIALOG_DATA } from "@angular/material/dialog";
 
 @Component({
   selector: "app-create-reservation",
@@ -16,7 +21,9 @@ export class CreateReservationComponent implements OnInit {
 
   public constructor(
     private fb: FormBuilder,
-    private searchBarService: SearchBarService
+    private searchBarService: SearchBarService,
+    private paymentService: PaymentService,
+    @Inject(MAT_DIALOG_DATA) public data: { total: number }
   ) {}
 
   public ngOnInit(): void {
@@ -46,10 +53,7 @@ export class CreateReservationComponent implements OnInit {
     this.form = this.fb.group({
       peopleNumber: ["1", [Validators.min(1), Validators.max(5)]],
       dateReservation: ["", [DateValidator.validator, Validators.required]],
-      hourReservation: [
-        "",
-        [Validators.required, Validators.pattern(DateValidator.timeRegex())],
-      ],
+      hourReservation: ["", [Validators.required, Validators.pattern(DateValidator.timeRegex())]],
       preferredLocation: ["", [Validators.required, Validators.min(1)]],
     });
   }
@@ -68,9 +72,32 @@ export class CreateReservationComponent implements OnInit {
   }
 
   private getDateReservation() {
-    this.form
-      .get("dateReservation")
-      .setValue(new Date(this.searchBarService.getDateReservation()));
+    this.form.get("dateReservation").setValue(new Date(this.searchBarService.getDateReservation()));
+  }
+
+  public goPayment(): string {
+    const paymentKhipuRequest: PaymentKhipuRequest = {
+      subject: "Pago prueba",
+      currency: "CLP",
+      ammount: this.data.total,
+    };
+
+    // return "";
+    // this.paymentService.getPaymentKhipuRequest(paymentKhipuRequest);
+    this.paymentService.getPaymentKhipuRequest(paymentKhipuRequest).subscribe(
+      (data: PaymentCreateResponse) => {
+        return data;
+      },
+      (error: HttpErrorResponse) => {
+        // this.loading = false;
+        if (error.status === 409) {
+          // this.showErrorMessage();
+        } else {
+          throw error;
+        }
+      }
+    );
+    return "";
   }
 
   // #region Errors
