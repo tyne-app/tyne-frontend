@@ -3,6 +3,7 @@
  */
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { DataResponse } from "@shared/interfaces/token";
 /**
  *REACTIVE
  */
@@ -11,7 +12,7 @@ import { map } from "rxjs/operators";
 /**
  * INTERFACES
  */
-import { DataResponse } from "src/app/shared/interfaces/token";
+
 /**
  *ENVIRONMENT
  */
