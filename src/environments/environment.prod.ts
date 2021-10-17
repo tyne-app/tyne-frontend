@@ -4,6 +4,7 @@ export const environment = {
   apiClients: "https://api-clients-tyne.herokuapp.com/v1",
   apiLocals: "https://api-locals-tyne.herokuapp.com/v1",
   apiMenus: "https://backbone-menu.herokuapp.com/v1/menus/",
+  apiPayments: "https://ms-medios-pagos.herokuapp.com/",
   firebaseConfig: {
     apiKey: "AIzaSyDym-wsAA7O0Z7RkI32A1Og1s8LaJNa5s0",
     authDomain: "tyne-app.firebaseapp.com",

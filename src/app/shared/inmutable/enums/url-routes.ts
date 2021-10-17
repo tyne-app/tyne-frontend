@@ -23,4 +23,6 @@ export enum TyneRoutes {
   IncomeDetails = "caja-virtual",
   Opinions = "opiniones",
   BusinessCancelations = "cancelaciones",
+  StatusPay = "estado-pago",
+  
 }

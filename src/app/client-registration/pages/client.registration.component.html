@@ -16,10 +16,7 @@
 
         <div mat-dialog-actions>
           <form [formGroup]="form" (ngSubmit)="createClient()">
-
             <div class="row">
-
-
               <div class="col-12 col-sm-6">
                 <mat-form-field appearance="outline">
                   <mat-label>Nombre *</mat-label>
@@ -29,8 +26,6 @@
                   </mat-error>
                 </mat-form-field>
               </div>
-
-
 
               <div class="col-12 col-sm-6">
                 <mat-form-field appearance="outline">
@@ -43,10 +38,7 @@
               </div>
             </div>
 
-
             <div class="row">
-
-
               <div class="col-12 col-sm-6">
                 <mat-form-field appearance="outline">
                   <mat-label>Email *</mat-label>
@@ -57,13 +49,17 @@
                 </mat-form-field>
               </div>
 
-
-
               <div class="col-12 col-sm-6">
                 <mat-form-field appearance="outline" hintmat-label="+xx xxxxxxxxx">
                   <mat-label>Celular *</mat-label>
-                  <input matInput formControlName="clientPhone" type="text" autocomplete="off" phoneMask
-                    maxlength="17" />
+                  <input
+                    matInput
+                    formControlName="clientPhone"
+                    type="text"
+                    autocomplete="off"
+                    phoneMask
+                    maxlength="17"
+                  />
                   <mat-error>
                     {{ getClientPhoneError() }}
                   </mat-error>
@@ -72,8 +68,6 @@
             </div>
 
             <div class="row">
-
-
               <div class="col-12 col-sm-6">
                 <mat-form-field appearance="outline" hintmat-label="Debe tener al menos 6 caracteres">
                   <mat-label>Contraseña *</mat-label>
@@ -83,8 +77,6 @@
                   </mat-error>
                 </mat-form-field>
               </div>
-
-
 
               <div class="col-12 col-sm-6">
                 <mat-form-field appearance="outline">
@@ -98,7 +90,6 @@
             </div>
 
             <div class="row">
-
               <div class="col-12 col-sm-6">
                 <mat-form-field class="birthday-field" appearance="outline">
                   <mat-label>Fecha de Nacimiento *</mat-label>
@@ -110,7 +101,6 @@
                   </mat-error>
                 </mat-form-field>
               </div>
-
 
               <div class="col-12 col-sm-6 d-flex justify-content-center justify-content-sm-start">
                 <button class="register-button submit-button" mat-raised-button type="submit" [disabled]="loading">
@@ -151,5 +141,4 @@
       </div>
     </div>
   </div>
-
 </div>
