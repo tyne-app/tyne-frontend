@@ -11,6 +11,13 @@ export const errorContent: DialogModel = {
   messageButton: "Volver",
 };
 
+export const invalidFormContent: DialogModel = {
+  title: ErrorMessages.FormNotReady,
+  subtitle: ErrorMessages.GenericError,
+  isSuccessful: false,
+  messageButton: "Volver",
+};
+
 export const passwordClientUpdatedContent: DialogModel = {
   title: SuccessMessages.Congratulations,
   subtitle: SuccessMessages.SuccessPasswordUpdated,

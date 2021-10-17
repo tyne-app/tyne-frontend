@@ -1,29 +1,69 @@
-import { HttpErrorResponse } from "@angular/common/http";
+/** ANGULAR CORE */
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { AbstractControl, FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { HttpErrorResponse } from "@angular/common/http";
+/** ANGULAR MATERIAL */
 import { MatDialogRef } from "@angular/material/dialog";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { Router } from "@angular/router";
-import { DialogModel } from "src/app/shared/components/components/dialog/models/dialog-model";
-import { DialogService } from "src/app/shared/components/components/dialog/services/dialog.service";
+/** INMUTABLE */
 import { emailRegex } from "src/app/shared/inmutable/constants/email";
 import { ErrorMessages } from "src/app/shared/inmutable/enums/error-messages";
 import { passwordRegex } from "src/app/shared/inmutable/constants/password";
-import { TyneRoutes } from "src/app/shared/inmutable/enums/url-routes";
+import { errorContent, invalidFormContent, registerClientContent } from "src/app/shared/inmutable/constants/dialog-messages";
+import { DialogModel } from "src/app/shared/components/components/dialog/models/dialog-model";
+
 import { Client } from "src/app/shared/interfaces/client";
-import { ClientService } from "src/app/shared/services/client.service";
 import { PasswordValidator } from "src/app/shared/validations/password-validator";
-import { errorContent, registerClientContent } from "src/app/shared/inmutable/constants/dialog-messages";
+/** SERVICES */
+import { ClientService } from "src/app/shared/services/client.service";
+import { SocialService } from "src/app/shared/services/social.service";
+import { DialogService } from "src/app/shared/components/components/dialog/services/dialog.service";
+
 @Component({
   selector: "app-client-registration",
   templateUrl: "./client.registration.component.html",
   styleUrls: ["./client.registration.component.scss"],
 })
 export class ClientRegistrationComponent implements OnInit {
-  // Una vez que se haga submit, loading pasa a  ser verdadero y el boton se deshabilita.
   public loading = false;
-  public form!: FormGroup;
-  public isWhiteLogo = false;
+  public clientRegisterForm!: FormGroup;
+  public isWhiteLogo = false; 
+
+ // #region Getters 
+ public get ClientNameControl():AbstractControl{
+  return this.clientRegisterForm.get("clientName");
+ }
+
+ public get ClientLastNameControl():AbstractControl{
+  return this.clientRegisterForm.get("clientLastName");
+ }
+
+ public get ClientEmailControl(): AbstractControl {
+  return this.clientRegisterForm.get("clientEmail");
+ }
+
+ public get ClientPhoneControl():AbstractControl {
+  return this.clientRegisterForm.get("clientPhone");
+ }
+
+ public get ClientPasswordControl():AbstractControl{
+   return this.clientRegisterForm.get("password");
+ }
+
+ public get ClientBirthdayControl():AbstractControl{
+   return this.clientRegisterForm.get("birthDate");
+ }
+
+ // #endregion
+  /**
+   * @param fb 
+   * @param matDialogRef 
+   * @param router 
+   * @param clientService 
+   * @param snackbar 
+   * @param dialogService 
+   */
 
   public constructor(
     private fb: FormBuilder,
@@ -31,7 +71,8 @@ export class ClientRegistrationComponent implements OnInit {
     private router: Router,
     private clientService: ClientService,
     private snackbar: MatSnackBar,
-    private dialogService: DialogService
+    private dialogService: DialogService,
+    private socialService:SocialService
   ) {}
 
   public ngOnInit(): void {
@@ -39,26 +80,25 @@ export class ClientRegistrationComponent implements OnInit {
   }
 
   public createClient(): void {
-    if (this.form.invalid) {
-      this.showMessage(ErrorMessages.FormNotReady, false);
+    if (this.clientRegisterForm.invalid) {
+      this.showErrorMessage(invalidFormContent);
       return;
     }
 
     this.loading = true;
 
     const client: Client = {
-      name: this.form.get("clientName").value,
-      lastName: this.form.get("clientLastName").value,
-      phone: this.form
-        .get("clientPhone")
+      name: this.ClientNameControl.value,
+      lastName: this.ClientLastNameControl.value,
+      phone: this.ClientPhoneControl
         .value.toString()
         .replace("(", "")
         .replace(")", "")
         .replace("+", "")
         .replace(/\s/g, ""),
-      email: this.form.get("clientEmail").value,
-      password: this.form.get("password").value,
-      birthDate: this.form.get("birthDate").value,
+      email: this.ClientEmailControl.value,
+      password: this.ClientPasswordControl.value,
+      birthDate: this.ClientBirthdayControl.value
     };
 
     this.clientService.register(client).subscribe(
@@ -69,7 +109,7 @@ export class ClientRegistrationComponent implements OnInit {
       (error: HttpErrorResponse) => {
         this.loading = false;
         if (error.status === 409) {
-          this.showErrorMessage();
+          this.showErrorMessage(errorContent);
         } else {
           throw error;
         }
@@ -77,13 +117,48 @@ export class ClientRegistrationComponent implements OnInit {
     );
   }
 
+  public registerFacebook():void{
+    this.socialService.FacebookLogin().subscribe(userInfo=>{
+      const user:any = userInfo.additionalUserInfo.profile;      
+      const userClient:Client = {
+        name: user.given_name,
+        email: user.email,
+        lastName: user.given_name,
+        phone: "No tiene número de télefono asociado",
+        birthDate: null,
+        password:null
+      };
+      // this.clientService.register(userClient).subscribe(resp=>{
+      //   console.log(resp);
+      // });
+    });
+  }
+  public registerGoogle():void{
+    this.socialService.GoogleLogin().subscribe(userInfo=>{
+      const user:any = userInfo.additionalUserInfo.profile;      
+      const userClient:Client = {
+        name: user.given_name,
+        email: user.email,
+        lastName: user.given_name,
+        phone: "No tiene número de télefono asociado",
+        birthDate: null,
+        password:null
+      };
+      // this.clientService.register(userClient).subscribe(resp=>{
+      //   console.log(resp);
+      // });
+    });
+  }
+
   private showSuccessMessage() {
     this.dialogService.openDialog(registerClientContent);
   }
 
-  private showErrorMessage() {
-    this.dialogService.openDialog(errorContent);
+  private showErrorMessage(dialogContent:DialogModel) {
+    this.dialogService.openDialog(dialogContent);
   }
+
+  
 
   public closeClick(): void {
     this.snackbar.open("Se Ha registrado satisfactoriamente", "ok", {
@@ -99,7 +174,7 @@ export class ClientRegistrationComponent implements OnInit {
   }
 
   public initForm(): void {
-    this.form = this.fb.group({
+    this.clientRegisterForm = this.fb.group({
       clientName: [
         "",
         [
@@ -140,8 +215,8 @@ export class ClientRegistrationComponent implements OnInit {
   // #region Errors
 
   public getClientNameError(): string {
-    const control = this.form.get("clientName");
-    return control.hasError("required")
+    const control = this.ClientNameControl;
+    return this.ClientNameControl.hasError("required")
       ? ErrorMessages.Required.replace("{0}", "nombre")
       : control.hasError("minlength")
       ? ErrorMessages.Minlength.replace("{0}", "2")
@@ -151,7 +226,7 @@ export class ClientRegistrationComponent implements OnInit {
   }
 
   public getClientLastNameError(): string {
-    const control = this.form.get("clientLastName");
+    const control = this.ClientLastNameControl;
     return control.hasError("required")
       ? ErrorMessages.Required.replace("{0}", "apellido")
       : control.hasError("minlength")
@@ -162,7 +237,7 @@ export class ClientRegistrationComponent implements OnInit {
   }
 
   public getClientPhoneError(): string {
-    const control = this.form.get("clientPhone");
+    const control = this.ClientPhoneControl;
     return control.hasError("required")
       ? ErrorMessages.Required.replace("{0}", "teléfono")
       : control.hasError("minlength")
@@ -171,7 +246,7 @@ export class ClientRegistrationComponent implements OnInit {
   }
 
   public getClientEmailError(): string {
-    const control = this.form.get("clientEmail");
+    const control = this.ClientEmailControl;
     return control.hasError("required")
       ? ErrorMessages.Required.replace("{0}", "email")
       : control.hasError("email")
@@ -182,7 +257,7 @@ export class ClientRegistrationComponent implements OnInit {
   }
 
   public getPasswordError(): string {
-    const control = this.form.get("password");
+    const control = this.ClientPasswordControl;
     return control.hasError("required")
       ? ErrorMessages.RequiredVariant.replace("{0}", "contraseña")
       : control.hasError("pattern")
@@ -191,7 +266,7 @@ export class ClientRegistrationComponent implements OnInit {
   }
 
   public getPasswordConfirmError(): string {
-    const control = this.form.get("passwordConfirm");
+    const control = this.ClientPasswordControl;
     return control.hasError("required")
       ? ErrorMessages.RequiredVariant.replace("{0}", "contraseña")
       : control.hasError("notMatch")
@@ -200,7 +275,7 @@ export class ClientRegistrationComponent implements OnInit {
   }
 
   public getBirthDateError(): string {
-    const control = this.form.get("birthDate");
+    const control = this.ClientBirthdayControl;
     return control.hasError("required")
       ? ErrorMessages.RequiredVariant.replace("{0}", "fecha de nacimiento")
       : null;

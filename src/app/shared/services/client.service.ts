@@ -19,7 +19,7 @@ export class ClientService {
     return this.restClient.post<any>(`${this.endpoint}/clients/`, client);
   }
 
-  public login(email: string, password: string): Observable<string> {
+  public login(email: string, password?: string): Observable<string> {
     return this.http.post<DataResponse>(`${this.endpoint}/login/`, { email, password }).pipe(
       map((res) => {
         return res.data;
