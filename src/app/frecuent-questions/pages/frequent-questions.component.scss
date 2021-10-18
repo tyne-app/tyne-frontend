@@ -1,11 +1,35 @@
+@import "../../../styles.scss";
+
 mat-expansion-panel {
     background-color: #fffdfa;
     margin-top: 1.2em;
 }
 
+.titulo-4 {
+    font-size: 1.32rem;
+}
+
+@include view-max(577px) {
+    .titulo-4 {
+        font-size: 1.1rem;
+        line-height: 1.2;
+    }
+}
+
 .divider {
     margin-bottom: 1.2em;
 }
+
+@include view-min(992px) {
+    mat-expansion-panel-header {
+        padding: 0 2rem;
+    }
+    .parrafo {
+        line-height: 1.5;
+        padding: 0 .65rem;
+    }
+}
+
 
 ::ng-deep .mat-expansion-panel-body {
     background-color: white;

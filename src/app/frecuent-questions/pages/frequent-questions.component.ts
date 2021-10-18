@@ -9,7 +9,7 @@ export class FrequentQuestionsComponent implements OnInit {
   public questions = [
     {
       title: "¿Como registro mi restaurante en Tyne?",
-      body: "Visite nuestra página web www.tyneapp.com, dé click en “Une tu local”, llene los campos de contacto y lo llamaremos en un plazo no mayor a 24 hrs.",
+      body: "Visite nuestra página web www.tyneapp.com, dé click en “Une tu local”, llene los campos de contacto y lo llamaremos en un plazo no mayor a 48 hrs.",
     },
     {
       title:
@@ -18,11 +18,11 @@ export class FrequentQuestionsComponent implements OnInit {
     },
     {
       title: "¿Qué pasa si el restaurante no tiene el plato que pedí?",
-      body: "El local puede negociar un cambio de menú en el instante en caso de falta de stock, de otro modo, el local inclusive podría reembolsar in situ el dinero del platillo en caso de que no se llegue acuerdo, recuerde que puede escribirnos en cualquier momento a contacto@tyneapp.com.",
+      body: "El local puede negociar un cambio de menú en el instante en caso de falta de stock, de otro modo, Tyne puede reembolsar el dinero del platillo en caso de que no se llegue acuerdo, recuerde que puede escribirnos en cualquier momento a contacto@tyneapp.com, donde podemos ofrecer una reserva en algún otro local con similares características.",
     },
     {
       title: "¿Qué métodos de pago acepta?",
-      body: "Para el pago de los usuarios se acepta pago por tarjeta de credito o debito, para el pago hacia nuestros locales registrados, se hace por deposito en cuenta bancaria.",
+      body: "Para el pago de los Comensales se acepta pago por tarjeta de credito o debito, para el pago hacia nuestros locales registrados, se hace por deposito en cuenta bancaria.",
     },
     {
       title: "¿Cómo me aseguro que se haga el pago de mis ventas?",
@@ -38,20 +38,20 @@ export class FrequentQuestionsComponent implements OnInit {
     },
     {
       title: "¿Cuanto gano usando la App?",
-      body: "El 100% de los platos, dado que Tyne cobra el 25% que se suma sobre el total comprado por el usuario, eso quiere decir que el valor por la comida irá en total beneficio hacia nuestros socios locales.",
+      body: "El 100% de los platos, dado que Tyne cobra el 15% que se suma sobre el total comprado por el Comensal, eso quiere decir que el valor por la comida irá en total beneficio hacia nuestros socios locales.",
     },
     {
       title: "¿Qué sucede si no me llega el dinero?",
-      body: "Puede ponerse en contacto de manera inmediata con nuestro equipo y le solucionaremos en un tiempo no mayor a 48 hrs hábiles.",
+      body: "Puede ponerse en contacto de manera inmediata con nuestro equipo y nos comunicaremos en un tiempo no mayor a 48 hrs hábiles.",
     },
     {
       title:
         "¿Sí no me funciona la app en el pago, reserva, otros, quién y cómo lo solucionaría?",
-      body: "Como usuario puede escribirnos reportando la falla técnica a contacto@tyneapp.com y nos pondremos en contacto para evaluar la solución que mejor se ajuste a su necesidad",
+      body: "Como comensal o local puede escribirnos reportando la falla técnica a contacto@tyneapp.com y nos pondremos en contacto para evaluar la solución que mejor se ajuste a su necesidad",
     },
     {
       title: "¿Qué dispositivos necesito para usar Tyne?",
-      body: "Un smartphone con conexión estable a Internet o un computador de escritorio, laptop, similares con conexión a Internet.",
+      body: "Un smartphone con conexión estable a Internet o un computador de escritorio, laptop y similares con conexión a Internet.",
     },
     {
       title:
