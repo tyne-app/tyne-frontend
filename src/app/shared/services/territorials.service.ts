@@ -1,7 +1,8 @@
 import { Injectable } from "@angular/core";
+import { environment } from "@src/environments/environment";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
-import { environment } from "src/environments/environment";
+
 import { City } from "../interfaces/city";
 import { GenericDataResponse } from "../interfaces/generic-data-response";
 import { State } from "../interfaces/state";

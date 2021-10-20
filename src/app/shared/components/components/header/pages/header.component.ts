@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { TokenService } from "src/app/shared/helpers/token.service";
-import { TyneRoutes } from "src/app/shared/inmutable/enums/url-routes";
+import { TokenService } from "@shared/helpers/token.service";
+import { TyneRoutes } from "@shared/inmutable/enums/url-routes";
 
 @Component({
   selector: "app-header",

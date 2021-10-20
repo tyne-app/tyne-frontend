@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { JwtHelperService } from "@auth0/angular-jwt";
-import { Token } from "../interfaces/token";
+import { Token } from "@shared/interfaces/token";
 
 @Injectable({
   providedIn: "root",

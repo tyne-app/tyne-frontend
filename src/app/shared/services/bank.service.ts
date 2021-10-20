@@ -1,10 +1,10 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
-import { environment } from "src/environments/environment";
-import { Bank } from "../interfaces/bank";
-import { GenericDataResponse } from "../interfaces/generic-data-response";
-import { RestClientService } from "./rest-client.service";
+import { environment } from "@src/environments/environment";
+import { Bank } from "@shared/interfaces/bank";
+import { GenericDataResponse } from "@shared/interfaces/generic-data-response";
+import { RestClientService } from "@shared/services/rest-client.service";
 
 @Injectable({
   providedIn: "root",

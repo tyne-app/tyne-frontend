@@ -10,11 +10,11 @@ import { Observable } from "rxjs";
 /**
  * CONSTANTS
  */
-import { TyneRoutes } from "../inmutable/enums/url-routes";
+import { TyneRoutes } from "@shared/inmutable/enums/url-routes";
 /**
  * SERVICES
  */
-import { TokenService } from "../helpers/token.service";
+import { TokenService } from "@shared/helpers/token.service";
 
 @Injectable({
   providedIn: "root",

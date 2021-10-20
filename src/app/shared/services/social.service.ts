@@ -1,15 +1,9 @@
-/**
- * ANGULAR CORE
- */
+/** ANGULAR CORE */
 import { Injectable } from "@angular/core";
-/**
- * FIREBASE
- */
+/** FIREBASE */
 import { AngularFireAuth } from "@angular/fire/auth";
 import firebase from "firebase/app";
-/**
- * REACTIVE
- */
+/** REACTIVE */
 import { from, Observable } from "rxjs";
 
 @Injectable({

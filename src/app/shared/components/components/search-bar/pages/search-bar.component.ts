@@ -6,16 +6,21 @@ import {
   Validators,
 } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
-import { OrderByRestaurants } from "src/app/search-restaurant/enums/order-by-restaurants.enum";
-import { SortByRestaurants } from "src/app/search-restaurant/enums/sort-by-restaurants.enum";
-import { SearchRestaurantRequest } from "src/app/search-restaurant/models/search-restaurant-request";
-import { TyneRoutes } from "src/app/shared/inmutable/enums/url-routes";
-import { State } from "src/app/shared/interfaces/state";
-import { RestaurantService } from "src/app/shared/services/restaurant.service";
-import { TerritorialsService } from "src/app/shared/services/territorials.service";
+/** ENUM */
+import { OrderByRestaurants } from "@app/search-restaurant/enums/order-by-restaurants.enum";
+import { TyneRoutes } from "@app/shared/inmutable/enums/url-routes";
+import { SortByRestaurants } from "@app/search-restaurant/enums/sort-by-restaurants.enum";
+/** MODELS */
+import { SearchRestaurantRequest } from "@app/search-restaurant/models/search-restaurant-request";
+import { State } from "@app/shared/interfaces/state";
 import { DialogModel } from "../../dialog/models/dialog-model";
+/** SERVICES */
+import { RestaurantService } from "@app/shared/services/restaurant.service";
+import { TerritorialsService } from "@app/shared/services/territorials.service";
 import { DialogService } from "../../dialog/services/dialog.service";
 import { SearchBarService } from "../services/search-bar.service";
+
+
 
 @Component({
   selector: "app-search-bar",

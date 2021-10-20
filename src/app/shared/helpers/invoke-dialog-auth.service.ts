@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 /** ANGULAR MATERIAL */
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 /** COMPONENTS */
-import { ClientRegistrationComponent } from 'src/app/client-registration/pages/client.registration.component';
-import { LoginComponent } from 'src/app/login/pages/login.component';
+import { ClientRegistrationComponent } from '@app/client-registration/pages/client.registration.component';
+import { LoginComponent } from '@app/login/pages/login.component';
 
 @Injectable({
   providedIn: 'root'

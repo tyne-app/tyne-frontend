@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
-import { SpinnerComponent } from "../components/components/spinner/spinner.component";
+import { SpinnerComponent } from "@shared/components/components/spinner/spinner.component";
 
 @Injectable({
   providedIn: "root",

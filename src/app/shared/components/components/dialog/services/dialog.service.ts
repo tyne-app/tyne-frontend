@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
-import { DialogModel } from "../models/dialog-model";
+import { DialogModel } from "@shared/components/components/dialog/models/dialog-model";
 import { DialogComponent } from "../pages/dialog.component";
 
 @Injectable({

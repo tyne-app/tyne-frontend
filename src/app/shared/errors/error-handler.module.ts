@@ -3,7 +3,7 @@ import { CommonModule } from "@angular/common";
 /** ANGULAR CORE */
 import { NgModule } from "@angular/core";
 /** SERVICES */
-import { authInterceptorProvider, proccessErrorProvider } from "../providers/auth.provider";
+import { authInterceptorProvider, proccessErrorProvider } from "@shared/providers/auth.provider";
 
 @NgModule({
   declarations: [],

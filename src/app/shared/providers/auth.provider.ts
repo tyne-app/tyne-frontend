@@ -1,7 +1,7 @@
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { ErrorHandler } from "@angular/core";
-import { GlobalErrorHandler } from "../errors/global-error-handler";
-import { InterceptorService } from "../interceptors/interceptor.service";
+import { GlobalErrorHandler } from "@shared/errors/global-error-handler";
+import { InterceptorService } from "@shared/interceptors/interceptor.service";
 
 export const authInterceptorProvider = [
   {
