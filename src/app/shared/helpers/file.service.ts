@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { JPGType, PNGType } from '../inmutable/constants/file-type';
+import { JPGType, PNGType } from '@shared/inmutable/constants/file-type';
 
 @Injectable({
   providedIn: 'root'

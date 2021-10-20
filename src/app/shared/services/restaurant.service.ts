@@ -1,12 +1,13 @@
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { environment } from "@src/environments/environment";
 import { BehaviorSubject, Observable } from "rxjs";
 import { map } from "rxjs/operators";
-import { BusinessDetailsResponse } from "src/app/business-details/models/business-details-response";
-import { BusinessRegistrationDto } from "src/app/business-registration/models/business-registration-dto";
-import { SearchRestaurantRequest } from "src/app/search-restaurant/models/search-restaurant-request";
-import { SearchRestaurantResponse } from "src/app/search-restaurant/models/search-restaurant-response";
-import { environment } from "src/environments/environment";
+import { BusinessDetailsResponse } from "@app/business-details/models/business-details-response";
+import { BusinessRegistrationDto } from "@app/business-registration/models/business-registration-dto";
+import { SearchRestaurantRequest } from "@app/search-restaurant/models/search-restaurant-request";
+import { SearchRestaurantResponse } from "@app/search-restaurant/models/search-restaurant-response";
+
 import { GenericDataResponse } from "../interfaces/generic-data-response";
 
 @Injectable({

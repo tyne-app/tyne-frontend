@@ -1,31 +1,35 @@
+/** MODULES */
 import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { BrowserModule } from "@angular/platform-browser";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { environment } from "src/environments/environment";
 import { AppRoutingModule } from "./app-routing.module";
-import { AppComponent } from "./app.component";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { BusinessDetailsModule } from "./business-details/modules/business-details.module";
 import { ClientProfileModule } from "./client-profile/modules/client-profile.module";
 import { ClientRegistrationModule } from "./client-registration/modules/client-registration.module";
-import { ClientRegistrationComponent } from "./client-registration/pages/client.registration.component";
 import { CreateReservationModule } from "./create-reservation/modules/client-registration.module";
-import { CreateReservationComponent } from "./create-reservation/pages/create-reservation.component";
 import { FrequentQuestionsModule } from "./frecuent-questions/modules/frequent-questions.module";
 import { HomeModule } from "./home/modules/home.module";
 import { LoginModule } from "./login/modules/login.module";
-import { LoginComponent } from "./login/pages/login.component";
 import { PrivacyModule } from "./privacy/modules/privacy.module";
 import { RefundPolicyModule } from "./refund-policy/modules/refund-policy.module";
-import { SpinnerComponent } from "./shared/components/components/spinner/spinner.component";
-import { MaterialModule } from "./shared/modules/material.module";
-import { SharedModule } from "./shared/modules/shared.module";
-import { authInterceptorProvider } from "./shared/providers/auth.provider";
-import { DateAdapterProvider, MatDateFormatProvider, MatDateLocalProvider } from "./shared/providers/mat-date.provider";
-import { RestClientService } from "./shared/services/rest-client.service";
+import { MaterialModule } from "@shared/modules/material.module";
+import { SharedModule } from "@shared/modules/shared.module";
 import { StatusPayModule } from "./status-pay/modules/status-pay.module";
+import { SpinnerComponent } from "@shared/components/components/spinner/spinner.component";
+/** ENVIRONMENT */
+import { environment } from "@src/environments/environment";
+/** COMPONENTS */
+import { AppComponent } from "./app.component";
+import { ClientRegistrationComponent } from "./client-registration/pages/client.registration.component";
+import { CreateReservationComponent } from "./create-reservation/pages/create-reservation.component";
+import { LoginComponent } from "./login/pages/login.component";
+/** SERVICES AND PROVIDERS */
+import { RestClientService } from "@shared/services/rest-client.service";
+import { authInterceptorProvider } from "@shared/providers/auth.provider";
+import { DateAdapterProvider, MatDateFormatProvider, MatDateLocalProvider } from "@shared/providers/mat-date.provider";
 
 @NgModule({
   declarations: [AppComponent],

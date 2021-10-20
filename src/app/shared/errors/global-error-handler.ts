@@ -1,7 +1,7 @@
 import { ErrorHandler, Injectable, NgZone } from "@angular/core";
 import { Router } from "@angular/router";
-import { DialogService } from "../components/components/dialog/services/dialog.service";
-import { errorContent } from "../inmutable/constants/dialog-messages";
+import { DialogService } from "@shared/components/components/dialog/services/dialog.service";
+import { errorContent } from "@shared/inmutable/constants/dialog-messages";
 
 @Injectable()
 export class GlobalErrorHandler implements ErrorHandler {

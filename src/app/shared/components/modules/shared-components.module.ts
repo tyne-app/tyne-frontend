@@ -1,8 +1,10 @@
+/** MODULES */
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
-import { MaterialModule } from "src/app/shared/modules/material.module";
+import { MaterialModule } from "@shared/modules/material.module";
+/** COMPONENTS */
 import { CloseModalComponent } from "../components/close-modal/close-modal.component";
 import { DialogComponent } from "../components/dialog/pages/dialog.component";
 import { FooterComponent } from "../components/footer/footer.component";

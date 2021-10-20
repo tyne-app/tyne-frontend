@@ -2,9 +2,9 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
-import { Client } from "src/app/shared/interfaces/client";
-import { DataResponse } from "src/app/shared/interfaces/token";
-import { environment } from "src/environments/environment";
+import { Client } from "@shared/interfaces/client";
+import { DataResponse } from "@shared/interfaces/token";
+import { environment } from "@src/environments/environment";
 import { RestClientService } from "./rest-client.service";
 
 @Injectable({
