@@ -1,0 +1,12 @@
+@import "../../../../styles.scss";
+
+.title-edit {
+  font-size: 1.5rem;
+}
+
+
+@include view-min(992px) {
+  .title-edit {
+    font-size: 2.25rem;
+  }
+}
