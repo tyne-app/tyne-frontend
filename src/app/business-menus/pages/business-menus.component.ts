@@ -1,7 +1,7 @@
 import { CdkDragDrop, moveItemInArray } from "@angular/cdk/drag-drop";
 import { Component, OnInit } from "@angular/core";
 import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { FileService } from "src/app/shared/helpers/file.service";
+import { FileService } from "@shared/helpers/file.service";
 
 @Component({
   selector: "app-business-menus",
@@ -9,16 +9,16 @@ import { FileService } from "src/app/shared/helpers/file.service";
   styleUrls: ["./business-menus.component.scss"],
 })
 export class BusinessMenusComponent implements OnInit {
-  public form: FormGroup;
+  public sectionForm: FormGroup;
   public panelOpenState = true;
 
   public constructor(
-    private fb: FormBuilder,
+    private menuForm: FormBuilder,
     private fileService: FileService
   ) {}
 
   public get sections(): FormArray {
-    return this.form.controls["sections"] as FormArray;
+    return this.sectionForm.controls["sections"] as FormArray;
   }
 
   public ngOnInit(): void {
@@ -26,43 +26,10 @@ export class BusinessMenusComponent implements OnInit {
   }
 
   public saveChanges(): void {
-    // console.log(this.form);
+    // console.log(this.sectionForm);
   }
 
-  public dropSection(event: CdkDragDrop<string[]>): void {
-    moveItemInArray(
-      this.sections.controls,
-      event.previousIndex,
-      event.currentIndex
-    );
 
-    for (let index = 0; index < this.sections.controls.length; index++) {
-      this.sections.controls[index].get("id").setValue(index + 1);
-    }
-  }
-
-  public addSection(): void {
-    this.sections.push(
-      this.fb.group({
-        id: ["0"],
-        title: ["Nueva Sección", Validators.required],
-        isTitleVisible: [false],
-        products: this.addDefaultProduct(),
-      })
-    );
-
-    for (let index = 0; index < this.sections.controls.length; index++) {
-      this.sections.controls[index].get("id").setValue(index + 1);
-    }
-  }
-
-  public deleteSection(id: number): void {
-    this.sections.removeAt(id);
-
-    for (let index = 0; index < this.sections.controls.length; index++) {
-      this.sections.controls[index].get("id").setValue(index + 1);
-    }
-  }
 
   public addProduct(seccionId: number): void {
     let products = this.sections.controls[seccionId].get(
@@ -71,7 +38,7 @@ export class BusinessMenusComponent implements OnInit {
     products = products ? products : new FormArray([]);
 
     products.push(
-      this.fb.group({
+      this.menuForm.group({
         id: ["0"],
         name: [
           "Nombre del Producto",
@@ -104,9 +71,9 @@ export class BusinessMenusComponent implements OnInit {
     }
   }
 
-  public products(form: any): FormArray {
-    return form.controls.products
-      ? form.controls.products.controls
+  public products(sectionForm: any): FormArray {
+    return sectionForm.controls.products
+      ? sectionForm.controls.products.controls
       : new FormArray([]);
   }
 
@@ -126,26 +93,6 @@ export class BusinessMenusComponent implements OnInit {
     return isTitleVisible ? isTitleVisible.value : false;
   }
 
-  public uploadImage(seccionId: number, productId: number, event: any): void {
-    const products = this.sections.controls[seccionId].get(
-      "products"
-    ) as FormArray;
-    const imageUrl = products.controls[productId].get("imageUrl");
-
-    if (imageUrl) {
-      const file: File = event.target.files[0];
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-
-      reader.onload = () => {
-        this.fileService
-          .compressImage(reader.result, 400, 250)
-          .then((compressed) => {
-            imageUrl.setValue(compressed);
-          });
-      };
-    }
-  }
 
   private getDataMock() {
     return [
@@ -157,8 +104,6 @@ export class BusinessMenusComponent implements OnInit {
           {
             id: 1,
             name: "Carne al jugo",
-            imageUrl:
-              "https://sevilla.abc.es/gurme/wp-content/uploads/sites/24/2012/01/comida-rapida-casera.jpg",
             price: "4500",
             description:
               "Sabrosa carne al jugo Sabrosa carne al jugo Sabrosa carne al jugo Sabrosa carne al jugo Sabrosa carne al jugo",
@@ -168,8 +113,6 @@ export class BusinessMenusComponent implements OnInit {
             name: "item 2",
             description:
               "Sabrosa carne al jugo Sabrosa carne al jugo Sabrosa carne al jugo Sabrosa carne al jugo Sabrosa carne al jugo",
-            imageUrl:
-              "https://sevilla.abc.es/gurme/wp-content/uploads/sites/24/2012/01/comida-rapida-casera.jpg",
             price: "4500",
           },
         ],
@@ -184,8 +127,6 @@ export class BusinessMenusComponent implements OnInit {
             name: "item 1",
             description:
               "Sabrosa carne al jugo Sabrosa carne al jugo Sabrosa carne al jugo Sabrosa carne al jugo Sabrosa carne al jugo",
-            imageUrl:
-              "https://sevilla.abc.es/gurme/wp-content/uploads/sites/24/2012/01/comida-rapida-casera.jpg",
             price: "4500",
           },
         ],
@@ -200,8 +141,6 @@ export class BusinessMenusComponent implements OnInit {
             name: "item 1",
             description:
               "Sabrosa carne al jugo Sabrosa carne al jugo Sabrosa carne al jugo Sabrosa carne al jugo Sabrosa carne al jugo",
-            imageUrl:
-              "https://sevilla.abc.es/gurme/wp-content/uploads/sites/24/2012/01/comida-rapida-casera.jpg",
             price: "4500",
           },
         ],
@@ -216,8 +155,6 @@ export class BusinessMenusComponent implements OnInit {
             name: "item 1",
             description:
               "Sabrosa carne al jugo Sabrosa carne al jugo Sabrosa carne al jugo Sabrosa carne al jugo Sabrosa carne al jugo",
-            imageUrl:
-              "https://sevilla.abc.es/gurme/wp-content/uploads/sites/24/2012/01/comida-rapida-casera.jpg",
             price: "4500",
           },
         ],
@@ -226,13 +163,13 @@ export class BusinessMenusComponent implements OnInit {
   }
 
   private initForm() {
-    this.form = this.fb.group({
-      sections: this.fb.array([]),
+    this.sectionForm = this.menuForm.group({
+      sections: this.menuForm.array([]),
     });
 
     this.getDataMock().forEach((x) => {
       this.sections.push(
-        this.fb.group({
+        this.menuForm.group({
           id: [x.id],
           title: [x.title, [Validators.required, Validators.maxLength(20)]],
           isTitleVisible: [false],
@@ -247,7 +184,7 @@ export class BusinessMenusComponent implements OnInit {
 
     products.forEach((x) => {
       formArray.push(
-        this.fb.group({
+        this.menuForm.group({
           id: [x.id],
           name: [
             x.name,
@@ -281,7 +218,7 @@ export class BusinessMenusComponent implements OnInit {
     const formArray = new FormArray([]);
 
     formArray.push(
-      this.fb.group({
+      this.menuForm.group({
         id: ["0"],
         name: [
           "Nombre del Producto",
