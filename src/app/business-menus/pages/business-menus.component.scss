@@ -33,7 +33,7 @@
   font-weight: normal;
   font-size: 1.5rem;
   line-height: 30px;
-  text-align: center;
+  text-align: start;
   color: #3c0000;
   @media only screen and (max-width: 600px) {
     font-size: 1.2rem;
@@ -120,7 +120,7 @@
 .panel-description {
   align-self: center;
   width: 100%;
-  justify-content: center;
+  justify-content: start;
 }
 
 .title-icon-toggle {

@@ -53,17 +53,6 @@
                 <label class="section-title" *ngIf="!isTitleVisible(i)">
                   {{ section.get("title").value }}
                 </label>
-
-                <div style="font-size: 4px; pointer-events: auto" *ngIf="isTitleVisible(i)"
-                  (click)="toggleIcon.expanded = true">
-                  <mat-form-field appearance="fill" style="width: 300px">
-                    <input class="title-input" matInput formControlName="title" type="text"
-                      (blur)="changeSectionTitleEditing(i)" (keyup.enter)="changeSectionTitleEditing(i)"
-                      (keydown.enter)="$event.preventDefault()" (keydown)="$event.stopPropagation()" />
-                  </mat-form-field>
-                </div>
-
-                &nbsp;&nbsp;
               </mat-panel-description>
 
               <mat-panel-description class="title-icon-toggle">
