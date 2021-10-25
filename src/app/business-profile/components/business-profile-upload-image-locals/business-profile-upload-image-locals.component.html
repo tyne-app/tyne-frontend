@@ -1,11 +1,27 @@
-<div class="p-2 p-lg-5">
+<app-close-modal></app-close-modal>
+<div class="px-2 py-2 px-lg-5 py-lg-0 pt-lg-2 container-dialog">
   <h3 class="title-edit mt-2 mb-1">Editar mis fotos</h3>
   <p class="mt-1">Cambia, elimina o agrega una foto para el perfil de tu local.</p>
 
-  <div class="col-12 col-center">
+  <app-business-profile-carousel-upload-image></app-business-profile-carousel-upload-image>
+
+  <div class="col-12 mt-2 mt-lg-3 pb-4 col-center" *ngIf="!isUpload">
     <button mat-raised-button class="btn-normal-red">
       Subir una foto
     </button>
+  </div>
+
+  <div class="col-12 mt-2 mt-lg-3 pb-4 pb-lg-5 d-flex flex-column align-items-center" *ngIf="isUpload">
+    <button mat-raised-button class="btn-normal-red">
+      Cambiar foto
+    </button>
+    <button mat-raised-button class="btn-normal-red mt-1 mt-lg-3" (click)="closeUploadImagesLocals()">
+      Eliminar foto
+    </button>
+    <button mat-raised-button class="btn-normal-red mt-1 mt-lg-3">
+      Agregar más fotos
+    </button>
+
   </div>
 
 </div>
