@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from "@angular/material/dialog";
+import { BusinessProfileCloseUploadImageComponent } from '../business-profile-close-upload-image/business-profile-close-upload-image.component';
 
 @Component({
   selector: 'app-business-profile-upload-image-locals',
@@ -6,10 +8,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./business-profile-upload-image-locals.component.scss']
 })
 export class BusinessProfileUploadImageLocalsComponent implements OnInit {
+  public isUpload = true;
 
-  constructor() { }
+  public constructor(private dialog: MatDialog) { }
 
-  ngOnInit() {
+  public ngOnInit(): void { }
+
+  public closeUploadImagesLocals(): void {
+    const dialogRef = this.dialog.open(BusinessProfileCloseUploadImageComponent, {
+      maxWidth: "95%",
+      minWidth: "75%",
+      panelClass: "business-profile-dialog",
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // empty
+    });
   }
 
 }
