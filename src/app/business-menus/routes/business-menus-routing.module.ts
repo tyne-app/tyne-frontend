@@ -5,7 +5,7 @@ import { BusinessMenusComponent } from "../pages/business-menus.component";
 const routes: Routes = [
   {
     path: "",
-    component: BusinessMenusComponent,
+    component: BusinessMenusComponent
   }
 ];
 
