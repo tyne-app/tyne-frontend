@@ -8,8 +8,8 @@ import {
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { catchError, map } from "rxjs/operators";
-import { SpinnerService } from "@shared/helpers/spinner.service";
-import { TokenService } from "@shared/helpers/token.service";
+import { SpinnerService } from "@app/core/helpers/spinner.service";
+import { TokenService } from "@app/core/helpers/token.service";
 
 @Injectable({
   providedIn: "root",

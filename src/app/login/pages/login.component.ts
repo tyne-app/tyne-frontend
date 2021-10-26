@@ -11,9 +11,9 @@ import { SuccessMessages } from "src/app/shared/inmutable/enums/success-messages
 import { TyneRoutes } from "src/app/shared/inmutable/enums/url-routes";
 /** SERVICES */
 import { DialogService } from "src/app/shared/components/components/dialog/services/dialog.service";
-import { CustomSnackbarCommonService } from "src/app/shared/helpers/custom-snackbar-common.service";
-import { ClientService } from "src/app/shared/services/client.service";
-import { SocialService } from "src/app/shared/services/social.service";
+import { CustomSnackbarCommonService } from "@app/core/helpers/custom-snackbar-common.service";
+import { ClientService } from "@app/core/services/client.service";
+import { SocialService } from "@app/core/services/social.service";
 
 @Component({
   selector: "app-login",

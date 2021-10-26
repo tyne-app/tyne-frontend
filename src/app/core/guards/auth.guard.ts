@@ -14,7 +14,7 @@ import { TyneRoutes } from "@shared/inmutable/enums/url-routes";
 /**
  * SERVICES
  */
-import { TokenService } from "@shared/helpers/token.service";
+import { TokenService } from "@app/core/helpers/token.service";
 
 @Injectable({
   providedIn: "root",

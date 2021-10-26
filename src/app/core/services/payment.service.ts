@@ -2,8 +2,9 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { environment } from "@src/environments/environment";
-import { PaymentKhipuRequest } from "../interfaces/payment-khipu-request";
-import { PaymentCreateResponse } from "../interfaces/payment-create-response";
+import { PaymentKhipuRequest } from "@app/shared/interfaces/payment-khipu-request";
+import { PaymentCreateResponse } from "@app/shared/interfaces/payment-create-response";
+
 
 @Injectable({
   providedIn: "root",

@@ -8,7 +8,7 @@ import { HTMLInputEvent } from '../../interfaces/event-input-file';
 /** SERVICES */
 import { DialogService } from 'src/app/shared/components/components/dialog/services/dialog.service';
 import { ClientProfileService } from '../../services/client-profile.service';
-import { FileService } from 'src/app/shared/helpers/file.service';
+import { FileService } from '@app/core/helpers/file.service';
 import { errorContent } from 'src/app/shared/inmutable/constants/dialog-messages';
 
 @Component({

@@ -4,7 +4,7 @@ import { RutValidator } from "ng9-rut";
 import { emailRegex } from "src/app/shared/inmutable/constants/email";
 import { ErrorMessages } from "src/app/shared/inmutable/enums/error-messages";
 import { Bank } from "src/app/shared/interfaces/bank";
-import { BankService } from "src/app/shared/services/bank.service";
+import { BankService } from "@app/core/services/bank.service";
 
 @Component({
   selector: "app-business-profile-edit-bank-data",
