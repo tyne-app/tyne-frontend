@@ -39,7 +39,7 @@ const routes: Routes = [
     path: TyneRoutes.BusinessProfile,
     loadChildren: () =>
       import("./business-profile/modules/business-registration.module").then((m) => m.BusinessProfileModule),
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: TyneRoutes.Refund,
