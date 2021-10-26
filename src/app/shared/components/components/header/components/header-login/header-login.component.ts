@@ -1,8 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { TyneRoutes } from "src/app/shared/inmutable/enums/url-routes";
+import { UserType } from "@app/shared/inmutable/enums/user_type.enum";
+import { Token } from "@app/shared/interfaces/token";
 import { TokenService } from "src/app/shared/helpers/token.service";
-import { Claims } from "src/app/shared/interfaces/token";
+import { TyneRoutes } from "src/app/shared/inmutable/enums/url-routes";
 import { ClientService } from "src/app/shared/services/client.service";
 
 @Component({
@@ -12,7 +13,7 @@ import { ClientService } from "src/app/shared/services/client.service";
 })
 export class HeaderLoginComponent implements OnInit {
   public menu: Map<number, string>;
-  public claims: Claims;
+  public token: Token = null;
 
   public constructor(
     private router: Router,
@@ -65,13 +66,12 @@ export class HeaderLoginComponent implements OnInit {
   }
 
   private getUserData() {
-    const token = this.tokenService.getDecodedJwtToken();
-    this.claims = token.claims;
+    this.token = this.tokenService.getDecodedJwtToken();
     this.getMenuUser();
   }
 
   private getMenuUser() {
-    if (this.claims.rol === "user") {
+    if (this.token.rol === UserType.Customer) {
       this.menu = new Map<number, string>()
         .set(1, "Perfil")
         .set(2, "Locales Favoritos")

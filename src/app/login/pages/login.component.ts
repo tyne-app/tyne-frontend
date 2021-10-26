@@ -4,14 +4,14 @@ import { Component, OnInit } from "@angular/core";
 import { AbstractControl, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { Router } from "@angular/router";
+/** SERVICES */
+import { DialogService } from "src/app/shared/components/components/dialog/services/dialog.service";
+import { CustomSnackbarCommonService } from "src/app/shared/helpers/custom-snackbar-common.service";
 /** INMUTABLE */
 import { errorContent } from "src/app/shared/inmutable/constants/dialog-messages";
 import { emailRegex } from "src/app/shared/inmutable/constants/email";
 import { SuccessMessages } from "src/app/shared/inmutable/enums/success-messages";
 import { TyneRoutes } from "src/app/shared/inmutable/enums/url-routes";
-/** SERVICES */
-import { DialogService } from "src/app/shared/components/components/dialog/services/dialog.service";
-import { CustomSnackbarCommonService } from "src/app/shared/helpers/custom-snackbar-common.service";
 import { ClientService } from "src/app/shared/services/client.service";
 import { SocialService } from "src/app/shared/services/social.service";
 
@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit {
       this.clientservice.login(this.emailControl.value, this.passwordControl.value).subscribe(
         (token) => {
           if (token) {
-            localStorage.setItem("access_token", token);
+            localStorage.setItem("access_token", token.access_token);
             this.closeModal();
           }
         },
@@ -99,10 +99,10 @@ export class LoginComponent implements OnInit {
     console.log("Ir a la página de contraseña olvidada");
   }
 
-  public goToGoogleSignIn():void {
+  public goToGoogleSignIn(): void {
     this.socialService.GoogleLogin().subscribe((userInfo) => {
-      const user:any = userInfo.additionalUserInfo.profile;
-      const email:string = user.email;
+      const user: any = userInfo.additionalUserInfo.profile;
+      const email: string = user.email;
       // this.clientservice.login(email)
       //   .subscribe(resp=>{
 
@@ -112,11 +112,11 @@ export class LoginComponent implements OnInit {
 
   public goToFacebookSignIn(): void {
     this.socialService.FacebookLogin().subscribe((userInfo) => {
-      const user:any = userInfo.additionalUserInfo.profile;
-      const email:string = user.email;
+      const user: any = userInfo.additionalUserInfo.profile;
+      const email: string = user.email;
       // this.clientservice.login(email)
       //   .subscribe(resp=>{
-          
+
       // });
     });
   }

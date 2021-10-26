@@ -1,79 +1,83 @@
-
 <div class="container">
-    <mat-card class="bg p-0">
-        <div class="row p-0">
-             <!-- SECTION DISPLAY INFO-->
-            <div class="col mb-5 p-5">
-                    <div class="col mb-3 d-flex justify-content-start">
-                        <h2 class="titulo-3" >Perfil</h2>
-                    </div>
-                    <div class="col ml-0 ">
-                        <h5 class="titulo-5 my-0 mb-1">Nombre</h5>
-                        <h5 class="titulo-4 my-0 mb-3" ><b>{{this.ClientDataInfo.name}} {{this.ClientDataInfo.last_name}}</b></h5>
-                    </div>
-                    <div class="col ml-0 my-0">
-                        <h5 class="titulo-5 my-0 mb-1">Fecha de nacimiento</h5>
-                        <h5 class="titulo-4 my-0 mb-3"><b>{{this.ClientDataInfo.birth_date |  date: 'dd/mm/yyyy' }}</b></h5>
-                    </div>                    
-                    <div class="col mx-0">
-                        <h5 class="titulo-5 my-0 mb-1">Email</h5>
-                        <h5 class="titulo-4 my-0 mb-3"><b>{{this.ClientDataInfo.email}}</b></h5>
-                    </div>
-                    <div class="col mx-0">
-                        <h5 class="titulo-5 my-0 mb-1">Celular</h5>
-                        <h5 class="titulo-4 my-0 mb-3"><b>{{this.ClientDataInfo.phone}}</b></h5>
-                    </div>          
-            </div>
-             <!-- SECTION IMAGE PROFILE-->
-            <div class="col-lg-3 p-2 mt-4 mb-5">
-                <app-profile-image [urlImage]="this.urlImage"></app-profile-image>            
-            </div> 
-
-            
-            <mat-divider class="col p-5 mx-1 mt-5
-             mb-5" [vertical]="true"></mat-divider>
-            
-            <!-- SECTION CHANGE PASSWORD --> 
-            <div class="col-lg-4 col-xs-3 col-md-3 mt-4 p-4">
-                <div class="row"> 
-                    <div class="col  d-flex justify-content-center">
-                        <h2 class="titulo-3">Editar contraseña</h2>
-                    </div>
-                </div>  
-
-
-                <!-- SECTION FORM GROUP -->
-                <div class="row mt-2 mx-3">
-                    <div class="col m-0 p-0">
-                        <form [formGroup]="this.recoverPasswordForm" (ngSubmit)="OnSubmit()">
-                            <div class="row m-0 p-1">
-                                <mat-form-field appearance="outline" class="col-lg-12 m-1 p-1" >
-                                  <mat-label> Contraseña Actual </mat-label>
-                                  <input matInput formControlName="currentPassword" type="password"> 
-                                </mat-form-field>
-    
-                                <mat-form-field  appearance="outline" class="col-lg-12 m-1 p-1">
-                                    <mat-label>Contraseña Nueva</mat-label>
-                                    <input matInput formControlName="newPassword" type="password">
-                                    <mat-error> {{ getPasswordError() }}  </mat-error>
-                                </mat-form-field>
-     
-                                <mat-form-field appearance="outline" class="col-lg-12 m-1 p-1" >
-                                    <mat-label>Repetir Contraseña</mat-label>
-                                    <input matInput formControlName="confirmPassword" type="password">
-                                    <mat-error> {{ getPasswordConfirmError() }} </mat-error>
-                                </mat-form-field>    
-                            </div>
-                         
-                            <div class="row mt-5 mb-5">
-                                <div class="d-flex col justify-content-center align-items-center">
-                                    <button [class]="getButtonClass()" [disabled]="!this.recoverPasswordForm.valid">Guardar</button>
-                                </div>
-                            </div>
-                          </form> 
-                    </div>
-                </div>
-            </div>
+  <mat-card class="bg p-0">
+    <div class="row p-0">
+      <!-- SECTION DISPLAY INFO-->
+      <div class="col mb-5 p-5">
+        <div class="col mb-3 d-flex justify-content-start">
+          <h2 class="titulo-3">Perfil</h2>
         </div>
-    </mat-card>
+        <div class="col ml-0">
+          <h5 class="titulo-5 my-0 mb-1">Nombre</h5>
+          <h5 class="titulo-4 my-0 mb-3">
+            <b>{{ this.client?.name }} {{ this.client?.last_name }}</b>
+          </h5>
+        </div>
+        <div class="col ml-0 my-0">
+          <h5 class="titulo-5 my-0 mb-1">Fecha de nacimiento</h5>
+          <h5 class="titulo-4 my-0 mb-3">
+            <b>{{ this.client.birth_date | date: "dd/mm/yyyy" }}</b>
+          </h5>
+        </div>
+        <div class="col mx-0">
+          <h5 class="titulo-5 my-0 mb-1">Email</h5>
+          <h5 class="titulo-4 my-0 mb-3">
+            <b>{{ this.client.email }}</b>
+          </h5>
+        </div>
+        <div class="col mx-0">
+          <h5 class="titulo-5 my-0 mb-1">Celular</h5>
+          <h5 class="titulo-4 my-0 mb-3">
+            <b>{{ this.client.phone }}</b>
+          </h5>
+        </div>
+      </div>
+      <!-- SECTION IMAGE PROFILE-->
+      <div class="col-lg-3 p-2 mt-4 mb-5">
+        <app-profile-image [urlImage]="this.client.image_url"></app-profile-image>
+      </div>
+
+      <mat-divider class="col p-5 mx-1 mt-5 mb-5" [vertical]="true"></mat-divider>
+
+      <!-- SECTION CHANGE PASSWORD -->
+      <div class="col-lg-4 col-xs-3 col-md-3 mt-4 p-4">
+        <div class="row">
+          <div class="col d-flex justify-content-center">
+            <h2 class="titulo-3">Editar contraseña</h2>
+          </div>
+        </div>
+
+        <!-- SECTION FORM GROUP -->
+        <div class="row mt-2 mx-3">
+          <div class="col m-0 p-0">
+            <form [formGroup]="this.recoverPasswordForm" (ngSubmit)="OnSubmit()">
+              <div class="row m-0 p-1">
+                <mat-form-field appearance="outline" class="col-lg-12 m-1 p-1">
+                  <mat-label> Contraseña Actual </mat-label>
+                  <input matInput formControlName="currentPassword" type="password" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="col-lg-12 m-1 p-1">
+                  <mat-label>Contraseña Nueva</mat-label>
+                  <input matInput formControlName="newPassword" type="password" />
+                  <mat-error> {{ getPasswordError() }} </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="col-lg-12 m-1 p-1">
+                  <mat-label>Repetir Contraseña</mat-label>
+                  <input matInput formControlName="confirmPassword" type="password" />
+                  <mat-error> {{ getPasswordConfirmError() }} </mat-error>
+                </mat-form-field>
+              </div>
+
+              <div class="row mt-5 mb-5">
+                <div class="d-flex col justify-content-center align-items-center">
+                  <button [class]="getButtonClass()" [disabled]="!this.recoverPasswordForm.valid">Guardar</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card>
 </div>
