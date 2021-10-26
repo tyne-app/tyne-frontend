@@ -5,7 +5,7 @@ import { Component,OnInit} from '@angular/core';
 /**
  * SERVICES 
  */
-import { TokenService } from 'src/app/shared/helpers/token.service';
+import { TokenService } from '@app/core/helpers/token.service';
 import { ClientProfileService } from '../services/client-profile.service';
 /**
  * INTERFACES 

@@ -17,9 +17,7 @@ import { map } from "rxjs/operators";
  *ENVIRONMENT
  */
 import { environment } from "src/environments/environment";
-@Injectable({
-  providedIn: "root",
-})
+@Injectable()
 export class ClientProfileService {
   private endpoint = environment.apiClients;
 

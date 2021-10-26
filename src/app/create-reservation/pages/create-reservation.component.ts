@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { SearchBarService } from "src/app/shared/components/components/search-bar/services/search-bar.service";
 import { ErrorMessages } from "src/app/shared/inmutable/enums/error-messages";
 import { DateValidator } from "src/app/shared/validations/date-validator";
-import { PaymentService } from "src/app/shared/services/payment.service";
+import { PaymentService } from "@app/core/services/payment.service";
 import { PaymentKhipuRequest } from "src/app/shared/interfaces/payment-khipu-request";
 import { PaymentCreateResponse } from "src/app/shared/interfaces/payment-create-response";
 import { HttpErrorResponse } from "@angular/common/http";

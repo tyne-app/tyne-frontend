@@ -16,8 +16,8 @@ import { DialogModel } from "src/app/shared/components/components/dialog/models/
 import { Client } from "src/app/shared/interfaces/client";
 import { PasswordValidator } from "src/app/shared/validations/password-validator";
 /** SERVICES */
-import { ClientService } from "src/app/shared/services/client.service";
-import { SocialService } from "src/app/shared/services/social.service";
+import { ClientService } from "@app/core/services/client.service";
+import { SocialService } from "@app/core/services/social.service";
 import { DialogService } from "src/app/shared/components/components/dialog/services/dialog.service";
 
 @Component({

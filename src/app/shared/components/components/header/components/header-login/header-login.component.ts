@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { TyneRoutes } from "src/app/shared/inmutable/enums/url-routes";
-import { TokenService } from "src/app/shared/helpers/token.service";
+import { TokenService } from "@app/core/helpers/token.service";
 import { Claims } from "src/app/shared/interfaces/token";
-import { ClientService } from "src/app/shared/services/client.service";
+import { ClientService } from "@app/core/services/client.service";
 
 @Component({
   selector: "app-header-login",
