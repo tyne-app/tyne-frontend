@@ -27,6 +27,16 @@ export class ClientService {
     return this.http.get<ClientResponse>(`${this.endpoint}/clients/${id}`);
   }
 
+  public putImageProfile(imageProfile: File): Observable<any> {
+    const imageProfileFile: FormData = new FormData();
+    imageProfileFile.append("image", imageProfile, imageProfile.name);
+    return this.http.post<any>(`${this.endpoint}/users/profile-image`, imageProfileFile);
+  }
+
+  public putPassword(passwordToUpdate: string): Observable<any> {
+    return this.http.put(`${this.endpoint}/clients/update-password`, { password: passwordToUpdate });
+  }
+
   public logout(): void {
     sessionStorage.clear();
     localStorage.clear();

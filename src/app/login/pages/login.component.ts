@@ -4,6 +4,8 @@ import { Component, OnInit } from "@angular/core";
 import { AbstractControl, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { Router } from "@angular/router";
+import { TokenService } from "@app/shared/helpers/token.service";
+import { UserType } from "@app/shared/inmutable/enums/user_type.enum";
 /** SERVICES */
 import { DialogService } from "src/app/shared/components/components/dialog/services/dialog.service";
 import { CustomSnackbarCommonService } from "src/app/shared/helpers/custom-snackbar-common.service";
@@ -42,7 +44,8 @@ export class LoginComponent implements OnInit {
     public dialog: MatDialog,
     private socialService: SocialService,
     private customSnackbarCommon: CustomSnackbarCommonService,
-    private dialogService: DialogService
+    private dialogService: DialogService,
+    private tokenService: TokenService
   ) {}
 
   public ngOnInit(): void {
@@ -79,7 +82,13 @@ export class LoginComponent implements OnInit {
   public closeModal(): void {
     this.loginRef.close();
     this.customSnackbarCommon.openSuccessSnackbar(SuccessMessages.Success);
-    this.router.navigateByUrl(TyneRoutes.ClientProfile);
+
+    const token = this.tokenService.getDecodedJwtToken();
+
+    if (token) {
+      if (token.rol === UserType.Manager) this.router.navigateByUrl(TyneRoutes.BusinessProfile);
+      else this.router.navigateByUrl(TyneRoutes.ClientProfile);
+    }
   }
 
   public getPasswordError(): string {
