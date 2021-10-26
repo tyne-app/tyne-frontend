@@ -1,10 +1,10 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { ClientResponse } from "@app/shared/interfaces/response/client_response";
 import { Client } from "@shared/interfaces/client";
 import { LoginResponse } from "@shared/interfaces/token";
 import { environment } from "@src/environments/environment";
 import { Observable } from "rxjs";
-import { ClientResponse } from "../interfaces/response/client_response";
 import { RestClientService } from "./rest-client.service";
 
 @Injectable({
