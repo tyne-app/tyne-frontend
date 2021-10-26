@@ -1,21 +1,10 @@
 <div class="d-flex justify-content-end">
-  <button
-    mat-raised-button
-    class="dropdown-menu"
-    mat-button
-    [matMenuTriggerFor]="tyneMenu"
-  >
-    ¡Hola {{ this.claims ? this.claims.name : null }}!
-    <mat-icon matSuffix
-      ><span class="material-icons-outlined"> expand_more </span></mat-icon
-    >
+  <button mat-raised-button class="dropdown-menu" mat-button [matMenuTriggerFor]="tyneMenu">
+    ¡Hola {{ this.token ? this.token.name : null }}!
+    <mat-icon matSuffix><span class="material-icons-outlined"> expand_more </span></mat-icon>
   </button>
   <mat-menu class="dropdown-menu__content" #tyneMenu="matMenu">
-    <button
-      (click)="onNavigate(this.menuItem.key)"
-      *ngFor="let menuItem of menu | keyvalue: asIsOrder"
-      mat-menu-item
-    >
+    <button (click)="onNavigate(this.menuItem.key)" *ngFor="let menuItem of menu | keyvalue: asIsOrder" mat-menu-item>
       {{ menuItem.value }}
     </button>
   </mat-menu>
