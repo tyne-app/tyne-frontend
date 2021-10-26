@@ -46,6 +46,10 @@ export class ProfileImageComponent implements OnInit {
     );
   }
 
+  public setDefaultImageProfile(): void {
+    this.urlImage = "/assets/img/user-profile.svg";
+  }
+
   private updateImageUrlSource(): void {
     const reader = new FileReader();
     reader.readAsDataURL(this.imageProfile);

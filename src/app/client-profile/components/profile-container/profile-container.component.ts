@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { AbstractControl, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatSnackBar } from "@angular/material/snack-bar";
+import { ClientService } from "@app/core/services/client.service";
 import { ClientResponse } from "@app/shared/interfaces/response/client_response";
-import { ClientService } from "@app/shared/services/client.service";
 import { DialogModel } from "src/app/shared/components/components/dialog/models/dialog-model";
 import { DialogService } from "src/app/shared/components/components/dialog/services/dialog.service";
 import { passwordClientUpdatedContent } from "src/app/shared/inmutable/constants/dialog-messages";
