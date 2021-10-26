@@ -6,7 +6,7 @@ ENV PORT=$PORT
 
 WORKDIR /app
 COPY . .
-RUN npm ci && npm run build
+RUN npm ci && npm run build --prod
 
 # stage 2
 
