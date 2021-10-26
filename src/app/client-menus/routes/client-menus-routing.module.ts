@@ -5,7 +5,7 @@ import { ClientMenusComponent } from "../pages/client-menus.component";
 const routes: Routes = [
   {
     path: "",
-    component: ClientMenusComponent,
+    component: ClientMenusComponent
   },
 ];
 
