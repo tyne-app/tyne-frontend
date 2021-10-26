@@ -1,11 +1,12 @@
 import { Injectable } from "@angular/core";
+import { City } from "@app/shared/interfaces/city";
+import { GenericDataResponse } from "@app/shared/interfaces/generic-data-response";
+import { State } from "@app/shared/interfaces/state";
 import { environment } from "@src/environments/environment";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 
-import { City } from "../interfaces/city";
-import { GenericDataResponse } from "../interfaces/generic-data-response";
-import { State } from "../interfaces/state";
+
 import { RestClientService } from "./rest-client.service";
 
 @Injectable({

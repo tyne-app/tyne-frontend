@@ -15,8 +15,8 @@ import { SearchRestaurantRequest } from "@app/search-restaurant/models/search-re
 import { State } from "@app/shared/interfaces/state";
 import { DialogModel } from "../../dialog/models/dialog-model";
 /** SERVICES */
-import { RestaurantService } from "@app/shared/services/restaurant.service";
-import { TerritorialsService } from "@app/shared/services/territorials.service";
+import { RestaurantService } from "@app/core/services/restaurant.service";
+import { TerritorialsService } from "@app/core/services/territorials.service";
 import { DialogService } from "../../dialog/services/dialog.service";
 import { SearchBarService } from "../services/search-bar.service";
 

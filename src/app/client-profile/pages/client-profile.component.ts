@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
+import { TokenService } from "@app/core/helpers/token.service";
+import { ClientService } from "@app/core/services/client.service";
 import { ClientResponse } from "@app/shared/interfaces/response/client_response";
-import { ClientService } from "@app/shared/services/client.service";
-import { TokenService } from "src/app/shared/helpers/token.service";
 
 @Component({
   selector: "app-client-profile",

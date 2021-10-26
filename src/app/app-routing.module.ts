@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { NotFoundPageComponent } from "@shared/components/components/not-found-page/not-found-page.component";
-import { AuthGuard } from "@shared/guards/auth.guard";
+import { AuthGuard } from "@app/core/guards/auth.guard";
 import { TyneRoutes } from "@shared/inmutable/enums/url-routes";
 
 
@@ -39,7 +39,7 @@ const routes: Routes = [
     path: TyneRoutes.BusinessProfile,
     loadChildren: () =>
       import("./business-profile/modules/business-registration.module").then((m) => m.BusinessProfileModule),
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: TyneRoutes.Refund,

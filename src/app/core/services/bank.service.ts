@@ -4,7 +4,7 @@ import { map } from "rxjs/operators";
 import { environment } from "@src/environments/environment";
 import { Bank } from "@shared/interfaces/bank";
 import { GenericDataResponse } from "@shared/interfaces/generic-data-response";
-import { RestClientService } from "@shared/services/rest-client.service";
+import { RestClientService } from "@app/core/services/rest-client.service";
 
 @Injectable({
   providedIn: "root",

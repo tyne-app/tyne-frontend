@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 // ELIMINAR
 import { PaymentKhipuRequest } from "@src/app/shared/interfaces/payment-khipu-request";
-import { PaymentService } from "@src/app/shared/services/payment.service";
+import { PaymentService } from "@app/core/services/payment.service";
 import { HttpErrorResponse } from "@angular/common/http";
 
 @Component({

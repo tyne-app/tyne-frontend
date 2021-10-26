@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { InvokeDialogAuthService } from "src/app/shared/helpers/invoke-dialog-auth.service";
-import { TokenService } from "src/app/shared/helpers/token.service";
+import { InvokeDialogAuthService } from "@app/core/helpers/invoke-dialog-auth.service";
+import { TokenService } from "@app/core/helpers/token.service";
 import { TyneRoutes } from "src/app/shared/inmutable/enums/url-routes";
 import { BusinessDetailsResponse } from "../../models/business-details-response";
 

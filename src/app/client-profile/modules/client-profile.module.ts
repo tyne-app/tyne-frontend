@@ -1,22 +1,17 @@
-/**
- * ANGULAR CORE 
- */
+/** ANGULAR CORE */
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-/**
- * MODULES
- */
+/** MODULES*/
 import { ClientProfileRoutingModule } from '../routes/client-profile-routing.module';
 import { SharedModule } from 'src/app/shared/modules/shared.module';
 import { MaterialModule } from 'src/app/shared/modules/material.module';
 import { HomeModule } from 'src/app/home/modules/home.module';
-/**
- * COMPONENTS
- */
+/** COMPONENTS*/
 import { ProfileContainerComponent } from '../components/profile-container/profile-container.component';
 import { ProfileImageComponent } from '../components/profile-image/profile-image.component';
 import { ClientProfileComponent } from '../pages/client-profile.component';
+import { ClientProfileService } from '../services/client-profile.service';
 
 @NgModule({
   declarations: [
@@ -32,6 +27,9 @@ import { ClientProfileComponent } from '../pages/client-profile.component';
     ReactiveFormsModule,
     FormsModule,
     HomeModule
+  ],
+  providers:[
+    ClientProfileService
   ]
 })
 export class ClientProfileModule { }

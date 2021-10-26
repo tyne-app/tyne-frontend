@@ -27,7 +27,7 @@ import { ClientRegistrationComponent } from "./client-registration/pages/client.
 import { CreateReservationComponent } from "./create-reservation/pages/create-reservation.component";
 import { LoginComponent } from "./login/pages/login.component";
 /** SERVICES AND PROVIDERS */
-import { RestClientService } from "@shared/services/rest-client.service";
+import { RestClientService } from "@app/core/services/rest-client.service";
 import { authInterceptorProvider } from "@shared/providers/auth.provider";
 import { DateAdapterProvider, MatDateFormatProvider, MatDateLocalProvider } from "@shared/providers/mat-date.provider";
 

@@ -7,8 +7,9 @@ import { BusinessDetailsResponse } from "@app/business-details/models/business-d
 import { BusinessRegistrationDto } from "@app/business-registration/models/business-registration-dto";
 import { SearchRestaurantRequest } from "@app/search-restaurant/models/search-restaurant-request";
 import { SearchRestaurantResponse } from "@app/search-restaurant/models/search-restaurant-response";
+import { GenericDataResponse } from "@app/shared/interfaces/generic-data-response";
 
-import { GenericDataResponse } from "../interfaces/generic-data-response";
+
 
 @Injectable({
   providedIn: "root",

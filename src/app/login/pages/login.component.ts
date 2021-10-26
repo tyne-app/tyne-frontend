@@ -1,21 +1,18 @@
-/** ANGULAR CORE */
 import { HttpErrorResponse } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { AbstractControl, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { Router } from "@angular/router";
-import { TokenService } from "@app/shared/helpers/token.service";
+import { CustomSnackbarCommonService } from "@app/core/helpers/custom-snackbar-common.service";
+import { TokenService } from "@app/core/helpers/token.service";
+import { ClientService } from "@app/core/services/client.service";
+import { SocialService } from "@app/core/services/social.service";
 import { UserType } from "@app/shared/inmutable/enums/user_type.enum";
-/** SERVICES */
 import { DialogService } from "src/app/shared/components/components/dialog/services/dialog.service";
-import { CustomSnackbarCommonService } from "src/app/shared/helpers/custom-snackbar-common.service";
-/** INMUTABLE */
 import { errorContent } from "src/app/shared/inmutable/constants/dialog-messages";
 import { emailRegex } from "src/app/shared/inmutable/constants/email";
 import { SuccessMessages } from "src/app/shared/inmutable/enums/success-messages";
 import { TyneRoutes } from "src/app/shared/inmutable/enums/url-routes";
-import { ClientService } from "src/app/shared/services/client.service";
-import { SocialService } from "src/app/shared/services/social.service";
 
 @Component({
   selector: "app-login",

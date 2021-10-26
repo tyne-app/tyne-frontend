@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { TokenService } from "@app/core/helpers/token.service";
 import { UserType } from "@app/shared/inmutable/enums/user_type.enum";
-import { TokenService } from "@shared/helpers/token.service";
 import { TyneRoutes } from "@shared/inmutable/enums/url-routes";
 
 @Component({
