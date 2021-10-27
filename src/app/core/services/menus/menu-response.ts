@@ -1,6 +1,20 @@
 export interface MenuResponse {
+  sections: Section[];
+  branch_id: number;
+  nombre_local: string;
+  rating: null;
+  rango_precio: RangePrice;
+}
+
+export interface RangePrice {
+  max: number;
+  min: number;
+  avg: number;
+}
+
+export interface Section {
   category: Category;
-  menu: Menu[];
+  products: Product[];
 }
 
 export interface Category {
@@ -8,30 +22,11 @@ export interface Category {
   name: string;
 }
 
-export interface Menu {
-  id: number;
-  product: Product;
-  quantity: number; // special
-}
-
 export interface Product {
   id: number;
   name: string;
   description: string;
-  price: Price[];
-  image_product: ImageProduct[];
-}
-
-export interface Price {
+  url_image: string;
   amount: number;
-  comision_tyne: number;
-}
-
-export interface ImageProduct {
-  image: Image;
-}
-
-export interface Image {
-  id: number;
-  url: string;
+  commission_tyne: number;
 }
