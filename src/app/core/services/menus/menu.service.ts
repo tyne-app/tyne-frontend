@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { environment } from "@src/environments/environment";
-import { MenuData} from "./menu-response";
+import { Menu, MenuData} from "./menu-response";
 
 @Injectable({
   providedIn: "root",
@@ -11,16 +11,15 @@ import { MenuData} from "./menu-response";
 export class MenuService {
   private urlBase: string = environment.apiLocals;
 
-  public constructor(private client: HttpClient) {}
+  public constructor(private http: HttpClient) {}
 
   public getMenusByBranch(branchId: number): Observable<MenuData> {
     const urlBase = `${this.urlBase}/locals/menu/${branchId}`;
-    return this.client.get<MenuData>(urlBase);
-  
+    return this.http.get<MenuData>(urlBase);
   }
 
-
-  public createMenu(){
-
+  public createMenuByBranch(branchId: number, menu:Menu): Observable<any>{
+    const urlBase = `${this.urlBase}/locals/menu/${branchId}`;
+    return this.http.post<any>(urlBase,menu);
   }
 }

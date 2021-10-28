@@ -1,7 +1,7 @@
 export interface MenuData {
-    data: Data;
+    data: Menu;
 }
-export interface Data {
+export interface Menu {
     sections: Section[];
     branch_id: number;
     nombre_local: string;
