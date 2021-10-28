@@ -2,8 +2,10 @@
 import { CdkDragDrop, moveItemInArray } from "@angular/cdk/drag-drop";
 import { Component, OnInit } from "@angular/core";
 import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Data } from "@angular/router";
 /** SERVICES */
 import { FileService } from "@app/core/helpers/file.service";
+import { MenuData, Section } from "@app/core/services/menus/menu-response";
 import { MenuService } from "@app/core/services/menus/menu.service";
 
 @Component({
@@ -12,13 +14,19 @@ import { MenuService } from "@app/core/services/menus/menu.service";
   styleUrls: ["./business-menus.component.scss"],
 })
 export class BusinessMenusComponent implements OnInit {
+  
   public sectionForm: FormGroup;
   public panelOpenState = true;
 
+  public section: Section[];
+  public menuData: MenuData;
+  public menu:Data; 
+  
+
   public constructor(
-    private menuForm: FormBuilder,
+    public menuForm: FormBuilder,
     private fileService: FileService,
-    private menuService:MenuService
+    private menuService:MenuService 
   ) {}
 
   public get sections(): FormArray {
@@ -26,10 +34,12 @@ export class BusinessMenusComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.menuService.getMenusByBranch(2).subscribe((res)=>
-      console.log(res)
-    );
-    this.initForm();
+    this.menuService.getMenusByBranch(2).subscribe(res=>{
+      this.menuData = res;
+      this.menu = res.data;
+      this.section = res.data.sections;
+      this.initForm();
+    });
   }
 
   
@@ -101,6 +111,9 @@ export class BusinessMenusComponent implements OnInit {
     return isTitleVisible ? isTitleVisible.value : false;
   }
 
+  private getData(){
+    
+  }
 
   private getDataMock() {
     return [
@@ -175,11 +188,12 @@ export class BusinessMenusComponent implements OnInit {
       sections: this.menuForm.array([]),
     });
 
-    this.getDataMock().forEach((x) => {
+
+    this.section.forEach((x) => {
       this.sections.push(
         this.menuForm.group({
-          id: [x.id],
-          title: [x.title, [Validators.required, Validators.maxLength(20)]],
+          id: [x.category.id],
+          title: [x.category.name, [Validators.required, Validators.maxLength(20)]],
           isTitleVisible: [false],
           products: this.initProducts(x.products),
         })

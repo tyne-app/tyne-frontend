@@ -3,8 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { environment } from "@src/environments/environment";
-import { GenericDataResponse } from "@shared/interfaces/generic-data-response";
-import { MenuResponse } from "./menu-response";
+import { MenuData} from "./menu-response";
 
 @Injectable({
   providedIn: "root",
@@ -14,15 +13,14 @@ export class MenuService {
 
   public constructor(private client: HttpClient) {}
 
-  public getMenusByBranch(branchId: number): Observable<MenuResponse[]> {
+  public getMenusByBranch(branchId: number): Observable<MenuData> {
     const urlBase = `${this.urlBase}/locals/menu/${branchId}`;
+    return this.client.get<MenuData>(urlBase);
+  
+  }
 
-    console.log("urlbase", urlBase);
 
-    return this.client.get<MenuResponse[]>(urlBase).pipe(
-      map((res) => {
-        return res;
-      })
-    );
+  public createMenu(){
+
   }
 }
