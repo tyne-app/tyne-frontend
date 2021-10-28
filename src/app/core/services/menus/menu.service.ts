@@ -10,16 +10,18 @@ import { MenuResponse } from "./menu-response";
   providedIn: "root",
 })
 export class MenuService {
-  private urlBase: string = environment.apiMenus;
+  private urlBase: string = environment.apiLocals;
 
   public constructor(private client: HttpClient) {}
 
   public getMenusByBranch(branchId: number): Observable<MenuResponse[]> {
-    const urlBase = this.urlBase + branchId + "/menu";
+    const urlBase = `${this.urlBase}/locals/menu/${branchId}`;
 
-    return this.client.get<GenericDataResponse<MenuResponse[]>>(urlBase).pipe(
+    console.log("urlbase", urlBase);
+
+    return this.client.get<MenuResponse[]>(urlBase).pipe(
       map((res) => {
-        return res.data ? res.data : null;
+        return res;
       })
     );
   }

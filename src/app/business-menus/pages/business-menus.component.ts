@@ -1,7 +1,10 @@
+/** ANGULAR */
 import { CdkDragDrop, moveItemInArray } from "@angular/cdk/drag-drop";
 import { Component, OnInit } from "@angular/core";
 import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
+/** SERVICES */
 import { FileService } from "@app/core/helpers/file.service";
+import { MenuService } from "@app/core/services/menus/menu.service";
 
 @Component({
   selector: "app-business-menus",
@@ -14,7 +17,8 @@ export class BusinessMenusComponent implements OnInit {
 
   public constructor(
     private menuForm: FormBuilder,
-    private fileService: FileService
+    private fileService: FileService,
+    private menuService:MenuService
   ) {}
 
   public get sections(): FormArray {
@@ -22,9 +26,13 @@ export class BusinessMenusComponent implements OnInit {
   }
 
   public ngOnInit(): void {
+    this.menuService.getMenusByBranch(2).subscribe((res)=>
+      console.log(res)
+    );
     this.initForm();
   }
 
+  
   public saveChanges(): void {
     // console.log(this.sectionForm);
   }

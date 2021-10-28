@@ -5,7 +5,7 @@ import { ActivatedRoute } from "@angular/router";
 import { forkJoin } from "rxjs";
 import { BusinessDetailsResponse } from "src/app/business-details/models/business-details-response";
 import { CreateReservationComponent } from "src/app/create-reservation/pages/create-reservation.component";
-import { Menu, MenuResponse } from "@app/core/services/menus/menu-response";
+import { Product, MenuResponse } from "@app/core/services/menus/menu-response";
 import { MenuService } from "@app/core/services/menus/menu.service";
 import { RestaurantService } from "@app/core/services/restaurant.service";
 
@@ -108,37 +108,37 @@ export class ClientMenusComponent implements OnInit {
   }
 
   private initCategories(): void {
-    this.menus.forEach((x) => {
-      this.sections.push(
-        this.fb.group({
-          id: [x.category.id],
-          title: [x.category.name, [Validators.required, Validators.maxLength(20)]],
-          products: this.initMenus(x.menu),
-        })
-      );
-    });
+    // this.menus.forEach((x) => {
+    //   this.sections.push(
+    //     this.fb.group({
+    //       id: [x.sections.forEach(x=>x.category.id)],
+    //       title: [x.sections.forEach(x=>x.category.name), [Validators.required, Validators.maxLength(20)]],
+    //       products: this.initMenus(x.sections.forEach(x=>x.products)),
+    //     })
+    //   );
+    // });
   }
 
-  private initMenus(products: Menu[]): FormArray {
-    const formArray = new FormArray([]);
+  private initMenus(products: Product[]): any {
+    // const formArray = new FormArray([]);
 
-    products.forEach((x) => {
-      formArray.push(
-        this.fb.group({
-          id: [x.id],
-          name: [x.product.name, [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
-          imageUrl: [x.product.image_product[0].image.url],
-          price: [x.product.price[0].amount, [Validators.required, Validators.min(100), Validators.max(100000)]],
-          description: [
-            x.product.description,
-            [Validators.required, Validators.minLength(10), Validators.maxLength(200)],
-          ],
-          quantity: [0],
-        })
-      );
-    });
+    // products.forEach((x) => {
+    //   formArray.push(
+    //     this.fb.group({
+    //       id: [x.id],
+    //       name: [x.product.name, [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
+    //       imageUrl: [x.product.image_product[0].image.url],
+    //       price: [x.product.price[0].amount, [Validators.required, Validators.min(100), Validators.max(100000)]],
+    //       description: [
+    //         x.product.description,
+    //         [Validators.required, Validators.minLength(10), Validators.maxLength(200)],
+    //       ],
+    //       quantity: [0],
+    //     })
+    //   );
+    // });
 
-    return formArray;
+    // return formArray;
   }
 
   private getRatings(): void {
