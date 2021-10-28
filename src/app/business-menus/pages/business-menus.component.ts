@@ -20,7 +20,7 @@ export class BusinessMenusComponent implements OnInit {
 
   public section: Section[];
   public menuData: MenuData;
-  public menu:Data; 
+  public menu: Data; 
   
 
   public constructor(
@@ -47,8 +47,6 @@ export class BusinessMenusComponent implements OnInit {
     // console.log(this.sectionForm);
   }
 
-
-
   public addProduct(seccionId: number): void {
     let products = this.sections.controls[seccionId].get(
       "products"
@@ -66,7 +64,6 @@ export class BusinessMenusComponent implements OnInit {
             Validators.maxLength(50),
           ],
         ],
-        imageUrl: ["../../../../../assets/alternate-photo.png"],
         price: [
           "0",
           [Validators.required, Validators.min(100), Validators.max(100000)],
@@ -77,6 +74,11 @@ export class BusinessMenusComponent implements OnInit {
         ],
       })
     );
+    
+    // this.menuService.createMenuByBranch(2,).subscribe(()=>{
+      
+    // });
+
   }
 
   public deleteProduct(seccionId: number, productId: number): void {

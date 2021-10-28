@@ -1,9 +1,12 @@
+/** ANGULAR */
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { map } from "rxjs/operators";
+/** ENVIRONMENT */
 import { environment } from "@src/environments/environment";
-import { Menu, MenuData} from "./menu-response";
+/** INTERFACES */
+import { MenuData } from "./menu-response";
+import { MenuAdd } from "./menu-add";
 
 @Injectable({
   providedIn: "root",
@@ -18,7 +21,7 @@ export class MenuService {
     return this.http.get<MenuData>(urlBase);
   }
 
-  public createMenuByBranch(branchId: number, menu:Menu): Observable<any>{
+  public createMenuByBranch(branchId: number, menu:MenuAdd): Observable<any>{
     const urlBase = `${this.urlBase}/locals/menu/${branchId}`;
     return this.http.post<any>(urlBase,menu);
   }
