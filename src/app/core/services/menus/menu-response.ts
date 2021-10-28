@@ -1,13 +1,12 @@
 export interface MenuData {
     data: Data;
 }
-
 export interface Data {
-    sections:     Section[];
-    branch_id:    number;
+    sections: Section[];
+    branch_id: number;
     nombre_local: string;
     rango_precio: RangoPrecio;
-    rating:       number;
+    rating: number;
 }
 
 export interface RangoPrecio {
@@ -22,15 +21,15 @@ export interface Section {
 }
 
 export interface Category {
-    id:   number;
+    id: number;
     name: string;
 }
 
 export interface Product {
-    id:              number;
-    name:            string;
-    description:     string;
-    url_image:       string;
-    amount:          number;
+    id: number;
+    name: string;
+    description: string;
+    url_image: string;
+    amount: number;
     commission_tyne: number;
 }

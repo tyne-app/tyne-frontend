@@ -218,7 +218,7 @@ export class BusinessMenusComponent implements OnInit {
           ],
           imageUrl: [x.imageUrl],
           price: [
-            x.price,
+            x.amount,
             [Validators.required, Validators.min(100), Validators.max(100000)],
           ],
           description: [
