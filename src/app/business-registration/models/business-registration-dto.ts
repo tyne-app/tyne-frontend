@@ -1,8 +1,17 @@
 export interface BusinessRegistrationDto {
-  legal_representative: Representative[];
+  manager: Manager;
+  legal_representative: Representative;
   branch: Branch;
   restaurant: Restaurant;
-  bank_restaurant: BankRestaurant;
+  branch_bank: BankRestaurant;
+}
+
+export interface Manager {
+  name: string;
+  last_name: string;
+  phone: string;
+  email: string;
+  password: string;
 }
 
 export interface Representative {
@@ -11,13 +20,12 @@ export interface Representative {
   identifier: string;
   phone: string;
   email: string;
-  password: string;
-  type_legal_representative_id: number;
 }
 
 export interface Branch {
   name: string;
-  address: string;
+  street: string;
+  street_number: number;
   state_id: number;
   accept_pet: boolean;
 }
@@ -26,14 +34,15 @@ export interface Restaurant {
   identifier: string;
   social_reason: string;
   commercial_activity: string;
-  address: string;
   phone: string;
+  street: string;
+  street_number: number;
   state_id: number;
 }
 
 export interface BankRestaurant {
   account_holder_identifier: string;
-  account_holder: string;
+  account_holder_name: string;
   account_number: string;
   account_type: string;
   bank_id: number;

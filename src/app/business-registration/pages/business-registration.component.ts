@@ -47,7 +47,7 @@ export class BusinessRegistrationComponent implements OnInit {
     private banksService: BankService,
     private restaurantService: RestaurantService,
     private dialogService: DialogService
-  ) {}
+  ) { }
 
   public ngOnInit(): void {
     this.initFirstFormGroup();
@@ -172,42 +172,34 @@ export class BusinessRegistrationComponent implements OnInit {
 
   private getBusinessData(): BusinessRegistrationDto {
     const newBusiness: BusinessRegistrationDto = {
-      legal_representative: [
-        {
-          name: this.firstFormGroup.get("managerName").value,
-          last_name: this.firstFormGroup.get("managerLastName").value,
-          phone: this.firstFormGroup
-            .get("managerPhone")
-            .value.toString()
-            .replace("(", "")
-            .replace(")", "")
-            .replace(/\s/g, ""),
-          identifier: null,
-          email: this.firstFormGroup.get("managerEmail").value,
-          password: this.firstFormGroup.get("password").value,
-          type_legal_representative_id: 2,
-        },
-        {
-          name: this.secondFormGroup.get("legalRepresentativeName").value,
-          last_name: this.secondFormGroup.get("legalRepresentativeLastName").value,
-          identifier: this.secondFormGroup.get("legalRepresentativeRut").value,
-          email: this.secondFormGroup.get("legalRepresentativeEmail").value,
-          phone: this.secondFormGroup
-            .get("legalRepresentativePhone")
-            .value.toString()
-            .replace("(", "")
-            .replace(")", "")
-            .replace(/\s/g, ""),
-          password: null,
-          type_legal_representative_id: 1,
-        },
-      ],
+      manager: {
+        name: this.firstFormGroup.get("managerName").value,
+        last_name: this.firstFormGroup.get("managerLastName").value,
+        phone: this.firstFormGroup
+          .get("managerPhone")
+          .value.toString()
+          .replace("(", "")
+          .replace(")", "")
+          .replace(/\s/g, ""),
+        email: this.firstFormGroup.get("managerEmail").value,
+        password: this.firstFormGroup.get("password").value
+      },
+      legal_representative: {
+        name: this.secondFormGroup.get("legalRepresentativeName").value,
+        last_name: this.secondFormGroup.get("legalRepresentativeLastName").value,
+        identifier: this.secondFormGroup.get("legalRepresentativeRut").value,
+        email: this.secondFormGroup.get("legalRepresentativeEmail").value,
+        phone: this.secondFormGroup
+          .get("legalRepresentativePhone")
+          .value.toString()
+          .replace("(", "")
+          .replace(")", "")
+          .replace(/\s/g, ""),
+      },
       branch: {
         name: this.secondFormGroup.get("nameCompany").value,
-        address:
-          this.secondFormGroup.get("branchLocationAddress").value +
-          " " +
-          this.secondFormGroup.get("branchLocationNumber").value,
+        street: this.secondFormGroup.get("branchLocationAddress").value,
+        street_number: this.secondFormGroup.get("branchLocationNumber").value,
         accept_pet: this.secondFormGroup.get("branchHavePet").value == "1" ? true : false,
         state_id: this.secondFormGroup.get("branchLocationState").value,
       },
@@ -215,10 +207,8 @@ export class BusinessRegistrationComponent implements OnInit {
         identifier: this.secondFormGroup.get("mainOfficeRutBusiness").value,
         social_reason: this.secondFormGroup.get("mainOfficeNameCompany").value,
         commercial_activity: this.secondFormGroup.get("mainOfficeBusinessLine").value,
-        address:
-          this.secondFormGroup.get("mainOfficeLocationAddress").value +
-          " " +
-          this.secondFormGroup.get("mainOfficeLocationNumber").value,
+        street: this.secondFormGroup.get("mainOfficeLocationAddress").value,
+        street_number: this.secondFormGroup.get("mainOfficeLocationNumber").value,
         phone: this.secondFormGroup
           .get("mainOfficePhone")
           .value.toString()
@@ -227,9 +217,9 @@ export class BusinessRegistrationComponent implements OnInit {
           .replace(/\s/g, ""),
         state_id: this.secondFormGroup.get("mainOfficeLocationState").value,
       },
-      bank_restaurant: {
+      branch_bank: {
         account_holder_identifier: this.thirdFormGroup.get("rutAccountOwner").value,
-        account_holder: this.thirdFormGroup.get("nameAccountOwner").value,
+        account_holder_name: this.thirdFormGroup.get("nameAccountOwner").value,
         account_number: this.thirdFormGroup.get("accountNumber").value,
         bank_id: this.thirdFormGroup.get("bank").value,
         account_type: this.thirdFormGroup.get("accountType").value,
@@ -257,10 +247,10 @@ export class BusinessRegistrationComponent implements OnInit {
     return control.hasError("required")
       ? ErrorMessages.Required.replace("{0}", "nombre")
       : control.hasError("minlength")
-      ? ErrorMessages.Minlength.replace("{0}", "2")
-      : control.hasError("maxlength")
-      ? ErrorMessages.Maxlength.replace("{0}", "50")
-      : null;
+        ? ErrorMessages.Minlength.replace("{0}", "2")
+        : control.hasError("maxlength")
+          ? ErrorMessages.Maxlength.replace("{0}", "50")
+          : null;
   }
 
   public getManagerLastNameError(): string {
@@ -268,10 +258,10 @@ export class BusinessRegistrationComponent implements OnInit {
     return control.hasError("required")
       ? ErrorMessages.Required.replace("{0}", "apellido")
       : control.hasError("minlength")
-      ? ErrorMessages.Minlength.replace("{0}", "2")
-      : control.hasError("maxlength")
-      ? ErrorMessages.Maxlength.replace("{0}", "30")
-      : null;
+        ? ErrorMessages.Minlength.replace("{0}", "2")
+        : control.hasError("maxlength")
+          ? ErrorMessages.Maxlength.replace("{0}", "30")
+          : null;
   }
 
   public getManagerPhoneError(): string {
@@ -279,10 +269,10 @@ export class BusinessRegistrationComponent implements OnInit {
     return control.hasError("required")
       ? ErrorMessages.Required.replace("{0}", "número")
       : control.hasError("minlength")
-      ? ErrorMessages.Invalid.replace("{0}", "número")
-      : control.hasError("maxlength")
-      ? ErrorMessages.Invalid.replace("{0}", "número")
-      : null;
+        ? ErrorMessages.Invalid.replace("{0}", "número")
+        : control.hasError("maxlength")
+          ? ErrorMessages.Invalid.replace("{0}", "número")
+          : null;
   }
 
   public getManagerEmailError(): string {
@@ -290,10 +280,10 @@ export class BusinessRegistrationComponent implements OnInit {
     return control.hasError("required")
       ? ErrorMessages.Required.replace("{0}", "email")
       : control.hasError("email")
-      ? ErrorMessages.Invalid.replace("{0}", "email")
-      : control.hasError("pattern")
-      ? ErrorMessages.Invalid.replace("{0}", "email")
-      : null;
+        ? ErrorMessages.Invalid.replace("{0}", "email")
+        : control.hasError("pattern")
+          ? ErrorMessages.Invalid.replace("{0}", "email")
+          : null;
   }
 
   public getManagerEmailConfirmError(): string {
@@ -301,12 +291,12 @@ export class BusinessRegistrationComponent implements OnInit {
     return control.hasError("required")
       ? ErrorMessages.Required.replace("{0}", "email")
       : control.hasError("notMatch")
-      ? ErrorMessages.EmailDoesntMatch
-      : control.hasError("email")
-      ? ErrorMessages.Invalid.replace("{0}", "email")
-      : control.hasError("pattern")
-      ? ErrorMessages.Invalid.replace("{0}", "email")
-      : null;
+        ? ErrorMessages.EmailDoesntMatch
+        : control.hasError("email")
+          ? ErrorMessages.Invalid.replace("{0}", "email")
+          : control.hasError("pattern")
+            ? ErrorMessages.Invalid.replace("{0}", "email")
+            : null;
   }
 
   public getPasswordError(): string {
@@ -314,8 +304,8 @@ export class BusinessRegistrationComponent implements OnInit {
     return control.hasError("required")
       ? ErrorMessages.RequiredVariant.replace("{0}", "contraseña")
       : control.hasError("pattern")
-      ? ErrorMessages.PasswordPattern
-      : null;
+        ? ErrorMessages.PasswordPattern
+        : null;
   }
 
   public getPasswordConfirmError(): string {
@@ -323,8 +313,8 @@ export class BusinessRegistrationComponent implements OnInit {
     return control.hasError("required")
       ? ErrorMessages.RequiredVariant.replace("{0}", "contraseña")
       : control.hasError("notMatch")
-      ? ErrorMessages.PasswordDoesntMatch
-      : null;
+        ? ErrorMessages.PasswordDoesntMatch
+        : null;
   }
   // #endregion First stepper validations
 
@@ -334,10 +324,10 @@ export class BusinessRegistrationComponent implements OnInit {
     return control.hasError("required")
       ? ErrorMessages.Required.replace("{0}", "nombre")
       : control.hasError("minlength")
-      ? ErrorMessages.Minlength.replace("{0}", "2")
-      : control.hasError("maxlength")
-      ? ErrorMessages.Maxlength.replace("{0}", "30")
-      : null;
+        ? ErrorMessages.Minlength.replace("{0}", "2")
+        : control.hasError("maxlength")
+          ? ErrorMessages.Maxlength.replace("{0}", "30")
+          : null;
   }
 
   public getLegalRepresentativeLastNameError(): string {
@@ -345,10 +335,10 @@ export class BusinessRegistrationComponent implements OnInit {
     return control.hasError("required")
       ? ErrorMessages.Required.replace("{0}", "apellido")
       : control.hasError("minlength")
-      ? ErrorMessages.Minlength.replace("{0}", "2")
-      : control.hasError("maxlength")
-      ? ErrorMessages.Maxlength.replace("{0}", "30")
-      : null;
+        ? ErrorMessages.Minlength.replace("{0}", "2")
+        : control.hasError("maxlength")
+          ? ErrorMessages.Maxlength.replace("{0}", "30")
+          : null;
   }
 
   public getLegalRepresentativeRutError(): string {
@@ -356,12 +346,12 @@ export class BusinessRegistrationComponent implements OnInit {
     return control.hasError("required")
       ? ErrorMessages.Required.replace("{0}", "rut")
       : control.hasError("minlength")
-      ? ErrorMessages.Invalid.replace("{0}", "rut")
-      : control.hasError("maxlength")
-      ? ErrorMessages.Invalid.replace("{0}", "rut")
-      : control.hasError("invalidRut")
-      ? ErrorMessages.Invalid.replace("{0}", "rut")
-      : null;
+        ? ErrorMessages.Invalid.replace("{0}", "rut")
+        : control.hasError("maxlength")
+          ? ErrorMessages.Invalid.replace("{0}", "rut")
+          : control.hasError("invalidRut")
+            ? ErrorMessages.Invalid.replace("{0}", "rut")
+            : null;
   }
 
   public getLegalRepresentativeEmailError(): string {
@@ -369,10 +359,10 @@ export class BusinessRegistrationComponent implements OnInit {
     return control.hasError("required")
       ? ErrorMessages.Required.replace("{0}", "email")
       : control.hasError("email")
-      ? ErrorMessages.Invalid.replace("{0}", "email")
-      : control.hasError("pattern")
-      ? ErrorMessages.Invalid.replace("{0}", "email")
-      : null;
+        ? ErrorMessages.Invalid.replace("{0}", "email")
+        : control.hasError("pattern")
+          ? ErrorMessages.Invalid.replace("{0}", "email")
+          : null;
   }
 
   public getLegalRepresentativePhoneError(): string {
@@ -380,10 +370,10 @@ export class BusinessRegistrationComponent implements OnInit {
     return control.hasError("required")
       ? ErrorMessages.Required.replace("{0}", "número")
       : control.hasError("minlength")
-      ? ErrorMessages.Invalid.replace("{0}", "número")
-      : control.hasError("maxlength")
-      ? ErrorMessages.Invalid.replace("{0}", "número")
-      : null;
+        ? ErrorMessages.Invalid.replace("{0}", "número")
+        : control.hasError("maxlength")
+          ? ErrorMessages.Invalid.replace("{0}", "número")
+          : null;
   }
 
   public getMainOfficeNameCompanyError(): string {
@@ -391,10 +381,10 @@ export class BusinessRegistrationComponent implements OnInit {
     return control.hasError("required")
       ? ErrorMessages.RequiredVariant.replace("{0}", "una razón social")
       : control.hasError("minlength")
-      ? ErrorMessages.Minlength.replace("{0}", "5")
-      : control.hasError("maxlength")
-      ? ErrorMessages.Maxlength.replace("{0}", "50")
-      : null;
+        ? ErrorMessages.Minlength.replace("{0}", "5")
+        : control.hasError("maxlength")
+          ? ErrorMessages.Maxlength.replace("{0}", "50")
+          : null;
   }
 
   public getMainOfficeBusinessLineError(): string {
@@ -402,10 +392,10 @@ export class BusinessRegistrationComponent implements OnInit {
     return control.hasError("required")
       ? ErrorMessages.RequiredVariant.replace("{0}", "giro")
       : control.hasError("minlength")
-      ? ErrorMessages.Minlength.replace("{0}", "5")
-      : control.hasError("maxlength")
-      ? ErrorMessages.Maxlength.replace("{0}", "50")
-      : null;
+        ? ErrorMessages.Minlength.replace("{0}", "5")
+        : control.hasError("maxlength")
+          ? ErrorMessages.Maxlength.replace("{0}", "50")
+          : null;
   }
 
   public getMainOfficeRutBusinessError(): string {
@@ -413,12 +403,12 @@ export class BusinessRegistrationComponent implements OnInit {
     return control.hasError("required")
       ? ErrorMessages.Required.replace("{0}", "rut")
       : control.hasError("minlength")
-      ? ErrorMessages.Invalid.replace("{0}", "rut")
-      : control.hasError("maxlength")
-      ? ErrorMessages.Invalid.replace("{0}", "rut")
-      : control.hasError("invalidRut")
-      ? ErrorMessages.Invalid.replace("{0}", "rut")
-      : null;
+        ? ErrorMessages.Invalid.replace("{0}", "rut")
+        : control.hasError("maxlength")
+          ? ErrorMessages.Invalid.replace("{0}", "rut")
+          : control.hasError("invalidRut")
+            ? ErrorMessages.Invalid.replace("{0}", "rut")
+            : null;
   }
 
   public getMainOfficeLocationAddressError(): string {
@@ -426,10 +416,10 @@ export class BusinessRegistrationComponent implements OnInit {
     return control.hasError("required")
       ? ErrorMessages.RequiredVariant.replace("{0}", "calle")
       : control.hasError("minlength")
-      ? ErrorMessages.Minlength.replace("{0}", "5")
-      : control.hasError("maxlength")
-      ? ErrorMessages.Maxlength.replace("{0}", "50")
-      : null;
+        ? ErrorMessages.Minlength.replace("{0}", "5")
+        : control.hasError("maxlength")
+          ? ErrorMessages.Maxlength.replace("{0}", "50")
+          : null;
   }
 
   public getMainOfficeLocationNumberError(): string {
@@ -437,10 +427,10 @@ export class BusinessRegistrationComponent implements OnInit {
     return control.hasError("required")
       ? ErrorMessages.Required.replace("{0}", "número de calle")
       : control.hasError("minlength")
-      ? ErrorMessages.Minlength.replace("{0}", "1")
-      : control.hasError("maxlength")
-      ? ErrorMessages.Maxlength.replace("{0}", "20")
-      : null;
+        ? ErrorMessages.Minlength.replace("{0}", "1")
+        : control.hasError("maxlength")
+          ? ErrorMessages.Maxlength.replace("{0}", "20")
+          : null;
   }
 
   public getMainOfficePhoneError(): string {
@@ -448,10 +438,10 @@ export class BusinessRegistrationComponent implements OnInit {
     return control.hasError("required")
       ? ErrorMessages.Required.replace("{0}", "número")
       : control.hasError("minlength")
-      ? ErrorMessages.Invalid.replace("{0}", "número")
-      : control.hasError("maxlength")
-      ? ErrorMessages.Invalid.replace("{0}", "número")
-      : null;
+        ? ErrorMessages.Invalid.replace("{0}", "número")
+        : control.hasError("maxlength")
+          ? ErrorMessages.Invalid.replace("{0}", "número")
+          : null;
   }
 
   public getMainOfficeLocationCityError(): string {
@@ -459,8 +449,8 @@ export class BusinessRegistrationComponent implements OnInit {
     return control.hasError("required")
       ? ErrorMessages.RequiredSelectVariant.replace("{0}", "región")
       : control.hasError("min")
-      ? ErrorMessages.RequiredSelectVariant.replace("{0}", "región")
-      : null;
+        ? ErrorMessages.RequiredSelectVariant.replace("{0}", "región")
+        : null;
   }
 
   public getMainOfficeLocationStateError(): string {
@@ -468,8 +458,8 @@ export class BusinessRegistrationComponent implements OnInit {
     return control.hasError("required")
       ? ErrorMessages.RequiredSelectVariant.replace("{0}", "comuna")
       : control.hasError("min")
-      ? ErrorMessages.RequiredSelectVariant.replace("{0}", "comuna")
-      : null;
+        ? ErrorMessages.RequiredSelectVariant.replace("{0}", "comuna")
+        : null;
   }
 
   public getNameCompanyError(): string {
@@ -477,10 +467,10 @@ export class BusinessRegistrationComponent implements OnInit {
     return control.hasError("required")
       ? ErrorMessages.Required.replace("{0}", "nombre de local")
       : control.hasError("minlength")
-      ? ErrorMessages.Minlength.replace("{0}", "5")
-      : control.hasError("maxlength")
-      ? ErrorMessages.Maxlength.replace("{0}", "50")
-      : null;
+        ? ErrorMessages.Minlength.replace("{0}", "5")
+        : control.hasError("maxlength")
+          ? ErrorMessages.Maxlength.replace("{0}", "50")
+          : null;
   }
 
   public getBranchLocationAddressError(): string {
@@ -488,10 +478,10 @@ export class BusinessRegistrationComponent implements OnInit {
     return control.hasError("required")
       ? ErrorMessages.RequiredVariant.replace("{0}", "calle")
       : control.hasError("minlength")
-      ? ErrorMessages.Minlength.replace("{0}", "5")
-      : control.hasError("maxlength")
-      ? ErrorMessages.Maxlength.replace("{0}", "50")
-      : null;
+        ? ErrorMessages.Minlength.replace("{0}", "5")
+        : control.hasError("maxlength")
+          ? ErrorMessages.Maxlength.replace("{0}", "50")
+          : null;
   }
 
   public getBranchLocationNumberError(): string {
@@ -499,10 +489,10 @@ export class BusinessRegistrationComponent implements OnInit {
     return control.hasError("required")
       ? ErrorMessages.Required.replace("{0}", "número de calle")
       : control.hasError("minlength")
-      ? ErrorMessages.Minlength.replace("{0}", "1")
-      : control.hasError("maxlength")
-      ? ErrorMessages.Maxlength.replace("{0}", "20")
-      : null;
+        ? ErrorMessages.Minlength.replace("{0}", "1")
+        : control.hasError("maxlength")
+          ? ErrorMessages.Maxlength.replace("{0}", "20")
+          : null;
   }
 
   public getBranchLocationCityError(): string {
@@ -510,8 +500,8 @@ export class BusinessRegistrationComponent implements OnInit {
     return control.hasError("required")
       ? ErrorMessages.RequiredSelectVariant.replace("{0}", "región")
       : control.hasError("min")
-      ? ErrorMessages.RequiredSelectVariant.replace("{0}", "región")
-      : null;
+        ? ErrorMessages.RequiredSelectVariant.replace("{0}", "región")
+        : null;
   }
 
   public getBranchLocationStateError(): string {
@@ -519,8 +509,8 @@ export class BusinessRegistrationComponent implements OnInit {
     return control.hasError("required")
       ? ErrorMessages.RequiredSelectVariant.replace("{0}", "comuna")
       : control.hasError("min")
-      ? ErrorMessages.RequiredSelectVariant.replace("{0}", "comuna")
-      : null;
+        ? ErrorMessages.RequiredSelectVariant.replace("{0}", "comuna")
+        : null;
   }
 
   // #endregion Second stepper validations
@@ -531,12 +521,12 @@ export class BusinessRegistrationComponent implements OnInit {
     return control.hasError("required")
       ? ErrorMessages.Required.replace("{0}", "rut")
       : control.hasError("minlength")
-      ? ErrorMessages.Invalid.replace("{0}", "rut")
-      : control.hasError("maxlength")
-      ? ErrorMessages.Invalid.replace("{0}", "rut")
-      : control.hasError("invalidRut")
-      ? ErrorMessages.Invalid.replace("{0}", "rut")
-      : null;
+        ? ErrorMessages.Invalid.replace("{0}", "rut")
+        : control.hasError("maxlength")
+          ? ErrorMessages.Invalid.replace("{0}", "rut")
+          : control.hasError("invalidRut")
+            ? ErrorMessages.Invalid.replace("{0}", "rut")
+            : null;
   }
 
   public getNameAccountOwnerError(): string {
@@ -544,10 +534,10 @@ export class BusinessRegistrationComponent implements OnInit {
     return control.hasError("required")
       ? ErrorMessages.Required.replace("{0}", "nombre de titular")
       : control.hasError("minlength")
-      ? ErrorMessages.Minlength.replace("{0}", "5")
-      : control.hasError("maxlength")
-      ? ErrorMessages.Maxlength.replace("{0}", "50")
-      : null;
+        ? ErrorMessages.Minlength.replace("{0}", "5")
+        : control.hasError("maxlength")
+          ? ErrorMessages.Maxlength.replace("{0}", "50")
+          : null;
   }
 
   public getAccountNumberError(): string {
@@ -555,10 +545,10 @@ export class BusinessRegistrationComponent implements OnInit {
     return control.hasError("required")
       ? ErrorMessages.Required.replace("{0}", "número de cuenta")
       : control.hasError("minlength")
-      ? ErrorMessages.Minlength.replace("{0}", "4")
-      : control.hasError("maxlength")
-      ? ErrorMessages.Maxlength.replace("{0}", "20")
-      : null;
+        ? ErrorMessages.Minlength.replace("{0}", "4")
+        : control.hasError("maxlength")
+          ? ErrorMessages.Maxlength.replace("{0}", "20")
+          : null;
   }
 
   public getBankError(): string {
@@ -566,8 +556,8 @@ export class BusinessRegistrationComponent implements OnInit {
     return control.hasError("required")
       ? ErrorMessages.RequiredSelect.replace("{0}", "banco")
       : control.hasError("min")
-      ? ErrorMessages.RequiredSelect.replace("{0}", "banco")
-      : null;
+        ? ErrorMessages.RequiredSelect.replace("{0}", "banco")
+        : null;
   }
 
   public getAccountTypeError(): string {
@@ -575,8 +565,8 @@ export class BusinessRegistrationComponent implements OnInit {
     return control.hasError("required")
       ? ErrorMessages.RequiredSelect.replace("{0}", "tipo de cuenta")
       : control.hasError("min")
-      ? ErrorMessages.RequiredSelect.replace("{0}", "tipo de cuenta")
-      : null;
+        ? ErrorMessages.RequiredSelect.replace("{0}", "tipo de cuenta")
+        : null;
   }
   // #endregion Third stepper validations
 }
