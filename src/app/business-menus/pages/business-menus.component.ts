@@ -34,7 +34,6 @@ export class BusinessMenusComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-
     this.initForm();
   }
 
@@ -100,23 +99,10 @@ export class BusinessMenusComponent implements OnInit {
       : new FormArray([]);
   }
 
-  public changeSectionTitleEditing(sectionId: number): void {
-    const title = this.sections.controls[sectionId].get("title");
-    if (!title.errors) {
-      const isTitleVisible =
-        this.sections.controls[sectionId].get("isTitleVisible");
-      isTitleVisible.setValue(!isTitleVisible.value);
-    }
-  }
-
   public isTitleVisible(sectionId: number): boolean {
     const isTitleVisible =
       this.sections.controls[sectionId].get("isTitleVisible");
     return isTitleVisible ? isTitleVisible.value : false;
-  }
-
-  private getData(){
-    
   }
 
   private getDataMock() {
