@@ -19,7 +19,7 @@ export class DialogComponent implements OnInit {
   public action(): void {
     if (this.data.isSuccessful) {
       if (this.data.redirectTo) {
-        this.router.navigate(["/" + this.data.redirectTo]);
+        // this.router.navigate(["/" + this.data.redirectTo]);
       }
     }
 

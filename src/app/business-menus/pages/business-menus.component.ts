@@ -10,6 +10,8 @@ import { MenuService } from "@app/core/services/menus/menu.service";
 import { Categories } from "@app/shared/inmutable/constants/category-kind";
 import {Category,Menu, MenuAdd, Product} from "@app/core/services/menus/menu-add";
 import {Commision} from "@shared/inmutable/constants/amount";
+import {DialogService} from "@shared/components/components/dialog/services/dialog.service";
+import {updateMenu} from "@shared/inmutable/constants/dialog-messages";
 @Component({
   selector: "app-business-menus",
   templateUrl: "./business-menus.component.html",
@@ -30,7 +32,8 @@ export class BusinessMenusComponent implements OnInit {
   public constructor(
     public formBuilder: FormBuilder,
     private fileService: FileService,
-    private menuService:MenuService
+    private menuService:MenuService,
+    private dialogService: DialogService
   ) {}
 
   public get sections(): FormArray {
@@ -76,8 +79,7 @@ export class BusinessMenusComponent implements OnInit {
       }
 
       this.menuService.createMenuByBranch( branchId, menuAdd ).subscribe((res)=>{
-        console.log(res);
-        console.log("Its Work")
+        this.dialogService.openDialog(updateMenu);
      });
     }
   }

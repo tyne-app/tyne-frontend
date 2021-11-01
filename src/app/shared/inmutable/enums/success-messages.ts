@@ -5,8 +5,9 @@ export enum SuccessMessages {
     RegiterSuccessful = "¡Se ha registrado correctamente!",
     SuccessPasswordUpdated = "¡Tu contraseña se ha cambiado con éxito!",
     ReservationRequest = "¡Tu solicitud de reserva se ha realizado con éxito!",
-    Confirm = "¡Confirmación Exitosa!"
+    Confirm = "¡Confirmación Exitosa!",
+    Update = "Menu actualizado"
     // #endregion  Dialog messages
-    
+
 
 }
