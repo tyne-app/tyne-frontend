@@ -18,6 +18,7 @@ import { RefundPolicyModule } from "./refund-policy/modules/refund-policy.module
 import { MaterialModule } from "@shared/modules/material.module";
 import { SharedModule } from "@shared/modules/shared.module";
 import { StatusPayModule } from "./status-pay/modules/status-pay.module";
+import { BussinesHomeModule } from "./bussines-home/modules/bussines-home.module";
 /** ENVIRONMENT */
 import { environment } from "@src/environments/environment";
 /** COMPONENTS */
@@ -52,6 +53,7 @@ import { DateAdapterProvider, MatDateFormatProvider, MatDateLocalProvider } from
     AngularFireAuthModule,
     CreateReservationModule,
     StatusPayModule,
+    BussinesHomeModule,
   ],
   entryComponents: [ClientRegistrationComponent, LoginComponent, SpinnerComponent, CreateReservationComponent],
   providers: [

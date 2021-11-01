@@ -4,7 +4,6 @@ import { NotFoundPageComponent } from "@shared/components/components/not-found-p
 import { AuthGuard } from "@app/core/guards/auth.guard";
 import { TyneRoutes } from "@shared/inmutable/enums/url-routes";
 
-
 const routes: Routes = [
   {
     path: TyneRoutes.Home,
@@ -39,7 +38,7 @@ const routes: Routes = [
     path: TyneRoutes.BusinessProfile,
     loadChildren: () =>
       import("./business-profile/modules/business-registration.module").then((m) => m.BusinessProfileModule),
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: TyneRoutes.Refund,
@@ -66,6 +65,11 @@ const routes: Routes = [
   {
     path: TyneRoutes.StatusPay,
     loadChildren: () => import("./status-pay/modules/status-pay.module").then((m) => m.StatusPayModule),
+  },
+
+  {
+    path: TyneRoutes.BussinesHome,
+    loadChildren: () => import("./bussines-home/modules/bussines-home.module").then((m) => m.BussinesHomeModule),
   },
 
   {

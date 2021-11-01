@@ -1,0 +1,193 @@
+@import "../../../../styles.scss";
+h3 {
+  position: relative;
+  width: 100%;
+  height: 5%;
+  font-family: Museo Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 43px;
+  text-align: center;
+  color: #3c0000;
+}
+h2 {
+  position: relative;
+  width: 100%;
+  left: 5%;
+  font-family: Museo Sans;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 48px;
+  line-height: 58px;
+  display: flex;
+  align-items: center;
+  color: #3c0000;
+}
+
+.subTitle {
+  position: relative;
+  width: 40%;
+  height: 15%;
+  left: 30%;
+  font-family: Museo Sans;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #3c0000;
+}
+
+.principal-rectangle {
+  position: relative;
+  width: 80%;
+  height: 20%;
+  left: 10%;
+  right: 10%;
+  border: 0.2px solid #000000;
+  background: #ffffff;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+
+.type-reservations {
+  position: relative;
+  width: 100%;
+  top: 10%;
+  font-family: Museo Sans;
+  font-style: normal;
+  font-weight: 250;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: right;
+  color: #3c0000;
+}
+
+.type-reservations-combo {
+  position: relative;
+  width: 100%;
+  top: 10%;
+  font-family: Museo Sans;
+  font-style: normal;
+  text-align: right;
+  color: #3c0000;
+}
+
+.div-date {
+  width: 80%;
+  left: 15%;
+}
+
+.div-date-back {
+  font-family: Museo Sans;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  color: #000000;
+  cursor: pointer;
+}
+
+.div-date-next {
+  left: 5%;
+  font-family: Museo Sans;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  color: #000000;
+  cursor: pointer;
+}
+
+.month-anio {
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  font-family: Museo Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 43px;
+  text-align: center;
+  color: #3c0000;
+}
+
+.rectangle-panel {
+  position: relative;
+  width: 80%;
+  height: 20%;
+  left: 10%;
+  right: 10%;
+  border: 0.2px solid #000000;
+  background: #ffffff;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+
+.title-panel {
+  font-family: Museo Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 29px;
+  display: flex;
+  align-items: center;
+  color: #3c0000;
+}
+
+.title-panel-description {
+  font-family: Museo Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  color: #3c0000;
+}
+
+.subtitle-panel-description {
+  font-family: Museo Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+  color: #3c0000;
+}
+
+.title-icon-toggle {
+  width: 30%;
+  justify-content: flex-end;
+}
+
+.toggleIcon {
+  pointer-events: auto;
+  font-size: 40px;
+  color: #3c0000;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+::ng-deep .local-reservation-dialog .mat-dialog-container {
+  border-radius: 10px;
+  @include view-max(768px) {
+    border-radius: 10px;
+  }
+  @include view-max(425px) {
+    border-radius: 10px;
+  }
+}
