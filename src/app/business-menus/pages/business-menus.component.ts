@@ -9,6 +9,7 @@ import { MenuService } from "@app/core/services/menus/menu.service";
 /** INMUTABLES */
 import { Categories } from "@app/shared/inmutable/constants/category-kind";
 import {Category,Menu, MenuAdd, Product} from "@app/core/services/menus/menu-add";
+import {Commision} from "@shared/inmutable/constants/amount";
 @Component({
   selector: "app-business-menus",
   templateUrl: "./business-menus.component.html",
@@ -54,7 +55,7 @@ export class BusinessMenusComponent implements OnInit {
              name: product.get('name').value,
              description: product.get('description').value,
              amount: product.get('price').value,
-             commission_tyne: '15',
+             commission_tyne: Commision,
              url_image: ''
            }
            productsToAdd.push(productToAdd);
