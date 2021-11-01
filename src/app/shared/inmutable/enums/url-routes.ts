@@ -24,5 +24,6 @@ export enum TyneRoutes {
   Opinions = "opiniones",
   BusinessCancelations = "cancelaciones",
   StatusPay = "estado-pago",
+  BussinesHome = "reservas-local",
   
 }

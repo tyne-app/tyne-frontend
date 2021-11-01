@@ -1,0 +1,140 @@
+<div class="col-md-12 col-sm-12 col-lg-12">
+  <div class="col-md-12 col-sm-12 col-lg-12"><h3>Gracias por trabajar con tyne</h3></div>
+  <div class="col-md-12 col-sm-12 col-lg-12">
+    <p class="subTitle">
+      Para generar ventas tu local debe tener: horario y días de funcionamiento, productos en la carta y al menos 1 foto
+      de perfil
+    </p>
+  </div>
+
+  <div class="principal-rectangle col-md-12 col-lg-12 col-sm-12">
+    <div class="row">
+      <div class="col-md-6 col-sm-6 col-lg-6"><h2>Juan y Medio</h2></div>
+      <div class="col-md-6 col-sm-6 col-lg-6">
+        <div class="col-md-12 col-lg-12 col-sm-12 type-reservations">
+          <p>
+            Reservas Pendientes
+            <img src="../../../../assets/img/reservas-pendientes.svg" alt="" />
+          </p>
+        </div>
+        <div class="col-md-12 col-lg-12 col-sm-12 type-reservations">
+          <p>Reservas Confirmadas <img src="../../../../assets/img/reservas-confirmadas.svg" alt="" /></p>
+        </div>
+        <div class="col-md-12 col-lg-12 col-sm-12 type-reservations">
+          <p>Reservas Atendida <img src="../../../../assets/img/reservas-atendidas.svg" alt="" /></p>
+        </div>
+        <br />
+      </div>
+    </div>
+  </div>
+  <br />
+  <br />
+  <div class="div-date col-md-12 col-lg-12 col-sm-12">
+    <div class="row">
+      <div class="col-md-4 col-lg-4 col-sm-4 div-date-back" (click)="getMonthYear('B')">
+        <img src="../../../../assets/img/vector-back.svg" alt="" />
+        <label>&nbsp;&nbsp;Anterior Mes </label>
+      </div>
+      <div class="col-md-4 col-lg-4 col-sm-4 month-anio">{{ MonthYear }}</div>
+      <div class="col-md-4 col-lg-4 col-sm-4 div-date-next" (click)="getMonthYear('N')">
+        <label>Siguiente Mes &nbsp;&nbsp;</label>
+        <img src="../../../../assets/img/vector-next.svg" alt="" />
+      </div>
+    </div>
+  </div>
+  <br />
+  <br />
+
+  <div class="principal-rectangle col-md-12 col-lg-12 col-sm-12">
+    <div class="col-12 col-md-12 col-lg-12 type-reservations-combo">
+      <br />
+      <form [formGroup]="form">
+        <mat-form-field appearance="outline">
+          <mat-label>Tipo de reservas*</mat-label>
+          <mat-select formControlName="typeReservation" [(ngModel)]="typeReservationDefault">
+            <mat-option [value]="x.id" *ngFor="let x of typesReservation">{{ x.description }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </form>
+    </div>
+  </div>
+  <br />
+  <br />
+
+  <div class="col-md-12 col-lg-12 col-sm-12" *ngFor="let x of reservations">
+    <mat-expansion-panel class="rectangle-panel" #toggleIcon hideToggle="true">
+      <mat-expansion-panel-header [collapsedHeight]="customCollapsedHeight" [expandedHeight]="customExpandedHeight">
+        <mat-panel-title class="title-panel">
+          <div class="row col-md-12 col-lg-12 col-sm-12">
+            <div class="col-md-6 col-lg-6 col-sm-6">{{ x.date }}</div>
+            <div class="col-md-6 col-lg-6 col-sm-6">
+              <img
+                *ngFor="let i of getArrayImgReservation(x.pendientes)"
+                src="../../../../assets/img/reservas-pendientes.svg"
+                alt=""
+                hspace="5"
+              />
+
+              <img
+                *ngFor="let i of getArrayImgReservation(x.confirmadas)"
+                src="../../../../assets/img/reservas-confirmadas.svg"
+                alt=""
+                hspace="5"
+              />
+
+              <img
+                *ngFor="let i of getArrayImgReservation(x.atendidas)"
+                src="../../../../assets/img/reservas-atendidas.svg"
+                alt=""
+                hspace="5"
+              />
+            </div>
+          </div>
+        </mat-panel-title>
+        <mat-panel-description class="title-icon-toggle">
+          <mat-icon *ngIf="!toggleIcon.expanded" class="toggleIcon">expand_more</mat-icon>
+          <mat-icon *ngIf="toggleIcon.expanded" class="toggleIcon">expand_less</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <hr />
+      <br />
+      <div class="row col-md-12 col-lg-12 col-sm-12 title-panel-description">
+        <div class="col-md-3 col-lg-3 col-sm-3">Cliente</div>
+        <div class="col-md-3 col-lg-3 col-sm-3">Detalle de la reserva</div>
+        <div class="col-md-1 col-lg-1 col-sm-1">Hora</div>
+        <div class="col-md-3 col-lg-3 col-sm-3">Estado</div>
+        <div class="col-md-1 col-lg-1 col-sm-1"></div>
+      </div>
+      <div class="row col-md-12 col-lg-12 col-sm-12" *ngFor="let ix of x.detailsReservations">
+        <div class="col-md-3 col-lg-3 col-sm-3">
+          <p class="subtitle-panel-description">{{ ix.client }}</p>
+        </div>
+        <div class="col-md-3 col-lg-3 col-sm-3">
+          <p class="subtitle-panel-description">{{ ix.detail }}</p>
+        </div>
+        <div class="col-md-1 col-lg-1 col-sm-1">
+          <p class="subtitle-panel-description">{{ ix.hour }}</p>
+        </div>
+        <div class="col-md-3 col-lg-3 col-sm-3">
+          <p class="subtitle-panel-description">
+            {{ ix.statusDescription }}&nbsp;
+            <img *ngIf="ix.status == 1" src="../../../../assets/img/reservas-pendientes.svg" alt="" />
+            <img *ngIf="ix.status == 2" src="../../../../assets/img/reservas-confirmadas.svg" alt="" />
+            <img *ngIf="ix.status == 3" src="../../../../assets/img/reservas-atendidas.svg" alt="" />
+          </p>
+        </div>
+        <div class="col-md-1 col-lg-1 col-sm-1 cursor">
+          <p class="subtitle-panel-description">
+            <img
+              src="../../../../assets/img/view-details.svg"
+              (click)="getDetail(ix.idReservation)"
+              alt=""
+            />&nbsp;&nbsp; <img src="../../../../assets/img/edit-reservation.svg" alt="" />&nbsp;&nbsp;
+            <img src="../../../../assets/img/message-reservation.svg" alt="" />
+          </p>
+        </div>
+      </div>
+    </mat-expansion-panel>
+    <br />
+  </div>
+</div>
