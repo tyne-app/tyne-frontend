@@ -4,6 +4,7 @@
 
   <!--Content-->
   <div class="container">
+
     <!--Principal title-->
     <div class="row">
       <div class="col-12 col-center">
@@ -15,11 +16,11 @@
     <mat-card>
       <div class="row pl-3 justify-content-center">
         <div class="col-lg-5">
-          <p class="title">Juan y Medio</p>
+          <p class="title">{{this.localName}}</p>
         </div>
         <div class="col-lg-3">
-          <p class="titulo-4">Rango de Precios:</p>
-          <p class="money">$</p>
+          <p class="titulo-4">Rango de Precio:</p>
+          <p class="money">{{this.localRangePrice?.min}}-{{this.localRangePrice?.max}}</p>
         </div>
         <div class="col-lg-4">
           <p class="titulo-4">Calificación:</p>
@@ -39,7 +40,8 @@
       servicio del 15% el que será cargado al comensal
     </mat-card>
 
-    <form [formGroup]="sectionForm" (ngSubmit)="saveChanges()" (keydown.enter)="$event.preventDefault()">
+    <!--menu form-->
+    <form [formGroup]="this.menuForm" (ngSubmit)="saveChanges()" (keydown.enter)="$event.preventDefault()">
       <ng-container formArrayName="sections">
         <mat-accordion cdkDropList>
           <mat-expansion-panel *ngFor="let section of sections.controls; let i = index" cdkDrag hideToggle="true"

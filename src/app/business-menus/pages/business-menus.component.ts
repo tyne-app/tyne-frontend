@@ -1,60 +1,94 @@
 /** ANGULAR */
 import { Component, OnInit } from "@angular/core";
-import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
+import {Form, FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import { Data } from "@angular/router";
 /** SERVICES */
 import { FileService } from "@app/core/helpers/file.service";
-import { MenuData, Section } from "@app/core/services/menus/menu-response";
+import {MenuData, RangoPrecio, Section} from "@app/core/services/menus/menu-response";
 import { MenuService } from "@app/core/services/menus/menu.service";
 /** INMUTABLES */
 import { Categories } from "@app/shared/inmutable/constants/category-kind";
+import {Category,Menu, MenuAdd, Product} from "@app/core/services/menus/menu-add";
 @Component({
   selector: "app-business-menus",
   templateUrl: "./business-menus.component.html",
   styleUrls: ["./business-menus.component.scss"],
 })
 export class BusinessMenusComponent implements OnInit {
-  
-  public sectionForm: FormGroup;
+
+  public menuForm: FormGroup;
   public panelOpenState = true;
 
   public section: Section[] = [];
   public menuData: MenuData;
-  public menu: Data; 
-  
+  public menu: Data;
+  public localName: string;
+  public localRangePrice: RangoPrecio;
+
 
   public constructor(
-    public menuForm: FormBuilder,
+    public formBuilder: FormBuilder,
     private fileService: FileService,
-    private menuService:MenuService 
+    private menuService:MenuService
   ) {}
 
   public get sections(): FormArray {
-    return this.sectionForm.controls["sections"] as FormArray;
+    return this.menuForm.controls["sections"] as FormArray;
   }
 
   public ngOnInit(): void {
     this.initForm();
   }
 
-  
   public saveChanges(): void {
-    // console.log(this.sectionForm);
+    if(this.menuForm.valid){
+      const branchId: number = 2;
+      let menus: Menu[] = [];
+      const productsToAdd: Product[] = [];
+      const sections:FormArray = this.sections;
+
+      sections.controls.forEach((section)=>{
+         const products:FormArray =  section.get('products') as FormArray;
+         products.controls.forEach(product=>{
+           const productToAdd: Product = {
+             name: product.get('name').value,
+             description: product.get('description').value,
+             amount: product.get('price').value,
+             commission_tyne: '15',
+             url_image: ''
+           }
+           productsToAdd.push(productToAdd);
+         });
+
+         let menu: Menu = {
+           category: {
+             id : section.get('id').value,
+             name: section.get('title').value
+           },
+           products: productsToAdd
+         }
+         menus.push(menu);
+      })
+
+      let menuAdd: MenuAdd = {
+        menu: menus
+      }
+
+      this.menuService.createMenuByBranch( branchId, menuAdd ).subscribe((res)=>{
+        console.log(res);
+        console.log("Its Work")
+     });
+    }
   }
 
   public addProduct(sectionId: number): void {
-    console.log(sectionId);
-    if(Categories.has(sectionId)){
-      const sec = Categories.get(sectionId);
-      console.log(sec);
-    }
     let products = this.sections.controls[sectionId].get(
       "products"
     ) as FormArray;
     products = products ? products : new FormArray([]);
 
-    products?.push(
-      this.menuForm.group({
+    products.push(
+      this.formBuilder.group({
         id: ["0"],
         name: [
           "Nombre del Producto",
@@ -74,13 +108,6 @@ export class BusinessMenusComponent implements OnInit {
         ],
       })
     );
-    
-    
-    
-    // this.menuService.createMenuByBranch(2,).subscribe(()=>{
-      
-    // });
-
   }
 
   public deleteProduct(sectionId: number, productId: number): void {
@@ -93,9 +120,9 @@ export class BusinessMenusComponent implements OnInit {
     }
   }
 
-  public products(sectionForm: any): FormArray {
-    return sectionForm.controls.products
-      ? sectionForm.controls.products.controls
+  public products(section: any): FormArray {
+    return section.controls.products
+      ? section.controls.products.controls
       : new FormArray([]);
   }
 
@@ -104,6 +131,7 @@ export class BusinessMenusComponent implements OnInit {
       this.sections.controls[sectionId].get("isTitleVisible");
     return isTitleVisible ? isTitleVisible.value : false;
   }
+
 
   private getDataMock() {
     return [
@@ -174,8 +202,8 @@ export class BusinessMenusComponent implements OnInit {
   }
 
   private initForm() {
-    this.sectionForm = this.menuForm.group({
-      sections: this.menuForm.array([]),
+    this.menuForm = this.formBuilder.group({
+      sections: this.formBuilder.array([]),
     });
     this.getMenusByBranchAndBuildSections();
   }
@@ -184,22 +212,24 @@ export class BusinessMenusComponent implements OnInit {
     this.menuService.getMenusByBranch(2).subscribe(res=>{
       this.menuData = res;
       this.menu = res.data;
-      this.section = res.data.sections;  
-      this.buildSections();             
+      this.section = res.data.sections;
+      this.localName = res.data.nombre_local;
+      this.localRangePrice = res.data.rango_precio;
+      this.buildSections();
     });
   }
 
   private buildSections(){
-    this.section?.forEach((x) => {
+    this.section.forEach((x) => {
       this.sections.push(
-        this.menuForm.group({
+        this.formBuilder.group({
           id: [x.category.id],
           title: [x.category.name, [Validators.required, Validators.maxLength(20)]],
           isTitleVisible: [false],
           products: this.initProducts(x.products),
         })
       );
-    }); 
+    });
   }
 
   private initProducts(products: any): FormArray {
@@ -207,7 +237,7 @@ export class BusinessMenusComponent implements OnInit {
 
     products.forEach((x) => {
       formArray.push(
-        this.menuForm.group({
+        this.formBuilder.group({
           id: [x.id],
           name: [
             x.name,
@@ -217,7 +247,6 @@ export class BusinessMenusComponent implements OnInit {
               Validators.maxLength(50),
             ],
           ],
-          imageUrl: [x.imageUrl],
           price: [
             x.amount,
             [Validators.required, Validators.min(100), Validators.max(100000)],
@@ -241,7 +270,7 @@ export class BusinessMenusComponent implements OnInit {
     const formArray = new FormArray([]);
 
     formArray.push(
-      this.menuForm.group({
+      this.formBuilder.group({
         id: ["0"],
         name: [
           "Nombre del Producto",
@@ -268,23 +297,6 @@ export class BusinessMenusComponent implements OnInit {
     );
 
     return formArray;
-  }
-
-  private compressImage(src, newX, newY) {
-    return new Promise((res, rej) => {
-      const img = new Image();
-      img.src = src;
-      img.onload = () => {
-        const elem = document.createElement("canvas");
-        elem.width = newX;
-        elem.height = newY;
-        const ctx = elem.getContext("2d");
-        ctx.drawImage(img, 0, 0, newX, newY);
-        const data = ctx.canvas.toDataURL();
-        res(data);
-      };
-      img.onerror = (error) => rej(error);
-    });
   }
 
   public getProductNameError(sectionId: number, productId: number): string {
