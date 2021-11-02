@@ -1,6 +1,6 @@
 # stage 1
 
-FROM node:alpine AS tyne-app-build
+FROM node:16-alpine3.14 AS tyne-app-build
 
 ENV PORT=$PORT
 
