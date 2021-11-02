@@ -62,7 +62,12 @@
                 <mat-icon *ngIf="toggleIcon.expanded" class="toggleIcon">expand_less</mat-icon>
               </mat-panel-description>
             </mat-expansion-panel-header>
-
+            <button class="col-12 col-lg-6 ml-lg-5 mt-5  btn-normal-red" mat-raised-button (click)="addProduct(i)">
+              <mat-icon>
+                add_circle_outline
+              </mat-icon>
+              Añadir Producto
+            </button>
             <!--Section Content-->
             <mat-accordion>
               <ng-container>
@@ -91,12 +96,6 @@
                                 {{ getProductDescriptionError(i, p) }}
                               </mat-error>
                             </mat-form-field>
-                            <button class="col-12 col-lg-6 ml-lg-3  btn-normal-red" mat-raised-button (click)="addProduct(i)">
-                              <mat-icon>
-                                add_circle_outline
-                              </mat-icon>
-                              Añadir Producto
-                            </button>
                           </div>
                         </div>
                         <div class="col-md-12 col-lg-3">

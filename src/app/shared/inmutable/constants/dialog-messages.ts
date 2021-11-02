@@ -39,3 +39,12 @@ export const registerClientContent: DialogModel = {
   messageButton: "Ir a mi cuenta",
   redirectTo: TyneRoutes.ClientProfile,
 };
+
+export const updateMenu: DialogModel = {
+  title: SuccessMessages.Update,
+  subtitle: InformationMessages.UpdateMenu,
+  isSuccessful: true,
+  messageButton: "Entendido",
+  redirectTo: TyneRoutes.ClientProfile,
+};
+
