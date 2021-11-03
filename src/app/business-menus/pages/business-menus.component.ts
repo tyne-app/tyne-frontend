@@ -7,7 +7,6 @@ import { FileService } from "@app/core/helpers/file.service";
 import {MenuData, RangoPrecio, Section} from "@app/core/services/menus/menu-response";
 import { MenuService } from "@app/core/services/menus/menu.service";
 /** INMUTABLES */
-import { Categories } from "@app/shared/inmutable/constants/category-kind";
 import {Category,Menu, MenuAdd, Product} from "@app/core/services/menus/menu-add";
 import {Commision} from "@shared/inmutable/constants/amount";
 import {DialogService} from "@shared/components/components/dialog/services/dialog.service";
@@ -27,6 +26,9 @@ export class BusinessMenusComponent implements OnInit {
   public menu: Data;
   public localName: string;
   public localRangePrice: RangoPrecio;
+  public localRatingFull: number[] = [];
+  public localRatingEmpty: number[] = [];
+
 
 
   public constructor(
@@ -135,7 +137,6 @@ export class BusinessMenusComponent implements OnInit {
     return isTitleVisible ? isTitleVisible.value : false;
   }
 
-
   private getDataMock() {
     return [
       {
@@ -218,6 +219,8 @@ export class BusinessMenusComponent implements OnInit {
       this.section = res.data.sections;
       this.localName = res.data.nombre_local;
       this.localRangePrice = res.data.rango_precio;
+      this.localRatingFull = Array(2).fill(2).map((x,i)=>i);
+      this.localRatingEmpty = Array(5-2).fill(2).map((x,i)=>i);
       this.buildSections();
     });
   }

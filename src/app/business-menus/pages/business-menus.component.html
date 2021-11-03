@@ -24,11 +24,12 @@
         </div>
         <div class="col-lg-4">
           <p class="titulo-4">Calificación:</p>
-          <img src="../../../assets/icons/frying-pan-2.svg" />
-          <img src="../../../assets/icons/frying-pan-2.svg" />
-          <img src="../../../assets/icons/frying-pan-2.svg" />
-          <img src="../../../assets/icons/frying-pan-1.svg" />
-          <img src="../../../assets/icons/frying-pan-1.svg" />
+           <ng-container *ngFor="let i of this.localRatingFull" >
+            <img [src]="'assets/icons/frying-pan-2.svg'" />
+           </ng-container>
+           <ng-container *ngFor="let i of this.localRatingEmpty">
+            <img [src]="'assets/icons/frying-pan-1.svg'" />
+           </ng-container>
         </div>
       </div>
     </mat-card>
