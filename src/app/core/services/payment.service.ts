@@ -1,16 +1,14 @@
-import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
-import { environment } from "@src/environments/environment";
-import { PaymentKhipuRequest } from "@app/shared/interfaces/payment-khipu-request";
+import { Injectable } from "@angular/core";
 import { PaymentCreateResponse } from "@app/shared/interfaces/payment-create-response";
-
+import { PaymentKhipuRequest } from "@app/shared/interfaces/payment-khipu-request";
+import { Observable } from "rxjs";
 
 @Injectable({
   providedIn: "root",
 })
 export class PaymentService {
-  private endpoint = environment.apiPayments;
+  private endpoint = "URL-API";
   public constructor(private httpClient: HttpClient) {}
 
   public getPaymentKhipuRequest(paymentKhipuRequest: PaymentKhipuRequest): Observable<PaymentCreateResponse> {

@@ -1,16 +1,16 @@
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
-import { map } from "rxjs/operators";
-import { environment } from "@src/environments/environment";
+import { RestClientService } from "@app/core/services/rest-client.service";
 import { Bank } from "@shared/interfaces/bank";
 import { GenericDataResponse } from "@shared/interfaces/generic-data-response";
-import { RestClientService } from "@app/core/services/rest-client.service";
+import { environment } from "@src/environments/environment";
+import { Observable } from "rxjs";
+import { map } from "rxjs/operators";
 
 @Injectable({
   providedIn: "root",
 })
 export class BankService {
-  private urlBase = environment.apiLocals;
+  private urlBase = environment.apiTyne;
 
   public constructor(private client: RestClientService) {}
 
