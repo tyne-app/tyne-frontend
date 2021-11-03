@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { TyneRoutes } from "src/app/shared/inmutable/enums/url-routes";
 import { TokenService } from "@app/core/helpers/token.service";
 import { RestaurantService } from "@app/core/services/restaurant.service";
+import { TyneRoutes } from "src/app/shared/inmutable/enums/url-routes";
 import { OrderByRestaurants } from "../../enums/order-by-restaurants.enum";
 import { SortByRestaurants } from "../../enums/sort-by-restaurants.enum";
 import { SearchRestaurantRequest } from "../../models/search-restaurant-request";
@@ -60,7 +60,7 @@ export class SearchResultsComponent implements OnInit {
   public redirectToBusinessDetail(restaurant: SearchRestaurantResponse): void {
     this.router.navigate(["/" + TyneRoutes.BusinessDetail], {
       queryParams: {
-        id: restaurant.id,
+        id: restaurant.branch_id,
       },
     });
   }
@@ -79,11 +79,9 @@ export class SearchResultsComponent implements OnInit {
             orderBy: OrderByRestaurants.Asc,
           };
 
-          this.restaurantService
-            .getRestaurants(request)
-            .subscribe((response) => {
-              this.restaurantService.restaurantsDataSource.next(response);
-            });
+          this.restaurantService.getRestaurants(request).subscribe((response) => {
+            this.restaurantService.restaurantsDataSource.next(response);
+          });
         });
       }
     });
@@ -117,9 +115,7 @@ export class SearchResultsComponent implements OnInit {
     return new Array(rating);
   }
 
-  public getNotRatingsArray(
-    restaurant: SearchRestaurantResponse
-  ): Array<number> {
+  public getNotRatingsArray(restaurant: SearchRestaurantResponse): Array<number> {
     const rating = Math.round(restaurant?.rating);
     const ratingsArray = new Array(rating);
     return new Array(5 - ratingsArray.length);

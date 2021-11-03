@@ -17,12 +17,12 @@ export class MenuService {
   public constructor(private http: HttpClient) {}
 
   public getMenusByBranch(branchId: number): Observable<MenuData> {
-    const urlBase = `${this.urlBase}/locals/menu/${branchId}`;
+    const urlBase = `${this.urlBase}/menus/${branchId}`;
     return this.http.get<MenuData>(urlBase);
   }
 
   public createMenuByBranch(branchId: number, menu: MenuAdd): Observable<any> {
-    const urlBase = `${this.urlBase}/locals/menu/${branchId}`;
+    const urlBase = `${this.urlBase}/menus/${branchId}`;
     return this.http.post<any>(urlBase, menu);
   }
 }

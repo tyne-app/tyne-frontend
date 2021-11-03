@@ -19,11 +19,11 @@ export class RestaurantService {
   public constructor(private client: HttpClient) {}
 
   public createNewRestaurant(business: BusinessRegistrationDto): Observable<any> {
-    return this.client.post<any>(environment.apiTyne + "/locals/register", business);
+    return this.client.post<any>(environment.apiTyne + "/business/", business);
   }
 
   public getRestaurants(request: SearchRestaurantRequest): Observable<SearchRestaurantResponse[]> {
-    const url = environment.apiTyne + "/locals/search/all-branch";
+    const url = environment.apiTyne + "/business/branches";
 
     const params = new HttpParams()
       .set("name", request.name ? request.name : "")
@@ -40,7 +40,7 @@ export class RestaurantService {
   }
 
   public getRestaurant(id: number): Observable<BusinessDetailsResponse> {
-    const url = environment.apiTyne + "/locals/search/" + id;
+    const url = environment.apiTyne + "/business/" + id;
 
     return this.client.get<GenericDataResponse<BusinessDetailsResponse>>(url).pipe(
       map((res) => {

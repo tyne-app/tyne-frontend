@@ -1,9 +1,12 @@
 export interface SearchRestaurantResponse {
-  id: number;
-  name: string;
-  image_url: string;
-  price: number;
-  rating: number;
+  branch_id: number;
+  state_name: string;
+  state_id: number;
+  restaurant_name: string;
   description: string;
-  isFavorite: boolean;
+  rating: number;
+  min_price: number;
+  max_price: number;
+  url_image: string;
+  isFavorite: boolean; // ?
 }

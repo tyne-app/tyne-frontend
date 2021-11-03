@@ -4,6 +4,7 @@ import { PaymentCreateResponse } from "@app/shared/interfaces/payment-create-res
 import { PaymentKhipuRequest } from "@app/shared/interfaces/payment-khipu-request";
 import { Observable } from "rxjs";
 
+// TODO: Eliminar
 @Injectable({
   providedIn: "root",
 })
