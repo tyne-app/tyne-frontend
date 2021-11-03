@@ -5,15 +5,13 @@ import { State } from "@app/shared/interfaces/state";
 import { environment } from "@src/environments/environment";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
-
-
 import { RestClientService } from "./rest-client.service";
 
 @Injectable({
   providedIn: "root",
 })
 export class TerritorialsService {
-  private urlBase = environment.apiLocals;
+  private urlBase = environment.apiTyne;
 
   public constructor(private client: RestClientService) {}
 

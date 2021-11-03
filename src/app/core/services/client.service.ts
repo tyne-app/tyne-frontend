@@ -11,7 +11,7 @@ import { RestClientService } from "./rest-client.service";
   providedIn: "root",
 })
 export class ClientService {
-  private endpoint = environment.apiLocals;
+  private endpoint = environment.apiTyne;
 
   public constructor(private http: HttpClient, private restClient: RestClientService) {}
 
