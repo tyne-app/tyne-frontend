@@ -24,11 +24,11 @@
         </div>
         <div class="col-lg-4">
           <p class="titulo-4">Calificación:</p>
-           <ng-container *ngFor="let i of this.localRatingFull" >
-            <img [src]="'assets/icons/frying-pan-2.svg'" />
+           <ng-container *ngFor="let i of this.localRatingColor" >
+            <img [src]="'assets/icons/frying-pan-2.svg'" alt="rating color"/>
            </ng-container>
-           <ng-container *ngFor="let i of this.localRatingEmpty">
-            <img [src]="'assets/icons/frying-pan-1.svg'" />
+           <ng-container *ngFor="let i of this.localRatingWhite">
+            <img [src]="'assets/icons/frying-pan-1.svg'" alt="rating white" />
            </ng-container>
         </div>
       </div>
@@ -38,7 +38,7 @@
 
     <mat-card class="mb-4">
       El valor total a pagar por el comensal será ligeramente superior, ya que tenemos una comisión de
-      servicio del 15% el que será cargado al comensal
+      servicio del {{this.localCommission}}% el que será cargado al comensal
     </mat-card>
 
     <!--menu form-->

@@ -8,7 +8,7 @@ import {MenuData, RangoPrecio, Section} from "@app/core/services/menus/menu-resp
 import { MenuService } from "@app/core/services/menus/menu.service";
 /** INMUTABLES */
 import {Category,Menu, MenuAdd, Product} from "@app/core/services/menus/menu-add";
-import {Commision} from "@shared/inmutable/constants/amount";
+import {Commission} from "@shared/inmutable/constants/amount";
 import {DialogService} from "@shared/components/components/dialog/services/dialog.service";
 import {updateMenu} from "@shared/inmutable/constants/dialog-messages";
 @Component({
@@ -26,8 +26,9 @@ export class BusinessMenusComponent implements OnInit {
   public menu: Data;
   public localName: string;
   public localRangePrice: RangoPrecio;
-  public localRatingFull: number[] = [];
-  public localRatingEmpty: number[] = [];
+  public localRatingColor: number[] = [];
+  public localRatingWhite: number[] = [];
+  public localCommission: string = Commission;
 
 
 
@@ -60,7 +61,7 @@ export class BusinessMenusComponent implements OnInit {
              name: product.get('name').value,
              description: product.get('description').value,
              amount: product.get('price').value,
-             commission_tyne: Commision,
+             commission_tyne: Commission,
              url_image: ''
            }
            productsToAdd.push(productToAdd);
@@ -219,10 +220,15 @@ export class BusinessMenusComponent implements OnInit {
       this.section = res.data.sections;
       this.localName = res.data.nombre_local;
       this.localRangePrice = res.data.rango_precio;
-      this.localRatingFull = Array(2).fill(2).map((x,i)=>i);
-      this.localRatingEmpty = Array(5-2).fill(2).map((x,i)=>i);
+
+      this.buildRating(res.data.rating);
       this.buildSections();
     });
+  }
+
+  private buildRating(localrating:number){
+    this.localRatingColor = Array(2).fill(2).map((x,i)=>i);
+    this.localRatingWhite = Array(5-2).fill(2).map((x,i)=>i);
   }
 
   private buildSections(){
