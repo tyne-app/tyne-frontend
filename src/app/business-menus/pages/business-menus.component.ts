@@ -13,6 +13,7 @@ import {Category,Menu, MenuAdd, Product} from "@app/core/services/menus/menu-add
 import {Commission} from "@shared/inmutable/constants/amount";
 import {DialogService} from "@shared/components/components/dialog/services/dialog.service";
 import {updateMenu} from "@shared/inmutable/constants/dialog-messages";
+import {B} from "@angular/cdk/keycodes";
 @Component({
   selector: "app-business-menus",
   templateUrl: "./business-menus.component.html",
@@ -22,7 +23,7 @@ export class BusinessMenusComponent implements OnInit {
 
   public menuForm: FormGroup;
   public panelOpenState = true;
-  public branchId: number = 0;
+  public branchId: number = 2;
 
   public section: Section[] = [];
   public menuData: MenuData;
@@ -53,7 +54,7 @@ export class BusinessMenusComponent implements OnInit {
 
   public saveChanges(): void {
     if(this.menuForm.valid){
-      const branchId: number = 2;
+      const branchId: number = this.branchId;
       let menus: Menu[] = [];
       const productsToAdd: Product[] = [];
       const sections:FormArray = this.sections;
@@ -218,8 +219,9 @@ export class BusinessMenusComponent implements OnInit {
   }
 
   private getMenusByBranchAndBuildSections(){
-    this.branchId = this.tokenService.getDecodedJwtToken().id_branch_client;
-    this.menuService.getMenusByBranch(2).subscribe(res=>{
+    const branchIdFromToken:number = this.tokenService.getDecodedJwtToken()?.id_branch_client;
+    this.branchId = (branchIdFromToken)? branchIdFromToken : 2 ;
+    this.menuService.getMenusByBranch(this.branchId).subscribe(res=>{
       const { data:{sections, rango_precio, rating, nombre_local} } = res;
       this.menuData = res;
       this.menu = res.data;
