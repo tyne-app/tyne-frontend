@@ -5,7 +5,7 @@ import { ActivatedRoute } from "@angular/router";
 import { forkJoin } from "rxjs";
 import { BusinessDetailsResponse } from "src/app/business-details/models/business-details-response";
 import { CreateReservationComponent } from "src/app/create-reservation/pages/create-reservation.component";
-import { Product } from "@app/core/services/menus/menu-response";
+import { Product } from "@app/core/services/menus/menu-get";
 import { MenuService } from "@app/core/services/menus/menu.service";
 import { RestaurantService } from "@app/core/services/restaurant.service";
 

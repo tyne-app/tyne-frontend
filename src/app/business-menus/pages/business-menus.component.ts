@@ -5,7 +5,7 @@ import { Data } from "@angular/router";
 import { Location } from '@angular/common';
 /** SERVICES */
 import { FileService } from "@app/core/helpers/file.service";
-import { MenuData, RangoPrecio, Section} from "@app/core/services/menus/menu-response";
+import { MenuData, RangoPrecio, Section} from "@app/core/services/menus/menu-get";
 import { MenuService } from "@app/core/services/menus/menu.service";
 import { TokenService } from "@app/core/helpers/token.service";
 /** INMUTABLES */
