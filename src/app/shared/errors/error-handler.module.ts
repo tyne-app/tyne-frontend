@@ -1,8 +1,5 @@
-/** ANGULAR COMMON */
 import { CommonModule } from "@angular/common";
-/** ANGULAR CORE */
 import { NgModule } from "@angular/core";
-/** SERVICES */
 import { authInterceptorProvider, proccessErrorProvider } from "@shared/providers/auth.provider";
 
 @NgModule({
@@ -13,8 +10,7 @@ import { authInterceptorProvider, proccessErrorProvider } from "@shared/provider
   providers: [
     proccessErrorProvider,
     // Interceptor for HTTP errors // multiple interceptors are possible
-    authInterceptorProvider
-  
+    authInterceptorProvider,
   ],
 })
 export class ErrorHandlerModule {}
