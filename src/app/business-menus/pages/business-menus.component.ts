@@ -1,7 +1,8 @@
 /** ANGULAR */
 import { Component, OnInit } from "@angular/core";
-import {Form, FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
+import { FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import { Data } from "@angular/router";
+import { Location } from '@angular/common';
 /** SERVICES */
 import { FileService } from "@app/core/helpers/file.service";
 import {MenuData, RangoPrecio, Section} from "@app/core/services/menus/menu-response";
@@ -36,7 +37,8 @@ export class BusinessMenusComponent implements OnInit {
     public formBuilder: FormBuilder,
     private fileService: FileService,
     private menuService:MenuService,
-    private dialogService: DialogService
+    private dialogService: DialogService,
+    private location: Location
   ) {}
 
   public get sections(): FormArray {
@@ -309,6 +311,10 @@ export class BusinessMenusComponent implements OnInit {
     );
 
     return formArray;
+  }
+
+  public goToBack(){
+    this.location.back();
   }
 
   public getProductNameError(sectionId: number, productId: number): string {
