@@ -1,15 +1,15 @@
 /** ANGULAR */
 import { Component, OnInit } from "@angular/core";
-import {Form, FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
+import { FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import { Data } from "@angular/router";
+import { Location } from '@angular/common';
 /** SERVICES */
 import { FileService } from "@app/core/helpers/file.service";
 import {MenuData, RangoPrecio, Section} from "@app/core/services/menus/menu-response";
 import { MenuService } from "@app/core/services/menus/menu.service";
 /** INMUTABLES */
-import { Categories } from "@app/shared/inmutable/constants/category-kind";
 import {Category,Menu, MenuAdd, Product} from "@app/core/services/menus/menu-add";
-import {Commision} from "@shared/inmutable/constants/amount";
+import {Commission} from "@shared/inmutable/constants/amount";
 import {DialogService} from "@shared/components/components/dialog/services/dialog.service";
 import {updateMenu} from "@shared/inmutable/constants/dialog-messages";
 @Component({
@@ -27,13 +27,18 @@ export class BusinessMenusComponent implements OnInit {
   public menu: Data;
   public localName: string;
   public localRangePrice: RangoPrecio;
+  public localRatingColor: number[] = [];
+  public localRatingWhite: number[] = [];
+  public localCommission: string = Commission;
+
 
 
   public constructor(
     public formBuilder: FormBuilder,
     private fileService: FileService,
     private menuService:MenuService,
-    private dialogService: DialogService
+    private dialogService: DialogService,
+    private location: Location
   ) {}
 
   public get sections(): FormArray {
@@ -58,7 +63,7 @@ export class BusinessMenusComponent implements OnInit {
              name: product.get('name').value,
              description: product.get('description').value,
              amount: product.get('price').value,
-             commission_tyne: Commision,
+             commission_tyne: Commission,
              url_image: ''
            }
            productsToAdd.push(productToAdd);
@@ -134,7 +139,6 @@ export class BusinessMenusComponent implements OnInit {
       this.sections.controls[sectionId].get("isTitleVisible");
     return isTitleVisible ? isTitleVisible.value : false;
   }
-
 
   private getDataMock() {
     return [
@@ -218,8 +222,15 @@ export class BusinessMenusComponent implements OnInit {
       this.section = res.data.sections;
       this.localName = res.data.nombre_local;
       this.localRangePrice = res.data.rango_precio;
+
+      this.buildRating(res.data.rating);
       this.buildSections();
     });
+  }
+
+  private buildRating(localrating:number){
+    this.localRatingColor = Array(2).fill(2).map((x,i)=>i);
+    this.localRatingWhite = Array(5-2).fill(2).map((x,i)=>i);
   }
 
   private buildSections(){
@@ -300,6 +311,10 @@ export class BusinessMenusComponent implements OnInit {
     );
 
     return formArray;
+  }
+
+  public goToBack(){
+    this.location.back();
   }
 
   public getProductNameError(sectionId: number, productId: number): string {

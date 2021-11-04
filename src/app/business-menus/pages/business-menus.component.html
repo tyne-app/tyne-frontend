@@ -24,11 +24,12 @@
         </div>
         <div class="col-lg-4">
           <p class="titulo-4">Calificación:</p>
-          <img src="../../../assets/icons/frying-pan-2.svg" />
-          <img src="../../../assets/icons/frying-pan-2.svg" />
-          <img src="../../../assets/icons/frying-pan-2.svg" />
-          <img src="../../../assets/icons/frying-pan-1.svg" />
-          <img src="../../../assets/icons/frying-pan-1.svg" />
+           <ng-container *ngFor="let i of this.localRatingColor" >
+            <img [src]="'assets/icons/frying-pan-2.svg'" alt="rating color"/>
+           </ng-container>
+           <ng-container *ngFor="let i of this.localRatingWhite">
+            <img [src]="'assets/icons/frying-pan-1.svg'" alt="rating white" />
+           </ng-container>
         </div>
       </div>
     </mat-card>
@@ -37,7 +38,7 @@
 
     <mat-card class="mb-4">
       El valor total a pagar por el comensal será ligeramente superior, ya que tenemos una comisión de
-      servicio del 15% el que será cargado al comensal
+      servicio del {{this.localCommission}}% el que será cargado al comensal
     </mat-card>
 
     <!--menu form-->
@@ -128,7 +129,7 @@
 
       <div class="row my-2 mx-2 d-flex align-items-center justify-content-center">
         <button class="d-flex col-lg-5 col-md-11 mx-2 my-2 py-2 align-items-center justify-content-center"
-          type="button" class="btn-normal-red" mat-raised-button>
+          type="button" class="btn-normal-red" mat-raised-button   (click)="this.goToBack()">
           Volver
         </button>
         <span class="mx-2"></span>
