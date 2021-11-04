@@ -5,13 +5,15 @@ import { Data } from "@angular/router";
 import { Location } from '@angular/common';
 /** SERVICES */
 import { FileService } from "@app/core/helpers/file.service";
-import {MenuData, RangoPrecio, Section} from "@app/core/services/menus/menu-response";
+import { MenuData, RangoPrecio, Section} from "@app/core/services/menus/menu-response";
 import { MenuService } from "@app/core/services/menus/menu.service";
+import { TokenService } from "@app/core/helpers/token.service";
 /** INMUTABLES */
 import {Category,Menu, MenuAdd, Product} from "@app/core/services/menus/menu-add";
 import {Commission} from "@shared/inmutable/constants/amount";
 import {DialogService} from "@shared/components/components/dialog/services/dialog.service";
 import {updateMenu} from "@shared/inmutable/constants/dialog-messages";
+import {B} from "@angular/cdk/keycodes";
 @Component({
   selector: "app-business-menus",
   templateUrl: "./business-menus.component.html",
@@ -21,6 +23,7 @@ export class BusinessMenusComponent implements OnInit {
 
   public menuForm: FormGroup;
   public panelOpenState = true;
+  public branchId: number = 2;
 
   public section: Section[] = [];
   public menuData: MenuData;
@@ -32,13 +35,13 @@ export class BusinessMenusComponent implements OnInit {
   public localCommission: string = Commission;
 
 
-
   public constructor(
     public formBuilder: FormBuilder,
     private fileService: FileService,
     private menuService:MenuService,
     private dialogService: DialogService,
-    private location: Location
+    private location: Location,
+    private tokenService: TokenService
   ) {}
 
   public get sections(): FormArray {
@@ -51,7 +54,7 @@ export class BusinessMenusComponent implements OnInit {
 
   public saveChanges(): void {
     if(this.menuForm.valid){
-      const branchId: number = 2;
+      const branchId: number = this.branchId;
       let menus: Menu[] = [];
       const productsToAdd: Product[] = [];
       const sections:FormArray = this.sections;
@@ -216,14 +219,16 @@ export class BusinessMenusComponent implements OnInit {
   }
 
   private getMenusByBranchAndBuildSections(){
-    this.menuService.getMenusByBranch(2).subscribe(res=>{
+    const branchIdFromToken:number = this.tokenService.getDecodedJwtToken()?.id_branch_client;
+    this.branchId = (branchIdFromToken)? branchIdFromToken : 2 ;
+    this.menuService.getMenusByBranch(this.branchId).subscribe(res=>{
+      const { data:{sections, rango_precio, rating, nombre_local} } = res;
       this.menuData = res;
       this.menu = res.data;
-      this.section = res.data.sections;
-      this.localName = res.data.nombre_local;
-      this.localRangePrice = res.data.rango_precio;
-
-      this.buildRating(res.data.rating);
+      this.section = sections;
+      this.localName = nombre_local;
+      this.localRangePrice = rango_precio;
+      this.buildRating(rating);
       this.buildSections();
     });
   }
