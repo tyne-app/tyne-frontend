@@ -1,0 +1,1358 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>frontend documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">frontend documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  LoginComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/login/pages/login.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-login</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./login.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./login.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#checked" >checked</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#dialog" >dialog</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#hide" >hide</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#isLoading" >isLoading</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#loginForm" >loginForm</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#loginRef" >loginRef</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#buildForm" >buildForm</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#closeModal" >closeModal</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#getButtonClass" >getButtonClass</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#getPasswordError" >getPasswordError</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#goToFacebookSignIn" >goToFacebookSignIn</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#goToForgotPassword" >goToForgotPassword</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#goToGoogleSignIn" >goToGoogleSignIn</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#onSubmit" >onSubmit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#showErrorMessage" >showErrorMessage</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#emailControl" >emailControl</a>
+                                </li>
+                                <li>
+                                    <a href="#passwordControl" >passwordControl</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                                <span class="modifier">Public</span>
+                        <code>constructor(router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, fb: <a href="https://angular.io/api/forms/FormBuilder" target="_blank">FormBuilder</a>, loginRef: <a href="../components/LoginComponent.html" target="_self">MatDialogRef&lt;LoginComponent&gt;</a>, clientservice: <a href="../injectables/ClientService.html" target="_self">ClientService</a>, dialog: MatDialog, socialService: <a href="../injectables/SocialService.html" target="_self">SocialService</a>, customSnackbarCommon: <a href="../injectables/CustomSnackbarCommonService.html" target="_self">CustomSnackbarCommonService</a>, dialogService: <a href="../injectables/DialogService.html" target="_self">DialogService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/login/pages/login.component.ts:35</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>fb</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/forms/FormBuilder" target="_blank" >FormBuilder</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>loginRef</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../components/LoginComponent.html" target="_self" >MatDialogRef&lt;LoginComponent&gt;</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>clientservice</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ClientService.html" target="_self" >ClientService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>dialog</td>
+                                                  
+                                                        <td>
+                                                                    <code>MatDialog</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>socialService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/SocialService.html" target="_self" >SocialService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>customSnackbarCommon</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/CustomSnackbarCommonService.html" target="_self" >CustomSnackbarCommonService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>dialogService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/DialogService.html" target="_self" >DialogService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="buildForm"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>buildForm</b></span>
+                        <a href="#buildForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>buildForm()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="52"
+                            class="link-to-prism">src/app/login/pages/login.component.ts:52</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="closeModal"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>closeModal</b></span>
+                        <a href="#closeModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>closeModal()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="79"
+                            class="link-to-prism">src/app/login/pages/login.component.ts:79</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getButtonClass"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>getButtonClass</b></span>
+                        <a href="#getButtonClass"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getButtonClass()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="94"
+                            class="link-to-prism">src/app/login/pages/login.component.ts:94</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getPasswordError"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>getPasswordError</b></span>
+                        <a href="#getPasswordError"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getPasswordError()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="85"
+                            class="link-to-prism">src/app/login/pages/login.component.ts:85</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="goToFacebookSignIn"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>goToFacebookSignIn</b></span>
+                        <a href="#goToFacebookSignIn"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>goToFacebookSignIn()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="113"
+                            class="link-to-prism">src/app/login/pages/login.component.ts:113</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="goToForgotPassword"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>goToForgotPassword</b></span>
+                        <a href="#goToForgotPassword"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>goToForgotPassword()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="98"
+                            class="link-to-prism">src/app/login/pages/login.component.ts:98</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="goToGoogleSignIn"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>goToGoogleSignIn</b></span>
+                        <a href="#goToGoogleSignIn"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>goToGoogleSignIn()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="102"
+                            class="link-to-prism">src/app/login/pages/login.component.ts:102</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="48"
+                            class="link-to-prism">src/app/login/pages/login.component.ts:48</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onSubmit"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>onSubmit</b></span>
+                        <a href="#onSubmit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>onSubmit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="59"
+                            class="link-to-prism">src/app/login/pages/login.component.ts:59</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showErrorMessage"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>showErrorMessage</b></span>
+                        <a href="#showErrorMessage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>showErrorMessage()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="75"
+                            class="link-to-prism">src/app/login/pages/login.component.ts:75</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="checked"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>checked</b></span>
+                        <a href="#checked"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/login/pages/login.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dialog"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>dialog</b></span>
+                        <a href="#dialog"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>MatDialog</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/login/pages/login.component.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hide"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>hide</b></span>
+                        <a href="#hide"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/login/pages/login.component.ts:26</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isLoading"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>isLoading</b></span>
+                        <a href="#isLoading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/login/pages/login.component.ts:25</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loginForm"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>loginForm</b></span>
+                        <a href="#loginForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/forms/FormGroup" target="_blank" >FormGroup</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/login/pages/login.component.ts:24</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loginRef"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>loginRef</b></span>
+                        <a href="#loginRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../components/LoginComponent.html" target="_self" >MatDialogRef&lt;LoginComponent&gt;</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/login/pages/login.component.ts:40</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="emailControl"></a>
+                        <span class="name"><b>emailControl</b><a href="#emailControl"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>emailControl()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/login/pages/login.component.ts:29</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="passwordControl"></a>
+                        <span class="name"><b>passwordControl</b><a href="#passwordControl"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>passwordControl()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/login/pages/login.component.ts:33</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { HttpErrorResponse } from &quot;@angular/common/http&quot;;
+import { Component, OnInit } from &quot;@angular/core&quot;;
+import { AbstractControl, FormBuilder, FormGroup, Validators } from &quot;@angular/forms&quot;;
+import { MatDialog, MatDialogRef } from &quot;@angular/material/dialog&quot;;
+import { Router } from &quot;@angular/router&quot;;
+/** INMUTABLE */
+import { errorContent } from &quot;src/app/shared/inmutable/constants/dialog-messages&quot;;
+import { emailRegex } from &quot;src/app/shared/inmutable/constants/email&quot;;
+import { SuccessMessages } from &quot;src/app/shared/inmutable/enums/success-messages&quot;;
+import { TyneRoutes } from &quot;src/app/shared/inmutable/enums/url-routes&quot;;
+/** SERVICES */
+import { DialogService } from &quot;src/app/shared/components/components/dialog/services/dialog.service&quot;;
+import { CustomSnackbarCommonService } from &quot;@app/core/helpers/custom-snackbar-common.service&quot;;
+import { ClientService } from &quot;@app/core/services/client.service&quot;;
+import { SocialService } from &quot;@app/core/services/social.service&quot;;
+
+@Component({
+  selector: &quot;app-login&quot;,
+  templateUrl: &quot;./login.component.html&quot;,
+  styleUrls: [&quot;./login.component.scss&quot;],
+})
+export class LoginComponent implements OnInit {
+  public loginForm: FormGroup;
+  public isLoading &#x3D; false;
+  public hide &#x3D; true;
+  public checked &#x3D; false;
+
+  public get emailControl(): AbstractControl {
+    return this.loginForm.get(&quot;email&quot;);
+  }
+
+  public get passwordControl(): AbstractControl {
+    return this.loginForm.get(&quot;password&quot;);
+  }
+
+  public constructor(
+    private router: Router,
+    private fb: FormBuilder,
+    public loginRef: MatDialogRef&lt;LoginComponent&gt;,
+    private clientservice: ClientService,
+    public dialog: MatDialog,
+    private socialService: SocialService,
+    private customSnackbarCommon: CustomSnackbarCommonService,
+    private dialogService: DialogService
+  ) {}
+
+  public ngOnInit(): void {
+    this.buildForm();
+  }
+
+  public buildForm(): void {
+    this.loginForm &#x3D; this.fb.group({
+      email: [&quot;&quot;, [Validators.required, Validators.pattern(emailRegex)]],
+      password: [&quot;&quot;, [Validators.required]],
+    });
+  }
+
+  public onSubmit(): void {
+    if (!this.loginForm.invalid) {
+      this.clientservice.login(this.emailControl.value, this.passwordControl.value).subscribe(
+        (token) &#x3D;&gt; {
+          if (token) {
+            localStorage.setItem(&quot;access_token&quot;, token);
+            this.closeModal();
+          }
+        },
+        (error: HttpErrorResponse) &#x3D;&gt; {
+          this.showErrorMessage();
+        }
+      );
+    }
+  }
+
+  private showErrorMessage() {
+    this.dialogService.openDialog(errorContent);
+  }
+
+  public closeModal(): void {
+    this.loginRef.close();
+    this.customSnackbarCommon.openSuccessSnackbar(SuccessMessages.Success);
+    this.router.navigateByUrl(TyneRoutes.ClientProfile);
+  }
+
+  public getPasswordError(): string {
+    const control &#x3D; this.passwordControl;
+    return control.hasError(&quot;required&quot;)
+      ? &quot;Debe ingresar una contraseña&quot;
+      : control.hasError(&quot;pattern&quot;)
+      ? &quot;Debe tener como mínimo 8 dígitos, 1 mayúscula y 1 número&quot;
+      : null;
+  }
+
+  public getButtonClass(): string {
+    return this.loginForm.invalid ? &quot;btn btn-disabled&quot; : &quot;btn btn-submit&quot;;
+  }
+
+  public goToForgotPassword(): void {
+    console.log(&quot;Ir a la página de contraseña olvidada&quot;);
+  }
+
+  public goToGoogleSignIn():void {
+    this.socialService.GoogleLogin().subscribe((userInfo) &#x3D;&gt; {
+      const user:any &#x3D; userInfo.additionalUserInfo.profile;
+      const email:string &#x3D; user.email;
+      // this.clientservice.login(email)
+      //   .subscribe(resp&#x3D;&gt;{
+
+      // });
+    });
+  }
+
+  public goToFacebookSignIn(): void {
+    this.socialService.FacebookLogin().subscribe((userInfo) &#x3D;&gt; {
+      const user:any &#x3D; userInfo.additionalUserInfo.profile;
+      const email:string &#x3D; user.email;
+      // this.clientservice.login(email)
+      //   .subscribe(resp&#x3D;&gt;{
+          
+      // });
+    });
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;modal-body-login&quot;&gt;
+  &lt;div class&#x3D;&quot;row mx-0 d-flex aling-items-center justify-content-center&quot;&gt;
+    &lt;div class&#x3D;&quot;col-lg-12 px-4 py-2&quot;&gt;
+      &lt;div class&#x3D;&quot;d-flex mt-1 justify-content-center align-items-center&quot;&gt;
+        &lt;img class&#x3D;&quot;mx-auto&quot; [src]&#x3D;&quot;&#x27;assets/icons/tyne-login.png&#x27;&quot; style&#x3D;&quot;height: 6rem;&quot; /&gt;
+      &lt;/div&gt;
+
+      &lt;h4 class&#x3D;&quot;titulo-6 mt-4 mb-1 p-1 col-center&quot;&gt;Te damos la bienvenida a
+        Tyne&lt;/h4&gt;
+      &lt;h4 class&#x3D;&quot;titulo-7 mb-3 mt-0 p-1 d-flex aling-items-center justify-content-center&quot;&gt;Iniciar Sesión&lt;/h4&gt;
+      &lt;div class&#x3D;&quot;row&quot;&gt;
+        &lt;div class&#x3D;&quot;col&quot;&gt;
+          &lt;form [formGroup]&#x3D;&quot;this.loginForm&quot; (ngSubmit)&#x3D;&quot;onSubmit()&quot;&gt;
+            &lt;div class&#x3D;&quot;row d-flex align-items-center justify-content-center&quot;&gt;
+
+              &lt;mat-form-field class&#x3D;&quot;col-lg-10&quot; appearance&#x3D;&quot;outline&quot;&gt;
+                &lt;mat-label&gt;Email*&lt;/mat-label&gt;
+                &lt;input matInput type&#x3D;&quot;text&quot; formControlName&#x3D;&quot;email&quot; placeholder&#x3D;&quot;Email&quot;&gt;
+                &lt;mat-error *ngIf&#x3D;&quot;this.emailControl.errors?.required&quot;&gt;
+                  Debes ingresar tu Email!
+                &lt;/mat-error&gt;
+              &lt;/mat-form-field&gt;
+
+              &lt;mat-form-field class&#x3D;&quot;col-lg-10&quot; appearance&#x3D;&quot;outline&quot;&gt;
+                &lt;mat-label&gt;Contraseña*&lt;/mat-label&gt;
+                &lt;input matInput type&#x3D;&quot;password&quot; matInput [type]&#x3D;&quot;hide ? &#x27;password&#x27; : &#x27;text&#x27;&quot; formControlName&#x3D;&quot;password&quot;
+                  placeholder&#x3D;&quot;Contraseña&quot;&gt;
+                &lt;button type&#x3D;&quot;button&quot; mat-icon-button matSuffix (click)&#x3D;&quot;hide &#x3D; !hide&quot;
+                  [attr.aria-label]&#x3D;&quot;&#x27;Hide password&#x27;&quot; [attr.aria-pressed]&#x3D;&quot;hide&quot;&gt;
+                  &lt;mat-icon&gt;{{hide ? &#x27;visibility_off&#x27; : &#x27;visibility&#x27;}}&lt;/mat-icon&gt;
+                &lt;/button&gt;
+
+                &lt;mat-error *ngIf&#x3D;&quot;this.passwordControl.errors?.required&quot;&gt;
+                  Debes ingresar tu Contraseña!
+                &lt;/mat-error&gt;
+              &lt;/mat-form-field&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;row d-flex justify-content-center align-content-center mx-1&quot;&gt;
+              &lt;mat-checkbox class&#x3D;&quot;col-lg-6&quot; [disabled]&#x3D;&quot;false&quot;&gt;Recordar Contraseña&lt;/mat-checkbox&gt;
+              &lt;button type&#x3D;&quot;button&quot; mat-button (click)&#x3D;&quot;goToForgotPassword()&quot;&gt;¿Olvidaste tu contraseña?&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;d-flex row align-items-center justify-content-center mx-1 my-2&quot;&gt;
+              &lt;button class&#x3D;&quot;col-lg-10 col-md-12&quot; type&#x3D;&quot;submit&quot; [disabled]&#x3D;&quot;this.loginForm.invalid&quot;
+                [class]&#x3D;&quot;getButtonClass()&quot;&gt;
+                Ingresar
+              &lt;/button&gt;
+            &lt;/div&gt;
+            &lt;mat-divider class&#x3D;&quot;row mx-5 my-3&quot;&gt; &lt;/mat-divider&gt;
+            &lt;span class&#x3D;&quot;d-flex mx-5&quot;&gt; o Ingresa con &lt;/span&gt;
+          &lt;/form&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;row my-2 mx-2 d-flex align-items-center justify-content-center&quot;&gt;
+
+        &lt;button (click)&#x3D;&quot;this.goToFacebookSignIn()&quot;
+          class&#x3D;&quot; d-flex col-lg-5 col-md-11 mx-1 my-2 py-2 btn-facebook align-items-center justify-content-center&quot;&gt;
+          &lt;img class&#x3D;&quot;img-responsive img-rrss-login mx-2 &quot; [src]&#x3D;&quot;&#x27;assets/img/facebook-logo.svg&#x27;&quot; /&gt;
+          &lt;span class&#x3D;&quot;mt-1&quot;&gt;Facebook&lt;/span&gt;
+        &lt;/button&gt;
+
+
+        &lt;button (click)&#x3D;&quot;this.goToGoogleSignIn()&quot;
+          class&#x3D;&quot;d-flex col-lg-5 col-md-11 py-2 mx-1 align-items-center justify-content-center my-2 btn-google&quot;&gt;
+          &lt;img class&#x3D;&quot;img-responsive img-rrss-login mx-2 &quot; [src]&#x3D;&quot;&#x27;assets/icons/google-logo.png&#x27;&quot; /&gt;
+          &lt;span class&#x3D;&quot;mt-1&quot;&gt;Google&lt;/span&gt;
+        &lt;/button&gt;
+
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./login.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">@import &quot;../../../styles.scss&quot;;
+
+.anchor-layout {
+    display: grid;
+    grid-template-columns: 3fr 3fr 1fr;
+}
+
+// Right-half of the container, welcome message.
+.middle-half {
+    background-color: #3C0000;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 1.8rem;
+    padding: 2rem;
+    
+    .photo {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+}
+
+// Add padding to the welcome images.
+.middle-half &gt; * {
+    padding: 2rem;
+}
+
+
+//Remove padding of dialog and make it round.
+::ng-deep .mat-dialog-container {
+    padding: 0;
+    border-radius: 12px;
+}
+
+
+//Adjust the width of form fields.
+mat-form-field {
+    width: 75%;
+    justify-self: center;
+}
+
+
+::ng-deep .custom-dialog &gt; mat-dialog-container {
+    background-color: var(--background);
+}
+
+::ng-deep.login-dialog .mat-dialog-container {
+    padding: 9px;
+    @include view-min(768px) {
+        padding: 16px;
+    }
+    
+}
+
+.modal-body-login {
+    overflow-y: auto;
+    height: 90vh;
+    width: auto;
+    overflow-x: hidden;
+}
+
+.img-rrss-login {
+    max-width: 19.5px;
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="modal-body-login">  <div class="row mx-0 d-flex aling-items-center justify-content-center">    <div class="col-lg-12 px-4 py-2">      <div class="d-flex mt-1 justify-content-center align-items-center">        <img class="mx-auto" [src]="\'assets/icons/tyne-login.png\'" style="height: 6rem;" />      </div>      <h4 class="titulo-6 mt-4 mb-1 p-1 col-center">Te damos la bienvenida a        Tyne</h4>      <h4 class="titulo-7 mb-3 mt-0 p-1 d-flex aling-items-center justify-content-center">Iniciar Sesión</h4>      <div class="row">        <div class="col">          <form [formGroup]="this.loginForm" (ngSubmit)="onSubmit()">            <div class="row d-flex align-items-center justify-content-center">              <mat-form-field class="col-lg-10" appearance="outline">                <mat-label>Email*</mat-label>                <input matInput type="text" formControlName="email" placeholder="Email">                <mat-error *ngIf="this.emailControl.errors?.required">                  Debes ingresar tu Email!                </mat-error>              </mat-form-field>              <mat-form-field class="col-lg-10" appearance="outline">                <mat-label>Contraseña*</mat-label>                <input matInput type="password" matInput [type]="hide ? \'password\' : \'text\'" formControlName="password"                  placeholder="Contraseña">                <button type="button" mat-icon-button matSuffix (click)="hide = !hide"                  [attr.aria-label]="\'Hide password\'" [attr.aria-pressed]="hide">                  <mat-icon>{{hide ? \'visibility_off\' : \'visibility\'}}</mat-icon>                </button>                <mat-error *ngIf="this.passwordControl.errors?.required">                  Debes ingresar tu Contraseña!                </mat-error>              </mat-form-field>            </div>            <div class="row d-flex justify-content-center align-content-center mx-1">              <mat-checkbox class="col-lg-6" [disabled]="false">Recordar Contraseña</mat-checkbox>              <button type="button" mat-button (click)="goToForgotPassword()">¿Olvidaste tu contraseña?</button>            </div>            <div class="d-flex row align-items-center justify-content-center mx-1 my-2">              <button class="col-lg-10 col-md-12" type="submit" [disabled]="this.loginForm.invalid"                [class]="getButtonClass()">                Ingresar              </button>            </div>            <mat-divider class="row mx-5 my-3"> </mat-divider>            <span class="d-flex mx-5"> o Ingresa con </span>          </form>        </div>      </div>      <div class="row my-2 mx-2 d-flex align-items-center justify-content-center">        <button (click)="this.goToFacebookSignIn()"          class=" d-flex col-lg-5 col-md-11 mx-1 my-2 py-2 btn-facebook align-items-center justify-content-center">          <img class="img-responsive img-rrss-login mx-2 " [src]="\'assets/img/facebook-logo.svg\'" />          <span class="mt-1">Facebook</span>        </button>        <button (click)="this.goToGoogleSignIn()"          class="d-flex col-lg-5 col-md-11 py-2 mx-1 align-items-center justify-content-center my-2 btn-google">          <img class="img-responsive img-rrss-login mx-2 " [src]="\'assets/icons/google-logo.png\'" />          <span class="mt-1">Google</span>        </button>      </div>    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BodyComponent', 'selector': 'app-body'},{'name': 'BusinessDetailsBodyComponent', 'selector': 'app-business-details-body'},{'name': 'BusinessDetailsComponent', 'selector': 'app-business-details'},{'name': 'BusinessMenusComponent', 'selector': 'app-business-menus'},{'name': 'BusinessNewBranchComponent', 'selector': 'app-business-new-branch'},{'name': 'BusinessProfileBodyComponent', 'selector': 'app-business-profile-body'},{'name': 'BusinessProfileCarouselUploadImageComponent', 'selector': 'app-business-profile-carousel-upload-image'},{'name': 'BusinessProfileCloseUploadImageComponent', 'selector': 'app-business-profile-close-upload-image'},{'name': 'BusinessProfileComponent', 'selector': 'app-business-profile'},{'name': 'BusinessProfileEditBankDataComponent', 'selector': 'app-business-profile-edit-bank-data'},{'name': 'BusinessProfileEditDataComponent', 'selector': 'app-business-profile-edit-data'},{'name': 'BusinessProfileEditPasswordComponent', 'selector': 'app-business-profile-edit-password'},{'name': 'BusinessProfileEditWorkDaysComponent', 'selector': 'app-business-profile-edit-work-days'},{'name': 'BusinessProfileImageLocalsComponent', 'selector': 'app-business-profile-image-locals'},{'name': 'BusinessProfileUploadImageLocalsComponent', 'selector': 'app-business-profile-upload-image-locals'},{'name': 'BusinessRegistrationComponent', 'selector': 'app-business-registration'},{'name': 'CancelPayComponent', 'selector': 'app-cancel-pay'},{'name': 'CarouselComponent', 'selector': 'app-carousel'},{'name': 'ClientMenusComponent', 'selector': 'app-client-menus'},{'name': 'ClientProfileComponent', 'selector': 'app-client-profile'},{'name': 'ClientRegistrationComponent', 'selector': 'app-client-registration'},{'name': 'CloseModalComponent', 'selector': 'app-close-modal'},{'name': 'CreateReservationComponent', 'selector': 'app-create-reservation'},{'name': 'DialogComponent', 'selector': 'app-dialog'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'FrequentQuestionsComponent', 'selector': 'app-frequent-questions'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HeaderLoginComponent', 'selector': 'app-header-login'},{'name': 'HeaderPublicComponent', 'selector': 'app-header-public'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MapComponent', 'selector': 'app-map'},{'name': 'NotFoundPageComponent', 'selector': 'app-not-found-page'},{'name': 'PrivacyComponent', 'selector': 'app-privacy'},{'name': 'ProfileContainerComponent', 'selector': 'app-profile-container'},{'name': 'ProfileImageComponent', 'selector': 'app-profile-image'},{'name': 'RefundPolicyComponent', 'selector': 'app-refund-policy'},{'name': 'RejectedPayComponent', 'selector': 'app-rejected-pay'},{'name': 'SearchBarComponent', 'selector': 'app-search-bar'},{'name': 'SearchRestaurantComponent', 'selector': 'app-search-restaurant'},{'name': 'SearchResultsComponent', 'selector': 'app-search-results'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'StatusPayComponent', 'selector': 'app-status-pay'},{'name': 'SuccessPayComponent', 'selector': 'app-success-pay'}];
+    var DIRECTIVES = [{'name': 'PhoneMaskDirective', 'selector': '[phoneMask]'},{'name': 'SanitizeHtmlDirective', 'selector': '[sanitizeHtml]'},{'name': 'TimeDirective', 'selector': '[time]'}];
+    var ACTUAL_COMPONENT = {'name': 'LoginComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'LoginComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

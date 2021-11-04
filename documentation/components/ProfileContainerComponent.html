@@ -1,0 +1,1093 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>frontend documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">frontend documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  ProfileContainerComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/client-profile/components/profile-container/profile-container.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-profile-container</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./profile-container.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./profile-container.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#recoverPasswordForm" >recoverPasswordForm</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#resetPasswordForm" >resetPasswordForm</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#buildForm" >buildForm</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#cleanPasswordControlForm" >cleanPasswordControlForm</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#getButtonClass" >getButtonClass</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#getPasswordConfirmError" >getPasswordConfirmError</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#getPasswordError" >getPasswordError</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#OnSubmit" >OnSubmit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#ClientDataInfo" >ClientDataInfo</a>
+                            </li>
+                            <li>
+                                <a href="#urlImage" >urlImage</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#newPasswordControl" >newPasswordControl</a>
+                                </li>
+                                <li>
+                                    <a href="#confirmPasswordControl" >confirmPasswordControl</a>
+                                </li>
+                                <li>
+                                    <a href="#currentPasswordControl" >currentPasswordControl</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                                <span class="modifier">Public</span>
+                        <code>constructor(fb: <a href="https://angular.io/api/forms/FormBuilder" target="_blank">FormBuilder</a>, clientProfileService: <a href="../injectables/ClientProfileService.html" target="_self">ClientProfileService</a>, snackbar: MatSnackBar, dialogService: <a href="../injectables/DialogService.html" target="_self">DialogService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/client-profile/components/profile-container/profile-container.component.ts:45</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>fb</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/forms/FormBuilder" target="_blank" >FormBuilder</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>clientProfileService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ClientProfileService.html" target="_self" >ClientProfileService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>snackbar</td>
+                                                  
+                                                        <td>
+                                                                    <code>MatSnackBar</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>dialogService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/DialogService.html" target="_self" >DialogService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ClientDataInfo"></a>
+                        <b>ClientDataInfo</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Claims.html" target="_self" >Claims</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/client-profile/components/profile-container/profile-container.component.ts:28</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="urlImage"></a>
+                        <b>urlImage</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/client-profile/components/profile-container/profile-container.component.ts:29</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="buildForm"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>buildForm</b></span>
+                        <a href="#buildForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>buildForm()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="60"
+                            class="link-to-prism">src/app/client-profile/components/profile-container/profile-container.component.ts:60</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cleanPasswordControlForm"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>cleanPasswordControlForm</b></span>
+                        <a href="#cleanPasswordControlForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>cleanPasswordControlForm()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="108"
+                            class="link-to-prism">src/app/client-profile/components/profile-container/profile-container.component.ts:108</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getButtonClass"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>getButtonClass</b></span>
+                        <a href="#getButtonClass"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getButtonClass()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="102"
+                            class="link-to-prism">src/app/client-profile/components/profile-container/profile-container.component.ts:102</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getPasswordConfirmError"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>getPasswordConfirmError</b></span>
+                        <a href="#getPasswordConfirmError"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getPasswordConfirmError()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="96"
+                            class="link-to-prism">src/app/client-profile/components/profile-container/profile-container.component.ts:96</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getPasswordError"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>getPasswordError</b></span>
+                        <a href="#getPasswordError"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getPasswordError()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="90"
+                            class="link-to-prism">src/app/client-profile/components/profile-container/profile-container.component.ts:90</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="56"
+                            class="link-to-prism">src/app/client-profile/components/profile-container/profile-container.component.ts:56</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="OnSubmit"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>OnSubmit</b></span>
+                        <a href="#OnSubmit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>OnSubmit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="68"
+                            class="link-to-prism">src/app/client-profile/components/profile-container/profile-container.component.ts:68</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="recoverPasswordForm"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>recoverPasswordForm</b></span>
+                        <a href="#recoverPasswordForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/forms/FormGroup" target="_blank" >FormGroup</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/client-profile/components/profile-container/profile-container.component.ts:26</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="resetPasswordForm"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>resetPasswordForm</b></span>
+                        <a href="#resetPasswordForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>() &#x3D;&gt; {...}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">src/app/client-profile/components/profile-container/profile-container.component.ts:106</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="newPasswordControl"></a>
+                        <span class="name"><b>newPasswordControl</b><a href="#newPasswordControl"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>newPasswordControl()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/client-profile/components/profile-container/profile-container.component.ts:35</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="confirmPasswordControl"></a>
+                        <span class="name"><b>confirmPasswordControl</b><a href="#confirmPasswordControl"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>confirmPasswordControl()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/client-profile/components/profile-container/profile-container.component.ts:39</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="currentPasswordControl"></a>
+                        <span class="name"><b>currentPasswordControl</b><a href="#currentPasswordControl"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>currentPasswordControl()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/client-profile/components/profile-container/profile-container.component.ts:43</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input, OnInit } from &#x27;@angular/core&#x27;;
+import { AbstractControl, FormBuilder, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
+import { MatSnackBar } from &#x27;@angular/material/snack-bar&#x27;;
+/** INTERFACES - MODELS */
+import { Claims } from &#x27;src/app/shared/interfaces/token&#x27;;
+import { DialogModel } from &#x27;src/app/shared/components/components/dialog/models/dialog-model&#x27;;
+/** CONSTANTS */
+import { ErrorMessages } from &#x27;src/app/shared/inmutable/enums/error-messages&#x27;;
+import { passwordRegex } from &#x27;src/app/shared/inmutable/constants/password&#x27;;
+import { passwordClientUpdatedContent } from &#x27;src/app/shared/inmutable/constants/dialog-messages&#x27;;
+/** VALIDATORS */
+import { PasswordValidator } from &#x27;src/app/shared/validations/password-validator&#x27;;
+/** SERVICES */
+import { ClientProfileService } from &#x27;../../services/client-profile.service&#x27;;
+import { DialogService } from &#x27;src/app/shared/components/components/dialog/services/dialog.service&#x27;;
+
+@Component({
+  selector: &#x27;app-profile-container&#x27;,
+  templateUrl: &#x27;./profile-container.component.html&#x27;,
+  styleUrls: [&#x27;./profile-container.component.scss&#x27;]
+})
+export class ProfileContainerComponent implements OnInit {
+  
+  // #region Variables
+  public recoverPasswordForm:FormGroup;  
+
+  @Input() public ClientDataInfo: Claims;
+  @Input() public urlImage: string;
+
+  // #endregion 
+
+  // #region Getters Controls
+
+  public get newPasswordControl(): AbstractControl {
+    return this.recoverPasswordForm.get(&#x27;newPassword&#x27;);
+  }
+
+  public get confirmPasswordControl(): AbstractControl{
+    return this.recoverPasswordForm.get(&#x27;confirmPassword&#x27;);
+  }
+
+  public get currentPasswordControl(): AbstractControl{
+    return this.recoverPasswordForm.get(&#x27;currentPassword&#x27;);
+  }
+
+  // #endregion
+  
+  public constructor(
+    private fb: FormBuilder, 
+    private clientProfileService: ClientProfileService,
+    private snackbar:MatSnackBar,
+    private dialogService :DialogService
+  ) { }
+
+  public ngOnInit(): void {
+    this.buildForm();    
+  }
+  
+  public buildForm(): void {
+    this.recoverPasswordForm &#x3D; this.fb.group({
+      currentPassword: [&#x27;&#x27;, [Validators.required,Validators.pattern(passwordRegex)]],
+      newPassword: [&#x27;&#x27;, [Validators.required, Validators.pattern(passwordRegex)]],
+      confirmPassword: [&#x27;&#x27;, [Validators.required, PasswordValidator(&#x27;newPassword&#x27;)]],
+    });
+  }
+
+  public OnSubmit() :void {
+    if(this.newPasswordControl.value &#x3D;&#x3D; this.confirmPasswordControl.value){
+      this.clientProfileService.putPassword(this.newPasswordControl.value).subscribe({
+        next: () &#x3D;&gt; {
+      
+          this.dialogService.openDialog(passwordClientUpdatedContent);
+          this.cleanPasswordControlForm();
+        },
+        error: () &#x3D;&gt; {
+          const dialogModel: DialogModel &#x3D; {
+            title: &quot;¡Lo sentimos!&quot;,
+            subtitle: ErrorMessages.GenericError,
+            isSuccessful: false,
+            messageButton: &quot;Volver&quot;,
+          };
+          this.dialogService.openDialog(dialogModel);
+          this.cleanPasswordControlForm();        
+        }
+      });
+    }
+  }
+
+  public getPasswordError():string {
+    const control &#x3D; this.newPasswordControl ;
+    return control.hasError(&quot;required&quot;) ? &quot;Debe ingresar una contraseña&quot; :
+      control.hasError(&quot;pattern&quot;) ? &quot;Debe tener como mínimo 8 dígitos, 1 mayúscula y 1 número&quot; : null;
+  }
+
+  public getPasswordConfirmError(): string {
+    const control &#x3D; this.confirmPasswordControl;
+    return control.hasError(&quot;required&quot;) ? &quot;Debe ingresar una contraseña&quot; :
+      control.hasError(&quot;notMatch&quot;) ? &quot;La contraseña no coincide&quot; : null;
+  }
+
+  public getButtonClass():string {
+      return (this.recoverPasswordForm.invalid) ? &#x27;btn btn-disabled&#x27; : &#x27;btn btn-submit&#x27;;
+  }
+  
+  private resetPasswordForm &#x3D; (): void &#x3D;&gt; this.recoverPasswordForm.reset();
+
+  private cleanPasswordControlForm(): void {
+    this.recoverPasswordForm.reset();
+    this.recoverPasswordForm.clearValidators(); 
+    this.recoverPasswordForm.markAsUntouched();
+  }
+
+  
+}
+
+ 
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">
+&lt;div class&#x3D;&quot;container&quot;&gt;
+    &lt;mat-card class&#x3D;&quot;bg p-0&quot;&gt;
+        &lt;div class&#x3D;&quot;row p-0&quot;&gt;
+             &lt;!-- SECTION DISPLAY INFO--&gt;
+            &lt;div class&#x3D;&quot;col mb-5 p-5&quot;&gt;
+                    &lt;div class&#x3D;&quot;col mb-3 d-flex justify-content-start&quot;&gt;
+                        &lt;h2 class&#x3D;&quot;titulo-3&quot; &gt;Perfil&lt;/h2&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;col ml-0 &quot;&gt;
+                        &lt;h5 class&#x3D;&quot;titulo-5 my-0 mb-1&quot;&gt;Nombre&lt;/h5&gt;
+                        &lt;h5 class&#x3D;&quot;titulo-4 my-0 mb-3&quot; &gt;&lt;b&gt;{{this.ClientDataInfo.name}} {{this.ClientDataInfo.last_name}}&lt;/b&gt;&lt;/h5&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;col ml-0 my-0&quot;&gt;
+                        &lt;h5 class&#x3D;&quot;titulo-5 my-0 mb-1&quot;&gt;Fecha de nacimiento&lt;/h5&gt;
+                        &lt;h5 class&#x3D;&quot;titulo-4 my-0 mb-3&quot;&gt;&lt;b&gt;{{this.ClientDataInfo.birth_date |  date: &#x27;dd/mm/yyyy&#x27; }}&lt;/b&gt;&lt;/h5&gt;
+                    &lt;/div&gt;                    
+                    &lt;div class&#x3D;&quot;col mx-0&quot;&gt;
+                        &lt;h5 class&#x3D;&quot;titulo-5 my-0 mb-1&quot;&gt;Email&lt;/h5&gt;
+                        &lt;h5 class&#x3D;&quot;titulo-4 my-0 mb-3&quot;&gt;&lt;b&gt;{{this.ClientDataInfo.email}}&lt;/b&gt;&lt;/h5&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;col mx-0&quot;&gt;
+                        &lt;h5 class&#x3D;&quot;titulo-5 my-0 mb-1&quot;&gt;Celular&lt;/h5&gt;
+                        &lt;h5 class&#x3D;&quot;titulo-4 my-0 mb-3&quot;&gt;&lt;b&gt;{{this.ClientDataInfo.phone}}&lt;/b&gt;&lt;/h5&gt;
+                    &lt;/div&gt;          
+            &lt;/div&gt;
+             &lt;!-- SECTION IMAGE PROFILE--&gt;
+            &lt;div class&#x3D;&quot;col-lg-3 p-2 mt-4 mb-5&quot;&gt;
+                &lt;app-profile-image [urlImage]&#x3D;&quot;this.urlImage&quot;&gt;&lt;/app-profile-image&gt;            
+            &lt;/div&gt; 
+
+            
+            &lt;mat-divider class&#x3D;&quot;col p-5 mx-1 mt-5
+             mb-5&quot; [vertical]&#x3D;&quot;true&quot;&gt;&lt;/mat-divider&gt;
+            
+            &lt;!-- SECTION CHANGE PASSWORD --&gt; 
+            &lt;div class&#x3D;&quot;col-lg-4 col-xs-3 col-md-3 mt-4 p-4&quot;&gt;
+                &lt;div class&#x3D;&quot;row&quot;&gt; 
+                    &lt;div class&#x3D;&quot;col  d-flex justify-content-center&quot;&gt;
+                        &lt;h2 class&#x3D;&quot;titulo-3&quot;&gt;Editar contraseña&lt;/h2&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;  
+
+
+                &lt;!-- SECTION FORM GROUP --&gt;
+                &lt;div class&#x3D;&quot;row mt-2 mx-3&quot;&gt;
+                    &lt;div class&#x3D;&quot;col m-0 p-0&quot;&gt;
+                        &lt;form [formGroup]&#x3D;&quot;this.recoverPasswordForm&quot; (ngSubmit)&#x3D;&quot;OnSubmit()&quot;&gt;
+                            &lt;div class&#x3D;&quot;row m-0 p-1&quot;&gt;
+                                &lt;mat-form-field appearance&#x3D;&quot;outline&quot; class&#x3D;&quot;col-lg-12 m-1 p-1&quot; &gt;
+                                  &lt;mat-label&gt; Contraseña Actual &lt;/mat-label&gt;
+                                  &lt;input matInput formControlName&#x3D;&quot;currentPassword&quot; type&#x3D;&quot;password&quot;&gt; 
+                                &lt;/mat-form-field&gt;
+    
+                                &lt;mat-form-field  appearance&#x3D;&quot;outline&quot; class&#x3D;&quot;col-lg-12 m-1 p-1&quot;&gt;
+                                    &lt;mat-label&gt;Contraseña Nueva&lt;/mat-label&gt;
+                                    &lt;input matInput formControlName&#x3D;&quot;newPassword&quot; type&#x3D;&quot;password&quot;&gt;
+                                    &lt;mat-error&gt; {{ getPasswordError() }}  &lt;/mat-error&gt;
+                                &lt;/mat-form-field&gt;
+     
+                                &lt;mat-form-field appearance&#x3D;&quot;outline&quot; class&#x3D;&quot;col-lg-12 m-1 p-1&quot; &gt;
+                                    &lt;mat-label&gt;Repetir Contraseña&lt;/mat-label&gt;
+                                    &lt;input matInput formControlName&#x3D;&quot;confirmPassword&quot; type&#x3D;&quot;password&quot;&gt;
+                                    &lt;mat-error&gt; {{ getPasswordConfirmError() }} &lt;/mat-error&gt;
+                                &lt;/mat-form-field&gt;    
+                            &lt;/div&gt;
+                         
+                            &lt;div class&#x3D;&quot;row mt-5 mb-5&quot;&gt;
+                                &lt;div class&#x3D;&quot;d-flex col justify-content-center align-items-center&quot;&gt;
+                                    &lt;button [class]&#x3D;&quot;getButtonClass()&quot; [disabled]&#x3D;&quot;!this.recoverPasswordForm.valid&quot;&gt;Guardar&lt;/button&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                          &lt;/form&gt; 
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/mat-card&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./profile-container.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.btn{
+    width: 255px;
+}
+
+.bg{ 
+    background: #FAFAFA;
+}
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="container">    <mat-card class="bg p-0">        <div class="row p-0">             <!-- SECTION DISPLAY INFO-->            <div class="col mb-5 p-5">                    <div class="col mb-3 d-flex justify-content-start">                        <h2 class="titulo-3" >Perfil</h2>                    </div>                    <div class="col ml-0 ">                        <h5 class="titulo-5 my-0 mb-1">Nombre</h5>                        <h5 class="titulo-4 my-0 mb-3" ><b>{{this.ClientDataInfo.name}} {{this.ClientDataInfo.last_name}}</b></h5>                    </div>                    <div class="col ml-0 my-0">                        <h5 class="titulo-5 my-0 mb-1">Fecha de nacimiento</h5>                        <h5 class="titulo-4 my-0 mb-3"><b>{{this.ClientDataInfo.birth_date |  date: \'dd/mm/yyyy\' }}</b></h5>                    </div>                                        <div class="col mx-0">                        <h5 class="titulo-5 my-0 mb-1">Email</h5>                        <h5 class="titulo-4 my-0 mb-3"><b>{{this.ClientDataInfo.email}}</b></h5>                    </div>                    <div class="col mx-0">                        <h5 class="titulo-5 my-0 mb-1">Celular</h5>                        <h5 class="titulo-4 my-0 mb-3"><b>{{this.ClientDataInfo.phone}}</b></h5>                    </div>                      </div>             <!-- SECTION IMAGE PROFILE-->            <div class="col-lg-3 p-2 mt-4 mb-5">                <app-profile-image [urlImage]="this.urlImage"></app-profile-image>                        </div>                         <mat-divider class="col p-5 mx-1 mt-5             mb-5" [vertical]="true"></mat-divider>                        <!-- SECTION CHANGE PASSWORD -->             <div class="col-lg-4 col-xs-3 col-md-3 mt-4 p-4">                <div class="row">                     <div class="col  d-flex justify-content-center">                        <h2 class="titulo-3">Editar contraseña</h2>                    </div>                </div>                  <!-- SECTION FORM GROUP -->                <div class="row mt-2 mx-3">                    <div class="col m-0 p-0">                        <form [formGroup]="this.recoverPasswordForm" (ngSubmit)="OnSubmit()">                            <div class="row m-0 p-1">                                <mat-form-field appearance="outline" class="col-lg-12 m-1 p-1" >                                  <mat-label> Contraseña Actual </mat-label>                                  <input matInput formControlName="currentPassword" type="password">                                 </mat-form-field>                                    <mat-form-field  appearance="outline" class="col-lg-12 m-1 p-1">                                    <mat-label>Contraseña Nueva</mat-label>                                    <input matInput formControlName="newPassword" type="password">                                    <mat-error> {{ getPasswordError() }}  </mat-error>                                </mat-form-field>                                     <mat-form-field appearance="outline" class="col-lg-12 m-1 p-1" >                                    <mat-label>Repetir Contraseña</mat-label>                                    <input matInput formControlName="confirmPassword" type="password">                                    <mat-error> {{ getPasswordConfirmError() }} </mat-error>                                </mat-form-field>                                </div>                                                     <div class="row mt-5 mb-5">                                <div class="d-flex col justify-content-center align-items-center">                                    <button [class]="getButtonClass()" [disabled]="!this.recoverPasswordForm.valid">Guardar</button>                                </div>                            </div>                          </form>                     </div>                </div>            </div>        </div>    </mat-card></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BodyComponent', 'selector': 'app-body'},{'name': 'BusinessDetailsBodyComponent', 'selector': 'app-business-details-body'},{'name': 'BusinessDetailsComponent', 'selector': 'app-business-details'},{'name': 'BusinessMenusComponent', 'selector': 'app-business-menus'},{'name': 'BusinessNewBranchComponent', 'selector': 'app-business-new-branch'},{'name': 'BusinessProfileBodyComponent', 'selector': 'app-business-profile-body'},{'name': 'BusinessProfileCarouselUploadImageComponent', 'selector': 'app-business-profile-carousel-upload-image'},{'name': 'BusinessProfileCloseUploadImageComponent', 'selector': 'app-business-profile-close-upload-image'},{'name': 'BusinessProfileComponent', 'selector': 'app-business-profile'},{'name': 'BusinessProfileEditBankDataComponent', 'selector': 'app-business-profile-edit-bank-data'},{'name': 'BusinessProfileEditDataComponent', 'selector': 'app-business-profile-edit-data'},{'name': 'BusinessProfileEditPasswordComponent', 'selector': 'app-business-profile-edit-password'},{'name': 'BusinessProfileEditWorkDaysComponent', 'selector': 'app-business-profile-edit-work-days'},{'name': 'BusinessProfileImageLocalsComponent', 'selector': 'app-business-profile-image-locals'},{'name': 'BusinessProfileUploadImageLocalsComponent', 'selector': 'app-business-profile-upload-image-locals'},{'name': 'BusinessRegistrationComponent', 'selector': 'app-business-registration'},{'name': 'CancelPayComponent', 'selector': 'app-cancel-pay'},{'name': 'CarouselComponent', 'selector': 'app-carousel'},{'name': 'ClientMenusComponent', 'selector': 'app-client-menus'},{'name': 'ClientProfileComponent', 'selector': 'app-client-profile'},{'name': 'ClientRegistrationComponent', 'selector': 'app-client-registration'},{'name': 'CloseModalComponent', 'selector': 'app-close-modal'},{'name': 'CreateReservationComponent', 'selector': 'app-create-reservation'},{'name': 'DialogComponent', 'selector': 'app-dialog'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'FrequentQuestionsComponent', 'selector': 'app-frequent-questions'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HeaderLoginComponent', 'selector': 'app-header-login'},{'name': 'HeaderPublicComponent', 'selector': 'app-header-public'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MapComponent', 'selector': 'app-map'},{'name': 'NotFoundPageComponent', 'selector': 'app-not-found-page'},{'name': 'PrivacyComponent', 'selector': 'app-privacy'},{'name': 'ProfileContainerComponent', 'selector': 'app-profile-container'},{'name': 'ProfileImageComponent', 'selector': 'app-profile-image'},{'name': 'RefundPolicyComponent', 'selector': 'app-refund-policy'},{'name': 'RejectedPayComponent', 'selector': 'app-rejected-pay'},{'name': 'SearchBarComponent', 'selector': 'app-search-bar'},{'name': 'SearchRestaurantComponent', 'selector': 'app-search-restaurant'},{'name': 'SearchResultsComponent', 'selector': 'app-search-results'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'StatusPayComponent', 'selector': 'app-status-pay'},{'name': 'SuccessPayComponent', 'selector': 'app-success-pay'}];
+    var DIRECTIVES = [{'name': 'PhoneMaskDirective', 'selector': '[phoneMask]'},{'name': 'SanitizeHtmlDirective', 'selector': '[sanitizeHtml]'},{'name': 'TimeDirective', 'selector': '[time]'}];
+    var ACTUAL_COMPONENT = {'name': 'ProfileContainerComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ProfileContainerComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -1,0 +1,1084 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>frontend documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">frontend documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  BusinessProfileEditDataComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/business-profile/components/business-profile-edit-data/business-profile-edit-data.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-business-profile-edit-data</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./business-profile-edit-data.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./business-profile-edit-data.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#form" >form</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#getBusinessLocationError" >getBusinessLocationError</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#getBusinessNameError" >getBusinessNameError</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#getBusinessPhoneError" >getBusinessPhoneError</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#getLegalRepresentativeEmailError" >getLegalRepresentativeEmailError</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#getManagerNameError" >getManagerNameError</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#getPhoneManagerError" >getPhoneManagerError</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#initForm" >initForm</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#save" >save</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                                <span class="modifier">Public</span>
+                        <code>constructor(fb: <a href="https://angular.io/api/forms/FormBuilder" target="_blank">FormBuilder</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/business-profile/components/business-profile-edit-data/business-profile-edit-data.component.ts:12</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>fb</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/forms/FormBuilder" target="_blank" >FormBuilder</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getBusinessLocationError"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>getBusinessLocationError</b></span>
+                        <a href="#getBusinessLocationError"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getBusinessLocationError()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="81"
+                            class="link-to-prism">src/app/business-profile/components/business-profile-edit-data/business-profile-edit-data.component.ts:81</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getBusinessNameError"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>getBusinessNameError</b></span>
+                        <a href="#getBusinessNameError"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getBusinessNameError()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="61"
+                            class="link-to-prism">src/app/business-profile/components/business-profile-edit-data/business-profile-edit-data.component.ts:61</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getBusinessPhoneError"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>getBusinessPhoneError</b></span>
+                        <a href="#getBusinessPhoneError"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getBusinessPhoneError()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="72"
+                            class="link-to-prism">src/app/business-profile/components/business-profile-edit-data/business-profile-edit-data.component.ts:72</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getLegalRepresentativeEmailError"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>getLegalRepresentativeEmailError</b></span>
+                        <a href="#getLegalRepresentativeEmailError"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getLegalRepresentativeEmailError()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="92"
+                            class="link-to-prism">src/app/business-profile/components/business-profile-edit-data/business-profile-edit-data.component.ts:92</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getManagerNameError"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>getManagerNameError</b></span>
+                        <a href="#getManagerNameError"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getManagerNameError()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="103"
+                            class="link-to-prism">src/app/business-profile/components/business-profile-edit-data/business-profile-edit-data.component.ts:103</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getPhoneManagerError"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>getPhoneManagerError</b></span>
+                        <a href="#getPhoneManagerError"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getPhoneManagerError()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="114"
+                            class="link-to-prism">src/app/business-profile/components/business-profile-edit-data/business-profile-edit-data.component.ts:114</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="initForm"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>initForm</b></span>
+                        <a href="#initForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>initForm()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="20"
+                            class="link-to-prism">src/app/business-profile/components/business-profile-edit-data/business-profile-edit-data.component.ts:20</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="16"
+                            class="link-to-prism">src/app/business-profile/components/business-profile-edit-data/business-profile-edit-data.component.ts:16</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="save"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>save</b></span>
+                        <a href="#save"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>save()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="56"
+                            class="link-to-prism">src/app/business-profile/components/business-profile-edit-data/business-profile-edit-data.component.ts:56</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="form"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>form</b></span>
+                        <a href="#form"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/forms/FormGroup" target="_blank" >FormGroup</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/business-profile/components/business-profile-edit-data/business-profile-edit-data.component.ts:12</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &quot;@angular/core&quot;;
+import { FormBuilder, FormGroup, Validators } from &quot;@angular/forms&quot;;
+import { emailRegex } from &quot;src/app/shared/inmutable/constants/email&quot;;
+import { ErrorMessages } from &quot;src/app/shared/inmutable/enums/error-messages&quot;;
+
+@Component({
+  selector: &quot;app-business-profile-edit-data&quot;,
+  templateUrl: &quot;./business-profile-edit-data.component.html&quot;,
+  styleUrls: [&quot;./business-profile-edit-data.component.scss&quot;],
+})
+export class BusinessProfileEditDataComponent implements OnInit {
+  public form: FormGroup;
+
+  public constructor(private fb: FormBuilder) {}
+
+  public ngOnInit(): void {
+    this.initForm();
+  }
+
+  public initForm(): void {
+    this.form &#x3D; this.fb.group({
+      businessName: [
+        { value: &quot;Los Vikingos&quot;, disabled: true },
+        [
+          Validators.required,
+          Validators.minLength(2),
+          Validators.maxLength(50),
+        ],
+      ],
+      businessPhone: [&quot;&quot;, [Validators.required, Validators.minLength(17)]],
+      businessLocation: [
+        { value: &quot;Avenida Grecia #1223&quot;, disabled: true },
+        [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(50),
+        ],
+      ],
+      email: [
+        &quot;&quot;,
+        [Validators.email, Validators.required, Validators.pattern(emailRegex)],
+      ],
+      managerName: [
+        &quot;&quot;,
+        [
+          Validators.required,
+          Validators.minLength(2),
+          Validators.maxLength(50),
+        ],
+      ],
+      phoneManager: [&quot;&quot;, [Validators.required, Validators.minLength(17)]],
+      petsAllowed: [&quot;0&quot;],
+    });
+  }
+
+  public save(): void {
+    //
+  }
+
+  // #region Validations Errors
+  public getBusinessNameError(): string {
+    const control &#x3D; this.form.get(&quot;businessName&quot;);
+    return control.hasError(&quot;required&quot;)
+      ? ErrorMessages.Required.replace(&quot;{0}&quot;, &quot;nombre&quot;)
+      : control.hasError(&quot;minlength&quot;)
+      ? ErrorMessages.Minlength.replace(&quot;{0}&quot;, &quot;2&quot;)
+      : control.hasError(&quot;maxlength&quot;)
+      ? ErrorMessages.Maxlength.replace(&quot;{0}&quot;, &quot;50&quot;)
+      : null;
+  }
+
+  public getBusinessPhoneError(): string {
+    const control &#x3D; this.form.get(&quot;businessPhone&quot;);
+    return control.hasError(&quot;required&quot;)
+      ? ErrorMessages.Required.replace(&quot;{0}&quot;, &quot;número&quot;)
+      : control.hasError(&quot;minlength&quot;)
+      ? ErrorMessages.Invalid.replace(&quot;{0}&quot;, &quot;número&quot;)
+      : null;
+  }
+
+  public getBusinessLocationError(): string {
+    const control &#x3D; this.form.get(&quot;businessLocation&quot;);
+    return control.hasError(&quot;required&quot;)
+      ? ErrorMessages.RequiredVariant.replace(&quot;{0}&quot;, &quot;calle&quot;)
+      : control.hasError(&quot;minlength&quot;)
+      ? ErrorMessages.Minlength.replace(&quot;{0}&quot;, &quot;5&quot;)
+      : control.hasError(&quot;maxlength&quot;)
+      ? ErrorMessages.Maxlength.replace(&quot;{0}&quot;, &quot;50&quot;)
+      : null;
+  }
+
+  public getLegalRepresentativeEmailError(): string {
+    const control &#x3D; this.form.get(&quot;email&quot;);
+    return control.hasError(&quot;required&quot;)
+      ? ErrorMessages.Required.replace(&quot;{0}&quot;, &quot;email&quot;)
+      : control.hasError(&quot;email&quot;)
+      ? ErrorMessages.Invalid.replace(&quot;{0}&quot;, &quot;email&quot;)
+      : control.hasError(&quot;pattern&quot;)
+      ? ErrorMessages.Invalid.replace(&quot;{0}&quot;, &quot;email&quot;)
+      : null;
+  }
+
+  public getManagerNameError(): string {
+    const control &#x3D; this.form.get(&quot;managerName&quot;);
+    return control.hasError(&quot;required&quot;)
+      ? ErrorMessages.Required.replace(&quot;{0}&quot;, &quot;nombre&quot;)
+      : control.hasError(&quot;minlength&quot;)
+      ? ErrorMessages.Minlength.replace(&quot;{0}&quot;, &quot;2&quot;)
+      : control.hasError(&quot;maxlength&quot;)
+      ? ErrorMessages.Maxlength.replace(&quot;{0}&quot;, &quot;50&quot;)
+      : null;
+  }
+
+  public getPhoneManagerError(): string {
+    const control &#x3D; this.form.get(&quot;phoneManager&quot;);
+    return control.hasError(&quot;required&quot;)
+      ? ErrorMessages.Required.replace(&quot;{0}&quot;, &quot;teléfono&quot;)
+      : control.hasError(&quot;minlength&quot;)
+      ? ErrorMessages.Invalid.replace(&quot;{0}&quot;, &quot;teléfono&quot;)
+      : null;
+  }
+  // #endregion Validations Errors
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;app-close-modal&gt;&lt;/app-close-modal&gt;
+
+&lt;div class&#x3D;&quot;container body&quot;&gt;
+  &lt;form [formGroup]&#x3D;&quot;form&quot; (ngSubmit)&#x3D;&quot;save()&quot; (keydown.enter)&#x3D;&quot;$event.preventDefault()&quot;&gt;
+    &lt;div class&#x3D;&quot;row mb-n5&quot;&gt;
+      &lt;div class&#x3D;&quot;col col-center&quot;&gt;
+        &lt;h3 class&#x3D;&quot;titulo-3&quot;&gt;Mis Datos&lt;/h3&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;row mb-n2&quot;&gt;
+      &lt;div class&#x3D;&quot;col col-center&quot;&gt;
+        &lt;h3 class&#x3D;&quot;titulo-2&quot;&gt;Los Vikingos&lt;/h3&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;row col-center&quot;&gt;
+      &lt;div class&#x3D;&quot;col-12 col-md-6 col-lg-4&quot;&gt;
+        &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+          &lt;mat-label&gt;Nombre del Local *&lt;/mat-label&gt;
+          &lt;input matInput formControlName&#x3D;&quot;businessName&quot; type&#x3D;&quot;text&quot; /&gt;
+          &lt;mat-error&gt;
+            {{ getBusinessNameError() }}
+          &lt;/mat-error&gt;
+        &lt;/mat-form-field&gt;
+      &lt;/div&gt;
+
+      &lt;div class&#x3D;&quot;col-12 col-md-6 col-lg-4&quot;&gt;
+        &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+          &lt;mat-label&gt;Teléfono *&lt;/mat-label&gt;
+          &lt;input matInput formControlName&#x3D;&quot;businessPhone&quot; type&#x3D;&quot;text&quot; placeholder&#x3D;&quot;+XX X XXXX XXXX&quot; phoneMask
+            maxlength&#x3D;&quot;17&quot; /&gt;
+          &lt;mat-error&gt;
+            {{ getBusinessPhoneError() }}
+          &lt;/mat-error&gt;
+        &lt;/mat-form-field&gt;
+      &lt;/div&gt;
+
+      &lt;div class&#x3D;&quot;col-12 col-lg-4&quot;&gt;
+        &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+          &lt;mat-label&gt;Dirección Casa Matriz *&lt;/mat-label&gt;
+          &lt;input matInput formControlName&#x3D;&quot;businessLocation&quot; type&#x3D;&quot;text&quot; /&gt;
+          &lt;mat-error&gt;
+            {{ getBusinessLocationError() }}
+          &lt;/mat-error&gt;
+        &lt;/mat-form-field&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;row&quot;&gt;
+      &lt;div class&#x3D;&quot;col-12 col-md-6 col-lg-4&quot;&gt;
+        &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+          &lt;mat-label&gt;Email *&lt;/mat-label&gt;
+          &lt;input matInput formControlName&#x3D;&quot;email&quot; type&#x3D;&quot;text&quot; /&gt;
+          &lt;mat-error&gt;
+            {{ getLegalRepresentativeEmailError() }}
+          &lt;/mat-error&gt;
+        &lt;/mat-form-field&gt;
+      &lt;/div&gt;
+
+      &lt;div class&#x3D;&quot;col-12 col-md-6 col-lg-4&quot;&gt;
+        &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+          &lt;mat-label&gt;Nombre del Encargado *&lt;/mat-label&gt;
+          &lt;input matInput formControlName&#x3D;&quot;managerName&quot; type&#x3D;&quot;text&quot; /&gt;
+          &lt;mat-error&gt;
+            {{ getManagerNameError() }}
+          &lt;/mat-error&gt;
+        &lt;/mat-form-field&gt;
+      &lt;/div&gt;
+
+      &lt;div class&#x3D;&quot;col-12 col-lg-4&quot;&gt;
+        &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+          &lt;mat-label&gt;Número del Encargado *&lt;/mat-label&gt;
+          &lt;input matInput formControlName&#x3D;&quot;phoneManager&quot; type&#x3D;&quot;text&quot; placeholder&#x3D;&quot;+XX X XXXX XXXX&quot; phoneMask
+            maxlength&#x3D;&quot;17&quot; /&gt;
+          &lt;mat-error&gt;
+            {{ getPhoneManagerError() }}
+          &lt;/mat-error&gt;
+        &lt;/mat-form-field&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;row&quot;&gt;
+      &lt;div class&#x3D;&quot;col col-center&quot;&gt;
+        &lt;mat-radio-group formControlName&#x3D;&quot;petsAllowed&quot;&gt;
+          &lt;mat-radio-button value&#x3D;&quot;1&quot;&gt;
+            &lt;img src&#x3D;&quot;./../../../../assets/keeping-pet.svg&quot; /&gt;
+            &lt;h4 class&#x3D;&quot;titulo-4&quot;&gt;Aceptan mascotas&lt;/h4&gt;
+          &lt;/mat-radio-button&gt;
+          &lt;mat-radio-button value&#x3D;&quot;0&quot; class&#x3D;&quot;second-radio&quot;&gt;
+            &lt;img src&#x3D;&quot;./../../../../assets/not-keeping-pet.svg&quot; /&gt;
+            &lt;h4 class&#x3D;&quot;titulo-4&quot;&gt;No aceptan mascotas&lt;/h4&gt;
+          &lt;/mat-radio-button&gt;
+        &lt;/mat-radio-group&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;row pt-5&quot;&gt;
+      &lt;div class&#x3D;&quot;col-12 col-md-6 col-lg-6 col-center&quot;&gt;
+        &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn-normal-red&quot; [mat-dialog-close]&#x3D;&quot;true&quot; mat-raised-button&gt;
+          Volver a mis datos
+        &lt;/button&gt;
+      &lt;/div&gt;
+
+      &lt;div class&#x3D;&quot;col-12 col-md-6 col-lg-6 col-center&quot;&gt;
+        &lt;button type&#x3D;&quot;submit&quot; class&#x3D;&quot;btn-submit&quot; mat-raised-button&gt;
+          Guardar cambios
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/form&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./business-profile-edit-data.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">@import &quot;../../../../styles.scss&quot;;
+
+mat-label {
+  color: #3c0000;
+}
+
+mat-form-field {
+  width: 100%;
+  padding-bottom: 10px;
+}
+
+::ng-deep .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+  background-color: red !important;
+}
+
+::ng-deep .mat-radio-button.mat-accent .mat-radio-inner-circle {
+  background-color: red !important;
+}
+
+::ng-deep
+  .mat-radio-button.mat-accent.mat-radio-checked
+  .mat-radio-outer-circle {
+  border-color: red !important;
+}
+
+.titulo-2 {
+  font-weight: normal;
+}
+
+.mb-n5 {
+  margin-bottom: -50px;
+}
+
+.mb-n2 {
+  margin-bottom: -20px;
+}
+
+:host ::ng-deep .mat-radio-label-content {
+  display: flex;
+}
+
+.second-radio {
+  padding-left: 150px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .second-radio {
+    padding-left: 0px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .body {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 70vh;
+    width: auto;
+  }
+
+  .titulo-4 {
+    font-size: 20px;
+  }
+
+  .titulo-3 {
+    font-size: 27px;
+  }
+
+  .titulo-2 {
+    font-size: 25px;
+  }
+
+  .second-radio {
+    padding-left: 0px;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  img {
+    display: none;
+  }
+
+  .titulo-4 {
+    font-size: 14px;
+  }
+}
+
+::ng-deep.business-profile-dialog .mat-dialog-container {
+  padding: 9px;
+  @include view-min(768px) {
+    padding: 16px;
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><app-close-modal></app-close-modal><div class="container body">  <form [formGroup]="form" (ngSubmit)="save()" (keydown.enter)="$event.preventDefault()">    <div class="row mb-n5">      <div class="col col-center">        <h3 class="titulo-3">Mis Datos</h3>      </div>    </div>    <div class="row mb-n2">      <div class="col col-center">        <h3 class="titulo-2">Los Vikingos</h3>      </div>    </div>    <div class="row col-center">      <div class="col-12 col-md-6 col-lg-4">        <mat-form-field appearance="outline">          <mat-label>Nombre del Local *</mat-label>          <input matInput formControlName="businessName" type="text" />          <mat-error>            {{ getBusinessNameError() }}          </mat-error>        </mat-form-field>      </div>      <div class="col-12 col-md-6 col-lg-4">        <mat-form-field appearance="outline">          <mat-label>Teléfono *</mat-label>          <input matInput formControlName="businessPhone" type="text" placeholder="+XX X XXXX XXXX" phoneMask            maxlength="17" />          <mat-error>            {{ getBusinessPhoneError() }}          </mat-error>        </mat-form-field>      </div>      <div class="col-12 col-lg-4">        <mat-form-field appearance="outline">          <mat-label>Dirección Casa Matriz *</mat-label>          <input matInput formControlName="businessLocation" type="text" />          <mat-error>            {{ getBusinessLocationError() }}          </mat-error>        </mat-form-field>      </div>    </div>    <div class="row">      <div class="col-12 col-md-6 col-lg-4">        <mat-form-field appearance="outline">          <mat-label>Email *</mat-label>          <input matInput formControlName="email" type="text" />          <mat-error>            {{ getLegalRepresentativeEmailError() }}          </mat-error>        </mat-form-field>      </div>      <div class="col-12 col-md-6 col-lg-4">        <mat-form-field appearance="outline">          <mat-label>Nombre del Encargado *</mat-label>          <input matInput formControlName="managerName" type="text" />          <mat-error>            {{ getManagerNameError() }}          </mat-error>        </mat-form-field>      </div>      <div class="col-12 col-lg-4">        <mat-form-field appearance="outline">          <mat-label>Número del Encargado *</mat-label>          <input matInput formControlName="phoneManager" type="text" placeholder="+XX X XXXX XXXX" phoneMask            maxlength="17" />          <mat-error>            {{ getPhoneManagerError() }}          </mat-error>        </mat-form-field>      </div>    </div>    <div class="row">      <div class="col col-center">        <mat-radio-group formControlName="petsAllowed">          <mat-radio-button value="1">            <img src="./../../../../assets/keeping-pet.svg" />            <h4 class="titulo-4">Aceptan mascotas</h4>          </mat-radio-button>          <mat-radio-button value="0" class="second-radio">            <img src="./../../../../assets/not-keeping-pet.svg" />            <h4 class="titulo-4">No aceptan mascotas</h4>          </mat-radio-button>        </mat-radio-group>      </div>    </div>    <div class="row pt-5">      <div class="col-12 col-md-6 col-lg-6 col-center">        <button type="button" class="btn-normal-red" [mat-dialog-close]="true" mat-raised-button>          Volver a mis datos        </button>      </div>      <div class="col-12 col-md-6 col-lg-6 col-center">        <button type="submit" class="btn-submit" mat-raised-button>          Guardar cambios        </button>      </div>    </div>  </form></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BodyComponent', 'selector': 'app-body'},{'name': 'BusinessDetailsBodyComponent', 'selector': 'app-business-details-body'},{'name': 'BusinessDetailsComponent', 'selector': 'app-business-details'},{'name': 'BusinessMenusComponent', 'selector': 'app-business-menus'},{'name': 'BusinessNewBranchComponent', 'selector': 'app-business-new-branch'},{'name': 'BusinessProfileBodyComponent', 'selector': 'app-business-profile-body'},{'name': 'BusinessProfileCarouselUploadImageComponent', 'selector': 'app-business-profile-carousel-upload-image'},{'name': 'BusinessProfileCloseUploadImageComponent', 'selector': 'app-business-profile-close-upload-image'},{'name': 'BusinessProfileComponent', 'selector': 'app-business-profile'},{'name': 'BusinessProfileEditBankDataComponent', 'selector': 'app-business-profile-edit-bank-data'},{'name': 'BusinessProfileEditDataComponent', 'selector': 'app-business-profile-edit-data'},{'name': 'BusinessProfileEditPasswordComponent', 'selector': 'app-business-profile-edit-password'},{'name': 'BusinessProfileEditWorkDaysComponent', 'selector': 'app-business-profile-edit-work-days'},{'name': 'BusinessProfileImageLocalsComponent', 'selector': 'app-business-profile-image-locals'},{'name': 'BusinessProfileUploadImageLocalsComponent', 'selector': 'app-business-profile-upload-image-locals'},{'name': 'BusinessRegistrationComponent', 'selector': 'app-business-registration'},{'name': 'CancelPayComponent', 'selector': 'app-cancel-pay'},{'name': 'CarouselComponent', 'selector': 'app-carousel'},{'name': 'ClientMenusComponent', 'selector': 'app-client-menus'},{'name': 'ClientProfileComponent', 'selector': 'app-client-profile'},{'name': 'ClientRegistrationComponent', 'selector': 'app-client-registration'},{'name': 'CloseModalComponent', 'selector': 'app-close-modal'},{'name': 'CreateReservationComponent', 'selector': 'app-create-reservation'},{'name': 'DialogComponent', 'selector': 'app-dialog'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'FrequentQuestionsComponent', 'selector': 'app-frequent-questions'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HeaderLoginComponent', 'selector': 'app-header-login'},{'name': 'HeaderPublicComponent', 'selector': 'app-header-public'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MapComponent', 'selector': 'app-map'},{'name': 'NotFoundPageComponent', 'selector': 'app-not-found-page'},{'name': 'PrivacyComponent', 'selector': 'app-privacy'},{'name': 'ProfileContainerComponent', 'selector': 'app-profile-container'},{'name': 'ProfileImageComponent', 'selector': 'app-profile-image'},{'name': 'RefundPolicyComponent', 'selector': 'app-refund-policy'},{'name': 'RejectedPayComponent', 'selector': 'app-rejected-pay'},{'name': 'SearchBarComponent', 'selector': 'app-search-bar'},{'name': 'SearchRestaurantComponent', 'selector': 'app-search-restaurant'},{'name': 'SearchResultsComponent', 'selector': 'app-search-results'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'StatusPayComponent', 'selector': 'app-status-pay'},{'name': 'SuccessPayComponent', 'selector': 'app-success-pay'}];
+    var DIRECTIVES = [{'name': 'PhoneMaskDirective', 'selector': '[phoneMask]'},{'name': 'SanitizeHtmlDirective', 'selector': '[sanitizeHtml]'},{'name': 'TimeDirective', 'selector': '[time]'}];
+    var ACTUAL_COMPONENT = {'name': 'BusinessProfileEditDataComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'BusinessProfileEditDataComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
