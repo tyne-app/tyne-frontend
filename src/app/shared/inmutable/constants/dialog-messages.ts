@@ -48,3 +48,9 @@ export const updateMenu: DialogModel = {
   redirectTo: TyneRoutes.ClientProfile,
 };
 
+export const unregisteredUser: DialogModel = {
+  title: ErrorMessages.WeAreSorry,
+  subtitle: ErrorMessages.UnregisteredUser,
+  isSuccessful: false,
+  messageButton: "Volver",
+};

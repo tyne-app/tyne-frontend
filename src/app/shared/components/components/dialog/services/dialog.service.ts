@@ -10,7 +10,7 @@ export class DialogService {
   public constructor(private dialog: MatDialog) {}
 
   public openDialog(dialogModel: DialogModel): void {
-    if (this.dialog.openDialogs.length === 1) {
+    if (this.dialog.openDialogs.length <= 2) {
       this.dialog.open(DialogComponent, {
         data: dialogModel,
         maxWidth: "95%",

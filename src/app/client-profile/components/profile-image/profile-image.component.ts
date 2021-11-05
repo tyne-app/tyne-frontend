@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { ChangeDetectorRef, Component, Input, OnInit } from "@angular/core";
 import { FileService } from "@app/core/helpers/file.service";
 import { ClientService } from "@app/core/services/client.service";
 import { DialogService } from "src/app/shared/components/components/dialog/services/dialog.service";
@@ -21,12 +21,18 @@ export class ProfileImageComponent implements OnInit {
   public constructor(
     public clientProfileService: ClientService,
     private dialogService: DialogService,
-    private fileService: FileService
+    private fileService: FileService,
+    private cdref: ChangeDetectorRef
   ) {}
 
   public ngOnInit(): void {}
 
+  public ngAfterContentChecked(): void {
+    this.cdref.detectChanges();
+  }
+
   public getImageProfile(): string | ArrayBuffer {
+    console.log(this.urlImage);
     return this.urlImage ? this.urlImage : "/assets/img/user-profile.svg";
   }
 
