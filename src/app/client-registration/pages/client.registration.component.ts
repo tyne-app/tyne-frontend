@@ -1,24 +1,27 @@
 /** ANGULAR CORE */
+import { HttpErrorResponse } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { AbstractControl, FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { HttpErrorResponse } from "@angular/common/http";
 /** ANGULAR MATERIAL */
 import { MatDialogRef } from "@angular/material/dialog";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { Router } from "@angular/router";
-/** INMUTABLE */
-import { emailRegex } from "src/app/shared/inmutable/constants/email";
-import { ErrorMessages } from "src/app/shared/inmutable/enums/error-messages";
-import { passwordRegex } from "src/app/shared/inmutable/constants/password";
-import { errorContent, invalidFormContent, registerClientContent } from "src/app/shared/inmutable/constants/dialog-messages";
-import { DialogModel } from "src/app/shared/components/components/dialog/models/dialog-model";
-
-import { Client } from "src/app/shared/interfaces/client";
-import { PasswordValidator } from "src/app/shared/validations/password-validator";
 /** SERVICES */
 import { ClientService } from "@app/core/services/client.service";
 import { SocialService } from "@app/core/services/social.service";
+import { DialogModel } from "src/app/shared/components/components/dialog/models/dialog-model";
 import { DialogService } from "src/app/shared/components/components/dialog/services/dialog.service";
+import {
+  errorContent,
+  invalidFormContent,
+  registerClientContent,
+} from "src/app/shared/inmutable/constants/dialog-messages";
+/** INMUTABLE */
+import { emailRegex } from "src/app/shared/inmutable/constants/email";
+import { passwordRegex } from "src/app/shared/inmutable/constants/password";
+import { ErrorMessages } from "src/app/shared/inmutable/enums/error-messages";
+import { Client } from "src/app/shared/interfaces/client";
+import { PasswordValidator } from "src/app/shared/validations/password-validator";
 
 @Component({
   selector: "app-client-registration",
@@ -28,41 +31,41 @@ import { DialogService } from "src/app/shared/components/components/dialog/servi
 export class ClientRegistrationComponent implements OnInit {
   public loading = false;
   public clientRegisterForm!: FormGroup;
-  public isWhiteLogo = false; 
+  public isWhiteLogo = false;
 
- // #region Getters 
- public get ClientNameControl():AbstractControl{
-  return this.clientRegisterForm.get("clientName");
- }
+  // #region Getters
+  public get ClientNameControl(): AbstractControl {
+    return this.clientRegisterForm.get("clientName");
+  }
 
- public get ClientLastNameControl():AbstractControl{
-  return this.clientRegisterForm.get("clientLastName");
- }
+  public get ClientLastNameControl(): AbstractControl {
+    return this.clientRegisterForm.get("clientLastName");
+  }
 
- public get ClientEmailControl(): AbstractControl {
-  return this.clientRegisterForm.get("clientEmail");
- }
+  public get ClientEmailControl(): AbstractControl {
+    return this.clientRegisterForm.get("clientEmail");
+  }
 
- public get ClientPhoneControl():AbstractControl {
-  return this.clientRegisterForm.get("clientPhone");
- }
+  public get ClientPhoneControl(): AbstractControl {
+    return this.clientRegisterForm.get("clientPhone");
+  }
 
- public get ClientPasswordControl():AbstractControl{
-   return this.clientRegisterForm.get("password");
- }
+  public get ClientPasswordControl(): AbstractControl {
+    return this.clientRegisterForm.get("password");
+  }
 
- public get ClientBirthdayControl():AbstractControl{
-   return this.clientRegisterForm.get("birthDate");
- }
+  public get ClientBirthdayControl(): AbstractControl {
+    return this.clientRegisterForm.get("birthDate");
+  }
 
- // #endregion
+  // #endregion
   /**
-   * @param fb 
-   * @param matDialogRef 
-   * @param router 
-   * @param clientService 
-   * @param snackbar 
-   * @param dialogService 
+   * @param fb
+   * @param matDialogRef
+   * @param router
+   * @param clientService
+   * @param snackbar
+   * @param dialogService
    */
 
   public constructor(
@@ -72,7 +75,7 @@ export class ClientRegistrationComponent implements OnInit {
     private clientService: ClientService,
     private snackbar: MatSnackBar,
     private dialogService: DialogService,
-    private socialService:SocialService
+    private socialService: SocialService
   ) {}
 
   public ngOnInit(): void {
@@ -90,15 +93,10 @@ export class ClientRegistrationComponent implements OnInit {
     const client: Client = {
       name: this.ClientNameControl.value,
       lastName: this.ClientLastNameControl.value,
-      phone: this.ClientPhoneControl
-        .value.toString()
-        .replace("(", "")
-        .replace(")", "")
-        .replace("+", "")
-        .replace(/\s/g, ""),
+      phone: this.ClientPhoneControl.value.toString().replace("(", "").replace(")", "").replace(/\s/g, ""),
       email: this.ClientEmailControl.value,
       password: this.ClientPasswordControl.value,
-      birthDate: this.ClientBirthdayControl.value
+      birthDate: this.ClientBirthdayControl.value,
     };
 
     this.clientService.register(client).subscribe(
@@ -117,32 +115,32 @@ export class ClientRegistrationComponent implements OnInit {
     );
   }
 
-  public registerFacebook():void{
-    this.socialService.FacebookLogin().subscribe(userInfo=>{
-      const user:any = userInfo.additionalUserInfo.profile;      
-      const userClient:Client = {
+  public registerFacebook(): void {
+    this.socialService.FacebookLogin().subscribe((userInfo) => {
+      const user: any = userInfo.additionalUserInfo.profile;
+      const userClient: Client = {
         name: user.given_name,
         email: user.email,
         lastName: user.given_name,
         phone: "No tiene número de télefono asociado",
         birthDate: null,
-        password:null
+        password: null,
       };
       // this.clientService.register(userClient).subscribe(resp=>{
       //   console.log(resp);
       // });
     });
   }
-  public registerGoogle():void{
-    this.socialService.GoogleLogin().subscribe(userInfo=>{
-      const user:any = userInfo.additionalUserInfo.profile;      
-      const userClient:Client = {
+  public registerGoogle(): void {
+    this.socialService.GoogleLogin().subscribe((userInfo) => {
+      const user: any = userInfo.additionalUserInfo.profile;
+      const userClient: Client = {
         name: user.given_name,
         email: user.email,
         lastName: user.given_name,
         phone: "No tiene número de télefono asociado",
         birthDate: null,
-        password:null
+        password: null,
       };
       // this.clientService.register(userClient).subscribe(resp=>{
       //   console.log(resp);
@@ -154,11 +152,9 @@ export class ClientRegistrationComponent implements OnInit {
     this.dialogService.openDialog(registerClientContent);
   }
 
-  private showErrorMessage(dialogContent:DialogModel) {
+  private showErrorMessage(dialogContent: DialogModel) {
     this.dialogService.openDialog(dialogContent);
   }
-
-  
 
   public closeClick(): void {
     this.snackbar.open("Se Ha registrado satisfactoriamente", "ok", {
@@ -168,39 +164,17 @@ export class ClientRegistrationComponent implements OnInit {
   }
 
   public getLogo(): string {
-    return this.isWhiteLogo
-      ? "/assets/tyne-logo-white.png"
-      : "/assets/tyne-logo-color.png";
+    return this.isWhiteLogo ? "/assets/tyne-logo-white.png" : "/assets/tyne-logo-color.png";
   }
 
   public initForm(): void {
     this.clientRegisterForm = this.fb.group({
-      clientName: [
-        "",
-        [
-          Validators.required,
-          Validators.minLength(2),
-          Validators.maxLength(30),
-        ],
-      ],
-      clientLastName: [
-        "",
-        [
-          Validators.required,
-          Validators.minLength(2),
-          Validators.maxLength(30),
-        ],
-      ],
+      clientName: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
+      clientLastName: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
       clientPhone: ["", [Validators.required, Validators.minLength(17)]],
-      clientEmail: [
-        "",
-        [Validators.email, Validators.required, Validators.pattern(emailRegex)],
-      ],
+      clientEmail: ["", [Validators.email, Validators.required, Validators.pattern(emailRegex)]],
       password: ["", [Validators.required, Validators.pattern(passwordRegex)]],
-      passwordConfirm: [
-        "",
-        [Validators.required, PasswordValidator("password")],
-      ],
+      passwordConfirm: ["", [Validators.required, PasswordValidator("password")]],
       birthDate: ["", [Validators.required]],
     });
   }
@@ -276,9 +250,7 @@ export class ClientRegistrationComponent implements OnInit {
 
   public getBirthDateError(): string {
     const control = this.ClientBirthdayControl;
-    return control.hasError("required")
-      ? ErrorMessages.RequiredVariant.replace("{0}", "fecha de nacimiento")
-      : null;
+    return control.hasError("required") ? ErrorMessages.RequiredVariant.replace("{0}", "fecha de nacimiento") : null;
   }
 
   // #endregion
