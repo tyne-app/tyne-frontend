@@ -4,6 +4,8 @@ import { InvokeDialogAuthService } from "@app/core/helpers/invoke-dialog-auth.se
 import { TokenService } from "@app/core/helpers/token.service";
 import { TyneRoutes } from "src/app/shared/inmutable/enums/url-routes";
 import { BusinessDetailsResponse } from "../../models/business-details-response";
+import {RatingService} from "@app/core/helpers/rating.service";
+
 
 @Component({
   selector: "app-business-details-body",
@@ -22,7 +24,12 @@ export class BusinessDetailsBodyComponent implements OnInit {
   public isFavorite = false;
   public branches = ["Juan y medio Santiago", "Juan y medio Providencia", "Juan y medio Las Condes"];
 
-  public constructor(private router: Router, private tokenService: TokenService, private dialogAuthService: InvokeDialogAuthService) {}
+  public constructor(
+    private router: Router,
+    private tokenService: TokenService,
+    private dialogAuthService: InvokeDialogAuthService,
+    private  ratingService: RatingService
+  ) {}
 
   public ngOnInit(): void {
     this.validateSession();
@@ -54,8 +61,8 @@ export class BusinessDetailsBodyComponent implements OnInit {
   private getRatings(): void {
     if (this.restaurant && this.restaurant?.id > 0) {
       const rating = Math.round(this.restaurant?.rating);
-      this.ratingsArray = new Array(rating);
-      this.noRatingsArray = new Array(5 - this.ratingsArray.length);
+      this.ratingsArray = this.ratingService.countRating(rating);
+      this.noRatingsArray = this.ratingService.countNoRating(rating);
     }
   }
 

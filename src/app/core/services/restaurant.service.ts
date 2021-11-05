@@ -15,15 +15,16 @@ import { map } from "rxjs/operators";
 export class RestaurantService {
   public restaurantsDataSource = new BehaviorSubject<SearchRestaurantResponse[]>(null);
   public currentRestaurant = this.restaurantsDataSource.asObservable();
+  private  urlBase = environment.apiTyne;
 
   public constructor(private client: HttpClient) {}
 
   public createNewRestaurant(business: BusinessRegistrationDto): Observable<any> {
-    return this.client.post<any>(environment.apiTyne + "/business/", business);
+    return this.client.post<any>( this.urlBase + "/business/", business);
   }
 
   public getRestaurants(request: SearchRestaurantRequest): Observable<SearchRestaurantResponse[]> {
-    const url = environment.apiTyne + "/business/branches";
+    const url = this.urlBase + "/business/branches";
 
     const params = new HttpParams()
       .set("name", request.name ? request.name : "")
@@ -40,7 +41,7 @@ export class RestaurantService {
   }
 
   public getRestaurant(id: number): Observable<BusinessDetailsResponse> {
-    const url = environment.apiTyne + "/business/" + id;
+    const url = this.urlBase + "/business/" + id;
 
     return this.client.get<GenericDataResponse<BusinessDetailsResponse>>(url).pipe(
       map((res) => {

@@ -121,6 +121,10 @@ export class SearchResultsComponent implements OnInit {
     return new Array(5 - ratingsArray.length);
   }
 
+  public getImageLocal(urlImage:string): string | ArrayBuffer {
+      return  urlImage ? urlImage : "/assets/img/local_by_default.png";
+  }
+
   private setOrderOptions() {
     this.activatedRoute.queryParams.subscribe((x) => {
       this.selectedOption = +x.sortBy;
@@ -130,4 +134,6 @@ export class SearchResultsComponent implements OnInit {
   private validateSession() {
     this.isUserLogged = this.tokenService.isTokenValid();
   }
+
+
 }

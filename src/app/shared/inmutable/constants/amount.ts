@@ -1,1 +1,1 @@
-﻿export const Commision: string = '15';
+﻿export const Commission: string = '15';

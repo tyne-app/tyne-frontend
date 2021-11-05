@@ -9,12 +9,12 @@ import { Observable } from "rxjs";
   providedIn: "root",
 })
 export class PaymentService {
-  private endpoint = "URL-API";
+  private urlBase = "URL-API";
   public constructor(private httpClient: HttpClient) {}
 
   public getPaymentKhipuRequest(paymentKhipuRequest: PaymentKhipuRequest): Observable<PaymentCreateResponse> {
     return this.httpClient.post<PaymentCreateResponse>(
-      `${this.endpoint}v1/method-payments-khipu/payments/`,
+      `${this.urlBase}v1/method-payments-khipu/payments/`,
       paymentKhipuRequest
     );
   }

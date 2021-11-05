@@ -1,17 +1,21 @@
 /** ANGULAR */
 import { Component, OnInit } from "@angular/core";
-import {Form, FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
+import { FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import { Data } from "@angular/router";
+import { Location } from '@angular/common';
 /** SERVICES */
 import { FileService } from "@app/core/helpers/file.service";
-import {MenuData, RangoPrecio, Section} from "@app/core/services/menus/menu-response";
+import { MenuData, RangoPrecio, Section} from "@app/core/services/menus/menu-get";
 import { MenuService } from "@app/core/services/menus/menu.service";
+import { TokenService } from "@app/core/helpers/token.service";
 /** INMUTABLES */
-import { Categories } from "@app/shared/inmutable/constants/category-kind";
-import {Category,Menu, MenuAdd, Product} from "@app/core/services/menus/menu-add";
-import {Commision} from "@shared/inmutable/constants/amount";
+import {Menu, MenuAdd, Product} from "@app/core/services/menus/menu-add";
+import {Commission} from "@shared/inmutable/constants/amount";
 import {DialogService} from "@shared/components/components/dialog/services/dialog.service";
 import {updateMenu} from "@shared/inmutable/constants/dialog-messages";
+import {RatingService} from "@core/helpers/rating.service";
+
+
 @Component({
   selector: "app-business-menus",
   templateUrl: "./business-menus.component.html",
@@ -21,19 +25,26 @@ export class BusinessMenusComponent implements OnInit {
 
   public menuForm: FormGroup;
   public panelOpenState = true;
+  public branchId: number = 2;
 
   public section: Section[] = [];
   public menuData: MenuData;
   public menu: Data;
   public localName: string;
   public localRangePrice: RangoPrecio;
+  public localRatingColor: Array<number> = [];
+  public localRatingWhite: Array<number> = [];
+  public localCommission: string = Commission;
 
 
   public constructor(
     public formBuilder: FormBuilder,
     private fileService: FileService,
     private menuService:MenuService,
-    private dialogService: DialogService
+    private dialogService: DialogService,
+    private location: Location,
+    private tokenService: TokenService,
+    private ratingService: RatingService
   ) {}
 
   public get sections(): FormArray {
@@ -46,7 +57,7 @@ export class BusinessMenusComponent implements OnInit {
 
   public saveChanges(): void {
     if(this.menuForm.valid){
-      const branchId: number = 2;
+      const branchId: number = this.branchId;
       let menus: Menu[] = [];
       const productsToAdd: Product[] = [];
       const sections:FormArray = this.sections;
@@ -58,7 +69,7 @@ export class BusinessMenusComponent implements OnInit {
              name: product.get('name').value,
              description: product.get('description').value,
              amount: product.get('price').value,
-             commission_tyne: Commision,
+             commission_tyne: Commission,
              url_image: ''
            }
            productsToAdd.push(productToAdd);
@@ -134,7 +145,6 @@ export class BusinessMenusComponent implements OnInit {
       this.sections.controls[sectionId].get("isTitleVisible");
     return isTitleVisible ? isTitleVisible.value : false;
   }
-
 
   private getDataMock() {
     return [
@@ -212,14 +222,23 @@ export class BusinessMenusComponent implements OnInit {
   }
 
   private getMenusByBranchAndBuildSections(){
-    this.menuService.getMenusByBranch(2).subscribe(res=>{
+    const branchIdFromToken:number = this.tokenService.getDecodedJwtToken()?.id_branch_client;
+    this.branchId = (branchIdFromToken)? branchIdFromToken : 2 ;
+    this.menuService.getMenusByBranch(this.branchId).subscribe(res=>{
+      const { data:{sections, rango_precio, rating, nombre_local} } = res;
       this.menuData = res;
       this.menu = res.data;
-      this.section = res.data.sections;
-      this.localName = res.data.nombre_local;
-      this.localRangePrice = res.data.rango_precio;
+      this.section = sections;
+      this.localName = nombre_local;
+      this.localRangePrice = rango_precio;
+      this.buildRating(rating);
       this.buildSections();
     });
+  }
+
+  private buildRating(localRating:number){
+    this.localRatingColor = this.ratingService.countRating(localRating);
+    this.localRatingWhite = this.ratingService.countNoRating(localRating);
   }
 
   private buildSections(){
@@ -300,6 +319,10 @@ export class BusinessMenusComponent implements OnInit {
     );
 
     return formArray;
+  }
+
+  public goToBack(){
+    this.location.back();
   }
 
   public getProductNameError(sectionId: number, productId: number): string {
