@@ -4,7 +4,7 @@ export enum ErrorMessages {
   WeAreSorry = "¡Lo sentimos!",
   AccounAlreadyExist = "Ya existe una cuenta con estos datos",
   RequestFailed = "No hemos podido completar el registro",
-
+  UnregisteredUser = "Aún no te haz registrado",
 
   // #region Input and form errors
 
