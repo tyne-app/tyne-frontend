@@ -21,7 +21,7 @@ export class ClientService {
   }
 
   public registerWithSocialNetworks(client: ClientSocialNetworkRequest): Observable<any> {
-    return this.restClient.post<any>(`${this.endpoint}/clients/social-networks`, client);
+    return this.restClient.post<any>(`${this.urlBase}/clients/social-networks`, client);
   }
 
   public login(email: string, password?: string): Observable<LoginResponse> {
@@ -29,7 +29,7 @@ export class ClientService {
   }
 
   public socialLogin(email: string, token: string): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(`${this.endpoint}/users/social-login`, { email, token });
+    return this.http.post<LoginResponse>(`${this.urlBase}/users/social-login`, { email, token });
   }
 
   public getById(id: number): Observable<ClientResponse> {
