@@ -4,7 +4,8 @@ import { InvokeDialogAuthService } from "@app/core/helpers/invoke-dialog-auth.se
 import { TokenService } from "@app/core/helpers/token.service";
 import { TyneRoutes } from "src/app/shared/inmutable/enums/url-routes";
 import { BusinessDetailsResponse } from "../../models/business-details-response";
-import {RatingService} from "@core/helpers/rating.service";
+import {RatingService} from "@app/core/helpers/rating.service";
+
 
 @Component({
   selector: "app-business-details-body",

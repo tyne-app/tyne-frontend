@@ -15,6 +15,7 @@ import {DialogService} from "@shared/components/components/dialog/services/dialo
 import {updateMenu} from "@shared/inmutable/constants/dialog-messages";
 import {RatingService} from "@core/helpers/rating.service";
 
+
 @Component({
   selector: "app-business-menus",
   templateUrl: "./business-menus.component.html",
