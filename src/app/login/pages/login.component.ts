@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     public loginRef: MatDialogRef<LoginComponent>,
-    private clientservice: ClientService,
+    private clientService: ClientService,
     public dialog: MatDialog,
     private socialService: SocialService,
     private dialogService: DialogService,
@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
 
   public onSubmit(): void {
     if (!this.loginForm.invalid) {
-      this.clientservice.login(this.emailControl.value, this.passwordControl.value).subscribe(
+      this.clientService.login(this.emailControl.value, this.passwordControl.value).subscribe(
         (token) => {
           if (token) {
             localStorage.setItem("access_token", token.access_token);
@@ -104,7 +104,7 @@ export class LoginComponent implements OnInit {
     this.socialService.GoogleLogin().subscribe((userInfo) => {
       const user: any = userInfo.additionalUserInfo.profile;
       const email: string = user.email;
-      // this.clientservice.login(email)
+      // this.clientService.login(email)
       //   .subscribe(resp=>{
 
       // });
@@ -115,7 +115,7 @@ export class LoginComponent implements OnInit {
     this.socialService.FacebookLogin().subscribe((userInfo) => {
       const user: any = userInfo.additionalUserInfo.profile;
       const email: string = user.email;
-      // this.clientservice.login(email)
+      // this.clientService.login(email)
       //   .subscribe(resp=>{
 
       // });

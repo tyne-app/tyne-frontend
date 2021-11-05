@@ -6,7 +6,7 @@ import { environment } from "@src/environments/environment";
 import { Observable } from "rxjs";
 import { MenuAdd } from "./menu-add";
 /** INTERFACES */
-import { MenuData } from "./menu-response";
+import { MenuData } from "./menu-get";
 
 @Injectable({
   providedIn: "root",
