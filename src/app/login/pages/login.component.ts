@@ -107,8 +107,6 @@ export class LoginComponent implements OnInit {
       user.getIdToken().then((x) => {
         this.clientservice.socialLogin(email, x).subscribe(
           (token) => {
-            console.log("aaaaa");
-            console.log(token);
             if (token) {
               localStorage.setItem("access_token", token.access_token);
               this.closeModal();
@@ -125,35 +123,27 @@ export class LoginComponent implements OnInit {
   }
 
   public goToFacebookSignIn(): void {
-    this.spinnerService.setLoading(true);
+    this.socialService.FacebookLogin().subscribe((userInfo) => {
+      const profile: any = userInfo.additionalUserInfo.profile;
+      const email: string = profile.email;
 
-    this.socialService.FacebookLogin().subscribe(
-      (userInfo) => {
-        const profile: any = userInfo.additionalUserInfo.profile;
-        const email: string = profile.email;
-
-        const user = userInfo.user;
-        user.getIdToken().then((x) => {
-          this.clientservice.socialLogin(email, x).subscribe(
-            (token) => {
-              if (token) {
-                localStorage.setItem("access_token", token.access_token);
-                this.closeModal();
-              }
-            },
-            (error: HttpErrorResponse) => {
-              this.showErrorMessage();
+      const user = userInfo.user;
+      user.getIdToken().then((x) => {
+        this.clientservice.socialLogin(email, x).subscribe(
+          (token) => {
+            if (token) {
+              localStorage.setItem("access_token", token.access_token);
+              this.closeModal();
+            } else {
+              this.showUnregisteredUserMessage();
             }
-          );
-        });
-      },
-      () => {
-        this.spinnerService.setLoading(false);
-      },
-      () => {
-        this.spinnerService.setLoading(false);
-      }
-    );
+          },
+          (error: HttpErrorResponse) => {
+            this.showErrorMessage();
+          }
+        );
+      });
+    });
   }
 
   private showErrorMessage() {
