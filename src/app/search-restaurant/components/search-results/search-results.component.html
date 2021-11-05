@@ -44,7 +44,7 @@
         </div>
 
         <!--Imagen local-->
-        <img class="img-restaurant" mat-card-image [src]="x.url_image" />
+        <img class="img-restaurant" mat-card-image [src]="this.getImageLocal(x.url_image)" />
 
         <!--Descripción del local-->
         <mat-card-content>
