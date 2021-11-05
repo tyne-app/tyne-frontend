@@ -32,6 +32,7 @@ export class ProfileImageComponent implements OnInit {
   }
 
   public getImageProfile(): string | ArrayBuffer {
+    console.log(this.urlImage);
     return this.urlImage ? this.urlImage : "/assets/img/user-profile.svg";
   }
 

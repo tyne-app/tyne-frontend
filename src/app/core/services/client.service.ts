@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { ClientSocialNetworkRequest } from "@app/shared/interfaces/request/client-social-network-request";
 import { ClientResponse } from "@app/shared/interfaces/response/client_response";
 import { Client } from "@shared/interfaces/client";
 import { LoginResponse } from "@shared/interfaces/token";
@@ -17,6 +18,10 @@ export class ClientService {
 
   public register(client: Client): Observable<any> {
     return this.restClient.post<any>(`${this.endpoint}/clients/`, client);
+  }
+
+  public registerWithSocialNetworks(client: ClientSocialNetworkRequest): Observable<any> {
+    return this.restClient.post<any>(`${this.endpoint}/clients/social-networks`, client);
   }
 
   public login(email: string, password?: string): Observable<LoginResponse> {

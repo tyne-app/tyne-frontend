@@ -9,7 +9,7 @@ import { Router } from "@angular/router";
 /** SERVICES */
 import { ClientService } from "@app/core/services/client.service";
 import { SocialService } from "@app/core/services/social.service";
-import { DialogModel } from "src/app/shared/components/components/dialog/models/dialog-model";
+import { ClientSocialNetworkRequest } from "@app/shared/interfaces/request/client-social-network-request";
 import { DialogService } from "src/app/shared/components/components/dialog/services/dialog.service";
 import {
   errorContent,
@@ -117,34 +117,49 @@ export class ClientRegistrationComponent implements OnInit {
 
   public registerFacebook(): void {
     this.socialService.FacebookLogin().subscribe((userInfo) => {
-      const user: any = userInfo.additionalUserInfo.profile;
-      const userClient: Client = {
-        name: user.given_name,
-        email: user.email,
-        lastName: user.given_name,
-        phone: "No tiene número de télefono asociado",
-        birthDate: null,
-        password: null,
-      };
-      // this.clientService.register(userClient).subscribe(resp=>{
-      //   console.log(resp);
-      // });
+      const profile: any = userInfo.additionalUserInfo.profile;
+
+      const user = userInfo.user;
+      user.getIdToken().then((token) => {
+        const userClient: ClientSocialNetworkRequest = {
+          name: profile.given_name,
+          email: profile.email,
+          lastName: profile.family_name,
+          token: token,
+        };
+        this.clientService.registerWithSocialNetworks(userClient).subscribe(
+          (resp) => {
+            this.showSuccessMessage();
+          },
+          (error: HttpErrorResponse) => {
+            this.showErrorMessage();
+          }
+        );
+      });
     });
   }
+
   public registerGoogle(): void {
     this.socialService.GoogleLogin().subscribe((userInfo) => {
-      const user: any = userInfo.additionalUserInfo.profile;
-      const userClient: Client = {
-        name: user.given_name,
-        email: user.email,
-        lastName: user.given_name,
-        phone: "No tiene número de télefono asociado",
-        birthDate: null,
-        password: null,
-      };
-      // this.clientService.register(userClient).subscribe(resp=>{
-      //   console.log(resp);
-      // });
+      const profile: any = userInfo.additionalUserInfo.profile;
+
+      const user = userInfo.user;
+      user.getIdToken().then((token) => {
+        const userClient: ClientSocialNetworkRequest = {
+          name: profile.given_name,
+          email: profile.email,
+          lastName: profile.family_name,
+          token: token,
+        };
+        this.clientService.registerWithSocialNetworks(userClient).subscribe(
+          (resp) => {
+            this.showSuccessMessage();
+          },
+          (error: HttpErrorResponse) => {
+            this.showErrorMessage();
+          }
+        );
+      });
     });
   }
 
@@ -152,8 +167,8 @@ export class ClientRegistrationComponent implements OnInit {
     this.dialogService.openDialog(registerClientContent);
   }
 
-  private showErrorMessage(dialogContent: DialogModel) {
-    this.dialogService.openDialog(dialogContent);
+  private showErrorMessage(dialog?) {
+    this.dialogService.openDialog(dialog ? dialog : errorContent);
   }
 
   public closeClick(): void {
