@@ -13,14 +13,10 @@ export class SocialService {
   public constructor(public afAuth: AngularFireAuth) {}
 
   public GoogleLogin(): Observable<firebase.auth.UserCredential> {
-    return from(
-      this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
-    );
+    return from(this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider()));
   }
 
   public FacebookLogin(): Observable<firebase.auth.UserCredential> {
-    return from(
-      this.afAuth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
-    );
+    return from(this.afAuth.signInWithPopup(new firebase.auth.FacebookAuthProvider()));
   }
 }

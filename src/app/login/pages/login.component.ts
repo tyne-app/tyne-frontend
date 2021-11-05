@@ -69,10 +69,6 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  private showErrorMessage() {
-    this.dialogService.openDialog(errorContent);
-  }
-
   public closeModal(): void {
     this.loginRef.close();
     const token = this.tokenService.getDecodedJwtToken();
@@ -102,12 +98,23 @@ export class LoginComponent implements OnInit {
 
   public goToGoogleSignIn(): void {
     this.socialService.GoogleLogin().subscribe((userInfo) => {
-      const user: any = userInfo.additionalUserInfo.profile;
-      const email: string = user.email;
-      // this.clientservice.login(email)
-      //   .subscribe(resp=>{
+      const profile: any = userInfo.additionalUserInfo.profile;
+      const email: string = profile.email;
 
-      // });
+      const user = userInfo.user;
+      user.getIdToken().then((x) => {
+        this.clientservice.socialLogin(email, x).subscribe(
+          (token) => {
+            if (token) {
+              localStorage.setItem("access_token", token.access_token);
+              this.closeModal();
+            }
+          },
+          (error: HttpErrorResponse) => {
+            this.showErrorMessage();
+          }
+        );
+      });
     });
   }
 
@@ -115,10 +122,13 @@ export class LoginComponent implements OnInit {
     this.socialService.FacebookLogin().subscribe((userInfo) => {
       const user: any = userInfo.additionalUserInfo.profile;
       const email: string = user.email;
-      // this.clientservice.login(email)
-      //   .subscribe(resp=>{
-
-      // });
+      this.clientservice.socialLogin(email, "token").subscribe((resp) => {
+        //
+      });
     });
+  }
+
+  private showErrorMessage() {
+    this.dialogService.openDialog(errorContent);
   }
 }

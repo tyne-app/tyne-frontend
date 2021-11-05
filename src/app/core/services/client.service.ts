@@ -23,6 +23,10 @@ export class ClientService {
     return this.http.post<LoginResponse>(`${this.endpoint}/users/login`, { email, password });
   }
 
+  public socialLogin(email: string, token: string): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>(`${this.endpoint}/users/social-login`, { email, token });
+  }
+
   public getById(id: number): Observable<ClientResponse> {
     return this.http.get<ClientResponse>(`${this.endpoint}/clients/${id}`);
   }
