@@ -46,6 +46,10 @@ export class ClientService {
     return this.http.put(`${this.urlBase}/clients/update-password`, { password: passwordToUpdate });
   }
 
+  public putUserPassword(passwordToUpdate:string):Observable<any>{
+    return this.http.put(`${this.urlBase}/users/password`, {password: passwordToUpdate })
+  }
+
   public logout(): void {
     sessionStorage.clear();
     localStorage.clear();

@@ -4,6 +4,7 @@ import { MatDialogRef } from "@angular/material/dialog";
 import { ErrorMessages } from "src/app/shared/inmutable/enums/error-messages";
 import { passwordRegex } from "src/app/shared/inmutable/constants/password";
 import { PasswordValidator } from "src/app/shared/validations/password-validator";
+import {ClientService} from "@core/services/client.service";
 
 @Component({
   selector: "app-business-profile-edit-password",
@@ -29,7 +30,8 @@ export class BusinessProfileEditPasswordComponent implements OnInit {
 
   public constructor(
     private fb: FormBuilder,
-    public matDialogRef: MatDialogRef<BusinessProfileEditPasswordComponent>
+    public matDialogRef: MatDialogRef<BusinessProfileEditPasswordComponent>,
+    private clientService: ClientService
   ) {}
 
   public ngOnInit(): void {
@@ -50,7 +52,10 @@ export class BusinessProfileEditPasswordComponent implements OnInit {
   public updatePassword(){
     console.log("aqui entro");
     if (this.newPasswordControl.value == this.confirmPasswordControl.value) {
-
+      console.log(this.newPasswordControl.value);
+      this.clientService.putUserPassword(this.newPasswordControl.value).subscribe(()=>{
+        console.log("la passwor se actualizo")
+      });
     }
   }
 
