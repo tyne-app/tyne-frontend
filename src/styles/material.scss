@@ -1,0 +1,45 @@
+﻿@import "colors";
+@import "fonts";
+
+/*Inputs*/
+.mat-form-field-outline {
+  background-color: $basic-light;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: #bfbfbf;
+}
+
+.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+  color: $primary;
+}
+
+mat-label {
+  color: $primary;
+}
+
+/*stepper*/
+.mat-step-header .mat-step-icon-state-edit {
+  background-color: $secondary;
+}
+
+
+.cdk-visually-hidden {
+  display: none;
+}
+
+.error-snackbar {
+  background: $error;
+  color: $primary;
+  .mat-simple-snackbar-action {
+    color: $primary;
+  }
+}
+
+.success-snackbar {
+  background: $success;
+  color: $primary;
+  .mat-simple-snackbar-action {
+    color: $primary;
+  }
+}
