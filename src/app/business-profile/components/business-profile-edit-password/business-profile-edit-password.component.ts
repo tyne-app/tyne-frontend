@@ -1,10 +1,13 @@
 import { Component, OnInit } from "@angular/core";
 import { AbstractControl, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialogRef } from "@angular/material/dialog";
-import { ErrorMessages } from "src/app/shared/inmutable/enums/error-messages";
-import { passwordRegex } from "src/app/shared/inmutable/constants/password";
-import { PasswordValidator } from "src/app/shared/validations/password-validator";
+
 import {ClientService} from "@core/services/client.service";
+import {errorContent, passwordUserUpdatedContent} from "@shared/inmutable/constants/dialog-messages";
+import {DialogService} from "@shared/components/components/dialog/services/dialog.service";
+import {passwordRegex} from "@shared/inmutable/constants/password";
+import {PasswordValidator} from "@shared/validations/password-validator";
+import {ErrorMessages} from "@shared/inmutable/enums/error-messages";
 
 @Component({
   selector: "app-business-profile-edit-password",
@@ -31,7 +34,8 @@ export class BusinessProfileEditPasswordComponent implements OnInit {
   public constructor(
     private fb: FormBuilder,
     public matDialogRef: MatDialogRef<BusinessProfileEditPasswordComponent>,
-    private clientService: ClientService
+    private clientService: ClientService,
+    private dialogService: DialogService
   ) {}
 
   public ngOnInit(): void {
@@ -50,11 +54,11 @@ export class BusinessProfileEditPasswordComponent implements OnInit {
   }
 
   public updatePassword(){
-    console.log("aqui entro");
     if (this.newPasswordControl.value == this.confirmPasswordControl.value) {
-      console.log(this.newPasswordControl.value);
       this.clientService.putUserPassword(this.newPasswordControl.value).subscribe(()=>{
-        console.log("la passwor se actualizo")
+        this.dialogService.openDialog(passwordUserUpdatedContent);
+      },()=>{
+        this.dialogService.openDialog(errorContent);
       });
     }
   }

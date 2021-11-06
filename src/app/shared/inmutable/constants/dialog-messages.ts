@@ -18,7 +18,7 @@ export const invalidFormContent: DialogModel = {
   messageButton: "Volver",
 };
 
-export const passwordClientUpdatedContent: DialogModel = {
+export const passwordUserUpdatedContent: DialogModel = {
   title: SuccessMessages.Congratulations,
   subtitle: SuccessMessages.SuccessPasswordUpdated,
   isSuccessful: true,

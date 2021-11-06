@@ -3,12 +3,11 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from "@angular/fo
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { ClientService } from "@app/core/services/client.service";
 import { ClientResponse } from "@app/shared/interfaces/response/client_response";
-import { DialogModel } from "src/app/shared/components/components/dialog/models/dialog-model";
-import { DialogService } from "src/app/shared/components/components/dialog/services/dialog.service";
-import { passwordClientUpdatedContent } from "src/app/shared/inmutable/constants/dialog-messages";
-import { passwordRegex } from "src/app/shared/inmutable/constants/password";
-import { ErrorMessages } from "src/app/shared/inmutable/enums/error-messages";
-import { PasswordValidator } from "src/app/shared/validations/password-validator";
+import {DialogService} from "@shared/components/components/dialog/services/dialog.service";
+import {passwordRegex} from "@shared/inmutable/constants/password";
+import {PasswordValidator} from "@shared/validations/password-validator";
+import {errorContent, passwordUserUpdatedContent} from "@shared/inmutable/constants/dialog-messages";
+
 
 @Component({
   selector: "app-profile-container",
@@ -64,17 +63,11 @@ export class ProfileContainerComponent implements OnInit {
     if (this.newPasswordControl.value == this.confirmPasswordControl.value) {
       this.clientProfileService.putPassword(this.newPasswordControl.value).subscribe({
         next: () => {
-          this.dialogService.openDialog(passwordClientUpdatedContent);
+          this.dialogService.openDialog(passwordUserUpdatedContent);
           this.cleanPasswordControlForm();
         },
         error: () => {
-          const dialogModel: DialogModel = {
-            title: "¡Lo sentimos!",
-            subtitle: ErrorMessages.GenericError,
-            isSuccessful: false,
-            messageButton: "Volver",
-          };
-          this.dialogService.openDialog(dialogModel);
+          this.dialogService.openDialog(errorContent);
           this.cleanPasswordControlForm();
         },
       });
