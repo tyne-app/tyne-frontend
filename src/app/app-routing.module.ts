@@ -1,8 +1,12 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
+
 import { NotFoundPageComponent } from "@shared/components/components/not-found-page/not-found-page.component";
-import { AuthGuard } from "@app/core/guards/auth.guard";
 import { TyneRoutes } from "@shared/inmutable/enums/url-routes";
+
+import { AuthGuard } from "@app/core/guards/auth.guard";
+import {ClientGuard} from "@core/guards/client.guard";
+import {LocalGuard} from "@core/guards/local.guard";
 
 const routes: Routes = [
   {
@@ -27,18 +31,18 @@ const routes: Routes = [
   {
     path: TyneRoutes.ClientProfile,
     loadChildren: () => import("./client-profile/modules/client-profile.module").then((m) => m.ClientProfileModule),
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, ClientGuard],
   },
   {
     path: TyneRoutes.ClientMenu,
     loadChildren: () => import("./client-menus/modules/business-menus.module").then((m) => m.ClientMenusModule),
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, ClientGuard],
   },
   {
     path: TyneRoutes.BusinessProfile,
     loadChildren: () =>
       import("./business-profile/modules/business-registration.module").then((m) => m.BusinessProfileModule),
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, LocalGuard],
   },
   {
     path: TyneRoutes.Refund,
@@ -61,6 +65,7 @@ const routes: Routes = [
   {
     path: TyneRoutes.BusinessEditMenu,
     loadChildren: () => import("./business-menus/modules/business-menus.module").then((m) => m.BusinessMenusModule),
+    canActivate: [AuthGuard, LocalGuard]
   },
   {
     path: TyneRoutes.StatusPay,

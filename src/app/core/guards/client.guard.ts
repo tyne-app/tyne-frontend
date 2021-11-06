@@ -18,7 +18,8 @@ export class ClientGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     let token: Token;
     token = this.tokenService.getDecodedJwtToken();
-    return token.id_user == UserType.Customer;
+    console.log(token);
+    return token.rol == UserType.Customer;
   }
 
 }

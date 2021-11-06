@@ -18,7 +18,7 @@ export class LocalGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     let token: Token;
     token = this.tokenService.getDecodedJwtToken();
-    return token.id_user == UserType.Manager;
+    return token.rol == UserType.Manager;
   }
 
 }
