@@ -58,6 +58,7 @@ export class BusinessProfileEditPasswordComponent implements OnInit {
       this.clientService.putUserPassword(this.newPasswordControl.value).subscribe(()=>{
         this.dialogService.openDialog(passwordUserUpdatedContent);
       },()=>{
+        //TODO: Delete in case global error handler launch up popup in this case
         this.dialogService.openDialog(errorContent);
       });
     }

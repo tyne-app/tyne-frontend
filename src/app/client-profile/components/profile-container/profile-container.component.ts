@@ -61,12 +61,13 @@ export class ProfileContainerComponent implements OnInit {
 
   public OnSubmit(): void {
     if (this.newPasswordControl.value == this.confirmPasswordControl.value) {
-      this.clientProfileService.putPassword(this.newPasswordControl.value).subscribe({
+      this.clientProfileService.putUserPassword(this.newPasswordControl.value).subscribe({
         next: () => {
           this.dialogService.openDialog(passwordUserUpdatedContent);
           this.cleanPasswordControlForm();
         },
         error: () => {
+          //TODO: Delete in case global error handler launch up popup in this case
           this.dialogService.openDialog(errorContent);
           this.cleanPasswordControlForm();
         },
