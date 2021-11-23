@@ -19,6 +19,7 @@ import { MaterialModule } from "@shared/modules/material.module";
 import { SharedModule } from "@shared/modules/shared.module";
 import { StatusPayModule } from "./status-pay/modules/status-pay.module";
 import { BussinesHomeModule } from "./bussines-home/modules/bussines-home.module";
+import {BusinessMenuModule} from "@app/business-menu/modules/business-menu.module";
 /** ENVIRONMENT */
 import { environment } from "@src/environments/environment";
 /** COMPONENTS */
@@ -31,6 +32,8 @@ import { LoginComponent } from "./login/pages/login.component";
 import { RestClientService } from "@app/core/services/rest-client.service";
 import { authInterceptorProvider } from "@shared/providers/auth.provider";
 import { DateAdapterProvider, MatDateFormatProvider, MatDateLocalProvider } from "@shared/providers/mat-date.provider";
+
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -54,6 +57,7 @@ import { DateAdapterProvider, MatDateFormatProvider, MatDateLocalProvider } from
     CreateReservationModule,
     StatusPayModule,
     BussinesHomeModule,
+    BusinessMenuModule
   ],
   entryComponents: [ClientRegistrationComponent, LoginComponent, SpinnerComponent, CreateReservationComponent],
   providers: [

@@ -1,0 +1,27 @@
+
+  <!--Header-->
+  <app-header [isWhiteLogo]="false"></app-header>
+  <div class="row mx-5">
+     <div class="col-12 mt-5 mb-5 mat-elevation-z8">
+       <h1>Menú {{localName}}</h1>
+       <button   mat-stroked-button color="primary" (click)="addProduct()">Añadir Producto</button>
+       <mat-divider class="my-4"></mat-divider>
+
+           <nav mat-tab-nav-bar >
+             <a mat-tab-link
+                *ngFor="let tab of this.navigation"
+                (click)="activeLink = tab.link"
+                [routerLink]="tab.link" [active]="this.activeLink == tab.link">
+                   {{tab.name}}
+               <mat-icon *ngIf="tab.icon">{{tab.icon}}</mat-icon>
+             </a>
+           </nav>
+
+           <router-outlet></router-outlet>
+
+     </div>
+  </div>
+
+  <!--Footer-->
+  <app-footer></app-footer>
+

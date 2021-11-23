@@ -5,6 +5,7 @@ export enum TyneRoutes {
   BusinessProfile = "perfil-local",
   BusinessSearchResults = "buscar-locales",
   BusinessEditMenu = "menu",
+  BusinessMenu   = "my-menu",
   BusinessDetail = "detalle-local",
   BusinessNewBranch = "registrar-nueva-sucursal",
   ClientProfile = "perfil-cliente",
@@ -25,5 +26,5 @@ export enum TyneRoutes {
   BusinessCancelations = "cancelaciones",
   StatusPay = "estado-pago",
   BussinesHome = "reservas-local",
-  
+
 }

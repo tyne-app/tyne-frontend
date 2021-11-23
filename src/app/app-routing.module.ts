@@ -65,7 +65,7 @@ const routes: Routes = [
   {
     path: TyneRoutes.BusinessEditMenu,
     loadChildren: () => import("./business-menus/modules/business-menus.module").then((m) => m.BusinessMenusModule),
-    canActivate: [AuthGuard, LocalGuard]
+    //canActivate: [AuthGuard, LocalGuard]
   },
   {
     path: TyneRoutes.StatusPay,
@@ -76,7 +76,10 @@ const routes: Routes = [
     path: TyneRoutes.BussinesHome,
     loadChildren: () => import("./bussines-home/modules/bussines-home.module").then((m) => m.BussinesHomeModule),
   },
-
+  {
+    path: TyneRoutes.BusinessMenu,
+    loadChildren: ()=> import("./business-menu/modules/business-menu.module").then((m)=> m.BusinessMenuModule)
+  },
   {
     path: TyneRoutes.NotFound,
     component: NotFoundPageComponent,

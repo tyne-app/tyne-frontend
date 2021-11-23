@@ -242,16 +242,28 @@ export class BusinessMenusComponent implements OnInit {
   }
 
   private buildSections(){
-    this.section.forEach((x) => {
-      this.sections.push(
-        this.formBuilder.group({
-          id: [x.category.id],
-          title: [x.category.name, [Validators.required, Validators.maxLength(20)]],
-          isTitleVisible: [false],
-          products: this.initProducts(x.products),
-        })
-      );
-    });
+
+    if(this.section){
+      this.section.forEach((x) => {
+        this.sections.push(
+          this.formBuilder.group({
+            id: [x.category.id],
+            title: [x.category.name, [Validators.required, Validators.maxLength(20)]],
+            isTitleVisible: [false],
+            products: this.initProducts(x.products),
+          })
+        );
+      });
+    }else{
+      this.getDataMock().forEach((x)=>{
+        this.sections.push(
+          this.formBuilder.group({
+
+          })
+        )
+      })
+    }
+
   }
 
   private initProducts(products: any): FormArray {

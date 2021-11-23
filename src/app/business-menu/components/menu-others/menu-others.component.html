@@ -1,0 +1,23 @@
+<div class="row mb-5 mt-5">
+  <div class="d-flex col-md-2 mb-5 align-content-between" *ngFor="let i of [1,2,3,4,5,6,7]">
+    <mat-card >
+      <mat-card-header>
+        <div></div>
+        <mat-card-title>Helado</mat-card-title>
+        <mat-card-subtitle>Alguna descripción</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image [src]="'assets/img/ice-cream.jpg'" alt="Photo of hotcakes">
+      <mat-card-content>
+        <p>
+          Helado XD
+        </p>
+      </mat-card-content>
+      <mat-divider></mat-divider>
+      <mat-card-actions>
+        <button mat-stroked-button>Editar</button>
+        <button mat-stroked-button>Eliminar</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+</div>

@@ -1,0 +1,59 @@
+<!--Header-->
+<app-header [isWhiteLogo]="false"></app-header>
+
+<div class="row mx-5">
+  <div class="col-md-12  mt-3 mb-1 mat-elevation-z4">
+    <form [formGroup]="this.menuAddForm" (ngSubmit)="onSubmit()">
+      <div class="row mx-0 mt-5 mx-lg-5">
+        <div class="col-md-12 col-lg-8 pr-lg-4">
+          <div class="row">
+            <h3 class="col-11">Producto</h3>
+            <mat-form-field class="col-11 col-lg-11 mx-0" appearance="outline">
+              <input  placeholder="Nombre del producto" matInput formControlName="name" type="text" />
+              <mat-error>
+  <!--              {{ getProductNameError(i, p) }}-->
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="col-11 col-lg-11 input-product-description" appearance="outline">
+                                <textarea matInput formControlName="description" rows="4"
+                                          placeholder="Descripción del producto"></textarea>
+              <mat-error>
+  <!--              {{ getProductDescriptionError(i, p) }}-->
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-3">
+          <h3 class="col-12">Precio</h3>
+          <div class="col-12 mb-3">
+            <mat-form-field appearance="outline">
+              <input placeholder="$ Precio del plato" matInput formControlName="price" type="number" />
+              <mat-error class="left-text">
+  <!--              {{ getProductPriceError(i, p) }}-->
+              </mat-error>
+            </mat-form-field>
+            <h4>Tipo de Producto</h4>
+            <mat-form-field appearance="fill">
+              <mat-label>Selecciona un tipo</mat-label>
+              <mat-select  formControlName="kind"  name="food">
+                <mat-option *ngFor="let food of foods" [value]="food.value">
+                  {{food.viewValue}}
+                </mat-option>
+              </mat-select>
+              <mat-hint>Debes escoger el tipo de producto aquí</mat-hint>
+            </mat-form-field>
+          </div>
+          <button class="col-12 col-lg-10  btn-normal-red ml-lg-3 mt-5 mb-5" mat-raised-button type="submit">
+            Añadir Producto
+          </button>
+        </div>
+      </div>
+
+    </form>
+
+
+  </div>
+</div>
+
+<!--Footer-->
+<app-footer></app-footer>
