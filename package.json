@@ -13,8 +13,7 @@
     "compodoc-server": "npx compodoc -p tsconfig.doc.json -s",
     "build:stats": "ng build --stats-json",
     "analyze": "webpack-bundle-analyzer dist/frontend/stats.json",
-    "https": " ng serve --ssl  --ssl-cert cert/ca.crt  --ssl-key cert/ca.key",
-    "heroku-postbuild": "bash build.sh"
+    "https": " ng serve --ssl  --ssl-cert cert/ca.crt  --ssl-key cert/ca.key"
   },
   "private": true,
   "dependencies": {
