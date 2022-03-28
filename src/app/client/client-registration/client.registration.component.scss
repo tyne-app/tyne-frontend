@@ -1,0 +1,73 @@
+@import "../../../styles.scss";
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 3px;
+  @include view-min(577px) {
+    margin-bottom: 16px;
+  }
+}
+:host::ng-deep.mat-form-field-infix {
+  width: 100%;
+}
+
+.mat-dialog-actions {
+  display: contents;
+}
+
+
+.button-submit {
+  position: absolute;
+  width: 90%;
+  top: 15%;
+}
+
+.register-title {
+  font-size: 25px;
+  color: #3c0000;
+}
+
+:host::ng-deep.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: #3c0000;
+}
+
+:host::ng-deep.mat-form-field-appearance-outline.mat-focused
+  .mat-form-field-outline-thick {
+  color: #3c0000;
+}
+.modal-body-register {
+  @include view-max(577px) {
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 80vh;
+  }
+  width: auto;
+}
+.close {
+  padding: 0 8px;
+  min-width: 40px;
+  & span {
+    font-size: 1.6rem;
+    color: #3c0000;
+  }
+}
+
+
+@media only screen and (min-width: 320px) and (max-width: 425px) {
+  .mat-dialog-container {
+    padding: 0;
+  }
+  .submit-button {
+    width: 90%;
+    margin: 0 -1vw;
+  }
+  .img-logo {
+    width: 50%;
+  }
+  .img-welcomer {
+    width: 50%;
+  }
+  .register-title {
+    font-size: 1em;
+  }
+}

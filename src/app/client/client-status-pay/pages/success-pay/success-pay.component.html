@@ -1,0 +1,32 @@
+<div class="container col-12 ">
+  <mat-card class="container mat-elevation-z8 col-md-8 col-lg-8 col-sm-8 p-5">
+    <ng-container class="m-5">
+      <div class="col-md-12 col-sm-12 col-lg-12 align-items-center justify-content-center col-center">
+        <img class="rounded mx-auto d-block" style="max-width: 70vh; max-height: 50vh;"
+          [src]="'assets/img/succes-pay.svg'" alt="" />
+      </div>
+
+      <mat-card-content
+        class="mt-5 col-md-12 col-sm-12 col-lg-12 align-items-center justify-content-center col-center">
+        <div class="col-md-12 col-sm-12 col-lg-12 my-2">
+          <h3>Pago Exitoso</h3>
+        </div>
+        <div class="col-md-12 col-sm-12 col-lg-12 my-2">
+          <p>Su pago fue procesado correctamente.</p>
+          <p>El detalle de la compra fue enviada a su correo registrado en Tyne</p>
+        </div>
+      </mat-card-content>
+      <div
+        class="d-flex row my-5 mx-2 align-items-center justify-content-center">
+          <app-button class="col-xl-6 col-lg-6 col-md-6 col-sm-12 m-1" (click)="goBackToLocalProfile()"
+            [buttonCustomConfiguration]="this.goBackLocalCustomButton">Volver
+            al
+            local</app-button>
+          <app-button class="col-xl-6 col-lg-6 col-md-6  col-sm-12 m-1" (click)="goToOrder()"
+            [buttonCustomConfiguration]="this.goToOrderCustomButton">Ver pedido
+          </app-button>
+      </div>
+    </ng-container>
+
+  </mat-card>
+</div>

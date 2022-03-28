@@ -1,0 +1,26 @@
+<div class="container-fluid" *ngIf="images?.length > 0">
+  <swiper class="mySwiper pb-5" [mousewheel]="true" [loop]="true" [pagination]="{
+      clickable: true
+    }" [autoplay]="{
+      delay: 2500,
+      disableOnInteraction: false
+    }" [slidesPerView]="3" [spaceBetween]="30" [breakpoints]="{
+      '@0.00': {
+        slidesPerView: 1,
+        spaceBetween: 10
+      },
+      '@0.75': {
+        slidesPerView: 2,
+        spaceBetween: 20
+      },
+      '@1.00': {
+        slidesPerView: 3,
+        spaceBetween: 30
+      }
+    }">
+    <ng-template swiperSlide *ngFor="let image of restaurant?.images">
+      <img [src]="image.url_image" alt="" />
+    </ng-template>
+
+  </swiper>
+</div>

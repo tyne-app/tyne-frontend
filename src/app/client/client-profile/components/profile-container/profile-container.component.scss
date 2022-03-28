@@ -1,0 +1,70 @@
+.btn {
+  width: 255px;
+}
+
+.bg {
+  background: #fafafa;
+}
+
+.password {
+  flex: 0%;
+}
+
+.edit {
+  margin: 1rem;
+}
+
+.image {
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+@media screen and (max-width: 990px) {
+  .divider {
+    display: none;
+  }
+
+  .password {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+  }
+
+  .information {
+    margin-bottom: 0px !important;
+  }
+
+  .image {
+    display: flex;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .divider {
+    display: none;
+  }
+
+  .password {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+  }
+
+  .information {
+    margin-bottom: 0px !important;
+  }
+
+  .image {
+    display: flex;
+    align-items: center;
+    margin: 0px;
+    justify-content: center;
+  }
+
+  .info {
+    display: block;
+  }
+
+  app-profile-image {
+    width: 50%;
+  }
+}

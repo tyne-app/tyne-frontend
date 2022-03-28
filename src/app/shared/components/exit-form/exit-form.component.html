@@ -1,0 +1,16 @@
+<div class="exit-form">
+  <div class="d-flex col-md-12 col-lg-12 col-xs-12 align-items-center justify-content-center title-4 ">
+    <p>¿Esta seguro que quiere salir del formulario de registro?</p>
+  </div>
+  <div class="d-flex row align-items-center justify-content-center mb-3">
+    <app-button  [mat-dialog-close]="true" class="col-lg-5 col-md-5 col-xs-12 mt-1 mb-3" [buttonCustomConfiguration]="
+    { buttonMaterialType:'mat-raised-button', 
+      buttonType: 'button',
+      buttonTypeClass: 'btn-submit'}">Si</app-button>
+    &nbsp;&nbsp;
+    <app-button mat-dialog-close  class="col-lg-5 col-md-5 col-xs-12 mt-1 mb-3"  [buttonCustomConfiguration]="
+    { buttonMaterialType:'mat-raised-button', 
+      buttonType: 'button',
+      buttonTypeClass: 'btn-submit'}">No</app-button>
+  </div>
+</div>

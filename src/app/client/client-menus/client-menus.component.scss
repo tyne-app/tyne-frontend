@@ -1,0 +1,182 @@
+@import "../../../styles.scss";
+
+
+.principal-title {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 75px;
+  text-align: center;
+  color: #fffdfa;
+}
+
+.title {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 48px;
+  color: #3c0000;
+  margin-top: 15px;
+}
+
+.money {
+  color: #3c0000;
+  font-size: 28px;
+  margin-top: -10px;
+}
+
+.title-5_2 {
+  @media only screen and (max-width: 600px) {
+    font-size: 0.7rem;
+  }
+}
+
+
+.title-3{
+  @media only screen and (max-width: 600px) {
+    font-size: 0.7rem;
+  }
+}
+
+
+.title-9{
+  @media only screen and (max-width: 600px) {
+    font-size: 0.7rem;
+  }
+}
+
+
+
+.panel-description {
+  width: 100%;
+}
+
+.mat-icon {
+  color: #e10000;
+}
+
+@mixin btn-baseStyles {
+  color: #3c0000;
+  background: #fff;
+  border: 1px solid #e10000;
+  box-sizing: border-box;
+  border-radius: 10px;
+  height: 43px;
+  & ::ng-deep .mat-button-wrapper {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    & .mat-icon {
+      margin-right: 0.7rem;
+    }
+  }
+}
+
+.mat-expansion-panel {
+  margin-top: 10px;
+}
+
+.mat-expansion-panel-header {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.panel-description {
+  align-self: center;
+  width: 100%;
+  justify-content: center;
+}
+
+.title-icon-toggle {
+  width: 30%;
+  justify-content: flex-end;
+}
+
+.toggleIcon {
+  font-size: 40px;
+  color: #3c0000;
+}
+
+
+:host
+  ::ng-deep
+  .mat-form-field-appearance-outline.mat-focused
+  .mat-form-field-outline-thick {
+  color: #fff;
+}
+
+:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: #fff;
+}
+
+:host ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+  background-color: #fff;
+}
+
+:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
+  padding: 0;
+}
+
+:host ::ng-deep .mat-form-field:hover {
+  background-color: #fff;
+}
+
+mat-divider {
+  margin-top: 25px;
+}
+
+.panel-header {
+  border: 1px solid;
+}
+
+.product-h-img {
+  border-radius: 10px;
+}
+
+@media only screen and (min-width: 992px) {
+  .product-h-img {
+    height: 165px;
+  }
+}
+
+.add-remove-item-icon {
+  padding-top: 17px;
+  cursor: pointer;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.quantity-item {
+  color: #3c0000;
+  vertical-align: super;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.col-price {
+  text-align: center;
+  @include view-max(992px) {
+    text-align: right;
+  }
+}
+
+.col-add-remove {
+  text-align: center;
+  @include view-max(992px) {
+    text-align: left;
+  }
+}
+
+
+
+.panel-total {
+  border: 1px solid;
+  pointer-events: none;
+}

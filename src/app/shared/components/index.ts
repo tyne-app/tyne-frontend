@@ -1,0 +1,9 @@
+export { AcceptPetModule } from "./accept-pet/accept-pet.module";
+export { CloseModalModule } from "./close-modal/close-modal.module";
+export { DialogModule } from "./dialog/dialog.module";
+export { FooterModule } from "./footer/footer.module";
+export { HeaderModule } from "./header/header.module";
+export { MapModule } from "./map/map.module";
+export { SearchBarModule } from "./search-bar/search-bar.module";
+export { SpinnerModule } from "./spinner/spinner.module";
+export { ExitFormModule } from './exit-form/exit-form.module';

@@ -1,0 +1,18 @@
+<div class="container pt-5">
+  <app-search-bar></app-search-bar>
+
+  <mat-card class="mat-card">
+    <div class="container" style="text-align: center">
+      <h1>¡Reserva en 4 simples pasos!</h1>
+    </div>
+
+    <mat-card-content>
+      <div class="row">
+        <app-step-image-container class="col-lg-3 col-md-3 col-sm-6" *ngFor="let stepImage of stepImages" 
+          [title]="stepImage.title" 
+          [imageUrl]="stepImage.imageUrl">
+        </app-step-image-container>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

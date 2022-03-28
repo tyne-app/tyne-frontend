@@ -1,0 +1,13 @@
+<mat-form-field class="col-lg-12 p-0" appearance="outline">
+    <mat-label>Email</mat-label>
+    <ngx-mat-intl-tel-input
+      [enablePlaceholder]="true"
+      [enableSearch]="true"
+      [placeholder]="this.placeHolder"
+      [onlyCountries]="['cl']"
+      name="phone"
+      describedBy="phoneInput"
+      #phone>
+    </ngx-mat-intl-tel-input>
+    <mat-hint>e.j. {{phone.selectedCountry.placeHolder}}</mat-hint>
+  </mat-form-field>

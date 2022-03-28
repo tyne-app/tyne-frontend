@@ -1,0 +1,6 @@
+<button 
+    [ngClass]="this.buttonCustomConfiguration | customButtonPipe" 
+    [type]="this.buttonCustomConfiguration?.buttonType"
+    [disabled]="this.buttonCustomConfiguration?.isDisabled">
+    <ng-content></ng-content>
+</button>

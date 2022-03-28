@@ -1,0 +1,1 @@
+openssl x509 -outform pem -in ca.pem -out ca.crt

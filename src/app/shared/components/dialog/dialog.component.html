@@ -1,0 +1,23 @@
+<app-close-modal></app-close-modal>
+
+<div class="container">
+  <div class="row">
+    <div class="col col-center">
+      <img class="icon-img" [src]="'assets/icons/tyne-logo-color.png'" />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col col-center">
+      <h3 class="title-3">{{ this.data.title }}</h3>
+      <!-- <p class="paragraph">{{ this.data.subtitle }}</p> -->
+      <pre class="pre"> {{ this.data.subtitle }}</pre>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col col-center mt-5 mb-5">
+      <button class="col-lg-6 btn-submit" mat-raised-button (click)="action()">
+        {{ this.data.messageButton }}
+      </button>
+    </div>
+  </div>
+</div>

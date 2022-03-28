@@ -1,0 +1,14 @@
+<img
+  class="mt-5 img-responsive bg-image-circle animated fadeIn"
+  [src]="this.urlImage | avatar"
+  (error)="'/assets/img/user-profile.svg'"
+  alt=""
+/>
+
+<div class="row">
+  <div class="d-flex col align-items-center">
+    <input style="display: none" type="file" (change)="uploadImageFromDirectory($event)" #fileInput />
+    <button class="btn btn-submit" mat-raised-button (click)="fileInput.click()">Cambiar Foto</button>
+  </div>
+</div>
+

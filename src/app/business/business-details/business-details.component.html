@@ -1,0 +1,19 @@
+<ng-container>
+  <!--Header-->
+  <app-header [isWhiteLogo]="false"></app-header>
+
+  <!--Photos-->
+  <app-carousel [restaurant]="restaurant"></app-carousel>
+   
+  <ng-container *ngIf="this.restaurant">
+    <div class="container">
+      <app-business-details-body [restaurant]="restaurant"></app-business-details-body>
+    </div>
+  </ng-container>
+  
+
+  <!--Footer-->
+  <app-footer></app-footer>
+</ng-container>
+
+<app-spinner></app-spinner>

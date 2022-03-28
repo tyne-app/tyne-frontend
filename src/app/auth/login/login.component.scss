@@ -1,0 +1,39 @@
+@import "../../../styles.scss";
+
+::ng-deep .mat-dialog-container {
+  padding: 0;
+  border-radius: 12px;
+}
+
+mat-divider {
+  border-top-width: 3px;
+  border-top-style: solid;
+}
+
+mat-form-field {
+  width: 75%;
+  justify-self: center;
+}
+
+::ng-deep .custom-dialog > mat-dialog-container {
+  background-color: var(--background);
+}
+
+.login {
+  overflow-y: auto;
+  height: auto;
+  width: auto;
+  max-height: 95vh;
+  overflow-x: hidden;
+}
+
+.login-container {
+  margin-top: 2.4rem;
+}
+
+@media (min-width: 1800px) {
+  .login-container {
+    margin: 5rem !important ;
+  }
+}
+

@@ -1,0 +1,75 @@
+<div class="grid-container">
+  <app-close-modal></app-close-modal>
+
+  <div class="row mx-0 justify-content-center px-2 px-lg-0">
+
+    <div class="col-12 px-0">
+      <p class="mt-2 txt-dialog">Horario y dias de funcionamiento</p>
+    </div>
+    <div class="col-12 col-md-6 col-lg-6 px-0">
+      <div class="row mx-0">
+        <div class="col-12 px-0">
+          <p class="mb-1 mt-0 font-sz-19">Dias de funcionamiento</p>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-md-block col-12 col-md-6 col-lg-4 px-0">
+      <div class="row mx-0">
+        <div class="col-6 px-0">
+          <p class="mb-1 mt-0 pl-1 font-sz-19">Apertura</p>
+        </div>
+        <div class="col-6 px-0">
+          <p class="mb-1 mt-0 pl-1 font-sz-19">Cierre</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="row mx-0 justify-content-center px-2 px-lg-0" *ngFor="let item of weeksValues">
+
+    <div class="col-12 col-md-6 col-lg-6 px-0">
+      <div class="row mx-0">
+        <div class="col-6 px-0 mb-2 h-40 d-flex align-items-center">
+          <p class="my-0 font-sz-22">{{item.day}}</p>
+        </div>
+        <div class="col-6 px-0 mb-2 h-40 d-flex align-items-center">
+          <mat-slide-toggle [checked]="item.check" class="wrap-toggle">{{ isChecked(item.check) }}
+          </mat-slide-toggle>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-4 px-0">
+      <div class="row mx-0">
+        <div class="d-md-none col-6 px-0">
+          <p class="mb-1 mt-0 pl-1 font-sz-19">Apertura</p>
+        </div>
+        <div class="d-md-none col-6 px-0">
+          <p class="mb-1 mt-0 pl-1 font-sz-19">Cierre</p>
+        </div>
+        <div class="col-6 px-0 pr-1 pr-lg-3 mb-2">
+          <input class="hours-input" type="text" value="{{item.openValue}}">
+        </div>
+        <div class="col-6 px-0 pl-1 pl-lg-0 pr-lg-3 mb-2">
+          <input class="hours-input" type="text" value="{{item.closeValue}}">
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row mx-0 justify-content-center ">
+    <div class="col-12 col-lg-10 my-3 my-md-0 mb-md-3 px-0">
+      <span>Completar todos los campos *</span>
+    </div>
+    <div class="col-12 col-md-6 col-lg-5 col-center mb-2 mb-md-3">
+      <button class="btn-normal-red" mat-raised-button>Volver a mis datos</button>
+    </div>
+    <div class="col-12 col-md-6 col-lg-5 col-center mb-3">
+      <button class="btn-submit" mat-raised-button>Confirmar</button>
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,24 @@
+<mat-card class="mat-elevation-z4">
+    <!--Businness Name-->
+    <div class="row">
+      <div class="col-10 col-sm-10">
+        <p class="nombre-local">
+          <a (click)="redirectToBusinessDetail(business)">{{ business.restaurant_name | titlecase }}</a>
+        </p>
+        <p>{{ business.street }} {{ business.street_number }}, {{ business.state_name }}</p>
+      </div>
+    </div>
+
+    <!-- Business Image -->
+    <img class="img-restaurant" mat-card-image [src]="business.url_image | businessImage" />
+
+    <!-- Business description -->
+    <mat-card-content>
+      <div class="row">
+        <div class="col-6 valoracion-local">{{ business.min_price | currencyStandard }} - {{ business.max_price | currencyStandard}}</div>
+      </div>
+      <p class="descripcion-local">
+        {{ business.description }}
+      </p>
+    </mat-card-content>
+</mat-card>

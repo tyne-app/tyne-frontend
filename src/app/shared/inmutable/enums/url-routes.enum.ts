@@ -1,0 +1,22 @@
+export enum TyneRoutes {
+  Home = "inicio",
+  BusinessRegister = "registro-negocio",
+  BusinessProfile = "perfil-negocio",
+  BusinessSearchResults = "buscar-negocios",
+  BusinessEditMenu = "menu-negocio",
+  BusinessDetail = "detalle-negocio",
+  BusinessNewBranch = "registro-sucursal",
+  ClientProfile = "perfil-cliente",
+  ClientMenu = "menu-cliente",
+  Privacity = "privacidad",
+  Refund = "reembolso",
+  FrequentQuestion = "preguntas-frecuentes",
+  Support = "soporte",
+  NotFound = "pagina-no-encontrada",
+  ClientStatusPay = "estado-pago",
+  BusinessHome = "inicio-negocio",
+  ClientPendingReservation = "mis-reservas",
+  RecoverPassword = "recuperar-contraseña",
+  RestoredPassword = "restablecer-contraseña",
+  AboutUs= "acerca-de-nosotros"
+}

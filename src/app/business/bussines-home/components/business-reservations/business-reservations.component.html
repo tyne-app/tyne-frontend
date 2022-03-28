@@ -1,0 +1,142 @@
+<div class="col-md-12 col-sm-12 col-lg-12">
+  <div class="col-md-12 col-sm-12 col-lg-12">
+    <h3>Gracias por trabajar con tyne</h3>
+  </div>
+  <div class="col-md-12 col-sm-12 col-lg-12">
+    <p class="subTitle">
+      Para generar ventas tu local debe tener: horario y días de funcionamiento, productos en la carta y al menos 1 foto
+      de perfil
+    </p>
+  </div>
+
+  <div class="principal-rectangle col-md-12 col-lg-12 col-sm-12">
+    <div class="row">
+      <div class="col-md-6 col-sm-6 col-lg-6">
+        <h2>{{ restaurant?.branch.name }}</h2>
+      </div>
+      <div class="col-md-6 col-sm-6 col-lg-6">
+        <div class="col-md-12 col-lg-12 col-sm-12 type-reservations">
+          <p>
+            Reservas Pendientes
+            <img src="../../../../assets/img/reservas-pendientes.svg" alt="" />
+          </p>
+        </div>
+        <div class="col-md-12 col-lg-12 col-sm-12 type-reservations">
+          <p>Reservas Confirmadas <img src="../../../../assets/img/reservas-confirmadas.svg" alt="" /></p>
+        </div>
+        <div class="col-md-12 col-lg-12 col-sm-12 type-reservations">
+          <p>Reservas Atendidas <img src="../../../../assets/img/reservas-atendidas.svg" alt="" /></p>
+        </div>
+        <div class="col-md-12 col-lg-12 col-sm-12 type-reservations">
+          <p>Reservas Canceladas <img src="../../../../assets/img/reservas-canceladas.svg" alt="" /></p>
+        </div>
+        <br />
+      </div>
+    </div>
+  </div>
+  <br />
+  <br />
+  <div class="div-date col-md-12 col-lg-12 col-sm-12">
+    <div class="row">
+      <div class="col-md-4 col-lg-4 col-sm-4 div-date-back" (click)="getMonthYear('B')">
+        <img src="../../../../assets/img/vector-back.svg" alt="" />
+        <label>&nbsp;&nbsp;Anterior Mes </label>
+      </div>
+      <div class="col-md-4 col-lg-4 col-sm-4 month-anio">{{ MonthYear }}</div>
+      <div class="col-md-4 col-lg-4 col-sm-4 div-date-next" (click)="getMonthYear('N')">
+        <label>Siguiente Mes &nbsp;&nbsp;</label>
+        <img src="../../../../assets/img/vector-next.svg" alt="" />
+      </div>
+    </div>
+  </div>
+  <br />
+  <br />
+
+  <div class="principal-rectangle col-md-12 col-lg-12 col-sm-12">
+    <div class="col-12 col-md-12 col-lg-12 type-reservations-combo">
+      <br />
+      <form [formGroup]="form">
+        <mat-form-field appearance="outline">
+          <mat-label>Tipo de reservas</mat-label>
+          <mat-select formControlName="typeReservation" [(ngModel)]="typeReservationDefault"
+            (selectionChange)="getTypeReservationSelected()">
+            <mat-option [value]="x.id" *ngFor="let x of typesReservation">{{ x.description }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </form>
+    </div>
+  </div>
+  <br />
+  <br />
+
+  <div class="col-md-12 col-lg-12 col-sm-12" *ngFor="let x of reservations?.local_reservations_date">
+    <mat-expansion-panel class="rectangle-panel" #toggleIcon hideToggle="true">
+      <mat-expansion-panel-header [collapsedHeight]="customCollapsedHeight" [expandedHeight]="customExpandedHeight">
+        <mat-panel-title class="title-panel">
+          <div class="row col-md-12 col-lg-12 col-sm-12">
+            <div class="col-md-8 col-lg-8 col-sm-8">
+              {{ getDateReservation(x.reservation_date, x.reservation_week_day) }}
+            </div>
+            <div class="col-md-4 col-lg-4 col-sm-4">
+              <label class="color-pending"> {{ x.reservation_pending > 0 ? x.reservation_pending : "" }}</label>
+              <img *ngIf="x.reservation_pending" src="../../../../assets/img/reservas-pendientes.svg" alt=""
+                hspace="5" />
+              <label class="color-confirmed">{{ x.reservation_confirmed > 0 ? x.reservation_confirmed : "" }}</label>
+              <img *ngIf="x.reservation_confirmed" src="../../../../assets/img/reservas-confirmadas.svg" alt=""
+                hspace="5" />
+              <label class="color-attended">{{ x.reservation_attended > 0 ? x.reservation_attended : "" }}</label>
+
+              <img *ngIf="x.reservation_attended" src="../../../../assets/img/reservas-atendidas.svg" alt=""
+                hspace="5" />
+              <label class="color-canceled"> {{ x.reservation_canceled > 0 ? x.reservation_canceled : "" }}</label>
+              <img *ngIf="x.reservation_canceled" src="../../../../assets/img/reservas-canceladas.svg" alt=""
+                hspace="5" />
+            </div>
+          </div>
+        </mat-panel-title>
+        <mat-panel-description class="title-icon-toggle">
+          <mat-icon *ngIf="!toggleIcon.expanded" class="toggleIcon">expand_more</mat-icon>
+          <mat-icon *ngIf="toggleIcon.expanded" class="toggleIcon">expand_less</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <hr />
+      <br />
+      <div class="row col-md-12 col-lg-12 col-sm-12 title-panel-description">
+        <div class="col-md-3 col-lg-3 col-sm-3">Cliente</div>
+        <div class="col-md-3 col-lg-3 col-sm-3">Detalle de la reserva</div>
+        <div class="col-md-1 col-lg-1 col-sm-1">Hora</div>
+        <div class="col-md-3 col-lg-3 col-sm-3">Estado</div>
+        <div class="col-md-1 col-lg-1 col-sm-1"></div>
+      </div>
+      <div class="row col-md-12 col-lg-12 col-sm-12" *ngFor="let locaReservation of x.local_reservations">
+        <div class="col-md-3 col-lg-3 col-sm-3">
+          <p class="subtitle-panel-description">{{ locaReservation.name }} {{ locaReservation.last_name }}</p>
+        </div>
+        <div class="col-md-3 col-lg-3 col-sm-3">
+          <p class="subtitle-panel-description">Reserva para {{ locaReservation.people }} personas</p>
+        </div>
+        <div class="col-md-1 col-lg-1 col-sm-1">
+          <p class="subtitle-panel-description">{{ locaReservation.hour }}</p>
+        </div>
+        <div class="col-md-3 col-lg-3 col-sm-3">
+          <p class="subtitle-panel-description">
+            {{ getTypeReservationDescription(locaReservation.status_id) }}&nbsp;
+            <img [src]="getImgReservation(locaReservation.status_id)" alt="" />
+          </p>
+        </div>
+        <div class="col-md-1 col-lg-1 col-sm-1 cursor">
+          <p class="subtitle-panel-description">
+            <img src="../../../../assets/img/view-details.svg"
+              (click)="getDetail(locaReservation?.reservation_id, locaReservation?.payment_id)" alt="" />
+          </p>
+        </div>
+      </div>
+    </mat-expansion-panel>
+    <br />
+  </div>
+  <div class="col-md-12 col-lg-12 col-sm-12 mat-pagination" *ngIf="reservations?.total_items > 0">
+    <mat-paginator #paginator [length]="reservations?.total_items" [pageSize]="reservations?.total_items_page"
+      [pageSizeOptions]="[5, 10, 25, 100]" (page)="OnPageChange($event)">
+    </mat-paginator>
+  </div>
+</div>

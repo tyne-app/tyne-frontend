@@ -1,0 +1,79 @@
+<div class="container body">
+  <form [formGroup]="reservationForm" (keydown.enter)="$event.preventDefault()">
+    <div class="row mb-n2">
+      <div class="col col-center">
+        <h3 class="title">Reserva tu mesa</h3>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xl-7 col-lg-6 mt-3">
+        <label class="title-3">Reservar mesa para</label>
+      </div>
+      <div class="col-xl-4 col-lg-5 col-add-remove">
+        <mat-icon class="add-remove-item-icon" (click)="removePersonFromReservation()">remove_circle_outline</mat-icon>
+        <label class="quantity-item">{{ this.reservationForm.get("peopleNumber").value }}</label>
+        <mat-icon class="add-remove-item-icon" (click)="addPersonToReservation()">add_circle_outline</mat-icon>
+
+        <mat-error>
+          {{ getPeopleNumberErrorMessage() }}
+        </mat-error>
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="col-xl-7 col-lg-6 mt-1">
+        <label class="title-3">Para el día</label>
+      </div>
+      <div class="col-xl-4 col-lg-5">
+        <mat-form-field appearance="outline">
+          <mat-label>Ingresa fecha de reserva</mat-label>
+          <input matInput formControlName="dateReservation" [disabled]="true" autocomplete="off"
+            [matDatepicker]="picker" [min]="reservationDatePickerConfig.minDate"
+            [max]="reservationDatePickerConfig.maxDate" />
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker [disabled]="false" #picker></mat-datepicker>
+          <mat-error>
+            {{ getDateReservationErrorMessage() }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xl-7 col-lg-6 mt-1">
+        <label class="title-3">A las</label>
+      </div>
+      <div class="col-xl-4 col-lg-5">
+        <mat-form-field appearance="outline" class="input-hour-reservation">
+          <input matInput formControlName="hourReservation" type="text" placeholder="HH:MM" maxlength="5" time />
+          <mat-error>
+            {{ getHourReservationErrorMessage() }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <p class="text-center">
+          "En caso de haber comprado alcohol se te pedirá la Cédula de identidad para validar que eres mayor de 18
+          años."
+        </p>
+      </div>
+    </div>
+
+    <div class="row pt-5">
+      <div class="col-12 col-md-6 col-lg-6 col-right">
+        <app-button [mat-dialog-close]="true" [buttonCustomConfiguration]="backCustomButton">Volver</app-button>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-6 col-left">
+        <app-button (click)="goPayment()" [buttonCustomConfiguration]="createReservationCustomButton">Ir a medio de pago
+        </app-button>
+
+      </div>
+    </div>
+    <br />
+  </form>
+</div>

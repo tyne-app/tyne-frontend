@@ -1,0 +1,62 @@
+@import "../../../../../styles.scss";
+
+mat-card {
+  background: #fafafa;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  padding-bottom: 2.2rem;
+}
+
+.mat-card-pt-4 {
+  margin-top: 40px;
+}
+
+.titulo-principal {
+  margin-bottom: -15px;
+  text-align: center;
+}
+
+.title-2 {
+  text-align: center;
+}
+
+.titulo {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 29px;
+  color: #3c0000;
+  margin-bottom: -20px;
+  margin-top: 10px;
+}
+
+.subtitulo {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 22px;
+  color: #3c0000;
+}
+
+@include view-max(768px) {
+  .title-2 {
+    font-size: 30px;
+  }
+}
+
+.btn-xs {
+  font-size: 0.9rem;
+  max-width: 300px;
+}
+
+@include view-min(577px) {
+  .btn-xs {
+    font-size: 0.96rem;
+  }
+}
+
+@include view-min(992px) {
+  .btn-xs {
+    font-size: 1.1rem;
+  }
+}
