@@ -1,12 +1,10 @@
 name: Dev deploy Heroku
 
 on:
-  # pull_request:
-  #   types: closed
-  #   branches:
-  #     - develop
-  push:
-    branches: fix
+  pull_request:
+    types: closed
+    branches:
+      - fix
 jobs:
   build:
     runs-on: ubuntu-latest

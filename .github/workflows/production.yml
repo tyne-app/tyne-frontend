@@ -10,6 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "12"
+      - run: node init-env.js
+        env:
+          ENV_DEV: ${{ secrets.ENV_DEV }}
+          ENV_PROD: ${{ secrets.ENV_PROD }}
       - uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
@@ -17,6 +24,10 @@ jobs:
           heroku_email: ${{ secrets.HEROKU_EMAIL }}
           dontautocreate: false
           usedocker: true
+          docker_build_args: |
+            ENV
+        env:
+          ENV: production
   discord-notification:
     needs: [build]
     runs-on: ubuntu-latest
