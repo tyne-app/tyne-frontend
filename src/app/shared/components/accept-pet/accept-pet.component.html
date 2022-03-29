@@ -1,0 +1,8 @@
+<div class="col col-center mt-5" *ngIf="this.acceptPet">
+  <img [src]="'assets/icons/keeping-pet.svg'" />
+  <h4 class="title-4">Aceptan mascotas</h4>
+</div>
+<div class="col col-center mt-5" *ngIf="!this.acceptPet">
+  <img [src]="'assets/icons/not-keeping-pet.svg'" />
+  <h4 class="title-4">No aceptan mascotas</h4>
+</div>

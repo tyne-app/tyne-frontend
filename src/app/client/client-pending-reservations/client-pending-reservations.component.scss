@@ -1,0 +1,27 @@
+@import "../../../styles.scss";
+
+.title-reservations {
+  font-size: 1.8rem;
+  color: #3c0000;
+}
+
+.txt-reservations {
+  font-size: 1.2rem;
+  color: #3c0000;
+}
+
+@include view-min(576px) {
+  .title-reservations {
+    font-size: 2.25rem;
+  }
+
+  .txt-reservations {
+    font-size: 1.38rem;
+  }
+}
+
+@include view-min(768px) {
+  .txt-reservations {
+    margin-bottom: 2.2rem !important;
+  }
+}

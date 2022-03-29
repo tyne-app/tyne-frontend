@@ -1,0 +1,55 @@
+h1,
+h2,
+h3,
+h4 {
+  color: #3c0000;
+  font-weight: 400;
+}
+
+.buttons {
+  // margin-left: 3em;
+  text-align: center;
+  min-width: 12vh;
+}
+
+.normal-button {
+  width: 15%;
+  background-color: #fffdfa;
+  border-radius: 10px;
+  border-color: #e10000;
+  color: #3c0000;
+  font-weight: 400;
+  font-size: large;
+}
+
+.swiper-container {
+  width: 100%;
+  height: 40%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

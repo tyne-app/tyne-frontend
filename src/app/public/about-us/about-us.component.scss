@@ -1,0 +1,116 @@
+@import "../../../styles.scss";
+
+h2.title-3 {
+  font-weight: bold;
+  @include view-max(575px) {
+    font-size: 1.75rem;
+  }
+}
+
+.card-person {
+  // background-color: bisque;
+  text-align: center;
+}
+
+.person__picture img {
+  border-radius: 50%;
+  width: 130px;
+  height: 130px;
+  aspect-ratio: 1/1;
+  @include view-min(576px) {
+    width: 145px;
+    height: 145px;
+  }
+  @include view-min(992px) {
+    width: 155px;
+    height: 155px;
+  }
+}
+
+.person__picture img.top {
+  object-position: top;
+}
+
+.person__name h5 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 1.25rem 0 0.75rem;
+  @include view-min(576px) {
+    font-size: 1.25rem;
+  }
+}
+
+.person__charge p {
+  font-size: 1.1rem;
+  margin: 0;
+  @include view-min(768px) {
+    font-size: 1.5rem;
+  }
+}
+
+.history figure {
+  float: right;
+  margin: 1.2rem;
+  display: none;
+  @include view-min(576px) {
+    display: block;
+  }
+}
+
+.history figure img {
+  width: 230px;
+  @include view-min(992px) {
+    width: 300px;
+  }
+}
+
+.history strong {
+  font-size: 1.2rem;
+  @include view-min(576px) {
+    font-size: 1.4rem;
+  }
+  @include view-min(992px) {
+    font-size: 1.55rem;
+  }
+}
+
+.history p {
+  font-size: 1rem;
+  line-height: 1.8;
+  margin: 1.6rem 0;
+  @include view-min(768px) {
+    font-size: 1.1rem;
+  }
+  @include view-min(992px) {
+    font-size: 1.25rem;
+  }
+}
+
+.fluid-image {
+  aspect-ratio: 2/1;
+  width: 100%;
+  @include view-min(576px) {
+    aspect-ratio: inherit;
+  }
+}
+
+.purpose img {
+  aspect-ratio: 1;
+  width: 100%;
+  @include view-min(576px) {
+    max-height: 535px;
+  }
+  @include view-min(992px) {
+    aspect-ratio: initial;
+    height: 100%;
+    max-height: 100%;
+  }
+}
+
+.purpose p {
+  margin: 1.2rem 0;
+}
+
+.purpose p:nth-of-type(1) {
+  margin: 1.6rem 0 1.2rem;
+}

@@ -1,0 +1,283 @@
+/* You can add global styles to this file, and also import other style files */
+@import "bootstrap/dist/css/bootstrap-grid.min.css";
+@import "~swiper/swiper-bundle";
+
+@import "styles/main";
+@import 'material-icons/iconfont/material-icons.scss';
+
+/*Field Names*/
+.label-input-name {
+  padding-left: 5px;
+  color: $primary;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+input::-ms-reveal,
+input::-ms-clear {
+  display: none;
+}
+
+
+/*Paragraph and Description*/
+.paragraph {
+  color: $primary;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  font-family: $base-font-family;
+}
+
+.paragraph-16 {
+  color: $primary;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 21px;
+  font-family: $base-font-family;
+}
+
+.paragraph-20-semi-bold {
+  color: $primary;
+  font-weight: 500;
+  font-size: 1.25rem;
+  font-family: $base-font-family;
+}
+
+.title-2 {
+  color: $primary;
+  font-weight: bold;
+  font-size: 48px;
+  line-height: 57px;
+  font-family: $base-font-family;
+}
+
+.title-3 {
+  color: $primary;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 43px;
+  font-family: $base-font-family;
+}
+
+.title-4 {
+  color: $primary;
+  font-weight: normal;
+  font-size: 25px;
+  line-height: 30px;
+  font-family: $base-font-family;
+}
+
+.title-4_bold {
+  color: $primary;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28.8px;
+  letter-spacing: 0em;
+  font-family: $base-font-family;
+}
+
+.title-5 {
+  color: $primary;
+  font-weight: 300;
+  font-size: 25px;
+  line-height: 30px;
+  font-family: $base-font-family;
+}
+
+.title-5_2 {
+  color: $primary;
+  font-weight: 300;
+  font-size: 2.25rem;
+  line-height: 2.7rem;
+  font-style: normal;
+  font-family:$base-font-family;
+}
+
+
+.title-6 {
+  color: $primary;
+  font-weight: normal;
+  font-size: 33px;
+  line-height: 30px;
+  font-family:$base-font-family;
+}
+
+.title-7 {
+  color: $primary;
+  font-weight: 600;
+  font-size: 33px;
+  line-height: 43px;
+  font-family:$base-font-family;
+}
+
+.title-8 {
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 18px;
+  color: $primary;
+  font-family:$base-font-family;
+}
+
+.title-9 {
+  font-size: 18px;
+  line-height: 21.6px;
+  font-style: normal;
+  color: $basic-dark;
+  font-family:$base-font-family;
+}
+
+.title-9 {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 24px;
+  color: $basic-dark;
+  font-family:$base-font-family;
+}
+
+
+.img-responsive {
+  max-width: 100%;
+  height: auto;
+}
+
+.border-rounded {
+  border-radius: 10px;
+}
+
+/* Grid */
+.col-center {
+  text-align: center;
+}
+
+.col-right {
+  text-align: right;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.align-center {
+  text-align: center;
+}
+
+/* End Grid */
+
+/* Buttons */
+
+@media only screen and (max-width: 768px) {
+  .btn-normal {
+    width: 100%;
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+
+  .btn-normal-red {
+    width: 100%;
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+
+  .btn-submit {
+    width: 100%;
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+}
+
+/* End Buttons */
+
+@mixin view-min($width) {
+  @media only screen and (min-width: $width) {
+    @content;
+  }
+}
+@mixin view-max($width) {
+  @media only screen and (max-width: $width) {
+    @content;
+  }
+}
+
+::ng-deep.business-profile-dialog .mat-dialog-container {
+  padding: 9px;
+  @include view-min(768px) {
+    padding: 16px;
+  }
+}
+
+.animated {
+  -webkit-animation-duration: 0.6s;
+  animation-duration: 0.6s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.fast {
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  animation-name: fadeIn;
+}
+
+// Grilla Custom Tyne
+
+.tyne-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tyne-row-center {
+  justify-content: center;
+}
+
+.tyne-col-50 {
+  flex: 0 0 auto;
+  width: 50%;
+}
+
+.tyne-col-100 {
+  flex: 0 0 auto;
+  width: 100%;
+}
+
+@include view-min(768px) {
+  .tyne-col-md-33 {
+    flex: 0 0 auto;
+    width: 33.33333333%;
+  }
+}
+
+@include view-min(992px) {
+  .tyne-col-lg-20 {
+    flex: 0 0 auto;
+    width: 20%;
+  }
+}
+
+
+.img-container {
+  background:url(assets/img/background-home.jpg);
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position: center;
+  background-attachment: fixed;
+}

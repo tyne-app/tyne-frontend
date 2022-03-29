@@ -1,0 +1,144 @@
+<div class="modal-body-register">
+  <div class="container d-flex justify-content-end px-2">
+    <button type="button" class="close" mat-button [mat-dialog-close]="true">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="row mx-0">
+    <div class="col-12 col-sm-6 col-lg-7 px-3 px-lg-2">
+      <div class="mb-2 mb-lg-4 pl-lg-4 pr-lg-4">
+        <div class="row">
+          <div class="col">
+            <h2 class="register-title" mat-dialog-title>Registrar</h2>
+          </div>
+        </div>
+
+        <div mat-dialog-actions>
+          <form [formGroup]="this.clientRegisterForm" (ngSubmit)="createClient()">
+
+            <div class="row">
+              <div class="col-12 col-sm-6">
+                <mat-form-field appearance="outline">
+                  <mat-label>Nombre</mat-label>
+                  <input matInput formControlName="clientName" type="text" autocomplete="off" />
+                  <mat-error>
+                    {{ getClientNameError() }}
+                  </mat-error>
+                </mat-form-field>
+              </div>
+
+              <div class="col-12 col-sm-6">
+                <mat-form-field appearance="outline">
+                  <mat-label>Apellido</mat-label>
+                  <input matInput formControlName="clientLastName" type="text" autocomplete="off" />
+                  <mat-error>
+                    {{ getClientLastNameError() }}
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-12 col-sm-6">
+                <mat-form-field appearance="outline">
+                  <mat-label>Email</mat-label>
+                  <input matInput formControlName="clientEmail" type="email" autocomplete="off" />
+                  <mat-error>
+                    {{ getClientEmailError() }}
+                  </mat-error>
+                </mat-form-field>
+              </div>
+
+              <div class="col-12 col-sm-6">
+                <mat-form-field appearance="outline">
+                  <mat-label>Teléfono</mat-label>
+                  <ngx-mat-intl-tel-input formControlName="clientPhone" [enablePlaceholder]="true" [enableSearch]="true"
+                    [onlyCountries]="['cl']" name="phone" required="true" describedBy="phoneInput" #phone>
+                  </ngx-mat-intl-tel-input>
+                  <mat-error>
+                    {{ getClientPhoneError() }}
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-12 col-sm-6">
+                <mat-form-field appearance="outline" hintmat-label="Debe tener al menos 6 caracteres">
+                  <mat-label>Contraseña</mat-label>
+                  <input matInput formControlName="password" [type]="hidePassword ? 'password' : 'text'"  autocomplete="on" />
+                  <button type="button" mat-icon-button  matSuffix (click)="hidePassword = !hidePassword"
+                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+                    <mat-icon>{{ hidePassword ? "visibility_off" : "visibility" }}</mat-icon>
+                  </button>
+                  <mat-error>
+                    {{ getPasswordError() }}
+                  </mat-error>
+                </mat-form-field>
+              </div>
+
+              <div class="col-12 col-sm-6">
+                <mat-form-field appearance="outline">
+                  <mat-label>Repite tu contraseña</mat-label>
+                  <input matInput formControlName="passwordConfirm" [type]="hidePassordConfirm ? 'password' : 'text'" autocomplete="on" />
+                  <button type="button" mat-icon-button  matSuffix (click)="hidePassordConfirm = !hidePassordConfirm"
+                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassordConfirm">
+                    <mat-icon>{{ hidePassordConfirm ? "visibility_off" : "visibility" }}</mat-icon>
+                </button>
+                  <mat-error>
+                    {{ getPasswordConfirmError() }}
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-12 col-sm-6">
+                <mat-form-field class="birthday-field" appearance="outline">
+                  <mat-label>Fecha de Nacimiento </mat-label>
+                  <input matInput formControlName="birthDate" autocomplete="off" [matDatepicker]="picker"
+                    [max]="maxDate" [min]="minDate" />
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                  <mat-error>
+                    {{ getBirthDateError() }}
+                  </mat-error>
+                </mat-form-field>
+              </div>
+
+              <div class="d-flex col-12 col-sm-6 mt-3 justify-content-center justify-content-sm-start">
+                <app-button class="col-12" [buttonCustomConfiguration]="registerCustomButton">
+                  Registrar
+                </app-button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <mat-divider class="d-none d-sm-block" [vertical]="true"></mat-divider>
+
+    <div class="col mt-5">
+      <h2 class="register-title" mat-dialog-title>O Ingresa con:</h2>
+
+      <div class="row mx-0">
+        <div class="col-lg-12 col-sm-12 px-1 px-lg-0 mb-2 mb-lg-4 d-flex justify-content-center">
+          <app-facebook-button class="d-flex col-lg-9 col-md-11 align-items-center justify-content-center"
+            (click)="this.facebookRegister()"></app-facebook-button>
+        </div>
+
+        <div class="col-lg-12 col-sm-12 px-1 px-lg-0 mb-2 mb-lg-4 d-flex justify-content-center">
+          <app-google-button class="d-flex col-lg-9 col-md-11 align-items-center justify-content-center"
+            (click)="this.googleRegister()"></app-google-button>
+        </div>
+      </div>
+
+      <div class="logo my-5 d-flex justify-content-center">
+        <img src="/assets/icons/tyne-logo-register-client.svg" routerLink="/" class="ml-5" />
+      </div>
+    </div>
+  </div>
+</div>
+<app-spinner></app-spinner>

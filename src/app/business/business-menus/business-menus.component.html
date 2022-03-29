@@ -1,0 +1,152 @@
+<div class="img-container">
+  <!--Header-->
+  <app-header [isWhiteLogo]="true"></app-header>
+
+  <!--Content-->
+  <div class="container">
+
+    <!--Principal title-->
+    <div class="row">
+      <div class="col-12 col-center">
+        <h1 class="principal-title">Carta</h1>
+      </div>
+    </div>
+
+    <!--Business info-->
+    <mat-card>
+      <div class="row pl-3 justify-content-center">
+        <div class="col-lg-5">
+          <p class="title">{{this.localName}}</p>
+        </div>
+        <div class="col-lg-3">
+          <p class="title-4">Rango de Precio:</p>
+          <p *ngIf="this.localRangePrice" class="money">{{this.localRangePrice?.min | currencyStandard
+            }}-{{this.localRangePrice?.max | currencyStandard}}</p>
+        </div>
+        <div class="col-lg-4">
+          <p class="title-4">Calificación:</p>
+          <ng-container *ngFor="let i of this.localRatingColor">
+            <img [src]="'assets/icons/frying-pan-2.svg'" alt="rating color" />
+          </ng-container>
+          <ng-container *ngFor="let i of this.localRatingWhite">
+            <img [src]="'assets/icons/frying-pan-1.svg'" alt="rating white" />
+          </ng-container>
+        </div>
+      </div>
+    </mat-card>
+
+    <br /><br />
+
+    <mat-card class="mb-4">
+      El valor total a pagar por el comensal será ligeramente superior, ya que tenemos una comisión de
+      servicio del {{this.localCommission}}% el que será cargado al comensal
+    </mat-card>
+
+    <!--menu form-->
+    <form [formGroup]="this.menuForm" (ngSubmit)="saveChanges()" (keydown.enter)="$event.preventDefault()">
+      <ng-container formArrayName="sections">
+        <mat-accordion cdkDropList>
+          <mat-expansion-panel *ngFor="let section of sections.controls; let i = index" cdkDrag hideToggle="true"
+            #toggleIcon>
+            <mat-expansion-panel-header class="panel-header" [formGroup]="section"
+              (keydown.space)="$event.preventDefault()">
+              <mat-panel-title>
+              </mat-panel-title>
+
+              <mat-panel-description class="panel-description">
+                <label class="section-title" *ngIf="!isTitleVisible(i)">
+                  {{ section.get("title").value }}
+                </label>
+              </mat-panel-description>
+
+              <mat-panel-description class="title-icon-toggle">
+                <mat-icon *ngIf="!toggleIcon.expanded" class="toggleIcon">expand_more</mat-icon>
+                <mat-icon *ngIf="toggleIcon.expanded" class="toggleIcon">expand_less</mat-icon>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <button class="col-12 col-lg-6 ml-lg-5 mt-5  btn-normal-red" mat-raised-button (click)="addProduct(i)">
+              <mat-icon>
+                add_circle_outline
+              </mat-icon>
+              Añadir Producto
+            </button>
+            <!--Section Content-->
+            <mat-accordion>
+              <ng-container>
+                <div class="container px-0">
+                  <div *ngFor="
+                      let product of products(section);
+                      let p = index;
+                      let length = count
+                    " class="pb-4 wrap-product">
+                    <ng-container [formGroup]="product">
+
+                      <div class="row mx-0 mt-5 mx-lg-5">
+                        <div class="col-md-12 col-lg-8 pr-lg-4">
+                          <div class="row">
+                            <h3 class="col-11">Producto</h3>
+                            <mat-form-field class="col-11 col-lg-11 mx-0" appearance="outline">
+                              <input placeholder="Nombre del producto" matInput formControlName="name" type="text" />
+                              <mat-error>
+                                {{ getProductNameError(i, p) }}
+                              </mat-error>
+                            </mat-form-field>
+                            <mat-form-field class="col-11 col-lg-11 input-product-description" appearance="outline">
+                              <textarea matInput formControlName="description" rows="4"
+                                placeholder="Descripción del producto"></textarea>
+                              <mat-error>
+                                {{ getProductDescriptionError(i, p) }}
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="col-md-12 col-lg-3">
+                          <h3 class="col-12">Precio</h3>
+                          <div class="col-12">
+                            <mat-form-field appearance="outline">
+                              <input placeholder="$ Precio del plato" matInput formControlName="price" type="number" />
+                              <mat-error class="left-text">
+                                {{ getProductPriceError(i, p) }}
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                          <button class="col-12 col-lg-10  btn-normal-red ml-lg-3 mt-2" mat-raised-button
+                            (click)="deleteProduct(i, p)">
+                            Borrar Producto
+                          </button>
+                        </div>
+                      </div>
+                    </ng-container>
+
+                    <mat-divider *ngIf="p != length - 1"></mat-divider>
+                  </div>
+                </div>
+              </ng-container>
+            </mat-accordion>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </ng-container>
+
+      <br /><br />
+
+      <div class="row my-2 mx-2 d-flex align-items-center justify-content-center">
+        <app-button (click)="this.goToBack()"
+          class="d-flex col-lg-5 col-md-11 mx-2 my-2 py-2 align-items-center justify-content-center"
+          [buttonCustomConfiguration]="{buttonMaterialType: 'mat-raised-button', buttonType: 'button', buttonTypeClass: 'btn-normal-red'}">
+          Volver
+        </app-button>
+        <span class="mx-2"></span>
+        <app-button (click)="this.saveChanges()"
+          class="d-flex col-lg-5 col-md-11 mx-2 my-2 py-2  align-items-center justify-content-center"
+          [buttonCustomConfiguration]="{buttonMaterialType: 'mat-raised-button', buttonType: 'button', buttonTypeClass: 'btn-normal-red' }">
+          Guardar Cambios
+        </app-button>
+
+      </div>
+    </form>
+  </div>
+
+  <!--Footer-->
+  <app-footer></app-footer>
+</div>
+<app-spinner></app-spinner>

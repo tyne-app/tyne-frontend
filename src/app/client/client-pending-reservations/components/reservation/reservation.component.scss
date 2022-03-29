@@ -1,0 +1,111 @@
+@import "../../../../../styles.scss";
+
+mat-card.card-reservation {
+  background-color: #fafafa;
+  margin-bottom: 2.2rem;
+}
+
+.height-img-reservation {
+  height: 264px;
+  object-fit: cover;
+}
+
+mat-card-title {
+  color: #3c0000;
+  font-size: 1.5rem;
+}
+
+mat-card-content h4 {
+  color: #3c0000;
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin: 1.2rem 0;
+}
+
+mat-card-content p {
+  color: #3c0000;
+  font-size: 1.02rem;
+  font-weight: 500;
+  margin: 1rem 0;
+}
+
+mat-card-content p span {
+  font-weight: 300;
+}
+
+.conditions {
+  margin-top: 2rem;
+}
+
+.conditions p {
+  margin-bottom: 0;
+}
+
+.btn-reservation {
+  min-width: 100%;
+  font-weight: 400;
+}
+
+.message-support {
+  color: #3c0000;
+  text-align: center;
+}
+
+.card-support {
+  border-radius: 10px;
+}
+
+.information {
+  color: #3c0000;
+  font-weight: normal !important;
+  font-size: 16px !important;
+}
+
+@include view-min(576px) {
+  mat-card-content p {
+    font-size: 1.125rem;
+  }
+
+  .card-support {
+    width: 100%;
+  }
+}
+
+@include view-min(768px) {
+  mat-card-content h4 {
+    margin: 0 0 1.2rem;
+  }
+
+  .btn-reservation {
+    min-width: 260px;
+    width: initial;
+  }
+
+  .card-support {
+    width: 100%;
+  }
+}
+
+@include view-min(992px) {
+  mat-card.card-reservation {
+    margin-bottom: 2.5rem;
+  }
+
+  .btn-reservation {
+    min-width: 100%;
+  }
+}
+
+@include view-max(768px) {
+  .card-support {
+    width: 45%;
+    margin-top: 10px;
+  }
+}
+
+@include view-max(425px) {
+  .card-support {
+    width: 100%;
+    margin-top: 10px;
+  }
+}

@@ -1,0 +1,19 @@
+@import "../../../../../styles.scss";
+
+.title-edit {
+  font-size: 1.5rem;
+}
+
+.container-dialog {
+  max-height: 70vh;
+}
+
+
+@include view-min(992px) {
+  .title-edit {
+    font-size: 2.25rem;
+  }
+  .container-dialog {
+    max-height: 85vh;
+  }
+}

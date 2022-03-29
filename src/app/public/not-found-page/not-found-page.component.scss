@@ -1,0 +1,43 @@
+@import "../../../styles.scss";
+
+.img-container {
+  background-image: url(../../../assets/img/404-not-found.png);
+  background-position: center center;
+  max-height: 60%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.text {
+  width: 678px;
+  height: 154px;
+  font-family: normal;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 64px;
+  line-height: 77px;
+  align-items: center;
+  color: #fffdfa;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  @include view-max(768px) {
+    font-size: 48px;
+  }
+  @include view-max(425px) {
+    font-size: 28px;
+  }
+}
+
+.second-text {
+  @include view-max(425px) {
+    //
+  }
+}
+
+.btn-submit {
+  @include view-max(768px) {
+    width: 40%;
+  }
+  @include view-max(425px) {
+    width: 60%;
+  }
+}

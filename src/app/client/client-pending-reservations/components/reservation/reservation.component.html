@@ -1,0 +1,49 @@
+<mat-card class="card-reservation" *ngFor="let reservation of reservations">
+  <div class="px-lg-4">
+    <div class="row mx-0">
+      <mat-card-title class="col-12 px-0 px-md-2">
+        {{ reservation.restaurant_name }}
+      </mat-card-title>
+      <div class="col-12 col-md-6 col-lg-4 px-0 px-md-2">
+        <img [src]="reservation.url_image" alt="" class="img-responsive height-img-reservation" />
+      </div>
+      <mat-card-content class="col-12 col-md-6 col-lg-5 mb-0 px-0 px-md-3">
+        <h4>Reserva para {{ reservation.people }} {{ reservation.people > 1 ? "personas" : "persona" }}</h4>
+        <p>
+          Id reserva: <span># {{ reservation.id }}</span>
+        </p>
+        <p>
+          Nombre del local: <span>{{ reservation.restaurant_name }}</span>
+        </p>
+        <p>
+          Fecha y hora:
+          <span
+            >{{ setDate(reservation.reservation_date) }} {{ reservation.hour }}
+            {{ getPeriodOfTime(reservation.hour) }}</span
+          >
+        </p>
+        <p>
+          Precio Total: <span>{{ (reservation.amount | currencyStandard:"CLP")}}</span>
+        </p> 
+        <p>
+          Dirección: <span>{{ reservation.branch_street_address }} #{{ reservation.branch_street_number }}</span>
+        </p>
+        <div class="conditions">
+          <p class="information">
+            * Sólo puedes editar tu reserva hasta 24 horas antes de esta. Políticas de cancelación y reembolso.
+          </p>
+        </div>
+      </mat-card-content>
+      <div
+        class="col-12 col-lg-3 px-0 px-md-3 pr-lg-0 d-md-flex justify-content-md-end flex-lg-column justify-content-lg-center"
+      >
+        <mat-card class="card-support">
+          <p class="message-support">
+            Para editar o cancelar tu reserva comunicate al <br />
+            {{ supportPhone }}
+          </p>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</mat-card>

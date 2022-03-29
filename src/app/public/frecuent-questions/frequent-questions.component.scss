@@ -1,0 +1,42 @@
+@import "../../../styles.scss";
+
+mat-expansion-panel {
+  background-color: #fffdfa;
+  margin-top: 1.2em;
+}
+
+.title-4 {
+  font-size: 1.32rem;
+}
+
+@include view-max(577px) {
+  .title-4 {
+    font-size: 1.1rem;
+    line-height: 1.2;
+  }
+}
+
+.divider {
+  margin-bottom: 1.2em;
+}
+
+@include view-min(992px) {
+  mat-expansion-panel-header {
+    padding: 0 2rem;
+  }
+  .paragraph {
+    line-height: 1.5;
+    padding: 0 0.65rem;
+  }
+}
+
+::ng-deep .mat-expansion-panel-body {
+  background-color: white;
+}
+
+h1,
+h2,
+p {
+  color: #3c0000;
+  text-align: justify;
+}

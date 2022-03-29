@@ -1,0 +1,38 @@
+.mat-card {
+  border-radius: 10px;
+  background-color: #fffdfa;
+  // opacity: 0.8;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin-bottom: 10%;
+}
+
+.mat-form-field-outline {
+  background-color: #fffdfa;
+}
+
+mat-card-title {
+  color: #3c0000;
+}
+
+mat-form-field {
+  font-weight: bold;
+  width: 100%;
+}
+
+.btn-submit {
+  width: 70%;
+  line-height: 2.3em;
+  margin-top: 0.8em;
+  border-radius: 10px;
+  font-size: larger;
+  font-weight: bold;
+}
+
+h2 {
+  color: #3c0000;
+  font-weight: 500;
+}
+
+.mat-option:hover {
+  color: #3c0000;
+}

@@ -1,0 +1,113 @@
+@import "../../../styles.scss";
+
+mat-form-field {
+  width: 100%;
+  padding-bottom: 0px !important;
+}
+
+::ng-deep .create-reservation-dialog .mat-dialog-container {
+  border-radius: 50px;
+  @include view-max(768px) {
+    border-radius: 25px;
+  }
+  @include view-max(425px) {
+    border-radius: 25px;
+  }
+}
+
+.title {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 48px;
+  @include view-max(1195px) {
+    font-size: 36px;
+  }
+  @include view-max(768px) {
+    font-size: 36px;
+  }
+  @include view-max(425px) {
+    font-size: 24px;
+  }
+}
+
+.title-3 {
+  font-weight: 300;
+  margin-bottom: -10px;
+  padding-left: 40px;
+
+  @include view-max(1330px) {
+    padding-left: 10px;
+  }
+  @include view-max(1240px) {
+    font-size: 24px;
+    padding-left: 10px;
+  }
+  @include view-max(768px) {
+    font-size: 24px;
+    padding-left: 0px;
+  }
+  @include view-max(425px) {
+    font-size: 18px;
+    padding-left: 0px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .body {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 70vh;
+    width: auto;
+  }
+}
+
+.add-remove-item-icon {
+  padding-top: 17px;
+  cursor: pointer;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.mat-icon {
+  color: #e10000;
+  font-size: 35px;
+  @include view-max(768px) {
+    font-size: 30px;
+  }
+}
+
+.quantity-item {
+  color: #3c0000;
+  vertical-align: super;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 30px;
+  line-height: 42px;
+  padding-left: 30px;
+  padding-right: 20px;
+  @include view-max(768px) {
+    font-size: 25px;
+  }
+  @include view-max(425px) {
+    font-size: 25px;
+  }
+}
+
+.col-add-remove {
+  text-align: center;
+  @include view-max(768px) {
+    text-align: left;
+  }
+}
+
+.input-hour-reservation {
+  text-align: center;
+}
+
+.title-center {
+  text-align: center;
+}

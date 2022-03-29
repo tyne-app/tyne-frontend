@@ -1,0 +1,83 @@
+<div class="container" *ngIf="account">
+  <!--Business Name-->
+  <div class="row justify-content-center">
+    <div class="col-sm-6 col-md-6">
+      <h3 class="title-2mt-4 mt-md-5 mb-2 mb-md-3">{{ account.branch?.name | titlecase }}</h3>
+    </div>
+  </div>
+
+  <div class="row mx-0">
+    <div class="col px-0 px-md-2 ml-md-4">
+      <h3 class="title-4">Mis Datos</h3>
+    </div>
+  </div>
+
+  <!--Principal Business Information-->
+  <mat-card>
+    <div class="row ml-1">
+      <div class="col-md-4 col-lg-4">
+        <h4 class="titulo">Nombre del local</h4>
+        <p class="subtitulo">{{ account.branch?.name | titlecase}}</p>
+      </div>
+      <div class="col-md-4 col-lg-4">
+        <h4 class="titulo">Teléfono del local</h4>
+        <p class="subtitulo">{{ account.branch?.phone }}</p>
+      </div>
+      <div class="col-md-4 col-lg-4">
+        <h4 class="titulo">Dirección casa Matriz</h4>
+        <p class="subtitulo">{{ account.branch?.street | titlecase }} #{{ account.branch.street_number }}</p>
+      </div>
+    </div>
+
+    <div class="row ml-1">
+      <div class="col-md-4 col-lg-4">
+        <h4 class="titulo">Email encargado</h4>
+        <p class="subtitulo">{{ account.manager?.email }}</p>
+      </div>
+      <div class="col-md-4 col-lg-4">
+        <h4 class="titulo">Nombre encargado</h4>
+        <p class="subtitulo">{{ account.manager?.name | titlecase }} {{ account.manager?.last_name | titlecase }}</p>
+      </div>
+      <div class="col-md-4 col-lg-4">
+        <h4 class="titulo">Teléfono encargado</h4>
+        <p class="subtitulo">{{ account.manager.phone }}</p>
+      </div>
+    </div>
+
+    <!--     <div class="row pt-4 justify-content-center">
+      <div class="col-12 col-md-4 col-center mb-2 mb-md-0">
+        <button mat-raised-button class="btn-normal-red btn-xs" (click)="openEditDataComponent()">
+          Editar mis datos
+        </button>
+      </div>
+      <div class="col-12 col-md-4 col-center mb-2 mb-md-0">
+        <button mat-raised-button class="btn-normal-red btn-xs" (click)="openEditPasswordComponent()">
+          Editar contraseña
+        </button>
+      </div>
+      <div class="col-12 col-md-4 col-center">
+        <button mat-raised-button class="btn-normal-red btn-xs" (click)="openEditBankDataComponent()">
+          Ver mis datos bancarios
+        </button>
+      </div>
+    </div> -->
+  </mat-card>
+
+  <mat-card class="mat-card-pt-4">
+    <div class="row ml-1 pt-3">
+      <div class="col-lg-6 col-center">
+        <h4 class="titulo pb-3">Horario y Días de Funcionamiento:</h4>
+        <p class="subtitulo" *ngFor="let x of account.schedule_list">
+          {{ getDay(x.day) }} de {{ x.opening_hour }} a {{ x.closing_hour }}
+        </p>
+        <!--<button class="btn-normal-red btn-xs" (click)="openEditWorkDaysComponent()" mat-raised-button>
+          Editar Horarios
+        </button> -->
+      </div>
+
+      <app-accept-pet class="col-center col-lg-6" [acceptPet]="account.branch.accept_pet">
+      </app-accept-pet>
+
+    </div>
+  </mat-card>
+</div>
