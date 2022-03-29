@@ -6,7 +6,7 @@ on:
   #   branches:
   #     - develop
   push:
-    branches: fix/added-github-actions-config
+    branches: fix
 jobs:
   build:
     runs-on: ubuntu-latest
