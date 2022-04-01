@@ -2,11 +2,35 @@ name: Dev deploy Heroku
 
 on:
   pull_request:
-    types: open
+    types: [opened, reopened, synchronize]
     branches:
       - develop
 jobs:
+  check-branch-name:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions-ecosystem/action-regex-match@v2
+        id: regex-match
+        with:
+          text: ${{ github.head_ref }}
+          regex: "^TYNE-[0-9]+[/](feature|fix|test|bug|poc)+[/][a-zA-Z]+"
+      - uses: actions-ecosystem/action-add-labels@v1
+      - run: |
+          echo ${{ steps.regex-match.outputs.match}}
+          if ${{ steps.regex-match.outputs.match != '' }}; then
+            echo "Your branch matches with the pattern successfully."
+          else
+            echo "Your branch doesn't match with the pattern TYNE-[0-9]+[/](feature|fix|test|bug|poc)+[/][a-zA-Z]+"
+            echo "Please check your branch name, create a new branch in your machine, then"
+            echo "push the new branch."
+            echo "Correct branch names examples:"
+            echo "TYNE-{number}/{feature|fix|test|bug|poc}/message-about-the-branch-topic"
+            echo "TYNE-598/feature/new-client-api"
+            exit 1
+          fi
   build:
+    needs: [check-branch-name]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
