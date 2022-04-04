@@ -127,7 +127,7 @@ export class BusinessRegistrationComponent implements OnInit, SafeFormData {
       branchLocationCity: ["0", [Validators.required, Validators.min(1)]],
       branchLocationState: ["0", [Validators.required, Validators.min(1)]],
       branchHavePet: ["0"],
-    }, {updateOn: 'blur'});
+    });
 
     const step2 = localStorage.getItem(BusinessRegisterStep.STEP2);
     if (step2) {
