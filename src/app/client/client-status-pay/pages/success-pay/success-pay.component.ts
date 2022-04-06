@@ -12,8 +12,7 @@ import { UpdateReservationPaymentDto } from "@app/shared/interfaces/reservation/
   styleUrls: ["./success-pay.component.scss"],
 })
 export class SuccessPayComponent implements OnInit {
-
-  public localId:string;
+  public localId: string;
   public goBackLocalCustomButton: ButtonCustom = {
     buttonMaterialType: "mat-raised-button",
     buttonType: "button",
@@ -29,6 +28,8 @@ export class SuccessPayComponent implements OnInit {
   public constructor(private reservationService: ReservationService, private router: Router) {}
 
   public ngOnInit(): void {
+    const path: any = this.router.parseUrl(this.router.url);
+    const paymentNumber: string = path.queryParams["payment_id"];
     const paymentId: string = localStorage.getItem("payment_id");
     const reservationId: number = +localStorage.getItem("reservation_id");
     this.localId = localStorage.getItem("local_id");
@@ -36,6 +37,7 @@ export class SuccessPayComponent implements OnInit {
     const updateReservation: UpdateReservationPaymentDto = {
       payment_id: paymentId,
       reservation_id: reservationId,
+      payment_number: paymentNumber,
       status: reservationStatus.paySuccess,
     };
     if (paymentId && reservationId) {
@@ -53,7 +55,7 @@ export class SuccessPayComponent implements OnInit {
   public goBackToLocalProfile(): void {
     this.router.navigate([`/${TyneRoutes.BusinessDetail}`], {
       queryParams: {
-        id: this.localId
+        id: this.localId,
       },
     });
   }
