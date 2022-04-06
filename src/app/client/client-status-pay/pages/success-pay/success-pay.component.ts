@@ -29,10 +29,11 @@ export class SuccessPayComponent implements OnInit {
 
   public ngOnInit(): void {
     const path: any = this.router.parseUrl(this.router.url);
+    console.log("PATH", path);
     const paymentNumber: string = path.queryParams["payment_id"];
     const paymentId: string = localStorage.getItem("payment_id");
-    console.log(path);
-    console.log(path.queryParams["payment_id"]);
+
+    console.log("QUERY PARAMS",path.queryParams["payment_id"]);
     const reservationId: number = +localStorage.getItem("reservation_id");
     this.localId = localStorage.getItem("local_id");
 
