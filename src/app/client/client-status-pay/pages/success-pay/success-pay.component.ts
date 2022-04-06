@@ -31,6 +31,8 @@ export class SuccessPayComponent implements OnInit {
     const path: any = this.router.parseUrl(this.router.url);
     const paymentNumber: string = path.queryParams["payment_id"];
     const paymentId: string = localStorage.getItem("payment_id");
+    console.log(path);
+    console.log(path.queryParams["payment_id"]);
     const reservationId: number = +localStorage.getItem("reservation_id");
     this.localId = localStorage.getItem("local_id");
 
