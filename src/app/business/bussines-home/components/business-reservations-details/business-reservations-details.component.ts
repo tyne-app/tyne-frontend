@@ -20,17 +20,17 @@ export class BusinessReservationsDetailsComponent implements OnInit {
   public auxCategories = [];
   public detailsReservation: LocalReservationDetailResponse;
   public cancelReservationCustomButton: ButtonCustom = {
-    buttonMaterialType : "mat-raised-button",
+    buttonMaterialType: "mat-raised-button",
     buttonType: "button",
-    buttonTypeClass: "btn-normal-red"
-  }
+    buttonTypeClass: "btn-normal-red",
+  };
   public confirmReservationCustomButton: ButtonCustom = {
     buttonMaterialType: "mat-raised-button",
     buttonType: "submit",
-    buttonTypeClass: "btn-submit"
-  }
+    buttonTypeClass: "btn-submit",
+  };
   public constructor(
-    @Inject(MAT_DIALOG_DATA) public parameters: { reservationId: number, paymentId: string },
+    @Inject(MAT_DIALOG_DATA) public parameters: { reservationId: number; paymentId: string },
     private reservationService: ReservationService,
     private menuService: MenuService
   ) {}
@@ -82,20 +82,21 @@ export class BusinessReservationsDetailsComponent implements OnInit {
     );
   }
 
-
-  public confirmReservation(): void{
+  public confirmReservation(): void {
     const reservation: UpdateReservationPaymentDto = {
-      reservation_id : this.parameters.reservationId,
-      status : reservationStatus.reservationConfirmed,
-      payment_id : this.parameters.paymentId
+      reservation_id: this.parameters.reservationId,
+      status: reservationStatus.reservationConfirmed,
+      payment_number: "",
+      payment_id: this.parameters.paymentId,
     };
     this.reservationService.putReservation(reservation).subscribe();
   }
-  public cancelReservation(): void{
+  public cancelReservation(): void {
     const reservation: UpdateReservationPaymentDto = {
-        reservation_id : this.parameters.reservationId,
-        status : reservationStatus.payCancelByLocal,
-        payment_id : this.parameters.paymentId
+      reservation_id: this.parameters.reservationId,
+      status: reservationStatus.payCancelByLocal,
+      payment_number: "",
+      payment_id: this.parameters.paymentId,
     };
     this.reservationService.putReservation(reservation).subscribe();
   }
@@ -122,6 +123,4 @@ export class BusinessReservationsDetailsComponent implements OnInit {
 
     return dateReturn;
   }
-
-  
 }
