@@ -48,16 +48,6 @@ jobs:
           heroku_email: ${{ secrets.HEROKU_EMAIL }}
           dontautocreate: false
           usedocker: true
-          justlogin: true
-      - name: "Login to heroku registry"
-        run: heroku container:login
-
-      - name: "Build and push to heroku registry"
-        run: heroku container:push web --app ${{ secrets.HEROKU_DEV_APP_NAME }}
-
-      - name: "Releases the container"
-        run: heroku container:release web --app ${{ secrets.HEROKU_DEV_APP_NAME }}
-
   discord-notification:
     needs: [build]
     runs-on: ubuntu-latest
