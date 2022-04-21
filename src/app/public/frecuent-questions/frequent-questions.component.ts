@@ -9,7 +9,7 @@ export class FrequentQuestionsComponent {
   public questions = [
     {
       title: "¿Como registro mi restaurante en Tyne?",
-      body: "Visite nuestra página web www.tyneapp.com, dé click en “Une tu local”, llene los campos de contacto y lo llamaremos en un plazo no mayor a 48 hrs.",
+      body: "Visite nuestra página web www.tyne.cl, dé click en “Une tu local”, llene los campos de contacto y lo llamaremos en un plazo no mayor a 48 hrs.",
     },
     {
       title:
@@ -18,7 +18,7 @@ export class FrequentQuestionsComponent {
     },
     {
       title: "¿Qué pasa si el restaurante no tiene el plato que pedí?",
-      body: "El local puede negociar un cambio de menú en el instante en caso de falta de stock, de otro modo, Tyne puede reembolsar el dinero del platillo en caso de que no se llegue acuerdo, recuerde que puede escribirnos en cualquier momento a contacto@tyneapp.com, donde podemos ofrecer una reserva en algún otro local con similares características.",
+      body: "El local puede negociar un cambio de menú en el instante en caso de falta de stock, de otro modo, Tyne puede reembolsar el dinero del platillo en caso de que no se llegue acuerdo, recuerde que puede escribirnos en cualquier momento a contacto@tyne.cl, donde podemos ofrecer una reserva en algún otro local con similares características.",
     },
     {
       title: "¿Qué métodos de pago acepta?",
@@ -47,7 +47,7 @@ export class FrequentQuestionsComponent {
     {
       title:
         "¿Sí no me funciona la app en el pago, reserva, otros, quién y cómo lo solucionaría?",
-      body: "Como comensal o local puede escribirnos reportando la falla técnica a contacto@tyneapp.com y nos pondremos en contacto para evaluar la solución que mejor se ajuste a su necesidad",
+      body: "Como comensal o local puede escribirnos reportando la falla técnica a contacto@tyne.cl y nos pondremos en contacto para evaluar la solución que mejor se ajuste a su necesidad",
     },
     {
       title: "¿Qué dispositivos necesito para usar Tyne?",
