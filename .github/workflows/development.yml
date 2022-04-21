@@ -49,6 +49,7 @@ jobs:
           dontautocreate: false
           usedocker: true
           justlogin: true
+      - name: "Login to heroku registry"
         run: heroku container:login
   discord-notification:
     needs: [build]
