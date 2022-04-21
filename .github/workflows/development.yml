@@ -48,6 +48,8 @@ jobs:
           heroku_email: ${{ secrets.HEROKU_EMAIL }}
           dontautocreate: false
           usedocker: true
+          justlogin: true
+        run: heroku container:login
   discord-notification:
     needs: [build]
     runs-on: ubuntu-latest
