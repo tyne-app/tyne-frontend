@@ -14,7 +14,7 @@
 
     <!-- Business description -->
     <mat-card-content>
-      <div class="row">
+      <div *ngIf="business.min_price > 0 &&  business.max_price > 0" class="row">
         <div class="col-6 valoracion-local">{{ business.min_price | currencyStandard }} - {{ business.max_price | currencyStandard}}</div>
       </div>
       <p class="descripcion-local">
