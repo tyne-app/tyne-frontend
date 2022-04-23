@@ -26,11 +26,11 @@ export class BusinessService {
   public constructor(private http: HttpClient, private businessMockService:BusinessMockService) {}
 
   public createNewBusiness(business: BusinessRegistrationDto): Observable<any> {
-    return this.http.post<any>(this.urlBase + "/business/", business);
+    return this.http.post<any>(`${this.urlBase}/business`, business);
   }
 
   public createNewBranch(branch: BranchRegistrationDto): Observable<any> {
-    return this.http.post<any>(this.urlBase + "/business/branches", branch);
+    return this.http.post<any>(`${this.urlBase}/business/branches`, branch);
   }
 
   public getBusinessFiltered(request: SearchRestaurantRequest): Observable<SearchRestaurantResponse> {

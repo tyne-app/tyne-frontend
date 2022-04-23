@@ -41,7 +41,6 @@ export class GoogleService {
   private socialLogin(user: UserCredential["user"]): Observable<LoginResponse> {
     return from(user.getIdToken()).pipe(
       mergeMap((token) => {
-        console.log(token);
         return this.userService.socialLogin(user.email, token);
       })
     );
