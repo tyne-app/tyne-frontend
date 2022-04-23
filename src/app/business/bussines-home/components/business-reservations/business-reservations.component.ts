@@ -173,18 +173,19 @@ export class BusinessReservationsComponent implements OnInit {
   public getDateReservation(dateReservation: string, week_day: string): string {
     dateReservation = dateReservation.replace("-", "/").replace("-", "/");
     const date: Date = new Date(dateReservation);
-    const days = [];
-    days["Monday"] = "Lunes";
-    days["Tuesday"] = "Martes";
-    days["Wednesday"] = "Miércoles";
-    days["Thursday"] = "Jueves";
-    days["Friday"] = "Viernes";
-    days["Saturday"] = "Sábado";
-    days["Sunday"] = "Domingo";
+    const days = [""];
+    days[("Monday".toLocaleLowerCase(), "Lunes".toLowerCase())] = "Lunes";
+    days[("Tuesday".toLocaleLowerCase(), "Martes".toLowerCase())] = "Martes";
+    days[("Wednesday".toLocaleLowerCase(), "Miércoles".toLowerCase())] = "Miércoles";
+    days[("Thursday".toLocaleLowerCase(), "Jueves".toLowerCase())] = "Jueves";
+    days[("Friday".toLocaleLowerCase(), "Viernes".toLowerCase())] = "Viernes";
+    days[("Saturday".toLocaleLowerCase(), "Sábado".toLowerCase())] = "Sábado";
+    days[("Domingo".toLocaleLowerCase(), "Domingo".toLowerCase())] = "Domingo";
+
     const monthNames = MonthNames;
     const day: number = date.getDate();
     const month: number = date.getMonth();
-    const dateReturn: string = days[week_day] + " " + day + " de " + monthNames[month];
+    const dateReturn: string = days[week_day.toLocaleLowerCase()] + " " + day + " de " + monthNames[month];
 
     return dateReturn;
   }
