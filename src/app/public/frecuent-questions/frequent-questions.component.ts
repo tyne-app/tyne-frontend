@@ -9,16 +9,15 @@ export class FrequentQuestionsComponent {
   public questions = [
     {
       title: "¿Como registro mi restaurante en Tyne?",
-      body: "Visite nuestra página web www.tyneapp.com, dé click en “Une tu local”, llene los campos de contacto y lo llamaremos en un plazo no mayor a 48 hrs.",
+      body: "Visite nuestra página web www.tyne.cl, dé click en “Une tu local”, llene los campos de contacto y lo llamaremos en un plazo no mayor a 48 hrs.",
     },
     {
-      title:
-        "¿Qué hago como locatario si un comensal no llega a la hora y día determinado de la reserva?",
+      title: "¿Qué hago como locatario si un comensal no llega a la hora y día determinado de la reserva?",
       body: "Le pagaremos el total de su plato sin mayores problemas, para ello revise las políticas de reembolso.",
     },
     {
       title: "¿Qué pasa si el restaurante no tiene el plato que pedí?",
-      body: "El local puede negociar un cambio de menú en el instante en caso de falta de stock, de otro modo, Tyne puede reembolsar el dinero del platillo en caso de que no se llegue acuerdo, recuerde que puede escribirnos en cualquier momento a contacto@tyneapp.com, donde podemos ofrecer una reserva en algún otro local con similares características.",
+      body: "El local puede negociar un cambio de menú en el instante en caso de falta de stock, de otro modo, Tyne puede reembolsar el dinero del platillo en caso de que no se llegue acuerdo, recuerde que puede escribirnos en cualquier momento a contacto@tyne.cl, donde podemos ofrecer una reserva en algún otro local con similares características.",
     },
     {
       title: "¿Qué métodos de pago acepta?",
@@ -45,19 +44,16 @@ export class FrequentQuestionsComponent {
       body: "Puede ponerse en contacto de manera inmediata con nuestro equipo y nos comunicaremos en un tiempo no mayor a 48 hrs hábiles.",
     },
     {
-      title:
-        "¿Sí no me funciona la app en el pago, reserva, otros, quién y cómo lo solucionaría?",
-      body: "Como comensal o local puede escribirnos reportando la falla técnica a contacto@tyneapp.com y nos pondremos en contacto para evaluar la solución que mejor se ajuste a su necesidad",
+      title: "¿Sí no me funciona la app en el pago, reserva, otros, quién y cómo lo solucionaría?",
+      body: "Como comensal o local puede escribirnos reportando la falla técnica a contacto@tyne.cl y nos pondremos en contacto para evaluar la solución que mejor se ajuste a su necesidad",
     },
     {
       title: "¿Qué dispositivos necesito para usar Tyne?",
       body: "Un smartphone con conexión estable a Internet o un computador de escritorio, laptop y similares con conexión a Internet.",
     },
     {
-      title:
-        "¿Cuánto tiempo se necesita para implementar el sistema en el local?",
+      title: "¿Cuánto tiempo se necesita para implementar el sistema en el local?",
       body: "Basta con solo registrarse y editar su perfil al igual que una red social.",
     },
   ];
-
 }
