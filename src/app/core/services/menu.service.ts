@@ -18,7 +18,7 @@ export class MenuService {
   }
 
   public createMenuByBranch(menu: CreateMenuDto): Observable<any> {
-    const urlBase = `${this.urlBase}/menus/`;
+    const urlBase = `${this.urlBase}/menus`;
     return this.http.post<any>(urlBase, menu);
   }
 
