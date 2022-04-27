@@ -4,7 +4,7 @@ import { FileService } from "@app/shared/helpers/file.service";
 import { DialogService } from "@app/shared/components/dialog/shared/services/dialog.service";
 import { errorContent } from "@app/shared/components/dialog/shared/inmutable/constants/dialog-message";
 import { HTMLInputEvent } from "@app/shared/interfaces/common/event-input-file";
-
+import { DialogModel } from "@app/shared/components/dialog/shared/interfaces/dialog-model";
 
 @Component({
   selector: "app-profile-image",
@@ -12,7 +12,6 @@ import { HTMLInputEvent } from "@app/shared/interfaces/common/event-input-file";
   styleUrls: ["./profile-image.component.scss"],
 })
 export class ProfileImageComponent implements OnInit {
-
   @Input() public urlImage: string | ArrayBuffer;
   public imageProfile: File = null;
 
@@ -58,7 +57,13 @@ export class ProfileImageComponent implements OnInit {
     if (isValidImageFormat) {
       this.updateImageProfile(this.imageProfile);
     } else {
-      this.dialogService.openDialog(errorContent);
+      const dialog: DialogModel = {
+        isSuccessful: false,
+        title: "Ha ocurrido un problema",
+        subtitle: "Debe seleccionar una imagen",
+        messageButton: "Volver",
+      };
+      this.dialogService.openDialog(dialog);
     }
   }
 }

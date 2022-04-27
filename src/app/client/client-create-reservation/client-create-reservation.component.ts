@@ -9,30 +9,38 @@ import { Product, ReservationAdd } from "@app/business/bussines-home/interfaces/
 import { ReservationService } from "@app/core/services/reservation.service";
 import { BusinessService } from "@app/business/shared/services/business.service";
 import { ButtonCustom } from "@app/shared/controls/customs/buttons/shared/interfaces/button-custom";
+import { HttpErrorResponse } from "@angular/common/http";
+import { DialogModel } from "@app/shared/components/dialog/shared/interfaces/dialog-model";
+import { DialogService } from "@app/shared/components/dialog/shared/services/dialog.service";
 @Component({
   selector: "app-client-create-reservation",
   templateUrl: "./client-create-reservation.component.html",
   styleUrls: ["./client-create-reservation.component.scss"],
 })
 export class ClientCreateReservationComponent implements OnInit {
-  
   public reservationForm: FormGroup;
   public reservationDatePickerConfig: DatePickerConfig;
   public backCustomButton: ButtonCustom = {
-    buttonMaterialType : "mat-raised-button",
-    buttonType : "button",
-    buttonTypeClass : "btn-normal-red"
-  }
+    buttonMaterialType: "mat-raised-button",
+    buttonType: "button",
+    buttonTypeClass: "btn-normal-red",
+  };
 
   public createReservationCustomButton: ButtonCustom = {
-    buttonMaterialType : "mat-raised-button",
-    buttonType : "submit",
-    buttonTypeClass : "btn-submit",
-  }
+    buttonMaterialType: "mat-raised-button",
+    buttonType: "submit",
+    buttonTypeClass: "btn-submit",
+  };
 
-  public get PeopleNumber(): AbstractControl { return this.reservationForm.get('peopleNumber');}
-  public get DateReservation(): AbstractControl { return this.reservationForm.get('dateReservation');}
-  public get HourReservation(): AbstractControl { return this.reservationForm.get('hourReservation');}
+  public get PeopleNumber(): AbstractControl {
+    return this.reservationForm.get("peopleNumber");
+  }
+  public get DateReservation(): AbstractControl {
+    return this.reservationForm.get("dateReservation");
+  }
+  public get HourReservation(): AbstractControl {
+    return this.reservationForm.get("hourReservation");
+  }
 
   public constructor(
     private formBuilder: FormBuilder,
@@ -40,7 +48,8 @@ export class ClientCreateReservationComponent implements OnInit {
     private dateService: DateService,
     private reservationService: ReservationService,
     private BusinessService: BusinessService,
-    @Inject(MAT_DIALOG_DATA) public data: { total: number, branchId: number , products: Product[] }
+    private dialogService: DialogService,
+    @Inject(MAT_DIALOG_DATA) public data: { total: number; branchId: number; products: Product[] }
   ) {}
 
   public ngOnInit(): void {
@@ -49,54 +58,81 @@ export class ClientCreateReservationComponent implements OnInit {
     this.setReservationDatePicker();
   }
 
-
   public addPersonToReservation(): void {
-    const control:AbstractControl = this.PeopleNumber;
+    const control: AbstractControl = this.PeopleNumber;
     control.setValue(+control.value + 1);
   }
 
   public removePersonFromReservation(): void {
-    const control:AbstractControl = this.PeopleNumber;
+    const control: AbstractControl = this.PeopleNumber;
     if (+control.value > 1) {
       control.setValue(+control.value - 1);
     }
   }
 
-  public setReservationDatePicker(): void{
+  public setReservationDatePicker(): void {
     this.reservationDatePickerConfig = this.dateService.setConfigReservatioDate();
   }
-
 
   private buildFormReservation(): void {
     this.reservationForm = this.formBuilder.group({
       peopleNumber: ["1", [Validators.min(1), Validators.max(5)]],
       dateReservation: ["", [DateValidator.validator, Validators.required]],
-      hourReservation: ["", [Validators.required, Validators.pattern(DateValidator.timeRegex())]]
+      hourReservation: ["", [Validators.required, Validators.pattern(DateValidator.timeRegex())]],
     });
   }
-
 
   private getDateReservation() {
     this.reservationForm.get("dateReservation").setValue(new Date(this.searchBarService.getDateReservation()));
   }
 
   public goPayment(): void {
-    if(!this.reservationForm.invalid){    
-      const reservationCreate:ReservationAdd = {
-        branch_id : this.data.branchId,
-        date : this.DateReservation.value,
+    if (!this.reservationForm.invalid) {
+      const reservationCreate: ReservationAdd = {
+        branch_id: this.data.branchId,
+        date: this.DateReservation.value,
         people: this.PeopleNumber.value,
-        hour:  this.HourReservation.value,
-        products : this.data.products,
+        hour: this.HourReservation.value,
+        products: this.data.products,
       };
-      this.reservationService.postReservation(reservationCreate).subscribe((paymentDetail)=>{  
-        const { url_payment, payment_id, reservation_id } = paymentDetail;
-        localStorage.setItem("payment_id",payment_id );
-        localStorage.setItem("reservation_id", reservation_id.toString());
-        window.location.href = url_payment;
-      });
+      this.reservationService.postReservation(reservationCreate).subscribe(
+        (paymentDetail) => {
+          const { url_payment, payment_id, reservation_id } = paymentDetail;
+          localStorage.setItem("payment_id", payment_id);
+          localStorage.setItem("reservation_id", reservation_id.toString());
+          window.location.href = url_payment;
+        },
+        (error: HttpErrorResponse) => {
+          let dialog: DialogModel = {
+            isSuccessful: false,
+            title: "Ha ocurrido un problema.",
+            subtitle: "Ha ocurrido un problema vuelva a intentarlo.",
+            messageButton: "Volver",
+          };
+          if (error.status === 400 || error.status === 401 || error.status === 409) {
+            let subtitle = "";
+            if (Array.isArray(error.error.details)) {
+              error.error.details.forEach((element) => {
+                subtitle += element + "\n";
+              });
+            } else {
+              subtitle = error.error.details;
+            }
+            dialog = {
+              isSuccessful: false,
+              title: "Ha ocurrido un problema.",
+              subtitle: subtitle,
+              messageButton: "Volver",
+            };
+          }
+          this.showErrorMessage(dialog);
+        }
+      );
     }
+  }
 
+  private showErrorMessage(dialogModel: DialogModel): void {
+    this.dialogService.openDialog(dialogModel);
   }
 
   // #region Errors

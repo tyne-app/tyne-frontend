@@ -11,7 +11,7 @@ export interface SearchRestaurant {
   street: string;
   street_number: number;
   state_id: number;
-  restaurant_name: string;
+  branch_name: string;
   description: string;
   rating: number;
   min_price: number;

@@ -44,10 +44,10 @@ export class BusinessReservationsComponent implements OnInit {
     this.getBranch();
     this.getMonthYear("");
     this.getTypeReservation();
-
     this.customCollapsedHeight = "100px";
     this.customExpandedHeight = "100px";
   }
+
   public initForm(): void {
     this.form = this.formBuilder.group({
       typeReservation: ["", [Validators.required, Validators.min(1)]],
@@ -124,7 +124,11 @@ export class BusinessReservationsComponent implements OnInit {
       panelClass: "local-reservation-dialog",
       data: { reservationId: reservationId, paymentId: paymentId },
     });
-    dialogRef.afterClosed().subscribe((result) => {});
+    dialogRef.afterClosed().subscribe((result) => {
+      if(!result){
+        this.getMonthYear("");
+      }
+    });
   }
 
   public getLocalReservations(
@@ -141,7 +145,6 @@ export class BusinessReservationsComponent implements OnInit {
       .subscribe(
         (reservations) => {
           this.reservations = reservations;
-
           if (type == 1 && Object.keys(this.reservations).length != 0) {
             setTimeout(() => ((this.paginator.pageIndex = 0), (this.resultForPage = this.paginator.pageSize)));
           }
@@ -166,25 +169,18 @@ export class BusinessReservationsComponent implements OnInit {
   public OnPageChange(event: PageEvent): void {
     this.resultForPage = event.pageSize;
     this.page = event.pageIndex + 1;
-
     this.getLocalReservations(this.typeReservationDefault, this.resultForPage, this.page, 0);
   }
 
-  public getDateReservation(dateReservation: string, week_day: string): string {
+  public getDateReservation(dateReservation: string): string {
     dateReservation = dateReservation.replace("-", "/").replace("-", "/");
     const date: Date = new Date(dateReservation);
-    const days = [];
-    days["Monday"] = "Lunes";
-    days["Tuesday"] = "Martes";
-    days["Wednesday"] = "Miércoles";
-    days["Thursday"] = "Jueves";
-    days["Friday"] = "Viernes";
-    days["Saturday"] = "Sábado";
-    days["Sunday"] = "Domingo";
+    const days = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
     const monthNames = MonthNames;
     const day: number = date.getDate();
     const month: number = date.getMonth();
-    const dateReturn: string = days[week_day] + " " + day + " de " + monthNames[month];
+    const dayNumber = new Date(date).getDay();
+    const dateReturn: string = days[dayNumber] + " " + day + " de " + monthNames[month];
 
     return dateReturn;
   }
@@ -193,12 +189,13 @@ export class BusinessReservationsComponent implements OnInit {
     let image = "";
     if (statusId == 4) {
       image = "../../../../assets/img/reservas-pendientes.svg";
+    } else if (statusId == 7) {
+      image = "../../../../assets/img/reservas-canceladas.svg";
     } else if (statusId == 8) {
       image = "../../../../assets/img/reservas-confirmadas.svg";
     } else if (statusId == 9) {
       image = "../../../../assets/img/reservas-atendidas.svg";
     }
-
     return image;
   }
 }

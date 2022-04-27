@@ -2,28 +2,25 @@ import { HttpErrorResponse } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { AbstractControl, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialogRef } from "@angular/material/dialog";
-import { DateService } from "@app/shared/helpers/date.service";
-import { LoggerService } from "@app/shared/helpers/logger.service";
-import { GoogleService } from "@app/auth/shared/services/google.service";
 import { FacebookService } from "@app/auth/shared/services/facebook.service";
-import { Moment } from "moment";
-import { DialogService } from "@app/shared/components/dialog/shared/services/dialog.service";
+import { GoogleService } from "@app/auth/shared/services/google.service";
+import { ClientService } from "@app/client/shared/services/client.service";
 import {
   errorContent,
   invalidFormContent,
   registerClientContent,
 } from "@app/shared/components/dialog/shared/inmutable/constants/dialog-message";
-import { emailRegex } from "@app/shared/inmutable/constants/regex";
-import { passwordRegex } from "@app/shared/inmutable/constants/regex";
-
-import { PasswordValidator } from "src/app/shared/validations/password-validator";
-import { ClientService } from "@app/client/shared/services/client.service";
-import { FormControlService } from "@app/shared/helpers";
-import * as moment from "moment";
 import { DialogModel } from "@app/shared/components/dialog/shared/interfaces/dialog-model";
-import { Client } from "../shared/interfaces/client";
+import { DialogService } from "@app/shared/components/dialog/shared/services/dialog.service";
 import { ButtonCustom } from "@app/shared/controls/customs/buttons/shared/interfaces/button-custom";
-
+import { FormControlService } from "@app/shared/helpers";
+import { DateService } from "@app/shared/helpers/date.service";
+import { LoggerService } from "@app/shared/helpers/logger.service";
+import { emailRegex, passwordRegex } from "@app/shared/inmutable/constants/regex";
+import * as moment from "moment";
+import { Moment } from "moment";
+import { PasswordValidator } from "src/app/shared/validations/password-validator";
+import { Client } from "../shared/interfaces/client";
 
 @Component({
   selector: "app-client-registration",
@@ -31,8 +28,7 @@ import { ButtonCustom } from "@app/shared/controls/customs/buttons/shared/interf
   styleUrls: ["./client.registration.component.scss"],
 })
 export class ClientRegistrationComponent implements OnInit {
-  
-  public hidePassword = true; 
+  public hidePassword = true;
   public hidePassordConfirm = true;
   public loading = false;
   public clientRegisterForm!: FormGroup;
@@ -43,8 +39,7 @@ export class ClientRegistrationComponent implements OnInit {
     buttonMaterialType: "mat-raised-button",
     buttonType: "submit",
     buttonTypeClass: "btn-submit",
-  }
-  
+  };
 
   public get ClientNameControl(): AbstractControl {
     return this.clientRegisterForm.get("clientName");
@@ -74,7 +69,6 @@ export class ClientRegistrationComponent implements OnInit {
     return this.clientRegisterForm.get("passwordConfirm");
   }
 
-
   public constructor(
     private formBuilder: FormBuilder,
     public clientRegistrationDialogReferencce: MatDialogRef<ClientRegistrationComponent>,
@@ -96,7 +90,7 @@ export class ClientRegistrationComponent implements OnInit {
     this.clientRegisterForm = this.formBuilder.group({
       clientName: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
       clientLastName: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
-      clientPhone: ["",[Validators.minLength(12), Validators.maxLength(12)]],
+      clientPhone: ["", [Validators.minLength(12), Validators.maxLength(12)]],
       clientEmail: ["", [Validators.email, Validators.required, Validators.pattern(emailRegex)]],
       password: ["", [Validators.required, Validators.pattern(passwordRegex)]],
       passwordConfirm: ["", [Validators.required, PasswordValidator("password")]],
@@ -116,8 +110,6 @@ export class ClientRegistrationComponent implements OnInit {
       return;
     }
     this.loading = true;
-
-
     const client: Client = {
       name: this.ClientNameControl.value,
       lastName: this.ClientLastNameControl.value,
@@ -143,22 +135,33 @@ export class ClientRegistrationComponent implements OnInit {
         this.showSuccessMessage();
         this.loggerService.postLogger();
       },
-      (error: any) => {
+      (error: HttpErrorResponse) => {
         this.loading = false;
+        let subtitle = "";
+        let dialog: DialogModel = {
+          isSuccessful: false,
+          title: "Problemas con su registro.",
+          subtitle: subtitle,
+          messageButton: "Volver",
+        };
 
-        if (error.status === 400) {
-          let subtitle = "";
-          error.error.details.forEach((element) => {
-            subtitle += element + "\n";
-          });
-          const dialog: DialogModel = {
+        if (error.status === 400 || error.status === 401) {
+          if (Array.isArray(error.error.details)) {
+            error.error.details.forEach((element) => {
+              subtitle += element + "\n";
+            });
+          } else {
+            subtitle = error.error.details;
+          }
+
+          dialog = {
             isSuccessful: false,
             title: "Problemas con su registro.",
             subtitle: subtitle,
             messageButton: "Volver",
           };
-          this.showErrorMessage(dialog);
         }
+        this.showErrorMessage(dialog);
       }
     );
   }
@@ -169,46 +172,69 @@ export class ClientRegistrationComponent implements OnInit {
         this.showSuccessMessage();
       },
       (error: HttpErrorResponse) => {
-        if (error.status === 400) {
-          let subtitle = "";
-          error.error.details.forEach((element) => {
-            subtitle += element + "\n";
-          });
-          const dialog: DialogModel = {
-            isSuccessful: false,
-            title: "Problemas con su registro.",
-            subtitle: subtitle,
-            messageButton: "Volver",
-          };
-          this.showErrorMessage(dialog);
-        } else {
-          this.showErrorMessage();
-        }
-      }
-      );
-  }
-
-  public googleRegister(): void {
-    this.googleService.googleSignUp().subscribe(() => {
-      this.showSuccessMessage();
-    },
-    (error: HttpErrorResponse) => {
-      if (error.status === 400) {
+        this.loading = false;
         let subtitle = "";
-        error.error.details.forEach((element) => {
-          subtitle += element + "\n";
-        });
-        const dialog: DialogModel = {
+        let dialog: DialogModel = {
           isSuccessful: false,
           title: "Problemas con su registro.",
           subtitle: subtitle,
           messageButton: "Volver",
         };
+        if (error.status === 400 || error.status === 401) {
+          if (Array.isArray(error.error.details)) {
+            error.error.details.forEach((element) => {
+              subtitle += element + "\n";
+            });
+          } else {
+            subtitle = error.error.details;
+          }
+
+          dialog = {
+            isSuccessful: false,
+            title: "Problemas con su registro.",
+            subtitle: subtitle,
+            messageButton: "Volver",
+          };
+        }
         this.showErrorMessage(dialog);
-      } else {
-        this.showErrorMessage();
       }
-    });
+    );
+  }
+
+  public googleRegister(): void {
+    this.googleService.googleSignUp().subscribe(
+      () => {
+        this.showSuccessMessage();
+      },
+      (error: HttpErrorResponse) => {
+        this.loading = false;
+        let subtitle = "";
+        let dialog: DialogModel = {
+          isSuccessful: false,
+          title: "Problemas con su registro.",
+          subtitle: subtitle,
+          messageButton: "Volver",
+        };
+
+        if (error.status === 400 || error.status === 401) {
+          if (Array.isArray(error.error.details)) {
+            error.error.details.forEach((element) => {
+              subtitle += element + "\n";
+            });
+          } else {
+            subtitle = error.error.details;
+          }
+
+          dialog = {
+            isSuccessful: false,
+            title: "Problemas con su registro.",
+            subtitle: subtitle,
+            messageButton: "Volver",
+          };
+        }
+        this.showErrorMessage(dialog);
+      }
+    );
   }
 
   public getLogo(): string {

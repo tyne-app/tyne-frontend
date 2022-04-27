@@ -15,6 +15,8 @@ import { emailRegex, passwordRegex } from "@app/shared/inmutable/constants/regex
 import { TyneRoutes } from "@app/shared/inmutable/enums/url-routes.enum";
 import { UserType } from "@app/shared/inmutable/enums/user-type.enum";
 import { DialogService } from "@app/shared/components/dialog/shared/services/dialog.service";
+import { HttpErrorResponse } from "@angular/common/http";
+import { DialogModel } from "@app/shared/components/dialog/shared/interfaces/dialog-model";
 
 @Component({
   selector: "app-login",
@@ -71,8 +73,30 @@ export class LoginComponent implements OnInit {
         (token) => {
           this.verifyToken(token.access_token);
         },
-        () => {
-          this.showErrorMessage();
+        (error: HttpErrorResponse) => {
+          let dialog: DialogModel = {
+            isSuccessful: false,
+            title: "Problemas para iniciar sesion.",
+            subtitle: "Ha ocurrido un problema vuelva a intentarlo.",
+            messageButton: "Volver",
+          };
+          if (error.status === 400 || error.status === 401) {
+            let subtitle = "";
+            if (Array.isArray(error.error.details)) {
+              error.error.details.forEach((element) => {
+                subtitle += element + "\n";
+              });
+            } else {
+              subtitle = error.error.details;
+            }
+            dialog = {
+              isSuccessful: false,
+              title: "Problemas para iniciar sesion.",
+              subtitle: subtitle,
+              messageButton: "Volver",
+            };
+          }
+          this.showErrorMessage(dialog);
         }
       );
     }
@@ -102,8 +126,30 @@ export class LoginComponent implements OnInit {
       (token) => {
         this.verifyToken(token.access_token);
       },
-      () => {
-        this.showErrorMessage();
+      (error: HttpErrorResponse) => {
+        let dialog: DialogModel = {
+          isSuccessful: false,
+          title: "Problemas para iniciar sesion.",
+          subtitle: "Ha ocurrido un problema vuelva a intentarlo.",
+          messageButton: "Volver",
+        };
+        if (error.status === 400 || error.status === 401) {
+          let subtitle = "";
+          if (Array.isArray(error.error.details)) {
+            error.error.details.forEach((element) => {
+              subtitle += element + "\n";
+            });
+          } else {
+            subtitle = error.error.details;
+          }
+          dialog = {
+            isSuccessful: false,
+            title: "Problemas para iniciar sesion.",
+            subtitle: subtitle,
+            messageButton: "Volver",
+          };
+        }
+        this.showErrorMessage(dialog);
       }
     );
   }
@@ -113,7 +159,31 @@ export class LoginComponent implements OnInit {
       (token) => {
         this.verifyToken(token.access_token);
       },
-      () => this.showErrorMessage()
+      (error: HttpErrorResponse) => {
+        let dialog: DialogModel = {
+          isSuccessful: false,
+          title: "Problemas para iniciar sesion.",
+          subtitle: "Ha ocurrido un problema vuelva a intentarlo.",
+          messageButton: "Volver",
+        };
+        if (error.status === 400 || error.status === 401) {
+          let subtitle = "";
+          if (Array.isArray(error.error.details)) {
+            error.error.details.forEach((element) => {
+              subtitle += element + "\n";
+            });
+          } else {
+            subtitle = error.error.details;
+          }
+          dialog = {
+            isSuccessful: false,
+            title: "Problemas para iniciar sesion.",
+            subtitle: subtitle,
+            messageButton: "Volver",
+          };
+        }
+        this.showErrorMessage(dialog);
+      }
     );
   }
 
@@ -125,8 +195,9 @@ export class LoginComponent implements OnInit {
       this.showUnregisteredUserMessage();
     }
   }
-  private showErrorMessage(): void {
-    this.dialogService.openDialog(errorContent);
+
+  private showErrorMessage(dialogModel: DialogModel): void {
+    this.dialogService.openDialog(dialogModel);
   }
 
   private showUnregisteredUserMessage(): void {
