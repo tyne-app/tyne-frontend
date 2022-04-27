@@ -9,6 +9,7 @@ import { ReservationService } from "@app/core/services/reservation.service";
 import { ButtonCustom } from "@app/shared/controls/customs/buttons/shared/interfaces/button-custom";
 import { DialogModel } from "@app/shared/components/dialog/shared/interfaces/dialog-model";
 import { DialogService } from "@app/shared/components/dialog/shared/services/dialog.service";
+import { ScheduleService } from "@app/shared/helpers/schedule.service";
 
 @Component({
   selector: "app-business-reservations-details",
@@ -32,11 +33,12 @@ export class BusinessReservationsDetailsComponent implements OnInit {
     buttonTypeClass: "btn-submit",
   };
   public constructor(
-    @Inject(MAT_DIALOG_DATA) public parameters: { reservationId: number; paymentId: string },
+    @Inject(MAT_DIALOG_DATA) public parameters: { reservationId: number; paymentId: string; status_id: number },
     private reservationService: ReservationService,
     private menuService: MenuService,
     private dialogService: DialogService,
-    public dialogRef: MatDialogRef<BusinessReservationsDetailsComponent>
+    public dialogRef: MatDialogRef<BusinessReservationsDetailsComponent>,
+    private scheduleService: ScheduleService
   ) {}
 
   public ngOnInit(): void {
@@ -199,20 +201,18 @@ export class BusinessReservationsDetailsComponent implements OnInit {
     if (dateReservation) {
       dateReservation = dateReservation.replace("-", "/").replace("-", "/");
     }
-
     const date: Date = new Date(dateReservation);
-    const days = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
-
     const day: number = date.getDate();
-    const month: number = date.getMonth();
+    const month: number = date.getMonth() + 1;
     const year: number = date.getFullYear();
-    const dayNumber = new Date(date).getDay();
-    const dateReturn: string = days[dayNumber] + " " + day + "/" + month + "/" + year;
+    const dayNumber = date.getDay();
 
-    return dateReturn;
+    return this.getDay(dayNumber) + " " + day + "/" + month + "/" + year;
   }
 
   private showErrorMessage(dialogModel: DialogModel): void {
     this.dialogService.openDialog(dialogModel);
   }
+
+  public getDay = (dayNumber: number): string => this.scheduleService.getDay(dayNumber);
 }

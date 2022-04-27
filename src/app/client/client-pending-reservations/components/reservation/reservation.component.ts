@@ -10,13 +10,10 @@ import { ClientReservation } from "@app/client/shared/interfaces/client-reservat
   styleUrls: ["./reservation.component.scss"],
 })
 export class ReservationComponent implements OnInit {
-
   public supportPhone = environment.supportPhone;
   public reservations: ClientReservation[] = [];
 
-  public constructor(
-    private clientService: ClientService,
-    private scheduleService:ScheduleService) {}
+  public constructor(private clientService: ClientService, private scheduleService: ScheduleService) {}
 
   public ngOnInit(): void {
     this.getClientReservation();
@@ -29,19 +26,19 @@ export class ReservationComponent implements OnInit {
   }
 
   public setDate(reservationDate: string): string {
-    const date = new Date(reservationDate);
-    const dd = String(date.getDate()).padStart(2, "0");
-    const mm = String(date.getMonth() + 1).padStart(2, "0");
-    const yyyy = date.getFullYear();
-    return this.getDay(date.getUTCDay()) + " " + dd + "/" + mm + "/" + yyyy;
+    if (reservationDate) {
+      reservationDate = reservationDate.replace("-", "/").replace("-", "/");
+    }
+    const date: Date = new Date(reservationDate);
+    const day: number = date.getDate();
+    const month: number = date.getMonth() + 1;
+    const year: number = date.getFullYear();
+    const dayNumber = date.getDay();
+
+    return this.getDay(dayNumber) + " " + day + "/" + month + "/" + year;
   }
 
-  public getPeriodOfTime = (hourReservation: string): string => 
-    this.scheduleService.getPeriodOfTime(hourReservation);
-  
+  public getPeriodOfTime = (hourReservation: string): string => this.scheduleService.getPeriodOfTime(hourReservation);
 
-  public getDay = (dayNumber: number): string => 
-    this.scheduleService.getDay(dayNumber);
-
-  
+  public getDay = (dayNumber: number): string => this.scheduleService.getDay(dayNumber);
 }

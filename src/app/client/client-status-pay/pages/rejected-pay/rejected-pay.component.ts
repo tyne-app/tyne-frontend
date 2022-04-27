@@ -26,10 +26,10 @@ export class RejectedPayComponent implements OnInit {
     };
     this.reservationService.putReservation(updateReservation).subscribe(
       (response) => {
-        console.log(response);
+
       },
       (error) => {
-        console.log(error);
+
       }
     );
   }

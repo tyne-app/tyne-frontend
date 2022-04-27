@@ -9,6 +9,7 @@ import { BusinessService } from "@app/business/shared/services/business.service"
 import { MonthNames } from "@app/shared/inmutable/constants/months";
 import { RestaurantAccount } from "@app/shared/interfaces/restaurant/restaurant-account";
 import { LocalReservationsResponse } from "@app/business/shared/interfaces/local-reservations-response";
+import { ScheduleService } from "@app/shared/helpers/schedule.service";
 
 @Component({
   selector: "app-business-reservations",
@@ -36,7 +37,8 @@ export class BusinessReservationsComponent implements OnInit {
     private formBuilder: FormBuilder,
     public dialog: MatDialog,
     private reservationService: ReservationService,
-    private BusinessService: BusinessService
+    private BusinessService: BusinessService,
+    private scheduleService: ScheduleService
   ) {}
 
   public ngOnInit(): void {
@@ -117,15 +119,15 @@ export class BusinessReservationsComponent implements OnInit {
     return status_description;
   }
 
-  public getDetail(reservationId: number, paymentId: string): void {
+  public getDetail(reservationId: number, paymentId: string, status_id: number): void {
     const dialogRef = this.dialog.open(BusinessReservationsDetailsComponent, {
       maxWidth: "95%",
       minWidth: "75%",
       panelClass: "local-reservation-dialog",
-      data: { reservationId: reservationId, paymentId: paymentId },
+      data: { reservationId: reservationId, paymentId: paymentId, status_id: status_id },
     });
     dialogRef.afterClosed().subscribe((result) => {
-      if(!result){
+      if (!result) {
         this.getMonthYear("");
       }
     });
@@ -150,7 +152,6 @@ export class BusinessReservationsComponent implements OnInit {
           }
         },
         (error: HttpErrorResponse) => {
-          // this.loading = false;
           if (error.status === 409) {
             // this.showErrorMessage();
           } else {
@@ -175,14 +176,12 @@ export class BusinessReservationsComponent implements OnInit {
   public getDateReservation(dateReservation: string): string {
     dateReservation = dateReservation.replace("-", "/").replace("-", "/");
     const date: Date = new Date(dateReservation);
-    const days = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
     const monthNames = MonthNames;
     const day: number = date.getDate();
     const month: number = date.getMonth();
-    const dayNumber = new Date(date).getDay();
-    const dateReturn: string = days[dayNumber] + " " + day + " de " + monthNames[month];
+    const dayNumber = date.getDay();
 
-    return dateReturn;
+    return this.getDay(dayNumber) + " " + day + " de " + monthNames[month];
   }
 
   public getImgReservation(statusId: number): string {
@@ -198,4 +197,6 @@ export class BusinessReservationsComponent implements OnInit {
     }
     return image;
   }
+
+  public getDay = (dayNumber: number): string => this.scheduleService.getDay(dayNumber);
 }
