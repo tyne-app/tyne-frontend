@@ -3,6 +3,6 @@ export const emailRegex = RegExp(
 );
 
 export const passwordRegex = RegExp(
-  /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[A-Za-z\d$@$!%*?&].{8,}/
+  /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[A-Za-z\d$@$!%*?&].{7,}/
 );
 
