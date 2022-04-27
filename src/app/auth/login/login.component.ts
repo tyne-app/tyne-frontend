@@ -81,10 +81,18 @@ export class LoginComponent implements OnInit {
             messageButton: "Volver",
           };
           if (error.status === 400 || error.status === 401) {
+            let subtitle = "";
+            if (Array.isArray(error.error.details)) {
+              error.error.details.forEach((element) => {
+                subtitle += element + "\n";
+              });
+            } else {
+              subtitle = error.error.details;
+            }
             dialog = {
               isSuccessful: false,
               title: "Problemas para iniciar sesion.",
-              subtitle: error.error.details,
+              subtitle: subtitle,
               messageButton: "Volver",
             };
           }
@@ -125,11 +133,19 @@ export class LoginComponent implements OnInit {
           subtitle: "Ha ocurrido un problema vuelva a intentarlo.",
           messageButton: "Volver",
         };
-        if (error.status === 400) {
+        if (error.status === 400 || error.status === 401) {
+          let subtitle = "";
+          if (Array.isArray(error.error.details)) {
+            error.error.details.forEach((element) => {
+              subtitle += element + "\n";
+            });
+          } else {
+            subtitle = error.error.details;
+          }
           dialog = {
             isSuccessful: false,
             title: "Problemas para iniciar sesion.",
-            subtitle: error.error.details,
+            subtitle: subtitle,
             messageButton: "Volver",
           };
         }
@@ -150,11 +166,19 @@ export class LoginComponent implements OnInit {
           subtitle: "Ha ocurrido un problema vuelva a intentarlo.",
           messageButton: "Volver",
         };
-        if (error.status === 400) {
+        if (error.status === 400 || error.status === 401) {
+          let subtitle = "";
+          if (Array.isArray(error.error.details)) {
+            error.error.details.forEach((element) => {
+              subtitle += element + "\n";
+            });
+          } else {
+            subtitle = error.error.details;
+          }
           dialog = {
             isSuccessful: false,
             title: "Problemas para iniciar sesion.",
-            subtitle: error.error.details,
+            subtitle: subtitle,
             messageButton: "Volver",
           };
         }
@@ -171,6 +195,7 @@ export class LoginComponent implements OnInit {
       this.showUnregisteredUserMessage();
     }
   }
+
   private showErrorMessage(dialogModel: DialogModel): void {
     this.dialogService.openDialog(dialogModel);
   }

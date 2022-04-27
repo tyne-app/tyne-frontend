@@ -75,7 +75,7 @@
         <mat-panel-title class="title-panel">
           <div class="row col-md-12 col-lg-12 col-sm-12">
             <div class="col-md-8 col-lg-8 col-sm-8">
-              {{ getDateReservation(x.reservation_date, x.reservation_week_day) }}
+              {{ getDateReservation(x.reservation_date) }}
             </div>
             <div class="col-md-4 col-lg-4 col-sm-4">
               <label class="color-pending"> {{ x.reservation_pending > 0 ? x.reservation_pending : "" }}</label>
