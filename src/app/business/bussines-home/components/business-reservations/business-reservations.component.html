@@ -127,27 +127,27 @@
         <div class="col-md-3 col-lg-3 col-sm-3">Estado</div>
         <div class="col-md-1 col-lg-1 col-sm-1"></div>
       </div>
-      <div class="row col-md-12 col-lg-12 col-sm-12" *ngFor="let locaReservation of x.local_reservations">
+      <div class="row col-md-12 col-lg-12 col-sm-12" *ngFor="let localReservation of x.local_reservations">
         <div class="col-md-3 col-lg-3 col-sm-3">
-          <p class="subtitle-panel-description">{{ locaReservation.name }} {{ locaReservation.last_name }}</p>
+          <p class="subtitle-panel-description">{{ localReservation.name }} {{ localReservation.last_name }}</p>
         </div>
         <div class="col-md-3 col-lg-3 col-sm-3">
-          <p class="subtitle-panel-description">Reserva para {{ locaReservation.people }} personas</p>
+          <p class="subtitle-panel-description">Reserva para {{ localReservation.people }} personas</p>
         </div>
         <div class="col-md-1 col-lg-1 col-sm-1">
-          <p class="subtitle-panel-description">{{ locaReservation.hour }}</p>
+          <p class="subtitle-panel-description">{{ localReservation.hour }}</p>
         </div>
         <div class="col-md-3 col-lg-3 col-sm-3">
           <p class="subtitle-panel-description">
-            {{ getTypeReservationDescription(locaReservation.status_id) }}&nbsp;
-            <img [src]="getImgReservation(locaReservation.status_id)" alt="" />
+            {{ getTypeReservationDescription(localReservation.status_id) }}&nbsp;
+            <img [src]="getImgReservation(localReservation.status_id)" alt="" />
           </p>
         </div>
         <div class="col-md-1 col-lg-1 col-sm-1 cursor">
           <p class="subtitle-panel-description">
             <img
               src="../../../../assets/img/view-details.svg"
-              (click)="getDetail(locaReservation?.reservation_id, locaReservation?.payment_id)"
+              (click)="getDetail(localReservation?.reservation_id, localReservation?.payment_id, localReservation?.status_id)"
               alt=""
             />
           </p>
