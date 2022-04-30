@@ -99,5 +99,15 @@
         Confirmar Reserva</app-button
       >
     </div>
+
+    <div class="col-md-6 col-sm-6 col-lg-6 mt-1" *ngIf="this.parameters.status_id == 8">
+      <app-button
+        class="col-12 mt-1"
+        [buttonCustomConfiguration]="confirmReservationCustomButton"
+        (click)="backReservations()"
+      >
+        Volver</app-button
+      >
+    </div>
   </div>
 </div>

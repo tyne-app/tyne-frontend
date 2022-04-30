@@ -1,6 +1,6 @@
 export interface ClientReservation {
   id: number;
-  restaurant_name: string;
+  branch_name: string;
   people: number;
   reservation_date: Date;
   hour: string;

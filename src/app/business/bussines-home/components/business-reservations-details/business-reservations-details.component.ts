@@ -197,6 +197,10 @@ export class BusinessReservationsDetailsComponent implements OnInit {
     );
   }
 
+  public backReservations(): void {
+    this.dialogRef.close(true);
+  }
+
   public getDateReservation(dateReservation: string): string {
     if (dateReservation) {
       dateReservation = dateReservation.replace("-", "/").replace("-", "/");
