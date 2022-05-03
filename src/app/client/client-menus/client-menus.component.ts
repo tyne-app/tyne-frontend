@@ -168,9 +168,9 @@ export class ClientMenusComponent implements OnInit {
       productFormArray.push(
         this.formBuilder.group({
           id: [product.id],
-          name: [product.name, [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
+          name: [product.name, [Validators.required, Validators.minLength(3), Validators.maxLength(70)]],
           price: [product.amount, [Validators.required, Validators.min(100), Validators.max(100000)]],
-          description: [product.description, [Validators.required, Validators.minLength(10), Validators.maxLength(200)]],
+          description: [product.description, [Validators.required, Validators.minLength(10), Validators.maxLength(400)]],
           quantity: [0],
         })
       );

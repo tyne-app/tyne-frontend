@@ -106,9 +106,9 @@ export class BusinessMenusComponent implements OnInit {
     products.push(
       this.formBuilder.group({
         id: ["0"],
-        name: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
+        name: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(70)]],
         price: ["", [Validators.required, Validators.min(100), Validators.max(100000)]],
-        description: ["", [Validators.required, Validators.min(10), Validators.maxLength(200)]],
+        description: ["", [Validators.required, Validators.min(10), Validators.maxLength(400)]],
       })
     );
   }
@@ -262,9 +262,9 @@ export class BusinessMenusComponent implements OnInit {
       formArray.push(
         this.formBuilder.group({
           id: [product.id],
-          name: [product.name, [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
+          name: [product.name, [Validators.required, Validators.minLength(3), Validators.maxLength(70)]],
           price: [product.amount, [Validators.required, Validators.min(100), Validators.max(100000)]],
-          description: [product.description, [Validators.required, Validators.minLength(10), Validators.maxLength(200)]],
+          description: [product.description, [Validators.required, Validators.minLength(10), Validators.maxLength(400)]],
         })
       );
     });
