@@ -106,7 +106,7 @@ export class FormControlService {
       : productDescriptionControl.hasError("minlength")
       ? "Debe tener mínimo 10 caracteres"
       : productDescriptionControl.hasError("maxlength")
-      ? "Debe tener máximo 200 caracteres"
+      ? "Debe tener máximo 400 caracteres"
       : null;
   }
 

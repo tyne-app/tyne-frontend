@@ -247,7 +247,7 @@ export class BusinessMenusComponent implements OnInit {
       this.sections.push(
         this.formBuilder.group({
           id: [section.category.id],
-          title: [section.category.name, [Validators.required, Validators.maxLength(20)]],
+          title: [section.category.name, [Validators.required, Validators.maxLength(30)]],
           isTitleVisible: [false],
           products: this.buildProducts(section.products),
         })
