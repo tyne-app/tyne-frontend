@@ -43,10 +43,8 @@ export class SuccessPayComponent implements OnInit {
     if (paymentId && reservationId) {
       this.reservationService.putReservation(updateReservation).subscribe(
         (response) => {
-          console.log(response);
         },
         (error) => {
-          console.log(error);
         }
       );
     }

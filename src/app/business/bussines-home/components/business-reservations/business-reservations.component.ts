@@ -9,6 +9,7 @@ import { BusinessService } from "@app/business/shared/services/business.service"
 import { MonthNames } from "@app/shared/inmutable/constants/months";
 import { RestaurantAccount } from "@app/shared/interfaces/restaurant/restaurant-account";
 import { LocalReservationsResponse } from "@app/business/shared/interfaces/local-reservations-response";
+import { ScheduleService } from "@app/shared/helpers/schedule.service";
 
 @Component({
   selector: "app-business-reservations",
@@ -36,7 +37,8 @@ export class BusinessReservationsComponent implements OnInit {
     private formBuilder: FormBuilder,
     public dialog: MatDialog,
     private reservationService: ReservationService,
-    private BusinessService: BusinessService
+    private BusinessService: BusinessService,
+    private scheduleService: ScheduleService
   ) {}
 
   public ngOnInit(): void {
@@ -44,10 +46,10 @@ export class BusinessReservationsComponent implements OnInit {
     this.getBranch();
     this.getMonthYear("");
     this.getTypeReservation();
-
     this.customCollapsedHeight = "100px";
     this.customExpandedHeight = "100px";
   }
+
   public initForm(): void {
     this.form = this.formBuilder.group({
       typeReservation: ["", [Validators.required, Validators.min(1)]],
@@ -117,14 +119,18 @@ export class BusinessReservationsComponent implements OnInit {
     return status_description;
   }
 
-  public getDetail(reservationId: number, paymentId: string): void {
+  public getDetail(reservationId: number, paymentId: string, status_id: number): void {
     const dialogRef = this.dialog.open(BusinessReservationsDetailsComponent, {
       maxWidth: "95%",
       minWidth: "75%",
       panelClass: "local-reservation-dialog",
-      data: { reservationId: reservationId, paymentId: paymentId },
+      data: { reservationId: reservationId, paymentId: paymentId, status_id: status_id },
     });
-    dialogRef.afterClosed().subscribe((result) => {});
+    dialogRef.afterClosed().subscribe((result) => {
+      if (!result) {
+        this.getMonthYear("");
+      }
+    });
   }
 
   public getLocalReservations(
@@ -141,13 +147,11 @@ export class BusinessReservationsComponent implements OnInit {
       .subscribe(
         (reservations) => {
           this.reservations = reservations;
-
           if (type == 1 && Object.keys(this.reservations).length != 0) {
             setTimeout(() => ((this.paginator.pageIndex = 0), (this.resultForPage = this.paginator.pageSize)));
           }
         },
         (error: HttpErrorResponse) => {
-          // this.loading = false;
           if (error.status === 409) {
             // this.showErrorMessage();
           } else {
@@ -166,39 +170,33 @@ export class BusinessReservationsComponent implements OnInit {
   public OnPageChange(event: PageEvent): void {
     this.resultForPage = event.pageSize;
     this.page = event.pageIndex + 1;
-
     this.getLocalReservations(this.typeReservationDefault, this.resultForPage, this.page, 0);
   }
 
-  public getDateReservation(dateReservation: string, week_day: string): string {
+  public getDateReservation(dateReservation: string): string {
     dateReservation = dateReservation.replace("-", "/").replace("-", "/");
     const date: Date = new Date(dateReservation);
-    const days = [];
-    days["Monday"] = "Lunes";
-    days["Tuesday"] = "Martes";
-    days["Wednesday"] = "Miércoles";
-    days["Thursday"] = "Jueves";
-    days["Friday"] = "Viernes";
-    days["Saturday"] = "Sábado";
-    days["Sunday"] = "Domingo";
     const monthNames = MonthNames;
     const day: number = date.getDate();
     const month: number = date.getMonth();
-    const dateReturn: string = days[week_day] + " " + day + " de " + monthNames[month];
+    const dayNumber = date.getDay();
 
-    return dateReturn;
+    return this.getDay(dayNumber) + " " + day + " de " + monthNames[month];
   }
 
   public getImgReservation(statusId: number): string {
     let image = "";
     if (statusId == 4) {
       image = "../../../../assets/img/reservas-pendientes.svg";
+    } else if (statusId == 7) {
+      image = "../../../../assets/img/reservas-canceladas.svg";
     } else if (statusId == 8) {
       image = "../../../../assets/img/reservas-confirmadas.svg";
     } else if (statusId == 9) {
       image = "../../../../assets/img/reservas-atendidas.svg";
     }
-
     return image;
   }
+
+  public getDay = (dayNumber: number): string => this.scheduleService.getDay(dayNumber);
 }

@@ -11,9 +11,10 @@
     <div class="col-md-9 col-lg-9 col-sm-9">
       <p>
         <label class="sub-title">Dirección de local:</label>&nbsp;
-        <label class="description">{{ detailsReservation?.street }} {{ detailsReservation?.street_number }}, {{
-          detailsReservation?.state }},
-          {{ detailsReservation?.city }}</label>
+        <label class="description"
+          >{{ detailsReservation?.street }} {{ detailsReservation?.street_number }}, {{ detailsReservation?.state }},
+          {{ detailsReservation?.city }}</label
+        >
       </p>
     </div>
     <div class="col-md-3 col-lg-3 col-sm-3">
@@ -25,9 +26,7 @@
     <div class="col-md-9 col-lg-9 col-sm-9">
       <p>
         <label class="sub-title">Fecha y hora:</label>&nbsp;
-        <label class="description">{{
-          getDateReservation(detailsReservation?.reservation_date, detailsReservation?.reservation_week_day)
-          }}</label>
+        <label class="description">{{ getDateReservation(detailsReservation?.reservation_date) }}</label>
       </p>
     </div>
     <div class="col-md-3 col-lg-3 col-sm-3">
@@ -39,7 +38,9 @@
     <div class="col-md-12 col-lg-12 col-sm-12">
       <p>
         <label class="sub-title">Precio Total:</label>&nbsp;
-        <label *ngIf="detailsReservation?.total_price" class="description">{{ detailsReservation?.total_price | currencyStandard}}</label>
+        <label *ngIf="detailsReservation?.total_price" class="description">{{
+          detailsReservation?.total_price | currencyStandard
+        }}</label>
       </p>
     </div>
   </div>
@@ -67,7 +68,7 @@
             <p class="subtitle-description-acordeon">{{ i.product_description }}</p>
           </div>
           <div class="col-md-3 col-lg-3 col-sm-3">
-            <p class="subtitle-description-acordeon">{{ i.product_amount | currencyStandard}} </p>
+            <p class="subtitle-description-acordeon">{{ i.product_amount | currencyStandard }}</p>
           </div>
           <div class="col-md-3 col-lg-3 col-sm-3">
             <p class="subtitle-description-acordeon">{{ i.product_quantity }}</p>
@@ -78,15 +79,35 @@
     <br />
   </div>
   <div class="row col-md-12 col-sm-12 col-lg-12 mb-1">
-    <div class="col-md-6 col-sm-6 col-lg-6 mt-1">
-      <app-button class="col-12 mt-1" [buttonCustomConfiguration]="cancelReservationCustomButton"
-        (click)="cancelReservation()">Cancelar
-        Reserva</app-button>
+    <div
+      class="col-md-6 col-sm-6 col-lg-6 mt-1"
+      *ngIf="this.parameters.status_id == 4 || this.parameters.status_id == 8"
+    >
+      <app-button
+        class="col-12 mt-1"
+        [buttonCustomConfiguration]="cancelReservationCustomButton"
+        (click)="cancelReservation()"
+        >Cancelar Reserva</app-button
+      >
     </div>
-    <div class="col-md-6 col-sm-6 col-lg-6 mt-1">
-      <app-button class="col-12 mt-1" [buttonCustomConfiguration]="confirmReservationCustomButton"
-        (click)="confirmReservation()">
-        Confirmar Reserva</app-button>
+    <div class="col-md-6 col-sm-6 col-lg-6 mt-1" *ngIf="this.parameters.status_id == 4">
+      <app-button
+        class="col-12 mt-1"
+        [buttonCustomConfiguration]="confirmReservationCustomButton"
+        (click)="confirmReservation()"
+      >
+        Confirmar Reserva</app-button
+      >
+    </div>
+
+    <div class="col-md-6 col-sm-6 col-lg-6 mt-1" *ngIf="this.parameters.status_id == 8">
+      <app-button
+        class="col-12 mt-1"
+        [buttonCustomConfiguration]="confirmReservationCustomButton"
+        (click)="backReservations()"
+      >
+        Volver</app-button
+      >
     </div>
   </div>
 </div>

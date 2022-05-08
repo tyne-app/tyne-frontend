@@ -1,9 +1,5 @@
 import { Injectable } from "@angular/core";
-import {
-  Auth,
-  signInWithPopup,
-  FacebookAuthProvider
-} from '@angular/fire/auth';
+import { Auth, signInWithPopup, FacebookAuthProvider } from "@angular/fire/auth";
 import { ClientService } from "@app/client/shared/services/client.service";
 import { UserService } from "@app/core/services/user.service";
 import { from, Observable } from "rxjs";
@@ -15,25 +11,24 @@ import { LoginResponse } from "../interfaces/token";
   providedIn: "root",
 })
 export class FacebookService {
-
   public constructor(
     private auth: Auth,
-    private userService:UserService,
-    private clientService:ClientService,
-    private mapperService:MapperService
-    ) {}
+    private userService: UserService,
+    private clientService: ClientService,
+    private mapperService: MapperService
+  ) {}
 
   public facebookSignIn(): Observable<LoginResponse> {
     return this.facebookSignInWithPopup().pipe(
-      mergeMap( userCredential => {
+      mergeMap((userCredential) => {
         return this.socialLogin(userCredential);
       })
     );
   }
-  
-  public facebookSignUp(): Observable<any>{ 
+
+  public facebookSignUp(): Observable<any> {
     return this.facebookSignInWithPopup().pipe(
-      mergeMap( userCredential => {
+      mergeMap((userCredential) => {
         return this.socialRegister(userCredential);
       })
     );
@@ -42,14 +37,15 @@ export class FacebookService {
   public facebookSignInWithPopup(): Observable<any> {
     return from(signInWithPopup(this.auth, new FacebookAuthProvider()));
   }
-  
-  private socialLogin(userCredential: any): Observable<LoginResponse>{
-    return this.userService.socialLogin(userCredential._tokenResponse.email, userCredential.user.accessToken);    
+
+  private socialLogin(userCredential: any): Observable<LoginResponse> {
+    return this.userService.socialLogin(userCredential._tokenResponse.email, userCredential.user.accessToken);
   }
 
-  private socialRegister(userCredential: any): Observable<any>{
+  private socialRegister(userCredential: any): Observable<any> {
+    
     return this.clientService.registerWithSocialNetworks(
-      this.mapperService.mapUserFacebookClient(userCredential._tokenResponse,userCredential.user.accessToken));
+      this.mapperService.mapUserFacebookClient(userCredential._tokenResponse, userCredential.user.accessToken)
+    );
   }
-  
 }

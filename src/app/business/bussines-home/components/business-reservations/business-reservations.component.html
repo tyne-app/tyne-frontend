@@ -1,10 +1,10 @@
 <div class="col-md-12 col-sm-12 col-lg-12">
   <div class="col-md-12 col-sm-12 col-lg-12">
-    <h3>Gracias por trabajar con tyne</h3>
+    <h3>Gracias por trabajar con Tyne</h3>
   </div>
   <div class="col-md-12 col-sm-12 col-lg-12">
     <p class="subTitle">
-      Para generar ventas tu local debe tener: horario y días de funcionamiento, productos en la carta y al menos 1 foto
+      Para generar ventas tu local debe tener: Horario y días de funcionamiento, productos en la carta y al menos 1 foto
       de perfil
     </p>
   </div>
@@ -58,8 +58,11 @@
       <form [formGroup]="form">
         <mat-form-field appearance="outline">
           <mat-label>Tipo de reservas</mat-label>
-          <mat-select formControlName="typeReservation" [(ngModel)]="typeReservationDefault"
-            (selectionChange)="getTypeReservationSelected()">
+          <mat-select
+            formControlName="typeReservation"
+            [(ngModel)]="typeReservationDefault"
+            (selectionChange)="getTypeReservationSelected()"
+          >
             <mat-option [value]="x.id" *ngFor="let x of typesReservation">{{ x.description }}</mat-option>
           </mat-select>
         </mat-form-field>
@@ -75,22 +78,38 @@
         <mat-panel-title class="title-panel">
           <div class="row col-md-12 col-lg-12 col-sm-12">
             <div class="col-md-8 col-lg-8 col-sm-8">
-              {{ getDateReservation(x.reservation_date, x.reservation_week_day) }}
+              {{ getDateReservation(x.reservation_date) }}
             </div>
             <div class="col-md-4 col-lg-4 col-sm-4">
               <label class="color-pending"> {{ x.reservation_pending > 0 ? x.reservation_pending : "" }}</label>
-              <img *ngIf="x.reservation_pending" src="../../../../assets/img/reservas-pendientes.svg" alt=""
-                hspace="5" />
+              <img
+                *ngIf="x.reservation_pending"
+                src="../../../../assets/img/reservas-pendientes.svg"
+                alt=""
+                hspace="5"
+              />
               <label class="color-confirmed">{{ x.reservation_confirmed > 0 ? x.reservation_confirmed : "" }}</label>
-              <img *ngIf="x.reservation_confirmed" src="../../../../assets/img/reservas-confirmadas.svg" alt=""
-                hspace="5" />
+              <img
+                *ngIf="x.reservation_confirmed"
+                src="../../../../assets/img/reservas-confirmadas.svg"
+                alt=""
+                hspace="5"
+              />
               <label class="color-attended">{{ x.reservation_attended > 0 ? x.reservation_attended : "" }}</label>
 
-              <img *ngIf="x.reservation_attended" src="../../../../assets/img/reservas-atendidas.svg" alt=""
-                hspace="5" />
+              <img
+                *ngIf="x.reservation_attended"
+                src="../../../../assets/img/reservas-atendidas.svg"
+                alt=""
+                hspace="5"
+              />
               <label class="color-canceled"> {{ x.reservation_canceled > 0 ? x.reservation_canceled : "" }}</label>
-              <img *ngIf="x.reservation_canceled" src="../../../../assets/img/reservas-canceladas.svg" alt=""
-                hspace="5" />
+              <img
+                *ngIf="x.reservation_canceled"
+                src="../../../../assets/img/reservas-canceladas.svg"
+                alt=""
+                hspace="5"
+              />
             </div>
           </div>
         </mat-panel-title>
@@ -108,26 +127,29 @@
         <div class="col-md-3 col-lg-3 col-sm-3">Estado</div>
         <div class="col-md-1 col-lg-1 col-sm-1"></div>
       </div>
-      <div class="row col-md-12 col-lg-12 col-sm-12" *ngFor="let locaReservation of x.local_reservations">
+      <div class="row col-md-12 col-lg-12 col-sm-12" *ngFor="let localReservation of x.local_reservations">
         <div class="col-md-3 col-lg-3 col-sm-3">
-          <p class="subtitle-panel-description">{{ locaReservation.name }} {{ locaReservation.last_name }}</p>
+          <p class="subtitle-panel-description">{{ localReservation.name }} {{ localReservation.last_name }}</p>
         </div>
         <div class="col-md-3 col-lg-3 col-sm-3">
-          <p class="subtitle-panel-description">Reserva para {{ locaReservation.people }} personas</p>
+          <p class="subtitle-panel-description">Reserva para {{ localReservation.people }} personas</p>
         </div>
         <div class="col-md-1 col-lg-1 col-sm-1">
-          <p class="subtitle-panel-description">{{ locaReservation.hour }}</p>
+          <p class="subtitle-panel-description">{{ localReservation.hour }}</p>
         </div>
         <div class="col-md-3 col-lg-3 col-sm-3">
           <p class="subtitle-panel-description">
-            {{ getTypeReservationDescription(locaReservation.status_id) }}&nbsp;
-            <img [src]="getImgReservation(locaReservation.status_id)" alt="" />
+            {{ getTypeReservationDescription(localReservation.status_id) }}&nbsp;
+            <img [src]="getImgReservation(localReservation.status_id)" alt="" />
           </p>
         </div>
         <div class="col-md-1 col-lg-1 col-sm-1 cursor">
           <p class="subtitle-panel-description">
-            <img src="../../../../assets/img/view-details.svg"
-              (click)="getDetail(locaReservation?.reservation_id, locaReservation?.payment_id)" alt="" />
+            <img
+              src="../../../../assets/img/view-details.svg"
+              (click)="getDetail(localReservation?.reservation_id, localReservation?.payment_id, localReservation?.status_id)"
+              alt=""
+            />
           </p>
         </div>
       </div>
@@ -135,8 +157,13 @@
     <br />
   </div>
   <div class="col-md-12 col-lg-12 col-sm-12 mat-pagination" *ngIf="reservations?.total_items > 0">
-    <mat-paginator #paginator [length]="reservations?.total_items" [pageSize]="reservations?.total_items_page"
-      [pageSizeOptions]="[5, 10, 25, 100]" (page)="OnPageChange($event)">
+    <mat-paginator
+      #paginator
+      [length]="reservations?.total_items"
+      [pageSize]="reservations?.total_items_page"
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      (page)="OnPageChange($event)"
+    >
     </mat-paginator>
   </div>
 </div>

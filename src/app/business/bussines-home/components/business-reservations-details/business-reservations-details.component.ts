@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from "@angular/core";
-import { MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { HttpErrorResponse } from "@angular/common/http";
 import { LocalReservationDetailResponse } from "@app/business/shared/interfaces/local-reservation-detail-response";
 import { MenuService } from "@app/core/services/menu.service";
@@ -7,6 +7,9 @@ import { reservationStatus } from "@app/shared/inmutable/enums/reservation-statu
 import { UpdateReservationPaymentDto } from "@app/shared/interfaces/reservation/reservation-payment";
 import { ReservationService } from "@app/core/services/reservation.service";
 import { ButtonCustom } from "@app/shared/controls/customs/buttons/shared/interfaces/button-custom";
+import { DialogModel } from "@app/shared/components/dialog/shared/interfaces/dialog-model";
+import { DialogService } from "@app/shared/components/dialog/shared/services/dialog.service";
+import { ScheduleService } from "@app/shared/helpers/schedule.service";
 
 @Component({
   selector: "app-business-reservations-details",
@@ -30,9 +33,12 @@ export class BusinessReservationsDetailsComponent implements OnInit {
     buttonTypeClass: "btn-submit",
   };
   public constructor(
-    @Inject(MAT_DIALOG_DATA) public parameters: { reservationId: number; paymentId: string },
+    @Inject(MAT_DIALOG_DATA) public parameters: { reservationId: number; paymentId: string; status_id: number },
     private reservationService: ReservationService,
-    private menuService: MenuService
+    private menuService: MenuService,
+    private dialogService: DialogService,
+    public dialogRef: MatDialogRef<BusinessReservationsDetailsComponent>,
+    private scheduleService: ScheduleService
   ) {}
 
   public ngOnInit(): void {
@@ -72,12 +78,29 @@ export class BusinessReservationsDetailsComponent implements OnInit {
         }
       },
       (error: HttpErrorResponse) => {
-        // this.loading = false;
-        if (error.status === 409) {
-          // this.showErrorMessage();
-        } else {
-          throw error;
+        let dialog: DialogModel = {
+          isSuccessful: false,
+          title: "Ha ocurrido un problema.",
+          subtitle: "Ha ocurrido un problema vuelva a intentarlo.",
+          messageButton: "Volver",
+        };
+        if (error.status === 400 || error.status === 401 || error.status === 409) {
+          let subtitle = "";
+          if (Array.isArray(error.error.details)) {
+            error.error.details.forEach((element) => {
+              subtitle += element + "\n";
+            });
+          } else {
+            subtitle = error.error.details;
+          }
+          dialog = {
+            isSuccessful: false,
+            title: "Ha ocurrido un problema.",
+            subtitle: subtitle,
+            messageButton: "Volver",
+          };
         }
+        this.showErrorMessage(dialog);
       }
     );
   }
@@ -89,8 +112,45 @@ export class BusinessReservationsDetailsComponent implements OnInit {
       payment_number: "",
       payment_id: this.parameters.paymentId,
     };
-    this.reservationService.putReservation(reservation).subscribe();
+    this.reservationService.putReservation(reservation).subscribe(
+      (response) => {
+        const dialog: DialogModel = {
+          isSuccessful: false,
+          title: "¡Exito!",
+          subtitle: "Reserva confirmada exitosamente.",
+          messageButton: "Volver",
+        };
+        this.showErrorMessage(dialog);
+        this.dialogRef.close(false);
+      },
+      (error: HttpErrorResponse) => {
+        let dialog: DialogModel = {
+          isSuccessful: false,
+          title: "Ha ocurrido un problema.",
+          subtitle: "Ha ocurrido un problema vuelva a intentarlo.",
+          messageButton: "Volver",
+        };
+        if (error.status === 400 || error.status === 401) {
+          let subtitle = "";
+          if (Array.isArray(error.error.details)) {
+            error.error.details.forEach((element) => {
+              subtitle += element + "\n";
+            });
+          } else {
+            subtitle = error.error.details;
+          }
+          dialog = {
+            isSuccessful: false,
+            title: "Ha ocurrido un problema.",
+            subtitle: subtitle,
+            messageButton: "Volver",
+          };
+        }
+        this.showErrorMessage(dialog);
+      }
+    );
   }
+
   public cancelReservation(): void {
     const reservation: UpdateReservationPaymentDto = {
       reservation_id: this.parameters.reservationId,
@@ -98,29 +158,65 @@ export class BusinessReservationsDetailsComponent implements OnInit {
       payment_number: "",
       payment_id: this.parameters.paymentId,
     };
-    this.reservationService.putReservation(reservation).subscribe();
+    this.reservationService.putReservation(reservation).subscribe(
+      (response) => {
+        const dialog: DialogModel = {
+          isSuccessful: false,
+          title: "¡Exito!",
+          subtitle: "Reserva cancelada exitosamente.",
+          messageButton: "Volver",
+        };
+        this.showErrorMessage(dialog);
+        this.dialogRef.close(false);
+      },
+      (error: HttpErrorResponse) => {
+        let dialog: DialogModel = {
+          isSuccessful: false,
+          title: "Ha ocurrido un problema.",
+          subtitle: "Ha ocurrido un problema vuelva a intentarlo.",
+          messageButton: "Volver",
+        };
+        if (error.status === 400 || error.status === 401) {
+          let subtitle = "";
+          if (Array.isArray(error.error.details)) {
+            error.error.details.forEach((element) => {
+              subtitle += element + "\n";
+            });
+          } else {
+            subtitle = error.error.details;
+          }
+          dialog = {
+            isSuccessful: false,
+            title: "Ha ocurrido un problema.",
+            subtitle: subtitle,
+            messageButton: "Volver",
+          };
+        }
+        this.showErrorMessage(dialog);
+      }
+    );
   }
 
-  public getDateReservation(dateReservation: string, week_day: string): string {
+  public backReservations(): void {
+    this.dialogRef.close(true);
+  }
+
+  public getDateReservation(dateReservation: string): string {
     if (dateReservation) {
       dateReservation = dateReservation.replace("-", "/").replace("-", "/");
     }
-
     const date: Date = new Date(dateReservation);
-    const days = [];
-    days["Monday"] = "Lunes";
-    days["Tuesday"] = "Martes";
-    days["Wednesday"] = "Miércoles";
-    days["Thursday"] = "Jueves";
-    days["Friday"] = "Viernes";
-    days["Saturday"] = "Sábado";
-    days["Sunday"] = "Domingo";
-
     const day: number = date.getDate();
-    const month: number = date.getMonth();
+    const month: number = date.getMonth() + 1;
     const year: number = date.getFullYear();
-    const dateReturn: string = days[week_day] + " " + day + "/" + month + "/" + year;
+    const dayNumber = date.getDay();
 
-    return dateReturn;
+    return this.getDay(dayNumber) + " " + day + "/" + month + "/" + year;
   }
+
+  private showErrorMessage(dialogModel: DialogModel): void {
+    this.dialogService.openDialog(dialogModel);
+  }
+
+  public getDay = (dayNumber: number): string => this.scheduleService.getDay(dayNumber);
 }
