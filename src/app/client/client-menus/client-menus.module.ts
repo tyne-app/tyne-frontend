@@ -12,9 +12,11 @@ import { MatInputModule } from "@angular/material/input";
 import { MatExpansionModule } from "@angular/material/expansion";
 import { MatDividerModule } from "@angular/material/divider";
 import { ButtonsModule } from "@app/shared/controls/customs/buttons/buttons.module";
+import { ScheduleBusinessComponent } from "./components/schedule-business/schedule-business.component";
+import { MatDialogModule } from "@angular/material/dialog";
 
 @NgModule({
-  declarations: [ClientMenusComponent],
+  declarations: [ClientMenusComponent, ScheduleBusinessComponent],
   imports: [
     ClientMenusRoutingModule,
     ReactiveFormsModule,
@@ -28,7 +30,8 @@ import { ButtonsModule } from "@app/shared/controls/customs/buttons/buttons.modu
     MatExpansionModule,
     MatDividerModule,
     FormsModule,
-    ButtonsModule
+    ButtonsModule,
+    MatDialogModule,
   ],
 })
 export class ClientMenusModule {}

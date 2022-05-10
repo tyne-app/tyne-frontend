@@ -13,8 +13,7 @@ import { Product as ProductAdd } from "@app/business/bussines-home/interfaces/re
 import { Product } from "@app/business/business-menus/interfaces/product";
 import { ClientCreateReservationComponent } from "../client-create-reservation/client-create-reservation.component";
 import { ButtonCustom } from "@app/shared/controls/customs/buttons/shared/interfaces/button-custom";
-
-
+import { ScheduleBusinessComponent } from "./components/schedule-business/schedule-business.component";
 
 @Component({
   selector: "app-client-menus",
@@ -22,25 +21,23 @@ import { ButtonCustom } from "@app/shared/controls/customs/buttons/shared/interf
   styleUrls: ["./client-menus.component.scss"],
 })
 export class ClientMenusComponent implements OnInit {
-
   public reservationCustomButton: ButtonCustom = {
-    buttonMaterialType : "mat-raised-button",
-    buttonType : "submit",
-    buttonTypeClass : "btn-submit"
-  }
+    buttonMaterialType: "mat-raised-button",
+    buttonType: "submit",
+    buttonTypeClass: "btn-submit",
+  };
   public menuForm: FormGroup;
   public panelOpenState = true;
   public total = 0;
   public cart: FormGroup[] = [];
   public restaurant: BusinessDetailsResponse;
-  public branchId!: number; 
-  public ratingsArray: number[]= [];
+  public branchId!: number;
+  public ratingsArray: number[] = [];
   public noRatingsArray: number[] = [];
   public menus: GetMenuDto;
   public auxiliar = 0;
-  public localId:string;
-  
-  
+  public localId: string;
+
   public get sections(): FormArray {
     return this.menuForm.controls["sections"] as FormArray;
   }
@@ -51,9 +48,8 @@ export class ClientMenusComponent implements OnInit {
     public dialog: MatDialog,
     private menuService: MenuService,
     private BusinessService: BusinessService,
-    private ratingService: RatingService,
+    private ratingService: RatingService
   ) {}
-
 
   public ngOnInit(): void {
     this.buildMenuForm();
@@ -61,26 +57,23 @@ export class ClientMenusComponent implements OnInit {
     this.setLocalId();
   }
 
-  public saveChanges(): void{
+  public saveChanges(): void {}
 
-  }
-
-  public setLocalId(): void{
-    this.activatedRoute.queryParams.subscribe((params)=>{
+  public setLocalId(): void {
+    this.activatedRoute.queryParams.subscribe((params) => {
       this.localId = params.id;
       localStorage.setItem("local_id", this.localId);
     });
   }
 
-
-  public openReservationModal(): void {  
+  public openReservationModal(): void {
     const products: ProductAdd[] = [];
-    this.cart.forEach((product)=>{
+    this.cart.forEach((product) => {
       const productId = product.get("id").value;
       const quantity = product.get("quantity").value;
-      const createProduct:ProductAdd = {
+      const createProduct: ProductAdd = {
         id: productId,
-        quantity: quantity
+        quantity: quantity,
       };
       products.push(createProduct);
     });
@@ -103,14 +96,14 @@ export class ClientMenusComponent implements OnInit {
     value++;
     if (value <= 30) {
       const index = this.cart.findIndex((x) => x.get("id").value === product.get("id").value);
-      if(index==-1){
+      if (index == -1) {
         this.cart.push(product);
         control.setValue(value);
-        this.total+= +product.get("price").value;
+        this.total += +product.get("price").value;
         this.auxiliar++;
-      }else{
+      } else {
         control.setValue(value);
-        this.total+= +product.get("price").value;
+        this.total += +product.get("price").value;
       }
     }
   }
@@ -122,8 +115,8 @@ export class ClientMenusComponent implements OnInit {
     if (value > 0) {
       value--;
       control.setValue(value);
-      this.total-= +product.get("price").value;
-      if(value <= 0){
+      this.total -= +product.get("price").value;
+      if (value <= 0) {
         this.cart.splice(index, 1);
       }
     }
@@ -136,10 +129,10 @@ export class ClientMenusComponent implements OnInit {
   }
 
   private getData(): void {
-    this.activatedRoute.queryParams.subscribe(( params) => {
+    this.activatedRoute.queryParams.subscribe((params) => {
       this.branchId = params.id;
-      const restaurant = this.BusinessService.getBusinessById( this.branchId); 
-      const menu = this.menuService.getMenusByBranch( params.id);
+      const restaurant = this.BusinessService.getBusinessById(this.branchId);
+      const menu = this.menuService.getMenusByBranch(params.id);
       forkJoin([restaurant, menu]).subscribe((results) => {
         this.restaurant = results[0];
         this.menus = results[1];
@@ -170,7 +163,10 @@ export class ClientMenusComponent implements OnInit {
           id: [product.id],
           name: [product.name, [Validators.required, Validators.minLength(3), Validators.maxLength(70)]],
           price: [product.amount, [Validators.required, Validators.min(100), Validators.max(100000)]],
-          description: [product.description, [Validators.required, Validators.minLength(10), Validators.maxLength(400)]],
+          description: [
+            product.description,
+            [Validators.required, Validators.minLength(10), Validators.maxLength(400)],
+          ],
           quantity: [0],
         })
       );
@@ -181,9 +177,18 @@ export class ClientMenusComponent implements OnInit {
 
   private getRatings(): void {
     if (this.restaurant && this.restaurant?.id > 0) {
-      const rating:number = Math.round(this.restaurant?.rating);
+      const rating: number = Math.round(this.restaurant?.rating);
       this.ratingsArray = this.ratingService.countRating(rating);
       this.noRatingsArray = this.ratingService.countNoRating(rating);
     }
+  }
+
+  public getSchedule(): void {
+    this.dialog.open(ScheduleBusinessComponent, {
+      maxWidth: "100%",
+      minWidth: "55%",
+      panelClass: "schedule-business-dialog",
+      data: { restaurant: this.restaurant },
+    });
   }
 }
