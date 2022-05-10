@@ -10,12 +10,6 @@ export class FormControlService {
   public constructor() {}
 
   public getPasswordError(passwordControl: AbstractControl): string {
-    // if (passwordControl.hasError("required")) {
-    //   return "Debe ingresar una contraseña";
-    // }
-    // if (passwordControl.hasError("pattern")) {
-    //   return "Debe tener como mínimo 8 dígitos, 1 mayúscula y 1 número";
-    // }
     return passwordControl.hasError("required")
       ? "Debe ingresar una contraseña"
       : passwordControl.hasError("pattern")
