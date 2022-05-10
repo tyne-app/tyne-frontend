@@ -1,0 +1,24 @@
+@import "../../../../../styles.scss";
+
+.txt-close {
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin: 2rem 0;
+}
+
+@include view-min(768px) {
+  .txt-close {
+    font-size: 1.75rem;
+  }
+}
+
+@include view-min(992px) {
+  .txt-close {
+    font-size: 2rem;
+    margin: 2rem 0 2.7rem;
+  }
+
+  button {
+    width: 200px !important;
+  }
+}
