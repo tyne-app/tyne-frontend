@@ -1,16 +1,21 @@
-import { Injectable } from '@angular/core';
-import { AbstractControl } from '@angular/forms';
+import { Injectable } from "@angular/core";
+import { AbstractControl } from "@angular/forms";
 
-import { ErrorMessages } from '../inmutable/enums/error-message.enum';
+import { ErrorMessages } from "../inmutable/enums/error-message.enum";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class FormControlService {
+  public constructor() {}
 
-  public constructor() { }
-
-  public getPasswordError(passwordControl: AbstractControl): string{ 
+  public getPasswordError(passwordControl: AbstractControl): string {
+    // if (passwordControl.hasError("required")) {
+    //   return "Debe ingresar una contraseña";
+    // }
+    // if (passwordControl.hasError("pattern")) {
+    //   return "Debe tener como mínimo 8 dígitos, 1 mayúscula y 1 número";
+    // }
     return passwordControl.hasError("required")
       ? "Debe ingresar una contraseña"
       : passwordControl.hasError("pattern")
@@ -18,7 +23,7 @@ export class FormControlService {
       : null;
   }
 
-  public getPasswordConfirmError(passwordControl: AbstractControl): string{ 
+  public getPasswordConfirmError(passwordControl: AbstractControl): string {
     return passwordControl.hasError("required")
       ? ErrorMessages.RequiredVariant.replace("{0}", "contraseña")
       : passwordControl.hasError("notMatch")
@@ -26,7 +31,7 @@ export class FormControlService {
       : null;
   }
 
-  public getEmailError(EmailControl:AbstractControl): string {
+  public getEmailError(EmailControl: AbstractControl): string {
     return EmailControl.hasError("required")
       ? ErrorMessages.Required.replace("{0}", "email")
       : EmailControl.hasError("email")
@@ -36,7 +41,7 @@ export class FormControlService {
       : null;
   }
 
-  public getEmailConfirmError(EmailControl:AbstractControl): string {
+  public getEmailConfirmError(EmailControl: AbstractControl): string {
     return EmailControl.hasError("required")
       ? ErrorMessages.Required.replace("{0}", "email")
       : EmailControl.hasError("notMatch")
@@ -48,7 +53,7 @@ export class FormControlService {
       : null;
   }
 
-  public getNameError(ClientNameControl:AbstractControl): string {
+  public getNameError(ClientNameControl: AbstractControl): string {
     return ClientNameControl.hasError("required")
       ? ErrorMessages.Required.replace("{0}", "nombre")
       : ClientNameControl.hasError("minlength")
@@ -58,7 +63,7 @@ export class FormControlService {
       : null;
   }
 
-  public getLastNameError(ClientLastNameControl:AbstractControl): string {
+  public getLastNameError(ClientLastNameControl: AbstractControl): string {
     return ClientLastNameControl.hasError("required")
       ? ErrorMessages.Required.replace("{0}", "apellido")
       : ClientLastNameControl.hasError("minlength")
@@ -68,7 +73,7 @@ export class FormControlService {
       : null;
   }
 
-  public getClientPhoneError(ClientPhoneControl:AbstractControl): string {
+  public getClientPhoneError(ClientPhoneControl: AbstractControl): string {
     return ClientPhoneControl.hasError("minlength")
       ? ErrorMessages.Minlength.replace("{0}", "teléfono válido")
       : ClientPhoneControl.hasError("maxlength")
@@ -76,10 +81,12 @@ export class FormControlService {
       : null;
   }
 
-  public getBirthDateError(BirthDateControl:AbstractControl): string {
-    return BirthDateControl.hasError("required") ? ErrorMessages.RequiredVariant.replace("{0}", "fecha de nacimiento") : null;
+  public getBirthDateError(BirthDateControl: AbstractControl): string {
+    return BirthDateControl.hasError("required")
+      ? ErrorMessages.RequiredVariant.replace("{0}", "fecha de nacimiento")
+      : null;
   }
-  
+
   public getProductNameError(productNameControl: AbstractControl): string {
     return productNameControl.hasError("required")
       ? "Debe ingresar un nombre"
@@ -90,7 +97,7 @@ export class FormControlService {
       : null;
   }
 
-  public getProductPriceError(productPriceControl:AbstractControl): string {
+  public getProductPriceError(productPriceControl: AbstractControl): string {
     return productPriceControl.hasError("required")
       ? "Debe ingresar un precio"
       : productPriceControl.hasError("min")
@@ -110,8 +117,7 @@ export class FormControlService {
       : null;
   }
 
-  public getManagerNameError( ManagerNameControl: AbstractControl ): string {
-
+  public getManagerNameError(ManagerNameControl: AbstractControl): string {
     return ManagerNameControl.hasError("required")
       ? ErrorMessages.Required.replace("{0}", "nombre")
       : ManagerNameControl.hasError("minlength")
@@ -131,7 +137,7 @@ export class FormControlService {
       : null;
   }
 
-  public getPhoneError(ManagerPhoneControl:AbstractControl): string {
+  public getPhoneError(ManagerPhoneControl: AbstractControl): string {
     return ManagerPhoneControl.hasError("required")
       ? ErrorMessages.Required.replace("{0}", "número")
       : ManagerPhoneControl.hasError("minlength")
@@ -141,8 +147,7 @@ export class FormControlService {
       : null;
   }
 
-  public getAddressError(LocationAddressControl:AbstractControl): string {
-
+  public getAddressError(LocationAddressControl: AbstractControl): string {
     return LocationAddressControl.hasError("required")
       ? ErrorMessages.RequiredVariant.replace("{0}", "calle")
       : LocationAddressControl.hasError("minlength")
@@ -152,7 +157,7 @@ export class FormControlService {
       : null;
   }
 
-  public getLocationNumberError(LocationNumberControl:AbstractControl): string {
+  public getLocationNumberError(LocationNumberControl: AbstractControl): string {
     return LocationNumberControl.hasError("required")
       ? ErrorMessages.Required.replace("{0}", "número de calle")
       : LocationNumberControl.hasError("minlength")
@@ -162,7 +167,7 @@ export class FormControlService {
       : null;
   }
 
-  public getLocationCityError(LocationCityControl:AbstractControl): string {
+  public getLocationCityError(LocationCityControl: AbstractControl): string {
     return LocationCityControl.hasError("required")
       ? ErrorMessages.RequiredSelectVariant.replace("{0}", "región")
       : LocationCityControl.hasError("min")
@@ -170,7 +175,7 @@ export class FormControlService {
       : null;
   }
 
-  public getLocationStateError(LocationStateControl:AbstractControl): string {
+  public getLocationStateError(LocationStateControl: AbstractControl): string {
     return LocationStateControl.hasError("required")
       ? ErrorMessages.RequiredSelectVariant.replace("{0}", "comuna")
       : LocationStateControl.hasError("min")
@@ -178,7 +183,7 @@ export class FormControlService {
       : null;
   }
 
-  public getRutError(RutAccountOwnerControl:AbstractControl): string {
+  public getRutError(RutAccountOwnerControl: AbstractControl): string {
     return RutAccountOwnerControl.hasError("required")
       ? ErrorMessages.Required.replace("{0}", "rut")
       : RutAccountOwnerControl.hasError("minlength")
@@ -190,7 +195,7 @@ export class FormControlService {
       : null;
   }
 
-  public getJuridicRutError(RutAccountOwnerControl:AbstractControl): string {
+  public getJuridicRutError(RutAccountOwnerControl: AbstractControl): string {
     return RutAccountOwnerControl.hasError("required")
       ? ErrorMessages.Required.replace("{0}", "rut")
       : RutAccountOwnerControl.hasError("minlength")
@@ -202,7 +207,7 @@ export class FormControlService {
       : null;
   }
 
-  public getNameAccountOwnerError(NameAccountOwnerControl:AbstractControl): string {
+  public getNameAccountOwnerError(NameAccountOwnerControl: AbstractControl): string {
     return NameAccountOwnerControl.hasError("required")
       ? ErrorMessages.Required.replace("{0}", "nombre de titular")
       : NameAccountOwnerControl.hasError("minlength")
@@ -212,8 +217,7 @@ export class FormControlService {
       : null;
   }
 
-  public getAccountNumberError(AccountNumberControl:AbstractControl): string {
-
+  public getAccountNumberError(AccountNumberControl: AbstractControl): string {
     return AccountNumberControl.hasError("required")
       ? ErrorMessages.Required.replace("{0}", "número de cuenta")
       : AccountNumberControl.hasError("minlength")
@@ -223,7 +227,7 @@ export class FormControlService {
       : null;
   }
 
-  public getBankError(BankControl:AbstractControl): string {
+  public getBankError(BankControl: AbstractControl): string {
     return BankControl.hasError("required")
       ? ErrorMessages.RequiredSelect.replace("{0}", "banco")
       : BankControl.hasError("min")
@@ -231,7 +235,7 @@ export class FormControlService {
       : null;
   }
 
-  public getAccountTypeError(AccountTypeControl:AbstractControl): string {
+  public getAccountTypeError(AccountTypeControl: AbstractControl): string {
     return AccountTypeControl.hasError("required")
       ? ErrorMessages.RequiredSelect.replace("{0}", "tipo de cuenta")
       : AccountTypeControl.hasError("min")
@@ -239,7 +243,7 @@ export class FormControlService {
       : null;
   }
 
-  public getBusinessDescriptionError(BusinessDescriptionControl:AbstractControl): string {
+  public getBusinessDescriptionError(BusinessDescriptionControl: AbstractControl): string {
     return BusinessDescriptionControl.hasError("required")
       ? ErrorMessages.RequiredVariant.replace("{0}", "descripción")
       : BusinessDescriptionControl.hasError("minlength")
@@ -249,7 +253,7 @@ export class FormControlService {
       : null;
   }
 
-  public getMainOfficeNameCompanyError(MainOfficeNameCompanyControl:AbstractControl): string {
+  public getMainOfficeNameCompanyError(MainOfficeNameCompanyControl: AbstractControl): string {
     return MainOfficeNameCompanyControl.hasError("required")
       ? ErrorMessages.RequiredVariant.replace("{0}", "una razón social")
       : MainOfficeNameCompanyControl.hasError("minlength")
@@ -258,7 +262,7 @@ export class FormControlService {
       ? ErrorMessages.Maxlength.replace("{0}", "50")
       : null;
   }
-  public getMainOfficeBusinessLineError(MainOfficeBusinessLineControl:AbstractControl): string {
+  public getMainOfficeBusinessLineError(MainOfficeBusinessLineControl: AbstractControl): string {
     return MainOfficeBusinessLineControl.hasError("required")
       ? ErrorMessages.RequiredVariant.replace("{0}", "giro")
       : MainOfficeBusinessLineControl.hasError("minlength")
@@ -268,7 +272,7 @@ export class FormControlService {
       : null;
   }
 
-  public getNameCompanyError(NameCompanyControl:AbstractControl): string {
+  public getNameCompanyError(NameCompanyControl: AbstractControl): string {
     return NameCompanyControl.hasError("required")
       ? ErrorMessages.Required.replace("{0}", "nombre de local")
       : NameCompanyControl.hasError("minlength")
@@ -277,5 +281,4 @@ export class FormControlService {
       ? ErrorMessages.Maxlength.replace("{0}", "50")
       : null;
   }
-
 }
