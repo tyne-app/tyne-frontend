@@ -26,6 +26,8 @@ import { DialogModel } from "@app/shared/components/dialog/shared/interfaces/dia
 export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
   public hide = true;
+  public msgErrorEmail:string;
+  public msgErrorPassword:string;
 
   public get emailControl(): AbstractControl {
     return this.loginForm.get("email");
@@ -36,11 +38,17 @@ export class LoginComponent implements OnInit {
   }
 
   public get passwordError(): string {
-    return this.formControlService.getPasswordError(this.passwordControl);
+    const error: string = this.formControlService.getPasswordError(this.passwordControl);
+    this.msgErrorPassword = error;
+
+    return error;
   }
 
   public get emailError(): string {
-    return this.formControlService.getEmailError(this.emailControl);
+    const error: string = this.formControlService.getEmailError(this.emailControl);
+    this.msgErrorEmail = error;
+
+    return error;
   }
 
   public constructor(
