@@ -62,7 +62,7 @@
           <div class="col-12 col-sm-6 col-lg-4 pr-md-0">
             <mat-form-field appearance="outline">
               <mat-label>Teléfono de contacto</mat-label>
-              <ngx-mat-intl-tel-input formControlName="managerPhone" [enablePlaceholder]="true" [enableSearch]="true"
+              <ngx-mat-intl-tel-input formControlName="managerPhone" maxlength="12" [enablePlaceholder]="true" [enableSearch]="false"
                 [onlyCountries]="['cl']" name="phone" required="true" describedBy="phoneInput" #phone>
               </ngx-mat-intl-tel-input>
               <mat-error>
@@ -209,8 +209,8 @@
           <div class="col-12 col-sm-6 col-lg-4 pr-md-0">
             <mat-form-field appearance="outline">
               <mat-label>Teléfono de contacto</mat-label>
-              <ngx-mat-intl-tel-input formControlName="legalRepresentativePhone" [enablePlaceholder]="true"
-                [enableSearch]="true" [onlyCountries]="['cl']" name="phone" required="true" describedBy="phoneInput"
+              <ngx-mat-intl-tel-input formControlName="legalRepresentativePhone" maxlength="12" [enablePlaceholder]="true"
+                [enableSearch]="false" [onlyCountries]="['cl']" name="phone" required="true" describedBy="phoneInput"
                 #phone>
               </ngx-mat-intl-tel-input>
 
@@ -296,7 +296,7 @@
           <div class="col-12 col-sm-6 col-lg-4 pr-md-0">
             <mat-form-field appearance="outline">
               <mat-label>Teléfono de contacto</mat-label>
-              <ngx-mat-intl-tel-input formControlName="mainOfficePhone" [enablePlaceholder]="true" [enableSearch]="true"
+              <ngx-mat-intl-tel-input formControlName="mainOfficePhone" maxlength="12" [enablePlaceholder]="true" [enableSearch]="false"
                 [onlyCountries]="['cl']" name="phone" required="true" describedBy="phoneInput" #phone>
               </ngx-mat-intl-tel-input>
               <mat-error>
