@@ -62,7 +62,7 @@
           <div class="col">
             <mat-form-field appearance="outline">
               <mat-label>Teléfono de contacto </mat-label>
-              <ngx-mat-intl-tel-input formControlName="managerPhone" [enablePlaceholder]="true" [enableSearch]="true"
+              <ngx-mat-intl-tel-input maxlength="12" formControlName="managerPhone" [enablePlaceholder]="true" [enableSearch]="false"
                 [onlyCountries]="['cl']" name="phone" required="true" describedBy="phoneInput" #phone>
               </ngx-mat-intl-tel-input>
               <mat-error>
