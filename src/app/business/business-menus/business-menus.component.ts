@@ -1,19 +1,18 @@
 /** ANGULAR */
-import { Location } from '@angular/common';
+import { Location } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MenuService } from "@app/core/services/menu.service";
 import { Commission } from "@shared/inmutable/constants/amount";
-import { updateMenu } from "@app/shared/components/dialog/shared/inmutable/constants/dialog-message";
-import { FormControlService, RatingService } from '@app/shared/helpers';
-import { DialogService } from '@app/shared/components/dialog/shared/services/dialog.service';
-import { Section } from './interfaces/section';
-import { RangoPrecio } from './interfaces/price-range';
-import { CreateMenuDto, Menu } from './interfaces/create-menu-dto';
-import { CreateProduct } from './interfaces/product';
-import { TokenService } from '@app/auth/shared/helpers/token.service';
-
-
+import { errorContent, updateMenu } from "@app/shared/components/dialog/shared/inmutable/constants/dialog-message";
+import { FormControlService, RatingService } from "@app/shared/helpers";
+import { DialogService } from "@app/shared/components/dialog/shared/services/dialog.service";
+import { Section } from "./interfaces/section";
+import { RangoPrecio } from "./interfaces/price-range";
+import { CreateMenuDto, Menu } from "./interfaces/create-menu-dto";
+import { CreateProduct } from "./interfaces/product";
+import { TokenService } from "@app/auth/shared/helpers/token.service";
+import { DialogModel } from "@app/shared/components/dialog/shared/interfaces/dialog-model";
 
 @Component({
   selector: "app-business-menus",
@@ -51,52 +50,57 @@ export class BusinessMenusComponent implements OnInit {
   }
 
   public saveChanges(): void {
-    if (!this.menuForm.invalid) {
-
-      const menus: Menu[] = [];
-      const productsToAdd = [];
-      const sections:FormArray = this.sections;
-
-      sections.controls.forEach((section)=>{
-         const products:FormArray = section.get('products') as FormArray;
-         products.controls.forEach(product=>{
-           const productToAdd: CreateProduct = {
-             name: product.get('name').value,
-             description: product.get('description').value,
-             amount: product.get('price').value,
-             url_image: ''
-           };
-           productsToAdd.push({
-             category: section.get('id').value,
-             productToAdd: productToAdd
-           });
-         });
-
-         const menu: Menu = {
-          category_id: section.get('id').value,
-          products: []
-        };
-         menus.push(menu);
+    if (this.menuForm.invalid) {
+      this.showErrorMessage({
+        title: "Alerta",
+        subtitle: "Verifique que todos los campos esten ingresados correctamente.",
+        isSuccessful: false,
+        messageButton: "Entendido",
       });
+      return;
+    }
 
-      menus.forEach(menu => {
-        productsToAdd.forEach(product => {
-          if(product.category == menu.category_id) {
-            menu.products.push(product.productToAdd);
-          }
+    const menus: Menu[] = [];
+    const productsToAdd = [];
+    const sections: FormArray = this.sections;
+
+    sections.controls.forEach((section) => {
+      const products: FormArray = section.get("products") as FormArray;
+      products.controls.forEach((product) => {
+        const productToAdd: CreateProduct = {
+          name: product.get("name").value,
+          description: product.get("description").value,
+          amount: product.get("price").value,
+          url_image: "",
+        };
+        productsToAdd.push({
+          category: section.get("id").value,
+          productToAdd: productToAdd,
         });
       });
 
-      const menuAdd: CreateMenuDto = {
-        menu: menus,
+      const menu: Menu = {
+        category_id: section.get("id").value,
+        products: [],
       };
+      menus.push(menu);
+    });
 
-      this.menuService.createMenuByBranch(menuAdd).subscribe(() => {
-        this.dialogService.openDialog(updateMenu);
+    menus.forEach((menu) => {
+      productsToAdd.forEach((product) => {
+        if (product.category == menu.category_id) {
+          menu.products.push(product.productToAdd);
+        }
       });
-    }else{
-      // TODO: ADD MESSAGE
-    }
+    });
+
+    const menuAdd: CreateMenuDto = {
+      menu: menus,
+    };
+
+    this.menuService.createMenuByBranch(menuAdd).subscribe(() => {
+      this.dialogService.openDialog(updateMenu);
+    });
   }
 
   public addProduct(sectionId: number): void {
@@ -108,14 +112,14 @@ export class BusinessMenusComponent implements OnInit {
         id: ["0"],
         name: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(70)]],
         price: ["", [Validators.required, Validators.min(100), Validators.max(100000)]],
-        description: ["", [Validators.required, Validators.min(10), Validators.maxLength(400)]],
+        description: ["", [Validators.required, Validators.minLength(10), Validators.maxLength(400)]],
       })
     );
   }
 
   public deleteProduct(sectionId: number, productId: number): void {
     const section = this.sections.controls[sectionId];
-  
+
     if (section) {
       const products = section.get("products") as FormArray;
 
@@ -137,7 +141,7 @@ export class BusinessMenusComponent implements OnInit {
       category: {
         id: 85,
         name: "Entradas",
-      },    
+      },
       products: [],
     };
   }
@@ -147,7 +151,7 @@ export class BusinessMenusComponent implements OnInit {
       category: {
         id: 86,
         name: "Fondos",
-      },    
+      },
       products: [],
     };
   }
@@ -157,7 +161,7 @@ export class BusinessMenusComponent implements OnInit {
       category: {
         id: 89,
         name: "Postres",
-      },    
+      },
       products: [],
     };
   }
@@ -167,7 +171,7 @@ export class BusinessMenusComponent implements OnInit {
       category: {
         id: 88,
         name: "Bebestibles",
-      },    
+      },
       products: [],
     };
   }
@@ -177,7 +181,7 @@ export class BusinessMenusComponent implements OnInit {
       category: {
         id: 84,
         name: "Otro",
-      },    
+      },
       products: [],
     };
   }
@@ -196,19 +200,19 @@ export class BusinessMenusComponent implements OnInit {
         const { sections, rango_precio, rating, nombre_local } = menu;
 
         this.section = sections;
-        if(!sections.some(section=>section.category.id==85)){
+        if (!sections.some((section) => section.category.id == 85)) {
           this.section.push(this.buildBottom());
         }
-        if(!sections.some(section=>section.category.id==86)){
+        if (!sections.some((section) => section.category.id == 86)) {
           this.section.push(this.buildLunch());
         }
-        if(!sections.some(section=>section.category.id==89)){
+        if (!sections.some((section) => section.category.id == 89)) {
           this.section.push(this.buildDesserts());
         }
-        if(!sections.some(section=>section.category.id==88)){
+        if (!sections.some((section) => section.category.id == 88)) {
           this.section.push(this.buildDrinks());
-        }     
-        if(!sections.some(section=>section.category.id==84)){
+        }
+        if (!sections.some((section) => section.category.id == 84)) {
           this.section.push(this.buildOthers());
         }
 
@@ -216,20 +220,20 @@ export class BusinessMenusComponent implements OnInit {
         this.localRangePrice = rango_precio;
         this.buildRating(rating);
         this.buildSections();
-      }else{
-        if(!this.section.some(section=>section.category.id==85)){
+      } else {
+        if (!this.section.some((section) => section.category.id == 85)) {
           this.section.push(this.buildBottom());
         }
-        if(!this.section.some(section=>section.category.id==86)){
+        if (!this.section.some((section) => section.category.id == 86)) {
           this.section.push(this.buildLunch());
         }
-        if(!this.section.some(section=>section.category.id==89)){
+        if (!this.section.some((section) => section.category.id == 89)) {
           this.section.push(this.buildDesserts());
         }
-        if(!this.section.some(section=>section.category.id==88)){
+        if (!this.section.some((section) => section.category.id == 88)) {
           this.section.push(this.buildDrinks());
-        }     
-        if(!this.section.some(section=>section.category.id==84)){
+        }
+        if (!this.section.some((section) => section.category.id == 84)) {
           this.section.push(this.buildOthers());
         }
         this.buildSections();
@@ -264,7 +268,10 @@ export class BusinessMenusComponent implements OnInit {
           id: [product.id],
           name: [product.name, [Validators.required, Validators.minLength(3), Validators.maxLength(70)]],
           price: [product.amount, [Validators.required, Validators.min(100), Validators.max(100000)]],
-          description: [product.description, [Validators.required, Validators.minLength(10), Validators.maxLength(400)]],
+          description: [
+            product.description,
+            [Validators.required, Validators.minLength(10), Validators.maxLength(400)],
+          ],
         })
       );
     });
@@ -292,5 +299,9 @@ export class BusinessMenusComponent implements OnInit {
     const products = this.sections.controls[sectionId].get("products") as FormArray;
     const control = products.controls[productId].get("description");
     return this.formControlService.getProductDescriptionError(control);
+  }
+
+  private showErrorMessage(dialog?) {
+    this.dialogService.openDialog(dialog ? dialog : errorContent);
   }
 }
