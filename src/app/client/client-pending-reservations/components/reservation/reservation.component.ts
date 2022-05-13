@@ -25,13 +25,16 @@ export class ReservationComponent implements OnInit {
     this.getClientReservation();
   }
 
-  public openCancelReservation(): void {
+  public openCancelReservation(reservationId: number): void {
     const dialogRef = this.dialog.open(CancelReservationComponent, {
       minWidth: "50%",
+      data: reservationId,
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      // empty
+      // if (result === "success") {
+      //   window.location.reload();
+      // }
     });
   }
 

@@ -1,14 +1,17 @@
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { UpdateReservationPaymentDto , CreateReservationPaymentDto} from "@app/shared/interfaces/reservation/reservation-payment";
 import { ReservationAdd } from "@app/business/bussines-home/interfaces/reservation-add";
 import { LocalReservationDetailResponse } from "@app/business/shared/interfaces/local-reservation-detail-response";
+import { LocalReservationsResponse } from "@app/business/shared/interfaces/local-reservations-response";
+import {
+  CreateReservationPaymentDto,
+  UpdateReservationPaymentDto,
+} from "@app/shared/interfaces/reservation/reservation-payment";
 import { environment } from "@src/environments/environment";
 import { Observable } from "rxjs";
-import { LocalReservationsResponse } from "@app/business/shared/interfaces/local-reservations-response";
 
 @Injectable({
-  providedIn: "root", 
+  providedIn: "root",
 })
 export class ReservationService {
   private urlBase = environment.apiTyne;
@@ -36,15 +39,13 @@ export class ReservationService {
     return this.http.get<LocalReservationDetailResponse>(url);
   }
 
-  public postReservation(reservation:ReservationAdd): Observable<CreateReservationPaymentDto>{
+  public postReservation(reservation: ReservationAdd): Observable<CreateReservationPaymentDto> {
     const url = this.urlBase + `/reservations`;
     return this.http.post<CreateReservationPaymentDto>(url, reservation);
   }
 
-  public putReservation(reservation:UpdateReservationPaymentDto): Observable<any>{
+  public putReservation(reservation: UpdateReservationPaymentDto): Observable<any> {
     const url = this.urlBase + `/reservations`;
     return this.http.put<any>(url, reservation);
   }
-
-
 }

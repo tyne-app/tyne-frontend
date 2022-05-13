@@ -37,7 +37,9 @@
       <div
         class="col-12 col-lg-3 px-0 px-md-3 pr-lg-0 d-md-flex justify-content-md-end flex-lg-column justify-content-lg-center"
       >
-        <button mat-raised-button class="btn-normal-red" (click)="openCancelReservation()">Cancelar Reserva</button>
+        <button mat-raised-button class="btn-normal-red" (click)="openCancelReservation(reservation.id)">
+          Cancelar Reserva
+        </button>
       </div>
     </div>
   </div>
