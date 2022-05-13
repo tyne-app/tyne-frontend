@@ -23,8 +23,8 @@
           >
         </p>
         <p>
-          Precio Total: <span>{{ (reservation.amount | currencyStandard:"CLP")}}</span>
-        </p> 
+          Precio Total: <span>{{ reservation.amount | currencyStandard: "CLP" }}</span>
+        </p>
         <p>
           Dirección: <span>{{ reservation.branch_street_address }} #{{ reservation.branch_street_number }}</span>
         </p>
@@ -37,12 +37,9 @@
       <div
         class="col-12 col-lg-3 px-0 px-md-3 pr-lg-0 d-md-flex justify-content-md-end flex-lg-column justify-content-lg-center"
       >
-        <mat-card class="card-support">
-          <p class="message-support">
-            Para editar o cancelar tu reserva comunicate al <br />
-            {{ supportPhone }}
-          </p>
-        </mat-card>
+        <button mat-raised-button class="btn-normal-red" (click)="openCancelReservation(reservation.id)">
+          Cancelar Reserva
+        </button>
       </div>
     </div>
   </div>

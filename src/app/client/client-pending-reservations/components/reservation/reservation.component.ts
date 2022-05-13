@@ -1,8 +1,10 @@
 import { Component, OnInit } from "@angular/core";
-import { environment } from "@src/environments/environment";
-import { ScheduleService } from "@app/shared/helpers/schedule.service";
-import { ClientService } from "@app/client/shared/services/client.service";
+import { MatDialog } from "@angular/material/dialog";
 import { ClientReservation } from "@app/client/shared/interfaces/client-reservation";
+import { ClientService } from "@app/client/shared/services/client.service";
+import { ScheduleService } from "@app/shared/helpers/schedule.service";
+import { environment } from "@src/environments/environment";
+import { CancelReservationComponent } from "../cancel-reservation/cancel-reservation.component";
 
 @Component({
   selector: "app-reservation",
@@ -13,10 +15,27 @@ export class ReservationComponent implements OnInit {
   public supportPhone = environment.supportPhone;
   public reservations: ClientReservation[] = [];
 
-  public constructor(private clientService: ClientService, private scheduleService: ScheduleService) {}
+  public constructor(
+    private clientService: ClientService,
+    private scheduleService: ScheduleService,
+    private dialog: MatDialog
+  ) {}
 
   public ngOnInit(): void {
     this.getClientReservation();
+  }
+
+  public openCancelReservation(reservationId: number): void {
+    const dialogRef = this.dialog.open(CancelReservationComponent, {
+      minWidth: "50%",
+      data: reservationId,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // if (result === "success") {
+      //   window.location.reload();
+      // }
+    });
   }
 
   public getClientReservation(): void {
