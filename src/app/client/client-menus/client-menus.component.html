@@ -1,4 +1,4 @@
-<div class="img-container  animated fadeIn infinite">
+<div class="img-container animated fadeIn infinite">
   <!--Header-->
   <app-header [isWhiteLogo]="true"></app-header>
 
@@ -14,17 +14,24 @@
     <!--Business info-->
     <mat-card *ngIf="restaurant">
       <div class="row pl-3 justify-content-center">
-        <div class="col-lg-5">
+        <div class="col-lg-8">
           <p class="title">{{ restaurant?.name | titlecase }}</p>
+          <p class="title-5">
+            Horario de funcionamiento: <img src="../../../assets/img/vector-information.svg" alt="" (click)="getSchedule()" />
+          </p>
         </div>
-        <div class="col-lg-3">
+        <!-- <div class="col-lg-3">
           <p class="title-4">Rango de Precios:</p>
           <p class="money">{{ restaurant?.min_price | currencyStandard }} - {{ restaurant?.max_price | currencyStandard}}</p>
-        </div>
+        </div> -->
         <div class="col-lg-4">
-          <p class="title-4">Chefcitos:</p>
+          <!-- <p class="title-4">Chefcitos:</p>
           <img [src]="'../../../assets/icons/frying-pan-2.svg'" *ngFor="let z of ratingsArray" />
-          <img [src]="'../../../assets/icons/frying-pan-1.svg'" *ngFor="let z of noRatingsArray" />
+          <img [src]="'../../../assets/icons/frying-pan-1.svg'" *ngFor="let z of noRatingsArray" /> -->
+          <p class="title-4">Rango de Precios:</p>
+          <p class="money">
+            {{ restaurant?.min_price | currencyStandard }} - {{ restaurant?.max_price | currencyStandard }}
+          </p>
         </div>
       </div>
     </mat-card>
@@ -53,11 +60,10 @@
             <mat-accordion>
               <ng-container>
                 <div class="container px-0">
-                  <div *ngFor="
-                        let product of products(section);
-                        let p = index;
-                        let length = count
-                      " class="pb-4 wrap-product">
+                  <div
+                    *ngFor="let product of products(section); let p = index; let length = count"
+                    class="pb-4 wrap-product"
+                  >
                     <ng-container [formGroup]="product">
                       <div class="row mx-0 mx-lg-5">
                         <div class="col-md-12 col-lg-6 px-0">
@@ -68,7 +74,6 @@
                       </div>
 
                       <div class="row mx-0 mx-lg-5">
-
                         <div class="col-md-11 col-lg-4">
                           <p class="paragraph">
                             {{ product.get("description").value }}
@@ -76,18 +81,16 @@
                         </div>
 
                         <div class="col-5 col-md-6 col-lg-2 col-price">
-                          <p class="paragraph">
-                            {{ product.get("price").value | currencyStandard }} c/u
-                          </p>
+                          <p class="paragraph">{{ product.get("price").value | currencyStandard }} c/u</p>
                         </div>
 
                         <div class="col col-add-remove">
-                          <mat-icon class="add-remove-item-icon" (click)="deleteProduct(product)">remove_circle_outline
+                          <mat-icon class="add-remove-item-icon" (click)="deleteProduct(product)"
+                            >remove_circle_outline
                           </mat-icon>
-                          <label class="quantity-item">{{
-                            product.get("quantity").value
-                            }}</label>
-                          <mat-icon class="add-remove-item-icon" (click)="addProduct(product)">add_circle_outline
+                          <label class="quantity-item">{{ product.get("quantity").value }}</label>
+                          <mat-icon class="add-remove-item-icon" (click)="addProduct(product)"
+                            >add_circle_outline
                           </mat-icon>
                         </div>
                       </div>
@@ -117,9 +120,13 @@
 
       <div class="d-flex row align-items-center justify-content-center">
         <div class="d-flex col-lg-12 col-xs-12 align-items-center justify-content-center">
-          <app-button class="d-flex col-lg-12 " (click)="openReservationModal()"
-            [buttonCustomConfiguration]="reservationCustomButton">
-            Reservar</app-button>
+          <app-button
+            class="d-flex col-lg-12"
+            (click)="openReservationModal()"
+            [buttonCustomConfiguration]="reservationCustomButton"
+          >
+            Reservar</app-button
+          >
         </div>
         <div class="d-flex col-lg-12 align-items-center justify-content-center">
           <p class="d-flex col title-8 align-items-center justify-content-center">Se abrirá una ventana emergente</p>

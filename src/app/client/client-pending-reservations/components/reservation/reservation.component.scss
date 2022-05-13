@@ -61,6 +61,18 @@ mat-card-content p span {
   font-size: 16px !important;
 }
 
+@include view-max(575px) {
+  .btn-normal-red {
+    margin-top: 20px;
+    width: 50%;
+    border-radius: 10px;
+  }
+
+  .height-img-reservation {
+    height: 100%;
+  }
+}
+
 @include view-min(576px) {
   mat-card-content p {
     font-size: 1.125rem;
@@ -84,6 +96,12 @@ mat-card-content p span {
   .card-support {
     width: 100%;
   }
+
+  .btn-normal-red {
+    margin-top: 20px;
+    width: 50%;
+    border-radius: 10px;
+  }
 }
 
 @include view-min(992px) {
@@ -93,6 +111,11 @@ mat-card-content p span {
 
   .btn-reservation {
     min-width: 100%;
+  }
+
+  .btn-normal-red {
+    width: 100%;
+    border-radius: 10px;
   }
 }
 
