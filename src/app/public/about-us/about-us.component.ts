@@ -14,13 +14,14 @@ export class AboutUsComponent {
 
   public tyneMembers: TyneMember[] = [
     { memberImage: 'assets/members/elias.jpeg', memberName: 'Elias', memberCharge: 'CEO' },
-    { memberImage: 'https://randomuser.me/api/portraits/men/85.jpg', memberName: 'David', memberCharge: 'Líder Equipo de Desarrollo' },
+    { memberImage: 'assets/members/david.jpeg', memberName: 'David', memberCharge: 'Líder Equipo de Desarrollo' },
     { memberImage: 'assets/members/jorge.jpeg', memberName: 'Jorge', memberCharge: 'Diseñador UI/UX' },
-    { memberImage: 'https://randomuser.me/api/portraits/men/85.jpg', memberName: 'Tony', memberCharge: 'Desarrollador Informático' },
+    { memberImage: 'assets/members/placeholder.jpg', memberName: 'Tony', memberCharge: 'Desarrollador Informático' },
     { memberImage: 'assets/members/cristopher.jpg', memberName: 'Cristopher', memberCharge: 'Desarrollador Informático' },
-    { memberImage: 'https://randomuser.me/api/portraits/men/85.jpg', memberName: 'Yerko', memberCharge: 'Desarrollador Informático' },
-    { memberImage: 'assets/members/vicente.jpeg', memberName: 'Vicente', memberCharge: 'Diseñador UI/UX' },
-    { memberImage: 'assets/members/roberto.jpg', memberName: 'Roberto', memberCharge: 'Desarrollador Informático' },
+    { memberImage: 'assets/members/yerko.jpeg', memberName: 'Yerko', memberCharge: 'Desarrollador Informático' },
+    { memberImage: 'assets/members/rob.jpg', memberName: 'Roberto', memberCharge: 'Desarrollador Informático' },
+    { memberImage: 'assets/members/victor.jpeg', memberName: 'Victor', memberCharge: 'Community Manager' },
+    { memberImage: 'assets/members/nicolas.jpeg', memberName: 'Nicolas', memberCharge: 'Diseñador UI/UX' },
   ]
-
+  
 }
