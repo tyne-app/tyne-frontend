@@ -2,9 +2,9 @@ import { Component, Input, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialog } from "@angular/material/dialog";
 import { ScheduleService } from "@app/shared/helpers/schedule.service";
-import { RestaurantAccount } from "@app/shared/interfaces/restaurant/restaurant-account";
 import { passwordRegex } from "@app/shared/inmutable/constants/regex";
 import { ErrorMessages } from "@app/shared/inmutable/enums/error-message.enum";
+import { RestaurantAccount } from "@app/shared/interfaces/restaurant/restaurant-account";
 import { PasswordValidator } from "src/app/shared/validations/password-validator";
 import { BusinessProfileEditBankDataComponent } from "../business-profile-edit-bank-data/business-profile-edit-bank-data.component";
 import { BusinessProfileEditDataComponent } from "../business-profile-edit-data/business-profile-edit-data.component";
@@ -21,12 +21,7 @@ export class BusinessProfileBodyComponent implements OnInit {
   @Input()
   public account: RestaurantAccount = null;
 
-  public constructor(
-    private fb: FormBuilder, 
-    private dialog: MatDialog,
-    private scheduleService: ScheduleService
-
-    ) {}
+  public constructor(private fb: FormBuilder, private dialog: MatDialog, private scheduleService: ScheduleService) {}
 
   public ngOnInit(): void {
     this.initForm();
@@ -81,6 +76,7 @@ export class BusinessProfileBodyComponent implements OnInit {
       maxWidth: "95%",
       minWidth: "75%",
       panelClass: "business-profile-dialog",
+      data: this.account,
     });
 
     dialogRef.afterClosed().subscribe((result) => {

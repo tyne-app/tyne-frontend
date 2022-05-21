@@ -2,7 +2,7 @@
   <!--Business Name-->
   <div class="row justify-content-center">
     <div class="col-sm-6 col-md-6">
-      <h3 class="title-2mt-4 mt-md-5 mb-2 mb-md-3">{{ account.branch?.name | titlecase }}</h3>
+      <h3 class="title-2 mt-4 mt-md-5 mb-2 mb-md-3">{{ account.branch?.name | titlecase }}</h3>
     </div>
   </div>
 
@@ -17,7 +17,7 @@
     <div class="row ml-1">
       <div class="col-md-4 col-lg-4">
         <h4 class="titulo">Nombre del local</h4>
-        <p class="subtitulo">{{ account.branch?.name | titlecase}}</p>
+        <p class="subtitulo">{{ account.branch?.name | titlecase }}</p>
       </div>
       <div class="col-md-4 col-lg-4">
         <h4 class="titulo">Teléfono del local</h4>
@@ -70,14 +70,13 @@
         <p class="subtitulo" *ngFor="let x of account.schedule_list">
           {{ getDay(x.day) }} de {{ x.opening_hour }} a {{ x.closing_hour }}
         </p>
-        <!--<button class="btn-normal-red btn-xs" (click)="openEditWorkDaysComponent()" mat-raised-button>
+        <br />
+        <button class="btn-normal-red btn-xs" (click)="openEditWorkDaysComponent()" mat-raised-button>
           Editar Horarios
-        </button> -->
+        </button>
       </div>
 
-      <app-accept-pet class="col-center col-lg-6" [acceptPet]="account.branch.accept_pet">
-      </app-accept-pet>
-
+      <app-accept-pet class="col-center col-lg-6" [acceptPet]="account.branch.accept_pet"> </app-accept-pet>
     </div>
   </mat-card>
 </div>

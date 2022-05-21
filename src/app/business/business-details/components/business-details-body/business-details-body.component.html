@@ -1,12 +1,14 @@
 <!--Header-->
 <div class="row title">
   <div class="col-9 col-sm-9 col-md-10 col-lg-10">
-    <h2 class="titulo-2">
-      {{ restaurant?.name | titlecase}}
+    <h2 class="title-2">
+      {{ restaurant?.name | titlecase }}
     </h2>
   </div>
   <div class="col-2">
-    <app-button class="col-lg-5" (click)="redirectToMenu()" [buttonCustomConfiguration]="this.menuCustomButton">Reserva aquí</app-button>
+    <app-button class="col-lg-5" (click)="redirectToMenu()" [buttonCustomConfiguration]="this.menuCustomButton"
+      >Reserva aquí</app-button
+    >
   </div>
 </div>
 
@@ -46,7 +48,9 @@
         <mat-card>
           <mat-card-content>
             <h4 class="title-4">Rango de Precios:</h4>
-            <h2 class="title-3 mt-n3">{{ this.restaurant.min_price | currencyStandard  }} - {{ this.restaurant.max_price | currencyStandard }}</h2>
+            <h2 class="title-3 mt-n3">
+              {{ this.restaurant.min_price | currencyStandard }} - {{ this.restaurant.max_price | currencyStandard }}
+            </h2>
           </mat-card-content>
         </mat-card>
       </div>
@@ -81,7 +85,10 @@
     </div>
   </div>
   <div class="col">
-    <app-map [Latitude]="restaurant?.latitude" [Longitude]="restaurant?.longitude"
-      [Address]="restaurant?.street + ' ' + restaurant?.street_number + ' '+ restaurant?.state_name"></app-map>
+    <app-map
+      [Latitude]="restaurant?.latitude"
+      [Longitude]="restaurant?.longitude"
+      [Address]="restaurant?.street + ' ' + restaurant?.street_number + ' ' + restaurant?.state_name"
+    ></app-map>
   </div>
 </div>
