@@ -99,6 +99,7 @@ export class BusinessMenusComponent implements OnInit {
     };
 
     this.menuService.createMenuByBranch(menuAdd).subscribe(() => {
+      this.updateRangePrice();
       this.dialogService.openDialog(updateMenu);
     });
   }
@@ -237,6 +238,14 @@ export class BusinessMenusComponent implements OnInit {
           this.section.push(this.buildOthers());
         }
         this.buildSections();
+      }
+    });
+  }
+
+  private updateRangePrice() {
+    this.menuService.getMenusByBranch(this.branchId).subscribe((menu) => {
+      if (menu) {
+        this.localRangePrice = menu.rango_precio;
       }
     });
   }

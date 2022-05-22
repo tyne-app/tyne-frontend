@@ -14,16 +14,17 @@
     <!--Business info-->
     <mat-card>
       <div class="row pl-3 justify-content-center">
-        <div class="col-lg-5">
+        <div class="col-6">
           <p class="title">{{ this.localName }}</p>
         </div>
-        <div class="col-lg-3">
+        <div class="col-3"></div>
+        <div class="col-3">
           <p class="title-4">Rango de Precio:</p>
           <p *ngIf="this.localRangePrice" class="money">
             {{ this.localRangePrice?.min | currencyStandard }}-{{ this.localRangePrice?.max | currencyStandard }}
           </p>
         </div>
-        <div class="col-lg-4">
+        <!-- <div class="col-lg-4">
           <p class="title-4">Calificación:</p>
           <ng-container *ngFor="let i of this.localRatingColor">
             <img [src]="'assets/icons/frying-pan-2.svg'" alt="rating color" />
@@ -31,7 +32,7 @@
           <ng-container *ngFor="let i of this.localRatingWhite">
             <img [src]="'assets/icons/frying-pan-1.svg'" alt="rating white" />
           </ng-container>
-        </div>
+        </div> -->
       </div>
     </mat-card>
 
