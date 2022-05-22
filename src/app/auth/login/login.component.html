@@ -1,6 +1,11 @@
 <div class="login">
   <div class="d-flex row mx-0 aling-items-center justify-content-center">
-    <div class="col-lg-12 px-4 py-2 my-lg-3 mx-lg-5 m-md-5 m-sm-5 m-xs-3 login-container">
+    <div class="container d-flex justify-content-end px-1">
+      <button type="button" class="close" mat-button [mat-dialog-close]="true">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="col-lg-12 px-1 py-1 my-lg-1 mx-lg-2 m-md-2 m-sm-2 m-xs-2 login-container">
       <div class="d-flex mt-0 justify-content-center align-items-center">
         <img class="mx-auto" [src]="'assets/icons/tyne-login.png'" style="height: 5rem" />
       </div>

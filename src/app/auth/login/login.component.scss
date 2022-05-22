@@ -37,3 +37,11 @@ mat-form-field {
   }
 }
 
+.close {
+  padding: 0 8px;
+  min-width: 40px;
+  & span {
+    font-size: 2rem;
+    color: #3c0000;
+  }
+}
