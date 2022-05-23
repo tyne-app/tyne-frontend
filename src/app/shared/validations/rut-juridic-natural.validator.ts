@@ -1,13 +1,14 @@
 import { AbstractControl, ValidatorFn } from "@angular/forms";
 
 export function validateJuridicAndNarutalRut(): ValidatorFn {
-  const maxValueOfJuridicNaturalRut = 800000000;
-  const minValueOfJuridicNaturalRut = 500000000;
+  const maxValueOfJuridicNaturalRut = 80000000;
+  const minValueOfJuridicNaturalRut = 50000000;
 
   return (control: AbstractControl): { [key: string]: { value: string } } | null => {
     const rut = control.value;
+    const rutSinVerificador = rut.substring(0, rut.length - 1);
     const isInvalidJuridicRut =
-      +rut >= minValueOfJuridicNaturalRut && +rut <= maxValueOfJuridicNaturalRut ? false : true;
+      +rutSinVerificador >= minValueOfJuridicNaturalRut && +rutSinVerificador <= maxValueOfJuridicNaturalRut ? false : true;
     return isInvalidJuridicRut ? { invalidJuridicRut: { value: control.value } } : null;
   };
 }
