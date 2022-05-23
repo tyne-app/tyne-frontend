@@ -1,8 +1,9 @@
 <div class="grid-container">
+  <!--Close Modal-->
   <app-close-modal></app-close-modal>
 
+  <!--Header-->
   <div class="row mx-0 justify-content-center px-2 px-lg-0">
-
     <div class="col-12 px-0">
       <p class="mt-2 txt-dialog">Horario y dias de funcionamiento</p>
     </div>
@@ -23,53 +24,80 @@
         </div>
       </div>
     </div>
-
   </div>
 
-
-  <div class="row mx-0 justify-content-center px-2 px-lg-0" *ngFor="let item of weeksValues">
-
-    <div class="col-12 col-md-6 col-lg-6 px-0">
-      <div class="row mx-0">
-        <div class="col-6 px-0 mb-2 h-40 d-flex align-items-center">
-          <p class="my-0 font-sz-22">{{item.day}}</p>
+  <!--Hours-->
+  <form [formGroup]="this.form">
+    <ng-container formArrayName="schedule">
+      <div
+        class="row mx-0 justify-content-center px-2 px-lg-0"
+        *ngFor="let schedule of schedule.controls; let i = index"
+      >
+        <div class="col-12 col-md-6 col-lg-6 px-0">
+          <div class="row mx-0">
+            <div class="col-6 px-0 mb-2 h-40 d-flex align-items-center">
+              <p class="my-0 font-sz-22">{{ getDayName(schedule.get("day").value) }}</p>
+            </div>
+            <div class="col-6 px-0 mb-2 h-40 d-flex align-items-center">
+              <mat-slide-toggle
+                [checked]="schedule.get('active').value"
+                class="wrap-toggle"
+                (change)="onToggle($event, schedule)"
+                >{{ isChecked(schedule.get("active").value) }}
+              </mat-slide-toggle>
+            </div>
+          </div>
         </div>
-        <div class="col-6 px-0 mb-2 h-40 d-flex align-items-center">
-          <mat-slide-toggle [checked]="item.check" class="wrap-toggle">{{ isChecked(item.check) }}
-          </mat-slide-toggle>
+        <div class="col-12 col-md-6 col-lg-4 px-0" [formGroup]="schedule">
+          <div class="row mx-0">
+            <div class="d-md-none col-6 px-0">
+              <p class="mb-1 mt-0 pl-1 font-sz-19">Apertura</p>
+            </div>
+            <div class="d-md-none col-6 px-0">
+              <p class="mb-1 mt-0 pl-1 font-sz-19">Cierre</p>
+            </div>
+            <div class="col-6 px-0 pr-1 pr-lg-3 mb-2">
+              <mat-form-field appearance="outline" class="input-schedule">
+                <input
+                  matInput
+                  formControlName="opening_hour"
+                  type="text"
+                  class="font-input-schedule"
+                  maxlength="5"
+                  placeholder="HH:MM"
+                  time
+                />
+              </mat-form-field>
+            </div>
+            <div class="col-6 px-0 pl-1 pl-lg-0 pr-lg-3 mb-2">
+              <mat-form-field appearance="outline" class="input-schedule">
+                <input
+                  matInput
+                  formControlName="closing_hour"
+                  type="text"
+                  class="font-input-schedule"
+                  maxlength="5"
+                  placeholder="HH:MM"
+                  time
+                />
+              </mat-form-field>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-12 col-md-6 col-lg-4 px-0">
-      <div class="row mx-0">
-        <div class="d-md-none col-6 px-0">
-          <p class="mb-1 mt-0 pl-1 font-sz-19">Apertura</p>
+
+      <!--Save and close-->
+      <div class="row mx-0 justify-content-center">
+        <div class="col-12 col-lg-10 my-3 my-md-0 mb-md-3 px-0">
+          <span>Completar todos los campos *</span>
         </div>
-        <div class="d-md-none col-6 px-0">
-          <p class="mb-1 mt-0 pl-1 font-sz-19">Cierre</p>
+        <div class="col-12 col-md-6 col-lg-5 col-center mb-2 mb-md-3">
+          <button class="btn-normal-red" mat-raised-button (click)="closeModal()">Volver a mis datos</button>
         </div>
-        <div class="col-6 px-0 pr-1 pr-lg-3 mb-2">
-          <input class="hours-input" type="text" value="{{item.openValue}}">
-        </div>
-        <div class="col-6 px-0 pl-1 pl-lg-0 pr-lg-3 mb-2">
-          <input class="hours-input" type="text" value="{{item.closeValue}}">
+        <div class="col-12 col-md-6 col-lg-5 col-center mb-3">
+          <button class="btn-submit" mat-raised-button (click)="updateSchedule()">Confirmar</button>
         </div>
       </div>
-    </div>
-
-  </div>
-
-  <div class="row mx-0 justify-content-center ">
-    <div class="col-12 col-lg-10 my-3 my-md-0 mb-md-3 px-0">
-      <span>Completar todos los campos *</span>
-    </div>
-    <div class="col-12 col-md-6 col-lg-5 col-center mb-2 mb-md-3">
-      <button class="btn-normal-red" mat-raised-button>Volver a mis datos</button>
-    </div>
-    <div class="col-12 col-md-6 col-lg-5 col-center mb-3">
-      <button class="btn-submit" mat-raised-button>Confirmar</button>
-    </div>
-
-  </div>
-
+    </ng-container>
+  </form>
 </div>

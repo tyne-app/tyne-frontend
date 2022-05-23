@@ -21,6 +21,7 @@ import { DialogModel } from "@app/shared/components/dialog/shared/interfaces/dia
 import { BusinessRegisterStep } from "./shared/enums/business-register-step.enum";
 import { SafeFormData } from "@app/shared/guard/form-save.guard";
 import { validateJuridicAndNarutalRut } from "@app/shared/validations/rut-juridic-natural.validator";
+import { ReactiveFormService } from "@app/shared/helpers/reactive-form.service";
 
 @Component({
   selector: "app-business-registration",
@@ -58,7 +59,8 @@ export class BusinessRegistrationComponent implements OnInit, SafeFormData {
     private banksService: BankService,
     private BusinessService: BusinessService,
     private dialogService: DialogService,
-    private formControlService: FormControlService
+    private formControlService: FormControlService,
+    private reactiveFormService:ReactiveFormService
   ) {}
 
   @HostListener("document:keydown.F5", ["$event"])
@@ -193,6 +195,7 @@ export class BusinessRegistrationComponent implements OnInit, SafeFormData {
         this.isLoading = false;
         this.showSuccessMessage();
         this.clearFormsFromLocalStorage();
+        this.clearBusinessRegistrationForm();
       },
       (error: HttpErrorResponse) => {
         this.isLoading = false;
@@ -299,6 +302,13 @@ export class BusinessRegistrationComponent implements OnInit, SafeFormData {
     localStorage.removeItem(BusinessRegisterStep.STEP1);
     localStorage.removeItem(BusinessRegisterStep.STEP2);
     localStorage.removeItem(BusinessRegisterStep.STEP3);
+  }
+
+  private clearBusinessRegistrationForm(): void {
+    // TODO: Add number of phone 
+    this.reactiveFormService.clearAllFormControls(this.firstFormGroup);
+    this.reactiveFormService.clearAllFormControls(this.secondFormGroup);
+    this.reactiveFormService.clearAllFormControls(this.thirdFormGroup);
   }
 
   private showSuccessMessage(): void {

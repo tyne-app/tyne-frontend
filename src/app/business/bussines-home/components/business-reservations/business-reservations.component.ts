@@ -141,7 +141,8 @@ export class BusinessReservationsComponent implements OnInit {
   ): void {
     this.resultForPage = 5;
     this.page = 1;
-    const reservation_date: string = new Date(this.Year + "/" + (this.Month + 1)).toISOString().slice(0, 16);
+    const reservation_date: string = new Date(this.Year + "-" + (this.Month + 1)).toISOString().slice(0, 16);
+    
     this.reservationService
       .getReservations(reservation_date, status_reservation, result_for_page, page_number)
       .subscribe(
