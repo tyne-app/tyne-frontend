@@ -13,7 +13,7 @@ export interface Branch {
   street_number: number;
 }
 
-export type CreateBranchDto = Pick<Branch, "name" | "street" | "street_number" | "state_id" | "accept_pet">;
+export type CreateBranchDto = Pick<Branch, "street" | "street_number" | "state_id" | "accept_pet">;
 export type FindBranchOfRestaurantDto = Pick<
   Branch,
   "id" | "name" | "street" | "street_number" | "phone" | "accept_pet"

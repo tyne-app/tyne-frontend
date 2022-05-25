@@ -85,7 +85,7 @@ export class BusinessReservationsComponent implements OnInit {
         this.Month = 1;
         this.Year = this.Year + 1;
       }
-      const date: Date = new Date(this.Year + "/" + this.Month);
+      const date: Date = new Date(this.Year + "-" + this.Month);
       this.MonthYear = monthNames[date.getMonth()] + " " + date.getFullYear();
       this.Month = date.getMonth();
       this.Year = date.getFullYear();
@@ -94,7 +94,7 @@ export class BusinessReservationsComponent implements OnInit {
         this.Month = 12;
         this.Year = this.Year - 1;
       }
-      const date: Date = new Date(this.Year + "/" + this.Month);
+      const date: Date = new Date(this.Year + "-" + this.Month);
       this.MonthYear = monthNames[date.getMonth()] + " " + date.getFullYear();
       this.Month = date.getMonth();
       this.Year = date.getFullYear();
@@ -175,7 +175,7 @@ export class BusinessReservationsComponent implements OnInit {
   }
 
   public getDateReservation(dateReservation: string): string {
-    dateReservation = dateReservation.replace("-", "/").replace("-", "/");
+    dateReservation = dateReservation.replace("/", "-").replace("/", "-");
     const date: Date = new Date(dateReservation);
     const monthNames = MonthNames;
     const day: number = date.getDate();
