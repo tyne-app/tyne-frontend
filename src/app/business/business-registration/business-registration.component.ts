@@ -122,7 +122,7 @@ export class BusinessRegistrationComponent implements OnInit, SafeFormData {
       mainOfficeBusinessLine: ["", [Validators.required]],
       mainOfficeRutBusiness: [
         "",
-        [Validators.required, Validators.minLength(9), Validators.maxLength(9), validateJuridicAndNarutalRut()],
+        [Validators.required, Validators.minLength(9), Validators.maxLength(9), validateJuridicAndNarutalRut(), this.rutValidator],
       ],
       mainOfficeLocationAddress: ["", [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
       mainOfficeLocationNumber: ["", [Validators.required, Validators.minLength(1), Validators.maxLength(20)]],

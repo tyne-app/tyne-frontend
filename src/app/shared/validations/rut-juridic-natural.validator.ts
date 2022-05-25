@@ -1,7 +1,7 @@
 import { AbstractControl, ValidatorFn } from "@angular/forms";
 
 export function validateJuridicAndNarutalRut(): ValidatorFn {
-  const maxValueOfJuridicNaturalRut = 80000000;
+  const maxValueOfJuridicNaturalRut = 120000000;
   const minValueOfJuridicNaturalRut = 50000000;
 
   return (control: AbstractControl): { [key: string]: { value: string } } | null => {
