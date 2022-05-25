@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
 import { AbstractControl } from "@angular/forms";
-
 import { ErrorMessages } from "../inmutable/enums/error-message.enum";
 
 @Injectable({
@@ -247,15 +246,6 @@ export class FormControlService {
       : null;
   }
 
-  public getMainOfficeNameCompanyError(MainOfficeNameCompanyControl: AbstractControl): string {
-    return MainOfficeNameCompanyControl.hasError("required")
-      ? ErrorMessages.RequiredVariant.replace("{0}", "una razón social")
-      : MainOfficeNameCompanyControl.hasError("minlength")
-      ? ErrorMessages.Minlength.replace("{0}", "5")
-      : MainOfficeNameCompanyControl.hasError("maxlength")
-      ? ErrorMessages.Maxlength.replace("{0}", "50")
-      : null;
-  }
   public getMainOfficeBusinessLineError(MainOfficeBusinessLineControl: AbstractControl): string {
     return MainOfficeBusinessLineControl.hasError("required")
       ? ErrorMessages.RequiredVariant.replace("{0}", "giro")

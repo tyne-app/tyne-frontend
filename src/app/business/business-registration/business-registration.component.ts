@@ -1,27 +1,27 @@
+import { HttpErrorResponse } from "@angular/common/http";
 import { Component, HostListener, OnInit } from "@angular/core";
 import { AbstractControl, FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { BankService } from "@app/core/services/bank.service";
 import { BusinessService } from "@app/business/shared/services/business.service";
+import { BankService } from "@app/core/services/bank.service";
 import { TerritorialsService } from "@app/core/services/territorials.service";
-import { RutValidator } from "ng9-rut";
+import { DialogModel } from "@app/shared/components/dialog/shared/interfaces/dialog-model";
 import { DialogService } from "@app/shared/components/dialog/shared/services/dialog.service";
+import { SafeFormData } from "@app/shared/guard/form-save.guard";
+import { FormControlService } from "@app/shared/helpers";
+import { ReactiveFormService } from "@app/shared/helpers/reactive-form.service";
 import { emailRegex, passwordRegex } from "@app/shared/inmutable/constants/regex";
+import { AccountSpin } from "@app/shared/interfaces/common/account-spin";
 import { Bank } from "@app/shared/interfaces/common/bank";
 import { City } from "@app/shared/interfaces/common/city";
 import { State } from "@app/shared/interfaces/common/state";
+import { validateJuridicAndNarutalRut } from "@app/shared/validations/rut-juridic-natural.validator";
+import { RutValidator } from "ng9-rut";
 import { EmailValidator } from "src/app/shared/validations/email-validator";
 import { PasswordValidator } from "src/app/shared/validations/password-validator";
 import { environment } from "src/environments/environment";
-import { BusinessRegistrationDto } from "./shared/interfaces/business-registration-dto";
-import { FormControlService } from "@app/shared/helpers";
-import { AccountType } from "./shared/interfaces/account-type";
-import { HttpErrorResponse } from "@angular/common/http";
-import { AccountSpin } from "@app/shared/interfaces/common/account-spin";
-import { DialogModel } from "@app/shared/components/dialog/shared/interfaces/dialog-model";
 import { BusinessRegisterStep } from "./shared/enums/business-register-step.enum";
-import { SafeFormData } from "@app/shared/guard/form-save.guard";
-import { validateJuridicAndNarutalRut } from "@app/shared/validations/rut-juridic-natural.validator";
-import { ReactiveFormService } from "@app/shared/helpers/reactive-form.service";
+import { AccountType } from "./shared/interfaces/account-type";
+import { BusinessRegistrationDto } from "./shared/interfaces/business-registration-dto";
 
 @Component({
   selector: "app-business-registration",
@@ -60,7 +60,7 @@ export class BusinessRegistrationComponent implements OnInit, SafeFormData {
     private BusinessService: BusinessService,
     private dialogService: DialogService,
     private formControlService: FormControlService,
-    private reactiveFormService:ReactiveFormService
+    private reactiveFormService: ReactiveFormService
   ) {}
 
   @HostListener("document:keydown.F5", ["$event"])
@@ -86,15 +86,21 @@ export class BusinessRegistrationComponent implements OnInit, SafeFormData {
   }
 
   public initFirstFormGroup(): void {
-    this.firstFormGroup = this.formBuilder.group({
-      managerName: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
-      managerLastName: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
-      managerPhone: ["", [Validators.required, Validators.minLength(12), Validators.maxLength(12)]],
-      managerEmail: ["", [Validators.email, Validators.required, Validators.pattern(emailRegex)]],
-      managerEmailConfirm: ["", [Validators.required, Validators.pattern(emailRegex), EmailValidator("managerEmail")]],
-      password: ["", [Validators.required, Validators.pattern(passwordRegex)]],
-      passwordConfirm: ["", [Validators.required, PasswordValidator("password")]],
-    },{updateOn: 'blur'});
+    this.firstFormGroup = this.formBuilder.group(
+      {
+        managerName: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
+        managerLastName: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
+        managerPhone: ["", [Validators.required, Validators.minLength(12), Validators.maxLength(12)]],
+        managerEmail: ["", [Validators.email, Validators.required, Validators.pattern(emailRegex)]],
+        managerEmailConfirm: [
+          "",
+          [Validators.required, Validators.pattern(emailRegex), EmailValidator("managerEmail")],
+        ],
+        password: ["", [Validators.required, Validators.pattern(passwordRegex)]],
+        passwordConfirm: ["", [Validators.required, PasswordValidator("password")]],
+      },
+      { updateOn: "blur" }
+    );
     const step1 = localStorage.getItem(BusinessRegisterStep.STEP1);
     if (step1) {
       this.firstFormGroup.setValue(JSON.parse(step1));
@@ -112,7 +118,7 @@ export class BusinessRegistrationComponent implements OnInit, SafeFormData {
       ],
       legalRepresentativeEmail: ["", [Validators.email, Validators.required, Validators.pattern(emailRegex)]],
       legalRepresentativePhone: ["", [Validators.required, Validators.minLength(12), Validators.maxLength(12)]],
-      mainOfficeNameCompany: ["", [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
+      nameCompany: ["", [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
       mainOfficeBusinessLine: ["", [Validators.required]],
       mainOfficeRutBusiness: [
         "",
@@ -123,7 +129,6 @@ export class BusinessRegistrationComponent implements OnInit, SafeFormData {
       mainOfficePhone: ["", [Validators.required, Validators.minLength(12), Validators.maxLength(12)]],
       mainOfficeLocationCity: ["0", [Validators.required, Validators.min(1)]],
       mainOfficeLocationState: ["0", [Validators.required, Validators.min(1)]],
-      nameCompany: ["", [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
       branchLocationAddress: ["", [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
       branchLocationNumber: ["", [Validators.required, Validators.minLength(1), Validators.maxLength(20)]],
       branchLocationCity: ["0", [Validators.required, Validators.min(1)]],
@@ -138,13 +143,19 @@ export class BusinessRegistrationComponent implements OnInit, SafeFormData {
   }
 
   public initThirdFormGroup(): void {
-    this.thirdFormGroup = this.formBuilder.group({
-      rutAccountOwner: ["", [Validators.required, Validators.minLength(8), Validators.maxLength(9), this.rutValidator]],
-      nameAccountOwner: ["", [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
-      accountNumber: ["", [Validators.required, Validators.minLength(4), Validators.maxLength(30)]],
-      bank: ["0", [Validators.required, Validators.min(1)]],
-      accountType: ["0", [Validators.required, Validators.min(1)]],
-    },{updateOn: 'blur'});
+    this.thirdFormGroup = this.formBuilder.group(
+      {
+        rutAccountOwner: [
+          "",
+          [Validators.required, Validators.minLength(8), Validators.maxLength(9), this.rutValidator],
+        ],
+        nameAccountOwner: ["", [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
+        accountNumber: ["", [Validators.required, Validators.minLength(4), Validators.maxLength(30)]],
+        bank: ["0", [Validators.required, Validators.min(1)]],
+        accountType: ["0", [Validators.required, Validators.min(1)]],
+      },
+      { updateOn: "blur" }
+    );
     const step3 = localStorage.getItem(BusinessRegisterStep.STEP3);
     if (step3) {
       this.thirdFormGroup.setValue(JSON.parse(step3));
@@ -266,7 +277,6 @@ export class BusinessRegistrationComponent implements OnInit, SafeFormData {
           .replace(/\s/g, ""),
       },
       branch: {
-        name: this.secondFormGroup.get("nameCompany").value,
         street: this.secondFormGroup.get("branchLocationAddress").value,
         street_number: this.secondFormGroup.get("branchLocationNumber").value,
         accept_pet: this.secondFormGroup.get("branchHavePet").value == "1" ? true : false,
@@ -274,7 +284,7 @@ export class BusinessRegistrationComponent implements OnInit, SafeFormData {
       },
       restaurant: {
         identifier: this.secondFormGroup.get("mainOfficeRutBusiness").value,
-        social_reason: this.secondFormGroup.get("mainOfficeNameCompany").value,
+        name: this.secondFormGroup.get("nameCompany").value,
         commercial_activity: this.secondFormGroup.get("mainOfficeBusinessLine").value,
         street: this.secondFormGroup.get("mainOfficeLocationAddress").value,
         street_number: this.secondFormGroup.get("mainOfficeLocationNumber").value,
@@ -305,7 +315,7 @@ export class BusinessRegistrationComponent implements OnInit, SafeFormData {
   }
 
   private clearBusinessRegistrationForm(): void {
-    // TODO: Add number of phone 
+    // TODO: Add number of phone
     this.reactiveFormService.clearAllFormControls(this.firstFormGroup);
     this.reactiveFormService.clearAllFormControls(this.secondFormGroup);
     this.reactiveFormService.clearAllFormControls(this.thirdFormGroup);
@@ -381,8 +391,8 @@ export class BusinessRegistrationComponent implements OnInit, SafeFormData {
     return this.formControlService.getPhoneError(this.secondFormGroup.get("legalRepresentativePhone"));
   }
 
-  public getMainOfficeNameCompanyError(): string {
-    return this.formControlService.getMainOfficeNameCompanyError(this.secondFormGroup.get("mainOfficeNameCompany"));
+  public getnameCompanyError(): string {
+    return this.formControlService.getNameCompanyError(this.secondFormGroup.get("nameCompany"));
   }
 
   public getMainOfficeBusinessLineError(): string {
