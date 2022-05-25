@@ -1,24 +1,24 @@
 import { Component, HostListener, OnInit } from "@angular/core";
 import { AbstractControl, FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { BankService } from "@app/core/services/bank.service";
 import { BusinessService } from "@app/business/shared/services/business.service";
+import { BankService } from "@app/core/services/bank.service";
 import { TerritorialsService } from "@app/core/services/territorials.service";
-import { RutValidator } from "ng9-rut";
+import { errorContent } from "@app/shared/components/dialog/shared/inmutable/constants/dialog-message";
+import { DialogModel } from "@app/shared/components/dialog/shared/interfaces/dialog-model";
+import { DialogService } from "@app/shared/components/dialog/shared/services/dialog.service";
+import { SafeFormData } from "@app/shared/guard/form-save.guard";
+import { FormControlService } from "@app/shared/helpers";
 import { emailRegex, passwordRegex } from "@app/shared/inmutable/constants/regex";
 import { Bank } from "@app/shared/interfaces/common/bank";
 import { City } from "@app/shared/interfaces/common/city";
 import { State } from "@app/shared/interfaces/common/state";
+import { RutValidator } from "ng9-rut";
 import { EmailValidator } from "src/app/shared/validations/email-validator";
 import { PasswordValidator } from "src/app/shared/validations/password-validator";
 import { environment } from "src/environments/environment";
-import { BranchRegistrationDto } from "./shared/interfaces/business-registration-dto";
-import { FormControlService } from "@app/shared/helpers";
-import { DialogService } from "@app/shared/components/dialog/shared/services/dialog.service";
-import { errorContent } from "@app/shared/components/dialog/shared/inmutable/constants/dialog-message";
-import { DialogModel } from "@app/shared/components/dialog/shared/interfaces/dialog-model";
 import { AccountType } from "../business-registration/shared/interfaces/account-type";
 import { BusinessNewBranchStep } from "./shared/enums/business-new-branch-step.enum";
-import { SafeFormData } from "@app/shared/guard/form-save.guard";
+import { BranchRegistrationDto } from "./shared/interfaces/business-registration-dto";
 
 @Component({
   selector: "app-business-new-branch",
@@ -197,7 +197,6 @@ export class BusinessNewBranchComponent implements OnInit, SafeFormData {
         password: this.firstFormGroup.get("password").value,
       },
       branch: {
-        name: null,
         street: this.secondFormGroup.get("branchLocationAddress").value,
         street_number: this.secondFormGroup.get("branchLocationNumber").value,
         accept_pet: this.secondFormGroup.get("branchHavePet").value == "1" ? true : false,
