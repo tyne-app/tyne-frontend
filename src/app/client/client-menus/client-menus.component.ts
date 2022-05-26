@@ -144,13 +144,15 @@ export class ClientMenusComponent implements OnInit {
 
   private initCategories(): void {
     this.menus.sections.forEach((section) => {
-      this.sections.push(
-        this.formBuilder.group({
-          id: [section.category.id],
-          title: [section.category.name, [Validators.required, Validators.maxLength(20)]],
-          products: this.buildProducts(section.products),
-        })
-      );
+      if (section.products.length > 0) {
+        this.sections.push(
+          this.formBuilder.group({
+            id: [section.category.id],
+            title: [section.category.name, [Validators.required, Validators.maxLength(20)]],
+            products: this.buildProducts(section.products),
+          })
+        );
+      }
     });
   }
 
