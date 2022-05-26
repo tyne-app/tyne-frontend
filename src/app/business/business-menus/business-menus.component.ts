@@ -59,7 +59,6 @@ export class BusinessMenusComponent implements OnInit {
       });
       return;
     }
-
     const menus: Menu[] = [];
     const productsToAdd = [];
     const sections: FormArray = this.sections;
@@ -107,7 +106,6 @@ export class BusinessMenusComponent implements OnInit {
   public addProduct(sectionId: number): void {
     let products = this.sections.controls[sectionId].get("products") as FormArray;
     products = products ? products : new FormArray([]);
-
     products.push(
       this.formBuilder.group({
         id: ["0"],
@@ -120,10 +118,8 @@ export class BusinessMenusComponent implements OnInit {
 
   public deleteProduct(sectionId: number, productId: number): void {
     const section = this.sections.controls[sectionId];
-
     if (section) {
       const products = section.get("products") as FormArray;
-
       products.removeAt(productId);
     }
   }
@@ -137,56 +133,6 @@ export class BusinessMenusComponent implements OnInit {
     return isTitleVisible ? isTitleVisible.value : false;
   }
 
-  private buildBottom(): Section {
-    return {
-      category: {
-        id: 85,
-        name: "Entradas",
-      },
-      products: [],
-    };
-  }
-
-  private buildLunch(): Section {
-    return {
-      category: {
-        id: 86,
-        name: "Fondos",
-      },
-      products: [],
-    };
-  }
-
-  private buildDesserts(): Section {
-    return {
-      category: {
-        id: 89,
-        name: "Postres",
-      },
-      products: [],
-    };
-  }
-
-  private buildDrinks(): Section {
-    return {
-      category: {
-        id: 88,
-        name: "Bebestibles",
-      },
-      products: [],
-    };
-  }
-
-  private buildOthers(): Section {
-    return {
-      category: {
-        id: 84,
-        name: "Otro",
-      },
-      products: [],
-    };
-  }
-
   private initForm() {
     this.menuForm = this.formBuilder.group({
       sections: this.formBuilder.array([]),
@@ -197,48 +143,12 @@ export class BusinessMenusComponent implements OnInit {
   private getMenusByBranchAndBuildSections() {
     this.branchId = this.tokenService.getDecodedJwtToken()?.id_branch_client;
     this.menuService.getMenusByBranch(this.branchId).subscribe((menu) => {
-      if (menu) {
-        const { sections, rango_precio, rating, nombre_local } = menu;
-
-        this.section = sections;
-        if (!sections.some((section) => section.category.id == 85)) {
-          this.section.push(this.buildBottom());
-        }
-        if (!sections.some((section) => section.category.id == 86)) {
-          this.section.push(this.buildLunch());
-        }
-        if (!sections.some((section) => section.category.id == 89)) {
-          this.section.push(this.buildDesserts());
-        }
-        if (!sections.some((section) => section.category.id == 88)) {
-          this.section.push(this.buildDrinks());
-        }
-        if (!sections.some((section) => section.category.id == 84)) {
-          this.section.push(this.buildOthers());
-        }
-
-        this.localName = nombre_local;
-        this.localRangePrice = rango_precio;
-        this.buildRating(rating);
-        this.buildSections();
-      } else {
-        if (!this.section.some((section) => section.category.id == 85)) {
-          this.section.push(this.buildBottom());
-        }
-        if (!this.section.some((section) => section.category.id == 86)) {
-          this.section.push(this.buildLunch());
-        }
-        if (!this.section.some((section) => section.category.id == 89)) {
-          this.section.push(this.buildDesserts());
-        }
-        if (!this.section.some((section) => section.category.id == 88)) {
-          this.section.push(this.buildDrinks());
-        }
-        if (!this.section.some((section) => section.category.id == 84)) {
-          this.section.push(this.buildOthers());
-        }
-        this.buildSections();
-      }
+      const { sections, rango_precio, rating, nombre_local } = menu;
+      this.section = sections;
+      this.localName = nombre_local;
+      this.localRangePrice = rango_precio;
+      this.buildRating(rating);
+      this.buildSections();
     });
   }
 
