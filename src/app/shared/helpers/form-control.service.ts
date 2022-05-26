@@ -92,6 +92,7 @@ export class FormControlService {
   }
 
   public getProductPriceError(productPriceControl: AbstractControl): string {
+    // console.log("productPriceControl", productPriceControl);
     return productPriceControl.hasError("required")
       ? "Debe ingresar un precio"
       : productPriceControl.hasError("min")
@@ -256,6 +257,7 @@ export class FormControlService {
       ? ErrorMessages.Maxlength.replace("{0}", "50")
       : null;
   }
+  
   public getMainOfficeBusinessLineError(MainOfficeBusinessLineControl: AbstractControl): string {
     return MainOfficeBusinessLineControl.hasError("required")
       ? ErrorMessages.RequiredVariant.replace("{0}", "giro")
