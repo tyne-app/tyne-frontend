@@ -13,17 +13,17 @@ import { environment } from "@src/environments/environment";
 import { BehaviorSubject, Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { BusinessMockService } from "../../../core/mocks/business-mock.service";
+import { BranchScheduleDto } from "../interfaces/branch-schedule-dto";
 
 @Injectable({
   providedIn: "root",
 })
 export class BusinessService {
-  
   public restaurantsDataSource = new BehaviorSubject<SearchRestaurantResponse>(null);
   public currentRestaurant = this.restaurantsDataSource.asObservable();
   private urlBase = environment.apiTyne;
 
-  public constructor(private http: HttpClient, private businessMockService:BusinessMockService) {}
+  public constructor(private http: HttpClient, private businessMockService: BusinessMockService) {}
 
   public createNewBusiness(business: BusinessRegistrationDto): Observable<any> {
     return this.http.post<any>(`${this.urlBase}/business`, business);
@@ -60,21 +60,25 @@ export class BusinessService {
     const url = this.urlBase + "/business";
     return this.http.get<RestaurantAccount>(url);
   }
+
   public getBusiness(): Observable<BusinessDetailsResponse> {
     const url = this.urlBase + "/business";
     return this.http.get<BusinessDetailsResponse>(url);
   }
 
-  public getBusinessFavoriteLocation(): Observable<FavoritePlace[]>{
+  public getBusinessFavoriteLocation(): Observable<FavoritePlace[]> {
     return this.businessMockService.getBusinessFavoriteLocationMock();
   }
 
-  public getBusinessAccountSpin(): Observable<AccountSpin[]>{
+  public getBusinessAccountSpin(): Observable<AccountSpin[]> {
     return this.businessMockService.getAccountSpinMock();
   }
 
-  public getBusinessAccountType(): Observable<AccountType[]>{
+  public getBusinessAccountType(): Observable<AccountType[]> {
     return this.businessMockService.getAccountTypeMock();
   }
 
+  public updateBranchSchedule(schedule: BranchScheduleDto): Observable<any> {
+    return this.http.put<any>(`${this.urlBase}/business/schedule`, schedule);
+  }
 }

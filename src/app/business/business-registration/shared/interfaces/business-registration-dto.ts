@@ -18,6 +18,3 @@ export interface Representative {
   phone: string;
   email: string;
 }
-
-
-

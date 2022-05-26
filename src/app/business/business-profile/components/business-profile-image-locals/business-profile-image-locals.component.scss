@@ -23,18 +23,12 @@
   align-items: center;
 }
 
-::ng-deep
-  .swiper-container-horizontal
-  > .swiper-pagination-bullets
-  .swiper-pagination-bullet {
+::ng-deep .swiper-container-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet {
   margin: 0 5px;
 }
 
 @include view-min(577px) {
-  ::ng-deep
-    .swiper-container-horizontal
-    > .swiper-pagination-bullets
-    .swiper-pagination-bullet {
+  ::ng-deep .swiper-container-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet {
     margin: 0 6px;
   }
 }
@@ -86,7 +80,7 @@ img {
 }
 
 .btn-submit.btn-small {
-  font-size: .93rem;
+  font-size: 0.93rem;
   font-weight: 400;
   width: auto;
 }
@@ -95,4 +89,21 @@ img {
   max-width: 19px;
   max-height: 19px;
   margin-right: 8px;
+}
+
+.btn-xs {
+  font-size: 0.9rem;
+  max-width: 300px;
+}
+
+@include view-min(577px) {
+  .btn-xs {
+    font-size: 0.96rem;
+  }
+}
+
+@include view-min(992px) {
+  .btn-xs {
+    font-size: 1.1rem;
+  }
 }

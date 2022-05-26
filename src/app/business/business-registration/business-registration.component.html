@@ -62,8 +62,17 @@
           <div class="col-12 col-sm-6 col-lg-4 pr-md-0">
             <mat-form-field appearance="outline">
               <mat-label>Teléfono de contacto</mat-label>
-              <ngx-mat-intl-tel-input formControlName="managerPhone" maxlength="12" [enablePlaceholder]="true" [enableSearch]="false"
-                [onlyCountries]="['cl']" name="phone" required="true" describedBy="phoneInput" #phone>
+              <ngx-mat-intl-tel-input
+                formControlName="managerPhone"
+                maxlength="12"
+                [enablePlaceholder]="true"
+                [enableSearch]="false"
+                [onlyCountries]="['cl']"
+                name="phone"
+                required="true"
+                describedBy="phoneInput"
+                #phone
+              >
               </ngx-mat-intl-tel-input>
               <mat-error>
                 {{ getManagerPhoneError() }}
@@ -97,10 +106,20 @@
           <div class="col-12 col-sm-6 col-lg-4 pr-md-0">
             <mat-form-field appearance="outline">
               <mat-label>Ingresa tu contraseña</mat-label>
-              <input formControlName="password" matInput [type]="hidePassword ? 'password' : 'text'"
-                autocomplete="true" />
-              <button type="button" mat-icon-button matSuffix (click)="hidePassword = !hidePassword"
-                [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+              <input
+                formControlName="password"
+                matInput
+                [type]="hidePassword ? 'password' : 'text'"
+                autocomplete="true"
+              />
+              <button
+                type="button"
+                mat-icon-button
+                matSuffix
+                (click)="hidePassword = !hidePassword"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hidePassword"
+              >
                 <mat-icon>{{ hidePassword ? "visibility_off" : "visibility" }}</mat-icon>
               </button>
               <mat-error>
@@ -113,10 +132,20 @@
           <div class="col-12 col-sm-6 col-lg-4 pr-md-0">
             <mat-form-field appearance="outline">
               <mat-label>Repite tu contraseña</mat-label>
-              <input formControlName="passwordConfirm" matInput [type]="hideConfirmPassword ? 'password' : 'text'"
-                autocomplete="true" />
-              <button type="button" mat-icon-button matSuffix (click)="hideConfirmPassword = !hideConfirmPassword"
-                [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideConfirmPassword">
+              <input
+                formControlName="passwordConfirm"
+                matInput
+                [type]="hideConfirmPassword ? 'password' : 'text'"
+                autocomplete="true"
+              />
+              <button
+                type="button"
+                mat-icon-button
+                matSuffix
+                (click)="hideConfirmPassword = !hideConfirmPassword"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hideConfirmPassword"
+              >
                 <mat-icon>{{ hideConfirmPassword ? "visibility_off" : "visibility" }}</mat-icon>
               </button>
               <mat-error>
@@ -149,8 +178,13 @@
           <div class="col-12 col-sm-12 col-lg-12 pr-md-0">
             <mat-form-field appearance="outline" [style.width.%]="98.5">
               <mat-label>Descripción</mat-label>
-              <textarea matInput formControlName="businessDescription" cdkTextareaAutosize cdkAutosizeMinRows="2"
-                cdkAutosizeMaxRows="10"></textarea>
+              <textarea
+                matInput
+                formControlName="businessDescription"
+                cdkTextareaAutosize
+                cdkAutosizeMinRows="2"
+                cdkAutosizeMaxRows="10"
+              ></textarea>
               <mat-error>
                 {{ getBusinessDescriptionError() }}
               </mat-error>
@@ -209,9 +243,17 @@
           <div class="col-12 col-sm-6 col-lg-4 pr-md-0">
             <mat-form-field appearance="outline">
               <mat-label>Teléfono de contacto</mat-label>
-              <ngx-mat-intl-tel-input formControlName="legalRepresentativePhone" maxlength="12" [enablePlaceholder]="true"
-                [enableSearch]="false" [onlyCountries]="['cl']" name="phone" required="true" describedBy="phoneInput"
-                #phone>
+              <ngx-mat-intl-tel-input
+                formControlName="legalRepresentativePhone"
+                maxlength="12"
+                [enablePlaceholder]="true"
+                [enableSearch]="false"
+                [onlyCountries]="['cl']"
+                name="phone"
+                required="true"
+                describedBy="phoneInput"
+                #phone
+              >
               </ngx-mat-intl-tel-input>
 
               <mat-error>
@@ -233,13 +275,13 @@
         </div>
 
         <div class="row">
-          <!--Nombre razón social-->
+          <!--Nombre del local-->
           <div class="col-12 col-sm-6 col-lg-4 pr-md-0">
             <mat-form-field appearance="outline">
-              <mat-label>Razón social</mat-label>
-              <input matInput formControlName="mainOfficeNameCompany" type="text" />
+              <mat-label>Nombre del Local</mat-label>
+              <input matInput formControlName="nameCompany" type="text" />
               <mat-error>
-                {{ getMainOfficeNameCompanyError() }}
+                {{ getnameCompanyError() }}
               </mat-error>
             </mat-form-field>
           </div>
@@ -250,7 +292,8 @@
               <mat-label>Giro del local</mat-label>
               <mat-select formControlName="mainOfficeBusinessLine">
                 <mat-option value="0">Seleccionar...</mat-option>
-                <mat-option [value]="accountSpin.name" *ngFor="let accountSpin of accountSpins">{{ accountSpin.name }}
+                <mat-option [value]="accountSpin.name" *ngFor="let accountSpin of accountSpins"
+                  >{{ accountSpin.name }}
                 </mat-option>
               </mat-select>
               <mat-error>
@@ -296,8 +339,17 @@
           <div class="col-12 col-sm-6 col-lg-4 pr-md-0">
             <mat-form-field appearance="outline">
               <mat-label>Teléfono de contacto</mat-label>
-              <ngx-mat-intl-tel-input formControlName="mainOfficePhone" maxlength="12" [enablePlaceholder]="true" [enableSearch]="false"
-                [onlyCountries]="['cl']" name="phone" required="true" describedBy="phoneInput" #phone>
+              <ngx-mat-intl-tel-input
+                formControlName="mainOfficePhone"
+                maxlength="12"
+                [enablePlaceholder]="true"
+                [enableSearch]="false"
+                [onlyCountries]="['cl']"
+                name="phone"
+                required="true"
+                describedBy="phoneInput"
+                #phone
+              >
               </ngx-mat-intl-tel-input>
               <mat-error>
                 {{ getMainOfficePhoneError() }}
@@ -325,8 +377,10 @@
           <div class="col-12 col-sm-6 col-lg-4 pr-md-0">
             <mat-form-field appearance="outline">
               <mat-label>Ingrese comuna</mat-label>
-              <mat-select formControlName="mainOfficeLocationState"
-                [disabled]="this.mainOfficeLocationCity.value && this.mainOfficeLocationCity.value != 0 ? false : true">
+              <mat-select
+                formControlName="mainOfficeLocationState"
+                [disabled]="this.mainOfficeLocationCity.value && this.mainOfficeLocationCity.value != 0 ? false : true"
+              >
                 <mat-option value="0">Seleccionar...</mat-option>
                 <mat-option [value]="state.id" *ngFor="let state of states">{{ state.name }}</mat-option>
               </mat-select>
@@ -340,17 +394,6 @@
         <p class="subtitulo">Datos del local a registrar en Tyne</p>
 
         <div class="row">
-          <!--Nombre del local-->
-          <div class="col-12 col-sm-6 col-lg-4 pr-md-0">
-            <mat-form-field appearance="outline">
-              <mat-label>Nombre del Local</mat-label>
-              <input matInput formControlName="nameCompany" type="text" />
-              <mat-error>
-                {{ getNameCompanyError() }}
-              </mat-error>
-            </mat-form-field>
-          </div>
-
           <!--Datos de la calle-->
           <div class="col-12 col-sm-6 col-lg-4 pr-md-0">
             <mat-form-field appearance="outline">
@@ -391,8 +434,10 @@
           <div class="col-12 col-sm-6 col-lg-4 pr-md-0">
             <mat-form-field appearance="outline">
               <mat-label>Ingrese comuna</mat-label>
-              <mat-select formControlName="branchLocationState"
-                [disabled]="this.branchLocationCity.value && this.branchLocationCity.value != 0 ? false : true">
+              <mat-select
+                formControlName="branchLocationState"
+                [disabled]="this.branchLocationCity.value && this.branchLocationCity.value != 0 ? false : true"
+              >
                 <mat-option value="0">Seleccionar...</mat-option>
                 <mat-option [value]="state.id" *ngFor="let state of statesForBranchs">{{ state.name }}</mat-option>
               </mat-select>
@@ -405,7 +450,7 @@
           <!--Aceptan mascotas?-->
           <div class="col-12 col-sm-6 col-lg-4 pr-md-0">
             <!-- <mat-form-field appearance="outline"> -->
-            <label>¿Aceptan Mascota? *</label>
+            <label>¿Aceptan Mascotas?</label>
             <mat-radio-group formControlName="branchHavePet">
               <mat-radio-button value="1">Si</mat-radio-button>
               <mat-radio-button value="0">No</mat-radio-button>
