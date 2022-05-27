@@ -91,6 +91,7 @@ export class FormControlService {
   }
 
   public getProductPriceError(productPriceControl: AbstractControl): string {
+    // console.log("productPriceControl", productPriceControl);
     return productPriceControl.hasError("required")
       ? "Debe ingresar un precio"
       : productPriceControl.hasError("min")
