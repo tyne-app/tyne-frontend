@@ -31,4 +31,22 @@ export class ScheduleService {
     if (hourFormated >= 0 && hourFormated < 12) return "AM";
     else return "PM";
   }
+
+  public getMonth(monthNumber: number): string {
+    const months = [
+      "Enero",
+      "Febrero",
+      "Marzo",
+      "Abril",
+      "Mayo",
+      "Junio",
+      "Julio",
+      "Agosto",
+      "Septiembre",
+      "Octubre",
+      "Noviembre",
+      "Diciembre",
+    ];
+    return months[monthNumber];
+  }
 }
