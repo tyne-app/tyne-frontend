@@ -7,7 +7,7 @@ export class ScheduleService {
   public constructor() {}
 
   public getDay(dayNumber: number): string {
-    const days = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
+    const days = [ "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado","Domingo"];
     return days[dayNumber];
   }
 

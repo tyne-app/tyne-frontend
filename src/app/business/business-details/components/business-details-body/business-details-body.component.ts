@@ -74,7 +74,7 @@ export class BusinessDetailsBodyComponent implements OnInit {
   }
 
   private getSchedule(): void {
-    this.restaurant?.schedule.forEach((x) => {
+    this.restaurant?.schedule.sort().forEach((x) => {
       this.schedule.push({
         name: this.getDay(x.day),
         openingHour: x.opening_hour.slice(0, 5),
