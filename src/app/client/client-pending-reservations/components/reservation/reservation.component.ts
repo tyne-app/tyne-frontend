@@ -52,7 +52,7 @@ export class ReservationComponent implements OnInit {
     const day: number = date.getDate();
     const month: number = date.getMonth() + 1;
     const year: number = date.getFullYear();
-    const dayNumber = date.getDay();
+    const dayNumber = date.getDay() == 0 ? 6 : date.getDay() - 1;
 
     return this.getDay(dayNumber) + " " + day + "/" + month + "/" + year;
   }
