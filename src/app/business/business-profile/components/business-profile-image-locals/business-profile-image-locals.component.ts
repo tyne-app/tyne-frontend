@@ -33,6 +33,7 @@ export class BusinessProfileImageLocalsComponent implements OnInit {
       maxWidth: "95%",
       minWidth: "75%",
       panelClass: "business-profile-dialog",
+      data: this.account,
     });
 
     dialogRef.afterClosed().subscribe((result) => {

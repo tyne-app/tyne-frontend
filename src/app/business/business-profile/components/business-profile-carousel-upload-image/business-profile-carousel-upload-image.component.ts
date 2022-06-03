@@ -9,17 +9,7 @@ SwiperCore.use([Navigation, Pagination, Mousewheel, Keyboard]);
 })
 export class BusinessProfileCarouselUploadImageComponent implements OnInit {
   @Input()
-  public restaurant = null;
-  public images = [
-    {
-      url: "https://media-cdn.tripadvisor.com/media/photo-s/19/1f/91/57/trujillo-restobar-ofrece.jpg",
-      id: 1,
-    },
-    {
-      url: "https://media-cdn.tripadvisor.com/media/photo-s/19/1f/91/57/trujillo-restobar-ofrece.jpg",
-      id: 2,
-    },
-  ];
+  public images = [];
 
   public constructor() {}
 

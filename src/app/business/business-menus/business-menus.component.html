@@ -156,17 +156,11 @@
           Volver
         </app-button>
         <span class="mx-2"></span>
-        <app-button
-          (click)="saveChanges()"
-          class="d-flex col-lg-5 col-md-11 mx-2 my-2 py-2 align-items-center justify-content-center"
-          [buttonCustomConfiguration]="{
-            buttonMaterialType: 'mat-raised-button',
-            buttonType: 'button',
-            buttonTypeClass: 'btn-normal-red'
-          }"
-        >
-          Guardar Cambios
-        </app-button>
+        <div class="d-flex col-lg-5 col-md-11 mx-2 my-2 py-2 align-items-center justify-content-center">
+          <button mat-raised-button mat-button class="btn-submit btn-xs" (click)="saveChanges()">
+            <span>Guardar Cambios</span>
+          </button>
+        </div>
       </div>
     </form>
   </div>

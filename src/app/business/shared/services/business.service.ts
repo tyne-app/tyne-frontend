@@ -81,4 +81,9 @@ export class BusinessService {
   public updateBranchSchedule(schedule: BranchScheduleDto): Observable<any> {
     return this.http.put<any>(`${this.urlBase}/business/schedule`, schedule);
   }
+
+  public getImagesByBranchId(branchId: number): Observable<any[]> {
+    const url = this.urlBase + "/business/" + branchId + "/images";
+    return this.http.get<any[]>(url);
+  }
 }

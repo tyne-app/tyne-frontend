@@ -8,12 +8,28 @@
   max-height: 70vh;
 }
 
-
 @include view-min(992px) {
   .title-edit {
     font-size: 2.25rem;
   }
   .container-dialog {
     max-height: 85vh;
+  }
+}
+
+.btn-normal-red {
+  width: 30%;
+  height: 40px;
+
+  @include view-max(994px) {
+    width: 50%;
+  }
+
+  @include view-max(768px) {
+    width: 50%;
+  }
+
+  @include view-max(425px) {
+    width: 80%;
   }
 }

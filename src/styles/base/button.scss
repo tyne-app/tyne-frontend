@@ -11,33 +11,27 @@
   width: 100%;
   height: 40px;
   font-size: 18px;
-  box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%),
-  0 1px 5px 0 rgb(0 0 0 / 12%);
+  box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
 }
 
 .btn-normal {
   cursor: pointer;
   color: $primary;
   background-color: $basic-light;
-  border: 1px solid $secondary !important;
+  border: 1px solid $primary !important;
   box-sizing: border-box;
   border-radius: 10px !important;
   width: 100%;
   height: 40px;
   font-size: 20px;
   font-weight: 250;
-  box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%),
-  0 1px 5px 0 rgb(0 0 0 / 12%);
+  box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
 }
-
-
 
 .btn-normal:hover {
   background-color: $secondary;
   color: $basic-light;
 }
-
-
 
 .btn-normal-red:hover {
   background-color: $secondary;
@@ -53,8 +47,7 @@
   width: 100%;
   height: 40px;
   font-size: 20px;
-  box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%),
-    0 1px 5px 0 rgb(0 0 0 / 12%);
+  box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
 }
 
 .btn-close {
@@ -75,8 +68,7 @@
   width: 100%;
   height: 40px;
   font-size: 20px;
-  box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%),
-  0 1px 5px 0 rgb(0 0 0 / 12%);
+  box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
 }
 
 .btn-facebook {
@@ -89,8 +81,7 @@
   width: 100%;
   height: 40px;
   font-size: 20px;
-  box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%),
-  0 1px 5px 0 rgb(0 0 0 / 12%);
+  box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
 }
 
 .btn-google {
@@ -102,18 +93,16 @@
   width: 100%;
   height: 40px;
   font-size: 20px;
-  box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%),
-  0 1px 5px 0 rgb(0 0 0 / 12%);
+  box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
 }
 
-
-.google-icon{
+.google-icon {
   max-width: 13px;
   max-height: 13px;
   justify-content: center;
   align-items: center;
 }
-.facebook-icon{
+.facebook-icon {
   max-width: 13px;
   max-height: 13px;
   justify-content: center;
