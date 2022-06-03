@@ -70,21 +70,23 @@ export class BusinessProfileUploadImageLocalsComponent implements OnInit {
   }
 
   private updateImageProfile(imageProfile: File): void {
-    // this.clientService.putImageProfile(imageProfile).subscribe(
-    //   () => {
-    //     this.updateImageUrlSource();
-    //   },
-    //   () => {
-    //     this.dialogService.openDialog(errorContent);
-    //   }
-    // );
-  }
-
-  private updateImageUrlSource(): void {
-    const reader = new FileReader();
-    reader.readAsDataURL(this.imageProfile);
-    reader.onload = () => {
-      // this.urlImage = reader.result;
-    };
+    this.businessService.uploadImage(this.data.branch.id, imageProfile).subscribe(
+      () => {
+        this.dialogService.openDialogReloadCurrentPage({
+          isSuccessful: true,
+          messageButton: "Aceptar",
+          subtitle: "La imagen ha sido guardada exitosamente.",
+          title: "Imagen guardada",
+        });
+      },
+      () => {
+        this.dialogService.openDialog({
+          isSuccessful: false,
+          messageButton: "Aceptar",
+          subtitle: "No se ha podido subir la imagen",
+          title: "Ha ocurrido un error",
+        });
+      }
+    );
   }
 }

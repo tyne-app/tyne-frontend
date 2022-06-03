@@ -86,4 +86,16 @@ export class BusinessService {
     const url = this.urlBase + "/business/" + branchId + "/images";
     return this.http.get<any[]>(url);
   }
+
+  public uploadImage(branchId: number, imageProfile: File): Observable<any[]> {
+    const url = this.urlBase + "/business/" + branchId + "/images";
+    const imageProfileFile: FormData = new FormData();
+    imageProfileFile.append("image", imageProfile, imageProfile.name);
+    return this.http.post<any>(url, imageProfileFile);
+  }
+
+  public deleteImage(branchId: number, urlImage: string): Observable<any[]> {
+    const url = this.urlBase + "/business/" + branchId + "/images/" + urlImage;
+    return this.http.delete<any[]>(url);
+  }
 }

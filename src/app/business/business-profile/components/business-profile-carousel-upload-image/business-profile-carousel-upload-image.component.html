@@ -1,11 +1,13 @@
 <div>
   <swiper
+    #swiper
     class="mySwiper pb-5"
     [mousewheel]="true"
-    [loop]="true"
+    [loop]="false"
     [pagination]="{
       clickable: true
     }"
+    (activeIndexChange)="active($event)"
     [slidesPerView]="1"
     [spaceBetween]="15"
     [breakpoints]="{
