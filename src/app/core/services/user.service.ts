@@ -1,9 +1,9 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { LoginResponse } from "@app/auth/shared/interfaces/token";
 import { environment } from "@src/environments/environment";
 import { Observable } from "rxjs";
-import { Options } from "selenium-webdriver";
+
 
 
 @Injectable({
@@ -47,8 +47,9 @@ export class UserService {
     return this.http.post(`${this.urlBase}/users/activation/retry`,email);
   }
 
-  public activation(): Observable<any>{
-    return this.http.post(`${this.urlBase}/users/activation`,null);
+  public activation(token:string): Observable<any>{
+    const Authorization = token;
+    return this.http.post(`${this.urlBase}/users/activation`,null,{ headers: {Authorization}});
   }
 
   public logout(): void {

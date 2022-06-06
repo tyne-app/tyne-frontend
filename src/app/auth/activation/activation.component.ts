@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
+import { UserService } from "@app/core/services/user.service";
 import { ButtonCustom } from "@app/shared/controls/customs/buttons/shared/interfaces/button-custom";
 
 @Component({
@@ -17,6 +18,7 @@ export class ActivationComponent implements OnInit {
 
   public constructor(
     private activatedRoute: ActivatedRoute, 
+    private usersService:UserService,
     private router: Router) {}
 
   public ngOnInit(): void {
@@ -26,6 +28,13 @@ export class ActivationComponent implements OnInit {
   private setTokenFromQueryParams(): void {
     this.activatedRoute.paramMap.subscribe((params) => {
       this.token = params.get("token");
+      this.usersService.activation(this.token).subscribe(response=>{
+        //TODO: Verify if this services works with full registration workflow
+        
+        // Dependendiendo de la respuesta si es exitosa muestra el componente de activation-success
+        // si hay error mostrar el componente de activation-error
+        // puedes usar ng-template con ng-container, ng-if, ng switch para variar el contenido estático
+      });
     });
   }
 }
