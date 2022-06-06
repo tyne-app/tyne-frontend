@@ -95,7 +95,7 @@ export class BusinessService {
   }
 
   public deleteImage(branchId: number, urlImage: string): Observable<any[]> {
-    const url = this.urlBase + "/business/" + branchId + "/images/" + urlImage;
-    return this.http.delete<any[]>(url);
+    const url = this.urlBase + "/business/" + branchId + "/images/";
+    return this.http.delete<any[]>(url, { body: { urlImage: urlImage } });
   }
 }

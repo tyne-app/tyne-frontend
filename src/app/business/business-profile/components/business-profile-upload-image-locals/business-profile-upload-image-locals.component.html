@@ -15,7 +15,13 @@
       Agregar más fotos
     </button>
 
-    <button mat-raised-button mat-button class="btn-normal-red btn-xs mt-1" (click)="closeUploadImagesLocals()">
+    <button
+      mat-raised-button
+      mat-button
+      class="btn-normal-red btn-xs mt-1"
+      (click)="closeUploadImagesLocals()"
+      *ngIf="images && images.length > 0"
+    >
       Eliminar foto
     </button>
   </div>
