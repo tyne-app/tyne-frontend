@@ -1,14 +1,12 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { BusinessProfileCloseUploadImageComponent } from './business-profile-close-upload-image.component';
-import { CloseModalModule } from '@app/shared/components';
+import { CommonModule } from "@angular/common";
+import { NgModule } from "@angular/core";
+import { MatButtonModule } from "@angular/material/button";
+import { CloseModalModule } from "@app/shared/components";
+import { BusinessProfileCloseUploadImageComponent } from "./business-profile-close-upload-image.component";
 
 @NgModule({
-  imports: [
-    CommonModule,
-    CloseModalModule,
-  ],
+  imports: [CommonModule, CloseModalModule, MatButtonModule],
   declarations: [BusinessProfileCloseUploadImageComponent],
-  exports: [BusinessProfileCloseUploadImageComponent]
+  exports: [BusinessProfileCloseUploadImageComponent],
 })
-export class BusinessProfileCloseUploadImageModule { }
+export class BusinessProfileCloseUploadImageModule {}
