@@ -7,7 +7,7 @@ export class ScheduleService {
   public constructor() {}
 
   public getDay(dayNumber: number): string {
-    const days = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
+    const days = [ "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado","Domingo"];
     return days[dayNumber];
   }
 
@@ -30,5 +30,23 @@ export class ScheduleService {
     const hourFormated = +hour.substring(0, 2);
     if (hourFormated >= 0 && hourFormated < 12) return "AM";
     else return "PM";
+  }
+
+  public getMonth(monthNumber: number): string {
+    const months = [
+      "Enero",
+      "Febrero",
+      "Marzo",
+      "Abril",
+      "Mayo",
+      "Junio",
+      "Julio",
+      "Agosto",
+      "Septiembre",
+      "Octubre",
+      "Noviembre",
+      "Diciembre",
+    ];
+    return months[monthNumber];
   }
 }

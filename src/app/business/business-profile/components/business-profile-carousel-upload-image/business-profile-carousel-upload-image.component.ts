@@ -1,5 +1,9 @@
-import { Component, Input, OnInit } from "@angular/core";
+/* eslint-disable @typescript-eslint/explicit-member-accessibility */
+import { Component, Input, OnInit, ViewChild } from "@angular/core";
+import { BranchImageResponse } from "@app/business/shared/interfaces/branch-image.response";
 import SwiperCore, { Keyboard, Mousewheel, Navigation, Pagination } from "swiper/core";
+import { SwiperComponent } from "swiper/types";
+import { BusinessProfileService } from "../../business-profile.service";
 SwiperCore.use([Navigation, Pagination, Mousewheel, Keyboard]);
 
 @Component({
@@ -9,19 +13,15 @@ SwiperCore.use([Navigation, Pagination, Mousewheel, Keyboard]);
 })
 export class BusinessProfileCarouselUploadImageComponent implements OnInit {
   @Input()
-  public restaurant = null;
-  public images = [
-    {
-      url: "https://media-cdn.tripadvisor.com/media/photo-s/19/1f/91/57/trujillo-restobar-ofrece.jpg",
-      id: 1,
-    },
-    {
-      url: "https://media-cdn.tripadvisor.com/media/photo-s/19/1f/91/57/trujillo-restobar-ofrece.jpg",
-      id: 2,
-    },
-  ];
+  public images: BranchImageResponse[] = [];
 
-  public constructor() {}
+  @ViewChild("swiper", { static: false }) swiper?: SwiperComponent;
+
+  public constructor(private readonly businessProfileService: BusinessProfileService) {}
 
   public ngOnInit(): void {}
+
+  public active($event: any): void {
+    this.businessProfileService.branchImageIndexDataSource.next($event.activeIndex);
+  }
 }

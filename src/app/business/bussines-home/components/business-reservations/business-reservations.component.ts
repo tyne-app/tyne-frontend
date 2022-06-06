@@ -1,15 +1,14 @@
+import { HttpErrorResponse } from "@angular/common/http";
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialog } from "@angular/material/dialog";
-import { BusinessReservationsDetailsComponent } from "../business-reservations-details/business-reservations-details.component";
-import { HttpErrorResponse } from "@angular/common/http";
 import { MatPaginator, PageEvent } from "@angular/material/paginator";
-import { ReservationService } from "@app/core/services/reservation.service";
-import { BusinessService } from "@app/business/shared/services/business.service";
-import { MonthNames } from "@app/shared/inmutable/constants/months";
-import { RestaurantAccount } from "@app/shared/interfaces/restaurant/restaurant-account";
 import { LocalReservationsResponse } from "@app/business/shared/interfaces/local-reservations-response";
+import { BusinessService } from "@app/business/shared/services/business.service";
+import { ReservationService } from "@app/core/services/reservation.service";
 import { ScheduleService } from "@app/shared/helpers/schedule.service";
+import { RestaurantAccount } from "@app/shared/interfaces/restaurant/restaurant-account";
+import { BusinessReservationsDetailsComponent } from "../business-reservations-details/business-reservations-details.component";
 
 @Component({
   selector: "app-business-reservations",
@@ -73,35 +72,28 @@ export class BusinessReservationsComponent implements OnInit {
   }
 
   public getMonthYear(type: string): void {
-    const monthNames = MonthNames;
     if (type == "") {
       const date: Date = new Date();
-      this.MonthYear = monthNames[date.getMonth()] + " " + date.getFullYear();
-      this.Month = date.getMonth();
       this.Year = date.getFullYear();
+      this.Month = date.getMonth();
     } else if (type == "N") {
-      this.Month = this.Month + 2;
-      if (this.Month == 13) {
-        this.Month = 1;
-        this.Year = this.Year + 1;
+      this.Month++;
+      if (this.Month == 12) {
+        this.Month = 0;
+        this.Year++;
       }
-      const date: Date = new Date(this.Year + "-" + this.Month);
-      this.MonthYear = monthNames[date.getMonth()] + " " + date.getFullYear();
-      this.Month = date.getMonth();
-      this.Year = date.getFullYear();
     } else if (type == "B") {
-      if (this.Month == 0) {
-        this.Month = 12;
-        this.Year = this.Year - 1;
+      this.Month--;
+      if (this.Month == -1) {
+        this.Month = 11;
+        this.Year--;
       }
-      const date: Date = new Date(this.Year + "-" + this.Month);
-      this.MonthYear = monthNames[date.getMonth()] + " " + date.getFullYear();
-      this.Month = date.getMonth();
-      this.Year = date.getFullYear();
     }
-
+    this.MonthYear = this.getMonth(this.Month) + " " + this.Year;
     this.getLocalReservations(this.typeReservationDefault, this.resultForPage, this.page, 1);
   }
+
+  public getMonth = (monthDay: number): string => this.scheduleService.getMonth(monthDay);
 
   public getTypeReservation(): void {
     const typesReservation = [
@@ -142,7 +134,7 @@ export class BusinessReservationsComponent implements OnInit {
     this.resultForPage = 5;
     this.page = 1;
     const reservation_date: string = new Date(this.Year + "-" + (this.Month + 1)).toISOString().slice(0, 16);
-    
+
     this.reservationService
       .getReservations(reservation_date, status_reservation, result_for_page, page_number)
       .subscribe(
@@ -175,14 +167,13 @@ export class BusinessReservationsComponent implements OnInit {
   }
 
   public getDateReservation(dateReservation: string): string {
-    dateReservation = dateReservation.replace("/", "-").replace("/", "-");
+    dateReservation = dateReservation.replace("-", "/").replace("-", "/");
     const date: Date = new Date(dateReservation);
-    const monthNames = MonthNames;
     const day: number = date.getDate();
     const month: number = date.getMonth();
-    const dayNumber = date.getDay();
+    const dayNumber = date.getDay() == 0 ? 6 : date.getDay() - 1;
 
-    return this.getDay(dayNumber) + " " + day + " de " + monthNames[month];
+    return this.getDay(dayNumber) + " " + day + " de " + this.getMonth(month);
   }
 
   public getImgReservation(statusId: number): string {

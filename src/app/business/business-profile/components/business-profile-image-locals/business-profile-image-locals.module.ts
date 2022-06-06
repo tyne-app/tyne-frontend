@@ -1,14 +1,12 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { BusinessProfileImageLocalsComponent } from './business-profile-image-locals.component';
-import { SwiperModule } from 'swiper/angular';
+import { CommonModule } from "@angular/common";
+import { NgModule } from "@angular/core";
+import { MatButtonModule } from "@angular/material/button";
+import { SwiperModule } from "swiper/angular";
+import { BusinessProfileImageLocalsComponent } from "./business-profile-image-locals.component";
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SwiperModule
-  ],
+  imports: [CommonModule, SwiperModule, MatButtonModule],
   declarations: [BusinessProfileImageLocalsComponent],
-  exports: [BusinessProfileImageLocalsComponent]
+  exports: [BusinessProfileImageLocalsComponent],
 })
-export class BusinessProfileImageLocalsModule { }
+export class BusinessProfileImageLocalsModule {}
