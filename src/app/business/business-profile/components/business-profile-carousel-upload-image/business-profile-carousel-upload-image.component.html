@@ -1,24 +1,32 @@
 <div>
-  <swiper class="mySwiper pb-5" [mousewheel]="true" [loop]="true" [pagination]="{
-        clickable: true
-      }" [slidesPerView]="1" [spaceBetween]="15" [breakpoints]="{
-        '@0.00': {
-          slidesPerView: 1,
-          spaceBetween: 0
-        },
-        '@0.75': {
-          slidesPerView: 1,
-          spaceBetween: 0
-        },
-        '@1.00': {
-          slidesPerView: 1,
-          spaceBetween: 0
-        }
-      }">
+  <swiper
+    #swiper
+    class="mySwiper pb-5"
+    [mousewheel]="true"
+    [loop]="false"
+    [pagination]="{
+      clickable: true
+    }"
+    (activeIndexChange)="active($event)"
+    [slidesPerView]="1"
+    [spaceBetween]="15"
+    [breakpoints]="{
+      '@0.00': {
+        slidesPerView: 1,
+        spaceBetween: 0
+      },
+      '@0.75': {
+        slidesPerView: 1,
+        spaceBetween: 0
+      },
+      '@1.00': {
+        slidesPerView: 1,
+        spaceBetween: 0
+      }
+    }"
+  >
     <ng-template swiperSlide *ngFor="let img of images">
-      <img [src]="img.url" alt="" />
+      <img [src]="img.url_image" alt="" />
     </ng-template>
-
-
   </swiper>
 </div>
