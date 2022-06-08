@@ -19,5 +19,5 @@ export enum TyneRoutes {
   RecoverPassword = "recuperar-contraseña",
   RestoredPassword = "restablecer-contraseña/:token",
   AboutUs= "acerca-de-nosotros",
-  Activation= "cuenta/activacion/:token"
+  Activation= "cuenta/activacion/:email/:token"
 }

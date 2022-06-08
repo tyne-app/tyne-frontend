@@ -47,7 +47,7 @@ export class ActivationComponent implements OnInit {
         },
         (error: HttpErrorResponse) => {
           this.router.navigate(["/" + TyneRoutes.Home]);
-          let dialog: DialogModel ={
+          let dialog: DialogModel = {
             isSuccessful: false,
             title: "Ha ocurrido un problema.",
             subtitle: "Ha ocurrido un problema vuelva a intentarlo.",
@@ -69,10 +69,17 @@ export class ActivationComponent implements OnInit {
               messageButton: "Volver",
             };
           }
+          if (error.status == 401) {
+            this.retyrActivation(params.get("email"));
+          }
           this.showErrorMessage(dialog);
         }
       );
     });
+  }
+
+  private retyrActivation(email: string) {
+    this.usersService.retryActivation(email).subscribe();
   }
 
   private showErrorMessage(dialogModel: DialogModel): void {
