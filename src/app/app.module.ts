@@ -46,6 +46,7 @@ import * as AppMainProviderBarrel from "./shared/providers";
     AppMainBarrel.RestoredPasswordModule,
     AppMainBarrel.AboutUsModule,
     AppMainBarrel.NotFoundPageModule,
+    AppMainBarrel.ActivationModule,
     provideAnalytics(() => getAnalytics()),
     provideFunctions(() => getFunctions()),
     providePerformance(() => getPerformance()),

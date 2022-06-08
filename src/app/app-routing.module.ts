@@ -106,6 +106,13 @@ const routes: Routes = [
     canActivate: [AuthGuard, ClientGuard],
   },
   {
+    path: TyneRoutes.Activation,
+    loadChildren: () =>
+    import("./auth/activation/activation.module").then(
+      (m) => m.ActivationModule
+    ),
+  },
+  {
     path: TyneRoutes.NotFound,
     component: NotFoundPageComponent,
   },

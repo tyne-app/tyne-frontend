@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { AbstractControl, FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { emailRegex, passwordRegex } from "@app/shared/inmutable/constants/regex";
+import { ActivatedRoute } from "@angular/router";
+import { UserService } from "@app/core/services/user.service";
+import { passwordRegex } from "@app/shared/inmutable/constants/regex";
 
 @Component({
   selector: "app-restored-password",
@@ -8,21 +10,24 @@ import { emailRegex, passwordRegex } from "@app/shared/inmutable/constants/regex
   styleUrls: ["./restored-password.component.scss"],
 })
 export class RestoredPasswordComponent implements OnInit {
-  public get email(): AbstractControl {
-    return this.restoredPasswordForm.get("email");
-  }
+
   public get password(): AbstractControl {
-    return this.restoredPasswordForm.get("email");
+    return this.restoredPasswordForm.get("password");
   }
+
   public get confirmPassword(): AbstractControl {
-    return this.restoredPasswordForm.get("email");
+    return this.restoredPasswordForm.get("confirmPassword");
   }
 
   public restoredPasswordForm: FormGroup;
 
 
 
-  public constructor(public formBuilder: FormBuilder) {}
+  public constructor(
+    public formBuilder: FormBuilder,
+    public userService:UserService,
+    public activedRoute:ActivatedRoute
+    ) {}
 
   public ngOnInit(): void {
     this.buildRestoredPasswordForm(); 
@@ -30,17 +35,24 @@ export class RestoredPasswordComponent implements OnInit {
 
   public buildRestoredPasswordForm(): void {
     this.restoredPasswordForm = this.formBuilder.group({
-      email: ["", [Validators.required,Validators.pattern(emailRegex)]],
       password: ["", [Validators.required, Validators.pattern(passwordRegex)]],
       confirmPassword: ["", [Validators.required,Validators.pattern(passwordRegex)]],
     });
   }
 
+
   public restorePassword(): void {
-    if (!this.restoredPasswordForm.invalid) {
-      console.log("formulario valido");
+    this.activedRoute.paramMap.subscribe(params=>{
+     const token:string = params.get('token');
+     console.log(this.confirmPassword.value);
+     if (!this.restoredPasswordForm.invalid) {
+      this.userService.restorePassword(this.confirmPassword.value,token).subscribe(response=>{
+        console.log(response);
+      });
     } else {
       console.log("formulario inválido");
     }
+    });
+
   }
 }
