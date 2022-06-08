@@ -13,6 +13,7 @@ import { LoggerModule, NgxLoggerLevel } from "ngx-logger";
 import * as AppMainBarrel from ".";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
+import { SpinnerService } from "./shared/components/spinner/shared/services/spinner.service";
 import * as AppMainProviderBarrel from "./shared/providers";
 @NgModule({
   declarations: [AppComponent],
@@ -58,6 +59,7 @@ import * as AppMainProviderBarrel from "./shared/providers";
     AppMainProviderBarrel.MatPaginatorProvider,
     ScreenTrackingService,
     UserTrackingService,
+    SpinnerService,
   ],
   bootstrap: [AppComponent],
 })
