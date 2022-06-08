@@ -69,4 +69,8 @@ export class DialogService {
         .subscribe(() => {});
     }
   }
+
+  public closePreviousDialogs(): void {
+    this.dialog.closeAll();
+  }
 }

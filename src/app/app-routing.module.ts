@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { TyneRoutes } from "@app/shared/inmutable/enums/url-routes.enum";
 import { NotFoundPageComponent } from "@app/public/not-found-page/not-found-page.component";
+import { TyneRoutes } from "@app/shared/inmutable/enums/url-routes.enum";
 import { AuthGuard } from "./auth/shared/guards/auth.guard";
 import { BusinessGuard } from "./business/shared/guards/business.guard";
 import { ClientGuard } from "./client/shared/guards/client.guard";
@@ -9,14 +9,12 @@ import { ClientResolver } from "./client/shared/resolvers/client.resolver";
 import { StateResolver } from "./core/resolvers/state.resolver";
 import { HomeGuard } from "./public/shared/guard/home.guard";
 
-
-
 const routes: Routes = [
   { path: "", redirectTo: TyneRoutes.Home, pathMatch: "full" },
   {
     path: TyneRoutes.Home,
     loadChildren: () => import("./public/home/home.module").then((m) => m.HomeModule),
-    canActivate: [HomeGuard]
+    canActivate: [HomeGuard],
   },
   {
     path: TyneRoutes.BusinessDetail,
@@ -26,19 +24,19 @@ const routes: Routes = [
   {
     path: TyneRoutes.BusinessRegister,
     loadChildren: () =>
-      import("./business/business-registration/business-registration.module").then((m) => m.BusinessRegistrationModule)
+      import("./business/business-registration/business-registration.module").then((m) => m.BusinessRegistrationModule),
   },
   {
     path: TyneRoutes.BusinessNewBranch,
     loadChildren: () =>
       import("./business/business-new-branch/business-new-branch.module").then((m) => m.BusinessNewBranchModule),
-    canActivate: [AuthGuard, BusinessGuard]
+    canActivate: [AuthGuard, BusinessGuard],
   },
   {
     path: TyneRoutes.ClientProfile,
     loadChildren: () => import("./client/client-profile/client-profile.module").then((m) => m.ClientProfileModule),
     canActivate: [AuthGuard, ClientGuard],
-    resolve: { client: ClientResolver }
+    resolve: { client: ClientResolver },
   },
   {
     path: TyneRoutes.ClientMenu,
@@ -53,15 +51,17 @@ const routes: Routes = [
   },
   {
     path: TyneRoutes.AboutUs,
-    loadChildren: () => import("@app/public/about-us/about-us.module").then(m => m.AboutUsModule),
+    loadChildren: () => import("@app/public/about-us/about-us.module").then((m) => m.AboutUsModule),
   },
   {
     path: TyneRoutes.RecoverPassword,
-    loadChildren: () => import("@app/auth/recover-password/recover-password.module").then((m) => m.RecoverPasswordModule),
+    loadChildren: () =>
+      import("@app/auth/recover-password/recover-password.module").then((m) => m.RecoverPasswordModule),
   },
   {
     path: TyneRoutes.RestoredPassword,
-    loadChildren: () => import("@app/auth/restored-password/restored-password.module").then((m) => m.RestoredPasswordModule),
+    loadChildren: () =>
+      import("@app/auth/restored-password/restored-password.module").then((m) => m.RestoredPasswordModule),
   },
   {
     path: TyneRoutes.Refund,
@@ -78,9 +78,8 @@ const routes: Routes = [
   },
   {
     path: TyneRoutes.BusinessSearchResults,
-    loadChildren: () =>
-      import("./public/search-business/search-business.module").then((m) => m.SearchBusinessModule),
-    resolve: { states: StateResolver}
+    loadChildren: () => import("./public/search-business/search-business.module").then((m) => m.SearchBusinessModule),
+    resolve: { states: StateResolver },
   },
   {
     path: TyneRoutes.BusinessEditMenu,
@@ -89,8 +88,9 @@ const routes: Routes = [
   },
   {
     path: TyneRoutes.ClientStatusPay,
-    loadChildren: () => import("@app/client/client-status-pay/client-status-pay.module").then((m) => m.ClientStatusPayModule),
-    canActivate: [AuthGuard, ClientGuard]
+    loadChildren: () =>
+      import("@app/client/client-status-pay/client-status-pay.module").then((m) => m.ClientStatusPayModule),
+    canActivate: [AuthGuard, ClientGuard],
   },
   {
     path: TyneRoutes.BusinessHome,
@@ -103,6 +103,7 @@ const routes: Routes = [
       import("./client/client-pending-reservations/client-pending-reservations.module").then(
         (m) => m.ClientPendingReservationsModule
       ),
+    canActivate: [AuthGuard, ClientGuard],
   },
   {
     path: TyneRoutes.NotFound,
@@ -115,7 +116,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: "enabled", relativeLinkResolution: 'legacy' })],
+  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: "enabled", relativeLinkResolution: "legacy" })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
