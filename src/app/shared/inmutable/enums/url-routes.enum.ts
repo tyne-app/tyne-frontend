@@ -17,6 +17,7 @@ export enum TyneRoutes {
   BusinessHome = "inicio-negocio",
   ClientPendingReservation = "mis-reservas",
   RecoverPassword = "recuperar-contraseña",
-  RestoredPassword = "restablecer-contraseña",
-  AboutUs= "acerca-de-nosotros"
+  RestoredPassword = "restablecer-contraseña/:token",
+  AboutUs= "acerca-de-nosotros",
+  Activation= "cuenta/activacion/:email/:token"
 }
