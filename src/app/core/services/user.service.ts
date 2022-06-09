@@ -5,6 +5,7 @@ import { environment } from "@src/environments/environment";
 import { Observable } from "rxjs";
 
 
+
 @Injectable({
   providedIn: "root",
 })
@@ -32,7 +33,23 @@ export class UserService {
   }
 
   public sendEmailToRecoverPassword(email:string): Observable<any>{
-    return this.http.post(`${this.urlBase}/users/forgotten-password/${email}`,null);
+    return this.http.post(`${this.urlBase}/users/password/send-email`,{email});
+  }
+  
+  public restorePassword(password:string,token:string):Observable<any>{
+    const Authorization = token;
+    return this.http.put(`${this.urlBase}/users/password/restore`,{password},{
+      headers: {Authorization}
+    });
+  }
+
+  public retryActivation(email:string): Observable<any>{
+    return this.http.post(`${this.urlBase}/users/activation/retry`,{email});
+  }
+
+  public activation(token:string): Observable<any>{
+    const Authorization = token;
+    return this.http.post(`${this.urlBase}/users/activation`,null,{ headers: {Authorization}});
   }
 
   public logout(): void {

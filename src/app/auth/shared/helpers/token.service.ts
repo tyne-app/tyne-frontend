@@ -1,8 +1,7 @@
 import { Injectable } from "@angular/core";
-import { JwtHelperService } from "@auth0/angular-jwt";
 import { Token } from "@app/auth/shared/interfaces/token";
 import { LocalStorageService } from "@app/shared/helpers/local-storage.service";
-
+import { JwtHelperService } from "@auth0/angular-jwt";
 
 @Injectable({
   providedIn: "root",
