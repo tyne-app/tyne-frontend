@@ -9,15 +9,17 @@
         <div class="col ml-0">
           <h5 class="title-5 my-0 mb-1">Nombre</h5>
           <h5 class="title-4 my-0 mb-3">
-            <b>{{ this.client.name | titlecase | missedInformation }} {{ this.client.last_name | missedInformation
-              }}</b>
+            <b>{{ this.client.name | titlecase | missedInformation }} {{ this.client.last_name }}</b>
           </h5>
         </div>
         <div class="col ml-0 my-0">
           <h5 class="title-5 my-0 mb-1">Fecha de nacimiento</h5>
           <h5 class="title-4 my-0 mb-3">
-            <b>{{ (this.client.birth_date)? (this.client.birth_date | date: "MM/dd/yyyy") :
-              this.client.birth_date | missedInformation }}</b>
+            <b>{{
+              this.client.birth_date
+                ? (this.client.birth_date | date: "MM/dd/yyyy")
+                : (this.client.birth_date | missedInformation)
+            }}</b>
           </h5>
         </div>
         <div class="col mx-0">
@@ -55,18 +57,40 @@
               <div class="row m-0 p-1">
                 <mat-form-field appearance="outline" class="col-lg-12 m-1 p-1">
                   <mat-label> Contraseña Actual </mat-label>
-                  <input matInput formControlName="currentPassword" [type]="hideCurrentPassword ? 'password' : 'text'" autocomplete="on"/>
-                  <button type="button" mat-icon-button matSuffix (click)="hideCurrentPassword = !hideCurrentPassword"
-                  [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideCurrentPassword">
-                  <mat-icon>{{ hideCurrentPassword ? "visibility_off" : "visibility" }}</mat-icon>
-                 </button>
+                  <input
+                    matInput
+                    formControlName="currentPassword"
+                    [type]="hideCurrentPassword ? 'password' : 'text'"
+                    autocomplete="on"
+                  />
+                  <button
+                    type="button"
+                    mat-icon-button
+                    matSuffix
+                    (click)="hideCurrentPassword = !hideCurrentPassword"
+                    [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hideCurrentPassword"
+                  >
+                    <mat-icon>{{ hideCurrentPassword ? "visibility_off" : "visibility" }}</mat-icon>
+                  </button>
                 </mat-form-field>
 
                 <mat-form-field appearance="outline" class="col-lg-12 m-1 p-1">
                   <mat-label>Contraseña Nueva</mat-label>
-                  <input matInput formControlName="newPassword" [type]="hideNewPassword ? 'password' : 'text'" autocomplete="on"/>
-                  <button type="button" mat-icon-button matSuffix (click)="hideNewPassword = !hideNewPassword"
-                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideNewPassword">
+                  <input
+                    matInput
+                    formControlName="newPassword"
+                    [type]="hideNewPassword ? 'password' : 'text'"
+                    autocomplete="on"
+                  />
+                  <button
+                    type="button"
+                    mat-icon-button
+                    matSuffix
+                    (click)="hideNewPassword = !hideNewPassword"
+                    [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hideNewPassword"
+                  >
                     <mat-icon>{{ hideNewPassword ? "visibility_off" : "visibility" }}</mat-icon>
                   </button>
                   <mat-error> {{ getPasswordError() }} </mat-error>
@@ -74,24 +98,39 @@
 
                 <mat-form-field appearance="outline" class="col-lg-12 m-1 p-1">
                   <mat-label>Repetir Contraseña</mat-label>
-                  <input matInput formControlName="confirmPassword" [type]="hideConfirmPassword ? 'password' : 'text'" autocomplete="on" />
-                  <button type="button" mat-icon-button matSuffix (click)="hideConfirmPassword = !hideConfirmPassword "
-                  [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideConfirmPassword ">
-                  <mat-icon>{{ hideConfirmPassword ? "visibility_off" : "visibility" }}</mat-icon>
-                </button>
+                  <input
+                    matInput
+                    formControlName="confirmPassword"
+                    [type]="hideConfirmPassword ? 'password' : 'text'"
+                    autocomplete="on"
+                  />
+                  <button
+                    type="button"
+                    mat-icon-button
+                    matSuffix
+                    (click)="hideConfirmPassword = !hideConfirmPassword"
+                    [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hideConfirmPassword"
+                  >
+                    <mat-icon>{{ hideConfirmPassword ? "visibility_off" : "visibility" }}</mat-icon>
+                  </button>
                   <mat-error> {{ getPasswordConfirmError() }} </mat-error>
                 </mat-form-field>
               </div>
 
               <div class="row mt-5 mb-5">
                 <div class="d-flex col justify-content-center align-items-center">
-                  <app-button class="col-12" [buttonCustomConfiguration]="{
-                    buttonMaterialType : 'mat-raised-button',
-                    isDisabled : this.recoverPasswordForm.invalid,
-                    buttonType : 'submit',
-                    buttonTypeClass : 'btn-submit',
-                    isValidForm : this.recoverPasswordForm.invalid
-                  }">Guardar</app-button>
+                  <app-button
+                    class="col-12"
+                    [buttonCustomConfiguration]="{
+                      buttonMaterialType: 'mat-raised-button',
+                      isDisabled: this.recoverPasswordForm.invalid,
+                      buttonType: 'submit',
+                      buttonTypeClass: 'btn-submit',
+                      isValidForm: this.recoverPasswordForm.invalid
+                    }"
+                    >Guardar</app-button
+                  >
                 </div>
               </div>
             </form>

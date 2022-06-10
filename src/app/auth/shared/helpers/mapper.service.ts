@@ -12,7 +12,7 @@ export class MapperService {
     const userClient: ClientSocialNetworkRequest = {
       name: user.displayName,
       email: user.email,
-      lastName: user.displayName,
+      lastName: '',
       token: token,
     };
     return userClient;
