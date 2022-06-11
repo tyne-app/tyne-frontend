@@ -174,13 +174,11 @@ mat-divider {
   }
 }
 
-
-
 .panel-total {
   border: 1px solid;
   pointer-events: none;
 }
 
 .line-break{
-  white-space: pre;
+  white-space: pre-wrap;
 }
