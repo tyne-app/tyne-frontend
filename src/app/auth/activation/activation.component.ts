@@ -70,7 +70,7 @@ export class ActivationComponent implements OnInit {
             };
           }
           if (error.status == 401) {
-            this.retyrActivation(params.get("email"));
+            this.retyrActivation(params.get("token"));
           }
           this.showErrorMessage(dialog);
         }
@@ -78,8 +78,8 @@ export class ActivationComponent implements OnInit {
     });
   }
 
-  private retyrActivation(email: string) {
-    this.usersService.retryActivation(email).subscribe();
+  private retyrActivation(token: string) {
+    this.usersService.retryActivation(token).subscribe();
   }
 
   private showErrorMessage(dialogModel: DialogModel): void {

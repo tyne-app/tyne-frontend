@@ -43,8 +43,8 @@ export class UserService {
     });
   }
 
-  public retryActivation(email:string): Observable<any>{
-    return this.http.post(`${this.urlBase}/users/activation/retry`,{email});
+  public retryActivation(token:string): Observable<any>{
+    return this.http.post(`${this.urlBase}/users/activation/retry/token`,{token});
   }
 
   public activation(token:string): Observable<any>{
