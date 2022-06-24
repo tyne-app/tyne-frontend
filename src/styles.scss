@@ -167,6 +167,14 @@ input::-ms-clear {
   text-align: center;
 }
 
+.flex-wrapper {
+  display: flex;
+  height: 100%;
+  min-height: 85vh;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 /* End Grid */
 
 /* Buttons */
