@@ -22,7 +22,7 @@ export class TerritorialsService {
     const url = this.urlBase + `/territories/cities/${idCity}/states`;
     return this.http.get<State[]>(url);
   }
-  ///cities/{city_id}/states/available
+  
   public getAvailableStates(idCity: number): Observable<State[]> {
     const url = this.urlBase + `/territories/cities/${idCity}/states/available`;
     return this.http.get<State[]>(url);
