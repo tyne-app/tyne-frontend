@@ -86,7 +86,7 @@ export class SearchBarComponent implements OnInit {
   }
 
   public getStates(): void {
-    this.territorialService.getStates(7).subscribe((data)=>{
+    this.territorialService.getAvailableStates(7).subscribe((data)=>{
       this.states = data;
     });
   }
