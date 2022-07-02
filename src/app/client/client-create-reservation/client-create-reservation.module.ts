@@ -28,7 +28,7 @@ import { ClientCreateReservationComponent } from "./client-create-reservation.co
     MatIconModule,
     CommonModule,
     SharedModule,
-    ButtonsModule
+    ButtonsModule,
   ],
 })
 export class ClientCreateReservationModule {}

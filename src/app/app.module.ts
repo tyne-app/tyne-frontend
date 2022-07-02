@@ -1,20 +1,17 @@
 import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
-import { getAnalytics, provideAnalytics, ScreenTrackingService, UserTrackingService } from "@angular/fire/analytics";
 import { initializeApp, provideFirebaseApp } from "@angular/fire/app";
 import { getAuth, provideAuth } from "@angular/fire/auth";
-import { getFunctions, provideFunctions } from "@angular/fire/functions";
-import { getPerformance, providePerformance } from "@angular/fire/performance";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { SharedModule } from "@app/shared/shared.module";
 import { environment } from "@src/environments/environment";
 import { LoggerModule, NgxLoggerLevel } from "ngx-logger";
-import * as AppMainBarrel from ".";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { SpinnerService } from "./shared/components/spinner/shared/services/spinner.service";
 import * as AppMainProviderBarrel from "./shared/providers";
+import { SharedModule } from "./shared/shared.module";
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -30,26 +27,6 @@ import * as AppMainProviderBarrel from "./shared/providers";
     BrowserAnimationsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
-    AppMainBarrel.HomeModule,
-    AppMainBarrel.LoginModule,
-    AppMainBarrel.ClientRegistrationModule,
-    AppMainBarrel.BusinessDetailsModule,
-    AppMainBarrel.PrivacyModule,
-    AppMainBarrel.ClientProfileModule,
-    AppMainBarrel.RefundPolicyModule,
-    AppMainBarrel.FrequentQuestionsModule,
-    AppMainBarrel.ClientCreateReservationModule,
-    AppMainBarrel.ClientStatusPayModule,
-    AppMainBarrel.BussinesHomeModule,
-    AppMainBarrel.SignOffModule,
-    AppMainBarrel.RecoverPasswordModule,
-    AppMainBarrel.RestoredPasswordModule,
-    AppMainBarrel.AboutUsModule,
-    AppMainBarrel.NotFoundPageModule,
-    AppMainBarrel.ActivationModule,
-    provideAnalytics(() => getAnalytics()),
-    provideFunctions(() => getFunctions()),
-    providePerformance(() => getPerformance()),
   ],
   providers: [
     AppMainProviderBarrel.authInterceptorProvider,
@@ -57,8 +34,6 @@ import * as AppMainProviderBarrel from "./shared/providers";
     AppMainProviderBarrel.DateAdapterProvider,
     AppMainProviderBarrel.MatDateFormatProvider,
     AppMainProviderBarrel.MatPaginatorProvider,
-    ScreenTrackingService,
-    UserTrackingService,
     SpinnerService,
   ],
   bootstrap: [AppComponent],

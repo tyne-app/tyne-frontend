@@ -4,74 +4,73 @@
   <h2 class="title-3 col-center">¿Quienes Somos?</h2>
   <p class="col-center paragraph-20-semi-bold mt-0 mb-4">El equipo detrás de Tyne</p>
   <div class="tyne-row tyne-row-center pt-3">
-
-    <div *ngFor="let member of tyneMembers"
-      class="tyne-col-50 tyne-col-md-33 tyne-col-lg-20 px-1 px-md-2 mb-3 mb-md-4 mb-lg-5">
+    <div
+      *ngFor="let member of tyneMembers"
+      class="tyne-col-50 tyne-col-md-33 tyne-col-lg-20 px-1 px-md-2 mb-3 mb-md-4 mb-lg-5"
+    >
       <div class="card-person">
         <div class="person__picture">
-          <img src="{{ member.memberImage }}" alt="{{ member.memberName }}">
+          <img src="{{ member.memberImage }}" alt="{{ member.memberName }}" />
         </div>
         <div class="person__name">
           <h5>{{ member.memberName }}</h5>
         </div>
         <div class="person__charge">
-          <p>{{ member.memberCharge}}</p>
+          <p>{{ member.memberCharge }}</p>
         </div>
       </div>
     </div>
-
   </div>
 
   <div class="history mt-4 px-md-2">
     <strong>Un poco de historia</strong>
     <figure>
-      <img [src]="'assets/icons/tyne-logo-color.png'" alt="logo-tyne">
+      <img [src]="'assets/icons/tyne-logo-color.png'" alt="logo-tyne" />
     </figure>
-    <p>Tyne App nace el año 2019 de la ocurrencia de Elias Alarcon, dado que identificó un problema: “Una noche decidí
-      ir a comer algo por el barrio Lastarria de Santiago de Chile, el problema que inmediatamente encontré es que todas
+    <p>
+      Tyne App nace el año 2019 de la ocurrencia de Elias Alarcon, dado que identificó un problema: “Una noche decidí ir
+      a comer algo por el barrio Lastarria de Santiago de Chile, el problema que inmediatamente encontré es que todas
       las mesas estaban llenas, no habiendo local donde ir a pasar una excelente cena, a esto siguió el problema de los
       precios y qué comer, si bien mantenía una idea sobre qué tipo de comida consumir, no tenía información sobre los
-      menúes de los locales del sector sin salirse de presupuesto”.</p>
+      menúes de los locales del sector sin salirse de presupuesto”.
+    </p>
 
-    <p>Habiendo reflexionado en días siguientes es que nace la propuesta de valor de Tyne App: “Reducir los tiempos de
+    <p>
+      Habiendo reflexionado en días siguientes es que nace la propuesta de valor de Tyne App: “Reducir los tiempos de
       esperas de los comensales, maximizando la experiencia de ir a comer a locales gastronómicos, realizando una
       reserva de mesa, solicitando los pedidos mediante una app y pagando por adelantado” de esta forma los comensales
       solo disfrutarán de la experiencia que tiene para ofrecer el local, aperturando una nueva entrada de clientes para
-      esta industria.</p>
+      esta industria.
+    </p>
     <div class="col-12 px-0">
-      <img [src]="'assets/img/about-us-image.jpg'" alt="reunion-tyne" class="fluid-image">
+      <img [src]="'assets/img/about-us-image.jpg'" alt="reunion-tyne" class="fluid-image" />
     </div>
 
     <div class="row mx-0 mt-5 purpose">
       <div class="col-12 col-lg-8 pl-0 pr-lg-4">
-        <strong>¿Cuál es nuestro propósito? y <br> ¿Por qué hacemos esto? <br>la respuesta es simple:</strong>
-        <p>
-          “Ahorramos tú tiempo para que lo disfrutes con los que más quieres en torno a una mesa"
-        </p>
+        <strong
+          >¿Cuál es nuestro propósito? y <br />
+          ¿Por qué hacemos esto? <br />la respuesta es simple:</strong
+        >
+        <p>“Ahorramos tú tiempo para que lo disfrutes con los que más quieres en torno a una mesa"</p>
         <p>
           “Porque Tyne no solo ahorrará tiempo a nuestros comensales, si que también brindaremos una experiencia de
-          primer nivel
-          en todo el proceso de venta y de post venta.”
+          primer nivel en todo el proceso de venta y de post venta.”
         </p>
         <p>
           El equipo que está detrás de Tyne se ha unido a este proyecto porque se ha aburrido de no poder encontrar un
-          espacio
-          exclusivamente de ellos en sus labores profesionales diarias, que si bien, son totalmente valorables, contando
-          con su
-          cuota de esfuerzo y respeto por el tiempo empleado, no tienen la identidad que ellos mismos quisieran, pues
-          bien, ellos
-          han querido ser parte de esta aventura llamada Tyne para dar rienda suelta a su creatividad y en el proceso
-          cambiar el
-          mundo de la industria gastronómica, como dice la frase cliché: “Desde Chile hacia el mundo”.</p>
-
+          espacio exclusivamente de ellos en sus labores profesionales diarias, que si bien, son totalmente valorables,
+          contando con su cuota de esfuerzo y respeto por el tiempo empleado, no tienen la identidad que ellos mismos
+          quisieran, pues bien, ellos han querido ser parte de esta aventura llamada Tyne para dar rienda suelta a su
+          creatividad y en el proceso cambiar el mundo de la industria gastronómica, como dice la frase cliché: “Desde
+          Chile hacia el mundo”.
+        </p>
       </div>
       <div class="col-12 col-lg-4 px-0">
-        <img [src]="'assets/img/about-us-image-2.jpg'" alt="">
+        <img [src]="'assets/img/about-us-image-2.jpg'" alt="" />
       </div>
     </div>
-
   </div>
-
 </div>
 
 <app-footer></app-footer>

@@ -9,8 +9,15 @@ import { CurrencyStandardPipe } from "./pipe/currency-standard.pipe";
 import { MissedInformationPipe } from "./pipe/missed-information.pipe";
 
 @NgModule({
-  declarations: [SafeHtmlPipe, MissedInformationPipe,CurrencyStandardPipe],
+  declarations: [SafeHtmlPipe, MissedInformationPipe, CurrencyStandardPipe],
   imports: [CommonModule, SharedDirectivesModule, ErrorHandlerModule, SharedComponentsModule, ControlsModule],
-  exports: [SharedComponentsModule, SharedDirectivesModule, SafeHtmlPipe, MissedInformationPipe, CurrencyStandardPipe, ControlsModule],
+  exports: [
+    SharedComponentsModule,
+    SharedDirectivesModule,
+    SafeHtmlPipe,
+    MissedInformationPipe,
+    CurrencyStandardPipe,
+    ControlsModule,
+  ],
 })
 export class SharedModule {}

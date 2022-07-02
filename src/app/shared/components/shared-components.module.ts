@@ -18,7 +18,7 @@ import { DateAdapterProvider, MatDateFormatProvider, MatDateLocalProvider } from
     AppSharedBarrel.SearchBarModule,
     AppSharedBarrel.SpinnerModule,
     AppSharedBarrel.CloseModalModule,
-    AppSharedBarrel.ExitFormModule
+    AppSharedBarrel.ExitFormModule,
   ],
   exports: [
     AppSharedBarrel.HeaderModule,
@@ -30,8 +30,8 @@ import { DateAdapterProvider, MatDateFormatProvider, MatDateLocalProvider } from
     AppSharedBarrel.SearchBarModule,
     AppSharedBarrel.SpinnerModule,
     AppSharedBarrel.CloseModalModule,
-    AppSharedBarrel.ExitFormModule
+    AppSharedBarrel.ExitFormModule,
   ],
-  providers: [MatDateLocalProvider, DateAdapterProvider, MatDateFormatProvider]
+  providers: [MatDateLocalProvider, DateAdapterProvider, MatDateFormatProvider],
 })
 export class SharedComponentsModule {}
