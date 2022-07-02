@@ -17,6 +17,7 @@
     "https": " ng serve --ssl  --ssl-cert cert/ca.crt  --ssl-key cert/ca.key"
   },
   "private": true,
+  "sideEffects": false,
   "dependencies": {
     "@angular/animations": "~13.2.1",
     "@angular/cdk": "~13.2.1",
