@@ -9,15 +9,12 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
 import { ButtonsModule } from "@app/shared/controls/customs/buttons/buttons.module";
-
 import { SharedModule } from "@app/shared/shared.module";
 import { NgxMatIntlTelInputModule } from "ngx-mat-intl-tel-input";
 import { ClientRegistrationComponent } from "./client.registration.component";
 
 @NgModule({
-  declarations: [
-    ClientRegistrationComponent
-  ], 
+  declarations: [ClientRegistrationComponent],
   imports: [
     FormsModule,
     ReactiveFormsModule,
@@ -29,9 +26,9 @@ import { ClientRegistrationComponent } from "./client.registration.component";
     MatDatepickerModule,
     MatIconModule,
     CommonModule,
-    SharedModule, 
+    SharedModule,
     ButtonsModule,
-    NgxMatIntlTelInputModule
-  ]
+    NgxMatIntlTelInputModule,
+  ],
 })
-export class ClientRegistrationModule { }
+export class ClientRegistrationModule {}

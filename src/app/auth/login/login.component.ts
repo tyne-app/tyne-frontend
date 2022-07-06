@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { AbstractControl, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
@@ -6,17 +7,13 @@ import { TokenService } from "@app/auth/shared/helpers/token.service";
 import { FacebookService } from "@app/auth/shared/services/facebook.service";
 import { GoogleService } from "@app/auth/shared/services/google.service";
 import { UserService } from "@app/core/services/user.service";
+import { unregisteredUser } from "@app/shared/components/dialog/shared/inmutable/constants/dialog-message";
+import { DialogModel } from "@app/shared/components/dialog/shared/interfaces/dialog-model";
+import { DialogService } from "@app/shared/components/dialog/shared/services/dialog.service";
 import { FormControlService } from "@app/shared/helpers";
-import {
-  errorContent,
-  unregisteredUser,
-} from "@app/shared/components/dialog/shared/inmutable/constants/dialog-message";
-import { emailRegex, passwordRegex } from "@app/shared/inmutable/constants/regex";
+import { emailRegex } from "@app/shared/inmutable/constants/regex";
 import { TyneRoutes } from "@app/shared/inmutable/enums/url-routes.enum";
 import { UserType } from "@app/shared/inmutable/enums/user-type.enum";
-import { DialogService } from "@app/shared/components/dialog/shared/services/dialog.service";
-import { HttpErrorResponse } from "@angular/common/http";
-import { DialogModel } from "@app/shared/components/dialog/shared/interfaces/dialog-model";
 
 @Component({
   selector: "app-login",
@@ -26,8 +23,8 @@ import { DialogModel } from "@app/shared/components/dialog/shared/interfaces/dia
 export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
   public hide = true;
-  public msgErrorEmail:string;
-  public msgErrorPassword:string;
+  public msgErrorEmail: string;
+  public msgErrorPassword: string;
 
   public get emailControl(): AbstractControl {
     return this.loginForm.get("email");

@@ -1,6 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { LoginModule, SignOffModule } from "@app/auth";
+import { LoginModule } from "@app/auth/login/login.module";
+import { SignOffModule } from "@app/auth/sign-off/sign-off.module";
 import { ClientRegistrationModule } from "@app/client";
 import { SharedModule } from "@app/shared/shared.module";
 import { HomeRoutingModule } from "./home-routing.module";
