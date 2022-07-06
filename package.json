@@ -42,7 +42,6 @@
     "material-icons": "^1.10.8",
     "moment": "^2.29.1",
     "ng9-rut": "^0.1.1",
-    "ngx-logger": "^4.3.3",
     "ngx-mat-intl-tel-input": "^4.1.0",
     "ngx-spinner": "^13.1.1",
     "rxfire": "^6.0.0",

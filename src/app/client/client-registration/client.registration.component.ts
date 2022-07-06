@@ -15,7 +15,6 @@ import { DialogService } from "@app/shared/components/dialog/shared/services/dia
 import { ButtonCustom } from "@app/shared/controls/customs/buttons/shared/interfaces/button-custom";
 import { FormControlService } from "@app/shared/helpers";
 import { DateService } from "@app/shared/helpers/date.service";
-import { LoggerService } from "@app/shared/helpers/logger.service";
 import { emailRegex, passwordRegex } from "@app/shared/inmutable/constants/regex";
 import * as moment from "moment";
 import { Moment } from "moment";
@@ -76,7 +75,6 @@ export class ClientRegistrationComponent implements OnInit {
     private dialogService: DialogService,
     private googleService: GoogleService,
     private facebookService: FacebookService,
-    private loggerService: LoggerService,
     private dateService: DateService,
     private formControlService: FormControlService
   ) {}
@@ -133,7 +131,6 @@ export class ClientRegistrationComponent implements OnInit {
       (data) => {
         this.loading = false;
         this.showSuccessMessage();
-        this.loggerService.postLogger();
       },
       (error: HttpErrorResponse) => {
         this.loading = false;
