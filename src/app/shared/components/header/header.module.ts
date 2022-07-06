@@ -10,7 +10,16 @@ import { LogoPipe } from "./shared/pipes/logo.pipe";
 
 @NgModule({
   declarations: [HeaderComponent, LogoPipe],
-  imports: [CommonModule, HeaderPublicModule, HeaderLoginModule, RouterModule, ReactiveFormsModule, MatButtonModule],
+  imports: [
+    CommonModule,
+    HeaderPublicModule,
+    HeaderLoginModule,
+    RouterModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    // LoginModule,
+    // ClientRegistrationModule,
+  ],
   exports: [HeaderComponent],
 })
 export class HeaderModule {}

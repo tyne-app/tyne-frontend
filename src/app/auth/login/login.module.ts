@@ -8,15 +8,14 @@ import { MatDividerModule } from "@angular/material/divider";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
+import { DialogModule, SpinnerModule } from "@app/shared/components";
 import { ButtonsModule } from "@app/shared/controls/customs/buttons/buttons.module";
-import { SharedModule } from "@app/shared/shared.module";
 import { LoginComponent } from "./login.component";
 
 @NgModule({
   declarations: [LoginComponent],
   imports: [
     CommonModule,
-    SharedModule,
     MatCheckboxModule,
     MatFormFieldModule,
     MatIconModule,
@@ -27,6 +26,8 @@ import { LoginComponent } from "./login.component";
     ButtonsModule,
     FormsModule,
     ReactiveFormsModule,
+    SpinnerModule,
+    DialogModule,
   ],
   exports: [LoginComponent],
 })

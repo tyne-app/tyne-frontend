@@ -7,18 +7,18 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { environment } from "@src/environments/environment";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
+import { DialogModule } from "./shared/components";
 import { SpinnerService } from "./shared/components/spinner/shared/services/spinner.service";
 import * as AppMainProviderBarrel from "./shared/providers";
-import { SharedModule } from "./shared/shared.module";
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    DialogModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
   ],
