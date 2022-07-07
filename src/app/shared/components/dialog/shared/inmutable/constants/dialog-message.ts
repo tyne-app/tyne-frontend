@@ -4,7 +4,6 @@ import { InformationMessages } from "@app/shared/inmutable/enums/infomation-mess
 import { SuccessMessages } from "@app/shared/inmutable/enums/success-message.enum";
 import { TyneRoutes } from "@app/shared/inmutable/enums/url-routes.enum";
 
-
 export const errorContent: DialogModel = {
   title: ErrorMessages.WeAreSorry,
   subtitle: ErrorMessages.GenericError,
@@ -13,8 +12,8 @@ export const errorContent: DialogModel = {
 };
 
 export const invalidFormContent: DialogModel = {
-  title: ErrorMessages.FormNotReady,
-  subtitle: ErrorMessages.GenericError,
+  title: ErrorMessages.GenericError,
+  subtitle: ErrorMessages.FormNotReady,
   isSuccessful: false,
   messageButton: "Volver",
 };

@@ -8,27 +8,19 @@ import { environment } from "@src/environments/environment";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { DialogModule } from "./shared/components";
-import { SpinnerService } from "./shared/components/spinner/shared/services/spinner.service";
-import * as AppMainProviderBarrel from "./shared/providers";
+import { ErrorHandlerModule } from "./shared/errors/error-handler.module";
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
     BrowserAnimationsModule,
-    DialogModule,
+    HttpClientModule,
+    ErrorHandlerModule,
+    AppRoutingModule,
+    DialogModule, // TODO: si sacamos esto, la app se cae, ver como solucionarlo
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
-  ],
-  providers: [
-    AppMainProviderBarrel.authInterceptorProvider,
-    AppMainProviderBarrel.MatDateLocalProvider,
-    AppMainProviderBarrel.DateAdapterProvider,
-    AppMainProviderBarrel.MatDateFormatProvider,
-    AppMainProviderBarrel.MatPaginatorProvider,
-    SpinnerService,
   ],
   bootstrap: [AppComponent],
 })

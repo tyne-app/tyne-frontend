@@ -1,17 +1,18 @@
-import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { BusinessReservationsComponent } from "./business-reservations.component";
+import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { BusinessReservationsDetailsModule } from "../business-reservations-details/business-reservations-details.module";
-import { MatPaginatorModule } from "@angular/material/paginator";
-import { MatExpansionModule } from "@angular/material/expansion";
-import { MatIconModule } from "@angular/material/icon";
-import { MatFormFieldModule } from "@angular/material/form-field";
-import { MatInputModule } from "@angular/material/input";
 import { MatOptionModule } from "@angular/material/core";
 import { MatDialogModule } from "@angular/material/dialog";
-import { SharedModule } from "@app/shared/shared.module";
+import { MatExpansionModule } from "@angular/material/expansion";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatIconModule } from "@angular/material/icon";
+import { MatInputModule } from "@angular/material/input";
+import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatSelectModule } from "@angular/material/select";
+import { MatPaginatorProvider } from "@app/shared/providers";
+import { SharedModule } from "@app/shared/shared.module";
+import { BusinessReservationsDetailsModule } from "../business-reservations-details/business-reservations-details.module";
+import { BusinessReservationsComponent } from "./business-reservations.component";
 
 @NgModule({
   declarations: [BusinessReservationsComponent],
@@ -31,5 +32,6 @@ import { MatSelectModule } from "@angular/material/select";
     BusinessReservationsDetailsModule,
   ],
   exports: [BusinessReservationsComponent],
+  providers: [MatPaginatorProvider],
 })
 export class BusinessReservationsModule {}

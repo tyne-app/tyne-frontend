@@ -9,11 +9,7 @@ export class GlobalErrorHandler implements ErrorHandler {
   public handleError(error: Error): void {
     if (!error) return;
     this.zone.run(() => {
-      this.showErrorMessage();
+      this.dialogService.openDialog(errorContent);
     });
-  }
-
-  private showErrorMessage() {
-    this.dialogService.openDialog(errorContent);
   }
 }
