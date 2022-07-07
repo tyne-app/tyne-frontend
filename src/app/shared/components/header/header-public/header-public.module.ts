@@ -15,9 +15,9 @@ import { HeaderPublicComponent } from "./header-public.component";
     MatMenuModule,
     MatButtonModule,
     MatIconModule,
+    MatDialogModule,
     LoginModule,
     ClientRegistrationModule,
-    MatDialogModule,
   ],
   exports: [HeaderPublicComponent],
 })

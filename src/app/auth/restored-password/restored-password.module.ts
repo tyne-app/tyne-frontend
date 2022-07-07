@@ -4,9 +4,10 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatCardModule } from "@angular/material/card";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
+import { FooterModule, HeaderModule, SpinnerModule } from "@app/shared/components";
 import { ButtonsModule } from "@app/shared/controls/customs/buttons/buttons.module";
-import { SharedModule } from "@app/shared/shared.module";
 import { RestoredPasswordRoutingModule } from "./restored-password-routing.module";
 import { RestoredPasswordComponent } from "./restored-password.component";
 
@@ -15,7 +16,6 @@ import { RestoredPasswordComponent } from "./restored-password.component";
   imports: [
     CommonModule,
     RestoredPasswordRoutingModule,
-    SharedModule,
     ReactiveFormsModule,
     FormsModule,
     MatFormFieldModule,
@@ -23,6 +23,10 @@ import { RestoredPasswordComponent } from "./restored-password.component";
     ButtonsModule,
     MatCardModule,
     MatDialogModule,
+    HeaderModule,
+    FooterModule,
+    SpinnerModule,
+    MatIconModule,
   ],
 })
 export class RestoredPasswordModule {}
