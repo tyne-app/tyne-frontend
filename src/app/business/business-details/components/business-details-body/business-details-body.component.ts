@@ -23,7 +23,7 @@ export class BusinessDetailsBodyComponent implements OnInit {
   public menuCustomButton: ButtonCustom = {
     buttonMaterialType: "mat-raised-button",
     buttonType: "button",
-    buttonTypeClass: "btn-submit"
+    buttonTypeClass: "btn-submit",
   };
 
   public constructor(
