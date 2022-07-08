@@ -26,8 +26,8 @@ import { DialogModel } from "@app/shared/components/dialog/shared/interfaces/dia
 export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
   public hide = true;
-  public msgErrorEmail:string;
-  public msgErrorPassword:string;
+  public msgErrorEmail: string;
+  public msgErrorPassword: string;
 
   public get emailControl(): AbstractControl {
     return this.loginForm.get("email");
@@ -119,8 +119,17 @@ export class LoginComponent implements OnInit {
       } else {
         this.router.routeReuseStrategy.shouldReuseRoute = () => false;
         this.router.onSameUrlNavigation = "reload";
-        this.router.navigate([TyneRoutes.Home]);
+        this.refresh();
       }
+    }
+  }
+
+  public refresh(): void {
+    const currentUrl = this.router.url.replace("/", "");
+    if (TyneRoutes.BusinessRegister == currentUrl) {
+      this.router.navigate([TyneRoutes.Home]);
+    } else {
+      window.location.reload();
     }
   }
 
