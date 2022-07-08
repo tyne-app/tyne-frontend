@@ -1,6 +1,9 @@
 import { Component, OnInit } from "@angular/core";
+import { Router, NavigationEnd } from "@angular/router";
 import { environment } from "@src/environments/environment";
 import * as mapboxgl from "mapbox-gl";
+// eslint-disable-next-line @typescript-eslint/ban-types
+declare let fbq: Function;
 
 @Component({
   selector: "app-root",
@@ -10,7 +13,14 @@ import * as mapboxgl from "mapbox-gl";
 export class AppComponent implements OnInit {
   public title = "Frontend";
 
-  /**  Global Call to MapBox */
+  public constructor(private router: Router) {
+    router.events.subscribe((y: NavigationEnd) => {
+      if (y instanceof NavigationEnd) {
+        fbq("track", "PageView");
+      }
+    });
+  }
+
   public ngOnInit(): void {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (mapboxgl as any).accessToken = environment.mapboxToken;
