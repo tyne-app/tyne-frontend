@@ -10,7 +10,7 @@ import { MatInputModule } from "@angular/material/input";
 import { MatRadioModule } from "@angular/material/radio";
 import { MatSelectModule } from "@angular/material/select";
 import { MatStepperModule } from "@angular/material/stepper";
-import { SharedModule } from "@app/shared/shared.module";
+import { FooterModule, HeaderModule, SpinnerModule } from "@app/shared/components";
 import { Ng9RutModule } from "ng9-rut";
 import { NgxMatIntlTelInputModule } from "ngx-mat-intl-tel-input";
 import { BusinessNewBranchRoutingModule } from "./business-new-branch-routing.module";
@@ -21,7 +21,6 @@ import { BusinessNewBranchComponent } from "./business-new-branch.component";
   imports: [
     CommonModule,
     BusinessNewBranchRoutingModule,
-    SharedModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
@@ -35,6 +34,9 @@ import { BusinessNewBranchComponent } from "./business-new-branch.component";
     NgxMatIntlTelInputModule,
     FormsModule,
     ReactiveFormsModule,
+    HeaderModule,
+    FooterModule,
+    SpinnerModule,
   ],
 })
 export class BusinessNewBranchModule {}

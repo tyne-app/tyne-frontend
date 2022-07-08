@@ -9,7 +9,6 @@ import { MatInputModule } from "@angular/material/input";
 import { CloseModalModule } from "@app/shared/components";
 import { ButtonsModule } from "@app/shared/controls/customs/buttons/buttons.module";
 import { CurrencyStandardModule } from "@app/shared/pipe/currency-standard.module";
-import { SharedModule } from "@app/shared/shared.module";
 import { BusinessReservationsDetailsComponent } from "./business-reservations-details.component";
 
 @NgModule({
@@ -25,7 +24,6 @@ import { BusinessReservationsDetailsComponent } from "./business-reservations-de
     ButtonsModule,
     MatInputModule,
     MatFormFieldModule,
-    SharedModule,
   ],
   exports: [BusinessReservationsDetailsComponent],
 })

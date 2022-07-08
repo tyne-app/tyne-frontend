@@ -10,7 +10,6 @@ import { MatInputModule } from "@angular/material/input";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatSelectModule } from "@angular/material/select";
 import { MatPaginatorProvider } from "@app/shared/providers";
-import { SharedModule } from "@app/shared/shared.module";
 import { BusinessReservationsDetailsModule } from "../business-reservations-details/business-reservations-details.module";
 import { BusinessReservationsComponent } from "./business-reservations.component";
 
@@ -20,7 +19,6 @@ import { BusinessReservationsComponent } from "./business-reservations.component
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule,
     MatPaginatorModule,
     MatExpansionModule,
     MatIconModule,

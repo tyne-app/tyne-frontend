@@ -10,8 +10,8 @@ import { MatInputModule } from "@angular/material/input";
 import { MatRadioModule } from "@angular/material/radio";
 import { MatSelectModule } from "@angular/material/select";
 import { MatStepperModule } from "@angular/material/stepper";
+import { FooterModule, HeaderModule, SpinnerModule } from "@app/shared/components";
 import { ButtonsModule } from "@app/shared/controls/customs/buttons/buttons.module";
-import { SharedModule } from "@app/shared/shared.module";
 import { Ng9RutModule } from "ng9-rut";
 import { NgxMatIntlTelInputModule } from "ngx-mat-intl-tel-input";
 import { BusinessRegistrationRoutingModule } from "./business-registration-routing.module";
@@ -22,7 +22,6 @@ import { BusinessRegistrationComponent } from "./business-registration.component
   imports: [
     CommonModule,
     BusinessRegistrationRoutingModule,
-    SharedModule,
     MatStepperModule,
     MatInputModule,
     MatFormFieldModule,
@@ -36,6 +35,9 @@ import { BusinessRegistrationComponent } from "./business-registration.component
     ButtonsModule,
     MatButtonModule,
     MatDialogModule,
+    HeaderModule,
+    FooterModule,
+    SpinnerModule,
   ],
 })
 export class BusinessRegistrationModule {}

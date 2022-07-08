@@ -26,7 +26,6 @@ import { ClientRegistrationComponent } from "./client.registration.component";
     MatDatepickerModule,
     MatIconModule,
     CommonModule,
-    // SharedModule,
     ButtonsModule,
     NgxMatIntlTelInputModule,
     SpinnerModule,

@@ -9,9 +9,9 @@ import { MatExpansionModule } from "@angular/material/expansion";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
+import { FooterModule, HeaderModule, SpinnerModule } from "@app/shared/components";
 import { ButtonsModule } from "@app/shared/controls/customs/buttons/buttons.module";
 import { CurrencyStandardModule } from "@app/shared/pipe/currency-standard.module";
-import { SharedModule } from "@app/shared/shared.module";
 import { BusinessMenusRoutingModule } from "./business-menus-routing.module";
 import { BusinessMenusComponent } from "./business-menus.component";
 
@@ -21,7 +21,6 @@ import { BusinessMenusComponent } from "./business-menus.component";
     CurrencyStandardModule,
     BusinessMenusRoutingModule,
     CommonModule,
-    SharedModule,
     FormsModule,
     ReactiveFormsModule,
     ButtonsModule,
@@ -33,6 +32,9 @@ import { BusinessMenusComponent } from "./business-menus.component";
     MatCardModule,
     MatInputModule,
     MatButtonModule,
+    HeaderModule,
+    FooterModule,
+    SpinnerModule,
   ],
 })
 export class BusinessMenusModule {}
