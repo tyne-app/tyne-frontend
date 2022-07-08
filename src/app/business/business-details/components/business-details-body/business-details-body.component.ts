@@ -1,11 +1,11 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { TokenService } from "@app/auth/shared/helpers/token.service";
-import { RatingService, ScheduleService } from "@app/shared/helpers";
 import { InvokeDialogAuthService } from "@app/auth/shared/helpers/invoke-dialog-auth.service";
+import { TokenService } from "@app/auth/shared/helpers/token.service";
+import { ButtonCustom } from "@app/shared/controls/customs/buttons/shared/interfaces/button-custom";
+import { RatingService, ScheduleService } from "@app/shared/helpers";
 import { TyneRoutes } from "@app/shared/inmutable/enums/url-routes.enum";
 import { BusinessDetailsResponse } from "../../interfaces/business-details-response";
-import { ButtonCustom } from "@app/shared/controls/customs/buttons/shared/interfaces/button-custom";
 
 @Component({
   selector: "app-business-details-body",
@@ -20,11 +20,11 @@ export class BusinessDetailsBodyComponent implements OnInit {
   public noRatingsArray: number[] = [];
   public isUserLogged = false;
   public isFavorite = false;
-  public menuCustomButton:ButtonCustom = {
+  public menuCustomButton: ButtonCustom = {
     buttonMaterialType: "mat-raised-button",
     buttonType: "button",
-    buttonTypeClass : "btn-submit"
-  }
+    buttonTypeClass: "btn-submit"
+  };
 
   public constructor(
     private router: Router,

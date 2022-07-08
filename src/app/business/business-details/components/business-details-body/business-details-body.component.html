@@ -29,10 +29,16 @@
           <div class="col">
             <h4 class="title-4">Sucursales:</h4>
             <div class="branch">
-              <p class="paragraph branch">{{ this.restaurant.street | titlecase }}</p>
+              <p class="paragraph branch">
+                {{ this.restaurant.street | titlecase }} {{ this.restaurant.street_number }},
+                {{ this.restaurant.state_name | titlecase }}
+              </p>
             </div>
             <div class="branch" *ngFor="let branch of this.restaurant?.branches">
-              <p class="paragraph branch">{{ branch?.street | titlecase }}</p>
+              <p class="paragraph branch">
+                {{ branch?.street | titlecase }} {{ branch?.street_number }},
+                {{ branch?.state_name | titlecase }}
+              </p>
             </div>
           </div>
           <app-accept-pet [acceptPet]="this.restaurant?.accept_pet"></app-accept-pet>
