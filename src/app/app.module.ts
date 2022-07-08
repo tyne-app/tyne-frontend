@@ -8,6 +8,7 @@ import { environment } from "@src/environments/environment";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { DialogModule } from "./shared/components";
+import { ButtonsModule } from "./shared/controls/customs/buttons/buttons.module";
 import { ErrorHandlerModule } from "./shared/errors/error-handler.module";
 
 @NgModule({
@@ -19,6 +20,7 @@ import { ErrorHandlerModule } from "./shared/errors/error-handler.module";
     ErrorHandlerModule,
     AppRoutingModule,
     DialogModule, // TODO: si sacamos esto, la app se cae, ver como solucionarlo
+    ButtonsModule, // TODO: si sacamos esto, la app se cae, ver como solucionarlo
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
   ],

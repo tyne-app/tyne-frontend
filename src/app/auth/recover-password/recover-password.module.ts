@@ -5,6 +5,7 @@ import { MatCardModule } from "@angular/material/card";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
+import { ButtonModule } from "@app/shared/controls/customs/buttons/button/button.module";
 import { ButtonsModule } from "@app/shared/controls/customs/buttons/buttons.module";
 import { SharedModule } from "@app/shared/shared.module";
 import { RecoverPasswordRoutingModule } from "./recover-password-routing.module";
@@ -23,6 +24,7 @@ import { RecoverPasswordComponent } from "./recover-password.component";
     MatDialogModule,
     RecoverPasswordRoutingModule,
     ButtonsModule,
+    ButtonModule,
   ],
 })
 export class RecoverPasswordModule {}

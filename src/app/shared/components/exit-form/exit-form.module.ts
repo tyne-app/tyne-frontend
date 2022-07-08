@@ -1,18 +1,13 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ExitFormComponent } from './exit-form.component';
-import { ButtonsModule } from '@app/shared/controls/customs/buttons/buttons.module';
-import { MatButtonModule } from '@angular/material/button';
-import { MatDialogModule } from '@angular/material/dialog';
+import { CommonModule } from "@angular/common";
+import { NgModule } from "@angular/core";
+import { MatButtonModule } from "@angular/material/button";
+import { MatDialogModule } from "@angular/material/dialog";
+import { ButtonsModule } from "@app/shared/controls/customs/buttons/buttons.module";
+import { ExitFormComponent } from "./exit-form.component";
 
 @NgModule({
-  imports: [
-    CommonModule,
-    ButtonsModule,
-    MatButtonModule,
-    MatDialogModule
-  ],
+  imports: [CommonModule, ButtonsModule, MatButtonModule, MatDialogModule],
   declarations: [ExitFormComponent],
-  exports: [ExitFormComponent]
+  exports: [ExitFormComponent],
 })
-export class ExitFormModule { }
+export class ExitFormModule {}

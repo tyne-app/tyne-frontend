@@ -3,7 +3,8 @@ import { NgModule } from "@angular/core";
 import { LoginModule } from "@app/auth/login/login.module";
 import { SignOffModule } from "@app/auth/sign-off/sign-off.module";
 import { ClientRegistrationModule } from "@app/client";
-import { SharedModule } from "@app/shared/shared.module";
+import { FooterModule, HeaderModule } from "@app/shared/components";
+import { DateAdapterProvider, MatDateFormatProvider, MatDateLocalProvider } from "@app/shared/providers";
 import { HomeRoutingModule } from "./home-routing.module";
 import { HomeComponent } from "./home.component";
 import { StepModule } from "./shared/components/step/step.module";
@@ -13,11 +14,13 @@ import { StepModule } from "./shared/components/step/step.module";
   imports: [
     CommonModule,
     HomeRoutingModule,
-    SharedModule,
     StepModule,
     LoginModule,
     SignOffModule,
     ClientRegistrationModule,
+    HeaderModule,
+    FooterModule,
   ],
+  providers: [MatDateLocalProvider, DateAdapterProvider, MatDateFormatProvider],
 })
 export class HomeModule {}
