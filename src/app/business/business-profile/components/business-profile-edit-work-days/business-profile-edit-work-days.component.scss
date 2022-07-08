@@ -6,9 +6,9 @@
   }
 }
 
-@include view-max(992px) {
+@include view-max(1400px) {
   .grid-container {
-    max-height: 70vh;
+    max-height: 90vh;
   }
 }
 

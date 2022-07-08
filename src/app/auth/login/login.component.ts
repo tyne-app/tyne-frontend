@@ -116,8 +116,17 @@ export class LoginComponent implements OnInit {
       } else {
         this.router.routeReuseStrategy.shouldReuseRoute = () => false;
         this.router.onSameUrlNavigation = "reload";
-        this.router.navigate([TyneRoutes.Home]);
+        this.refresh();
       }
+    }
+  }
+
+  public refresh(): void {
+    const currentUrl = this.router.url.replace("/", "");
+    if (TyneRoutes.BusinessRegister == currentUrl) {
+      this.router.navigate([TyneRoutes.Home]);
+    } else {
+      window.location.reload();
     }
   }
 

@@ -67,10 +67,6 @@ export class BusinessDetailsBodyComponent implements OnInit {
     }
   }
 
-  public getDay = (dayNumber: number): string => this.scheduleService.getDay(dayNumber);
-
-  public getDays = (dayNumber: number): string => this.scheduleService.getLetterOfDay(dayNumber);
-
   private getRatings(): void {
     if (this.restaurant && this.restaurant?.id > 0) {
       const rating = Math.round(this.restaurant?.rating);
@@ -92,4 +88,8 @@ export class BusinessDetailsBodyComponent implements OnInit {
   private validateSession() {
     this.isUserLogged = this.tokenService.isTokenValid();
   }
+
+  public getDay = (dayNumber: number): string => this.scheduleService.getDay(dayNumber);
+
+  public getDays = (dayNumber: number): string => this.scheduleService.getLetterOfDay(dayNumber);
 }

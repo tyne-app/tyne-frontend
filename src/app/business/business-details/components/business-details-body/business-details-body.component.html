@@ -1,14 +1,12 @@
 <!--Header-->
 <div class="row title">
-  <div class="col-9 col-sm-9 col-md-10 col-lg-10">
+  <div class="col-xs-6 col-sm-6 col-md-10 col-lg-10">
     <h2 class="title-2">
       {{ restaurant?.name | titlecase }}
     </h2>
   </div>
-  <div class="col-2">
-    <app-button class="col-lg-5" (click)="redirectToMenu()" [buttonCustomConfiguration]="this.menuCustomButton"
-      >Reserva aquí</app-button
-    >
+  <div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
+    <app-button (click)="redirectToMenu()" [buttonCustomConfiguration]="this.menuCustomButton">Reserva aquí</app-button>
   </div>
 </div>
 
@@ -30,8 +28,17 @@
         <div class="row">
           <div class="col">
             <h4 class="title-4">Sucursales:</h4>
+            <div class="branch">
+              <p class="paragraph branch">
+                {{ this.restaurant.street | titlecase }} {{ this.restaurant.street_number }},
+                {{ this.restaurant.state_name | titlecase }}
+              </p>
+            </div>
             <div class="branch" *ngFor="let branch of this.restaurant?.branches">
-              <p class="paragraph branch">{{ branch?.street | titlecase }}</p>
+              <p class="paragraph branch">
+                {{ branch?.street | titlecase }} {{ branch?.street_number }},
+                {{ branch?.state_name | titlecase }}
+              </p>
             </div>
           </div>
           <app-accept-pet [acceptPet]="this.restaurant?.accept_pet"></app-accept-pet>
@@ -43,7 +50,7 @@
 
 <div class="row mt-3">
   <div class="col-12 col-lg-5">
-    <div class="row" *ngIf="isUserLogged == true" >
+    <div class="row" *ngIf="isUserLogged == true">
       <div class="col col-center">
         <mat-card>
           <mat-card-content>
