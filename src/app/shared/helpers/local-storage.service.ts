@@ -1,28 +1,14 @@
-import { Injectable } from '@angular/core';
-import { CryptoService } from './crypto.service';
+import { Injectable } from "@angular/core";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class LocalStorageService {
-
-  public constructor(
-    private cryptoService: CryptoService
-  ) { }
-
-  public setValue(key:string,value:string):void {
-    const encryptedValue:string = this.cryptoService.encrypt(value);
-    if(encryptedValue){
-      localStorage.setItem(key,encryptedValue);
-    }
+  public setValue(key: string, value: string): void {
+    localStorage.setItem(key, value);
   }
 
-  public getValue(key:string):string{
-    const value = localStorage.getItem(key);
-    if(value){
-      return this.cryptoService.decrypt(value);
-    }else{
-      return null;
-    }
+  public getValue(key: string): string {
+    return localStorage.getItem(key);
   }
 }

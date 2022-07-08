@@ -1,19 +1,20 @@
-import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { BusinessReservationsDetailsComponent } from "./business-reservations-details.component";
-import { CloseModalModule } from "@app/shared/components";
-import { MatExpansionModule } from "@angular/material/expansion";
+import { NgModule } from "@angular/core";
 import { MatButtonModule } from "@angular/material/button";
-import { MatIconModule } from "@angular/material/icon";
 import { MatDialogModule } from "@angular/material/dialog";
-import { ButtonsModule } from "@app/shared/controls/customs/buttons/buttons.module";
-import { MatInputModule } from "@angular/material/input";
+import { MatExpansionModule } from "@angular/material/expansion";
 import { MatFormFieldModule } from "@angular/material/form-field";
-import { SharedModule } from "@app/shared/shared.module";
+import { MatIconModule } from "@angular/material/icon";
+import { MatInputModule } from "@angular/material/input";
+import { CloseModalModule } from "@app/shared/components";
+import { ButtonsModule } from "@app/shared/controls/customs/buttons/buttons.module";
+import { CurrencyStandardModule } from "@app/shared/pipe/currency-standard.module";
+import { BusinessReservationsDetailsComponent } from "./business-reservations-details.component";
 
 @NgModule({
   declarations: [BusinessReservationsDetailsComponent],
   imports: [
+    CurrencyStandardModule,
     CommonModule,
     CloseModalModule,
     MatExpansionModule,
@@ -23,7 +24,6 @@ import { SharedModule } from "@app/shared/shared.module";
     ButtonsModule,
     MatInputModule,
     MatFormFieldModule,
-    SharedModule,
   ],
   exports: [BusinessReservationsDetailsComponent],
 })

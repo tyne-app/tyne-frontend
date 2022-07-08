@@ -1,24 +1,14 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { HeaderLoginComponent } from './header-login.component';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-
-
+import { CommonModule } from "@angular/common";
+import { NgModule } from "@angular/core";
+import { MatButtonModule } from "@angular/material/button";
+import { MatDialogModule } from "@angular/material/dialog";
+import { MatIconModule } from "@angular/material/icon";
+import { MatMenuModule } from "@angular/material/menu";
+import { HeaderLoginComponent } from "./header-login.component";
 
 @NgModule({
-  declarations: [
-    HeaderLoginComponent
-  ],
-  imports: [
-    CommonModule,
-    MatMenuModule,
-    MatButtonModule,
-    MatIconModule
-  ],
-  exports: [
-    HeaderLoginComponent
-  ]
+  declarations: [HeaderLoginComponent],
+  imports: [CommonModule, MatMenuModule, MatButtonModule, MatIconModule, MatDialogModule],
+  exports: [HeaderLoginComponent],
 })
-export class HeaderLoginModule { }
+export class HeaderLoginModule {}

@@ -1,20 +1,11 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { SignOffComponent } from './sign-off.component';
-import { ButtonsModule } from '@app/shared/controls/customs/buttons/buttons.module';
-
-
+import { CommonModule } from "@angular/common";
+import { NgModule } from "@angular/core";
+import { ButtonsModule } from "@app/shared/controls/customs/buttons/buttons.module";
+import { SignOffComponent } from "./sign-off.component";
 
 @NgModule({
-  declarations: [
-    SignOffComponent
-  ],
-  imports: [
-    CommonModule,
-    ButtonsModule
-  ],
-  exports: [
-    SignOffComponent
-  ]
+  declarations: [SignOffComponent],
+  imports: [CommonModule, ButtonsModule],
+  exports: [SignOffComponent],
 })
-export class SignOffModule { }
+export class SignOffModule {}

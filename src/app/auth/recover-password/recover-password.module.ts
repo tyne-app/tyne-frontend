@@ -1,20 +1,19 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { SharedModule } from "@app/shared/shared.module";
-import { RecoverPasswordComponent } from "./recover-password.component";
-import { RecoverPasswordRoutingModule } from "./recover-password-routing.module";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatCardModule } from "@angular/material/card";
+import { MatDialogModule } from "@angular/material/dialog";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
-import { MatDialogModule } from "@angular/material/dialog";
+import { FooterModule, HeaderModule, SpinnerModule } from "@app/shared/components";
 import { ButtonsModule } from "@app/shared/controls/customs/buttons/buttons.module";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-
+import { RecoverPasswordRoutingModule } from "./recover-password-routing.module";
+import { RecoverPasswordComponent } from "./recover-password.component";
 
 @NgModule({
   declarations: [RecoverPasswordComponent],
   imports: [
-    SharedModule,
+    RecoverPasswordRoutingModule,
     CommonModule,
     MatCardModule,
     ReactiveFormsModule,
@@ -22,9 +21,10 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     MatFormFieldModule,
     MatInputModule,
     MatDialogModule,
-    RecoverPasswordRoutingModule,
-    ButtonsModule
+    ButtonsModule,
+    HeaderModule,
+    FooterModule,
+    SpinnerModule,
   ],
 })
-
 export class RecoverPasswordModule {}

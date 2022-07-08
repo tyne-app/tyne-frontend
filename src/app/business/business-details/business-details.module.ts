@@ -1,8 +1,8 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { SharedModule } from "@app/shared/shared.module";
-import { BusinessDetailsComponent } from "./business-details.component";
+import { FooterModule, HeaderModule, SpinnerModule } from "@app/shared/components";
 import { businessDetailsRoutingModule } from "./business-details-routing.module";
+import { BusinessDetailsComponent } from "./business-details.component";
 import { BusinessDetailsBodyModule } from "./components/business-details-body/business-details-body.module";
 import { CarouselModule } from "./components/carousel/carousel.module";
 
@@ -11,9 +11,11 @@ import { CarouselModule } from "./components/carousel/carousel.module";
   imports: [
     businessDetailsRoutingModule,
     CommonModule,
-    SharedModule,
-    BusinessDetailsBodyModule, 
+    BusinessDetailsBodyModule,
     CarouselModule,
+    HeaderModule,
+    FooterModule,
+    SpinnerModule,
   ],
 })
 export class BusinessDetailsModule {}

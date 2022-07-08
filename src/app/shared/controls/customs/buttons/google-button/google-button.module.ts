@@ -1,14 +1,11 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { GoogleButtonComponent } from './google-button.component';
-import { ButtonModule } from '../button/button.module';
+import { CommonModule } from "@angular/common";
+import { NgModule } from "@angular/core";
+import { ButtonModule } from "../button/button.module";
+import { GoogleButtonComponent } from "./google-button.component";
 
 @NgModule({
-  imports: [
-    CommonModule,
-    ButtonModule
-  ],
+  imports: [CommonModule, ButtonModule],
   declarations: [GoogleButtonComponent],
-  exports: [GoogleButtonComponent]
+  exports: [GoogleButtonComponent],
 })
-export class GoogleButtonModule { }
+export class GoogleButtonModule {}

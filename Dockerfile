@@ -7,7 +7,7 @@ ARG ENV
 
 WORKDIR /app
 COPY . .
-RUN npm ci && npm run build -- --configuration=${ENV}
+RUN npm ci && npm run build -- --configuration=${ENV} --aot --vendor-chunk --common-chunk --delete-output-path --build-optimizer
 
 # stage 2
 
