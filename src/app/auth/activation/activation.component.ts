@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { UserService } from "@app/core/services/user.service";
 import { DialogModel } from "@app/shared/components/dialog/shared/interfaces/dialog-model";
 import { DialogService } from "@app/shared/components/dialog/shared/services/dialog.service";
-import { ButtonCustom } from "@app/shared/controls/customs/buttons/shared/interfaces/button-custom";
 import { TyneRoutes } from "@app/shared/inmutable/enums/url-routes.enum";
 
 @Component({
@@ -14,11 +13,6 @@ import { TyneRoutes } from "@app/shared/inmutable/enums/url-routes.enum";
 })
 export class ActivationComponent implements OnInit {
   public token: string = null;
-  public custombutton: ButtonCustom = {
-    buttonMaterialType: "mat-raised-button",
-    buttonType: "submit",
-    buttonTypeClass: "btn-submit",
-  };
 
   public constructor(
     private activatedRoute: ActivatedRoute,

@@ -1,17 +1,11 @@
-import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { SharedModule } from "@app/shared/shared.module";
-import { SearchBusinessComponent } from "./search-business.component";
+import { FooterModule, HeaderModule, SearchBarModule } from "@app/shared/components";
 import { SearchBusinessRoutingModule } from "./search-business-routing.module";
+import { SearchBusinessComponent } from "./search-business.component";
 import { SearchResultsModule } from "./shared/components/search-results/search-results.module";
 
 @NgModule({
   declarations: [SearchBusinessComponent],
-  imports: [
-    CommonModule,
-    SharedModule,
-    SearchBusinessRoutingModule,
-    SearchResultsModule
-  ],
+  imports: [SearchBusinessRoutingModule, SearchResultsModule, FooterModule, HeaderModule, SearchBarModule],
 })
 export class SearchBusinessModule {}

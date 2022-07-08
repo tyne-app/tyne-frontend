@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { Router } from "@angular/router";
+import { LoginComponent } from "@app/auth/login/login.component";
 import { TokenService } from "@app/auth/shared/helpers/token.service";
-import { ClientRegistrationComponent } from "@app/client/client-registration/client.registration.component";
 import { ButtonCustom } from "@app/shared/controls/customs/buttons/shared/interfaces/button-custom";
 import { RatingService, ScheduleService } from "@app/shared/helpers";
 import { TyneRoutes } from "@app/shared/inmutable/enums/url-routes.enum";
@@ -58,9 +58,10 @@ export class BusinessDetailsBodyComponent implements OnInit {
         },
       });
     } else {
-      this.dialog.open(ClientRegistrationComponent, {
+      this.dialog.open(LoginComponent, {
         maxWidth: "95%",
-        minWidth: "75%",
+        minWidth: "40%",
+        maxHeight: "100%",
         panelClass: "business-profile-dialog",
       });
     }
