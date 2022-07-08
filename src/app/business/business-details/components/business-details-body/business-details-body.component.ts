@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
+import { MatDialog } from "@angular/material/dialog";
 import { Router } from "@angular/router";
-import { InvokeDialogAuthService } from "@app/auth/shared/helpers/invoke-dialog-auth.service";
+import { LoginComponent } from "@app/auth/login/login.component";
 import { TokenService } from "@app/auth/shared/helpers/token.service";
 import { ButtonCustom } from "@app/shared/controls/customs/buttons/shared/interfaces/button-custom";
 import { RatingService, ScheduleService } from "@app/shared/helpers";
@@ -29,9 +30,9 @@ export class BusinessDetailsBodyComponent implements OnInit {
   public constructor(
     private router: Router,
     private tokenService: TokenService,
-    private dialogAuthService: InvokeDialogAuthService,
     private ratingService: RatingService,
-    private scheduleService: ScheduleService
+    private scheduleService: ScheduleService,
+    private dialog: MatDialog
   ) {}
 
   public ngOnInit(): void {
@@ -57,7 +58,12 @@ export class BusinessDetailsBodyComponent implements OnInit {
         },
       });
     } else {
-      this.dialogAuthService.openLogin();
+      this.dialog.open(LoginComponent, {
+        maxWidth: "95%",
+        minWidth: "40%",
+        maxHeight: "100%",
+        panelClass: "business-profile-dialog",
+      });
     }
   }
 

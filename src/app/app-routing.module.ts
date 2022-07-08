@@ -1,6 +1,5 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { NotFoundPageComponent } from "@app/public/not-found-page/not-found-page.component";
 import { TyneRoutes } from "@app/shared/inmutable/enums/url-routes.enum";
 import { AuthGuard } from "./auth/shared/guards/auth.guard";
 import { BusinessGuard } from "./business/shared/guards/business.guard";
@@ -10,48 +9,10 @@ import { StateResolver } from "./core/resolvers/state.resolver";
 import { HomeGuard } from "./public/shared/guard/home.guard";
 
 const routes: Routes = [
-  { path: "", redirectTo: TyneRoutes.Home, pathMatch: "full" },
+  // Auth Routes
   {
-    path: TyneRoutes.Home,
-    loadChildren: () => import("./public/home/home.module").then((m) => m.HomeModule),
-    canActivate: [HomeGuard],
-  },
-  {
-    path: TyneRoutes.BusinessDetail,
-    loadChildren: () =>
-      import("./business/business-details/business-details.module").then((m) => m.BusinessDetailsModule),
-  },
-  {
-    path: TyneRoutes.BusinessRegister,
-    loadChildren: () =>
-      import("./business/business-registration/business-registration.module").then((m) => m.BusinessRegistrationModule),
-  },
-  {
-    path: TyneRoutes.BusinessNewBranch,
-    loadChildren: () =>
-      import("./business/business-new-branch/business-new-branch.module").then((m) => m.BusinessNewBranchModule),
-    canActivate: [AuthGuard, BusinessGuard],
-  },
-  {
-    path: TyneRoutes.ClientProfile,
-    loadChildren: () => import("./client/client-profile/client-profile.module").then((m) => m.ClientProfileModule),
-    canActivate: [AuthGuard, ClientGuard],
-    resolve: { client: ClientResolver },
-  },
-  {
-    path: TyneRoutes.ClientMenu,
-    loadChildren: () => import("./client/client-menus/client-menus.module").then((m) => m.ClientMenusModule),
-    canActivate: [AuthGuard, ClientGuard],
-  },
-  {
-    path: TyneRoutes.BusinessProfile,
-    loadChildren: () =>
-      import("./business/business-profile/business-profile.module").then((m) => m.BusinessProfileModule),
-    canActivate: [AuthGuard, BusinessGuard],
-  },
-  {
-    path: TyneRoutes.AboutUs,
-    loadChildren: () => import("@app/public/about-us/about-us.module").then((m) => m.AboutUsModule),
+    path: TyneRoutes.Activation,
+    loadChildren: () => import("@app/auth/activation/activation.module").then((m) => m.ActivationModule),
   },
   {
     path: TyneRoutes.RecoverPassword,
@@ -63,28 +24,59 @@ const routes: Routes = [
     loadChildren: () =>
       import("@app/auth/restored-password/restored-password.module").then((m) => m.RestoredPasswordModule),
   },
+  // Business Routes
   {
-    path: TyneRoutes.Refund,
-    loadChildren: () => import("./public/refund-policy/refund-policy.module").then((m) => m.RefundPolicyModule),
-  },
-  {
-    path: TyneRoutes.FrequentQuestion,
+    path: TyneRoutes.BusinessDetail,
     loadChildren: () =>
-      import("./public/frecuent-questions/frequent-questions.module").then((m) => m.FrequentQuestionsModule),
-  },
-  {
-    path: TyneRoutes.Privacity,
-    loadChildren: () => import("./public/privacy/privacy.module").then((m) => m.PrivacyModule),
-  },
-  {
-    path: TyneRoutes.BusinessSearchResults,
-    loadChildren: () => import("./public/search-business/search-business.module").then((m) => m.SearchBusinessModule),
-    resolve: { states: StateResolver },
+      import("@app/business/business-details/business-details.module").then((m) => m.BusinessDetailsModule),
   },
   {
     path: TyneRoutes.BusinessEditMenu,
-    loadChildren: () => import("./business/business-menus/business-menus.module").then((m) => m.BusinessMenusModule),
+    loadChildren: () => import("@app/business/business-menus/business-menus.module").then((m) => m.BusinessMenusModule),
     canActivate: [AuthGuard, BusinessGuard],
+  },
+  {
+    path: TyneRoutes.BusinessNewBranch,
+    loadChildren: () =>
+      import("@app/business/business-new-branch/business-new-branch.module").then((m) => m.BusinessNewBranchModule),
+    canActivate: [AuthGuard, BusinessGuard],
+  },
+  {
+    path: TyneRoutes.BusinessProfile,
+    loadChildren: () =>
+      import("@app/business/business-profile/business-profile.module").then((m) => m.BusinessProfileModule),
+    canActivate: [AuthGuard, BusinessGuard],
+  },
+  {
+    path: TyneRoutes.BusinessRegister,
+    loadChildren: () =>
+      import("@app/business/business-registration/business-registration.module").then(
+        (m) => m.BusinessRegistrationModule
+      ),
+  },
+  {
+    path: TyneRoutes.BusinessHome,
+    loadChildren: () => import("@app/business/bussines-home/bussines-home.module").then((m) => m.BussinesHomeModule),
+    canActivate: [AuthGuard, BusinessGuard],
+  },
+  {
+    path: TyneRoutes.ClientMenu,
+    loadChildren: () => import("@app/client/client-menus/client-menus.module").then((m) => m.ClientMenusModule),
+    canActivate: [AuthGuard, ClientGuard],
+  },
+  {
+    path: TyneRoutes.ClientPendingReservation,
+    loadChildren: () =>
+      import("@app/client/client-pending-reservations/client-pending-reservations.module").then(
+        (m) => m.ClientPendingReservationsModule
+      ),
+    canActivate: [AuthGuard, ClientGuard],
+  },
+  {
+    path: TyneRoutes.ClientProfile,
+    loadChildren: () => import("@app/client/client-profile/client-profile.module").then((m) => m.ClientProfileModule),
+    canActivate: [AuthGuard, ClientGuard],
+    resolve: { client: ClientResolver },
   },
   {
     path: TyneRoutes.ClientStatusPay,
@@ -92,29 +84,39 @@ const routes: Routes = [
       import("@app/client/client-status-pay/client-status-pay.module").then((m) => m.ClientStatusPayModule),
     canActivate: [AuthGuard, ClientGuard],
   },
+  // Public Routes
+  { path: "", redirectTo: TyneRoutes.Home, pathMatch: "full" },
   {
-    path: TyneRoutes.BusinessHome,
-    loadChildren: () => import("./business/bussines-home/bussines-home.module").then((m) => m.BussinesHomeModule),
-    canActivate: [AuthGuard, BusinessGuard],
+    path: TyneRoutes.Home,
+    loadChildren: () => import("@app/public/home/home.module").then((m) => m.HomeModule),
+    canActivate: [HomeGuard],
   },
   {
-    path: TyneRoutes.ClientPendingReservation,
-    loadChildren: () =>
-      import("./client/client-pending-reservations/client-pending-reservations.module").then(
-        (m) => m.ClientPendingReservationsModule
-      ),
-    canActivate: [AuthGuard, ClientGuard],
+    path: TyneRoutes.AboutUs,
+    loadChildren: () => import("@app/public/about-us/about-us.module").then((m) => m.AboutUsModule),
   },
   {
-    path: TyneRoutes.Activation,
+    path: TyneRoutes.Refund,
+    loadChildren: () => import("@app/public/refund-policy/refund-policy.module").then((m) => m.RefundPolicyModule),
+  },
+  {
+    path: TyneRoutes.FrequentQuestion,
     loadChildren: () =>
-    import("./auth/activation/activation.module").then(
-      (m) => m.ActivationModule
-    ),
+      import("@app/public/frecuent-questions/frequent-questions.module").then((m) => m.FrequentQuestionsModule),
+  },
+  {
+    path: TyneRoutes.Privacity,
+    loadChildren: () => import("@app/public/privacy/privacy.module").then((m) => m.PrivacyModule),
+  },
+  {
+    path: TyneRoutes.BusinessSearchResults,
+    loadChildren: () =>
+      import("@app/public/search-business/search-business.module").then((m) => m.SearchBusinessModule),
+    resolve: { states: StateResolver },
   },
   {
     path: TyneRoutes.NotFound,
-    component: NotFoundPageComponent,
+    loadChildren: () => import("@app/public/not-found-page/not-found-page.module").then((m) => m.NotFoundPageModule),
   },
   {
     path: "**",

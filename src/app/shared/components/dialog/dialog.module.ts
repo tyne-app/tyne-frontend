@@ -1,22 +1,12 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { DialogComponent } from './dialog.component';
-import { CloseModalModule } from '../close-modal/close-modal.module';
-import { MatButtonModule } from '@angular/material/button';
-
-
+import { CommonModule } from "@angular/common";
+import { NgModule } from "@angular/core";
+import { MatButtonModule } from "@angular/material/button";
+import { CloseModalModule } from "../close-modal/close-modal.module";
+import { DialogComponent } from "./dialog.component";
 
 @NgModule({
-  declarations: [
-    DialogComponent
-  ],
-  imports: [
-    CommonModule,
-    CloseModalModule,
-    MatButtonModule
-  ],
-  exports: [
-    DialogComponent
-  ]
+  declarations: [DialogComponent],
+  imports: [CommonModule, CloseModalModule, MatButtonModule],
+  exports: [DialogComponent],
 })
-export class DialogModule { }
+export class DialogModule {}

@@ -1,9 +1,8 @@
-import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { FooterComponent } from "./footer.component";
-import { RouterModule } from "@angular/router";
+import { NgModule } from "@angular/core";
 import { MatButtonModule } from "@angular/material/button";
-
+import { RouterModule } from "@angular/router";
+import { FooterComponent } from "./footer.component";
 
 @NgModule({
   declarations: [FooterComponent],

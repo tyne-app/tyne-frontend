@@ -1,1 +1,0 @@
-# Agregar componentes que se inicializan una sola vez

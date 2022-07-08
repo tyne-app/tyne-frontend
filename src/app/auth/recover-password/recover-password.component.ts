@@ -1,64 +1,58 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
-import { UserService } from '@app/core/services/user.service';
-import { DialogModel } from '@app/shared/components/dialog/shared/interfaces/dialog-model';
-
-import { DialogService } from '@app/shared/components/dialog/shared/services/dialog.service';
-import { errorContent } from '@app/shared/components/dialog/shared/inmutable/constants/dialog-message';
-import { emailRegex } from '@app/shared/inmutable/constants/regex';
-import { HttpErrorResponse } from '@angular/common/http';
-import { ButtonCustom } from '@app/shared/controls/customs/buttons/shared/interfaces/button-custom';
-
+import { HttpErrorResponse } from "@angular/common/http";
+import { Component, OnInit } from "@angular/core";
+import { FormControl, Validators } from "@angular/forms";
+import { UserService } from "@app/core/services/user.service";
+import { DialogModel } from "@app/shared/components/dialog/shared/interfaces/dialog-model";
+import { DialogService } from "@app/shared/components/dialog/shared/services/dialog.service";
+import { ButtonCustom } from "@app/shared/controls/customs/buttons/shared/interfaces/button-custom";
+import { emailRegex } from "@app/shared/inmutable/constants/regex";
+import { TyneRoutes } from "@app/shared/inmutable/enums/url-routes.enum";
 
 @Component({
-  selector: 'app-recover-password',
-  templateUrl: './recover-password.component.html',
-  styleUrls: ['./recover-password.component.scss']
+  selector: "app-recover-password",
+  templateUrl: "./recover-password.component.html",
+  styleUrls: ["./recover-password.component.scss"],
 })
 export class RecoverPasswordComponent implements OnInit {
- 
   public passwordRecoverMessage = `Ingresa el email con el que te registraste y te enviaremos un correo con las instrucciones para recuperar tu
-  contraseña`
+  contraseña`;
 
-  public email:FormControl = new FormControl("", [Validators.required, Validators.pattern(emailRegex)]);
+  public email: FormControl = new FormControl("", [Validators.required, Validators.pattern(emailRegex)]);
   public custombutton: ButtonCustom = {
-    buttonMaterialType: 'mat-raised-button',
-    buttonType: 'submit',
-    buttonTypeClass: 'btn-submit'
-  }
-  public constructor(
-    private userService:UserService,
-    private dialogService: DialogService
-    ) { }
+    buttonMaterialType: "mat-raised-button",
+    buttonType: "submit",
+    buttonTypeClass: "btn-submit",
+  };
+  public constructor(private userService: UserService, private dialogService: DialogService) {}
 
-  public ngOnInit(): void {
-  }
+  public ngOnInit(): void {}
 
   public restoredPassword(): void {
-    if(this.email.valid){
-      const email:string = this.email.value;
+    if (this.email.valid) {
+      const email: string = this.email.value;
       this.userService.sendEmailToRecoverPassword(email).subscribe(
-      (response)=>{
-        this.showSuccessDialog(response.message);
-      },
-      (error:HttpErrorResponse)=>{
-        this.showErrorDialog(error);
-      });
+        (response) => {
+          this.showSuccessDialog(response.message);
+        },
+        (error: HttpErrorResponse) => {
+          this.showErrorDialog(error);
+        }
+      );
     }
   }
 
-
-  private showSuccessDialog(message:string): void {
+  private showSuccessDialog(message: string): void {
     const content: DialogModel = {
-      messageButton: "Ok",
+      messageButton: "Aceptar",
       subtitle: message,
       title: "",
-      isSuccessful: true
+      isSuccessful: true,
+      redirectTo: TyneRoutes.Home,
     };
     this.dialogService.openDialog(content);
   }
 
-  private showErrorDialog(error:HttpErrorResponse): void{
+  private showErrorDialog(error: HttpErrorResponse): void {
     if (error.status === 400) {
       let subtitle = "";
       error.error.details.forEach((element) => {
@@ -73,5 +67,4 @@ export class RecoverPasswordComponent implements OnInit {
       this.dialogService.openDialog(content);
     }
   }
-
 }

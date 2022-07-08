@@ -1,11 +1,10 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RefundPolicyCardComponent } from './refund-policy-card.component';
-
+import { CommonModule } from "@angular/common";
+import { NgModule } from "@angular/core";
+import { RefundPolicyCardComponent } from "./refund-policy-card.component";
 
 @NgModule({
   declarations: [RefundPolicyCardComponent],
   imports: [CommonModule],
-  exports: [RefundPolicyCardComponent]
+  exports: [RefundPolicyCardComponent],
 })
-export class RefundPolicyCardModule { }
+export class RefundPolicyCardModule {}

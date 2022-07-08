@@ -1,23 +1,20 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ProfileContainerComponent } from './profile-container.component';
-import { ProfileImageModule } from '../profile-image/profile-image.module';
-import { SharedModule } from '@app/shared/shared.module';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatIconModule } from '@angular/material/icon';
-import { ButtonsModule } from '@app/shared/controls/customs/buttons/buttons.module';
-
+import { CommonModule } from "@angular/common";
+import { NgModule } from "@angular/core";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MatButtonModule } from "@angular/material/button";
+import { MatCardModule } from "@angular/material/card";
+import { MatDividerModule } from "@angular/material/divider";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatIconModule } from "@angular/material/icon";
+import { MatInputModule } from "@angular/material/input";
+import { ButtonsModule } from "@app/shared/controls/customs/buttons/buttons.module";
+import { MissedInformationModule } from "@app/shared/pipe/missed-information.module";
+import { ProfileImageModule } from "../profile-image/profile-image.module";
+import { ProfileContainerComponent } from "./profile-container.component";
 
 @NgModule({
-  declarations: [
-    ProfileContainerComponent],
-  imports: [ 
-    SharedModule,
+  declarations: [ProfileContainerComponent],
+  imports: [
     CommonModule,
     MatDividerModule,
     MatFormFieldModule,
@@ -28,8 +25,9 @@ import { ButtonsModule } from '@app/shared/controls/customs/buttons/buttons.modu
     ReactiveFormsModule,
     FormsModule,
     MatIconModule,
-    ProfileImageModule
+    ProfileImageModule,
+    MissedInformationModule,
   ],
-  exports: [ProfileContainerComponent]
+  exports: [ProfileContainerComponent],
 })
-export class ProfileContainerModule { }
+export class ProfileContainerModule {}

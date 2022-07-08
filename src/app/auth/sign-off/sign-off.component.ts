@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
+import { MatDialogRef } from "@angular/material/dialog";
 import { Router } from "@angular/router";
 import { UserService } from "@app/core/services/user.service";
 import { TyneRoutes } from "@app/shared/inmutable/enums/url-routes.enum";
-import { MatDialogRef } from "@angular/material/dialog";
 
 @Component({
   selector: "app-sign-off",

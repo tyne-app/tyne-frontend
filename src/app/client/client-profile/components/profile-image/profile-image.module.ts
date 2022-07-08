@@ -1,17 +1,12 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { AvatarPipe } from '../../shared/pipes/avatar.pipe';
-import { ProfileImageComponent } from './profile-image.component';
-import { SharedModule } from '@app/shared/shared.module';
-import { MatButtonModule } from '@angular/material/button';
+import { CommonModule } from "@angular/common";
+import { NgModule } from "@angular/core";
+import { MatButtonModule } from "@angular/material/button";
+import { AvatarPipe } from "../../shared/pipes/avatar.pipe";
+import { ProfileImageComponent } from "./profile-image.component";
 
 @NgModule({
-  declarations: [ProfileImageComponent,AvatarPipe],
-  imports: [
-    CommonModule,
-    MatButtonModule,
-    SharedModule
-  ],
-  exports: [ProfileImageComponent]
+  declarations: [ProfileImageComponent, AvatarPipe],
+  imports: [CommonModule, MatButtonModule],
+  exports: [ProfileImageComponent],
 })
-export class ProfileImageModule { }
+export class ProfileImageModule {}
