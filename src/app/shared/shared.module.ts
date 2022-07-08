@@ -5,19 +5,11 @@ import { SharedDirectivesModule } from "@app/shared/directives/shared-directives
 import { ErrorHandlerModule } from "@shared/errors/error-handler.module";
 import { SafeHtmlPipe } from "@shared/pipe/safe-html.pipe";
 import { ControlsModule } from "./controls/controls.module";
-import { CurrencyStandardPipe } from "./pipe/currency-standard.pipe";
 import { MissedInformationPipe } from "./pipe/missed-information.pipe";
 
 @NgModule({
-  declarations: [SafeHtmlPipe, MissedInformationPipe, CurrencyStandardPipe],
+  declarations: [SafeHtmlPipe, MissedInformationPipe],
   imports: [CommonModule, SharedDirectivesModule, ErrorHandlerModule, SharedComponentsModule, ControlsModule],
-  exports: [
-    SharedComponentsModule,
-    SharedDirectivesModule,
-    SafeHtmlPipe,
-    MissedInformationPipe,
-    CurrencyStandardPipe,
-    ControlsModule,
-  ],
+  exports: [SharedComponentsModule, SharedDirectivesModule, SafeHtmlPipe, MissedInformationPipe, ControlsModule],
 })
 export class SharedModule {}

@@ -9,8 +9,10 @@ import { MatExpansionModule } from "@angular/material/expansion";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
+import { FooterModule, HeaderModule, SpinnerModule } from "@app/shared/components";
 import { ButtonsModule } from "@app/shared/controls/customs/buttons/buttons.module";
-import { SharedModule } from "@app/shared/shared.module";
+import { CurrencyStandardModule } from "@app/shared/pipe/currency-standard.module";
+import { DateAdapterProvider, MatDateFormatProvider, MatDateLocalProvider } from "@app/shared/providers";
 import { ClientCreateReservationModule } from "../client-create-reservation/client-create-reservation.module";
 import { ClientMenusRoutingModule } from "./client-menus-routing.module";
 import { ClientMenusComponent } from "./client-menus.component";
@@ -19,10 +21,10 @@ import { ScheduleBusinessComponent } from "./components/schedule-business/schedu
 @NgModule({
   declarations: [ClientMenusComponent, ScheduleBusinessComponent],
   imports: [
+    CurrencyStandardModule,
     ClientMenusRoutingModule,
     ReactiveFormsModule,
     CommonModule,
-    SharedModule,
     MatCardModule,
     MatFormFieldModule,
     MatIconModule,
@@ -34,6 +36,10 @@ import { ScheduleBusinessComponent } from "./components/schedule-business/schedu
     ButtonsModule,
     MatDialogModule,
     ClientCreateReservationModule,
+    HeaderModule,
+    FooterModule,
+    SpinnerModule,
   ],
+  providers: [MatDateLocalProvider, DateAdapterProvider, MatDateFormatProvider],
 })
 export class ClientMenusModule {}

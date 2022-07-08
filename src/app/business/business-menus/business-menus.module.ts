@@ -10,6 +10,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
 import { ButtonsModule } from "@app/shared/controls/customs/buttons/buttons.module";
+import { CurrencyStandardModule } from "@app/shared/pipe/currency-standard.module";
 import { SharedModule } from "@app/shared/shared.module";
 import { BusinessMenusRoutingModule } from "./business-menus-routing.module";
 import { BusinessMenusComponent } from "./business-menus.component";
@@ -17,6 +18,7 @@ import { BusinessMenusComponent } from "./business-menus.component";
 @NgModule({
   declarations: [BusinessMenusComponent],
   imports: [
+    CurrencyStandardModule,
     BusinessMenusRoutingModule,
     CommonModule,
     SharedModule,

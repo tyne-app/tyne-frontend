@@ -5,6 +5,7 @@ import { MatCardModule } from "@angular/material/card";
 import { MatDialogModule } from "@angular/material/dialog";
 import { AcceptPetModule, MapModule } from "@app/shared/components";
 import { ButtonsModule } from "@app/shared/controls/customs/buttons/buttons.module";
+import { CurrencyStandardModule } from "@app/shared/pipe/currency-standard.module";
 import { SharedModule } from "@app/shared/shared.module";
 import { BusinessDetailsBodyComponent } from "./business-details-body.component";
 
@@ -19,6 +20,7 @@ import { BusinessDetailsBodyComponent } from "./business-details-body.component"
     MatDialogModule,
     MapModule,
     SharedModule,
+    CurrencyStandardModule,
   ],
   exports: [BusinessDetailsBodyComponent],
 })
