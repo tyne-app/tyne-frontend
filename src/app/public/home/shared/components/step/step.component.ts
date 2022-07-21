@@ -7,7 +7,6 @@ import { TokenService } from "@app/auth/shared/helpers/token.service";
 import { SearchRestaurantRequest } from "@app/public/search-business/shared/interfaces/search-restaurant-request";
 import { SortByRestaurants } from "@app/public/search-business/shared/enums/sort-by-restaurants.enum";
 import { OrderByRestaurants } from "@app/public/search-business/shared/enums/order-by-restaurants.enum";
-import { SearchBusinessService } from "./../../../../search-business/shared/helpers/search-business.service";
 import { BusinessService } from "@app/business/shared/services/business.service";
 import { SearchRestaurantResponse } from "@app/public/search-business/shared/interfaces/search-restaurant-response";
 import { OrderOption } from "@app/public/search-business/shared/interfaces/order-option";
@@ -47,11 +46,7 @@ export class StepComponent {
   public orderOptions: OrderOption[] = [];
   @ViewChild("paginator")
   public paginator: MatPaginator;
-  public constructor(
-    private tokenService: TokenService,
-    private BusinessService: BusinessService,
-    private searchBusinessService: SearchBusinessService,
-  ) {}
+  public constructor(private tokenService: TokenService, private BusinessService: BusinessService) {}
 
   public ngOnInit(): void {
     this.validateSession();
@@ -136,13 +131,6 @@ export class StepComponent {
       }
     });
   }
-
-  // private setOrderOptions() {
-  //   this.orderOptions = this.searchBusinessService.getOrderOption();
-  //   this.activatedRoute.queryParams.subscribe((x) => {
-  //     this.selectedOption = +x.sortBy;
-  //   });
-  // }
 
   public OnPageChange(event: PageEvent): void {
     this.resultForPage = event.pageSize;

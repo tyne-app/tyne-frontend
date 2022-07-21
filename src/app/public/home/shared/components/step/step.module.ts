@@ -10,6 +10,7 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatOptionModule } from "@angular/material/core";
 import { BusinessCardModule } from "@app/public/search-business/shared/components/business-card/business-card.module";
 import { MatPaginatorProvider } from "@app/shared/providers";
+import { SpinnerModule } from "@app/shared/components";
 
 @NgModule({
   declarations: [StepComponent],
@@ -21,7 +22,8 @@ import { MatPaginatorProvider } from "@app/shared/providers";
     MatPaginatorModule,
     MatSelectModule,
     MatOptionModule,
-    BusinessCardModule
+    BusinessCardModule,
+    SpinnerModule
   ],
   exports: [StepComponent],
   providers: [MatPaginatorProvider],

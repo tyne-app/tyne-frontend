@@ -39,7 +39,6 @@
         *ngFor="let business of restaurantsResponse?.data; let i = index"
       >
         <app-business-card [business]="business"></app-business-card>
-        <br />
       </div>
     </div>
     <div class="col-md-12 col-lg-12 col-sm-12 mat-pagination" *ngIf="restaurantsResponse?.total_items > 0">
@@ -54,3 +53,4 @@
     </div>
   </div>
 </div>
+<app-spinner></app-spinner>
