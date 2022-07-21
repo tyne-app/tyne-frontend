@@ -11,7 +11,6 @@ import { SearchBusinessService } from "./../../../../search-business/shared/help
 import { BusinessService } from "@app/business/shared/services/business.service";
 import { SearchRestaurantResponse } from "@app/public/search-business/shared/interfaces/search-restaurant-response";
 import { OrderOption } from "@app/public/search-business/shared/interfaces/order-option";
-import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-step",
@@ -39,10 +38,8 @@ export class StepComponent {
   ];
 
   // Codigo a continuacion es provisorio
-
   public isUserLogged = false;
   public restaurantsResponse: SearchRestaurantResponse;
-  // public restaurants: SearchRestaurant[] = [];
   public selectedOption = 0;
   public resultForPage = 10;
   public page = 1;
@@ -54,7 +51,6 @@ export class StepComponent {
     private tokenService: TokenService,
     private BusinessService: BusinessService,
     private searchBusinessService: SearchBusinessService,
-    private activatedRoute: ActivatedRoute
   ) {}
 
   public ngOnInit(): void {

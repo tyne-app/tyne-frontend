@@ -8,7 +8,7 @@ import { StepComponent } from "./step.component";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatSelectModule } from "@angular/material/select";
 import { MatOptionModule } from "@angular/material/core";
-import { BusinessCardModule } from "../../../../search-business/shared/components/business-card/business-card.module";
+import { BusinessCardModule } from "@app/public/search-business/shared/components/business-card/business-card.module";
 import { MatPaginatorProvider } from "@app/shared/providers";
 
 @NgModule({
