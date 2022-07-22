@@ -163,14 +163,14 @@ export class StepComponent {
 
   public statesPaginator(): void {
     const states = Array<State>();
-    const result = this.restaurantsResponse.data.reduce(function (r, a) {
+    const groupStates = this.restaurantsResponse.data.reduce(function (r, a) {
       r[a.state_id] = r[a.state_id] || [];
       r[a.state_id].push(a);
       return r;
     }, Object.create(null));
     this.allStates.forEach((st) => {
       let find = false;
-      const i = result[st.id];
+      const i = groupStates[st.id];
       if (i != undefined) {
         find = true;
       }
