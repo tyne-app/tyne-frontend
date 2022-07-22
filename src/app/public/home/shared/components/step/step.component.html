@@ -16,29 +16,19 @@
       </app-step-image-container>
     </div>
   </mat-card>
-
   <!-- Codigo provisorio -->
-  <!-- Title and Order Results -->
-  <!-- <div class="row" *ngIf="!isRestaurantsEmpty()">
-  <div class="col-lg-3 col-md-4 col-sm-6 col-6 div-ordenar-locales">
-    <mat-select
-      placeholder="Ordenar Por:"
-      (selectionChange)="orderRestaurants($event.value, 1, 1)"
-      [(value)]="selectedOption"
-    >
-      <mat-option *ngFor="let orderOption of orderOptions" [value]="orderOption.id">{{ orderOption.name }}</mat-option>
-    </mat-select>
-  </div>
-</div> -->
-
-  <!--Content of Search -->
   <div class="content">
-    <div class="row">
-      <div
-        class="contenido-locales col-12 col-sm-12 col-md-6 col-lg-4"
-        *ngFor="let business of restaurantsResponse?.data; let i = index"
-      >
-        <app-business-card [business]="business"></app-business-card>
+    <div *ngFor="let state of this.states">
+      <div class="mat-card col-md-12 col-lg-12 col-sm-12">
+        <h2>{{ state.name }}</h2>
+      </div>
+      <div class="row">
+        <div
+          class="contenido-locales col-12 col-sm-12 col-md-6 col-lg-4"
+          *ngFor="let business of restaurantStates(state.id); let i = index"
+        >
+          <app-business-card [business]="business"></app-business-card>
+        </div>
       </div>
     </div>
     <div class="col-md-12 col-lg-12 col-sm-12 mat-pagination" *ngIf="restaurantsResponse?.total_items > 0">
@@ -46,11 +36,12 @@
         #paginator
         [length]="restaurantsResponse?.total_items"
         [pageSize]="restaurantsResponse?.total_items_page"
-        [pageSizeOptions]="[5, 10, 25, 100]"
+        [pageSizeOptions]="[5, 10, 25]"
         (page)="OnPageChange($event)"
       >
       </mat-paginator>
     </div>
   </div>
+
+  <app-spinner></app-spinner>
 </div>
-<app-spinner></app-spinner>

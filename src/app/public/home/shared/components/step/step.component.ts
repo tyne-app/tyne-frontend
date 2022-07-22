@@ -8,8 +8,13 @@ import { SearchRestaurantRequest } from "@app/public/search-business/shared/inte
 import { SortByRestaurants } from "@app/public/search-business/shared/enums/sort-by-restaurants.enum";
 import { OrderByRestaurants } from "@app/public/search-business/shared/enums/order-by-restaurants.enum";
 import { BusinessService } from "@app/business/shared/services/business.service";
-import { SearchRestaurantResponse } from "@app/public/search-business/shared/interfaces/search-restaurant-response";
+import {
+  SearchRestaurant,
+  SearchRestaurantResponse,
+} from "@app/public/search-business/shared/interfaces/search-restaurant-response";
 import { OrderOption } from "@app/public/search-business/shared/interfaces/order-option";
+import { TerritorialsService } from "@app/core/services/territorials.service";
+import { State } from "@app/shared/interfaces/common/state";
 
 @Component({
   selector: "app-step",
@@ -44,24 +49,36 @@ export class StepComponent {
   public page = 1;
   public response = false;
   public orderOptions: OrderOption[] = [];
+  public states: State[] = [];
+  public allStates: State[] = [];
   @ViewChild("paginator")
   public paginator: MatPaginator;
-  public constructor(private tokenService: TokenService, private BusinessService: BusinessService) {}
+  public constructor(
+    private tokenService: TokenService,
+    private BusinessService: BusinessService,
+    private territorialService: TerritorialsService
+  ) {}
 
   public ngOnInit(): void {
     this.validateSession();
     this.response = false;
-    this.getRestaurants(this.page, this.resultForPage, 1);
+    this.getStates();
   }
 
   private validateSession() {
     this.isUserLogged = this.tokenService.isTokenValid();
   }
 
+  public getStates(): void {
+    this.territorialService.getAvailableStates(7).subscribe((data) => {
+      this.allStates = data;
+      this.getRestaurants(this.page, this.resultForPage, 1);
+    });
+  }
+
   public getRestaurants(page: number, result_for_page: number, type: number): void {
     this.resultForPage = 10;
     this.page = 1;
-
     const request: SearchRestaurantRequest = {
       result_for_page: result_for_page,
       page: page,
@@ -77,6 +94,7 @@ export class StepComponent {
         if (type == 1 && Object.keys(restaurants.data).length != 0) {
           setTimeout(() => ((this.paginator.pageIndex = 0), (this.resultForPage = this.paginator.pageSize)));
         }
+        this.statesPaginator();
         this.response = true;
       } else {
         if (page == 1) {
@@ -137,5 +155,29 @@ export class StepComponent {
     this.page = event.pageIndex + 1;
     this.response = false;
     this.getRestaurants(this.page, this.resultForPage, 0);
+  }
+
+  public restaurantStates(state_id: number): Array<SearchRestaurant> {
+    return this.restaurantsResponse.data.filter((x) => x.state_id == state_id);
+  }
+
+  public statesPaginator(): void {
+    const states = Array<State>();
+    const result = this.restaurantsResponse.data.reduce(function (r, a) {
+      r[a.state_id] = r[a.state_id] || [];
+      r[a.state_id].push(a);
+      return r;
+    }, Object.create(null));
+    this.allStates.forEach((st) => {
+      let find = false;
+      const i = result[st.id];
+      if (i != undefined) {
+        find = true;
+      }
+      if (find) {
+        states.push(st);
+      }
+    });
+    this.states = states;
   }
 }
