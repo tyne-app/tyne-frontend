@@ -1,18 +1,47 @@
-<div class="container pt-5">
-  <app-search-bar></app-search-bar>
-
+<!-- <div class="container pt-5"> -->
+<div class="container">
+  <!-- <app-search-bar></app-search-bar> -->
   <mat-card class="mat-card">
     <div class="container" style="text-align: center">
       <h1>¡Reserva en 4 simples pasos!</h1>
     </div>
 
-    <mat-card-content>
-      <div class="row">
-        <app-step-image-container class="col-lg-3 col-md-3 col-sm-6" *ngFor="let stepImage of stepImages" 
-          [title]="stepImage.title" 
-          [imageUrl]="stepImage.imageUrl">
-        </app-step-image-container>
-      </div>
-    </mat-card-content>
+    <div class="row">
+      <app-step-image-container
+        class="col-lg-3 col-md-3 col-sm-6"
+        *ngFor="let stepImage of stepImages"
+        [title]="stepImage.title"
+        [imageUrl]="stepImage.imageUrl"
+      >
+      </app-step-image-container>
+    </div>
   </mat-card>
+  <!-- Codigo provisorio -->
+  <div class="content">
+    <div *ngFor="let state of this.states">
+      <div class="mat-card col-md-12 col-lg-12 col-sm-12">
+        <h2>{{ state.name }}</h2>
+      </div>
+      <div class="row">
+        <div
+          class="contenido-locales col-12 col-sm-12 col-md-6 col-lg-4"
+          *ngFor="let business of restaurantStates(state.id); let i = index"
+        >
+          <app-business-card [business]="business"></app-business-card>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12 col-lg-12 col-sm-12 mat-pagination" *ngIf="restaurantsResponse?.total_items > 0">
+      <mat-paginator
+        #paginator
+        [length]="restaurantsResponse?.total_items"
+        [pageSize]="restaurantsResponse?.total_items_page"
+        [pageSizeOptions]="[5, 10, 25]"
+        (page)="OnPageChange($event)"
+      >
+      </mat-paginator>
+    </div>
+  </div>
+
+  <app-spinner></app-spinner>
 </div>

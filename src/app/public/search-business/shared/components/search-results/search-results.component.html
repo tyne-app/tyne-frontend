@@ -27,8 +27,10 @@
 <!--Content of Search -->
 <div class="content">
   <div class="row">
-    <div class="contenido-locales col-12 col-sm-12 col-md-6 col-lg-4"
-      *ngFor="let business of restaurantsResponse?.data; let i = index">
+    <div
+      class="contenido-locales col-12 col-sm-12 col-md-6 col-lg-4"
+      *ngFor="let business of restaurantsResponse?.data; let i = index"
+    >
       <app-business-card [business]="business"></app-business-card>
     </div>
   </div>
